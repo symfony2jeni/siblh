@@ -1,171 +1,200 @@
-Symfony Standard Edition
-========================
+SIBLH
+Sistema Informatico de gestion y control de Banco de Leche Humana para la red nacional hospitalaria,
+centralizado en el Hospital Nacional especializado de Maternidad.
 
-Welcome to the Symfony Standard Edition - a fully-functional Symfony2
-application that you can use as the skeleton for your new applications.
+Sistema informático encargado de gestionar y controlar las actividades diarias que se realizan en las unidades de banco 
+de leche humana como el registro de donantes, recolección de leche humana, control del procesamiento de la leche, 
+registro de receptores, atención de solicitudes de leche humana, entre otras, garantizando la seguridad y el control 
+tanto en el manejo de la información así como en la realización de las actividades diarias.
+=========================================================================================================
 
-This document contains information on how to download, install, and start
-using Symfony. For a more detailed explanation, see the [Installation][1]
-chapter of the Symfony Documentation.
+A continuacion se describen los pasos necesarios para configurar el entorno el desarrollo y funcionamiento del SIBLH:
 
-1) Installing the Standard Edition
-----------------------------------
 
-When it comes to installing the Symfony Standard Edition, you have the
-following options.
+ Instalación y configuración del entorno Web
+----------------------------------------------
+* Para preparar el entorno Web en Debian 7.0 "Wheezy"  es necesario instalar
+los siguientes paquetes, lo cual implica tener configurado apropiadamente el
+archivo /etc/apt/sources.list
 
-### Use Composer (*recommended*)
+Puede encontrar información adicional en
+http://wiki.salud.gob.sv/wiki/Actualizaciones_y_sources.list
 
-As Symfony uses [Composer][2] to manage its dependencies, the recommended way
-to create a new project is to use it.
+* Primero se deberán actualizar los repositorios del sistema operativo.
+Como **usuario root** escribir en una terminal:
 
-If you don't have Composer yet, download it following the instructions on
-http://getcomposer.org/ or just run the following command:
+        aptitude update && aptitude full-upgrade
 
-    curl -s http://getcomposer.org/installer | php
+* Siempre como **usuario root** ejecutar la siguiente instrucción:
 
-Then, use the `create-project` command to generate a new Symfony application:
+        aptitude install apache2-mpm-prefork php5 php5-gd php-apc libgd2-xpm acl \
+        php5-mcrypt curl git libapache2-mod-php5 php5-intl php-pear php5-cli \
+        php5-pgsql postgresql openjdk-7-jdk openjdk-7-jre
 
-    php composer.phar create-project symfony/framework-standard-edition path/to/install
+* Editar el archivo /etc/php5/apache2/php.ini como **usuario root**; con cualquier
+editor de texto, puede ser nano o vi; ir a la sección *Module Settings* y
+modificar o agregar la línea *;date.timezone =* con lo siguiente:
+date.timezone = America/El_Salvador
 
-Composer will install Symfony and all its dependencies under the
-`path/to/install` directory.
+* Reiniciar el servicio de Apache para que la configuración surta efecto:
 
-### Download an Archive File
+        /etc/init.d/apache2 restart
 
-To quickly test Symfony, you can also download an [archive][3] of the Standard
-Edition and unpack it somewhere under your web server root directory.
+***************************************************************************************************
+Instalación y configuración de la base de datos
+-----------------------------------------
+###Configuración de PostgreSQL
+* Configurar PostgreSQL para conectarse con un usuario en particular.
+Editar el archivo */etc/postgresql/9.1/main/pg_hba.conf* como
+**usuario root**, con cualquier editor de texto, puede ser nano o vi:
 
-If you downloaded an archive "without vendors", you also need to install all
-the necessary dependencies. Download composer (see above) and run the
-following command:
+* Ir al final del archivo e identificar las siguientes líneas:
 
-    php composer.phar install
+        # "local" is for Unix domain socket connections only
+        local   all         all                               peer
+* Cambiar el valor *peer* por *md5*. Es posible que en lugar de peer
+aparezca otro valor como ident, lo importante, es que se debe cambiar a
+md5. La línea debería quedar como se muestra a continuación:
 
-2) Checking your System Configuration
--------------------------------------
+        # "local" is for Unix domain socket connections only
+        local   all         all                               md5
+* Reiniciar el servicio de postgres con la siguiente instrucción:
 
-Before starting coding, make sure that your local system is properly
-configured for Symfony.
+        /etc/init.d/postgresql restart
 
-Execute the `check.php` script from the command line:
+###Creación del usuario
+* Como **usuario postgres** ejecutar la siguiente sentencia desde consola:
 
-    php app/check.php
+        createuser -DRSP nombreUsuario
 
-The script returns a status code of `0` if all mandatory requirements are met,
-`1` otherwise.
+###Creación de la base de datos
+* Siempre como **usuario postgres** ejecutar la siguiente sentencia desde consola:
 
-Access the `config.php` script from a browser:
+        createdb nombreBaseDatos -O nombreUsuario
 
-    http://localhost/path/to/symfony/app/web/config.php
+*****************************************************************************************************
+Instalación y configuración del SIBLH
+---------------------------------------
+La instalación puede realizarse de dos formas:
 
-If you get any warnings or recommendations, fix them before moving on.
+* Clonando el proyecto desde el servidor git.salud.gob.sv
+* Copiando el proyecto directamente en el directorio raiz.
 
-3) Browsing the Demo Application
---------------------------------
+###Clonando el proyecto desde el servidor github
+* Clonar el repositorio **git@github.com:symfony2jeni/SIBLH.git**
+* Descargar el el archivo **composer.phar** como **usuario normal** con la
+siguiente sentencia:
 
-Congratulations! You're now ready to use Symfony.
+        curl -s https://getcomposer.org/installer | php
 
-From the `config.php` page, click the "Bypass configuration and go to the
-Welcome page" link to load up your first Symfony page.
+* Si se es un usuario para **desarrollo** se puede realizar una de las siguientes
+opciones:
+ * Crear una nueva rama para trabajar en ella con la siguiente sentencia:
 
-You can also use a web-based configurator by clicking on the "Configure your
-Symfony Application online" link of the `config.php` page.
+        git checkout -b nombreRama
 
-To see a real-live Symfony page in action, access the following page:
+ * Si ya se posee una rama simplemente cambiar de rama con la siguiente
+sentencia:
 
-    web/app_dev.php/demo/hello/Fabien
+        git checkout nombreRama
 
-4) Getting started with Symfony
--------------------------------
 
-This distribution is meant to be the starting point for your Symfony
-applications, but it also contains some sample code that you can learn from
-and play with.
+ * Si ya se posee una rama simplemente cambiar de rama con la siguiente
+sentencia:
 
-A great way to start learning Symfony is via the [Quick Tour][4], which will
-take you through all the basic features of Symfony2.
+        git checkout nombreRama
 
-Once you're feeling good, you can move onto reading the official
-[Symfony2 book][5].
+* Si es para **producción** no realizar cambio de rama y permanecer en la rama
+master.
+* Agregar el archivo **parameters.yml** en el directorio **app/config/** con un
+contenido similar al siguiente:
 
-A default bundle, `AcmeDemoBundle`, shows you Symfony2 in action. After
-playing with it, you can remove it by following these steps:
+        parameters:
+            database_driver: pdo_pgsql
+            database_host: nombreHost
+            database_port: ''
+            database_name: nombreBase
+            database_user: usuarioBase
+            database_password: contraseñaBase
+            mailer_transport: smtp
+            mailer_host: localhost
+            mailer_user: null
+            mailer_password: null
+            locale: es_SV
+ secret: df1ca40cfc425c4f34e654696720435a044b9ca9
+            database_path: null
 
-  * delete the `src/Acme` directory;
+* Cambiar los parámetros por los datos que se definieron en la creación de la
+base de datos.
 
-  * remove the routing entry referencing AcmeDemoBundle in `app/config/routing_dev.yml`;
+* Siempre como **usuario normal** ejecutar:
 
-  * remove the AcmeDemoBundle from the registered bundles in `app/AppKernel.php`;
+         php composer.phar install
 
-  * remove the `web/bundles/acmedemo` directory;
+* Si da error ejecutar
 
-  * remove the `security.providers`, `security.firewalls.login` and
-    `security.firewalls.secured_area` entries in the `security.yml` file or
-    tweak the security configuration to fit your needs.
+         php composer.phar update
 
-What's inside?
----------------
+* Aplicar las acl al directorio cache y logs:
 
-The Symfony Standard Edition is configured with the following defaults:
+        setfacl -R -m u:www-data:rwx -m u:`whoami`:rwx app/cache/ app/logs/ web/imagenes
+        setfacl -dR -m u:www-data:rwx -m u:`whoami`:rwx app/cache/ app/logs/ web/imagenes
 
-  * Twig is the only configured template engine;
+******************************************************************************************************
+###Creando el Virtual Host
+* Como **usuario root** ejecutar:
 
-  * Doctrine ORM/DBAL is configured;
+        grep NameVirtualHost /etc/apache2/ports.conf
 
-  * Swiftmailer is configured;
+* Aparecerá algo similar a lo siguiente:
 
-  * Annotations for everything are enabled.
+ 1. NameVirtualHost 192.168.1.1:80
+ 2. NameVirtualHost *:80
 
-It comes pre-configured with the following bundles:
+* El caso 1 indica que NameVirtualHost está configurado en la IP 192.168.1.1 en
+el puerto 80. Para el caso 2, NameVirtualHost está configurado para todas las
+direcciones IP configuradas en el servidor en el puerto 80. Esta dirección IP
+se repetirá en cada VirtualHost que se cree. Por lo que es importante colocar
+el valor indicado.
+* Como usuario root, moverse a la carpeta:
 
-  * **FrameworkBundle** - The core Symfony framework bundle
+        cd /etc/apache2/sites-available/
+        
+* Con un editor de texto crear el archivo **siblh.localhost** con el siguiente
+contenido:
 
-  * [**SensioFrameworkExtraBundle**][6] - Adds several enhancements, including
-    template and routing annotation capability
+        # Inicio del archivo
+        <VirtualHost VARIABLE_RETORNADA>
+        ServerName siblh.localhost
+        DocumentRoot /var/www/siblh/web  ##Esta debe ser la ruta donde está el proyecto!
+        DirectoryIndex app.php
+        <Directory /var/www/siaps/web >  ##Esta debe ser la ruta donde está el proyecto!
+                Options Indexes FollowSymLinks MultiViews
+                AllowOverride All
+                Order allow,deny
+                allow from all
+        </Directory>
+        ErrorLog ${APACHE_LOG_DIR}/siblh.localhost-error.log
+        # Possible values include: debug, info, notice, warn, error, crit,
+        # alert, emerg.
+  LogLevel warn
+        CustomLog ${APACHE_LOG_DIR}/siblh.localhost-access.log combined
+        </VirtualHost>
+        # Fin del archivo
 
-  * [**DoctrineBundle**][7] - Adds support for the Doctrine ORM
+* Guardar el archivo. Luego, como **root** ejecutar:
 
-  * [**TwigBundle**][8] - Adds support for the Twig templating engine
+        a2ensite siblh.localhost
 
-  * [**SecurityBundle**][9] - Adds security by integrating Symfony's security
-    component
+* Habilitar el modo de reescritura con la siguiente sentencia:
 
-  * [**SwiftmailerBundle**][10] - Adds support for Swiftmailer, a library for
-    sending emails
+        a2enmod rewrite
 
-  * [**MonologBundle**][11] - Adds support for Monolog, a logging library
+* Reiniciar el servicio de Apache
 
-  * [**AsseticBundle**][12] - Adds support for Assetic, an asset processing
-    library
+        /etc/init.d/apache2 restart
 
-  * **WebProfilerBundle** (in dev/test env) - Adds profiling functionality and
-    the web debug toolbar
+* Se debe agregar en el archivo **/etc/hosts** la IP junto con el ServerName
+del Virtual Host. La línea debe ser similar a la siguiente:
 
-  * **SensioDistributionBundle** (in dev/test env) - Adds functionality for
-    configuring and working with Symfony distributions
-
-  * [**SensioGeneratorBundle**][13] (in dev/test env) - Adds code generation
-    capabilities
-
-  * **AcmeDemoBundle** (in dev/test env) - A demo bundle with some example
-    code
-
-All libraries and bundles included in the Symfony Standard Edition are
-released under the MIT or BSD license.
-
-Enjoy!
-
-[1]:  http://symfony.com/doc/2.3/book/installation.html
-[2]:  http://getcomposer.org/
-[3]:  http://symfony.com/download
-[4]:  http://symfony.com/doc/2.3/quick_tour/the_big_picture.html
-[5]:  http://symfony.com/doc/2.3/index.html
-[6]:  http://symfony.com/doc/2.3/bundles/SensioFrameworkExtraBundle/index.html
-[7]:  http://symfony.com/doc/2.3/book/doctrine.html
-[8]:  http://symfony.com/doc/2.3/book/templating.html
-[9]:  http://symfony.com/doc/2.3/book/security.html
-[10]: http://symfony.com/doc/2.3/cookbook/email.html
-[11]: http://symfony.com/doc/2.3/cookbook/logging/monolog.html
-[12]: http://symfony.com/doc/2.3/cookbook/assetic/asset_management.html
-[13]: http://symfony.com/doc/2.3/bundles/SensioGeneratorBundle/index.html
+        X.X.X.X       siblh.localhost
