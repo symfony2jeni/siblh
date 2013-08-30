@@ -168,7 +168,7 @@ contenido:
         ServerName siblh.localhost
         DocumentRoot /var/www/siblh/web  ##Esta debe ser la ruta donde está el proyecto!
         DirectoryIndex app.php
-        <Directory /var/www/siaps/web >  ##Esta debe ser la ruta donde está el proyecto!
+        <Directory /var/www/siblh/web >  ##Esta debe ser la ruta donde está el proyecto!
                 Options Indexes FollowSymLinks MultiViews
                 AllowOverride All
                 Order allow,deny
