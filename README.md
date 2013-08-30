@@ -4,8 +4,8 @@ centralizado en el Hospital Nacional especializado de Maternidad.
 
 Sistema informático encargado de gestionar y controlar las actividades diarias que se realizan en las unidades de banco 
 de leche humana como el registro de donantes, recolección de leche humana, control del procesamiento de la leche, 
-registro de receptores, atención de solicitudes de leche humana, entre otras, garantizando la seguridad y el control 
-tanto en el manejo de la información así como en la realización de las actividades diarias.
+registro de receptores, atención de solicitudes de leche humana, entre otras, garantizando la seguridad y el control tanto
+en el manejo de la informacion como en la realizacion de las actividades diarias.
 =========================================================================================================
 
 A continuacion se describen los pasos necesarios para configurar el entorno el desarrollo y funcionamiento del SIBLH:
