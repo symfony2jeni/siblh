@@ -1,0 +1,72 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+    <h1>BlhIngresoReceptor</h1>
+
+    <table class="record_properties">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ entity.id }}</td>
+            </tr>
+            <tr>
+                <th>Pesoreceptor</th>
+                <td>{{ entity.pesoReceptor }}</td>
+            </tr>
+            <tr>
+                <th>Duracioncpap</th>
+                <td>{{ entity.duracionCpap }}</td>
+            </tr>
+            <tr>
+                <th>Clasificacionlubchengo</th>
+                <td>{{ entity.clasificacionLubchengo }}</td>
+            </tr>
+            <tr>
+                <th>Diagnosticoingreso</th>
+                <td>{{ entity.diagnosticoIngreso }}</td>
+            </tr>
+            <tr>
+                <th>Duracionnpt</th>
+                <td>{{ entity.duracionNpt }}</td>
+            </tr>
+            <tr>
+                <th>Apgar</th>
+                <td>{{ entity.apgar }}</td>
+            </tr>
+            <tr>
+                <th>Edadgestfur</th>
+                <td>{{ entity.edadGestFur }}</td>
+            </tr>
+            <tr>
+                <th>Duracionventilacion</th>
+                <td>{{ entity.duracionVentilacion }}</td>
+            </tr>
+            <tr>
+                <th>Edadgestballard</th>
+                <td>{{ entity.edadGestBallard }}</td>
+            </tr>
+            <tr>
+                <th>Pc</th>
+                <td>{{ entity.pc }}</td>
+            </tr>
+            <tr>
+                <th>Tallaingreso</th>
+                <td>{{ entity.tallaIngreso }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+        <ul class="record_actions">
+    <li>
+        <a href="{{ path('blhingresoreceptor') }}">
+            Back to the list
+        </a>
+    </li>
+    <li>
+        <a href="{{ path('blhingresoreceptor_edit', { 'id': entity.id }) }}">
+            Edit
+        </a>
+    </li>
+    <li>{{ form(delete_form) }}</li>
+</ul>
+{% endblock %}

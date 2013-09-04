@@ -1,0 +1,5 @@
+siblhmantenimiento:
+    resource: "@siblhmantenimientoBundle/Controller/"
+    type:     annotation
+    prefix:   /
+

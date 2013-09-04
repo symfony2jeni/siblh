@@ -1,0 +1,108 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+    <h1>BlhDonante</h1>
+
+    <table class="record_properties">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ entity.id }}</td>
+            </tr>
+            <tr>
+                <th>Codigodonante</th>
+                <td>{{ entity.codigoDonante }}</td>
+            </tr>
+            <tr>
+                <th>Primernombre</th>
+                <td>{{ entity.primerNombre }}</td>
+            </tr>
+            <tr>
+                <th>Segundonombre</th>
+                <td>{{ entity.segundoNombre }}</td>
+            </tr>
+            <tr>
+                <th>Primerapellido</th>
+                <td>{{ entity.primerApellido }}</td>
+            </tr>
+            <tr>
+                <th>Segundoapellido</th>
+                <td>{{ entity.segundoApellido }}</td>
+            </tr>
+            <tr>
+                <th>Fechanacimiento</th>
+                <td>{{ entity.fechaNacimiento|date('Y-m-d H:i:s') }}</td>
+            </tr>
+            <tr>
+                <th>Fecharegistrodonanteblh</th>
+                <td>{{ entity.fechaRegistroDonanteBlh|date('Y-m-d H:i:s') }}</td>
+            </tr>
+            <tr>
+                <th>Direccion</th>
+                <td>{{ entity.direccion }}</td>
+            </tr>
+            <tr>
+                <th>Procedencia</th>
+                <td>{{ entity.procedencia }}</td>
+            </tr>
+            <tr>
+                <th>Registro</th>
+                <td>{{ entity.registro }}</td>
+            </tr>
+            <tr>
+                <th>Numerodocumentoidentificacion</th>
+                <td>{{ entity.numeroDocumentoIdentificacion }}</td>
+            </tr>
+            <tr>
+                <th>Documentoidentificacion</th>
+                <td>{{ entity.documentoIdentificacion }}</td>
+            </tr>
+            <tr>
+                <th>Edad</th>
+                <td>{{ entity.edad }}</td>
+            </tr>
+            <tr>
+                <th>Ocupacion</th>
+                <td>{{ entity.ocupacion }}</td>
+            </tr>
+            <tr>
+                <th>Estadocivil</th>
+                <td>{{ entity.estadoCivil }}</td>
+            </tr>
+            <tr>
+                <th>Nacionalidad</th>
+                <td>{{ entity.nacionalidad }}</td>
+            </tr>
+            <tr>
+                <th>Escolaridad</th>
+                <td>{{ entity.escolaridad }}</td>
+            </tr>
+            <tr>
+                <th>Estadodonante</th>
+                <td>{{ entity.estadoDonante }}</td>
+            </tr>
+            <tr>
+                <th>Tipocolecta</th>
+                <td>{{ entity.tipoColecta }}</td>
+            </tr>
+            <tr>
+                <th>Observaciones</th>
+                <td>{{ entity.observaciones }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+        <ul class="record_actions">
+    <li>
+        <a href="{{ path('blhdonante') }}">
+            Back to the list
+        </a>
+    </li>
+    <li>
+        <a href="{{ path('blhdonante_edit', { 'id': entity.id }) }}">
+            Edit
+        </a>
+    </li>
+    <li>{{ form(delete_form) }}</li>
+</ul>
+{% endblock %}

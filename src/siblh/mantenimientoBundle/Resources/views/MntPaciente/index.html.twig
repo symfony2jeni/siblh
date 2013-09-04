@@ -1,0 +1,55 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+    <h1>MntPaciente list</h1>
+
+    <table class="records_list">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Horanacimiento</th>
+                <th>Fechanacimiento</th>
+                <th>Primernombre</th>
+                <th>Segundonombre</th>
+                <th>Tercernombre</th>
+                <th>Primerapellido</th>
+                <th>Segundoapelido</th>
+                <th>Direccion</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for entity in entities %}
+            <tr>
+                <td><a href="{{ path('mntpaciente_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
+                <td>{% if entity.horaNacimiento %}{{ entity.horaNacimiento|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{% if entity.fechaNacimiento %}{{ entity.fechaNacimiento|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{{ entity.primerNombre }}</td>
+                <td>{{ entity.segundoNombre }}</td>
+                <td>{{ entity.tercerNombre }}</td>
+                <td>{{ entity.primerApellido }}</td>
+                <td>{{ entity.segundoApelido }}</td>
+                <td>{{ entity.direccion }}</td>
+                <td>
+                <ul>
+                    <li>
+                        <a href="{{ path('mntpaciente_show', { 'id': entity.id }) }}">show</a>
+                    </li>
+                    <li>
+                        <a href="{{ path('mntpaciente_edit', { 'id': entity.id }) }}">edit</a>
+                    </li>
+                </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+        <ul>
+        <li>
+            <a href="{{ path('mntpaciente_new') }}">
+                Create a new entry
+            </a>
+        </li>
+    </ul>
+    {% endblock %}

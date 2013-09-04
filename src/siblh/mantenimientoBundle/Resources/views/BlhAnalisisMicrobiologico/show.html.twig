@@ -1,0 +1,44 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+    <h1>BlhAnalisisMicrobiologico</h1>
+
+    <table class="record_properties">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ entity.id }}</td>
+            </tr>
+            <tr>
+                <th>Codigoanalisismicrobiologico</th>
+                <td>{{ entity.codigoAnalisisMicrobiologico }}</td>
+            </tr>
+            <tr>
+                <th>Coliformestotales</th>
+                <td>{{ entity.coliformesTotales }}</td>
+            </tr>
+            <tr>
+                <th>Control</th>
+                <td>{{ entity.control }}</td>
+            </tr>
+            <tr>
+                <th>Situacion</th>
+                <td>{{ entity.situacion }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+        <ul class="record_actions">
+    <li>
+        <a href="{{ path('blhanalisismicrobiologico') }}">
+            Back to the list
+        </a>
+    </li>
+    <li>
+        <a href="{{ path('blhanalisismicrobiologico_edit', { 'id': entity.id }) }}">
+            Edit
+        </a>
+    </li>
+    <li>{{ form(delete_form) }}</li>
+</ul>
+{% endblock %}

@@ -1,0 +1,49 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+    <h1>BlhFrascoRecolectado list</h1>
+
+    <table class="records_list">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Codigofrascorecolectado</th>
+                <th>Volumenrecolectado</th>
+                <th>Formaextraccion</th>
+                <th>Onzrecolectado</th>
+                <th>Observacionfrascorecolectado</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for entity in entities %}
+            <tr>
+                <td><a href="{{ path('blhfrascorecolectado_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
+                <td>{{ entity.codigoFrascoRecolectado }}</td>
+                <td>{{ entity.volumenRecolectado }}</td>
+                <td>{{ entity.formaExtraccion }}</td>
+                <td>{{ entity.onzRecolectado }}</td>
+                <td>{{ entity.observacionFrascoRecolectado }}</td>
+                <td>
+                <ul>
+                    <li>
+                        <a href="{{ path('blhfrascorecolectado_show', { 'id': entity.id }) }}">show</a>
+                    </li>
+                    <li>
+                        <a href="{{ path('blhfrascorecolectado_edit', { 'id': entity.id }) }}">edit</a>
+                    </li>
+                </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+        <ul>
+        <li>
+            <a href="{{ path('blhfrascorecolectado_new') }}">
+                Create a new entry
+            </a>
+        </li>
+    </ul>
+    {% endblock %}

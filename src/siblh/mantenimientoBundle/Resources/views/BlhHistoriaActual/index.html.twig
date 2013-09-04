@@ -1,0 +1,53 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+    <h1>BlhHistoriaActual list</h1>
+
+    <table class="records_list">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Pesodonante</th>
+                <th>Talladonante</th>
+                <th>Medicamento</th>
+                <th>Habitotoxico</th>
+                <th>Motivodonacion</th>
+                <th>Patologiadonante</th>
+                <th>Imc</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for entity in entities %}
+            <tr>
+                <td><a href="{{ path('blhhistoriaactual_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
+                <td>{{ entity.pesoDonante }}</td>
+                <td>{{ entity.tallaDonante }}</td>
+                <td>{{ entity.medicamento }}</td>
+                <td>{{ entity.habitoToxico }}</td>
+                <td>{{ entity.motivoDonacion }}</td>
+                <td>{{ entity.patologiaDonante }}</td>
+                <td>{{ entity.imc }}</td>
+                <td>
+                <ul>
+                    <li>
+                        <a href="{{ path('blhhistoriaactual_show', { 'id': entity.id }) }}">show</a>
+                    </li>
+                    <li>
+                        <a href="{{ path('blhhistoriaactual_edit', { 'id': entity.id }) }}">edit</a>
+                    </li>
+                </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+        <ul>
+        <li>
+            <a href="{{ path('blhhistoriaactual_new') }}">
+                Create a new entry
+            </a>
+        </li>
+    </ul>
+    {% endblock %}
