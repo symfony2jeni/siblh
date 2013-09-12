@@ -1,0 +1,61 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+    <h1>BlhCrematocrito list</h1>
+
+    <table class="records_list">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Codigoanalisisfisicoquimico</th>
+                <th>Crema1</th>
+                <th>Crema2</th>
+                <th>Crema3</th>
+                <th>Ct1</th>
+                <th>Ct2</th>
+                <th>Ct3</th>
+                <th>Mediacrema</th>
+                <th>Mediact</th>
+                <th>Porcentajecrema</th>
+                <th>Kilocalorias</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for entity in entities %}
+            <tr>
+                <td><a href="{{ path('blhcrematocrito_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
+                <td>{{ entity.codigoAnalisisFisicoQuimico }}</td>
+                <td>{{ entity.crema1 }}</td>
+                <td>{{ entity.crema2 }}</td>
+                <td>{{ entity.crema3 }}</td>
+                <td>{{ entity.ct1 }}</td>
+                <td>{{ entity.ct2 }}</td>
+                <td>{{ entity.ct3 }}</td>
+                <td>{{ entity.mediaCrema }}</td>
+                <td>{{ entity.mediaCt }}</td>
+                <td>{{ entity.porcentajeCrema }}</td>
+                <td>{{ entity.kilocalorias }}</td>
+                <td>
+                <ul>
+                    <li>
+                        <a href="{{ path('blhcrematocrito_show', { 'id': entity.id }) }}">show</a>
+                    </li>
+                    <li>
+                        <a href="{{ path('blhcrematocrito_edit', { 'id': entity.id }) }}">edit</a>
+                    </li>
+                </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+        <ul>
+        <li>
+            <a href="{{ path('blhcrematocrito_new') }}">
+                Create a new entry
+            </a>
+        </li>
+    </ul>
+    {% endblock %}

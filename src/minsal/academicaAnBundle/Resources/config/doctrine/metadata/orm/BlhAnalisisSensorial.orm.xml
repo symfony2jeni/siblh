@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="BlhAnalisisSensorial" table="blh_analisis_sensorial">
+    <id name="id" type="integer" column="id">
+      <generator strategy="SEQUENCE"/>
+    </id>
+    <field name="codigoAnalisisFisicoQuimico" type="string" column="codigo__analisis_fisico_quimico" length="11" nullable="false"/>
+    <field name="embalaje" type="string" column="embalaje" length="9" nullable="true"/>
+    <field name="suciedad" type="string" column="suciedad" length="9" nullable="true"/>
+    <field name="color" type="string" column="color" length="9" nullable="true"/>
+    <field name="flavor" type="string" column="flavor" length="9" nullable="true"/>
+    <field name="observacion" type="string" column="observacion" length="30" nullable="true"/>
+    <many-to-one field="idAnalisisFisicoQuimico" target-entity="BlhAnalisisFisicoQuimico">
+      <join-columns>
+        <join-column name="id_analisis_fisico_quimico" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

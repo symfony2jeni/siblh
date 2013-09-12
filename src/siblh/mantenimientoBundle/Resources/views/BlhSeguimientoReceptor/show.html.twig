@@ -1,0 +1,60 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+    <h1>BlhSeguimientoReceptor</h1>
+
+    <table class="record_properties">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ entity.id }}</td>
+            </tr>
+            <tr>
+                <th>Tallareceptor</th>
+                <td>{{ entity.tallaReceptor }}</td>
+            </tr>
+            <tr>
+                <th>Pesoseguimiento</th>
+                <td>{{ entity.pesoSeguimiento }}</td>
+            </tr>
+            <tr>
+                <th>Pcseguimiento</th>
+                <td>{{ entity.pcSeguimiento }}</td>
+            </tr>
+            <tr>
+                <th>Gananciadiapeso</th>
+                <td>{{ entity.gananciaDiaPeso }}</td>
+            </tr>
+            <tr>
+                <th>Semana</th>
+                <td>{{ entity.semana }}</td>
+            </tr>
+            <tr>
+                <th>Fechaseguimiento</th>
+                <td>{{ entity.fechaSeguimiento|date('Y-m-d H:i:s') }}</td>
+            </tr>
+            <tr>
+                <th>Gananciadiatalla</th>
+                <td>{{ entity.gananciaDiaTalla }}</td>
+            </tr>
+            <tr>
+                <th>Complicaciones</th>
+                <td>{{ entity.complicaciones }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+        <ul class="record_actions">
+    <li>
+        <a href="{{ path('blhseguimientoreceptor') }}">
+            Back to the list
+        </a>
+    </li>
+    <li>
+        <a href="{{ path('blhseguimientoreceptor_edit', { 'id': entity.id }) }}">
+            Edit
+        </a>
+    </li>
+    <li>{{ form(delete_form) }}</li>
+</ul>
+{% endblock %}

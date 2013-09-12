@@ -1,0 +1,60 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+    <h1>BlhCurva</h1>
+
+    <table class="record_properties">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ entity.id }}</td>
+            </tr>
+            <tr>
+                <th>Tiempo1</th>
+                <td>{{ entity.tiempo1 }}</td>
+            </tr>
+            <tr>
+                <th>Tiempo2</th>
+                <td>{{ entity.tiempo2 }}</td>
+            </tr>
+            <tr>
+                <th>Tiempo3</th>
+                <td>{{ entity.tiempo3 }}</td>
+            </tr>
+            <tr>
+                <th>Valorcurva</th>
+                <td>{{ entity.valorCurva }}</td>
+            </tr>
+            <tr>
+                <th>Fechacurva</th>
+                <td>{{ entity.fechaCurva|date('Y-m-d H:i:s') }}</td>
+            </tr>
+            <tr>
+                <th>Cantidadfrascos</th>
+                <td>{{ entity.cantidadFrascos }}</td>
+            </tr>
+            <tr>
+                <th>Volumenporfrasco</th>
+                <td>{{ entity.volumenPorFrasco }}</td>
+            </tr>
+            <tr>
+                <th>Horainiciocurva</th>
+                <td>{{ entity.horaInicioCurva }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+        <ul class="record_actions">
+    <li>
+        <a href="{{ path('blhcurva') }}">
+            Back to the list
+        </a>
+    </li>
+    <li>
+        <a href="{{ path('blhcurva_edit', { 'id': entity.id }) }}">
+            Edit
+        </a>
+    </li>
+    <li>{{ form(delete_form) }}</li>
+</ul>
+{% endblock %}
