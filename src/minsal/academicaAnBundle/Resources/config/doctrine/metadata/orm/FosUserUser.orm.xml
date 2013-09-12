@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="FosUserUser" table="fos_user_user">
+    <id name="id" type="integer" column="id">
+      <generator strategy="SEQUENCE"/>
+    </id>
+    <field name="username" type="string" column="username" length="255" nullable="false"/>
+    <field name="usernameCanonical" type="string" column="username_canonical" length="255" nullable="false"/>
+    <field name="email" type="string" column="email" length="255" nullable="false"/>
+    <field name="emailCanonical" type="string" column="email_canonical" length="255" nullable="false"/>
+    <field name="enable" type="boolean" column="enable" nullable="false"/>
+    <field name="salt" type="string" column="salt" length="255" nullable="true"/>
+    <field name="password" type="string" column="password" length="255" nullable="true"/>
+    <field name="lastLogin" type="date" column="last_login" nullable="true"/>
+    <field name="locked" type="boolean" column="locked" nullable="true"/>
+    <field name="expired" type="boolean" column="expired" nullable="true"/>
+    <field name="expiresAt" type="date" column="expires_at" nullable="true"/>
+    <field name="confirmationToken" type="string" column="confirmation_token" length="255" nullable="true"/>
+    <field name="passwordRequestedAt" type="date" column="password_requested_at" nullable="true"/>
+    <field name="roles" type="text" column="roles" nullable="true"/>
+    <field name="credentialsExpired" type="boolean" column="credentials_expired" nullable="true"/>
+    <field name="credentialsExpireAt" type="date" column="credentials_expire_at" nullable="true"/>
+    <field name="createdAt" type="date" column="created_at" nullable="true"/>
+    <field name="updateAt" type="date" column="update_at" nullable="true"/>
+    <field name="dateOfBirth" type="date" column="date_of_birth" nullable="true"/>
+    <field name="firstname" type="string" column="firstname" length="64" nullable="true"/>
+    <field name="lastname" type="string" column="lastname" length="64" nullable="true"/>
+    <field name="website" type="string" column="website" length="64" nullable="true"/>
+    <field name="biography" type="string" column="biography" length="255" nullable="true"/>
+    <field name="gender" type="string" column="gender" length="1" nullable="true"/>
+    <field name="locale" type="string" column="locale" length="8" nullable="true"/>
+    <field name="timezone" type="string" column="timezone" length="64" nullable="true"/>
+    <field name="phone" type="string" column="phone" length="64" nullable="true"/>
+    <field name="facebookUid" type="string" column="facebook_uid" length="255" nullable="true"/>
+    <field name="facebookName" type="string" column="facebook_name" length="255" nullable="true"/>
+    <field name="facebookData" type="text" column="facebook_data" nullable="true"/>
+    <field name="twitterUid" type="string" column="twitter_uid" length="255" nullable="true"/>
+    <field name="twitterName" type="string" column="twitter_name" length="255" nullable="true"/>
+    <field name="twitterData" type="text" column="twitter_data" nullable="true"/>
+    <field name="gplusUid" type="string" column="gplus_uid" length="255" nullable="true"/>
+    <field name="gplusName" type="string" column="gplus_name" length="255" nullable="true"/>
+    <field name="gplusData" type="text" column="gplus_data" nullable="true"/>
+    <field name="token" type="string" column="token" length="255" nullable="true"/>
+    <field name="twoStepCode" type="string" column="two_step_code" length="255" nullable="true"/>
+    <many-to-one field="idRol" target-entity="BlhRol">
+      <join-columns>
+        <join-column name="id_rol" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="idEstablecimiento" target-entity="CtlEstablecimiento">
+      <join-columns>
+        <join-column name="id_establecimiento" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

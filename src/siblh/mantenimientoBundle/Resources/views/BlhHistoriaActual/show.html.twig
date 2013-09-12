@@ -1,0 +1,56 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+    <h1>BlhHistoriaActual</h1>
+
+    <table class="record_properties">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ entity.id }}</td>
+            </tr>
+            <tr>
+                <th>Pesodonante</th>
+                <td>{{ entity.pesoDonante }}</td>
+            </tr>
+            <tr>
+                <th>Talladonante</th>
+                <td>{{ entity.tallaDonante }}</td>
+            </tr>
+            <tr>
+                <th>Medicamento</th>
+                <td>{{ entity.medicamento }}</td>
+            </tr>
+            <tr>
+                <th>Habitotoxico</th>
+                <td>{{ entity.habitoToxico }}</td>
+            </tr>
+            <tr>
+                <th>Motivodonacion</th>
+                <td>{{ entity.motivoDonacion }}</td>
+            </tr>
+            <tr>
+                <th>Patologiadonante</th>
+                <td>{{ entity.patologiaDonante }}</td>
+            </tr>
+            <tr>
+                <th>Imc</th>
+                <td>{{ entity.imc }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+        <ul class="record_actions">
+    <li>
+        <a href="{{ path('blhhistoriaactual') }}">
+            Back to the list
+        </a>
+    </li>
+    <li>
+        <a href="{{ path('blhhistoriaactual_edit', { 'id': entity.id }) }}">
+            Edit
+        </a>
+    </li>
+    <li>{{ form(delete_form) }}</li>
+</ul>
+{% endblock %}

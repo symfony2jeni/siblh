@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="BlhAnalisisMicrobiologico" table="blh_analisis_microbiologico">
+    <id name="id" type="integer" column="id">
+      <generator strategy="SEQUENCE"/>
+    </id>
+    <field name="codigoAnalisisMicrobiologico" type="string" column="codigo_analisis_microbiologico" length="11" nullable="false"/>
+    <field name="coliformesTotales" type="string" column="coliformes_totales" length="8" nullable="false"/>
+    <field name="control" type="string" column="control" length="8" nullable="false"/>
+    <field name="situacion" type="string" column="situacion" length="9" nullable="false"/>
+    <many-to-one field="idFrascoProcesado" target-entity="BlhFrascoProcesado">
+      <join-columns>
+        <join-column name="id_frasco_procesado" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>
