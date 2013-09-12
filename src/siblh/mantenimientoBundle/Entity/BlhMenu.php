@@ -25,7 +25,7 @@ class BlhMenu
     /**
      * @var string
      *
-     * @ORM\Column(name="nombre_menu", type="string", length=15, nullable=false)
+     * @ORM\Column(name="nombre_menu", type="string", length=50, nullable=false)
      */
     private $nombreMenu;
 

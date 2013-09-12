@@ -25,7 +25,7 @@ class BlhPasteurizacion
     /**
      * @var string
      *
-     * @ORM\Column(name="codigo_pasteurizacion", type="string", length=9, nullable=false)
+     * @ORM\Column(name="codigo_pasteurizacion", type="string", length=11, nullable=false)
      */
     private $codigoPasteurizacion;
 
@@ -60,28 +60,28 @@ class BlhPasteurizacion
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="hora_inicio_p", type="time", nullable=false)
+     * @ORM\Column(name="hora_inicio_p", type="time", nullable=true)
      */
     private $horaInicioP;
 
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="hora_final_p", type="time", nullable=false)
+     * @ORM\Column(name="hora_final_p", type="time", nullable=true)
      */
     private $horaFinalP;
 
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="hora_inicio_e", type="time", nullable=false)
+     * @ORM\Column(name="hora_inicio_e", type="time", nullable=true)
      */
     private $horaInicioE;
 
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="hora_final_e", type="time", nullable=false)
+     * @ORM\Column(name="hora_final_e", type="time", nullable=true)
      */
     private $horaFinalE;
 

@@ -1,0 +1,22 @@
+siblh\menuBundle\Entity\CtlSexo:
+    type: entity
+    table: ctl_sexo
+    fields:
+        id:
+            id: true
+            type: integer
+            unsigned: false
+            nullable: false
+            generator:
+                strategy: SEQUENCE
+        nombre:
+            type: string
+            length: 20
+            fixed: false
+            nullable: true
+        abreviatura:
+            type: string
+            length: null
+            fixed: true
+            nullable: true
+    lifecycleCallbacks: {  }

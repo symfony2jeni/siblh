@@ -4,6 +4,6 @@
     <id name="id" type="integer" column="id">
       <generator strategy="SEQUENCE"/>
     </id>
-    <field name="codigoGrupoSolicitud" type="string" column="codigo_grupo_solicitud" length="11" nullable="false"/>
+    <field name="codigoGrupoSolicitud" type="string" column="codigo_grupo_solicitud" length="13" nullable="false"/>
   </entity>
 </doctrine-mapping>

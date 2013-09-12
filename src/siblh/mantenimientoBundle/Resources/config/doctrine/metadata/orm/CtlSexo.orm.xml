@@ -4,7 +4,7 @@
     <id name="id" type="integer" column="id">
       <generator strategy="SEQUENCE"/>
     </id>
-    <field name="nombre" type="string" column="nombre" length="20" nullable="true"/>
-    <field name="abreviatura" type="string" column="abreviatura" nullable="true"/>
+    <field name="nombre" type="string" column="nombre" length="20" nullable="false"/>
+    <field name="abreviatura" type="string" column="abreviatura" nullable="false"/>
   </entity>
 </doctrine-mapping>

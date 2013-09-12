@@ -25,9 +25,16 @@ class BlhOpcionMenu
     /**
      * @var string
      *
-     * @ORM\Column(name="nombre_opcion", type="string", length=15, nullable=false)
+     * @ORM\Column(name="nombre_opcion", type="string", length=50, nullable=false)
      */
     private $nombreOpcion;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="url_opcion", type="string", length=100, nullable=true)
+     */
+    private $urlOpcion;
 
     /**
      * @var \BlhMenu
@@ -72,6 +79,29 @@ class BlhOpcionMenu
     public function getNombreOpcion()
     {
         return $this->nombreOpcion;
+    }
+
+    /**
+     * Set urlOpcion
+     *
+     * @param string $urlOpcion
+     * @return BlhOpcionMenu
+     */
+    public function setUrlOpcion($urlOpcion)
+    {
+        $this->urlOpcion = $urlOpcion;
+    
+        return $this;
+    }
+
+    /**
+     * Get urlOpcion
+     *
+     * @return string 
+     */
+    public function getUrlOpcion()
+    {
+        return $this->urlOpcion;
     }
 
     /**

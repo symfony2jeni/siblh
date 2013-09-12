@@ -4,10 +4,10 @@
     <id name="id" type="integer" column="id">
       <generator strategy="SEQUENCE"/>
     </id>
-    <field name="codigoAnalisisMicrobiologico" type="string" column="codigo_analisis_microbiologico" length="11" nullable="false"/>
-    <field name="coliformesTotales" type="string" column="coliformes_totales" length="8" nullable="false"/>
-    <field name="control" type="string" column="control" length="8" nullable="false"/>
-    <field name="situacion" type="string" column="situacion" length="9" nullable="false"/>
+    <field name="codigoAnalisisMicrobiologico" type="string" column="codigo_analisis_microbiologico" length="13" nullable="false"/>
+    <field name="coliformesTotales" type="string" column="coliformes_totales" length="8" nullable="true"/>
+    <field name="control" type="string" column="control" length="8" nullable="true"/>
+    <field name="situacion" type="string" column="situacion" length="9" nullable="true"/>
     <many-to-one field="idFrascoProcesado" target-entity="BlhFrascoProcesado">
       <join-columns>
         <join-column name="id_frasco_procesado" referenced-column-name="id"/>

@@ -25,14 +25,14 @@ class CtlSexo
     /**
      * @var string
      *
-     * @ORM\Column(name="nombre", type="string", length=20, nullable=true)
+     * @ORM\Column(name="nombre", type="string", length=20, nullable=false)
      */
     private $nombre;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="abreviatura", type="string", nullable=true)
+     * @ORM\Column(name="abreviatura", type="string", nullable=false)
      */
     private $abreviatura;
 

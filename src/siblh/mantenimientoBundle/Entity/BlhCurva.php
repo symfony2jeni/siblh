@@ -25,28 +25,28 @@ class BlhCurva
     /**
      * @var float
      *
-     * @ORM\Column(name="tiempo1", type="decimal", nullable=false)
+     * @ORM\Column(name="tiempo1", type="decimal", nullable=true)
      */
     private $tiempo1;
 
     /**
      * @var float
      *
-     * @ORM\Column(name="tiempo2", type="decimal", nullable=false)
+     * @ORM\Column(name="tiempo2", type="decimal", nullable=true)
      */
     private $tiempo2;
 
     /**
      * @var float
      *
-     * @ORM\Column(name="tiempo3", type="decimal", nullable=false)
+     * @ORM\Column(name="tiempo3", type="decimal", nullable=true)
      */
     private $tiempo3;
 
     /**
      * @var float
      *
-     * @ORM\Column(name="valor_curva", type="decimal", nullable=false)
+     * @ORM\Column(name="valor_curva", type="decimal", nullable=true)
      */
     private $valorCurva;
 

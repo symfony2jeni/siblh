@@ -25,7 +25,7 @@ class BlhFrascoProcesadoSolicitud
     /**
      * @var float
      *
-     * @ORM\Column(name="volumen_despachado", type="decimal", nullable=true)
+     * @ORM\Column(name="volumen_despachado", type="decimal", nullable=false)
      */
     private $volumenDespachado;
 

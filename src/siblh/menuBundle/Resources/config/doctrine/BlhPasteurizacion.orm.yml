@@ -1,0 +1,68 @@
+siblh\menuBundle\Entity\BlhPasteurizacion:
+    type: entity
+    table: blh_pasteurizacion
+    fields:
+        id:
+            id: true
+            type: integer
+            unsigned: false
+            nullable: false
+            generator:
+                strategy: SEQUENCE
+        codigoPasteurizacion:
+            type: string
+            length: 9
+            fixed: false
+            nullable: false
+            column: codigo_pasteurizacion
+        numCiclo:
+            type: integer
+            unsigned: false
+            nullable: false
+            column: num_ciclo
+        volumenPasteurizado:
+            type: decimal
+            nullable: false
+            column: volumen_pasteurizado
+        numFrascosPasteurizados:
+            type: integer
+            unsigned: false
+            nullable: false
+            column: num_frascos_pasteurizados
+        fechaPasteurizacion:
+            type: date
+            nullable: false
+            column: fecha_pasteurizacion
+        horaInicioP:
+            type: time
+            nullable: false
+            column: hora_inicio_p
+        horaFinalP:
+            type: time
+            nullable: false
+            column: hora_final_p
+        horaInicioE:
+            type: time
+            nullable: false
+            column: hora_inicio_e
+        horaFinalE:
+            type: time
+            nullable: false
+            column: hora_final_e
+        responsablePasteurizacion:
+            type: string
+            length: 30
+            fixed: false
+            nullable: false
+            column: responsable_pasteurizacion
+    manyToOne:
+        idCurva:
+            targetEntity: BlhCurva
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                id_curva:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

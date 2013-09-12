@@ -4,15 +4,15 @@
     <id name="id" type="integer" column="id">
       <generator strategy="SEQUENCE"/>
     </id>
-    <field name="codigoPasteurizacion" type="string" column="codigo_pasteurizacion" length="9" nullable="false"/>
+    <field name="codigoPasteurizacion" type="string" column="codigo_pasteurizacion" length="11" nullable="false"/>
     <field name="numCiclo" type="integer" column="num_ciclo" nullable="false"/>
     <field name="volumenPasteurizado" type="decimal" column="volumen_pasteurizado" nullable="false"/>
     <field name="numFrascosPasteurizados" type="integer" column="num_frascos_pasteurizados" nullable="false"/>
     <field name="fechaPasteurizacion" type="date" column="fecha_pasteurizacion" nullable="false"/>
-    <field name="horaInicioP" type="time" column="hora_inicio_p" nullable="false"/>
-    <field name="horaFinalP" type="time" column="hora_final_p" nullable="false"/>
-    <field name="horaInicioE" type="time" column="hora_inicio_e" nullable="false"/>
-    <field name="horaFinalE" type="time" column="hora_final_e" nullable="false"/>
+    <field name="horaInicioP" type="time" column="hora_inicio_p" nullable="true"/>
+    <field name="horaFinalP" type="time" column="hora_final_p" nullable="true"/>
+    <field name="horaInicioE" type="time" column="hora_inicio_e" nullable="true"/>
+    <field name="horaFinalE" type="time" column="hora_final_e" nullable="true"/>
     <field name="responsablePasteurizacion" type="string" column="responsable_pasteurizacion" length="30" nullable="false"/>
     <many-to-one field="idCurva" target-entity="BlhCurva">
       <join-columns>

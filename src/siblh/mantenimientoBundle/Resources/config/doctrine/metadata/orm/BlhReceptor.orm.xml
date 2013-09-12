@@ -4,7 +4,7 @@
     <id name="id" type="integer" column="id">
       <generator strategy="SEQUENCE"/>
     </id>
-    <field name="codigoReceptor" type="string" column="codigo_receptor" length="12" nullable="true"/>
+    <field name="codigoReceptor" type="string" column="codigo_receptor" length="14" nullable="true"/>
     <field name="fechaRegistroBlh" type="date" column="fecha_registro_blh" nullable="true"/>
     <field name="procedencia" type="string" column="procedencia" length="20" nullable="true"/>
     <field name="estadoReceptor" type="string" column="estado_receptor" length="8" nullable="true"/>

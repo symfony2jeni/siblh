@@ -4,7 +4,8 @@
     <id name="id" type="integer" column="id">
       <generator strategy="SEQUENCE"/>
     </id>
-    <field name="nombreOpcion" type="string" column="nombre_opcion" length="15" nullable="false"/>
+    <field name="nombreOpcion" type="string" column="nombre_opcion" length="50" nullable="false"/>
+    <field name="urlOpcion" type="string" column="url_opcion" length="100" nullable="true"/>
     <many-to-one field="idMenu" target-entity="BlhMenu">
       <join-columns>
         <join-column name="id_menu" referenced-column-name="id"/>

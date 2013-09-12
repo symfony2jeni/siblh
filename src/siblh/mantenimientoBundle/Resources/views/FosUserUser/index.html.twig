@@ -11,7 +11,7 @@
                 <th>Usernamecanonical</th>
                 <th>Email</th>
                 <th>Emailcanonical</th>
-                <th>Enable</th>
+                <th>Enabled</th>
                 <th>Salt</th>
                 <th>Password</th>
                 <th>Lastlogin</th>
@@ -24,7 +24,7 @@
                 <th>Credentialsexpired</th>
                 <th>Credentialsexpireat</th>
                 <th>Createdat</th>
-                <th>Updateat</th>
+                <th>Updatedat</th>
                 <th>Dateofbirth</th>
                 <th>Firstname</th>
                 <th>Lastname</th>
@@ -56,7 +56,7 @@
                 <td>{{ entity.usernameCanonical }}</td>
                 <td>{{ entity.email }}</td>
                 <td>{{ entity.emailCanonical }}</td>
-                <td>{{ entity.enable }}</td>
+                <td>{{ entity.enabled }}</td>
                 <td>{{ entity.salt }}</td>
                 <td>{{ entity.password }}</td>
                 <td>{% if entity.lastLogin %}{{ entity.lastLogin|date('Y-m-d H:i:s') }}{% endif %}</td>
@@ -69,7 +69,7 @@
                 <td>{{ entity.credentialsExpired }}</td>
                 <td>{% if entity.credentialsExpireAt %}{{ entity.credentialsExpireAt|date('Y-m-d H:i:s') }}{% endif %}</td>
                 <td>{% if entity.createdAt %}{{ entity.createdAt|date('Y-m-d H:i:s') }}{% endif %}</td>
-                <td>{% if entity.updateAt %}{{ entity.updateAt|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{% if entity.updatedAt %}{{ entity.updatedAt|date('Y-m-d H:i:s') }}{% endif %}</td>
                 <td>{% if entity.dateOfBirth %}{{ entity.dateOfBirth|date('Y-m-d H:i:s') }}{% endif %}</td>
                 <td>{{ entity.firstname }}</td>
                 <td>{{ entity.lastname }}</td>

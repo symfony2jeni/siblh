@@ -4,7 +4,7 @@
     <id name="id" type="integer" column="id">
       <generator strategy="SEQUENCE"/>
     </id>
-    <field name="codigoSolicitud" type="string" column="codigo_solicitud" length="14" nullable="false"/>
+    <field name="codigoSolicitud" type="string" column="codigo_solicitud" length="16" nullable="false"/>
     <field name="volumenPorDia" type="decimal" column="volumen_por_dia" nullable="false"/>
     <field name="acidezNecesaria" type="string" column="acidez_necesaria" length="9" nullable="false"/>
     <field name="caloriasNecesarias" type="string" column="calorias_necesarias" length="15" nullable="false"/>

@@ -4,7 +4,7 @@
     <id name="id" type="integer" column="id">
       <generator strategy="SEQUENCE"/>
     </id>
-    <field name="codigoAnalisisFisicoQuimico" type="string" column="codigo_analisis_fisico_quimico" length="11" nullable="false"/>
+    <field name="codigoAnalisisFisicoQuimico" type="string" column="codigo_analisis_fisico_quimico" length="13" nullable="false"/>
     <field name="fechaAnalisisFisicoQuimico" type="date" column="fecha_analisis_fisico_quimico" nullable="false"/>
     <field name="responsableAnalisis" type="string" column="responsable_analisis" length="30" nullable="false"/>
     <many-to-one field="idFrascoRecolectado" target-entity="BlhFrascoRecolectado">

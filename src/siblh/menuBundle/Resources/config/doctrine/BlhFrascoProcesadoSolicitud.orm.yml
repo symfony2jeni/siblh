@@ -1,0 +1,35 @@
+siblh\menuBundle\Entity\BlhFrascoProcesadoSolicitud:
+    type: entity
+    table: blh_frasco_procesado_solicitud
+    fields:
+        id:
+            id: true
+            type: integer
+            unsigned: false
+            nullable: false
+            generator:
+                strategy: SEQUENCE
+        volumenDespachado:
+            type: decimal
+            nullable: true
+            column: volumen_despachado
+    manyToOne:
+        idFrascoProcesado:
+            targetEntity: BlhFrascoProcesado
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                id_frasco_procesado:
+                    referencedColumnName: id
+            orphanRemoval: false
+        idSolicitud:
+            targetEntity: BlhSolicitud
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                id_solicitud:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

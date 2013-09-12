@@ -25,7 +25,7 @@ class BlhReceptor
     /**
      * @var string
      *
-     * @ORM\Column(name="codigo_receptor", type="string", length=12, nullable=true)
+     * @ORM\Column(name="codigo_receptor", type="string", length=14, nullable=true)
      */
     private $codigoReceptor;
 

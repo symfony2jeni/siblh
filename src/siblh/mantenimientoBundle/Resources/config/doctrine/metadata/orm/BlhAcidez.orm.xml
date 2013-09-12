@@ -4,7 +4,7 @@
     <id name="id" type="integer" column="id">
       <generator strategy="SEQUENCE"/>
     </id>
-    <field name="codigoAnalisisFisicoQuimico" type="string" column="codigo_analisis_fisico_quimico" length="11" nullable="false"/>
+    <field name="codigoAnalisisFisicoQuimico" type="string" column="codigo_analisis_fisico_quimico" length="13" nullable="false"/>
     <field name="acidez1" type="integer" column="acidez1" nullable="false"/>
     <field name="acidez2" type="integer" column="acidez2" nullable="false"/>
     <field name="acidez3" type="integer" column="acidez3" nullable="false"/>

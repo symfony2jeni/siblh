@@ -4,7 +4,7 @@
     <id name="id" type="integer" column="id">
       <generator strategy="SEQUENCE"/>
     </id>
-    <field name="codigoLoteAnalizado" type="string" column="codigo_lote_analizado" length="9" nullable="false"/>
+    <field name="codigoLoteAnalizado" type="string" column="codigo_lote_analizado" length="11" nullable="false"/>
     <field name="fechaAnalisisFisicoQuimico" type="date" column="fecha_analisis_fisico_quimico" nullable="false"/>
   </entity>
 </doctrine-mapping>

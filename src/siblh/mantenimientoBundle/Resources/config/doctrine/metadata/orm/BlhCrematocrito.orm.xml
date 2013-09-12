@@ -4,17 +4,17 @@
     <id name="id" type="integer" column="id">
       <generator strategy="SEQUENCE"/>
     </id>
-    <field name="codigoAnalisisFisicoQuimico" type="string" column="codigo_analisis_fisico_quimico" length="11" nullable="false"/>
-    <field name="crema1" type="decimal" column="crema1" nullable="false"/>
-    <field name="crema2" type="decimal" column="crema2" nullable="false"/>
-    <field name="crema3" type="decimal" column="crema3" nullable="false"/>
-    <field name="ct1" type="decimal" column="ct1" nullable="false"/>
-    <field name="ct2" type="decimal" column="ct2" nullable="false"/>
-    <field name="ct3" type="decimal" column="ct3" nullable="false"/>
-    <field name="mediaCrema" type="decimal" column="media_crema" nullable="false"/>
-    <field name="mediaCt" type="decimal" column="media_ct" nullable="false"/>
-    <field name="porcentajeCrema" type="decimal" column="porcentaje_crema" nullable="false"/>
-    <field name="kilocalorias" type="decimal" column="kilocalorias" nullable="false"/>
+    <field name="codigoAnalisisFisicoQuimico" type="string" column="codigo_analisis_fisico_quimico" length="13" nullable="false"/>
+    <field name="crema1" type="decimal" column="crema1" nullable="true"/>
+    <field name="crema2" type="decimal" column="crema2" nullable="true"/>
+    <field name="crema3" type="decimal" column="crema3" nullable="true"/>
+    <field name="ct1" type="decimal" column="ct1" nullable="true"/>
+    <field name="ct2" type="decimal" column="ct2" nullable="true"/>
+    <field name="ct3" type="decimal" column="ct3" nullable="true"/>
+    <field name="mediaCrema" type="decimal" column="media_crema" nullable="true"/>
+    <field name="mediaCt" type="decimal" column="media_ct" nullable="true"/>
+    <field name="porcentajeCrema" type="decimal" column="porcentaje_crema" nullable="true"/>
+    <field name="kilocalorias" type="decimal" column="kilocalorias" nullable="true"/>
     <many-to-one field="idAnalisisFisicoQuimico" target-entity="BlhAnalisisFisicoQuimico">
       <join-columns>
         <join-column name="id_analisis_fisico_quimico" referenced-column-name="id"/>

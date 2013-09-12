@@ -17,7 +17,7 @@
         <join-column name="id_sexo" referenced-column-name="id"/>
       </join-columns>
     </many-to-one>
-    <many-to-one field="idMunicipioDomicilio" target-entity="CltMunicipio">
+    <many-to-one field="idMunicipioDomicilio" target-entity="CtlMunicipio">
       <join-columns>
         <join-column name="id_municipio_domicilio" referenced-column-name="id"/>
       </join-columns>

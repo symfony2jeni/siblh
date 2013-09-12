@@ -8,6 +8,7 @@
             <tr>
                 <th>Id</th>
                 <th>Nombreopcion</th>
+                <th>Urlopcion</th>
                 <th>Actions</th>
             </tr>
         </thead>
@@ -16,6 +17,7 @@
             <tr>
                 <td><a href="{{ path('blhopcionmenu_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
                 <td>{{ entity.nombreOpcion }}</td>
+                <td>{{ entity.urlOpcion }}</td>
                 <td>
                 <ul>
                     <li>

@@ -4,7 +4,7 @@
     <id name="id" type="integer" column="id">
       <generator strategy="SEQUENCE"/>
     </id>
-    <field name="nombreMenu" type="string" column="nombre_menu" length="15" nullable="false"/>
+    <field name="nombreMenu" type="string" column="nombre_menu" length="50" nullable="false"/>
     <field name="descripcionMenu" type="string" column="descripcion_menu" length="50" nullable="true"/>
   </entity>
 </doctrine-mapping>

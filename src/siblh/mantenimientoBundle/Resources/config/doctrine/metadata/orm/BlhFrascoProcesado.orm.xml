@@ -4,7 +4,7 @@
     <id name="id" type="integer" column="id">
       <generator strategy="SEQUENCE"/>
     </id>
-    <field name="codigoFrascoProcesado" type="string" column="codigo_frasco_procesado" length="13" nullable="false"/>
+    <field name="codigoFrascoProcesado" type="string" column="codigo_frasco_procesado" length="15" nullable="false"/>
     <field name="volumenFrascoPasteurizado" type="decimal" column="volumen_frasco_pasteurizado" nullable="false"/>
     <field name="acidezTotal" type="decimal" column="acidez_total" nullable="false"/>
     <field name="kcaloriasTotales" type="decimal" column="kcalorias_totales" nullable="false"/>

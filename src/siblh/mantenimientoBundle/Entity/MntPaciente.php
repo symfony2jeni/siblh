@@ -79,9 +79,9 @@ class MntPaciente
     private $direccion;
 
     /**
-     * @var \CltMunicipio
+     * @var \CtlMunicipio
      *
-     * @ORM\ManyToOne(targetEntity="CltMunicipio")
+     * @ORM\ManyToOne(targetEntity="CtlMunicipio")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="id_municipio_domicilio", referencedColumnName="id")
      * })
@@ -297,10 +297,10 @@ class MntPaciente
     /**
      * Set idMunicipioDomicilio
      *
-     * @param \siblh\mantenimientoBundle\Entity\CltMunicipio $idMunicipioDomicilio
+     * @param \siblh\mantenimientoBundle\Entity\CtlMunicipio $idMunicipioDomicilio
      * @return MntPaciente
      */
-    public function setIdMunicipioDomicilio(\siblh\mantenimientoBundle\Entity\CltMunicipio $idMunicipioDomicilio = null)
+    public function setIdMunicipioDomicilio(\siblh\mantenimientoBundle\Entity\CtlMunicipio $idMunicipioDomicilio = null)
     {
         $this->idMunicipioDomicilio = $idMunicipioDomicilio;
     
@@ -310,7 +310,7 @@ class MntPaciente
     /**
      * Get idMunicipioDomicilio
      *
-     * @return \siblh\mantenimientoBundle\Entity\CltMunicipio 
+     * @return \siblh\mantenimientoBundle\Entity\CtlMunicipio 
      */
     public function getIdMunicipioDomicilio()
     {

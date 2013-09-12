@@ -25,14 +25,14 @@ class BlhDonante
     /**
      * @var string
      *
-     * @ORM\Column(name="codigo_donante", type="string", length=12, nullable=true)
+     * @ORM\Column(name="codigo_donante", type="string", length=14, nullable=false)
      */
     private $codigoDonante;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="primer_nombre", type="string", length=15, nullable=true)
+     * @ORM\Column(name="primer_nombre", type="string", length=15, nullable=false)
      */
     private $primerNombre;
 
@@ -46,7 +46,7 @@ class BlhDonante
     /**
      * @var string
      *
-     * @ORM\Column(name="primer_apellido", type="string", length=15, nullable=true)
+     * @ORM\Column(name="primer_apellido", type="string", length=15, nullable=false)
      */
     private $primerApellido;
 
@@ -60,7 +60,7 @@ class BlhDonante
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="fecha_nacimiento", type="date", nullable=true)
+     * @ORM\Column(name="fecha_nacimiento", type="date", nullable=false)
      */
     private $fechaNacimiento;
 
@@ -95,7 +95,7 @@ class BlhDonante
     /**
      * @var string
      *
-     * @ORM\Column(name="numero_documento_identificacion", type="string", length=10, nullable=true)
+     * @ORM\Column(name="numero_documento_identificacion", type="string", length=10, nullable=false)
      */
     private $numeroDocumentoIdentificacion;
 
@@ -109,7 +109,7 @@ class BlhDonante
     /**
      * @var integer
      *
-     * @ORM\Column(name="edad", type="integer", nullable=false)
+     * @ORM\Column(name="edad", type="integer", nullable=true)
      */
     private $edad;
 
@@ -173,9 +173,9 @@ class BlhDonante
     private $idBancoDeLeche;
 
     /**
-     * @var \CltMunicipio
+     * @var \CtlMunicipio
      *
-     * @ORM\ManyToOne(targetEntity="CltMunicipio")
+     * @ORM\ManyToOne(targetEntity="CtlMunicipio")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="id_municipio", referencedColumnName="id")
      * })
@@ -680,10 +680,10 @@ class BlhDonante
     /**
      * Set idMunicipio
      *
-     * @param \siblh\mantenimientoBundle\Entity\CltMunicipio $idMunicipio
+     * @param \siblh\mantenimientoBundle\Entity\CtlMunicipio $idMunicipio
      * @return BlhDonante
      */
-    public function setIdMunicipio(\siblh\mantenimientoBundle\Entity\CltMunicipio $idMunicipio = null)
+    public function setIdMunicipio(\siblh\mantenimientoBundle\Entity\CtlMunicipio $idMunicipio = null)
     {
         $this->idMunicipio = $idMunicipio;
     
@@ -693,7 +693,7 @@ class BlhDonante
     /**
      * Get idMunicipio
      *
-     * @return \siblh\mantenimientoBundle\Entity\CltMunicipio 
+     * @return \siblh\mantenimientoBundle\Entity\CtlMunicipio 
      */
     public function getIdMunicipio()
     {
