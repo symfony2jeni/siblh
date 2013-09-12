@@ -25,7 +25,7 @@ class BlhLoteAnalizado
     /**
      * @var string
      *
-     * @ORM\Column(name="codigo_lote_analizado", type="string", length=9, nullable=false)
+     * @ORM\Column(name="codigo_lote_analizado", type="string", length=11, nullable=false)
      */
     private $codigoLoteAnalizado;
 

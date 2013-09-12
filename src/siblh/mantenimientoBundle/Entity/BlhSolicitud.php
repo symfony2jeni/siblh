@@ -25,7 +25,7 @@ class BlhSolicitud
     /**
      * @var string
      *
-     * @ORM\Column(name="codigo_solicitud", type="string", length=14, nullable=false)
+     * @ORM\Column(name="codigo_solicitud", type="string", length=16, nullable=false)
      */
     private $codigoSolicitud;
 

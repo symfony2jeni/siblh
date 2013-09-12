@@ -25,7 +25,7 @@ class BlhFrascoRecolectado
     /**
      * @var string
      *
-     * @ORM\Column(name="codigo_frasco_recolectado", type="string", length=13, nullable=false)
+     * @ORM\Column(name="codigo_frasco_recolectado", type="string", length=15, nullable=false)
      */
     private $codigoFrascoRecolectado;
 
@@ -46,7 +46,7 @@ class BlhFrascoRecolectado
     /**
      * @var float
      *
-     * @ORM\Column(name="onz_recolectado", type="decimal", nullable=false)
+     * @ORM\Column(name="onz_recolectado", type="decimal", nullable=true)
      */
     private $onzRecolectado;
 

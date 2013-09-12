@@ -25,77 +25,77 @@ class BlhCrematocrito
     /**
      * @var string
      *
-     * @ORM\Column(name="codigo_analisis_fisico_quimico", type="string", length=11, nullable=false)
+     * @ORM\Column(name="codigo_analisis_fisico_quimico", type="string", length=13, nullable=false)
      */
     private $codigoAnalisisFisicoQuimico;
 
     /**
      * @var float
      *
-     * @ORM\Column(name="crema1", type="decimal", nullable=false)
+     * @ORM\Column(name="crema1", type="decimal", nullable=true)
      */
     private $crema1;
 
     /**
      * @var float
      *
-     * @ORM\Column(name="crema2", type="decimal", nullable=false)
+     * @ORM\Column(name="crema2", type="decimal", nullable=true)
      */
     private $crema2;
 
     /**
      * @var float
      *
-     * @ORM\Column(name="crema3", type="decimal", nullable=false)
+     * @ORM\Column(name="crema3", type="decimal", nullable=true)
      */
     private $crema3;
 
     /**
      * @var float
      *
-     * @ORM\Column(name="ct1", type="decimal", nullable=false)
+     * @ORM\Column(name="ct1", type="decimal", nullable=true)
      */
     private $ct1;
 
     /**
      * @var float
      *
-     * @ORM\Column(name="ct2", type="decimal", nullable=false)
+     * @ORM\Column(name="ct2", type="decimal", nullable=true)
      */
     private $ct2;
 
     /**
      * @var float
      *
-     * @ORM\Column(name="ct3", type="decimal", nullable=false)
+     * @ORM\Column(name="ct3", type="decimal", nullable=true)
      */
     private $ct3;
 
     /**
      * @var float
      *
-     * @ORM\Column(name="media_crema", type="decimal", nullable=false)
+     * @ORM\Column(name="media_crema", type="decimal", nullable=true)
      */
     private $mediaCrema;
 
     /**
      * @var float
      *
-     * @ORM\Column(name="media_ct", type="decimal", nullable=false)
+     * @ORM\Column(name="media_ct", type="decimal", nullable=true)
      */
     private $mediaCt;
 
     /**
      * @var float
      *
-     * @ORM\Column(name="porcentaje_crema", type="decimal", nullable=false)
+     * @ORM\Column(name="porcentaje_crema", type="decimal", nullable=true)
      */
     private $porcentajeCrema;
 
     /**
      * @var float
      *
-     * @ORM\Column(name="kilocalorias", type="decimal", nullable=false)
+     * @ORM\Column(name="kilocalorias", type="decimal", nullable=true)
      */
     private $kilocalorias;
 

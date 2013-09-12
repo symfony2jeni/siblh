@@ -25,7 +25,7 @@ class BlhFrascoRecolectadoFrascoP
     /**
      * @var float
      *
-     * @ORM\Column(name="volumen_agregado", type="decimal", nullable=true)
+     * @ORM\Column(name="volumen_agregado", type="decimal", nullable=false)
      */
     private $volumenAgregado;
 

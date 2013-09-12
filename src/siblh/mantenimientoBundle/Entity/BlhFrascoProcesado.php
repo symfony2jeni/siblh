@@ -25,7 +25,7 @@ class BlhFrascoProcesado
     /**
      * @var string
      *
-     * @ORM\Column(name="codigo_frasco_procesado", type="string", length=13, nullable=false)
+     * @ORM\Column(name="codigo_frasco_procesado", type="string", length=15, nullable=false)
      */
     private $codigoFrascoProcesado;
 

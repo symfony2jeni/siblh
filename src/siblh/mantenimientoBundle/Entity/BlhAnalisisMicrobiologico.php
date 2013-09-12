@@ -25,28 +25,28 @@ class BlhAnalisisMicrobiologico
     /**
      * @var string
      *
-     * @ORM\Column(name="codigo_analisis_microbiologico", type="string", length=11, nullable=false)
+     * @ORM\Column(name="codigo_analisis_microbiologico", type="string", length=13, nullable=false)
      */
     private $codigoAnalisisMicrobiologico;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="coliformes_totales", type="string", length=8, nullable=false)
+     * @ORM\Column(name="coliformes_totales", type="string", length=8, nullable=true)
      */
     private $coliformesTotales;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="control", type="string", length=8, nullable=false)
+     * @ORM\Column(name="control", type="string", length=8, nullable=true)
      */
     private $control;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="situacion", type="string", length=9, nullable=false)
+     * @ORM\Column(name="situacion", type="string", length=9, nullable=true)
      */
     private $situacion;
 

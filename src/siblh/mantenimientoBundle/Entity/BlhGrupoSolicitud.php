@@ -25,7 +25,7 @@ class BlhGrupoSolicitud
     /**
      * @var string
      *
-     * @ORM\Column(name="codigo_grupo_solicitud", type="string", length=11, nullable=false)
+     * @ORM\Column(name="codigo_grupo_solicitud", type="string", length=13, nullable=false)
      */
     private $codigoGrupoSolicitud;
 

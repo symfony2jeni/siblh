@@ -53,9 +53,9 @@ class FosUserUser
     /**
      * @var boolean
      *
-     * @ORM\Column(name="enable", type="boolean", nullable=false)
+     * @ORM\Column(name="enabled", type="boolean", nullable=false)
      */
-    private $enable;
+    private $enabled;
 
     /**
      * @var string
@@ -74,7 +74,7 @@ class FosUserUser
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="last_login", type="date", nullable=true)
+     * @ORM\Column(name="last_login", type="datetime", nullable=true)
      */
     private $lastLogin;
 
@@ -95,7 +95,7 @@ class FosUserUser
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="expires_at", type="date", nullable=true)
+     * @ORM\Column(name="expires_at", type="datetime", nullable=true)
      */
     private $expiresAt;
 
@@ -109,7 +109,7 @@ class FosUserUser
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="password_requested_at", type="date", nullable=true)
+     * @ORM\Column(name="password_requested_at", type="datetime", nullable=true)
      */
     private $passwordRequestedAt;
 
@@ -130,28 +130,28 @@ class FosUserUser
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="credentials_expire_at", type="date", nullable=true)
+     * @ORM\Column(name="credentials_expire_at", type="datetime", nullable=true)
      */
     private $credentialsExpireAt;
 
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="created_at", type="date", nullable=true)
+     * @ORM\Column(name="created_at", type="datetime", nullable=true)
      */
     private $createdAt;
 
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="update_at", type="date", nullable=true)
+     * @ORM\Column(name="updated_at", type="datetime", nullable=true)
      */
-    private $updateAt;
+    private $updatedAt;
 
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="date_of_birth", type="date", nullable=true)
+     * @ORM\Column(name="date_of_birth", type="datetime", nullable=true)
      */
     private $dateOfBirth;
 
@@ -413,26 +413,26 @@ class FosUserUser
     }
 
     /**
-     * Set enable
+     * Set enabled
      *
-     * @param boolean $enable
+     * @param boolean $enabled
      * @return FosUserUser
      */
-    public function setEnable($enable)
+    public function setEnabled($enabled)
     {
-        $this->enable = $enable;
+        $this->enabled = $enabled;
     
         return $this;
     }
 
     /**
-     * Get enable
+     * Get enabled
      *
      * @return boolean 
      */
-    public function getEnable()
+    public function getEnabled()
     {
-        return $this->enable;
+        return $this->enabled;
     }
 
     /**
@@ -712,26 +712,26 @@ class FosUserUser
     }
 
     /**
-     * Set updateAt
+     * Set updatedAt
      *
-     * @param \DateTime $updateAt
+     * @param \DateTime $updatedAt
      * @return FosUserUser
      */
-    public function setUpdateAt($updateAt)
+    public function setUpdatedAt($updatedAt)
     {
-        $this->updateAt = $updateAt;
+        $this->updatedAt = $updatedAt;
     
         return $this;
     }
 
     /**
-     * Get updateAt
+     * Get updatedAt
      *
      * @return \DateTime 
      */
-    public function getUpdateAt()
+    public function getUpdatedAt()
     {
-        return $this->updateAt;
+        return $this->updatedAt;
     }
 
     /**

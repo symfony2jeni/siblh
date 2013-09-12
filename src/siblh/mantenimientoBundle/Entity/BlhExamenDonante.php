@@ -25,7 +25,7 @@ class BlhExamenDonante
     /**
      * @var string
      *
-     * @ORM\Column(name="resultado_examen", type="string", length=8, nullable=true)
+     * @ORM\Column(name="resultado_examen", type="string", length=8, nullable=false)
      */
     private $resultadoExamen;
 
