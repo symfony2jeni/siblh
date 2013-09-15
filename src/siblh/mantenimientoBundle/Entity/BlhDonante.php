@@ -202,6 +202,7 @@ class BlhDonante
      */
     public function setCodigoDonante($codigoDonante)
     {
+        
         $this->codigoDonante = $codigoDonante;
     
         return $this;
@@ -699,4 +700,9 @@ class BlhDonante
     {
         return $this->idMunicipio;
     }
+    
+            public function __toString() {
+  return $this->codigoDonante;
+}
+   
 }
