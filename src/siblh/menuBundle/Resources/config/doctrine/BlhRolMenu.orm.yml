@@ -1,0 +1,31 @@
+siblh\menuBundle\Entity\BlhRolMenu:
+    type: entity
+    table: blh_rol_menu
+    fields:
+        id:
+            id: true
+            type: integer
+            unsigned: false
+            nullable: false
+            generator:
+                strategy: SEQUENCE
+    manyToOne:
+        idMenu:
+            targetEntity: BlhMenu
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                id_menu:
+                    referencedColumnName: id
+            orphanRemoval: false
+        idRol:
+            targetEntity: BlhRol
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                id_rol:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

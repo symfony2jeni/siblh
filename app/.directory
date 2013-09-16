@@ -1,6 +1,10 @@
 [Dolphin]
+<<<<<<< HEAD
 PreviewsShown=true
 Timestamp=2013,9,11,10,9,14
+=======
+Timestamp=2013,8,31,14,42,45
+>>>>>>> jeni
 
 [Settings]
 HiddenFilesShown=true

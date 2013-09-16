@@ -1,0 +1,52 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+    <h1>BlhAnalisisSensorial</h1>
+
+    <table class="record_properties">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ entity.id }}</td>
+            </tr>
+            <tr>
+                <th>Codigoanalisisfisicoquimico</th>
+                <td>{{ entity.codigoAnalisisFisicoQuimico }}</td>
+            </tr>
+            <tr>
+                <th>Embalaje</th>
+                <td>{{ entity.embalaje }}</td>
+            </tr>
+            <tr>
+                <th>Suciedad</th>
+                <td>{{ entity.suciedad }}</td>
+            </tr>
+            <tr>
+                <th>Color</th>
+                <td>{{ entity.color }}</td>
+            </tr>
+            <tr>
+                <th>Flavor</th>
+                <td>{{ entity.flavor }}</td>
+            </tr>
+            <tr>
+                <th>Observacion</th>
+                <td>{{ entity.observacion }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+        <ul class="record_actions">
+    <li>
+        <a href="{{ path('blhanalisissensorial') }}">
+            Back to the list
+        </a>
+    </li>
+    <li>
+        <a href="{{ path('blhanalisissensorial_edit', { 'id': entity.id }) }}">
+            Edit
+        </a>
+    </li>
+    <li>{{ form(delete_form) }}</li>
+</ul>
+{% endblock %}

@@ -1,0 +1,72 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+    <h1>BlhHistorialClinico</h1>
+
+    <table class="record_properties">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ entity.id }}</td>
+            </tr>
+            <tr>
+                <th>Amenorrea</th>
+                <td>{{ entity.amenorrea }}</td>
+            </tr>
+            <tr>
+                <th>Controlprenatal</th>
+                <td>{{ entity.controlPrenatal }}</td>
+            </tr>
+            <tr>
+                <th>Lugarcontrol</th>
+                <td>{{ entity.lugarControl }}</td>
+            </tr>
+            <tr>
+                <th>Numerocontrol</th>
+                <td>{{ entity.numeroControl }}</td>
+            </tr>
+            <tr>
+                <th>Fechaultimaregla</th>
+                <td>{{ entity.fechaUltimaRegla|date('Y-m-d H:i:s') }}</td>
+            </tr>
+            <tr>
+                <th>Fechaparto</th>
+                <td>{{ entity.fechaParto|date('Y-m-d H:i:s') }}</td>
+            </tr>
+            <tr>
+                <th>Lugarparto</th>
+                <td>{{ entity.lugarParto }}</td>
+            </tr>
+            <tr>
+                <th>Patologiaembarazo</th>
+                <td>{{ entity.patologiaEmbarazo }}</td>
+            </tr>
+            <tr>
+                <th>Periodointergenesico</th>
+                <td>{{ entity.periodoIntergenesico }}</td>
+            </tr>
+            <tr>
+                <th>Fechapartoanterior</th>
+                <td>{{ entity.fechaPartoAnterior|date('Y-m-d H:i:s') }}</td>
+            </tr>
+            <tr>
+                <th>Formulaobstetrica</th>
+                <td>{{ entity.formulaObstetrica }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+        <ul class="record_actions">
+    <li>
+        <a href="{{ path('blhhistorialclinico') }}">
+            Back to the list
+        </a>
+    </li>
+    <li>
+        <a href="{{ path('blhhistorialclinico_edit', { 'id': entity.id }) }}">
+            Edit
+        </a>
+    </li>
+    <li>{{ form(delete_form) }}</li>
+</ul>
+{% endblock %}

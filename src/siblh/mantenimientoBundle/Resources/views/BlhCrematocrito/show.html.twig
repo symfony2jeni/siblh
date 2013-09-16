@@ -1,0 +1,72 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+    <h1>BlhCrematocrito</h1>
+
+    <table class="record_properties">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ entity.id }}</td>
+            </tr>
+            <tr>
+                <th>Codigoanalisisfisicoquimico</th>
+                <td>{{ entity.codigoAnalisisFisicoQuimico }}</td>
+            </tr>
+            <tr>
+                <th>Crema1</th>
+                <td>{{ entity.crema1 }}</td>
+            </tr>
+            <tr>
+                <th>Crema2</th>
+                <td>{{ entity.crema2 }}</td>
+            </tr>
+            <tr>
+                <th>Crema3</th>
+                <td>{{ entity.crema3 }}</td>
+            </tr>
+            <tr>
+                <th>Ct1</th>
+                <td>{{ entity.ct1 }}</td>
+            </tr>
+            <tr>
+                <th>Ct2</th>
+                <td>{{ entity.ct2 }}</td>
+            </tr>
+            <tr>
+                <th>Ct3</th>
+                <td>{{ entity.ct3 }}</td>
+            </tr>
+            <tr>
+                <th>Mediacrema</th>
+                <td>{{ entity.mediaCrema }}</td>
+            </tr>
+            <tr>
+                <th>Mediact</th>
+                <td>{{ entity.mediaCt }}</td>
+            </tr>
+            <tr>
+                <th>Porcentajecrema</th>
+                <td>{{ entity.porcentajeCrema }}</td>
+            </tr>
+            <tr>
+                <th>Kilocalorias</th>
+                <td>{{ entity.kilocalorias }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+        <ul class="record_actions">
+    <li>
+        <a href="{{ path('blhcrematocrito') }}">
+            Back to the list
+        </a>
+    </li>
+    <li>
+        <a href="{{ path('blhcrematocrito_edit', { 'id': entity.id }) }}">
+            Edit
+        </a>
+    </li>
+    <li>{{ form(delete_form) }}</li>
+</ul>
+{% endblock %}

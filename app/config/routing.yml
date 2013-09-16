@@ -1,0 +1,22 @@
+siblhmenu:
+    resource: "@siblhmenuBundle/Resources/config/routing.yml"
+    prefix:   /
+
+siblhmantenimiento:
+    resource: "@siblhmantenimientoBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
+
+
+
+
+siblh_menu_homepage:
+    pattern:  /admin/
+    defaults: { _controller: siblhmenuBundle:Default:index }
+
+
+
+siblh_menu_profile:
+    pattern:  /admin/profile
+    defaults: { _controller: siblhmenuBundle:Default:profile }

@@ -1,0 +1,81 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+    <h1>BlhDonante list</h1>
+
+    <table class="records_list">
+        <thead>
+            <td>
+                <tr>Id</tr>
+                <tr>Codigodonante</tr>
+                </td>
+                
+                <th>Primernombre</th>
+                <th>Segundonombre</th>
+                <th>Primerapellido</th>
+                <th>Segundoapellido</th>
+                <th>Fechanacimiento</th>
+                <th>Fecharegistrodonanteblh</th>
+                <th>Direccion</th>
+                <th>Procedencia</th>
+                <th>Registro</th>
+                <th>Numerodocumentoidentificacion</th>
+                <th>Documentoidentificacion</th>
+                <th>Edad</th>
+                <th>Ocupacion</th>
+                <th>Estadocivil</th>
+                <th>Nacionalidad</th>
+                <th>Escolaridad</th>
+                <th>Estadodonante</th>
+                <th>Tipocolecta</th>
+                <th>Observaciones</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for entity in entities %}
+            <tr>
+                <td><a href="{{ path('blhdonante_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
+                <td>{{ entity.codigoDonante }}</td>
+                <td>{{ entity.primerNombre }}</td>
+                <td>{{ entity.segundoNombre }}</td>
+                <td>{{ entity.primerApellido }}</td>
+                <td>{{ entity.segundoApellido }}</td>
+                <td>{% if entity.fechaNacimiento %}{{ entity.fechaNacimiento|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{% if entity.fechaRegistroDonanteBlh %}{{ entity.fechaRegistroDonanteBlh|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{{ entity.direccion }}</td>
+                <td>{{ entity.procedencia }}</td>
+                <td>{{ entity.registro }}</td>
+                <td>{{ entity.numeroDocumentoIdentificacion }}</td>
+                <td>{{ entity.documentoIdentificacion }}</td>
+                <td>{{ entity.edad }}</td>
+                <td>{{ entity.ocupacion }}</td>
+                <td>{{ entity.estadoCivil }}</td>
+                <td>{{ entity.nacionalidad }}</td>
+                <td>{{ entity.escolaridad }}</td>
+                <td>{{ entity.estadoDonante }}</td>
+                <td>{{ entity.tipoColecta }}</td>
+                <td>{{ entity.observaciones }}</td>
+                <td>
+                <ul>
+                    <li>
+                        <a href="{{ path('blhdonante_show', { 'id': entity.id }) }}">show</a>
+                    </li>
+                    <li>
+                        <a href="{{ path('blhdonante_edit', { 'id': entity.id }) }}">edit</a>
+                    </li>
+                </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+        <ul>
+        <li>
+            <a href="{{ path('blhdonante_new') }}">
+                Create a new entry
+            </a>
+        </li>
+    </ul>
+    {% endblock %}

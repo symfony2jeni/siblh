@@ -1,0 +1,35 @@
+siblh\menuBundle\Entity\BlhFrascoRecolectadoFrascoP:
+    type: entity
+    table: blh_frasco_recolectado_frasco_p
+    fields:
+        id:
+            id: true
+            type: integer
+            unsigned: false
+            nullable: false
+            generator:
+                strategy: SEQUENCE
+        volumenAgregado:
+            type: decimal
+            nullable: true
+            column: volumen_agregado
+    manyToOne:
+        idFrascoRecolectado:
+            targetEntity: BlhFrascoRecolectado
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                id_frasco_recolectado:
+                    referencedColumnName: id
+            orphanRemoval: false
+        idFrascoProcesado:
+            targetEntity: BlhFrascoProcesado
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                id_frasco_procesado:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

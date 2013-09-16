@@ -1,0 +1,75 @@
+siblh\menuBundle\Entity\BlhFrascoRecolectado:
+    type: entity
+    table: blh_frasco_recolectado
+    fields:
+        id:
+            id: true
+            type: integer
+            unsigned: false
+            nullable: false
+            generator:
+                strategy: SEQUENCE
+        codigoFrascoRecolectado:
+            type: string
+            length: 13
+            fixed: false
+            nullable: false
+            column: codigo_frasco_recolectado
+        volumenRecolectado:
+            type: decimal
+            nullable: false
+            column: volumen_recolectado
+        formaExtraccion:
+            type: string
+            length: 8
+            fixed: false
+            nullable: false
+            column: forma_extraccion
+        onzRecolectado:
+            type: decimal
+            nullable: false
+            column: onz_recolectado
+        observacionFrascoRecolectado:
+            type: string
+            length: 30
+            fixed: false
+            nullable: true
+            column: observacion_frasco_recolectado
+    manyToOne:
+        idEstado:
+            targetEntity: BlhEstado
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                id_estado:
+                    referencedColumnName: id
+            orphanRemoval: false
+        idDonacion:
+            targetEntity: BlhDonacion
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                id_donacion:
+                    referencedColumnName: id
+            orphanRemoval: false
+        idDonante:
+            targetEntity: BlhDonante
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                id_donante:
+                    referencedColumnName: id
+            orphanRemoval: false
+        idLoteAnalizado:
+            targetEntity: BlhLoteAnalizado
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                id_lote_analizado:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

@@ -1,0 +1,110 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+    <h1>BlhDonante creation</h1>
+
+  {#  {{ form(form) }} 
+Creando el form #} 
+
+    {{ form_start(form) }}
+    {{ form_errors(form) }}
+ 
+  <table align = "center">
+      <tr><td colspan="3" align = "right"> 
+        {{ form_label(form.codigoDonante) }}
+        {{ form_errors(form.codigoDonante) }}
+        {{ form_widget(form.codigoDonante) }} </td></tr>
+   <tr>  
+   <td> {{ form_label(form.primerNombre) }}
+        {{ form_errors(form.primerNombre) }}
+        {{ form_widget(form.primerNombre,  { 'attr': {'size': '40'} }) }} </td> 
+      
+   <td colspan = '2' align = "right"> 
+        {{ form_label(form.segundoNombre) }}
+        {{ form_errors(form.segundoNombre) }}
+        {{ form_widget(form.segundoNombre,  { 'attr': {'size': '40'} }) }} </td></tr>
+ 
+    <tr>
+    <td>{{ form_label(form.primerApellido) }}
+        {{ form_errors(form.primerApellido) }}
+        {{ form_widget(form.primerApellido,  { 'attr': {'size': '40'} }) }} </td>
+  
+    <td colspan = '2' align = "right"> 
+        {{ form_label(form.segundoApellido) }}
+        {{ form_errors(form.segundoApellido) }}
+        {{ form_widget(form.segundoApellido,  { 'attr': {'size': '40'} }) }} </td></tr>
+    <tr>
+    <td>{{ form_label(form.procedencia) }}
+        {{ form_errors(form.procedencia) }}
+        {{ form_widget(form.procedencia) }} </td>
+    <td>{{ form_label(form.fechaRegistroDonanteBlh) }}
+        {{ form_errors(form.fechaRegistroDonanteBlh) }}
+        {{ form_widget(form.fechaRegistroDonanteBlh) }} </td>
+    <td>{{ form_label(form.registro) }}
+        {{ form_errors(form.registro) }}
+        {{ form_widget(form.registro) }} </td></tr>
+    <tr>
+    <td>{{ form_label(form.fechaNacimiento) }}
+        {{ form_errors(form.fechaNacimiento) }}
+        {{ form_widget(form.fechaNacimiento) }} </td>
+  
+   <td> {{ form_label(form.estadoCivil) }}
+        {{ form_errors(form.estadoCivil) }}
+        {{ form_widget(form.estadoCivil) }} </td>
+   
+   <td> {{ form_label(form.nacionalidad) }}
+        {{ form_errors(form.nacionalidad) }}
+        {{ form_widget(form.nacionalidad) }} </td></tr>
+    
+   <tr><td colspan = "3" align = "left">
+        {{ form_label(form.direccion) }}
+        {{ form_errors(form.direccion) }}
+        {{ form_widget(form.direccion,  { 'attr': {'size': '150'} }) }} </td></tr>  
+   
+    <tr><td>{{ form_label(form.idBancoDeLeche) }}
+        {{ form_errors(form.idBancoDeLeche) }}
+        {{ form_widget(form.idBancoDeLeche) }}</td>
+  
+   <td> {{ form_label(form.ocupacion) }}
+        {{ form_errors(form.ocupacion) }}
+        {{ form_widget(form.ocupacion) }} </td>
+   
+   <td> {{ form_label(form.escolaridad) }}
+        {{ form_errors(form.escolaridad) }}
+        {{ form_widget(form.escolaridad) }} </td></tr>
+   
+   <tr>
+   <td> {{ form_label(form.documentoIdentificacion) }}
+        {{ form_errors(form.documentoIdentificacion) }}
+        {{ form_widget(form.documentoIdentificacion) }}     </td>
+  
+   <td> {{ form_label(form.numeroDocumentoIdentificacion) }}
+        {{ form_errors(form.numeroDocumentoIdentificacion) }}
+        {{ form_widget(form.numeroDocumentoIdentificacion) }} </td>
+   
+   <td> {{ form_label(form.tipoColecta) }}
+        {{ form_errors(form.tipoColecta) }}
+        {{ form_widget(form.tipoColecta) }} </td></tr>
+   
+   <tr>
+   <td> {{ form_label(form.idMunicipio) }}
+        {{ form_errors(form.idMunicipio) }}
+        {{ form_widget(form.idMunicipio) }} </td>
+  
+   <td colspan = '2'> 
+        {{ form_label(form.observaciones) }}
+        {{ form_errors(form.observaciones) }}
+        {{ form_widget(form.observaciones,  { 'attr': {'size': '90'} }) }} </td></tr>
+   
+  <tr><td colspan = '3' align = 'center'>  <input type="submit" value="Guardar"/></td></tr>
+    </table>
+    
+{{ form_end(form) }}
+    <ul class="record_actions">
+    <li>
+    <a href="{{ path('blhdonante') }}">
+            Back to the list
+    </a>
+    </li>
+    </ul>
+{% endblock %}

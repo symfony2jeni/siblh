@@ -1,0 +1,96 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+    <h1>BlhHistorialClinico creation</h1>
+
+  {#Creando el form#}
+    
+    
+    <script type="text/javascript">
+function prueba()
+ {
+  alert ("prueba");
+ 
+        
+ }
+</script>
+   {{ form_start(form) }}
+    {{ form_errors(form) }}
+   
+ 
+  <table align = "center">
+       <tr><td> 
+        {{ form_label(form.idDonante) }}
+        {{ form_errors(form.idDonante) }}
+        {{ form_widget(form.idDonante) }} </td>
+     <td> 
+        {{ form_label(form.formulaObstetrica) }}
+        {{ form_errors(form.formulaObstetrica) }}
+        {{ form_widget(form.formulaObstetrica) }} </td>
+ 
+   <td> {{ form_label(form.periodoIntergenesico) }}
+        {{ form_errors(form.periodoIntergenesico) }}
+        {{ form_widget(form.periodoIntergenesico) }} </td>  </tr>
+  
+   <tr>
+   <td> {{ form_label(form.controlPrenatal) }}
+        {{ form_errors(form.controlPrenatal) }}
+        {{ form_widget(form.controlPrenatal) }}</td>
+   
+   <td> {{ form_label(form.lugarControl) }}
+        {{ form_errors(form.lugarControl) }}
+        {{ form_widget(form.lugarControl) }}</td>
+  
+  <td>  {{ form_label(form.numeroControl) }}
+        {{ form_errors(form.numeroControl) }}
+        {{ form_widget(form.numeroControl) }}</td></tr>
+  
+  <tr>
+   <td> {{ form_label(form.fechaUltimaRegla ) }}
+        {{ form_errors(form.fechaUltimaRegla ) }}
+        {{ form_widget(form.fechaUltimaRegla ) }}</td>
+   
+   <td> {{ form_label(form.fechaPartoAnterior) }}
+        {{ form_errors(form.fechaPartoAnterior) }}
+        {{ form_widget(form.fechaPartoAnterior) }}</td>
+  
+  <td>  {{ form_label(form.fechaParto) }}
+        {{ form_errors(form.fechaParto) }}
+        {{ form_widget(form.fechaParto) }}</td></tr>
+  
+  <tr>
+   <td> {{ form_label(form.amenorrea) }}
+        {{ form_errors(form.amenorrea) }}
+        {{ form_widget(form.amenorrea) }}</td>
+   <td> 
+        <label for="lugar">Parto en Hospital:</label><br>
+   <input type="radio" name="group2" value="si"> Si<br>
+<input type="radio" name="group2" value="no" onClick=" prueba();"> No<br></td>
+
+    <td>{{ form_label(form.lugarParto) }}
+        {{ form_errors(form.lugarParto) }}
+        {{ form_widget(form.lugarParto) }}</td></tr>
+    {# ,  { 'attr': {'disabled': 'disabled'} }#}
+    <tr>
+   
+   <td> 
+         <label for="lugar">Patologia durante el embarazo:</label><br>
+   <input type="radio" name="group2" value="si"> Si<br>
+<input type="radio" name="group2" value="no" onClick=" "> No<br></td>
+
+    <td>{{ form_label(form.patologiaEmbarazo) }}
+        {{ form_errors(form.patologiaEmbarazo) }}
+        {{ form_widget(form.patologiaEmbarazo) }}</td></tr>
+   <tr><td colspan = '3' align = 'center'>  <input type="submit" value="Guardar"/></td></tr>
+   
+   </table>
+   
+    {{ form_end(form) }}
+        <ul class="record_actions">
+    <li>
+        <a href="{{ path('blhhistorialclinico') }}">
+            Back to the list
+        </a>
+    </li>
+</ul>
+{% endblock %}

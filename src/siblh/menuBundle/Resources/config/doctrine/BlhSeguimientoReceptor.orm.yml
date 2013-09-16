@@ -1,0 +1,55 @@
+siblh\menuBundle\Entity\BlhSeguimientoReceptor:
+    type: entity
+    table: blh_seguimiento_receptor
+    fields:
+        id:
+            id: true
+            type: integer
+            unsigned: false
+            nullable: false
+            generator:
+                strategy: SEQUENCE
+        tallaReceptor:
+            type: decimal
+            nullable: false
+            column: talla_receptor
+        pesoSeguimiento:
+            type: decimal
+            nullable: false
+            column: peso_seguimiento
+        pcSeguimiento:
+            type: decimal
+            nullable: false
+            column: pc_seguimiento
+        gananciaDiaPeso:
+            type: decimal
+            nullable: false
+            column: ganancia_dia_peso
+        semana:
+            type: integer
+            unsigned: false
+            nullable: false
+        fechaSeguimiento:
+            type: date
+            nullable: false
+            column: fecha_seguimiento
+        gananciaDiaTalla:
+            type: decimal
+            nullable: false
+            column: ganancia_dia_talla
+        complicaciones:
+            type: string
+            length: 50
+            fixed: false
+            nullable: false
+    manyToOne:
+        idReceptor:
+            targetEntity: BlhReceptor
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                id_receptor:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

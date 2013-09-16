@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="BlhPasteurizacion" table="blh_pasteurizacion">
+    <id name="id" type="integer" column="id">
+      <generator strategy="SEQUENCE"/>
+    </id>
+    <field name="codigoPasteurizacion" type="string" column="codigo_pasteurizacion" length="11" nullable="false"/>
+    <field name="numCiclo" type="integer" column="num_ciclo" nullable="false"/>
+    <field name="volumenPasteurizado" type="decimal" column="volumen_pasteurizado" nullable="false"/>
+    <field name="numFrascosPasteurizados" type="integer" column="num_frascos_pasteurizados" nullable="false"/>
+    <field name="fechaPasteurizacion" type="date" column="fecha_pasteurizacion" nullable="false"/>
+    <field name="horaInicioP" type="time" column="hora_inicio_p" nullable="true"/>
+    <field name="horaFinalP" type="time" column="hora_final_p" nullable="true"/>
+    <field name="horaInicioE" type="time" column="hora_inicio_e" nullable="true"/>
+    <field name="horaFinalE" type="time" column="hora_final_e" nullable="true"/>
+    <field name="responsablePasteurizacion" type="string" column="responsable_pasteurizacion" length="30" nullable="false"/>
+    <many-to-one field="idCurva" target-entity="BlhCurva">
+      <join-columns>
+        <join-column name="id_curva" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>
