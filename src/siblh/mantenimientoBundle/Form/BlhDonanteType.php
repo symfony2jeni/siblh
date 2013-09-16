@@ -14,12 +14,19 @@ class BlhDonanteType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
+<<<<<<< HEAD
         $builder
+=======
+        echo 'pruebaaaa';
+        $builder
+                
+>>>>>>> marvin
             ->add('codigoDonante')
             ->add('primerNombre')
             ->add('segundoNombre')
             ->add('primerApellido')
             ->add('segundoApellido')
+<<<<<<< HEAD
             ->add('fechaNacimiento')
             ->add('fechaRegistroDonanteBlh')
             ->add('direccion')
@@ -37,6 +44,28 @@ class BlhDonanteType extends AbstractType
             ->add('observaciones')
             ->add('idBancoDeLeche')
             ->add('idMunicipio')
+=======
+            ->add('procedencia')
+            ->add('fechaRegistroDonanteBlh')   
+            ->add('registro')
+            ->add('fechaNacimiento')
+            ->add('estadoCivil')
+            ->add('nacionalidad')
+            ->add('direccion')
+            ->add('documentoIdentificacion')
+            ->add('numeroDocumentoIdentificacion')
+            ->add('idBancoDeLeche')
+            ->add('ocupacion')
+            ->add('escolaridad')
+            ->add('tipoColecta')
+            ->add('observaciones')
+         
+            ->add('idMunicipio')
+            ->add('observaciones')
+          /*->add('edad')
+    
+            ->add('estadoDonante')*/
+>>>>>>> marvin
         ;
     }
     

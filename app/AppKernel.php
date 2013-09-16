@@ -17,7 +17,14 @@ class AppKernel extends Kernel
             new Doctrine\Bundle\DoctrineBundle\DoctrineBundle(),
             new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
             new siblh\mantenimientoBundle\siblhmantenimientoBundle(),
+<<<<<<< HEAD
             new Knp\Bundle\MenuBundle\KnpMenuBundle(),
+=======
+            /** other bundes are here **/
+       
+            new Knp\Bundle\MenuBundle\KnpMenuBundle(),
+            new siblh\menuBundle\siblhmenuBundle(),
+>>>>>>> marvin
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

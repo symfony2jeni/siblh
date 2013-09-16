@@ -3,7 +3,11 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
+<<<<<<< HEAD
     "hash": "cbfc18cba40b47204ca01821e0c40234",
+=======
+    "hash": "12417274b4e895a929e94ec35f229cb2",
+>>>>>>> marvin
     "packages": [
         {
             "name": "doctrine/annotations",
@@ -61,7 +65,11 @@
                     "email": "kontakt@beberlei.de"
                 },
                 {
+<<<<<<< HEAD
                     "name": "Johannes M. Schmitt",
+=======
+                    "name": "Johannes Schmitt",
+>>>>>>> marvin
                     "email": "schmittjoh@gmail.com",
                     "homepage": "http://jmsyst.com",
                     "role": "Developer of wrapped JMSSerializerBundle"
@@ -197,7 +205,11 @@
                     "email": "kontakt@beberlei.de"
                 },
                 {
+<<<<<<< HEAD
                     "name": "Johannes M. Schmitt",
+=======
+                    "name": "Johannes Schmitt",
+>>>>>>> marvin
                     "email": "schmittjoh@gmail.com",
                     "homepage": "http://jmsyst.com",
                     "role": "Developer of wrapped JMSSerializerBundle"
@@ -466,9 +478,15 @@
                     "email": "kontakt@beberlei.de"
                 },
                 {
+<<<<<<< HEAD
                     "name": "Johannes M. Schmitt",
                     "email": "schmittjoh@gmail.com",
                     "homepage": "http://jmsyst.com",
+=======
+                    "name": "Johannes Schmitt",
+                    "email": "schmittjoh@gmail.com",
+                    "homepage": "https://github.com/schmittjoh",
+>>>>>>> marvin
                     "role": "Developer of wrapped JMSSerializerBundle"
                 }
             ],
@@ -520,7 +538,11 @@
                     "email": "roman@code-factory.org"
                 },
                 {
+<<<<<<< HEAD
                     "name": "Johannes M. Schmitt",
+=======
+                    "name": "Johannes Schmitt",
+>>>>>>> marvin
                     "email": "schmittjoh@gmail.com",
                     "homepage": "http://jmsyst.com",
                     "role": "Developer of wrapped JMSSerializerBundle"
@@ -752,7 +774,11 @@
                     "email": "stof@notk.org"
                 },
                 {
+<<<<<<< HEAD
                     "name": "Knplabs",
+=======
+                    "name": "KnpLabs",
+>>>>>>> marvin
                     "homepage": "http://knplabs.com"
                 },
                 {

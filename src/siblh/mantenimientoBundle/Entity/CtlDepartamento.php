@@ -123,4 +123,14 @@ class CtlDepartamento
     {
         return $this->abreviatura;
     }
+<<<<<<< HEAD
 }
+=======
+
+    public function __toString() {
+  return $this->nombre;
+}
+    
+    
+    }
+>>>>>>> marvin

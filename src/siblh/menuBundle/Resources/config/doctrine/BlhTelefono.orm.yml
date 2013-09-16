@@ -1,0 +1,28 @@
+siblh\menuBundle\Entity\BlhTelefono:
+    type: entity
+    table: blh_telefono
+    fields:
+        id:
+            id: true
+            type: integer
+            unsigned: false
+            nullable: false
+            generator:
+                strategy: SEQUENCE
+        numeroDeTelefono:
+            type: string
+            length: 9
+            fixed: false
+            nullable: true
+            column: numero_de_telefono
+    manyToOne:
+        idDonante:
+            targetEntity: BlhDonante
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                id_donante:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

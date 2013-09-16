@@ -15,6 +15,7 @@ class BlhHistoriaActualType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
+<<<<<<< HEAD
             ->add('pesoDonante')
             ->add('tallaDonante')
             ->add('medicamento')
@@ -23,6 +24,19 @@ class BlhHistoriaActualType extends AbstractType
             ->add('patologiaDonante')
             ->add('imc')
             ->add('idDonante')
+=======
+                 ->add('idDonante')
+            ->add('pesoDonante')
+            ->add('tallaDonante')
+                 ->add('imc')
+            ->add('medicamento')
+            ->add('habitoToxico')
+                  ->add('patologiaDonante')
+            ->add('motivoDonacion')
+          
+           
+           
+>>>>>>> marvin
         ;
     }
     

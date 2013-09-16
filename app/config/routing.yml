@@ -1,8 +1,16 @@
+<<<<<<< HEAD
+=======
+siblhmenu:
+    resource: "@siblhmenuBundle/Resources/config/routing.yml"
+    prefix:   /
+
+>>>>>>> marvin
 siblhmantenimiento:
     resource: "@siblhmantenimientoBundle/Controller/"
     type:     annotation
     prefix:   /
 
+<<<<<<< HEAD
 acme_hello_homepage:
     pattern:  /admin/
     defaults: { _controller: siblhmantenimientoBundle:Default:index }
@@ -30,3 +38,18 @@ acme_hello_employees_add:
 acme_hello_profile:
     pattern:  /admin/profile
     defaults: { _controller: siblhmantenimientoBundle:Default:profile }
+=======
+
+
+
+
+siblh_menu_homepage:
+    pattern:  /admin/
+    defaults: { _controller: siblhmenuBundle:Default:index }
+
+
+
+siblh_menu_profile:
+    pattern:  /admin/profile
+    defaults: { _controller: siblhmenuBundle:Default:profile }
+>>>>>>> marvin

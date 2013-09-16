@@ -4,7 +4,15 @@
         <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
         <title>{% block titulo %}Sistema Académico para las capacitaciones de la DTIC{% endblock %}</title>
  
+<<<<<<< HEAD
  
+=======
+        {% block stylesheets %}
+        <link href="{{ asset('bundles/siblhmantenimiento/css/estilos.css') }}" type="text/css" rel="stylesheet" />
+        <link href="{{ asset('bundles/siblhmantenimiento/imagenes/dtic-icono.png') }}" type="image/png" rel="Shortcut Icon" />
+ 
+        {% endblock %}
+>>>>>>> marvin
  
         {% block javascripts %}            
            <!-- <script type="text/javascript" src="{# asset('bundles/minsalsidpla/js/jquery-1.6.2.min.js') #}" ></script>-->
@@ -12,6 +20,7 @@
  
     </head>
      
+<<<<<<< HEAD
     {% block stylesheets %}	
 
         <link href="{{ asset('bundles/siblhmantenimiento/css/styles.css') }}" type="text/css" rel="stylesheet" />
@@ -33,6 +42,27 @@
 </div>
               
  {% include  'siblhmantenimientoBundle:Default:index_menu.html.twig' %}      
+=======
+    {% include 'siblhmenuBundle:Default:index.html.twig' %}
+    
+    <body>   
+        <div id ="arriba">
+
+<table style="width: 80%; margin-left: auto; margin-right: auto;">
+<tr>
+<td><div id="logos" ><img src={{ asset('bundles/siblhmantenimiento/imagenes/blh.jpg') }} /></div></td>
+<td><div id = "encabezado">
+<table style=" margin-left: auto; margin-right: auto;">
+<tr><td  style="text-align:center; font-size:20pt; font-style:bold; color: #21610B;">Ministerio de Salud</td></tr>
+<tr><td  style="text-align:center; font-size:20pt; font-style:bold; color: #21610B;">Hospital de Maternidad</td></tr>
+</table>
+</div></td>
+<td><div id="logos"><img src={{ asset('bundles/siblhmantenimiento/imagenes/minsal.jpg') }} /></div></td>
+</tr>
+</table>
+</div>
+        
+>>>>>>> marvin
         {% block body %}  
             {% endblock %}
             
@@ -40,6 +70,10 @@
     
     
         
+<<<<<<< HEAD
  </div>    
+=======
+     
+>>>>>>> marvin
     </body>
 </html>

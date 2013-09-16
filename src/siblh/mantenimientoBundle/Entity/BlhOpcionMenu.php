@@ -27,7 +27,11 @@ class BlhOpcionMenu
      *
      * @ORM\Column(name="nombre_opcion", type="string", length=50, nullable=false)
      */
+<<<<<<< HEAD
     public $nombreOpcion;
+=======
+    private $nombreOpcion;
+>>>>>>> marvin
 
     /**
      * @var string

@@ -1,0 +1,138 @@
+siblh\menuBundle\Entity\BlhDonante:
+    type: entity
+    table: blh_donante
+    fields:
+        id:
+            id: true
+            type: integer
+            unsigned: false
+            nullable: false
+            generator:
+                strategy: SEQUENCE
+        codigoDonante:
+            type: string
+            length: 12
+            fixed: false
+            nullable: true
+            column: codigo_donante
+        primerNombre:
+            type: string
+            length: 15
+            fixed: false
+            nullable: true
+            column: primer_nombre
+        segundoNombre:
+            type: string
+            length: 15
+            fixed: false
+            nullable: true
+            column: segundo_nombre
+        primerApellido:
+            type: string
+            length: 15
+            fixed: false
+            nullable: true
+            column: primer_apellido
+        segundoApellido:
+            type: string
+            length: 15
+            fixed: false
+            nullable: true
+            column: segundo_apellido
+        fechaNacimiento:
+            type: date
+            nullable: true
+            column: fecha_nacimiento
+        fechaRegistroDonanteBlh:
+            type: date
+            nullable: true
+            column: fecha_registro_donante_blh
+        direccion:
+            type: string
+            length: 100
+            fixed: false
+            nullable: true
+        procedencia:
+            type: string
+            length: 20
+            fixed: false
+            nullable: true
+        registro:
+            type: string
+            length: 10
+            fixed: false
+            nullable: true
+        numeroDocumentoIdentificacion:
+            type: string
+            length: 10
+            fixed: false
+            nullable: true
+            column: numero_documento_identificacion
+        documentoIdentificacion:
+            type: string
+            length: 20
+            fixed: false
+            nullable: false
+            column: documento_identificacion
+        edad:
+            type: integer
+            unsigned: false
+            nullable: false
+        ocupacion:
+            type: string
+            length: 15
+            fixed: false
+            nullable: true
+        estadoCivil:
+            type: string
+            length: 10
+            fixed: false
+            nullable: false
+            column: estado_civil
+        nacionalidad:
+            type: string
+            length: 15
+            fixed: false
+            nullable: false
+        escolaridad:
+            type: string
+            length: 15
+            fixed: false
+            nullable: true
+        estadoDonante:
+            type: string
+            length: 12
+            fixed: false
+            nullable: false
+            column: estado_donante
+        tipoColecta:
+            type: string
+            length: 10
+            fixed: false
+            nullable: false
+            column: tipo_colecta
+        observaciones:
+            type: string
+            length: 300
+            fixed: false
+            nullable: true
+    manyToOne:
+        idBancoDeLeche:
+            targetEntity: BlhBancoDeLeche
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                id_banco_de_leche:
+                    referencedColumnName: id
+            orphanRemoval: false
+        idMunicipio:
+            targetEntity: CltMunicipio
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                id_municipio:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

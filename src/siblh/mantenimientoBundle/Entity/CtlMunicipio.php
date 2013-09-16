@@ -156,4 +156,12 @@ class CtlMunicipio
     {
         return $this->idDepartamento;
     }
+<<<<<<< HEAD
+=======
+    
+        public function __toString() {
+  return $this->nombre;
+}
+   
+>>>>>>> marvin
 }
