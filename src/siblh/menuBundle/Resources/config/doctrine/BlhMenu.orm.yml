@@ -1,0 +1,24 @@
+siblh\menuBundle\Entity\BlhMenu:
+    type: entity
+    table: blh_menu
+    fields:
+        id:
+            id: true
+            type: integer
+            unsigned: false
+            nullable: false
+            generator:
+                strategy: SEQUENCE
+        nombreMenu:
+            type: string
+            length: 15
+            fixed: false
+            nullable: false
+            column: nombre_menu
+        descripcionMenu:
+            type: string
+            length: 50
+            fixed: false
+            nullable: true
+            column: descripcion_menu
+    lifecycleCallbacks: {  }

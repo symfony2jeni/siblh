@@ -1,0 +1,38 @@
+siblh\menuBundle\Entity\BlhAnalisisFisicoQuimico:
+    type: entity
+    table: blh_analisis_fisico_quimico
+    fields:
+        id:
+            id: true
+            type: integer
+            unsigned: false
+            nullable: false
+            generator:
+                strategy: SEQUENCE
+        codigoAnalisisFisicoQuimico:
+            type: string
+            length: 11
+            fixed: false
+            nullable: false
+            column: codigo_analisis_fisico_quimico
+        fechaAnalisisFisicoQuimico:
+            type: date
+            nullable: false
+            column: fecha_analisis_fisico_quimico
+        responsableAnalisis:
+            type: string
+            length: 30
+            fixed: false
+            nullable: false
+            column: responsable_analisis
+    manyToOne:
+        idFrascoRecolectado:
+            targetEntity: BlhFrascoRecolectado
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                id_frasco_recolectado:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

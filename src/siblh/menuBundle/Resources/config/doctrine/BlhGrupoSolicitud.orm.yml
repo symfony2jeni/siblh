@@ -1,0 +1,18 @@
+siblh\menuBundle\Entity\BlhGrupoSolicitud:
+    type: entity
+    table: blh_grupo_solicitud
+    fields:
+        id:
+            id: true
+            type: integer
+            unsigned: false
+            nullable: false
+            generator:
+                strategy: SEQUENCE
+        codigoGrupoSolicitud:
+            type: string
+            length: 11
+            fixed: false
+            nullable: false
+            column: codigo_grupo_solicitud
+    lifecycleCallbacks: {  }
