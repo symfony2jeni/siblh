@@ -77,7 +77,7 @@ class BlhHistorialClinicoController extends Controller
         ));
 
 
-        $form->add('submit', 'submit', array('label' => 'Create'));
+       // $form->add('submit', 'submit', array('label' => 'Create'));
 
         //$form->add('submit', 'submit', array('label' => 'Create'));
 
