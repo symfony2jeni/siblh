@@ -74,7 +74,7 @@ class BlhHistorialClinico
     /**
      * @var string
      *
-     * @ORM\Column(name="patologia_embarazo", type="string", length=20, nullable=true)
+     * @ORM\Column(name="patologia_embarazo", type="string", length=20, nullable=false)
      */
     private $patologiaEmbarazo;
 

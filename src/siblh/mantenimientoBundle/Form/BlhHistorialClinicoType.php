@@ -25,9 +25,11 @@ class BlhHistorialClinicoType extends AbstractType
              ->add('fechaPartoAnterior')
              ->add('fechaParto')
              ->add('amenorrea')
-             ->add('lugarParto')
-                ->add('patologiaEmbarazo')
-            
+             ->add('lugarParto','text', array( 'required'=>'false'))
+             ->add('patologiaEmbarazo','text', array( 'required'=>'false'))
+                
+             //   ->add('lugarParto','text', array( 'required'=>'false'))
+            //lista desplegable: , 'choice', array('choices' => array('si' => 'Si', 'no' => 'No'))
         ;
     }
     
