@@ -1,0 +1,32 @@
+siblh_hello:
+    resource: "@siblhHelloBundle/Resources/config/routing.yml"
+    prefix:   /
+
+siblhmantenimiento:
+    resource: "@siblhmantenimientoBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
+siblh_hello_homepage:
+    pattern:  /admin/
+    defaults: { _controller: siblhHelloBundle:Default:index }
+
+siblh_hello_projects:
+    pattern:  /admin/projects
+    defaults: { _controller: siblhHelloBundle:Default:projects }
+
+siblh_hello_projects_add:
+    pattern:  /admin/projects/add
+    defaults: { _controller: siblhHelloBundle:Default:addProject }
+
+siblh_hello_employees:
+    pattern:  /admin/employees
+    defaults: { _controller: siblhHelloBundle:Default:employees }
+
+siblh_hello_employees_add:
+    pattern:  /admin/employees/add
+    defaults: { _controller: siblhHelloBundle:Default:addEmployee }
+
+siblh_hello_profile:
+    pattern:  /admin/profile
+    defaults: { _controller: siblhHelloBundle:Default:profile }

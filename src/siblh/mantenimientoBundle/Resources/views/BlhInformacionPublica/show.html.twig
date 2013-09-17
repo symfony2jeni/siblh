@@ -1,0 +1,44 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+    <h1>BlhInformacionPublica</h1>
+
+    <table class="record_properties">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ entity.id }}</td>
+            </tr>
+            <tr>
+                <th>Documento</th>
+                <td>{{ entity.documento }}</td>
+            </tr>
+            <tr>
+                <th>Tipo</th>
+                <td>{{ entity.tipo }}</td>
+            </tr>
+            <tr>
+                <th>Nombredocumento</th>
+                <td>{{ entity.nombreDocumento }}</td>
+            </tr>
+            <tr>
+                <th>Fechapublicacion</th>
+                <td>{{ entity.fechaPublicacion|date('Y-m-d H:i:s') }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+        <ul class="record_actions">
+    <li>
+        <a href="{{ path('blhinformacionpublica') }}">
+            Back to the list
+        </a>
+    </li>
+    <li>
+        <a href="{{ path('blhinformacionpublica_edit', { 'id': entity.id }) }}">
+            Edit
+        </a>
+    </li>
+    <li>{{ form(delete_form) }}</li>
+</ul>
+{% endblock %}

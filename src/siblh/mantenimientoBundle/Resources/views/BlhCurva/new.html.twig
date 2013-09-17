@@ -1,0 +1,73 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+    <h1> Registro Curva de Penetracion</h1>
+
+   {# {{ form(form) }} #}
+    
+    
+    {{ form_start(form) }}
+    {{ form_errors(form) }}
+    
+       
+ <table border="1">
+     
+   <tr>
+       <td colspan="4" align="right">
+       {{ form_label(form.fechaCurva, 'Fecha de analisis' )}}
+       {{ form_errors(form.fechaCurva) }}
+       {{ form_widget(form.fechaCurva) }} <br></td>
+   </tr>
+   
+   <tr>
+       <td colspan="4"> <center>{{ form_label(form.cantidadFrascos, 'Cantidad' )}}
+       {{ form_errors(form.cantidadFrascos) }}
+       {{ form_widget(form.cantidadFrascos) }} </center><br></td> 
+   </tr>
+   
+   <tr>   
+   <td colspan="4"> <center>{{ form_label(form.volumenPorFrasco, 'Volumen' )}}
+       {{ form_errors(form.volumenPorFrasco) }}
+       {{ form_widget(form.volumenPorFrasco) }} </center><br></td>
+    </tr>
+    
+    <tr>
+      <td>
+          <P align="center">  
+{{ form_label(form.horaInicioCurva, 'Hora inicio')}}</P> </td>
+      <td>
+ <P align="center"> {{ form_label(form.tiempo1, 'Tiempo1' )}}</P></td>
+      <td>
+<P align="center"> {{ form_label(form.tiempo2, 'Tiempo2') }}</P></td>
+      <td>
+<P align="center"> {{ form_label(form.tiempo3, 'Tiempo3')}}</P></td>
+   </tr>
+ <tr> 
+        <td>   
+        {{ form_errors(form.horaInicioCurva) }}
+        {{ form_widget(form.horaInicioCurva) }} </td>
+   
+        <td>   
+        {{ form_errors(form.tiempo1) }}
+        {{ form_widget(form.tiempo1) }} </td>
+    
+    <td>   
+        {{ form_errors(form.tiempo2) }}
+        {{ form_widget(form.tiempo2) }} </td>
+    <td> 
+        {{ form_errors(form.tiempo3) }}
+        {{ form_widget(form.tiempo3) }} </td> 
+    
+ </tr>
+ 
+</table> 
+    {{ form_end(form) }}
+
+        <ul class="record_actions">
+    <li>
+        <a href="{{ path('blhcurva') }}">
+            Back to the list
+        </a>
+    </li>
+</ul>
+{% endblock %}

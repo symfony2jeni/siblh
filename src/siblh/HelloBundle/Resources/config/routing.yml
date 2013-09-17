@@ -1,0 +1,23 @@
+siblh_hello_homepage:
+    pattern:  /admin/
+    defaults: { _controller: AcmeHelloBundle:Default:index }
+
+siblh_hello_projects:
+    pattern:  /admin/projects
+    defaults: { _controller: AcmeHelloBundle:Default:projects }
+
+siblh_hello_projects_add:
+    pattern:  /admin/projects/add
+    defaults: { _controller: AcmeHelloBundle:Default:addProject }
+
+siblh_hello_employees:
+    pattern:  /admin/employees
+    defaults: { _controller: AcmeHelloBundle:Default:employees }
+
+siblh_hello_employees_add:
+    pattern:  /admin/employees/add
+    defaults: { _controller: AcmeHelloBundle:Default:addEmployee }
+
+siblh_hello_profile:
+    pattern:  /admin/profile
+    defaults: { _controller: AcmeHelloBundle:Default:profile }

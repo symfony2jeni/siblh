@@ -1,0 +1,48 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+    <h1>BlhReceptor</h1>
+
+    <table class="record_properties">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ entity.id }}</td>
+            </tr>
+            <tr>
+                <th>Codigoreceptor</th>
+                <td>{{ entity.codigoReceptor }}</td>
+            </tr>
+            <tr>
+                <th>Fecharegistroblh</th>
+                <td>{{ entity.fechaRegistroBlh|date('Y-m-d H:i:s') }}</td>
+            </tr>
+            <tr>
+                <th>Procedencia</th>
+                <td>{{ entity.procedencia }}</td>
+            </tr>
+            <tr>
+                <th>Estadoreceptor</th>
+                <td>{{ entity.estadoReceptor }}</td>
+            </tr>
+            <tr>
+                <th>Edaddias</th>
+                <td>{{ entity.edadDias }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+        <ul class="record_actions">
+    <li>
+        <a href="{{ path('blhreceptor') }}">
+            Back to the list
+        </a>
+    </li>
+    <li>
+        <a href="{{ path('blhreceptor_edit', { 'id': entity.id }) }}">
+            Edit
+        </a>
+    </li>
+    <li>{{ form(delete_form) }}</li>
+</ul>
+{% endblock %}

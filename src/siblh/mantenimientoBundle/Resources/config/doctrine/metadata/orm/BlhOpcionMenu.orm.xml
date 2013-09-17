@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="BlhOpcionMenu" table="blh_opcion_menu">
+    <id name="id" type="integer" column="id">
+      <generator strategy="SEQUENCE"/>
+    </id>
+    <field name="nombreOpcion" type="string" column="nombre_opcion" length="50" nullable="false"/>
+    <field name="urlOpcion" type="string" column="url_opcion" length="100" nullable="true"/>
+    <many-to-one field="idMenu" target-entity="BlhMenu">
+      <join-columns>
+        <join-column name="id_menu" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

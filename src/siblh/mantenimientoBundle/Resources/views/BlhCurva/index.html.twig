@@ -1,0 +1,55 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+    <h1>BlhCurva list</h1>
+
+    <table class="records_list">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Tiempo1</th>
+                <th>Tiempo2</th>
+                <th>Tiempo3</th>
+                <th>Valorcurva</th>
+                <th>Fechacurva</th>
+                <th>Cantidadfrascos</th>
+                <th>Volumenporfrasco</th>
+                <th>Horainiciocurva</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for entity in entities %}
+            <tr>
+                <td><a href="{{ path('blhcurva_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
+                <td>{{ entity.tiempo1 }}</td>
+                <td>{{ entity.tiempo2 }}</td>
+                <td>{{ entity.tiempo3 }}</td>
+                <td>{{ entity.valorCurva }}</td>
+                <td>{% if entity.fechaCurva %}{{ entity.fechaCurva|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{{ entity.cantidadFrascos }}</td>
+                <td>{{ entity.volumenPorFrasco }}</td>
+                <td>{{ entity.horaInicioCurva}}</td>
+                <td>
+                <ul>
+                    <li>
+                        <a href="{{ path('blhcurva_show', { 'id': entity.id }) }}">show</a>
+                    </li>
+                    <li>
+                        <a href="{{ path('blhcurva_edit', { 'id': entity.id }) }}">edit</a>
+                    </li>
+                </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+        <ul>
+        <li>
+            <a href="{{ path('blhcurva_new') }}">
+                Create a new entry
+            </a>
+        </li>
+    </ul>
+    {% endblock %}

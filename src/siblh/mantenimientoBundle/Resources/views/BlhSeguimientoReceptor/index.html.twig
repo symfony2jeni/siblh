@@ -1,0 +1,55 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+    <h1>BlhSeguimientoReceptor list</h1>
+
+    <table class="records_list">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Tallareceptor</th>
+                <th>Pesoseguimiento</th>
+                <th>Pcseguimiento</th>
+                <th>Gananciadiapeso</th>
+                <th>Semana</th>
+                <th>Fechaseguimiento</th>
+                <th>Gananciadiatalla</th>
+                <th>Complicaciones</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for entity in entities %}
+            <tr>
+                <td><a href="{{ path('blhseguimientoreceptor_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
+                <td>{{ entity.tallaReceptor }}</td>
+                <td>{{ entity.pesoSeguimiento }}</td>
+                <td>{{ entity.pcSeguimiento }}</td>
+                <td>{{ entity.gananciaDiaPeso }}</td>
+                <td>{{ entity.semana }}</td>
+                <td>{% if entity.fechaSeguimiento %}{{ entity.fechaSeguimiento|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{{ entity.gananciaDiaTalla }}</td>
+                <td>{{ entity.complicaciones }}</td>
+                <td>
+                <ul>
+                    <li>
+                        <a href="{{ path('blhseguimientoreceptor_show', { 'id': entity.id }) }}">show</a>
+                    </li>
+                    <li>
+                        <a href="{{ path('blhseguimientoreceptor_edit', { 'id': entity.id }) }}">edit</a>
+                    </li>
+                </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+        <ul>
+        <li>
+            <a href="{{ path('blhseguimientoreceptor_new') }}">
+                Create a new entry
+            </a>
+        </li>
+    </ul>
+    {% endblock %}

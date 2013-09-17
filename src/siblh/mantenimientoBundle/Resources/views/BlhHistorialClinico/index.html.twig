@@ -1,0 +1,61 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+    <h1>BlhHistorialClinico list</h1>
+
+    <table class="records_list">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Amenorrea</th>
+                <th>Controlprenatal</th>
+                <th>Lugarcontrol</th>
+                <th>Numerocontrol</th>
+                <th>Fechaultimaregla</th>
+                <th>Fechaparto</th>
+                <th>Lugarparto</th>
+                <th>Patologiaembarazo</th>
+                <th>Periodointergenesico</th>
+                <th>Fechapartoanterior</th>
+                <th>Formulaobstetrica</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for entity in entities %}
+            <tr>
+                <td><a href="{{ path('blhhistorialclinico_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
+                <td>{{ entity.amenorrea }}</td>
+                <td>{{ entity.controlPrenatal }}</td>
+                <td>{{ entity.lugarControl }}</td>
+                <td>{{ entity.numeroControl }}</td>
+                <td>{% if entity.fechaUltimaRegla %}{{ entity.fechaUltimaRegla|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{% if entity.fechaParto %}{{ entity.fechaParto|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{{ entity.lugarParto }}</td>
+                <td>{{ entity.patologiaEmbarazo }}</td>
+                <td>{{ entity.periodoIntergenesico }}</td>
+                <td>{% if entity.fechaPartoAnterior %}{{ entity.fechaPartoAnterior|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{{ entity.formulaObstetrica }}</td>
+                <td>
+                <ul>
+                    <li>
+                        <a href="{{ path('blhhistorialclinico_show', { 'id': entity.id }) }}">show</a>
+                    </li>
+                    <li>
+                        <a href="{{ path('blhhistorialclinico_edit', { 'id': entity.id }) }}">edit</a>
+                    </li>
+                </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+        <ul>
+        <li>
+            <a href="{{ path('blhhistorialclinico_new') }}">
+                Create a new entry
+            </a>
+        </li>
+    </ul>
+    {% endblock %}

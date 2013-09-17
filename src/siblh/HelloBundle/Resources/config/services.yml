@@ -1,0 +1,15 @@
+parameters:
+#    siblh_hello.example.class: siblh\HelloBundle\Example
+
+services:
+#    siblh_hello.example:
+#        class: %siblh_hello.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]
+
+
+services:
+    acme.hello.menu.voter.request:
+        class: Acme\HelloBundle\Menu\RequestVoter
+       
+        tags:
+            - { name: knp_menu.voter }
