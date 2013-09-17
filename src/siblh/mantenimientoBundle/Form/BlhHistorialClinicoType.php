@@ -26,7 +26,7 @@ class BlhHistorialClinicoType extends AbstractType
              ->add('fechaParto')
              ->add('amenorrea')
              ->add('lugarParto')
-                ->add('patologiaEmbarazo')
+             ->add('patologiaEmbarazo')
             
         ;
     }
