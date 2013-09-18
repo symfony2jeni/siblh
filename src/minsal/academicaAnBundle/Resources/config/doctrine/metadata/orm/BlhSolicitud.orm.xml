@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="BlhSolicitud" table="blh_solicitud">
+    <id name="id" type="integer" column="id">
+      <generator strategy="SEQUENCE"/>
+    </id>
+    <field name="codigoSolicitud" type="string" column="codigo_solicitud" length="14" nullable="false"/>
+    <field name="volumenPorDia" type="decimal" column="volumen_por_dia" nullable="false"/>
+    <field name="acidezNecesaria" type="string" column="acidez_necesaria" length="9" nullable="false"/>
+    <field name="caloriasNecesarias" type="string" column="calorias_necesarias" length="15" nullable="false"/>
+    <field name="pesoDia" type="decimal" column="peso_dia" nullable="false"/>
+    <field name="volumenPorToma" type="decimal" column="volumen_por_toma" nullable="false"/>
+    <field name="tomaPorDia" type="integer" column="toma_por_dia" nullable="false"/>
+    <field name="fechaSolicitud" type="date" column="fecha_solicitud" nullable="false"/>
+    <field name="cuna" type="integer" column="cuna" nullable="false"/>
+    <field name="estado" type="string" column="estado" length="1" nullable="false"/>
+    <field name="responsable" type="string" column="responsable" length="30" nullable="true"/>
+    <many-to-one field="idReceptor" target-entity="BlhReceptor">
+      <join-columns>
+        <join-column name="id_receptor" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="idGrupoSolicitud" target-entity="BlhGrupoSolicitud">
+      <join-columns>
+        <join-column name="id_grupo_solicitud" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>
