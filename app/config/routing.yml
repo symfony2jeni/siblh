@@ -17,27 +17,27 @@ siblhmantenimiento:
 
 siblh_hello_homepage:
     pattern:  /admin/
-    defaults: { _controller: siblhHelloBundle:Default:index }
+    defaults: { _controller: siblhmantenimientoBundle:Default:index }
 
 siblh_hello_projects:
     pattern:  /admin/projects
-    defaults: { _controller: siblhHelloBundle:Default:projects }
+    defaults: { _controller: siblhmantenimientoBundle:Default:projects }
 
 siblh_hello_projects_add:
     pattern:  /admin/projects/add
-    defaults: { _controller: siblhHelloBundle:Default:addProject }
+    defaults: { _controller: siblhmantenimientoBundle:Default:addProject }
 
 siblh_hello_employees:
     pattern:  /admin/employees
-    defaults: { _controller: siblhHelloBundle:Default:employees }
+    defaults: { _controller: siblhmantenimientoBundle:Default:employees }
 
 siblh_hello_employees_add:
     pattern:  /admin/employees/add
-    defaults: { _controller: siblhHelloBundle:Default:addEmployee }
+    defaults: { _controller: siblhmantenimientoBundle:Default:addEmployee }
 
 siblh_hello_profile:
     pattern:  /admin/profile
-    defaults: { _controller: siblhHelloBundle:Default:profile }
+    defaults: { _controller: siblhmantenimientoBundle:Default:profile }
 
 
 acme_hello_homepage:
