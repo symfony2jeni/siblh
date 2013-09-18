@@ -1,8 +1,4 @@
 
-siblh_hello:
-    resource: "@siblhHelloBundle/Resources/config/routing.yml"
-    prefix:   /
-
 siblhmenu:
     resource: "@siblhmenuBundle/Resources/config/routing.yml"
     prefix:   /
