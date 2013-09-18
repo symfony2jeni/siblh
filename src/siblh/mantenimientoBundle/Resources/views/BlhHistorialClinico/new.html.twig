@@ -1,4 +1,4 @@
-{% extends '::base.html.twig' %}
+{% extends 'siblhmantenimientoBundle::plantilla.html.twig' %}
 
 {% block body -%}
     <h1>BlhHistorialClinico creation</h1>
@@ -7,19 +7,13 @@
     
     
     <script type="text/javascript">
-<<<<<<< HEAD
+
 function prueba(visible, id)
  {
 
 var elemento = document.getElementById(id);
 elemento.style.visibility = visible ? "visible" : "hidden";
-=======
-function prueba(visible,elemento)
- {
-   var lugar = document.getElementById(elemento);
-  lugar.style.visibility = visible ? "visible" : "hidden";  
-        
->>>>>>> desarrollo
+
  }
 </script>
  
@@ -73,20 +67,16 @@ function prueba(visible,elemento)
         {{ form_errors(form.amenorrea) }}
         {{ form_widget(form.amenorrea) }}</td>
    <td> 
-<<<<<<< HEAD
+
         <label>Parto en Hospital:</label><br>
    <input type="radio" name="group2" value="si" onClick="prueba(false,'lugar');"> Si<br>
 <input type="radio" name="group2" value="no" onClick="prueba(true,'lugar');"> No<br></td>
 
  
-   <td style= "visibility:hidden" id="lugar">
-=======
-        <label>Parto en Hospital:</label>
-   <input type="radio" name="group2" value="si" onClick="prueba(false, 'lugar');"> Si
-<input type="radio" name="group2" value="no" onClick="prueba(true, 'lugar');"> No<br></td>
+
 
     <td id="lugar" style="visibility:hidden">
->>>>>>> desarrollo
+
         {{ form_label(form.lugarParto) }}
         {{ form_errors(form.lugarParto) }}
         {{ form_widget(form.lugarParto) }}</td>   </tr>
@@ -94,19 +84,14 @@ function prueba(visible,elemento)
     <tr>
    
    <td> 
-<<<<<<< HEAD
+
          <label>Patologia durante el embarazo:</label><br>
    <input type="radio" name="group" value="si" onClick="prueba(true,'patologia');"> Si<br>
 <input type="radio" name="group" value="no" onClick="prueba(false,'patologia');"> No<br></td>
 
-    <td style= "visibility:hidden" id="patologia">
-=======
-         <label>Patologia durante el embarazo:</label>
-   <input type="radio" name="group" value="si" onClick="prueba(false, 'patologia');"> Si
-<input type="radio" name="group" value="no" onClick="prueba(true, 'patologia');"> No<br></td>
 
     <td id = "patologia" style="visibility:hidden"> 
->>>>>>> desarrollo
+
         {{ form_label(form.patologiaEmbarazo) }}
         {{ form_errors(form.patologiaEmbarazo) }}
         {{ form_widget(form.patologiaEmbarazo) }}</td></tr>
