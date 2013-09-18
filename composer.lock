@@ -3,11 +3,7 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-<<<<<<< HEAD
-    "hash": "cbfc18cba40b47204ca01821e0c40234",
-=======
-    "hash": "341e0de7d90bba330947b81dbbda7cb7",
->>>>>>> desarrollo
+    "hash": "a8fa33733eafca70bb62eceffa006f60",
     "packages": [
         {
             "name": "doctrine/annotations",
@@ -714,12 +710,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/KnpLabs/KnpMenu.git",
-                "reference": "7baf621fb77867e49daca7dd72b443ea232cb5e1"
+                "reference": "52c8ffd7eba8028f93ef9eece98f74b2f11c1c1f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/KnpLabs/KnpMenu/zipball/7baf621fb77867e49daca7dd72b443ea232cb5e1",
-                "reference": "7baf621fb77867e49daca7dd72b443ea232cb5e1",
+                "url": "https://api.github.com/repos/KnpLabs/KnpMenu/zipball/52c8ffd7eba8028f93ef9eece98f74b2f11c1c1f",
+                "reference": "52c8ffd7eba8028f93ef9eece98f74b2f11c1c1f",
                 "shasum": ""
             },
             "require": {
@@ -756,11 +752,7 @@
                     "email": "stof@notk.org"
                 },
                 {
-<<<<<<< HEAD
-                    "name": "Knplabs",
-=======
                     "name": "KnpLabs",
->>>>>>> desarrollo
                     "homepage": "http://knplabs.com"
                 },
                 {
@@ -774,7 +766,7 @@
                 "menu",
                 "tree"
             ],
-            "time": "2013-06-24 00:02:29"
+            "time": "2013-09-16 09:46:19"
         },
         {
             "name": "knplabs/knp-menu-bundle",

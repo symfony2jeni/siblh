@@ -3,18 +3,18 @@ siblh_hello:
     resource: "@siblhHelloBundle/Resources/config/routing.yml"
     prefix:   /
 
-siblhmenu:
+iblhmenu:
     resource: "@siblhmenuBundle/Resources/config/routing.yml"
     prefix:   /
 
 
-
+>>>>>>> desarrollo
 siblhmantenimiento:
     resource: "@siblhmantenimientoBundle/Controller/"
     type:     annotation
     prefix:   /
 
-
+<<<<<<< HEAD
 siblh_hello_homepage:
     pattern:  /admin/
     defaults: { _controller: siblhHelloBundle:Default:index }
@@ -38,7 +38,7 @@ siblh_hello_employees_add:
 siblh_hello_profile:
     pattern:  /admin/profile
     defaults: { _controller: siblhHelloBundle:Default:profile }
-
+=======
 
 acme_hello_homepage:
     pattern:  /admin/
@@ -105,4 +105,4 @@ siblh_menu_profile:
     defaults: { _controller: siblhmenuBundle:Default:profile }
 
 
-
+>>>>>>> desarrollo

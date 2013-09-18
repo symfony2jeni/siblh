@@ -76,9 +76,8 @@ class BlhDonanteController extends Controller
             'method' => 'POST',
         ));
 
-<<<<<<< HEAD
+
         $form->add('submit', 'submit', array('label' => 'Create'));
-=======
 
        // $form->add('submit', 'submit', array('label' => 'Create'));
 
@@ -88,7 +87,7 @@ class BlhDonanteController extends Controller
         
     
 
->>>>>>> desarrollo
+
 
         return $form;
     }
