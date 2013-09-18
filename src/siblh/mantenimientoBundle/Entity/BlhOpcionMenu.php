@@ -27,7 +27,10 @@ class BlhOpcionMenu
      *
      * @ORM\Column(name="nombre_opcion", type="string", length=50, nullable=false)
      */
+
     public $nombreOpcion;
+
+
 
     /**
      * @var string

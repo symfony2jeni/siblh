@@ -16,7 +16,9 @@ class BlhSubOpcionMenuType extends AbstractType
     {
         $builder
             ->add('nombreSubOpcion')
+
             ->add('urlSubOpcion')
+
             ->add('idOpcionMenu')
         ;
     }

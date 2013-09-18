@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="BlhDonacion" table="blh_donacion">
+    <id name="id" type="integer" column="id">
+      <generator strategy="SEQUENCE"/>
+    </id>
+    <field name="fechaDonacion" type="date" column="fecha_donacion" nullable="false"/>
+    <field name="responsableDonacion" type="string" column="responsable_donacion" length="30" nullable="false"/>
+    <many-to-one field="idDonante" target-entity="BlhDonante">
+      <join-columns>
+        <join-column name="id_donante" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="idBancoDeLeche" target-entity="BlhBancoDeLeche">
+      <join-columns>
+        <join-column name="id_banco_de_leche" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

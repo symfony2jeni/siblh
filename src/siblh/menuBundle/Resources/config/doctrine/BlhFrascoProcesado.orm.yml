@@ -1,0 +1,55 @@
+siblh\menuBundle\Entity\BlhFrascoProcesado:
+    type: entity
+    table: blh_frasco_procesado
+    fields:
+        id:
+            id: true
+            type: integer
+            unsigned: false
+            nullable: false
+            generator:
+                strategy: SEQUENCE
+        codigoFrascoProcesado:
+            type: string
+            length: 13
+            fixed: false
+            nullable: false
+            column: codigo_frasco_procesado
+        volumenFrascoPasteurizado:
+            type: decimal
+            nullable: false
+            column: volumen_frasco_pasteurizado
+        acidezTotal:
+            type: decimal
+            nullable: false
+            column: acidez_total
+        kcaloriasTotales:
+            type: decimal
+            nullable: false
+            column: kcalorias_totales
+        observacionFrascoProcesado:
+            type: string
+            length: 30
+            fixed: false
+            nullable: true
+            column: observacion_frasco_procesado
+    manyToOne:
+        idEstado:
+            targetEntity: BlhEstado
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                id_estado:
+                    referencedColumnName: id
+            orphanRemoval: false
+        idPasteurizacion:
+            targetEntity: BlhPasteurizacion
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                id_pasteurizacion:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

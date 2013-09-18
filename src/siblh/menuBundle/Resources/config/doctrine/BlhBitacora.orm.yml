@@ -1,0 +1,36 @@
+siblh\menuBundle\Entity\BlhBitacora:
+    type: entity
+    table: blh_bitacora
+    fields:
+        id:
+            id: true
+            type: integer
+            unsigned: false
+            nullable: false
+            generator:
+                strategy: SEQUENCE
+        fechaAccion:
+            type: date
+            nullable: false
+            column: fecha_accion
+        codigo:
+            type: string
+            length: 14
+            fixed: false
+            nullable: false
+        tabla:
+            type: string
+            length: 30
+            fixed: false
+            nullable: false
+        usuario:
+            type: string
+            length: 20
+            fixed: false
+            nullable: false
+        accion:
+            type: string
+            length: 10
+            fixed: false
+            nullable: false
+    lifecycleCallbacks: {  }
