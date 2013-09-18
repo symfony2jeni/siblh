@@ -39,7 +39,8 @@ class BlhCurva
      * )
      */
     
-    
+     private $tiempo1;
+          
 
 
     /**
@@ -52,17 +53,7 @@ class BlhCurva
      *      minMessage = "El menor tiempo es 5 min",
      *      maxMessage = "El mayor tiempo es 59.9 min"
      * )
-    * @var float
-     *
-     * @ORM\Column(name="tiempo1", type="decimal", nullable=true)
-     */
-    private $tiempo1;
-
-    /**
-     * @var float
-     *
-     * @ORM\Column(name="tiempo2", type="decimal", nullable=true)
-     */
+         */
     private $tiempo2;
 
     /**
