@@ -37,7 +37,7 @@ acme_hello_employees_add:
 acme_hello_profile:
     pattern:  /admin/profile
     defaults: { _controller: siblhmantenimientoBundle:Default:profile }
-<<<<<<< HEAD
+
     
     #Entradas de Jeni
  
@@ -60,8 +60,6 @@ _NewCurva:
 _NewAnalisisMicro:
     pattern:  /AnalisisMicro/Nuevo
     defaults: { _controller: siblhmantenimientoBundle:BlhAnalisisMicrobiologico:new} 
-=======
-
 
 
 
@@ -76,4 +74,4 @@ siblh_menu_profile:
     pattern:  /admin/profile
     defaults: { _controller: siblhmenuBundle:Default:profile }
 
->>>>>>> desarrollo
+
