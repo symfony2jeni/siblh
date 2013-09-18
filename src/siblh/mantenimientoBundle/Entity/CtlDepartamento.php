@@ -123,9 +123,6 @@ class CtlDepartamento
     {
         return $this->abreviatura;
     }
-<<<<<<< HEAD
-}
-=======
 
 
   public function __toString() {
@@ -135,4 +132,3 @@ class CtlDepartamento
     
     }
 
->>>>>>> desarrollo

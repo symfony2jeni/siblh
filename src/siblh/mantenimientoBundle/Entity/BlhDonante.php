@@ -202,10 +202,7 @@ class BlhDonante
      */
     public function setCodigoDonante($codigoDonante)
     {
-<<<<<<< HEAD
-=======
 
->>>>>>> desarrollo
         $this->codigoDonante = $codigoDonante;
     
         return $this;
@@ -703,15 +700,12 @@ class BlhDonante
     {
         return $this->idMunicipio;
     }
-<<<<<<< HEAD
-    
-}
-=======
-   
+
+  
             public function __toString() {
   return $this->codigoDonante;
 }
    
 
 }
->>>>>>> desarrollo
+

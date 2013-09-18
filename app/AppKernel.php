@@ -19,10 +19,7 @@ class AppKernel extends Kernel
             new siblh\mantenimientoBundle\siblhmantenimientoBundle(),
 
          
-            new siblh\HelloBundle\siblhHelloBundle(),
-
-
-            /** other bundes are here **/
+           /** other bundes are here **/
        
             new Knp\Bundle\MenuBundle\KnpMenuBundle(),
             new siblh\menuBundle\siblhmenuBundle(),

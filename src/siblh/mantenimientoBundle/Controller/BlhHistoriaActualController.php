@@ -77,7 +77,7 @@ class BlhHistoriaActualController extends Controller
         ));
 
 
-        $form->add('submit', 'submit', array('label' => 'Create'));
+       // $form->add('submit', 'submit', array('label' => 'Create'));
 
 
        // $form->add('submit', 'submit', array('label' => 'Create'));

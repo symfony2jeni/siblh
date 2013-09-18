@@ -127,13 +127,11 @@ class BlhBancoDeLeche
         return $this->idEstablecimiento;
     }
     
-<<<<<<< HEAD
     
-    public function __toString() 
-    { $prueba= $this->codigoBancoDeLeche. $this->idEstablecimiento;
-     $prueba2= substr($prueba, 6); return $prueba2; }
-}
-=======
+ //   public function __toString() 
+   // { $prueba= $this->codigoBancoDeLeche. $this->idEstablecimiento;
+    // $prueba2= substr($prueba, 6); return $prueba2; }
+
     public function __toString() {
     $nombre_estab=  $this->codigoBancoDeLeche.$this->idEstablecimiento;
     $estab= substr($nombre_estab, 6);
@@ -141,4 +139,3 @@ class BlhBancoDeLeche
 }
 
 }
->>>>>>> desarrollo
