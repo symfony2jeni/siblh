@@ -10,7 +10,10 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use siblh\mantenimientoBundle\Entity\BlhFrascoProcesado;
 use siblh\mantenimientoBundle\Form\BlhFrascoProcesadoType;
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> desarrollo
 /**
  * BlhFrascoProcesado controller.
  *
@@ -46,7 +49,10 @@ class BlhFrascoProcesadoController extends Controller
     public function createAction(Request $request)
     {
         $entity = new BlhFrascoProcesado();
+<<<<<<< HEAD
         
+=======
+>>>>>>> desarrollo
         $form = $this->createCreateForm($entity);
         $form->handleRequest($request);
 
@@ -93,8 +99,11 @@ class BlhFrascoProcesadoController extends Controller
     public function newAction()
     {
         $entity = new BlhFrascoProcesado();
+<<<<<<< HEAD
         $blhanalisismicrobiologico = new BlhAnalisisMicrobiologico();
         $entity->setBlhAnalisisMicrobiologico($blhanalisismicrobiologico);
+=======
+>>>>>>> desarrollo
         $form   = $this->createCreateForm($entity);
 
         return array(

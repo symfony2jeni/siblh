@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="BlhBitacora" table="blh_bitacora">
+    <id name="id" type="integer" column="id">
+      <generator strategy="SEQUENCE"/>
+    </id>
+    <field name="fechaAccion" type="date" column="fecha_accion" nullable="false"/>
+    <field name="codigo" type="string" column="codigo" length="14" nullable="false"/>
+    <field name="tabla" type="string" column="tabla" length="30" nullable="false"/>
+    <field name="usuario" type="string" column="usuario" length="20" nullable="false"/>
+    <field name="accion" type="string" column="accion" length="10" nullable="false"/>
+  </entity>
+</doctrine-mapping>

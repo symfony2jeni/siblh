@@ -76,7 +76,15 @@ class BlhHistoriaActualController extends Controller
             'method' => 'POST',
         ));
 
+<<<<<<< HEAD
         $form->add('submit', 'submit', array('label' => 'Create'));
+=======
+
+       // $form->add('submit', 'submit', array('label' => 'Create'));
+
+     //   $form->add('submit', 'submit', array('label' => 'Create'));
+
+>>>>>>> desarrollo
 
         return $form;
     }

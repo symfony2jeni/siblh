@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="BlhAnalisisFisicoQuimico" table="blh_analisis_fisico_quimico">
+    <id name="id" type="integer" column="id">
+      <generator strategy="SEQUENCE"/>
+    </id>
+    <field name="codigoAnalisisFisicoQuimico" type="string" column="codigo_analisis_fisico_quimico" length="11" nullable="false"/>
+    <field name="fechaAnalisisFisicoQuimico" type="date" column="fecha_analisis_fisico_quimico" nullable="false"/>
+    <field name="responsableAnalisis" type="string" column="responsable_analisis" length="30" nullable="false"/>
+    <many-to-one field="idFrascoRecolectado" target-entity="BlhFrascoRecolectado">
+      <join-columns>
+        <join-column name="id_frasco_recolectado" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+        <title>{% block titulo %}Sistema Académico para las capacitaciones de la DTIC{% endblock %}</title>
+ 
+        
+ 
+        {% block javascripts %}            
+           <!-- <script type="text/javascript" src="{# asset('bundles/minsalsidpla/js/jquery-1.6.2.min.js') #}" ></script>-->
+        {% endblock %}
+ 
+    </head>
+     
+    {% block stylesheets %}	
+	
+        <link href="{{ asset('bundles/siblhmantenimiento/css/styles.css') }}" type="text/css" rel="stylesheet" />
+
+        
+{% endblock %}
+  
+    <body>   
+        <div id="container" >       
+<div id ="header" >
+
+<table style="width: 100%; height: 75% ;margin-left: 0%; margin-right: 25%">
+    <tr style="width: 100%">  <td style="text-align:center; font-size:30pt; font-style:bold; color: #FFFFFF">Ministerio de Salud Hospital de Maternidad</td></tr>
+</table>
+</div>
+              
+ {% include  'siblhmantenimientoBundle:Default:index_menu.html.twig' %}      
+        {% block body %}  
+            {% endblock %}
+            
+                <div id="divpie">Copyright (C) 2013 Ministerio de Salud, Banco de Leche Humana</div> 
+    
+    
+        
+ </div>    
+    </body>
+</html>

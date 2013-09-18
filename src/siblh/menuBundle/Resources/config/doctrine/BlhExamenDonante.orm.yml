@@ -1,0 +1,37 @@
+siblh\menuBundle\Entity\BlhExamenDonante:
+    type: entity
+    table: blh_examen_donante
+    fields:
+        id:
+            id: true
+            type: integer
+            unsigned: false
+            nullable: false
+            generator:
+                strategy: SEQUENCE
+        resultadoExamen:
+            type: string
+            length: 8
+            fixed: false
+            nullable: true
+            column: resultado_examen
+    manyToOne:
+        idDonante:
+            targetEntity: BlhDonante
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                id_donante:
+                    referencedColumnName: id
+            orphanRemoval: false
+        idExamen:
+            targetEntity: BlhExamen
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                id_examen:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

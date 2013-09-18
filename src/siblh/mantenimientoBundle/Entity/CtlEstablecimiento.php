@@ -153,6 +153,7 @@ class CtlEstablecimiento
     {
         return $this->fax;
     }
+<<<<<<< HEAD
     
       
     public function __toString() {
@@ -161,3 +162,29 @@ class CtlEstablecimiento
 }
 
 }
+=======
+
+
+  public function __toString() {
+  return $this->nombre;
+  }
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+>>>>>>> desarrollo

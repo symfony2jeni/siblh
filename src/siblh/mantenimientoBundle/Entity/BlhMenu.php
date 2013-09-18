@@ -20,14 +20,28 @@ class BlhMenu
      * @ORM\GeneratedValue(strategy="SEQUENCE")
      * @ORM\SequenceGenerator(sequenceName="blh_menu_id_seq", allocationSize=1, initialValue=1)
      */
+<<<<<<< HEAD
     private $id;
+=======
+
+    public $id;
+   
+
+>>>>>>> desarrollo
 
     /**
      * @var string
      *
      * @ORM\Column(name="nombre_menu", type="string", length=50, nullable=false)
      */
+<<<<<<< HEAD
     private $nombreMenu;
+=======
+
+    public $nombreMenu;
+   
+
+>>>>>>> desarrollo
 
     /**
      * @var string
@@ -93,4 +107,14 @@ class BlhMenu
     {
         return $this->descripcionMenu;
     }
+<<<<<<< HEAD
 }
+=======
+
+    
+    public function __toString() {
+        return $this->nombreMenu;
+    }
+
+}
+>>>>>>> desarrollo

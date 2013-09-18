@@ -1,0 +1,41 @@
+siblh\menuBundle\Entity\BlhDonacion:
+    type: entity
+    table: blh_donacion
+    fields:
+        id:
+            id: true
+            type: integer
+            unsigned: false
+            nullable: false
+            generator:
+                strategy: SEQUENCE
+        fechaDonacion:
+            type: date
+            nullable: false
+            column: fecha_donacion
+        responsableDonacion:
+            type: string
+            length: 30
+            fixed: false
+            nullable: false
+            column: responsable_donacion
+    manyToOne:
+        idBancoDeLeche:
+            targetEntity: BlhBancoDeLeche
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                id_banco_de_leche:
+                    referencedColumnName: id
+            orphanRemoval: false
+        idDonante:
+            targetEntity: BlhDonante
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                id_donante:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

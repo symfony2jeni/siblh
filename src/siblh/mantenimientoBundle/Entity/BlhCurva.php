@@ -3,8 +3,11 @@
 namespace siblh\mantenimientoBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+<<<<<<< HEAD
 use Symfony\Component\Validator\Constraints as Assert;
 
+=======
+>>>>>>> desarrollo
 
 /**
  * BlhCurva
@@ -25,6 +28,7 @@ class BlhCurva
     private $id;
 
     /**
+<<<<<<< HEAD
      * @var float $tiempo1
      *
      * @ORM\Column(name="tiempo1", type="decimal", nullable=false)
@@ -49,10 +53,23 @@ class BlhCurva
      *      minMessage = "El menor tiempo es 5 min",
      *      maxMessage = "El mayor tiempo es 59.9 min"
      * )
+=======
+     * @var float
+     *
+     * @ORM\Column(name="tiempo1", type="decimal", nullable=true)
+     */
+    private $tiempo1;
+
+    /**
+     * @var float
+     *
+     * @ORM\Column(name="tiempo2", type="decimal", nullable=true)
+>>>>>>> desarrollo
      */
     private $tiempo2;
 
     /**
+<<<<<<< HEAD
      * @var float $tiempo3
      *
      * @ORM\Column(name="tiempo3", type="decimal", nullable=false)
@@ -68,6 +85,12 @@ class BlhCurva
     
     
     
+=======
+     * @var float
+     *
+     * @ORM\Column(name="tiempo3", type="decimal", nullable=true)
+     */
+>>>>>>> desarrollo
     private $tiempo3;
 
     /**
@@ -81,6 +104,7 @@ class BlhCurva
      * @var \DateTime
      *
      * @ORM\Column(name="fecha_curva", type="date", nullable=false)
+<<<<<<< HEAD
      * @Assert\DateTime()
     
     private $fechaCurva;
@@ -95,10 +119,20 @@ class BlhCurva
      *      minMessage = "El menor número de frascos es 3",
      *      maxMessage = "El mayor número de frascos es 25"
      * )
+=======
+     */
+    private $fechaCurva;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="cantidad_frascos", type="integer", nullable=false)
+>>>>>>> desarrollo
      */
     private $cantidadFrascos;
 
     /**
+<<<<<<< HEAD
      * @var float $volumenPorFrasco
      *
      * @ORM\Column(name="volumen_por_frasco", type="decimal", nullable=false)
@@ -110,6 +144,12 @@ class BlhCurva
      * )
      */
     
+=======
+     * @var float
+     *
+     * @ORM\Column(name="volumen_por_frasco", type="decimal", nullable=false)
+     */
+>>>>>>> desarrollo
     private $volumenPorFrasco;
 
     /**

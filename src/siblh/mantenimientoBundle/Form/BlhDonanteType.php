@@ -14,7 +14,16 @@ class BlhDonanteType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
+<<<<<<< HEAD
         $builder
+=======
+
+
+        echo 'pruebaaaa';
+        $builder
+                
+
+>>>>>>> desarrollo
             ->add('codigoDonante')
             ->add('primerNombre')
             ->add('segundoNombre')
@@ -27,16 +36,45 @@ class BlhDonanteType extends AbstractType
             ->add('registro')
             ->add('numeroDocumentoIdentificacion')
             ->add('documentoIdentificacion')
+<<<<<<< HEAD
             ->add('edad')
+=======
+>>>>>>> desarrollo
             ->add('ocupacion')
             ->add('estadoCivil')
             ->add('nacionalidad')
             ->add('escolaridad')
+<<<<<<< HEAD
             ->add('estadoDonante')
+=======
+>>>>>>> desarrollo
             ->add('tipoColecta')
             ->add('observaciones')
             ->add('idBancoDeLeche')
             ->add('idMunicipio')
+<<<<<<< HEAD
+=======
+            ->add('procedencia')
+            ->add('fechaRegistroDonanteBlh')   
+            ->add('registro')
+            ->add('fechaNacimiento')
+            ->add('estadoCivil')
+            ->add('nacionalidad')
+            ->add('direccion')
+            ->add('documentoIdentificacion')
+            ->add('numeroDocumentoIdentificacion')
+            ->add('idBancoDeLeche')
+            ->add('ocupacion')
+            ->add('escolaridad')
+            ->add('tipoColecta')
+            ->add('observaciones')
+         
+            ->add('idMunicipio')
+            ->add('observaciones')
+          /*->add('edad')
+    
+            ->add('estadoDonante')*/
+>>>>>>> desarrollo
         ;
     }
     

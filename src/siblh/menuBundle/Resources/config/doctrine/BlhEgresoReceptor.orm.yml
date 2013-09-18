@@ -1,0 +1,72 @@
+siblh\menuBundle\Entity\BlhEgresoReceptor:
+    type: entity
+    table: blh_egreso_receptor
+    fields:
+        id:
+            id: true
+            type: integer
+            unsigned: false
+            nullable: false
+            generator:
+                strategy: SEQUENCE
+        diagnosticoEgreso:
+            type: string
+            length: 50
+            fixed: false
+            nullable: false
+            column: diagnostico_egreso
+        madreCanguro:
+            type: string
+            length: 2
+            fixed: false
+            nullable: false
+            column: madre_canguro
+        tipoEgreso:
+            type: string
+            length: 6
+            fixed: false
+            nullable: false
+            column: tipo_egreso
+        comentarioEgreso:
+            type: string
+            length: 50
+            fixed: false
+            nullable: true
+            column: comentario_egreso
+        trasladoPeriferico:
+            type: string
+            length: 2
+            fixed: false
+            nullable: false
+            column: traslado_periferico
+        permanenciaUcin:
+            type: integer
+            unsigned: false
+            nullable: true
+            column: permanencia_ucin
+        hospitalSeguimientoEgreso:
+            type: string
+            length: 30
+            fixed: false
+            nullable: true
+            column: hospital_seguimiento_egreso
+        fechaEgreso:
+            type: date
+            nullable: false
+            column: fecha_egreso
+        estanciaHospitalaria:
+            type: integer
+            unsigned: false
+            nullable: true
+            column: estancia_hospitalaria
+    manyToOne:
+        idReceptor:
+            targetEntity: BlhReceptor
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                id_receptor:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

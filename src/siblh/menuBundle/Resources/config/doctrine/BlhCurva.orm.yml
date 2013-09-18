@@ -1,0 +1,42 @@
+siblh\menuBundle\Entity\BlhCurva:
+    type: entity
+    table: blh_curva
+    fields:
+        id:
+            id: true
+            type: integer
+            unsigned: false
+            nullable: false
+            generator:
+                strategy: SEQUENCE
+        tiempo1:
+            type: decimal
+            nullable: false
+        tiempo2:
+            type: decimal
+            nullable: false
+        tiempo3:
+            type: decimal
+            nullable: false
+        valorCurva:
+            type: decimal
+            nullable: false
+            column: valor_curva
+        fechaCurva:
+            type: date
+            nullable: false
+            column: fecha_curva
+        cantidadFrascos:
+            type: integer
+            unsigned: false
+            nullable: false
+            column: cantidad_frascos
+        volumenPorFrasco:
+            type: decimal
+            nullable: false
+            column: volumen_por_frasco
+        horaInicioCurva:
+            type: time
+            nullable: false
+            column: hora_inicio_curva
+    lifecycleCallbacks: {  }

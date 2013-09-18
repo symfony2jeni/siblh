@@ -23,6 +23,18 @@ class BlhHistoriaActualType extends AbstractType
             ->add('patologiaDonante')
             ->add('imc')
             ->add('idDonante')
+<<<<<<< HEAD
+=======
+                 ->add('idDonante')
+            ->add('pesoDonante')
+            ->add('tallaDonante')
+                 ->add('imc')
+            ->add('medicamento')
+            ->add('habitoToxico')
+                  ->add('patologiaDonante')
+            ->add('motivoDonacion')
+
+>>>>>>> desarrollo
         ;
     }
     

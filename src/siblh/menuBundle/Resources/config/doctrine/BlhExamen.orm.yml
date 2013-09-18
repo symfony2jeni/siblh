@@ -1,0 +1,18 @@
+siblh\menuBundle\Entity\BlhExamen:
+    type: entity
+    table: blh_examen
+    fields:
+        id:
+            id: true
+            type: integer
+            unsigned: false
+            nullable: false
+            generator:
+                strategy: SEQUENCE
+        nombreExamen:
+            type: string
+            length: 30
+            fixed: false
+            nullable: false
+            column: nombre_examen
+    lifecycleCallbacks: {  }

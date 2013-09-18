@@ -74,7 +74,11 @@ class BlhHistorialClinico
     /**
      * @var string
      *
+<<<<<<< HEAD
      * @ORM\Column(name="patologia_embarazo", type="string", length=20, nullable=true)
+=======
+     * @ORM\Column(name="patologia_embarazo", type="string", length=20, nullable=false)
+>>>>>>> desarrollo
      */
     private $patologiaEmbarazo;
 

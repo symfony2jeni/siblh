@@ -1,12 +1,22 @@
+<<<<<<< HEAD
 siblh_hello:
     resource: "@siblhHelloBundle/Resources/config/routing.yml"
     prefix:   /
 
+=======
+
+siblhmenu:
+    resource: "@siblhmenuBundle/Resources/config/routing.yml"
+    prefix:   /
+
+
+>>>>>>> desarrollo
 siblhmantenimiento:
     resource: "@siblhmantenimientoBundle/Controller/"
     type:     annotation
     prefix:   /
 
+<<<<<<< HEAD
 siblh_hello_homepage:
     pattern:  /admin/
     defaults: { _controller: siblhHelloBundle:Default:index }
@@ -30,3 +40,71 @@ siblh_hello_employees_add:
 siblh_hello_profile:
     pattern:  /admin/profile
     defaults: { _controller: siblhHelloBundle:Default:profile }
+=======
+
+acme_hello_homepage:
+    pattern:  /admin/
+    defaults: { _controller: siblhmantenimientoBundle:Default:index }
+    
+_home:
+    pattern:  /
+    defaults: { _controller: siblhmantenimientoBundle:Default:index}
+    
+acme_hello_projects:
+    pattern:  /admin/projects
+    defaults: { _controller: siblhmantenimientoBundle:Default:projects }
+
+acme_hello_projects_add:
+    pattern:  /admin/projects/add
+    defaults: { _controller: siblhmantenimientoBundle:Default:addProject }
+
+acme_hello_employees:
+    pattern:  /admin/employees
+    defaults: { _controller: siblhmantenimientoBundle:Default:employees }
+
+acme_hello_employees_add:
+    pattern:  /admin/employees/add
+    defaults: { _controller: siblhmantenimientoBundle:Default:addEmployee }
+
+acme_hello_profile:
+    pattern:  /admin/profile
+    defaults: { _controller: siblhmantenimientoBundle:Default:profile }
+
+    
+    #Entradas de Jeni
+ 
+_NewDonante:
+    pattern:  /Donante/Nueva
+    defaults: { _controller: siblhmantenimientoBundle:BlhDonante:new}
+
+_NewHistorialClinico:
+    pattern:  /HistorialClinico/Nuevo
+    defaults: { _controller: siblhmantenimientoBundle:BlhHistorialClinico:new}
+    
+_NewHistoriaActual:
+    pattern:  /HistoriaActual/Nueva
+    defaults: { _controller: siblhmantenimientoBundle:BlhHistoriaActual:new}  
+    
+_NewCurva:
+    pattern:  /Curva/Nueva
+    defaults: { _controller: siblhmantenimientoBundle:BlhCurva:new} 
+    
+_NewAnalisisMicro:
+    pattern:  /AnalisisMicro/Nuevo
+    defaults: { _controller: siblhmantenimientoBundle:BlhAnalisisMicrobiologico:new} 
+
+
+
+
+siblh_menu_homepage:
+    pattern:  /admin/
+    defaults: { _controller: siblhmenuBundle:Default:index }
+
+
+
+siblh_menu_profile:
+    pattern:  /admin/profile
+    defaults: { _controller: siblhmenuBundle:Default:profile }
+
+
+>>>>>>> desarrollo

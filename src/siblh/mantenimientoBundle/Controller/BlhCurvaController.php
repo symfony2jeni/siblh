@@ -9,7 +9,10 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use siblh\mantenimientoBundle\Entity\BlhCurva;
 use siblh\mantenimientoBundle\Form\BlhCurvaType;
+<<<<<<< HEAD
 use Symfony\Component\Validator\Constraints as Assert;
+=======
+>>>>>>> desarrollo
 
 /**
  * BlhCurva controller.
@@ -77,7 +80,11 @@ class BlhCurvaController extends Controller
             'method' => 'POST',
         ));
 
+<<<<<<< HEAD
         $form->add('submit', 'submit', array('label' => 'Guardar'));
+=======
+        $form->add('submit', 'submit', array('label' => 'Create'));
+>>>>>>> desarrollo
 
         return $form;
     }

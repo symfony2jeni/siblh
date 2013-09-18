@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="BlhEgresoReceptor" table="blh_egreso_receptor">
+    <id name="id" type="integer" column="id">
+      <generator strategy="SEQUENCE"/>
+    </id>
+    <field name="diagnosticoEgreso" type="string" column="diagnostico_egreso" length="50" nullable="false"/>
+    <field name="madreCanguro" type="string" column="madre_canguro" length="2" nullable="false"/>
+    <field name="tipoEgreso" type="string" column="tipo_egreso" length="6" nullable="false"/>
+    <field name="comentarioEgreso" type="string" column="comentario_egreso" length="50" nullable="true"/>
+    <field name="trasladoPeriferico" type="string" column="traslado_periferico" length="2" nullable="false"/>
+    <field name="permanenciaUcin" type="integer" column="permanencia_ucin" nullable="true"/>
+    <field name="hospitalSeguimientoEgreso" type="string" column="hospital_seguimiento_egreso" length="30" nullable="true"/>
+    <field name="fechaEgreso" type="date" column="fecha_egreso" nullable="false"/>
+    <field name="estanciaHospitalaria" type="integer" column="estancia_hospitalaria" nullable="true"/>
+    <many-to-one field="idReceptor" target-entity="BlhReceptor">
+      <join-columns>
+        <join-column name="id_receptor" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>
