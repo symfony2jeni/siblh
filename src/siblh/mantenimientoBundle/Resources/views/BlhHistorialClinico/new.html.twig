@@ -7,11 +7,11 @@
     
     
     <script type="text/javascript">
-function prueba()
+function prueba(visible, id)
  {
-  alert ("prueba");
- 
-        
+
+var elemento = document.getElementById(id);
+elemento.style.visibility = visible ? "visible" : "hidden";
  }
 </script>
    {{ form_start(form) }}
@@ -63,22 +63,25 @@ function prueba()
         {{ form_errors(form.amenorrea) }}
         {{ form_widget(form.amenorrea) }}</td>
    <td> 
-        <label for="lugar">Parto en Hospital:</label><br>
-   <input type="radio" name="group2" value="si"> Si<br>
-<input type="radio" name="group2" value="no" onClick=" prueba();"> No<br></td>
+        <label>Parto en Hospital:</label><br>
+   <input type="radio" name="group2" value="si" onClick="prueba(false,'lugar');"> Si<br>
+<input type="radio" name="group2" value="no" onClick="prueba(true,'lugar');"> No<br></td>
 
-    <td>{{ form_label(form.lugarParto) }}
+ 
+   <td style= "visibility:hidden" id="lugar">
+        {{ form_label(form.lugarParto) }}
         {{ form_errors(form.lugarParto) }}
-        {{ form_widget(form.lugarParto) }}</td></tr>
+        {{ form_widget(form.lugarParto) }}</td>   </tr>
     {# ,  { 'attr': {'disabled': 'disabled'} }#}
     <tr>
    
    <td> 
-         <label for="lugar">Patologia durante el embarazo:</label><br>
-   <input type="radio" name="group2" value="si"> Si<br>
-<input type="radio" name="group2" value="no" onClick=" "> No<br></td>
+         <label>Patologia durante el embarazo:</label><br>
+   <input type="radio" name="group" value="si" onClick="prueba(true,'patologia');"> Si<br>
+<input type="radio" name="group" value="no" onClick="prueba(false,'patologia');"> No<br></td>
 
-    <td>{{ form_label(form.patologiaEmbarazo) }}
+    <td style= "visibility:hidden" id="patologia">
+        {{ form_label(form.patologiaEmbarazo) }}
         {{ form_errors(form.patologiaEmbarazo) }}
         {{ form_widget(form.patologiaEmbarazo) }}</td></tr>
    <tr><td colspan = '3' align = 'center'>  <input type="submit" value="Guardar"/></td></tr>
