@@ -10,7 +10,7 @@ acme_hello_homepage:
 _home:
     pattern:  /
     defaults: { _controller: siblhmantenimientoBundle:Default:index}
-
+    
 acme_hello_projects:
     pattern:  /admin/projects
     defaults: { _controller: siblhmantenimientoBundle:Default:projects }
@@ -30,3 +30,25 @@ acme_hello_employees_add:
 acme_hello_profile:
     pattern:  /admin/profile
     defaults: { _controller: siblhmantenimientoBundle:Default:profile }
+    
+    #Entradas de Jeni
+ 
+_NewDonante:
+    pattern:  /Donante/Nueva
+    defaults: { _controller: siblhmantenimientoBundle:BlhDonante:new}
+
+_NewHistorialClinico:
+    pattern:  /HistorialClinico/Nuevo
+    defaults: { _controller: siblhmantenimientoBundle:BlhHistorialClinico:new}
+    
+_NewHistoriaActual:
+    pattern:  /HistoriaActual/Nueva
+    defaults: { _controller: siblhmantenimientoBundle:BlhHistoriaActual:new}  
+    
+_NewCurva:
+    pattern:  /Curva/Nueva
+    defaults: { _controller: siblhmantenimientoBundle:BlhCurva:new} 
+    
+_NewAnalisisMicro:
+    pattern:  /AnalisisMicro/Nuevo
+    defaults: { _controller: siblhmantenimientoBundle:BlhAnalisisMicrobiologico:new} 

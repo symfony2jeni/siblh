@@ -25,14 +25,17 @@ class MenuBuilder extends Controller
             $texto2 = $Item->id;
             //echo $menuItems;
             $menu->addChild($texto, array('route' => ''))
-			->setAttribute('dropdown', true)
-                        ->setAttribute('icon', 'icon-list');
+			->setAttribute('dropdown', true);
+                       // ->setAttribute('icon', 'icon-list');
             
             $menuSubItems =  $em->getRepository('siblhmantenimientoBundle:BlhOpcionMenu')->findBy(array('idMenu' => $texto2));
             
              foreach($menuSubItems as $SubItem){
                  
-                 $menu[$texto]->addChild($SubItem->nombreOpcion, array('route' => ''))
+                 $menu[$texto]->addChild($SubItem->nombreOpcion, array(
+                                                'route' => $SubItem->urlOpcion,
+                                                )
+                )
 			->setAttribute('icon', 'icon-edit');
                  
              }

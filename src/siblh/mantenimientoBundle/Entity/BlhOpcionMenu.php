@@ -34,7 +34,7 @@ class BlhOpcionMenu
      *
      * @ORM\Column(name="url_opcion", type="string", length=100, nullable=true)
      */
-    private $urlOpcion;
+    public $urlOpcion;
 
     /**
      * @var \BlhMenu

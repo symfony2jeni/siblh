@@ -7,7 +7,7 @@
 body {font-family:Arial,Helvetica,sans-serif;font-size:12px;background:#201d0f;color:#fff}
 a {color:#ec7322;text-decoration:underline}
 a:hover {color:#ec7322;text-decoration:none}
-#container {width:900px;height: auto;margin:0 auto;background-color:#e8e8e8;} 
+#container {width:1000px;height: auto;margin:0 auto;background-color:#e8e8e8;} 
 #header {height:200px;background-color:#F3F781}
 #logo {font-size:36px;color:#FFF;margin:160px 0 0 10px;float:left}
 #author {float:right;margin:180px 10px 0 0}
