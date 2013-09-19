@@ -4,6 +4,10 @@ namespace siblh\mantenimientoBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
+use Symfony\Component\Validator\Constraints as Assert;
+
+
+
 /**
  * BlhCurva
  *
@@ -23,24 +27,58 @@ class BlhCurva
     private $id;
 
     /**
-     * @var float
+
+     * @var float $tiempo1
      *
-     * @ORM\Column(name="tiempo1", type="decimal", nullable=true)
+     * @ORM\Column(name="tiempo1", type="decimal", nullable=false)
+     * @Assert\Range(
+     *      min = "5.0",
+     *      max = "59.9",
+     *      minMessage = "El menor tiempo es 5 min",
+     *      maxMessage = "El mayor tiempo es 59.9 min"
+     * )
      */
-    private $tiempo1;
+    
+     private $tiempo1;
+          
+
 
     /**
-     * @var float
+     * @var float $tiempo2
      *
-     * @ORM\Column(name="tiempo2", type="decimal", nullable=true)
-     */
+     * @ORM\Column(name="tiempo2", type="decimal", nullable=false)
+      * @Assert\Range(
+     *      min = "5.0",
+     *      max = "59.9",
+     *      minMessage = "El menor tiempo es 5 min",
+     *      maxMessage = "El mayor tiempo es 59.9 min"
+     * )
+         */
     private $tiempo2;
 
     /**
-     * @var float
+
+     * @var float $tiempo3
+     *
+     * @ORM\Column(name="tiempo3", type="decimal", nullable=false)
+     * @Assert\Range(
+     *      min = "1.0",
+     *      max = "59.9",
+     *      minMessage = "El menor número a ingresar es 1.0",
+     *      maxMessage = "El mayor número a ingresar es 59.9"
+     * )
+     */
+    
+  
+    
+    
+    
+
+    /* * @var float
      *
      * @ORM\Column(name="tiempo3", type="decimal", nullable=true)
      */
+
     private $tiempo3;
 
     /**
@@ -54,6 +92,22 @@ class BlhCurva
      * @var \DateTime
      *
      * @ORM\Column(name="fecha_curva", type="date", nullable=false)
+
+     * @Assert\DateTime()
+    
+    private $fechaCurva;
+
+    /**
+     * @var integer $cantidadFrascos
+     *
+     * @ORM\Column(name="cantidad_frascos", type="integer", nullable=false)
+     * @Assert\Range(
+     *      min = "3",
+     *      max = "25",
+     *      minMessage = "El menor número de frascos es 3",
+     *      maxMessage = "El mayor número de frascos es 25"
+     * )
+
      */
     private $fechaCurva;
 
@@ -61,14 +115,27 @@ class BlhCurva
      * @var integer
      *
      * @ORM\Column(name="cantidad_frascos", type="integer", nullable=false)
+
      */
     private $cantidadFrascos;
 
     /**
-     * @var float
+     * @var float $volumenPorFrasco
+     *
+     * @ORM\Column(name="volumen_por_frasco", type="decimal", nullable=false)
+      * @Assert\Range(
+     *      min = "4",
+     *      max = "50",
+     *      minMessage = "El menor volume es 3 ml",
+     *      maxMessage = "El mayor volumen es 50 ml"
+     * )
+     */
+   
+     /** @var float
      *
      * @ORM\Column(name="volumen_por_frasco", type="decimal", nullable=false)
      */
+
     private $volumenPorFrasco;
 
     /**

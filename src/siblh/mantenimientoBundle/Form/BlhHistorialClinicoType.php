@@ -22,8 +22,6 @@ class BlhHistorialClinicoType extends AbstractType
             ->add('numeroControl')
             ->add('fechaUltimaRegla')
             ->add('fechaParto')
-            ->add('lugarParto')
-            ->add('patologiaEmbarazo')
             ->add('periodoIntergenesico')
             ->add('fechaPartoAnterior')
             ->add('formulaObstetrica')
@@ -39,8 +37,20 @@ class BlhHistorialClinicoType extends AbstractType
              ->add('fechaPartoAnterior')
              ->add('fechaParto')
              ->add('amenorrea')
+
              ->add('lugarParto')
-                ->add('patologiaEmbarazo')*/
+                ->add('patologiaEmbarazo')
+
+
+             ->add('patologiaEmbarazo')
+            
+
+             ->add('lugarParto','text', array( 'required'=>'false'))
+             ->add('patologiaEmbarazo','text', array( 'required'=>'false'))
+                
+             //   ->add('lugarParto','text', array( 'required'=>'false'))
+            //lista desplegable: , 'choice', array('choices' => array('si' => 'Si', 'no' => 'No'))
+*/
         ;
     }
     

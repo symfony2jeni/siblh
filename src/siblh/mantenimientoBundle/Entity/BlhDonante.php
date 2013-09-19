@@ -700,10 +700,12 @@ class BlhDonante
     {
         return $this->idMunicipio;
     }
-   
+
+  
             public function __toString() {
   return $this->codigoDonante;
 }
    
 
 }
+

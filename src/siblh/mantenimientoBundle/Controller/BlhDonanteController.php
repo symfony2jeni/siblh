@@ -77,13 +77,16 @@ class BlhDonanteController extends Controller
         ));
 
 
-        $form->add('submit', 'submit', array('label' => 'Create'));
+       // $form->add('submit', 'submit', array('label' => 'Create'));
+
+       // $form->add('submit', 'submit', array('label' => 'Create'));
 
 
         
        // $form->add('submit', 'submit', array('label' => 'Guardar'));
         
     
+
 
 
         return $form;

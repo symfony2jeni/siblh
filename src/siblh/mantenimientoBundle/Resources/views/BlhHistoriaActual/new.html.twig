@@ -1,12 +1,24 @@
-{% extends '::base.html.twig' %}
+{% extends 'siblhmantenimientoBundle::plantilla.html.twig' %}
+
 
 {% block body -%}
-    <h1>BlhHistoriaActual creation</h1>
+    <h1>Registro de Historia Actual</h1>
 
-<<<<<<< HEAD
-    {{ form(form) }}
-=======
+
+
+ <script type="text/javascript">
+function prueba(visible, id)
+ {
+
+var elemento = document.getElementById(id);
+elemento.style.visibility = visible ? "visible" : "hidden";
+ }
+</script>    
+    
+    
+    
     {{ form_start(form) }}
+ {{ form_start(form) }}
     {{ form_errors(form) }}
      <table align = "center">
           <tr><td colspan = "3"> 
@@ -28,30 +40,39 @@
                    
                    
    <tr><td > 
-        <label for="lugar">Uso de medicamentos:</label>
-        <input type="radio" name="group2" value="si"> Si
-        <input type="radio" name="group2" value="no" onClick=" prueba();"> No<br></td>
+        <label>Uso de medicamentos:</label>
+
+        <input type="radio" name="group2" value="si" onClick="prueba(true, 'medicamento');"> Si
+        <input type="radio" name="group2" value="no" onClick="prueba(false, 'medicamento');"> No<br></td>
  
-  <td colspan = "2"> 
+  <td colspan = "2" id= "medicamento" style="visibility:hidden" > 
+
         {{ form_label(form.medicamento) }}
         {{ form_errors(form.medicamento) }}
         {{ form_widget(form.medicamento,  { 'attr': {'size': '40'} }) }} </td>  </tr>
   
   <tr><td > 
-        <label for="lugar">Habitos toxicos:</label>
-        <input type="radio" name="group2" value="si"> Si
-        <input type="radio" name="group2" value="no" onClick=" prueba();"> No<br></td>
+
+       
+
+        <label>Habitos toxicos:</label>
+        <input type="radio" name="group" value="si" onClick="prueba(true, 'habitos');"> Si
+        <input type="radio" name="group" value="no" onClick="prueba(false, 'habitos');"> No<br></td>
  
-  <td colspan = "2"> 
+  <td colspan = "2" id= "habitos" style="visibility:hidden"> 
+
         {{ form_label(form.habitoToxico) }}
         {{ form_errors(form.habitoToxico) }}
         {{ form_widget(form.habitoToxico,  { 'attr': {'size': '40'} }) }} </td>  </tr>
   <tr><td > 
-        <label for="lugar">Patologias:</label>
-        <input type="radio" name="group2" value="si"> Si
-        <input type="radio" name="group2" value="no" onClick=" prueba();"> No<br></td>
+
+     
+        <label>Patologias:</label>
+        <input type="radio" name="group1" value="si" onClick="prueba(true, 'patologiasd');"> Si
+        <input type="radio" name="group1" value="no" onClick="prueba(false, 'patologiasd');"> No<br></td>
  
-  <td colspan = "2"> 
+  <td colspan = "2" id= "patologiasd" style="visibility:hidden"> 
+
         {{ form_label(form.patologiaDonante) }}
         {{ form_errors(form.patologiaDonante) }}
         {{ form_widget(form.patologiaDonante,  { 'attr': {'size': '40'} }) }} </td>  </tr> 
@@ -65,7 +86,7 @@
    </table>
    
     {{ form_end(form) }}
->>>>>>> marvin
+
 
         <ul class="record_actions">
     <li>

@@ -1,9 +1,48 @@
-{% extends '::base.html.twig' %}
+{% extends 'siblhmantenimientoBundle::plantilla.html.twig' %}
+
 
 {% block body -%}
-    <h1>BlhAnalisisMicrobiologico creation</h1>
+    <h1> ANALIS MICROBIOLOGICO</h1>
 
-    {{ form(form) }}
+   {# {{ form(form) }} #}
+
+{{ form_start(form) }}
+    {{ form_errors(form) }}
+    
+       
+ <table border="1">
+<tr>
+    <td>{{ form_label(form.idFrascoProcesado, 'Frasco pasteurizado' )}}</td>
+    <td>{{ form_label(form.coliformesTotales, 'Coliformes totales') }}</td>
+    <td>{{ form_label(form.control, 'Control')}} </td>
+    <td>{{ form_label(form.situacion, 'Situacion') }}</td>
+   
+    
+    
+ </tr>
+ <tr> 
+    <td>
+        {{ form_errors(form.idFrascoProcesado) }}
+        {{ form_widget(form.idFrascoProcesado) }} </td>
+    <td>   
+        {{ form_errors(form.coliformesTotales) }}
+        {{ form_widget(form.coliformesTotales) }} </td>
+    <td> 
+        {{ form_errors(form.control) }}
+        {{ form_widget(form.control) }} </td>
+    <td>  
+         {{ form_errors(form.situacion) }}
+         {{ form_widget(form.situacion) }} 
+    </td>  
+    
+ </tr>
+</table> 
+   
+   {# <input type="submit" /> #}
+  
+{{ form_end(form) }}
+
+   
 
         <ul class="record_actions">
     <li>

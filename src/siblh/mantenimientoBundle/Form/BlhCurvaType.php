@@ -6,6 +6,8 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
+
+
 class BlhCurvaType extends AbstractType
 {
         /**
@@ -18,6 +20,8 @@ class BlhCurvaType extends AbstractType
             ->add('tiempo1')
             ->add('tiempo2')
             ->add('tiempo3')
+
+            /*->add('valorCurva') */
             ->add('valorCurva')
             ->add('fechaCurva')
             ->add('cantidadFrascos')

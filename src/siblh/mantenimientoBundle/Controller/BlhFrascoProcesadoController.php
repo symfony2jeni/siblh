@@ -91,6 +91,8 @@ class BlhFrascoProcesadoController extends Controller
     public function newAction()
     {
         $entity = new BlhFrascoProcesado();
+        $blhanalisismicrobiologico = new BlhAnalisisMicrobiologico();
+        $entity->setBlhAnalisisMicrobiologico($blhanalisismicrobiologico);
         $form   = $this->createCreateForm($entity);
 
         return array(

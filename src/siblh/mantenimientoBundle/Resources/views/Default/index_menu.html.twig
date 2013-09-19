@@ -2,11 +2,10 @@
 	
         <link href="{{ asset('bundles/siblhmantenimiento/bootstrap.no-icons.min.css') }}" type="text/css" rel="stylesheet" />
         <link href="{{ asset('bundles/siblhmantenimiento/font-awesome.css') }}" type="text/css" rel="stylesheet" />
-        
 {% endblock %}
 
 {% block body %}
-	<div class="navbar">
+	<div  class="navbar">
 		<div class="navbar-inner">
 			<a class="brand" href="{{ path('_home') }}">Inicio</a>
 			{{ knp_menu_render('siblhmantenimientoBundle:MenuBuilder:mainMenu', {'currentClass': 'active', 'template': 'siblhmantenimientoBundle:Menu:knp_menu.html.twig'}) }}

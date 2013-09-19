@@ -7,7 +7,7 @@ class AppKernel extends Kernel
 {
     public function registerBundles()
     {
-        $bundles = array(
+        $bundles = array( 
             new Symfony\Bundle\FrameworkBundle\FrameworkBundle(),
             new Symfony\Bundle\SecurityBundle\SecurityBundle(),
             new Symfony\Bundle\TwigBundle\TwigBundle(),
@@ -18,7 +18,7 @@ class AppKernel extends Kernel
             new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
             new siblh\mantenimientoBundle\siblhmantenimientoBundle(),
 
-            /** other bundes are here **/
+           /** other bundes are here **/
        
             new Knp\Bundle\MenuBundle\KnpMenuBundle(),
             new siblh\menuBundle\siblhmenuBundle(),

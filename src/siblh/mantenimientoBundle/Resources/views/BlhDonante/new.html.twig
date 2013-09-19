@@ -1,10 +1,13 @@
-{% extends '::base.html.twig' %}
+
+{% extends 'siblhmantenimientoBundle::plantilla.html.twig' %}
+
 
 {% block body -%}
-    <h1>BlhDonante creation</h1>
+    <h1>Registro de Donante</h1>
+
 
   {#  {{ form(form) }} 
-Creando el form #} 
+{#Creando el form #} 
 
     {{ form_start(form) }}
     {{ form_errors(form) }}
@@ -108,4 +111,5 @@ Creando el form #}
     </li>
     </ul>
 {% endblock %}
+
 

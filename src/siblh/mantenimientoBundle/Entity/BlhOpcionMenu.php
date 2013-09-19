@@ -28,6 +28,7 @@ class BlhOpcionMenu
      * @ORM\Column(name="nombre_opcion", type="string", length=50, nullable=false)
      */
 
+
     public $nombreOpcion;
 
 
@@ -37,7 +38,9 @@ class BlhOpcionMenu
      *
      * @ORM\Column(name="url_opcion", type="string", length=100, nullable=true)
      */
-    private $urlOpcion;
+
+    public $urlOpcion;
+
 
     /**
      * @var \BlhMenu
@@ -130,3 +133,4 @@ class BlhOpcionMenu
         return $this->idMenu;
     }
 }
+
