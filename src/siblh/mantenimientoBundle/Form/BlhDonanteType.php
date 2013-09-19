@@ -54,9 +54,10 @@ class BlhDonanteType extends AbstractType
             ->add('observaciones')
            ->add('idMunicipio')
             ->add('observaciones')
-          /*->add('edad')
+          //->add('edad')
     
-            ->add('estadoDonante')*/
+          
+	    ->add('estadoDonante')
        ;
     }
     
