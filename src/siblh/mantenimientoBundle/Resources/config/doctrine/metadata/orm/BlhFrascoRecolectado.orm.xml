@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="BlhFrascoRecolectado" table="blh_frasco_recolectado">
+    <id name="id" type="integer" column="id">
+      <generator strategy="SEQUENCE"/>
+    </id>
+    <field name="codigoFrascoRecolectado" type="string" column="codigo_frasco_recolectado" length="15" nullable="false"/>
+    <field name="volumenRecolectado" type="decimal" column="volumen_recolectado" nullable="false"/>
+    <field name="formaExtraccion" type="string" column="forma_extraccion" length="8" nullable="false"/>
+    <field name="onzRecolectado" type="decimal" column="onz_recolectado" nullable="true"/>
+    <field name="observacionFrascoRecolectado" type="string" column="observacion_frasco_recolectado" length="30" nullable="true"/>
+    <many-to-one field="idLoteAnalizado" target-entity="BlhLoteAnalizado">
+      <join-columns>
+        <join-column name="id_lote_analizado" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="idDonante" target-entity="BlhDonante">
+      <join-columns>
+        <join-column name="id_donante" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="idDonacion" target-entity="BlhDonacion">
+      <join-columns>
+        <join-column name="id_donacion" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="idEstado" target-entity="BlhEstado">
+      <join-columns>
+        <join-column name="id_estado" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

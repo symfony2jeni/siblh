@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="BlhFrascoProcesado" table="blh_frasco_procesado">
+    <id name="id" type="integer" column="id">
+      <generator strategy="SEQUENCE"/>
+    </id>
+    <field name="codigoFrascoProcesado" type="string" column="codigo_frasco_procesado" length="15" nullable="false"/>
+    <field name="volumenFrascoPasteurizado" type="decimal" column="volumen_frasco_pasteurizado" nullable="false"/>
+    <field name="acidezTotal" type="decimal" column="acidez_total" nullable="false"/>
+    <field name="kcaloriasTotales" type="decimal" column="kcalorias_totales" nullable="false"/>
+    <field name="observacionFrascoProcesado" type="string" column="observacion_frasco_procesado" length="30" nullable="true"/>
+    <many-to-one field="idPasteurizacion" target-entity="BlhPasteurizacion">
+      <join-columns>
+        <join-column name="id_pasteurizacion" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="idEstado" target-entity="BlhEstado">
+      <join-columns>
+        <join-column name="id_estado" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

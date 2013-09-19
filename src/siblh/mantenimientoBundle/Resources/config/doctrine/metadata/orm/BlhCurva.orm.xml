@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="BlhCurva" table="blh_curva">
+    <id name="id" type="integer" column="id">
+      <generator strategy="SEQUENCE"/>
+    </id>
+    <field name="tiempo1" type="decimal" column="tiempo1" nullable="true"/>
+    <field name="tiempo2" type="decimal" column="tiempo2" nullable="true"/>
+    <field name="tiempo3" type="decimal" column="tiempo3" nullable="true"/>
+    <field name="valorCurva" type="decimal" column="valor_curva" nullable="true"/>
+    <field name="fechaCurva" type="date" column="fecha_curva" nullable="false"/>
+    <field name="cantidadFrascos" type="integer" column="cantidad_frascos" nullable="false"/>
+    <field name="volumenPorFrasco" type="decimal" column="volumen_por_frasco" nullable="false"/>
+    <field name="horaInicioCurva" type="time" column="hora_inicio_curva" nullable="false"/>
+  </entity>
+</doctrine-mapping>
