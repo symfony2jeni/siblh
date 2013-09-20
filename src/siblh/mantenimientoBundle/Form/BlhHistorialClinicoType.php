@@ -26,6 +26,9 @@ class BlhHistorialClinicoType extends AbstractType
             ->add('fechaPartoAnterior')
             ->add('formulaObstetrica')
             ->add('idDonante')
+	    ->add('lugarParto')
+            ->add('patologiaEmbarazo')
+
 /*
              ->add('idDonante')
              ->add('formulaObstetrica')
