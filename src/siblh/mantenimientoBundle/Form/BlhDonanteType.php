@@ -18,7 +18,7 @@ class BlhDonanteType extends AbstractType
         $builder
                 
 
-           ->add('codigoDonante')
+     
             ->add('primerNombre')
             ->add('segundoNombre')
             ->add('primerApellido')
@@ -54,10 +54,8 @@ class BlhDonanteType extends AbstractType
             ->add('observaciones')
            ->add('idMunicipio')
             ->add('observaciones')
-          //->add('edad')
-    
-          
-	    ->add('estadoDonante')
+            ->add('estadoDonante')
+                 //->add('edad')
        ;
     }
     

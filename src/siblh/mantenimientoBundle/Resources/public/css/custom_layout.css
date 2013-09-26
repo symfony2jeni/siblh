@@ -1,0 +1,140 @@
+@media (min-width: 979px) {
+    body.sonata-bc {
+        padding-top: 1px;
+        /* background:-moz-linear-gradient(top, #ffffff, #8CB5F3,#266ebb);
+        background: -webkit-linear-gradient( top, #ffffff, #8CB5F3,#266ebb);*/
+        
+    }
+    
+    
+}
+
+#banner{
+    text-align: center;
+    margin: 0 auto;
+    position: relative;
+    width: 750px;
+    padding-bottom: 1em;
+}
+
+div#divpie{
+    position: inherit; 
+   /* position: fixed; 
+    color: #E6E6E6;
+    font-size:12px;
+    font-family: Verdana,Arial,Helvetica,sans-serif;
+    top: 96%;
+    height: 29px;
+    font-weight: bold;
+    width: 85%;*/
+    
+    /* -- CSS3 - Gradiente de fondo -- 
+       background: -webkit-linear-gradient( 0deg ,whitesmoke,#749ecb,#266ebb);*/
+   background: -webkit-linear-gradient( 0deg ,whitesmoke,#749ecb,#266ebb);
+   background: -moz-linear-gradient( 0deg ,whitesmoke,#749ecb,#266ebb);
+
+}
+#divpie img{
+    margin-top: 3px;
+    margin-right: 0px;
+    border: 0px solid red;
+    text-align: right;
+}
+
+div#pagina{
+    width:90%; 
+    text-align: center;
+    margin-left: auto ;
+    margin-right: auto ;
+    margin-top: 0em;
+    background-color:white;
+   /* min-height: 780px;
+font-family:Comic Sans MS,Arial;
+     
+        
+    /* -- CSS3 - definición de las esquinas redondeadas -- */
+    /* -moz-border-top-left-radius: 0.8em;
+    -moz-border-top-right-radius: 0.8em;
+    border-top-right-radius:  .8em;
+    border-top-left-radius: .8em;*/
+    
+    /* -- CSS3 - Sombras -- */
+    -webkit-box-shadow:0px 0 50px #848484; 
+    -moz-box-shadow:50px 50px 50px #848484;
+    box-shadow:0px 0 50px #848484;
+    border-top: 3px solid #dadada;/*#e5e5e5;*/
+    border-left: 5px solid #dadada;
+    border-right: 5px solid #dadada;
+}
+.sonata-bc div.connection {
+    border: 1px solid #DDDDDD;
+    border-radius: 6px 6px 6px 6px;
+    box-shadow: 2px 2px 10px #CCCCCC;
+    left: 50%;
+    margin: 10px 0 0 -250px;
+    position: relative;
+    top: 35%;
+    width: 460px;
+}
+
+.editable{
+    max-height: 350px;
+    overflow-y: auto;
+    border: 1px solid #CCCCCC;
+}
+
+.unstyled {
+    max-height: 280px;
+    overflow-y: auto;
+    border: 1px solid #CCCCCC;        
+}
+
+.sonata-bc th.sonata-ba-list-field-header-order-desc:hover:before {
+	display: inline-block;
+	position: relative;
+}
+
+.sonata-bc th.sonata-ba-list-field-header-order-asc:hover:before {
+	display: inline-block;
+	position: relative;
+}
+
+.sonata-bc th.sonata-ba-list-field-header-order-desc,
+.sonata-bc th.sonata-ba-list-field-header-order-asc {
+    position: relative;
+}
+
+.sonata-bc th.sonata-ba-list-field-header-order-asc.sonata-ba-list-field-order-active:before,
+.sonata-bc th.sonata-ba-list-field-header-order-desc.sonata-ba-list-field-order-active:hover:before {
+	display: inline-block;
+	position: relative;
+}
+
+.sonata-bc th.sonata-ba-list-field-header-order-desc.sonata-ba-list-field-order-active:before,
+.sonata-bc th.sonata-ba-list-field-header-order-asc.sonata-ba-list-field-order-active:hover:before {
+	display: inline-block;
+	position: relative;
+}
+
+div#logos {
+
+   border:0px;
+  border-color:white;
+   border-style:solid;
+    width:160px; 
+   height:125px;
+margin:0 auto;
+
+text-align: center;
+    margin: 0 auto;
+    position: relative;
+   
+    padding-bottom: 1em;
+
+  }
+  
+  #header {height:200px;background-color:#F3F781; }
+  
+ 
+  
+  

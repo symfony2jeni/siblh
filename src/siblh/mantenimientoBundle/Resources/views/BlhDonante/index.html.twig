@@ -1,5 +1,9 @@
-{% extends 'siblhmantenimientoBundle::plantilla.html.twig' %}
+{% extends 'siblhmantenimientoBundle::standard_layout.html.twig' %}
 
+{% block javascripts %}
+    {{parent()}}
+    <script type="text/javascript" src="{{ asset('bundles/siblhmantenimiento/js/entidades/index.js') }}" ></script>
+{% endblock %}
 
 {% block body -%}
     <h1>BlhDonante list</h1>

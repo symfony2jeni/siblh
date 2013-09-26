@@ -42,7 +42,7 @@ class BlhHistoriaActualType extends AbstractType {
             ->add('idDonante')
             ->add('idDonante')
             ->add('pesoDonante')
-            ->add('tallaDonante')
+            ->add('tallaDonante', 'number', array ( 'invalid_message'=>'Debe ser entre 1.5 y 2'))
             ->add('imc')
             ->add('medicamento')
             ->add('habitoToxico')

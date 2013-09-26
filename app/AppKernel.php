@@ -23,6 +23,7 @@ class AppKernel extends Kernel
             new Knp\Bundle\MenuBundle\KnpMenuBundle(),
             new siblh\menuBundle\siblhmenuBundle(),
 
+            new jQuery\jQueryBundle\jQueryBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

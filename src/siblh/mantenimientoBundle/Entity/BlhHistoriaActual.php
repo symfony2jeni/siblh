@@ -3,6 +3,7 @@
 namespace siblh\mantenimientoBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * BlhHistoriaActual
@@ -33,7 +34,16 @@ class BlhHistoriaActual
      * @var float
      *
      * @ORM\Column(name="talla_donante", type="decimal", nullable=false)
+     * @Assert\Range(
+     *      min = "1",
+     *      max = "2",
+     *      minMessage = "El menor número a ingresar es 1",
+     *      maxMessage = "El mayor número a ingresar es 2"
+     * )
+     * 
      */
+    
+    
     private $tallaDonante;
 
     /**

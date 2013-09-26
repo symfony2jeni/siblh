@@ -1,6 +1,9 @@
 
-{% extends 'siblhmantenimientoBundle::plantilla.html.twig' %}
-
+{% extends 'siblhmantenimientoBundle::standard_layout.html.twig' %}
+{% block stylesheets %}
+    {{ parent() }}
+	<link href="{{ asset('bundles/siblhmantenimiento/css/form.css') }}" rel="stylesheet" type="text/css" />
+{% endblock %}
 
 {% block body -%}
     <h1>Registro de Donante</h1>
@@ -12,17 +15,14 @@
     {{ form_start(form) }}
     {{ form_errors(form) }}
  
-  <table align = "center">
-      <tr><td colspan="3" align = "right"> 
-        {{ form_label(form.codigoDonante) }}
-        {{ form_errors(form.codigoDonante) }}
-        {{ form_widget(form.codigoDonante) }} </td></tr>
+  <table align = "center" >
+     
    <tr>  
    <td> {{ form_label(form.primerNombre) }}
         {{ form_errors(form.primerNombre) }}
         {{ form_widget(form.primerNombre,  { 'attr': {'size': '40'} }) }} </td> 
       
-   <td colspan = '2' align = "right"> 
+   <td colspan = '2' > 
         {{ form_label(form.segundoNombre) }}
         {{ form_errors(form.segundoNombre) }}
         {{ form_widget(form.segundoNombre,  { 'attr': {'size': '40'} }) }} </td></tr>
@@ -32,7 +32,7 @@
         {{ form_errors(form.primerApellido) }}
         {{ form_widget(form.primerApellido,  { 'attr': {'size': '40'} }) }} </td>
   
-    <td colspan = '2' align = "right"> 
+    <td colspan = '2' > 
         {{ form_label(form.segundoApellido) }}
         {{ form_errors(form.segundoApellido) }}
         {{ form_widget(form.segundoApellido,  { 'attr': {'size': '40'} }) }} </td></tr>
@@ -81,7 +81,7 @@
         {{ form_errors(form.documentoIdentificacion) }}
         {{ form_widget(form.documentoIdentificacion) }}     </td>
   
-   <td> {{ form_label(form.numeroDocumentoIdentificacion) }}
+   <td> {{ form_label(form.numeroDocumentoIdentificacion, 'Numero Documento') }}
         {{ form_errors(form.numeroDocumentoIdentificacion) }}
         {{ form_widget(form.numeroDocumentoIdentificacion) }} </td>
    
@@ -94,10 +94,13 @@
         {{ form_errors(form.idMunicipio) }}
         {{ form_widget(form.idMunicipio) }} </td>
   
-   <td colspan = '2'> 
+   <td > 
         {{ form_label(form.observaciones) }}
         {{ form_errors(form.observaciones) }}
-        {{ form_widget(form.observaciones,  { 'attr': {'size': '90'} }) }} </td></tr>
+        {{ form_widget(form.observaciones,  { 'attr': {'size': '50'} }) }} </td>
+    <td> {{ form_label(form.estadoDonante) }}
+        {{ form_errors(form.estadoDonante) }}
+        {{ form_widget(form.estadoDonante) }} </td></tr>
    
   <tr><td colspan = '3' align = 'center'>  <input type="submit" value="Guardar"/></td></tr>
     </table>

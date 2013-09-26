@@ -74,14 +74,14 @@ class BlhHistorialClinico
     /**
      * @var string
      *
-     * @ORM\Column(name="patologia_embarazo", type="string", length=20, nullable=true)
+     * @ORM\Column(name="patologia_embarazo", type="string", length=20, nullable=false)
      */
     private $patologiaEmbarazo;
 
     /**
      * @var integer
      *
-     * @ORM\Column(name="periodo_intergenesico", type="integer", nullable=false)
+     * @ORM\Column(name="periodo_intergenesico", type="integer", nullable=true)
      */
     private $periodoIntergenesico;
 
