@@ -4,7 +4,14 @@
     {{ parent() }}
 	<link href="{{ asset('bundles/siblhmantenimiento/css/form.css') }}" rel="stylesheet" type="text/css" />
 {% endblock %}
+{% block javascripts %}
 
+{{parent()}}
+
+<script type="text/javascript" src="{{ asset('bundles/siblhmantenimiento/js/BlhDonante/new.js') }}" ></script>
+<script type="text/javascript" src="{{ asset('bundles/jquery/jquery-ui-1.10.3.custom/development-bundle/ui/jquery.ui.datepicker.js') }}" ></script>
+        
+{% endblock %}
 {% block body -%}
     <h1>Registro de Donante</h1>
 
@@ -42,14 +49,14 @@
         {{ form_widget(form.procedencia) }} </td>
     <td>{{ form_label(form.fechaRegistroDonanteBlh) }}
         {{ form_errors(form.fechaRegistroDonanteBlh) }}
-        {{ form_widget(form.fechaRegistroDonanteBlh) }} </td>
+        {{ form_widget(form.fechaRegistroDonanteBlh, {'attr':{'readonly': 'true'} }) }} </td>
     <td>{{ form_label(form.registro) }}
         {{ form_errors(form.registro) }}
         {{ form_widget(form.registro) }} </td></tr>
     <tr>
     <td>{{ form_label(form.fechaNacimiento) }}
         {{ form_errors(form.fechaNacimiento) }}
-        {{ form_widget(form.fechaNacimiento) }} </td>
+        {{ form_widget(form.fechaNacimiento, {'attr':{'readonly': 'true'} }) }} </td>
   
    <td> {{ form_label(form.estadoCivil) }}
         {{ form_errors(form.estadoCivil) }}

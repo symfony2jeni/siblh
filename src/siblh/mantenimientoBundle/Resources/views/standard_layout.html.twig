@@ -3,18 +3,7 @@
     <head>
         <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
         <title>{% block titulo %}MINSAL::SIBLH{% endblock %}</title>
- 
- 
- 
-        {% block javascripts %}            
-           <!-- <script type="text/javascript" src="{# asset('bundles/minsalsidpla/js/jquery-1.6.2.min.js') #}" ></script>-->
-        <script type="text/javascript" src="{{ asset('bundles/jquery/jquery-ui-1.10.3.custom/js/jquery-2.0.3.min.js') }}" ></script>
-        <script type="text/javascript" src="{{ asset('bundles/jquery/bValidator-0.71/jquery.bvalidator.js')}}"></script>
-        <script type="text/javascript" src="{{ asset('bundles/jquery/bValidator-0.71/bvalidator.lang.es.js')}}" ></script>        
-        <script type="text/javascript" src="{{ asset('bundles/jquery/js/jquery-2.0.3.min.js') }}" ></script> 
-       {% endblock %}
- 
-    {% block stylesheets %}	
+  {% block stylesheets %}	
 
         <link href="{{ asset('bundles/siblhmantenimiento/css/custom_layout.css') }}" type="text/css" rel="stylesheet" />
        
@@ -22,9 +11,19 @@
       
         <link href="{{ asset('bundles/siblhmantenimiento/imagenes/escudo.png') }}" type="image/png" rel="Shortcut Icon" />
    
-       <link href="{{ asset('bundles/jquery/jquery-ui-1.10.3.custom/css/custom-theme/jquery-ui-1.10.3.custom.css') }}" rel="stylesheet" type="text/css" />
-       <link href="{{ asset('bundles/jquery/bValidator-0.71/themes/bvalidator.theme.red.css') }}" rel="stylesheet" type="text/css" />    
+{#ya #} <link href="{{ asset('bundles/jquery/jquery-ui-1.10.3.custom/css/custom-theme/jquery-ui-1.10.3.custom.css') }}" rel="stylesheet" type="text/css" />
+{#ya #} <link href="{{ asset('bundles/jquery/bValidator-0.71/themes/bvalidator.theme.red.css') }}" rel="stylesheet" type="text/css" />    
     {% endblock %}
+ 
+ 
+        {% block javascripts %}            
+{#ya#}  <script type="text/javascript" src="{{ asset('bundles/jquery/js/jquery-2.0.3.min.js') }}" ></script> 
+ {#ya #} <script type="text/javascript" src="{{ asset('bundles/jquery/jquery-ui-1.10.3.custom/js/jquery-ui-1.10.3.custom.min.js') }}" ></script>
+        <script type="text/javascript" src="{{ asset('bundles/jquery/bValidator-0.71/jquery.bvalidator.js')}}"></script>
+        <script type="text/javascript" src="{{ asset('bundles/jquery/bValidator-0.71/bvalidator.lang.es.js')}}" ></script>        
+       {% endblock %}
+ 
+   
     </head>
      
    
@@ -73,4 +72,4 @@
   </div>    
  
     </body>
-</html>}
+</html>

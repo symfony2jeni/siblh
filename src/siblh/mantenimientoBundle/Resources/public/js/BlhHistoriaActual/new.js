@@ -1,4 +1,8 @@
-$('#siblh_mantenimientobundle_blhhistoriaactualtype_tallaDonante').
+
+
+$(document).ready(function() { 
+   $('button').button();
+   $('#siblh_mantenimientobundle_blhhistoriaactualtype_talladonante').
         attr('data-bvalidator', 'between[1:2],required');
  
    
@@ -10,4 +14,7 @@ $('#siblh_mantenimientobundle_blhhistoriaactualtype_tallaDonante').
     };
  
     //Validar el formulario
+         $.noConflict();
     $('form').bValidator(optionsRed);
+});
+

@@ -23,8 +23,14 @@ class BlhDonanteType extends AbstractType
             ->add('segundoNombre')
             ->add('primerApellido')
             ->add('segundoApellido')
-            ->add('fechaNacimiento')
-            ->add('fechaRegistroDonanteBlh')
+            ->add('fechaNacimiento', 'date', 
+                    array(  'widget' => 'single_text',
+                            'format' => 'yy-MM-dd',
+                            'attr' => array('class' => 'date')))
+            ->add('fechaRegistroDonanteBlh', 'date', 
+                    array(  'widget' => 'single_text',
+                            'format' => 'yy-MM-dd',
+                            'attr' => array('class' => 'date')))
             ->add('direccion')
             ->add('procedencia')
             ->add('registro')
@@ -39,9 +45,7 @@ class BlhDonanteType extends AbstractType
             ->add('idBancoDeLeche')
             ->add('idMunicipio')
             ->add('procedencia')
-            ->add('fechaRegistroDonanteBlh')   
             ->add('registro')
-            ->add('fechaNacimiento')
             ->add('estadoCivil')
             ->add('nacionalidad')
             ->add('direccion')
