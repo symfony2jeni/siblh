@@ -169,6 +169,7 @@ class BlhDonante
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="id_banco_de_leche", referencedColumnName="id")
      * })
+     *
      */
     private $idBancoDeLeche;
 

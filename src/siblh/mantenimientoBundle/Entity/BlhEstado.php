@@ -63,4 +63,8 @@ class BlhEstado
     {
         return $this->nombreEstado;
     }
+    
+                public function __toString() {
+  return $this->nombreEstado;
+}
 }

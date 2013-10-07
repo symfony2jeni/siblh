@@ -54,7 +54,7 @@ class BlhDonacion
      *   @ORM\JoinColumn(name="id_donante", referencedColumnName="id")
      * })
      */
-    private $idDonante;
+    public $idDonante;
 
 
 
@@ -159,4 +159,13 @@ class BlhDonacion
     {
         return $this->idDonante;
     }
+    
+              public function __toString() {
+       //   $donac=  $this->id.$this->responsableDonacion;
+   // $iddon= filter_var($donac, FILTER_SANITIZE_NUMBER_INT);
+    return $this->responsableDonacion;         
+                  
+   
+}
+   
 }

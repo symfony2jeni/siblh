@@ -203,6 +203,16 @@
 	vertical-align: middle;
 	text-align: center;
 	overflow: visible; /* removes extra width in IE */
+        background: #dfeffc;
+        border: 2px #c5dbec double;
+         -webkit-border-radius: 5px 10px;  /* Safari  */
+  -moz-border-radius: 5px 10px;     /* Firefox */
+  color: #2e6e9e;
+  font-size: 1.1em;
+  font-weight: bold;
+ 
+   
+        
 }
 .ui-button,
 .ui-button:link,

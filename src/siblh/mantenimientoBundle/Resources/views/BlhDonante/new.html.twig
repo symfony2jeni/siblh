@@ -3,15 +3,16 @@
 {% block stylesheets %}
     {{ parent() }}
 	<link href="{{ asset('bundles/siblhmantenimiento/css/form.css') }}" rel="stylesheet" type="text/css" />
+ 
 {% endblock %}
 {% block javascripts %}
 
 {{parent()}}
 
 <script type="text/javascript" src="{{ asset('bundles/siblhmantenimiento/js/BlhDonante/new.js') }}" ></script>
-<script type="text/javascript" src="{{ asset('bundles/jquery/jquery-ui-1.10.3.custom/development-bundle/ui/jquery.ui.datepicker.js') }}" ></script>
         
 {% endblock %}
+ 
 {% block body -%}
     <h1>Registro de Donante</h1>
 
@@ -64,7 +65,8 @@
    
    <td> {{ form_label(form.nacionalidad) }}
         {{ form_errors(form.nacionalidad) }}
-        {{ form_widget(form.nacionalidad) }} </td></tr>
+        {{ form_widget(form.nacionalidad) }}
+       </td></tr>
     
    <tr><td colspan = "3" align = "left">
         {{ form_label(form.direccion) }}
@@ -73,7 +75,7 @@
    
     <tr><td>{{ form_label(form.idBancoDeLeche) }}
         {{ form_errors(form.idBancoDeLeche) }}
-        {{ form_widget(form.idBancoDeLeche) }}</td>
+        {{ form_widget(form.idBancoDeLeche,  { 'attr': {'required': 'true'} }) }}</td>
   
    <td> {{ form_label(form.ocupacion) }}
         {{ form_errors(form.ocupacion) }}
@@ -99,7 +101,7 @@
    <tr>
    <td> {{ form_label(form.idMunicipio) }}
         {{ form_errors(form.idMunicipio) }}
-        {{ form_widget(form.idMunicipio) }} </td>
+        {{ form_widget(form.idMunicipio,  { 'attr': {'required': 'true'} }) }} </td>
   
    <td > 
         {{ form_label(form.observaciones) }}
@@ -109,7 +111,7 @@
         {{ form_errors(form.estadoDonante) }}
         {{ form_widget(form.estadoDonante) }} </td></tr>
    
-  <tr><td colspan = '3' align = 'center'>  <input type="submit" value="Guardar"/></td></tr>
+  <tr><td colspan = '3' align = 'center'>  <input type="submit" class= "ui-button" value="Guardar"/></td></tr>
     </table>
     
 {{ form_end(form) }}

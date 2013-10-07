@@ -20,40 +20,25 @@ class BlhHistorialClinicoType extends AbstractType
             ->add('controlPrenatal')
             ->add('lugarControl')
             ->add('numeroControl')
-            ->add('fechaUltimaRegla')
-            ->add('fechaParto')
+            ->add('fechaUltimaRegla', 'date', 
+                    array(  'widget' => 'single_text',
+                            'format' => 'yy-MM-dd',
+                            'attr' => array('class' => 'date')))
+            ->add('fechaParto', 'date', 
+                    array(  'widget' => 'single_text',
+                            'format' => 'yy-MM-dd',
+                            'attr' => array('class' => 'date')))
             ->add('periodoIntergenesico')
-            ->add('fechaPartoAnterior')
+            ->add('fechaPartoAnterior', 'date', 
+                    array(  'widget' => 'single_text',
+                            'format' => 'yy-MM-dd',
+                            'attr' => array('class' => 'date')))
             ->add('formulaObstetrica')
             ->add('idDonante')
 	    ->add('lugarParto','text', array('required'=>'false'))
             ->add('patologiaEmbarazo','text', array('required'=>'false'))
 
-/*
-             ->add('idDonante')
-             ->add('formulaObstetrica')
-             ->add('periodoIntergenesico')
-             ->add('controlPrenatal', 'choice', array('choices' => array('si' => 'Si', 'no' => 'No')))
-             ->add('lugarControl')
-             ->add('numeroControl')
-             ->add('fechaUltimaRegla')
-             ->add('fechaPartoAnterior')
-             ->add('fechaParto')
-             ->add('amenorrea')
 
-             ->add('lugarParto')
-                ->add('patologiaEmbarazo')
-
-
-             ->add('patologiaEmbarazo')
-            
-
-             ->add('lugarParto','text', array( 'required'=>'false'))
-             ->add('patologiaEmbarazo','text', array( 'required'=>'false'))
-                
-             //   ->add('lugarParto','text', array( 'required'=>'false'))
-            //lista desplegable: , 'choice', array('choices' => array('si' => 'Si', 'no' => 'No'))
-*/
         ;
     }
     

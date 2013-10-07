@@ -27,6 +27,13 @@ class BlhHistoriaActual
      * @var float
      *
      * @ORM\Column(name="peso_donante", type="decimal", nullable=false)
+     *  * @Assert\Range(
+     *      min = "36",
+     *      max = "136",
+     *      minMessage = "Ingrese datos validos para el peso",
+     *      maxMessage = "Ingrese datos validos para el peso"
+     * )
+     * 
      */
     private $pesoDonante;
 

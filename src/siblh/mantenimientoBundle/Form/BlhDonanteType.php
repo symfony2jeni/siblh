@@ -8,17 +8,15 @@ use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
 class BlhDonanteType extends AbstractType
 {
-        /**
+  
+    /**
      * @param FormBuilderInterface $builder
      * @param array $options
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
 
-        $builder
-                
-
-     
+        $builder                     
             ->add('primerNombre')
             ->add('segundoNombre')
             ->add('primerApellido')
@@ -35,32 +33,34 @@ class BlhDonanteType extends AbstractType
             ->add('procedencia')
             ->add('registro')
             ->add('numeroDocumentoIdentificacion')
-            ->add('documentoIdentificacion')
+            ->add('documentoIdentificacion', 'choice', 
+                    array('choices' => array('' => 'Seleccione un valor','DUI' => 'DUI',
+                          'Pasaporte' => 'Pasaporte',
+                          'Carnet de Minoridad' => 'Carnet de Minoridad')))
             ->add('ocupacion')
-            ->add('estadoCivil')
+            ->add('estadoCivil', 'choice', 
+                    array('choices' => array('' => 'Seleccione un valor','Soltera' => 'Soltera',
+                          'Casada' => 'Casada',
+                          'Acompañada' => 'Acompañada',
+                          'Viuda' => 'Viuda')))
             ->add('nacionalidad')
             ->add('escolaridad')
-            ->add('tipoColecta')
+            ->add('tipoColecta', 'choice',
+                    array('choices' => array('' => 'Seleccione un valor','Manual' => 'Manual',
+                          'Mecanica' => 'Mecanica')))
             ->add('observaciones')
             ->add('idBancoDeLeche')
             ->add('idMunicipio')
             ->add('procedencia')
             ->add('registro')
-            ->add('estadoCivil')
             ->add('nacionalidad')
             ->add('direccion')
-            ->add('documentoIdentificacion')
-            ->add('numeroDocumentoIdentificacion')
-            ->add('idBancoDeLeche')
-            ->add('ocupacion')
-            ->add('escolaridad')
-            ->add('tipoColecta')
-            ->add('observaciones')
-           ->add('idMunicipio')
-            ->add('observaciones')
-            ->add('estadoDonante')
-                 //->add('edad')
-       ;
+            ->add('estadoDonante', 'choice', 
+                    array('choices' => array('' => 'Seleccione un valor','Apta' => 'Apta',
+                          'No Apta' => 'No Apta',
+                          'Estimulacion' => 'Estimulacion')))
+                
+               ;
     }
     
     /**

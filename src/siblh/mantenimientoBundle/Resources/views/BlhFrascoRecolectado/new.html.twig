@@ -1,10 +1,82 @@
-{% extends '::base.html.twig' %}
+{% extends 'siblhmantenimientoBundle::standard_layout.html.twig' %}
+{% block stylesheets %}
+    {{ parent() }}
+	<link href="{{ asset('bundles/siblhmantenimiento/css/form.css') }}" rel="stylesheet" type="text/css" />
+{% endblock %}
 
+{% block javascripts %}
+    {{parent()}}
+    <script type="text/javascript" src="{{ asset('bundles/siblhmantenimiento/js/BlhFrascoRecolectado/new.js') }}" ></script>
+
+{% endblock %}
 {% block body -%}
-    <h1>BlhFrascoRecolectado creation</h1>
+    <h1>Registro de leche donada</h1>
 
-    {{ form(form) }}
-
+  <FORM> 
+   <table align = "center">
+       
+       <tr>
+       <td>Codigo de la Donante</td>
+        <td>
+        <INPUT type=text disabled="disabled" size=30 readonly="readonly" value= {{ datos_donacion[0].codigo_donante }}></td>
+        <td width= "70"></td>
+        <td width= "70"></td>
+        <td>Fecha Donacion</td>
+        <td colspan = "4" align = "right">
+        <INPUT type=text disabled="disabled" size=30 readonly="readonly" value= {{ datos_donacion[0].fechaDonacion|date('d-m-Y') }}></td>
+       
+       
+       </tr>  
+    <tr>
+        <td>Nombre de la Donante</td>
+        <td>
+        <INPUT type=text name="nombre" disabled="disabled" size=30 readonly="readonly" value= {{ datos_donacion[0].nombre1}}&nbsp;{{ datos_donacion[0].nombre2  }}&nbsp;{{ datos_donacion[0].apellido1 }}&nbsp;{{ datos_donacion[0].apellido2 }}></td>
+       
+    </tr>        
+    </table>
+          
+    </FORM>      
+    
+    
+ {#   {{ form(form) }}  #}
+    
+     {{ form_start(form) }}
+    {{ form_errors(form) }}
+    <table align = "center">
+        <tr style="visibility:hidden">
+    <td> {{ form_label(form.idDonacion) }}
+        {{ form_errors(form.idDonacion) }}
+        {{ form_widget(form.idDonacion) }}</td>
+    <td>{{ form_label(form.idDonante) }}
+        {{ form_errors(form.idDonante) }}
+        {{ form_widget(form.idDonante) }}</td>    
+        </tr>
+    <tr>
+    <td>{{ form_label(form.volumenRecolectado, 'Volumen en ml') }}
+        {{ form_errors(form.volumenRecolectado) }}
+        {{ form_widget(form.volumenRecolectado) }}</td>
+    <td>{{ form_label(form.onzRecolectado, 'Volumen en onz') }}
+        {{ form_errors(form.onzRecolectado) }}
+        {{ form_widget(form.onzRecolectado, {'attr':{'readonly': 'true' } }) }}</td>    
+        </tr>
+      <tr>
+    <td>{{ form_label(form.formaExtraccion, 'Forma de extraccion') }}
+        {{ form_errors(form.formaExtraccion) }}
+        {{ form_widget(form.formaExtraccion) }}</td>
+    <td align = "center">{{ form_label(form.observacionFrascoRecolectado, 'Observaciones') }}
+        {{ form_errors(form.observacionFrascoRecolectado) }}
+        {{ form_widget(form.observacionFrascoRecolectado) }}</td>    
+        </tr>   
+        <tr>
+    <td style="visibility:hidden">
+        {{ form_label(form.idEstado) }}
+        {{ form_errors(form.idEstado) }}
+        {{ form_widget(form.idEstado) }}</td>
+      
+        </tr>   
+        <tr><td colspan = '3' align = 'center'>  <input type="submit" class= "ui-button" value="Guardar"/></td></tr>
+    </table> 
+{{ form_end(form) }}
         <ul class="record_actions">
     <li>
         <a href="{{ path('blhfrascorecolectado') }}">

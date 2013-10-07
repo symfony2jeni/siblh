@@ -18,6 +18,7 @@
 	vertical-align: middle;
 	text-align: center;
 	overflow: visible; /* removes extra width in IE */
+        background: #81BEF7;
 }
 .ui-button,
 .ui-button:link,

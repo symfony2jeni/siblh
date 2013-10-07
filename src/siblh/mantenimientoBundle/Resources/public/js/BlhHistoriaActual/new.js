@@ -1,8 +1,6 @@
-
-
 $(document).ready(function() { 
    $('button').button();
-   $('#siblh_mantenimientobundle_blhhistoriaactualtype_talladonante').
+   $('#siblh_mantenimientobundle_blhhistoriaactual_tallaDonante').
         attr('data-bvalidator', 'between[1:2],required');
  
    

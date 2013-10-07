@@ -76,7 +76,7 @@ class BlhFrascoRecolectadoController extends Controller
             'method' => 'POST',
         ));
 
-        $form->add('submit', 'submit', array('label' => 'Create'));
+   //     $form->add('submit', 'submit', array('label' => 'Create'));
 
         return $form;
     }
@@ -88,7 +88,7 @@ class BlhFrascoRecolectadoController extends Controller
      * @Method("GET")
      * @Template()
      */
-    public function newAction()
+  /*  public function newAction()
     {
         $entity = new BlhFrascoRecolectado();
         $form   = $this->createCreateForm($entity);
@@ -97,7 +97,10 @@ class BlhFrascoRecolectadoController extends Controller
             'entity' => $entity,
             'form'   => $form->createView(),
         );
-    }
+    } */
+    
+    
+    
 
     /**
      * Finds and displays a BlhFrascoRecolectado entity.
@@ -106,7 +109,7 @@ class BlhFrascoRecolectadoController extends Controller
      * @Method("GET")
      * @Template()
      */
-    public function showAction($id)
+   /* public function showAction($id)
     {
         $em = $this->getDoctrine()->getManager();
 
@@ -122,7 +125,7 @@ class BlhFrascoRecolectadoController extends Controller
             'entity'      => $entity,
             'delete_form' => $deleteForm->createView(),
         );
-    }
+    }*/
 
     /**
      * Displays a form to edit an existing BlhFrascoRecolectado entity.
@@ -243,5 +246,79 @@ class BlhFrascoRecolectadoController extends Controller
             ->add('submit', 'submit', array('label' => 'Delete'))
             ->getForm()
         ;
+    }
+    
+    //Creando nuevo controlador
+    
+     //Creando Nuevos Controladores
+     
+     
+    /**
+     * Lists all BlhFrascoRecolectado entities.
+     *
+     * @Route("/", name="blhfrascorecolectado")
+     * @Method("GET")
+     * @Template()
+     */
+ 
+ public function donacionesAction()
+    {
+        $em = $this->getDoctrine()->getManager();      
+        
+        //Obteniendo lista de pacientes que son receptores y que estan en estado "Activo"  
+        $query = $em->createQuery("SELECT r.id, r.fechaDonacion, r.responsableDonacion, p.id as identificador, p.primerNombre as nombre1, p.segundoNombre as nombre2, p.primerApellido as apellido1, p.segundoApellido as apellido2 FROM siblhmantenimientoBundle:BlhDonacion r JOIN r.idDonante p");
+        
+        $donaciones_donantes  = $query->getResult();
+        
+        return array(
+            'donaciones_donantes' =>  $donaciones_donantes        
+        );
+        
+    }
+    
+    
+     /**
+     * Displays a form to create a new BlhFrascoRecolectado entity.
+     *
+     * @Route("/{id}", name="blhfrascorecolectado_new")
+     * @Method("GET")
+     * @Template()
+     */
+    public function newAction($id)
+    {
+         $em = $this->getDoctrine()->getManager();
+        
+        $query = $em->createQuery("SELECT r.id, r.fechaDonacion, r.responsableDonacion, p.id as identificador, p.codigoDonante as codigo_donante, p.primerNombre as nombre1, p.segundoNombre as nombre2, p.primerApellido as apellido1, p.segundoApellido as apellido2 FROM siblhmantenimientoBundle:BlhDonacion r JOIN r.idDonante p  WHERE r.id = $id "); 
+        $datos_donacion  = $query->getResult();
+        $donacion = $em->getRepository('siblhmantenimientoBundle:BlhDonacion')->find($id);   
+       
+        $query2 = $em->createQuery("SELECT e.id FROM siblhmantenimientoBundle:BlhEstado e WHERE e.nombreEstado = 'Prealmacenado' "); 
+        $estado  = $query2->getResult();
+     //  echo $iddonante[0]['idDonante']; 
+     
+      $donante = $em->getRepository('siblhmantenimientoBundle:BlhDonante')->find($datos_donacion[0]['identificador']);
+      $estadof = $em->getRepository('siblhmantenimientoBundle:BlhEstado')->find($estado[0]['id']);
+     
+      // echo $donante;
+        if (!$datos_donacion) {
+            throw $this->createNotFoundException('Unable to find BlhSolicitud entity.');
+        }
+        
+        
+        
+        $entity = new BlhFrascoRecolectado();
+        $entity->setIdDonacion($donacion);
+        $entity->setIdDonante($donante);
+        $entity->setIdEstado($estadof);
+        $form   = $this->createCreateForm($entity);
+
+        
+        
+        
+        return array(
+            'entity' => $entity,
+            'form'   => $form->createView(),
+             'datos_donacion' =>  $datos_donacion,  
+        );
     }
 }

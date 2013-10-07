@@ -33,6 +33,7 @@ class BlhFrascoRecolectado
      * @var float
      *
      * @ORM\Column(name="volumen_recolectado", type="decimal", nullable=false)
+     *
      */
     private $volumenRecolectado;
 
@@ -230,7 +231,8 @@ class BlhFrascoRecolectado
      * @param \siblh\mantenimientoBundle\Entity\BlhEstado $idEstado
      * @return BlhFrascoRecolectado
      */
-    public function setIdEstado(\siblh\mantenimientoBundle\Entity\BlhEstado $idEstado = null)
+ //   public function setIdEstado(\siblh\mantenimientoBundle\Entity\BlhEstado $idEstado = null)
+   public function setIdEstado($idEstado)         
     {
         $this->idEstado = $idEstado;
     
@@ -254,6 +256,7 @@ class BlhFrascoRecolectado
      * @return BlhFrascoRecolectado
      */
     public function setIdDonacion(\siblh\mantenimientoBundle\Entity\BlhDonacion $idDonacion = null)
+  //    public function setIdDonacion($idDonacion)
     {
         $this->idDonacion = $idDonacion;
     
@@ -277,6 +280,7 @@ class BlhFrascoRecolectado
      * @return BlhFrascoRecolectado
      */
     public function setIdDonante(\siblh\mantenimientoBundle\Entity\BlhDonante $idDonante = null)
+  //   public function setIdDonante($idDonante)
     {
         $this->idDonante = $idDonante;
     
