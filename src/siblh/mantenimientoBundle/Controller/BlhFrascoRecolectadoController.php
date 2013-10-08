@@ -299,9 +299,10 @@ class BlhFrascoRecolectadoController extends Controller
       $donante = $em->getRepository('siblhmantenimientoBundle:BlhDonante')->find($datos_donacion[0]['identificador']);
       $estadof = $em->getRepository('siblhmantenimientoBundle:BlhEstado')->find($estado[0]['id']);
      
-      // echo $donante;
+     //  echo $datos_donacion[0]['id'];
+       
         if (!$datos_donacion) {
-            throw $this->createNotFoundException('Unable to find BlhSolicitud entity.');
+            throw $this->createNotFoundException('Unable to find BlhSolicitud entity');
         }
         
         

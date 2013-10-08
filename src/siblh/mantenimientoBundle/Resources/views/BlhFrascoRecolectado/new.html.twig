@@ -1,4 +1,4 @@
-{% extends 'siblhmantenimientoBundle::standard_layout.html.twig' %}
+{% extends 'siblhmantenimientoBundle::plantilla.html.twig' %}
 {% block stylesheets %}
     {{ parent() }}
 	<link href="{{ asset('bundles/siblhmantenimiento/css/form.css') }}" rel="stylesheet" type="text/css" />
@@ -30,7 +30,7 @@
     <tr>
         <td>Nombre de la Donante</td>
         <td>
-        <INPUT type=text name="nombre" disabled="disabled" size=30 readonly="readonly" value= {{ datos_donacion[0].nombre1}}&nbsp;{{ datos_donacion[0].nombre2  }}&nbsp;{{ datos_donacion[0].apellido1 }}&nbsp;{{ datos_donacion[0].apellido2 }}></td>
+        <INPUT type=text name="nombre" disabled="disabled" size=30 readonly="readonly" value= "{{ datos_donacion[0].nombre1}}&nbsp;{{ datos_donacion[0].nombre2  }}&nbsp;{{ datos_donacion[0].apellido1 }}&nbsp;{{ datos_donacion[0].apellido2 }}"></td>
        
     </tr>        
     </table>

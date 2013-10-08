@@ -18,18 +18,18 @@
 }
 
 div#divpie{
-    position: inherit; 
-   /* position: fixed; 
+   position: inherit; 
+    position: fixed; 
     color: #E6E6E6;
     font-size:12px;
     font-family: Verdana,Arial,Helvetica,sans-serif;
     top: 96%;
     height: 29px;
     font-weight: bold;
-    width: 85%;*/
+    width: 85%;
     
-    /* -- CSS3 - Gradiente de fondo -- 
-       background: -webkit-linear-gradient( 0deg ,whitesmoke,#749ecb,#266ebb);*/
+    /* -- CSS3 - Gradiente de fondo -- */
+     
    background: -webkit-linear-gradient( 0deg ,whitesmoke,#749ecb,#266ebb);
    background: -moz-linear-gradient( 0deg ,whitesmoke,#749ecb,#266ebb);
 
@@ -42,14 +42,14 @@ div#divpie{
 }
 
 div#pagina{
-    width:90%; 
+    width:85%; 
     text-align: center;
     margin-left: auto ;
     margin-right: auto ;
     margin-top: 0em;
     background-color:white;
-   /* min-height: 780px;
-font-family:Comic Sans MS,Arial;
+  min-height: 780px;
+ 
      
         
     /* -- CSS3 - definición de las esquinas redondeadas -- */
@@ -116,6 +116,8 @@ font-family:Comic Sans MS,Arial;
 	position: relative;
 }
 
+/*css agregados */
+
 div#logos {
 
    border:0px;
@@ -135,6 +137,12 @@ text-align: center;
   
   #header {height:200px;background-color:#F3F781; }
   
+  
+ div#divpie2{
+      
+    /* -- CSS3 - Gradiente de fondo -- */
+       background: -webkit-linear-gradient( 0deg ,whitesmoke,#749ecb,#266ebb);
+       background: -moz-linear-gradient( 0deg ,whitesmoke,#749ecb,#266ebb);
+
+} 
  
-  
-  
