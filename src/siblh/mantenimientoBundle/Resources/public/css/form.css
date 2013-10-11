@@ -1,6 +1,7 @@
   form {
    border: 10px solid rgb(235, 235, 235);	
    background:rgb(246, 246, 246) ;
+   margin-right: 10px;
 }
 form div { padding: 7px;}
 form div label{display: block; float: left; width: 150px;color: blue}
