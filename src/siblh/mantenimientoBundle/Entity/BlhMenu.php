@@ -20,14 +20,14 @@ class BlhMenu
      * @ORM\GeneratedValue(strategy="SEQUENCE")
      * @ORM\SequenceGenerator(sequenceName="blh_menu_id_seq", allocationSize=1, initialValue=1)
      */
-    private $id;
+    public $id;
 
     /**
      * @var string
      *
      * @ORM\Column(name="nombre_menu", type="string", length=50, nullable=false)
      */
-    private $nombreMenu;
+    public $nombreMenu;
 
     /**
      * @var string
