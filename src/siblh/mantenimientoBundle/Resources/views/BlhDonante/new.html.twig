@@ -23,107 +23,129 @@
     {{ form_start(form) }}
     {{ form_errors(form) }}
  
-  <table align = "center" border="1" >
+  <table align = "center" width = "97%">
      
    <tr>  
-   <td > <font color="red">*</font>
+   <td align = "right"> <font color="red">*</font>
         {{ form_label(form.primerNombre) }}
         {{ form_errors(form.primerNombre) }}
-        {{ form_widget(form.primerNombre,  { 'attr': {'size': '40'} }) }} </td> 
+        {{ form_widget(form.primerNombre,  { 'attr': {'size': '15'} }) }} </td> 
       
-   <td colspan = '2'  > 
+   <td colspan = '2'  align = "center"> 
         {{ form_label(form.segundoNombre) }}
         {{ form_errors(form.segundoNombre) }}
-        {{ form_widget(form.segundoNombre,  { 'attr': {'size': '40'} }) }} </td></tr>
+        {{ form_widget(form.segundoNombre,  { 'attr': {'size': '15'} }) }} </td></tr>
  
     <tr>
-    <td ><font color="red">*</font>
+    <td align = "right"><font color="red">*</font>
         {{ form_label(form.primerApellido) }}
         {{ form_errors(form.primerApellido) }}
-        {{ form_widget(form.primerApellido,  { 'attr': {'size': '40'} }) }} </td>
+        {{ form_widget(form.primerApellido,  { 'attr': {'size': '15'} }) }} </td>
   
-    <td colspan = '2' > 
+    <td colspan = '2' align = "center"> 
         {{ form_label(form.segundoApellido) }}
         {{ form_errors(form.segundoApellido) }}
-        {{ form_widget(form.segundoApellido,  { 'attr': {'size': '40'} }) }} </td></tr>
+        {{ form_widget(form.segundoApellido,  { 'attr': {'size': '15'} }) }} </td></tr>
     <tr>
-    <td>{{ form_label(form.procedencia) }}
+    <td WIDTH = "15" align = "left">
+        {{ form_label(form.procedencia) }} 
         {{ form_errors(form.procedencia) }}
         {{ form_widget(form.procedencia) }} </td>
-    <td >
-        {{ form_label(form.fechaRegistroDonanteBlh, 'Fecha de registro') }} <br>
-        {{ form_errors(form.fechaRegistroDonanteBlh) }}
-        {{ form_widget(form.fechaRegistroDonanteBlh, {'attr':{'readonly': 'true'} }) }} </td>
         
-    <td align = "center">{{ form_label(form.registro) }} <br>
-        {{ form_errors(form.registro) }}
-        {{ form_widget(form.registro) }} </td></tr>
-    <tr>
-    <td><font color="red">*</font>
-        {{ form_label(form.fechaNacimiento) }}
+    <td WIDTH = "16" align = "left"><font color="red">*</font>
+        {{ form_label(form.fechaNacimiento) }} 
         {{ form_errors(form.fechaNacimiento) }}
         {{ form_widget(form.fechaNacimiento, {'attr':{'readonly': 'true'} }) }} </td>
+        
+        <td><font color="red">*</font>
+        {{ form_label(form.estadoDonante) }} 
+        {{ form_errors(form.estadoDonante) }}
+        {{ form_widget(form.estadoDonante) }} </td> </tr>
+        
+    
+        
   
-   <td><font color="red">*</font>
-        {{ form_label(form.estadoCivil) }} <br>
+    <tr>
+    
+  
+   <td align = "left"><font color="red">*</font>
+        {{ form_label(form.estadoCivil) }} 
         {{ form_errors(form.estadoCivil) }}
         {{ form_widget(form.estadoCivil) }} </td>
+   <td align = "left"> 
+        {{ form_label(form.ocupacion) }} 
+        {{ form_errors(form.ocupacion) }}
+        {{ form_widget(form.ocupacion) }} </td>
    
    <td><font color="red">*</font>
-        {{ form_label(form.nacionalidad) }}<br>
+        {{ form_label(form.nacionalidad) }}
         {{ form_errors(form.nacionalidad) }}
         {{ form_widget(form.nacionalidad) }}
        </td></tr>
     
    <tr><td colspan = "3" align = "center">
-        {{ form_label(form.direccion) }}
+        {{ form_label(form.direccion) }} 
         {{ form_errors(form.direccion) }}
         {{ form_widget(form.direccion,  { 'attr': {'size': '100'} }) }} </td></tr>  
    
-    <tr><td WIDTH = "70"><font color="red">*</font>
-        {{ form_label(form.idBancoDeLeche, 'Banco de Leche') }} <br>
+    <tr><td colspan = "2" align = "left"><font color="red">*</font>
+        {{ form_label(form.idBancoDeLeche, 'Banco de Leche') }} 
         {{ form_errors(form.idBancoDeLeche) }}
         {{ form_widget(form.idBancoDeLeche,  { 'attr': {'required': 'true'} }) }}</td>
   
-   <td align = "center"> {{ form_label(form.ocupacion) }} <br>
-        {{ form_errors(form.ocupacion) }}
-        {{ form_widget(form.ocupacion) }} </td>
+  
    
-   <td> {{ form_label(form.escolaridad) }}<br>
+   <td> {{ form_label(form.escolaridad) }}
         {{ form_errors(form.escolaridad) }}
         {{ form_widget(form.escolaridad) }} </td></tr>
    
    <tr>
-   <td><font color="red">*</font>
-        {{ form_label(form.documentoIdentificacion) }}
+   <td align = "left"><font color="red">*</font>
+        {{ form_label(form.documentoIdentificacion) }} 
         {{ form_errors(form.documentoIdentificacion) }}
         {{ form_widget(form.documentoIdentificacion) }}     </td>
   
-   <td><font color="red">*</font>
-        {{ form_label(form.numeroDocumentoIdentificacion, 'Numero Documento') }}
+   <td align = "left"><font color="red">*</font>
+        {{ form_label(form.numeroDocumentoIdentificacion, 'Numero Documento') }} 
         {{ form_errors(form.numeroDocumentoIdentificacion) }}
         {{ form_widget(form.numeroDocumentoIdentificacion) }} </td>
+       
+       <td align = "left" > 
+        {{ form_label(form.tipoColecta) }} 
+        {{ form_errors(form.tipoColecta) }}
+        {{ form_widget(form.tipoColecta) }} </td>
    
-   <td><font color="red">*</font>
-        {{ form_label(form.estadoDonante) }} <br>
-        {{ form_errors(form.estadoDonante) }}
-        {{ form_widget(form.estadoDonante) }} </td></tr>
+  </tr>
    
    <tr>
-   <td><font color="red">*</font> {{ form_label(form.idMunicipio) }}
+   <td align = "left"><font color="red" >*</font> 
+        {{ form_label(form.idMunicipio) }} 
         {{ form_errors(form.idMunicipio) }}
         {{ form_widget(form.idMunicipio,  { 'attr': {'required': 'true'} }) }} </td>
+       
+        <td align = "left">
+        {{ form_label(form.registro) }} 
+        {{ form_errors(form.registro) }}
+        {{ form_widget(form.registro) }} </td>
   
-   <td align = "center"> 
+  
+  <td >
+        {{ form_label(form.fechaRegistroDonanteBlh, 'Fecha registro') }} 
+        {{ form_errors(form.fechaRegistroDonanteBlh) }}
+        {{ form_widget(form.fechaRegistroDonanteBlh, {'attr':{'readonly': 'true'} }) }} </td>
+      </tr>
+      
+      <tr>
+       <td colspan = '3' align = "center" > 
         {{ form_label(form.observaciones) }} <br>
         {{ form_errors(form.observaciones) }}
         {{ form_widget(form.observaciones,  { 'attr': {'size': '50'} }) }} </td>
+      
+      </tr>
    
-       <td> {{ form_label(form.tipoColecta) }} <br>
-        {{ form_errors(form.tipoColecta) }}
-        {{ form_widget(form.tipoColecta)}}</td></tr>
-   
-  <tr><td colspan = '3' align = 'center'>  <input type="submit" class= "ui-button" value="Guardar"/></td></tr>
+  <tr><td colspan = '2' align = 'right'>  <input type="submit" class= "ui-button" value="Guardar"/></td>
+      <td WIDTH = "10"><font color="red">* Campos requeridos</font>   </td>
+  </tr>
     </table>
     
 {{ form_end(form) }}

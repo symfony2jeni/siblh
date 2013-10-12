@@ -46,10 +46,9 @@ class BlhDonanteType extends AbstractType
             ->add('nacionalidad')
             ->add('escolaridad')
             ->add('tipoColecta', 'choice',
-                    array('choices' => array('' => 'Seleccione un valor','Manual' => 'Manual',
-                          'Mecanica' => 'Mecanica'))) 
-            ->add('observaciones', 'textarea',
-                    array('required'=> false))
+                    array('choices' => array ('' => 'Seleccione un valor', 
+                        'Domiciliar' => 'Domiciliar', 'BLH'=> 'BLH'))) 
+            ->add('observaciones', 'textarea')
             ->add('idBancoDeLeche')
             ->add('idMunicipio')
             ->add('procedencia')
