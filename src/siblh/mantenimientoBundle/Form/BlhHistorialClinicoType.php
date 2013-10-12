@@ -19,12 +19,22 @@ class BlhHistorialClinicoType extends AbstractType
             ->add('controlPrenatal')
             ->add('lugarControl')
             ->add('numeroControl')
-            ->add('fechaUltimaRegla')
-            ->add('fechaParto')
-            ->add('lugarParto')
-            ->add('patologiaEmbarazo')
+             ->add('fechaUltimaRegla', 'date', 
+                    array(  'widget' => 'single_text',
+                            'format' => 'yy-MM-dd',
+                            'attr' => array('class' => 'date')))
+            ->add('fechaParto', 'date', 
+                    array(  'widget' => 'single_text',
+                            'format' => 'yy-MM-dd',
+                            'attr' => array('class' => 'date')))
+              ->add('lugarParto','text', array('required'=>'false'))
+            ->add('patologiaEmbarazo','text', array('required'=>'false'))
+
             ->add('periodoIntergenesico')
-            ->add('fechaPartoAnterior')
+            ->add('fechaPartoAnterior', 'date', 
+                    array(  'widget' => 'single_text',
+                            'format' => 'yy-MM-dd',
+                            'attr' => array('class' => 'date')))
             ->add('formulaObstetricaG')
             ->add('formulaObstetricaP1')
             ->add('formulaObstetricaP2')

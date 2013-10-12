@@ -16,14 +16,16 @@ class BlhFrascoRecolectadoType extends AbstractType
     {
         $builder
             ->add('codigoFrascoRecolectado')
-            ->add('volumenRecolectado')
-            ->add('formaExtraccion')
+             ->add('volumenRecolectado', 'number', array ( 'invalid_message'=>'Debe ser entre 1 y 300'))
+            ->add('formaExtraccion', 'choice', 
+                    array('choices' => array('' => 'Seleccione un valor','Manual' => 'Manual',
+                          'Mecanica' => 'Mecanica')))
             ->add('onzRecolectado')
             ->add('observacionFrascoRecolectado')
             ->add('idEstado')
             ->add('idDonacion')
             ->add('idDonante')
-            ->add('idLoteAnalisis')
+          //  ->add('idLoteAnalisis')
         ;
     }
     

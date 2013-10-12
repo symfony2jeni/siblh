@@ -20,23 +20,42 @@ class BlhDonanteType extends AbstractType
             ->add('segundoNombre')
             ->add('primerApellido')
             ->add('segundoApellido')
-            ->add('fechaNacimiento')
-            ->add('fechaRegistroDonanteBlh')
+             ->add('fechaNacimiento', 'date', 
+                    array(  'widget' => 'single_text',
+                            'format' => 'yy-MM-dd',
+                            'attr' => array('class' => 'date')))
+            ->add('fechaRegistroDonanteBlh', 'date', 
+                    array(  'widget' => 'single_text',
+                            'format' => 'yy-MM-dd',
+                            'attr' => array('class' => 'date')))
             ->add('telefonoFijo')
             ->add('telefonoMovil')
             ->add('direccion')
             ->add('procedencia')
             ->add('registro')
             ->add('numeroDocumentoIdentificacion')
-            ->add('documentoIdentificacion')
+    ->add('documentoIdentificacion', 'choice', 
+                    array('choices' => array('' => 'Seleccione un valor','DUI' => 'DUI',
+                          'Pasaporte' => 'Pasaporte',
+                          'Carnet de Minoridad' => 'Carnet de Minoridad')))
+
             ->add('edad')
             ->add('ocupacion')
-            ->add('estadoCivil')
+            ->add('estadoCivil', 'choice', 
+                    array('choices' => array('' => 'Seleccione un valor','Soltera' => 'Soltera',
+                          'Casada' => 'Casada',
+                          'Acompañada' => 'Acompañada',
+                          'Viuda' => 'Viuda')))
             ->add('nacionalidad')
             ->add('escolaridad')
-            ->add('estadoDonante')
-            ->add('tipoColecta')
-            ->add('observaciones')
+            ->add('estadoDonante', 'choice', 
+                    array('choices' => array('' => 'Seleccione un valor','Apta' => 'Apta',
+                          'No Apta' => 'No Apta',
+                          'Estimulacion' => 'Estimulacion')))
+            ->add('tipoColecta', 'choice',
+                    array('choices' => array ('' => 'Seleccione un valor', 
+                        'Domiciliar' => 'Domiciliar', 'BLH'=> 'BLH')))
+            ->add('observaciones', 'textarea')
             ->add('idBancoDeLeche')
             ->add('idMunicipio')
         ;

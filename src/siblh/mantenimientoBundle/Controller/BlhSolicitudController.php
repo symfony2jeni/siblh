@@ -10,6 +10,9 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use siblh\mantenimientoBundle\Entity\BlhSolicitud;
 use siblh\mantenimientoBundle\Form\BlhSolicitudType;
 
+
+use siblh\mantenimientoBundle\Entity\BlhReceptor;
+
 /**
  * BlhSolicitud controller.
  *
@@ -17,7 +20,8 @@ use siblh\mantenimientoBundle\Form\BlhSolicitudType;
  */
 class BlhSolicitudController extends Controller
 {
-
+    
+    
     /**
      * Lists all BlhSolicitud entities.
      *
@@ -44,10 +48,13 @@ class BlhSolicitudController extends Controller
      */
     public function createAction(Request $request)
     {
+     
         $entity = new BlhSolicitud();
+        
+        
         $form = $this->createCreateForm($entity);
         $form->handleRequest($request);
-
+       
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $em->persist($entity);
@@ -55,11 +62,13 @@ class BlhSolicitudController extends Controller
 
             return $this->redirect($this->generateUrl('blhsolicitud_show', array('id' => $entity->getId())));
         }
-
-        return array(
+        
+         return array(
             'entity' => $entity,
             'form'   => $form->createView(),
-        );
+            );
+        
+      
     }
 
     /**
@@ -75,12 +84,13 @@ class BlhSolicitudController extends Controller
             'action' => $this->generateUrl('blhsolicitud_create'),
             'method' => 'POST',
         ));
-
-        $form->add('submit', 'submit', array('label' => 'Create'));
+       // $form->add('submit', 'submit', array('label' => 'GUARDAR'));
 
         return $form;
+        
     }
 
+    
     /**
      * Displays a form to create a new BlhSolicitud entity.
      *
@@ -88,25 +98,44 @@ class BlhSolicitudController extends Controller
      * @Method("GET")
      * @Template()
      */
-    public function newAction()
+  /*  public function newAction($id)
     {
+        
+        //mostrando los datos del receptor seleccionado
+        $em = $this->getDoctrine()->getManager();
+        $query1 = $em->createQuery("SELECT i.id, p.id as identificador FROM siblhmantenimientoBundle:BlhIngresoReceptor i JOIN i.idReceptor r JOIN r.idPaciente p JOIN p.idSexo s  WHERE (r.estadoReceptor = 'Activo' AND p.id = $id)");
+        
+        $receptor  = $query1->getResult();
+        if (!$receptor) {
+            throw $this->createNotFoundException('Unable to find BlhSolicitud entity.');
+        }
+
+          
+         //controlador new 
         $entity = new BlhSolicitud();
         $form   = $this->createCreateForm($entity);
-
-        return array(
+         
+        
+     
+        
+        return array(   
+            
+            'receptor'  => $receptor,
             'entity' => $entity,
             'form'   => $form->createView(),
+           
         );
-    }
-
-    /**
+        
+    }*/
+        
+       /**
      * Finds and displays a BlhSolicitud entity.
      *
      * @Route("/{id}", name="blhsolicitud_show")
      * @Method("GET")
      * @Template()
      */
-    public function showAction($id)
+   public function showAction($id)
     {
         $em = $this->getDoctrine()->getManager();
 
@@ -243,5 +272,87 @@ class BlhSolicitudController extends Controller
             ->add('submit', 'submit', array('label' => 'Delete'))
             ->getForm()
         ;
+     } 
+     
+     //Creando Nuevos Controladores
+     
+     
+    /**
+     * Lista de todos los Receptores Registrados.
+     *
+     * @Route("/receptores_solicitud", name="blhsolicitud_receptores")
+     * @Method("GET")
+     * @Template()
+     */
+ 
+ public function receptoresAction()
+    {
+        $em = $this->getDoctrine()->getManager();      
+        
+        //Obteniendo lista de pacientes que son receptores y que estan en estado "Activo"  
+        $query = $em->createQuery("SELECT r.id, r.codigoReceptor, p.id as identificador, p.primerNombre as nombre1, p.segundoNombre as nombre2, p.tercerNombre as nombre3, p.primerApellido as apellido1, p.segundoApellido as apellido2 FROM siblhmantenimientoBundle:BlhReceptor r JOIN r.idPaciente p WHERE r.estadoReceptor = 'Activo'");
+        
+        $pacientes_receptores  = $query->getResult();
+        
+        return array(
+            'pacientes_receptores' => $pacientes_receptores         
+        );
+        
     }
+    
+    
+     /**
+     * Displays a form to create a new BlhSolicitud entity.
+     *
+     * @Route("/new/{id}", name="blhsolicitud_new")
+     * @Method("GET")
+     * @Template()
+     */
+     public function newAction($id)
+    {
+        
+        //mostrando los datos del receptor seleccionado
+        $em = $this->getDoctrine()->getManager();
+        
+        $query = $em->createQuery("SELECT  i.edadGestFur, i.pesoReceptor, i.diagnosticoIngreso, r.id as id_receptor, r.codigoReceptor as codigo_receptor, p.fechaNacimiento as fecha_nacimiento, p.primerNombre as primer_nombre, p.segundoNombre as segundo_nombre, p.tercerNombre as tercer_nombre, p.primerApellido as primer_apellido, p.segundoApellido as segundo_apellido, s.nombre as sexo  FROM siblhmantenimientoBundle:BlhIngresoReceptor i JOIN i.idReceptor r JOIN r.idPaciente p JOIN p.idSexo s  WHERE r.id = $id "); 
+        
+        $datos_receptor  = $query->getResult();
+        
+        $receptor = $em->getRepository('siblhmantenimientoBundle:BlhReceptor')->find($id);
+        
+      
+     
+        
+        if (!$datos_receptor) {
+            throw $this->createNotFoundException('Unable to find BlhSolicitud entity.');
+        }
+
+          
+        //controlador new 
+        $entity = new BlhSolicitud();
+        $entity->setidReceptor($receptor);
+         
+        $form   = $this->createCreateForm($entity);
+         
+       
+     
+       
+        
+        return array(   
+                    
+            'datos_receptor'  => $datos_receptor,
+            'entity' => $entity,
+            'form'   => $form->createView(),
+           
+            
+           
+        );
+        
+    }
+    
+   
+
+  
+    
+
 }

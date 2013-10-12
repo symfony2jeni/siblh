@@ -16,7 +16,7 @@ class BlhHistoriaActualType extends AbstractType
     {
         $builder
             ->add('pesoDonante')
-            ->add('tallaDonante')
+             ->add('tallaDonante', 'number', array ( 'invalid_message'=>'Debe ser entre 1.5 y 2'))
             ->add('medicamento')
             ->add('habitoToxico')
             ->add('motivoDonacion')
