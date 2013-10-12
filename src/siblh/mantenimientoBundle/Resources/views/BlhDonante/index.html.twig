@@ -1,31 +1,21 @@
-{% extends 'siblhmantenimientoBundle::standard_layout.html.twig' %}
-
-{% block javascripts %}
-    {{parent()}}
-    <script type="text/javascript" src="{{ asset('bundles/siblhmantenimiento/js/entidades/index.js') }}" ></script>
-{% endblock %}
+{% extends '::base.html.twig' %}
 
 {% block body -%}
     <h1>BlhDonante list</h1>
 
     <table class="records_list">
         <thead>
-
             <tr>
                 <th>Id</th>
                 <th>Codigodonante</th>
                 <th>Primernombre</th>
-            <tr>
-                <th>Id</th>
-                <th>Codigodonante</th>
-                 
-         	<th>Primernombre</th>
-
                 <th>Segundonombre</th>
                 <th>Primerapellido</th>
                 <th>Segundoapellido</th>
                 <th>Fechanacimiento</th>
                 <th>Fecharegistrodonanteblh</th>
+                <th>Telefonofijo</th>
+                <th>Telefonomovil</th>
                 <th>Direccion</th>
                 <th>Procedencia</th>
                 <th>Registro</th>
@@ -53,6 +43,8 @@
                 <td>{{ entity.segundoApellido }}</td>
                 <td>{% if entity.fechaNacimiento %}{{ entity.fechaNacimiento|date('Y-m-d H:i:s') }}{% endif %}</td>
                 <td>{% if entity.fechaRegistroDonanteBlh %}{{ entity.fechaRegistroDonanteBlh|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{{ entity.telefonoFijo }}</td>
+                <td>{{ entity.telefonoMovil }}</td>
                 <td>{{ entity.direccion }}</td>
                 <td>{{ entity.procedencia }}</td>
                 <td>{{ entity.registro }}</td>

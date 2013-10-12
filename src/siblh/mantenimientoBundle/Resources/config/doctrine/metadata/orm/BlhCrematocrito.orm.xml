@@ -4,7 +4,6 @@
     <id name="id" type="integer" column="id">
       <generator strategy="SEQUENCE"/>
     </id>
-    <field name="codigoAnalisisFisicoQuimico" type="string" column="codigo_analisis_fisico_quimico" length="13" nullable="false"/>
     <field name="crema1" type="decimal" column="crema1" nullable="true"/>
     <field name="crema2" type="decimal" column="crema2" nullable="true"/>
     <field name="crema3" type="decimal" column="crema3" nullable="true"/>
@@ -15,9 +14,9 @@
     <field name="mediaCt" type="decimal" column="media_ct" nullable="true"/>
     <field name="porcentajeCrema" type="decimal" column="porcentaje_crema" nullable="true"/>
     <field name="kilocalorias" type="decimal" column="kilocalorias" nullable="true"/>
-    <many-to-one field="idAnalisisFisicoQuimico" target-entity="BlhAnalisisFisicoQuimico">
+    <many-to-one field="idFrascoRecolectado" target-entity="BlhFrascoRecolectado">
       <join-columns>
-        <join-column name="id_analisis_fisico_quimico" referenced-column-name="id"/>
+        <join-column name="id_frasco_recolectado" referenced-column-name="id"/>
       </join-columns>
     </many-to-one>
   </entity>

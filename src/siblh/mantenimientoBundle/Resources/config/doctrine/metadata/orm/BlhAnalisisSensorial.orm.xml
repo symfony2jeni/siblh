@@ -4,15 +4,14 @@
     <id name="id" type="integer" column="id">
       <generator strategy="SEQUENCE"/>
     </id>
-    <field name="codigoAnalisisFisicoQuimico" type="string" column="codigo__analisis_fisico_quimico" length="13" nullable="false"/>
     <field name="embalaje" type="string" column="embalaje" length="9" nullable="true"/>
     <field name="suciedad" type="string" column="suciedad" length="9" nullable="true"/>
     <field name="color" type="string" column="color" length="9" nullable="true"/>
     <field name="flavor" type="string" column="flavor" length="9" nullable="true"/>
     <field name="observacion" type="string" column="observacion" length="30" nullable="true"/>
-    <many-to-one field="idAnalisisFisicoQuimico" target-entity="BlhAnalisisFisicoQuimico">
+    <many-to-one field="idFrascoRecolectado" target-entity="BlhFrascoRecolectado">
       <join-columns>
-        <join-column name="id_analisis_fisico_quimico" referenced-column-name="id"/>
+        <join-column name="id_frasco_recolectado" referenced-column-name="id"/>
       </join-columns>
     </many-to-one>
   </entity>

@@ -25,7 +25,7 @@ class MntPaciente
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="hora_nacimiento", type="date", nullable=true)
+     * @ORM\Column(name="hora_nacimiento", type="time", nullable=true)
      */
     private $horaNacimiento;
 
@@ -67,9 +67,9 @@ class MntPaciente
     /**
      * @var string
      *
-     * @ORM\Column(name="segundo_apelido", type="string", length=25, nullable=true)
+     * @ORM\Column(name="segundo_apellido", type="string", length=25, nullable=true)
      */
-    private $segundoApelido;
+    private $segundoApellido;
 
     /**
      * @var string
@@ -249,26 +249,26 @@ class MntPaciente
     }
 
     /**
-     * Set segundoApelido
+     * Set segundoApellido
      *
-     * @param string $segundoApelido
+     * @param string $segundoApellido
      * @return MntPaciente
      */
-    public function setSegundoApelido($segundoApelido)
+    public function setSegundoApellido($segundoApellido)
     {
-        $this->segundoApelido = $segundoApelido;
+        $this->segundoApellido = $segundoApellido;
     
         return $this;
     }
 
     /**
-     * Get segundoApelido
+     * Get segundoApellido
      *
      * @return string 
      */
-    public function getSegundoApelido()
+    public function getSegundoApellido()
     {
-        return $this->segundoApelido;
+        return $this->segundoApellido;
     }
 
     /**

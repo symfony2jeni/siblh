@@ -249,12 +249,4 @@ class BlhFrascoProcesado
     {
         return $this->idPasteurizacion;
     }
-
-    
-        
-
-      public function __toString() {
-   return $this->codigoFrascoProcesado;
-}
-
 }

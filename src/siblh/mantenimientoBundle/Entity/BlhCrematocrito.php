@@ -23,13 +23,6 @@ class BlhCrematocrito
     private $id;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="codigo_analisis_fisico_quimico", type="string", length=13, nullable=false)
-     */
-    private $codigoAnalisisFisicoQuimico;
-
-    /**
      * @var float
      *
      * @ORM\Column(name="crema1", type="decimal", nullable=true)
@@ -100,14 +93,14 @@ class BlhCrematocrito
     private $kilocalorias;
 
     /**
-     * @var \BlhAnalisisFisicoQuimico
+     * @var \BlhFrascoRecolectado
      *
-     * @ORM\ManyToOne(targetEntity="BlhAnalisisFisicoQuimico")
+     * @ORM\ManyToOne(targetEntity="BlhFrascoRecolectado")
      * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="id_analisis_fisico_quimico", referencedColumnName="id")
+     *   @ORM\JoinColumn(name="id_frasco_recolectado", referencedColumnName="id")
      * })
      */
-    private $idAnalisisFisicoQuimico;
+    private $idFrascoRecolectado;
 
 
 
@@ -119,29 +112,6 @@ class BlhCrematocrito
     public function getId()
     {
         return $this->id;
-    }
-
-    /**
-     * Set codigoAnalisisFisicoQuimico
-     *
-     * @param string $codigoAnalisisFisicoQuimico
-     * @return BlhCrematocrito
-     */
-    public function setCodigoAnalisisFisicoQuimico($codigoAnalisisFisicoQuimico)
-    {
-        $this->codigoAnalisisFisicoQuimico = $codigoAnalisisFisicoQuimico;
-    
-        return $this;
-    }
-
-    /**
-     * Get codigoAnalisisFisicoQuimico
-     *
-     * @return string 
-     */
-    public function getCodigoAnalisisFisicoQuimico()
-    {
-        return $this->codigoAnalisisFisicoQuimico;
     }
 
     /**
@@ -375,25 +345,25 @@ class BlhCrematocrito
     }
 
     /**
-     * Set idAnalisisFisicoQuimico
+     * Set idFrascoRecolectado
      *
-     * @param \siblh\mantenimientoBundle\Entity\BlhAnalisisFisicoQuimico $idAnalisisFisicoQuimico
+     * @param \siblh\mantenimientoBundle\Entity\BlhFrascoRecolectado $idFrascoRecolectado
      * @return BlhCrematocrito
      */
-    public function setIdAnalisisFisicoQuimico(\siblh\mantenimientoBundle\Entity\BlhAnalisisFisicoQuimico $idAnalisisFisicoQuimico = null)
+    public function setIdFrascoRecolectado(\siblh\mantenimientoBundle\Entity\BlhFrascoRecolectado $idFrascoRecolectado = null)
     {
-        $this->idAnalisisFisicoQuimico = $idAnalisisFisicoQuimico;
+        $this->idFrascoRecolectado = $idFrascoRecolectado;
     
         return $this;
     }
 
     /**
-     * Get idAnalisisFisicoQuimico
+     * Get idFrascoRecolectado
      *
-     * @return \siblh\mantenimientoBundle\Entity\BlhAnalisisFisicoQuimico 
+     * @return \siblh\mantenimientoBundle\Entity\BlhFrascoRecolectado 
      */
-    public function getIdAnalisisFisicoQuimico()
+    public function getIdFrascoRecolectado()
     {
-        return $this->idAnalisisFisicoQuimico;
+        return $this->idFrascoRecolectado;
     }
 }

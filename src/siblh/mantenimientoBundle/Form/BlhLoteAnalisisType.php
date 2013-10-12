@@ -6,7 +6,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
-class BlhAnalisisMicrobiologicoType extends AbstractType
+class BlhLoteAnalisisType extends AbstractType
 {
         /**
      * @param FormBuilderInterface $builder
@@ -15,11 +15,9 @@ class BlhAnalisisMicrobiologicoType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('codigoAnalisisMicrobiologico')
-            ->add('coliformesTotales')
-            ->add('control')
-            ->add('situacion')
-            ->add('idFrascoProcesado')
+            ->add('codigoLoteAnalisis')
+            ->add('fechaAnalisisFisicoQuimico')
+            ->add('responsableAnalisis')
         ;
     }
     
@@ -29,7 +27,7 @@ class BlhAnalisisMicrobiologicoType extends AbstractType
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'siblh\mantenimientoBundle\Entity\BlhAnalisisMicrobiologico'
+            'data_class' => 'siblh\mantenimientoBundle\Entity\BlhLoteAnalisis'
         ));
     }
 
@@ -38,6 +36,6 @@ class BlhAnalisisMicrobiologicoType extends AbstractType
      */
     public function getName()
     {
-        return 'siblh_mantenimientobundle_blhanalisismicrobiologico';
+        return 'siblh_mantenimientobundle_blhloteanalisis';
     }
 }

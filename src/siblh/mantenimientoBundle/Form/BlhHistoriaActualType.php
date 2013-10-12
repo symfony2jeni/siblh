@@ -6,16 +6,15 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
-class BlhHistoriaActualType extends AbstractType {
-
-    /**
+class BlhHistoriaActualType extends AbstractType
+{
+        /**
      * @param FormBuilderInterface $builder
      * @param array $options
      */
-    public function buildForm(FormBuilderInterface $builder, array $options) {
+    public function buildForm(FormBuilderInterface $builder, array $options)
+    {
         $builder
-
-          
             ->add('pesoDonante')
             ->add('tallaDonante')
             ->add('medicamento')
@@ -24,22 +23,14 @@ class BlhHistoriaActualType extends AbstractType {
             ->add('patologiaDonante')
             ->add('imc')
             ->add('idDonante')
-            ->add('idDonante')
-            ->add('pesoDonante')
-            ->add('tallaDonante', 'number', array ( 'invalid_message'=>'Debe ser entre 1.5 y 2'))
-            ->add('imc')
-            ->add('medicamento')
-            ->add('habitoToxico')
-            ->add('patologiaDonante')
-            ->add('motivoDonacion')
-
         ;
     }
-
+    
     /**
      * @param OptionsResolverInterface $resolver
      */
-    public function setDefaultOptions(OptionsResolverInterface $resolver) {
+    public function setDefaultOptions(OptionsResolverInterface $resolver)
+    {
         $resolver->setDefaults(array(
             'data_class' => 'siblh\mantenimientoBundle\Entity\BlhHistoriaActual'
         ));
@@ -48,8 +39,8 @@ class BlhHistoriaActualType extends AbstractType {
     /**
      * @return string
      */
-    public function getName() {
+    public function getName()
+    {
         return 'siblh_mantenimientobundle_blhhistoriaactual';
     }
-
 }

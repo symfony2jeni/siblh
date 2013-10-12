@@ -21,7 +21,7 @@ class MntPacienteType extends AbstractType
             ->add('segundoNombre')
             ->add('tercerNombre')
             ->add('primerApellido')
-            ->add('segundoApelido')
+            ->add('segundoApellido')
             ->add('direccion')
             ->add('idMunicipioDomicilio')
             ->add('idSexo')

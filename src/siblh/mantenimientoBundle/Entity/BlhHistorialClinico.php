@@ -74,30 +74,65 @@ class BlhHistorialClinico
     /**
      * @var string
      *
-     * @ORM\Column(name="patologia_embarazo", type="string", length=20, nullable=false)
+     * @ORM\Column(name="patologia_embarazo", type="string", length=20, nullable=true)
      */
     private $patologiaEmbarazo;
 
     /**
      * @var integer
      *
-     * @ORM\Column(name="periodo_intergenesico", type="integer", nullable=true)
+     * @ORM\Column(name="periodo_intergenesico", type="integer", nullable=false)
      */
     private $periodoIntergenesico;
 
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="fecha_parto_anterior", type="date", nullable=false)
+     * @ORM\Column(name="fecha_parto_anterior", type="date", nullable=true)
      */
     private $fechaPartoAnterior;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="formula_obstetrica", type="string", length=18, nullable=false)
+     * @ORM\Column(name="formula_obstetrica_g", type="string", length=1, nullable=true)
      */
-    private $formulaObstetrica;
+    private $formulaObstetricaG;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="formula_obstetrica_p1", type="string", length=1, nullable=true)
+     */
+    private $formulaObstetricaP1;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="formula_obstetrica_p2", type="string", length=1, nullable=true)
+     */
+    private $formulaObstetricaP2;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="formula_obstetrica_a", type="string", length=1, nullable=true)
+     */
+    private $formulaObstetricaA;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="formula_obstetrica_v", type="string", length=1, nullable=true)
+     */
+    private $formulaObstetricaV;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="formula_obstetrica_m", type="string", length=1, nullable=true)
+     */
+    private $formulaObstetricaM;
 
     /**
      * @var \BlhDonante
@@ -352,26 +387,141 @@ class BlhHistorialClinico
     }
 
     /**
-     * Set formulaObstetrica
+     * Set formulaObstetricaG
      *
-     * @param string $formulaObstetrica
+     * @param string $formulaObstetricaG
      * @return BlhHistorialClinico
      */
-    public function setFormulaObstetrica($formulaObstetrica)
+    public function setFormulaObstetricaG($formulaObstetricaG)
     {
-        $this->formulaObstetrica = $formulaObstetrica;
+        $this->formulaObstetricaG = $formulaObstetricaG;
     
         return $this;
     }
 
     /**
-     * Get formulaObstetrica
+     * Get formulaObstetricaG
      *
      * @return string 
      */
-    public function getFormulaObstetrica()
+    public function getFormulaObstetricaG()
     {
-        return $this->formulaObstetrica;
+        return $this->formulaObstetricaG;
+    }
+
+    /**
+     * Set formulaObstetricaP1
+     *
+     * @param string $formulaObstetricaP1
+     * @return BlhHistorialClinico
+     */
+    public function setFormulaObstetricaP1($formulaObstetricaP1)
+    {
+        $this->formulaObstetricaP1 = $formulaObstetricaP1;
+    
+        return $this;
+    }
+
+    /**
+     * Get formulaObstetricaP1
+     *
+     * @return string 
+     */
+    public function getFormulaObstetricaP1()
+    {
+        return $this->formulaObstetricaP1;
+    }
+
+    /**
+     * Set formulaObstetricaP2
+     *
+     * @param string $formulaObstetricaP2
+     * @return BlhHistorialClinico
+     */
+    public function setFormulaObstetricaP2($formulaObstetricaP2)
+    {
+        $this->formulaObstetricaP2 = $formulaObstetricaP2;
+    
+        return $this;
+    }
+
+    /**
+     * Get formulaObstetricaP2
+     *
+     * @return string 
+     */
+    public function getFormulaObstetricaP2()
+    {
+        return $this->formulaObstetricaP2;
+    }
+
+    /**
+     * Set formulaObstetricaA
+     *
+     * @param string $formulaObstetricaA
+     * @return BlhHistorialClinico
+     */
+    public function setFormulaObstetricaA($formulaObstetricaA)
+    {
+        $this->formulaObstetricaA = $formulaObstetricaA;
+    
+        return $this;
+    }
+
+    /**
+     * Get formulaObstetricaA
+     *
+     * @return string 
+     */
+    public function getFormulaObstetricaA()
+    {
+        return $this->formulaObstetricaA;
+    }
+
+    /**
+     * Set formulaObstetricaV
+     *
+     * @param string $formulaObstetricaV
+     * @return BlhHistorialClinico
+     */
+    public function setFormulaObstetricaV($formulaObstetricaV)
+    {
+        $this->formulaObstetricaV = $formulaObstetricaV;
+    
+        return $this;
+    }
+
+    /**
+     * Get formulaObstetricaV
+     *
+     * @return string 
+     */
+    public function getFormulaObstetricaV()
+    {
+        return $this->formulaObstetricaV;
+    }
+
+    /**
+     * Set formulaObstetricaM
+     *
+     * @param string $formulaObstetricaM
+     * @return BlhHistorialClinico
+     */
+    public function setFormulaObstetricaM($formulaObstetricaM)
+    {
+        $this->formulaObstetricaM = $formulaObstetricaM;
+    
+        return $this;
+    }
+
+    /**
+     * Get formulaObstetricaM
+     *
+     * @return string 
+     */
+    public function getFormulaObstetricaM()
+    {
+        return $this->formulaObstetricaM;
     }
 
     /**

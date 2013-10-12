@@ -11,9 +11,11 @@
     <field name="segundoApellido" type="string" column="segundo_apellido" length="15" nullable="true"/>
     <field name="fechaNacimiento" type="date" column="fecha_nacimiento" nullable="false"/>
     <field name="fechaRegistroDonanteBlh" type="date" column="fecha_registro_donante_blh" nullable="true"/>
+    <field name="telefonoFijo" type="string" column="telefono_fijo" length="9" nullable="true"/>
+    <field name="telefonoMovil" type="string" column="telefono_movil" length="9" nullable="true"/>
     <field name="direccion" type="string" column="direccion" length="100" nullable="true"/>
     <field name="procedencia" type="string" column="procedencia" length="20" nullable="true"/>
-    <field name="registro" type="string" column="registro" length="10" nullable="true"/>
+    <field name="registro" type="string" column="registro" length="12" nullable="true"/>
     <field name="numeroDocumentoIdentificacion" type="string" column="numero_documento_identificacion" length="10" nullable="false"/>
     <field name="documentoIdentificacion" type="string" column="documento_identificacion" length="20" nullable="false"/>
     <field name="edad" type="integer" column="edad" nullable="true"/>

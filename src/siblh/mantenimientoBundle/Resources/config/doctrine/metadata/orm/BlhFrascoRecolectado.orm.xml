@@ -9,9 +9,9 @@
     <field name="formaExtraccion" type="string" column="forma_extraccion" length="8" nullable="false"/>
     <field name="onzRecolectado" type="decimal" column="onz_recolectado" nullable="true"/>
     <field name="observacionFrascoRecolectado" type="string" column="observacion_frasco_recolectado" length="30" nullable="true"/>
-    <many-to-one field="idLoteAnalizado" target-entity="BlhLoteAnalizado">
+    <many-to-one field="idLoteAnalisis" target-entity="BlhLoteAnalisis">
       <join-columns>
-        <join-column name="id_lote_analizado" referenced-column-name="id"/>
+        <join-column name="id_lote_analisis" referenced-column-name="id"/>
       </join-columns>
     </many-to-one>
     <many-to-one field="idDonante" target-entity="BlhDonante">

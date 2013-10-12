@@ -1,15 +1,4 @@
-{% extends 'siblhmantenimientoBundle::standard_layout.html.twig' %}
-
-{% block javascripts %}
-    {{parent()}}
-    <script type="text/javascript" src="{{ asset('bundles/siblhmantenimiento/js/BlhHistoriaActual/index.js') }}" ></script>
-    <script type="text/javascript" src="{{ asset('bundles/siblhmantenimiento/js/BlhHistoriaActual/new.js') }}" ></script>
-{% endblock %}
-{# src/minsal/academicaAnBundle/Resource/views/Evaluacion/new.html.twig #}
-{% block stylesheets %}
-    {{ parent() }}
-	<link href="{{ asset('bundles/siblhmantenimiento/css/form.css') }}" rel="stylesheet" type="text/css" />
-{% endblock %}
+{% extends '::base.html.twig' %}
 
 {% block body -%}
     <h1>BlhHistoriaActual list</h1>

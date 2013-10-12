@@ -123,12 +123,4 @@ class CtlDepartamento
     {
         return $this->abreviatura;
     }
-
-
-  public function __toString() {
-  return $this->nombre;
 }
-    
-    
-    }
-

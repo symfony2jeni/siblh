@@ -33,7 +33,6 @@ class BlhFrascoRecolectado
      * @var float
      *
      * @ORM\Column(name="volumen_recolectado", type="decimal", nullable=false)
-     *
      */
     private $volumenRecolectado;
 
@@ -89,14 +88,14 @@ class BlhFrascoRecolectado
     private $idDonante;
 
     /**
-     * @var \BlhLoteAnalizado
+     * @var \BlhLoteAnalisis
      *
-     * @ORM\ManyToOne(targetEntity="BlhLoteAnalizado")
+     * @ORM\ManyToOne(targetEntity="BlhLoteAnalisis")
      * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="id_lote_analizado", referencedColumnName="id")
+     *   @ORM\JoinColumn(name="id_lote_analisis", referencedColumnName="id")
      * })
      */
-    private $idLoteAnalizado;
+    private $idLoteAnalisis;
 
 
 
@@ -231,8 +230,7 @@ class BlhFrascoRecolectado
      * @param \siblh\mantenimientoBundle\Entity\BlhEstado $idEstado
      * @return BlhFrascoRecolectado
      */
- //   public function setIdEstado(\siblh\mantenimientoBundle\Entity\BlhEstado $idEstado = null)
-   public function setIdEstado($idEstado)         
+    public function setIdEstado(\siblh\mantenimientoBundle\Entity\BlhEstado $idEstado = null)
     {
         $this->idEstado = $idEstado;
     
@@ -256,7 +254,6 @@ class BlhFrascoRecolectado
      * @return BlhFrascoRecolectado
      */
     public function setIdDonacion(\siblh\mantenimientoBundle\Entity\BlhDonacion $idDonacion = null)
-  //    public function setIdDonacion($idDonacion)
     {
         $this->idDonacion = $idDonacion;
     
@@ -280,7 +277,6 @@ class BlhFrascoRecolectado
      * @return BlhFrascoRecolectado
      */
     public function setIdDonante(\siblh\mantenimientoBundle\Entity\BlhDonante $idDonante = null)
-  //   public function setIdDonante($idDonante)
     {
         $this->idDonante = $idDonante;
     
@@ -298,25 +294,25 @@ class BlhFrascoRecolectado
     }
 
     /**
-     * Set idLoteAnalizado
+     * Set idLoteAnalisis
      *
-     * @param \siblh\mantenimientoBundle\Entity\BlhLoteAnalizado $idLoteAnalizado
+     * @param \siblh\mantenimientoBundle\Entity\BlhLoteAnalisis $idLoteAnalisis
      * @return BlhFrascoRecolectado
      */
-    public function setIdLoteAnalizado(\siblh\mantenimientoBundle\Entity\BlhLoteAnalizado $idLoteAnalizado = null)
+    public function setIdLoteAnalisis(\siblh\mantenimientoBundle\Entity\BlhLoteAnalisis $idLoteAnalisis = null)
     {
-        $this->idLoteAnalizado = $idLoteAnalizado;
+        $this->idLoteAnalisis = $idLoteAnalisis;
     
         return $this;
     }
 
     /**
-     * Get idLoteAnalizado
+     * Get idLoteAnalisis
      *
-     * @return \siblh\mantenimientoBundle\Entity\BlhLoteAnalizado 
+     * @return \siblh\mantenimientoBundle\Entity\BlhLoteAnalisis 
      */
-    public function getIdLoteAnalizado()
+    public function getIdLoteAnalisis()
     {
-        return $this->idLoteAnalizado;
+        return $this->idLoteAnalisis;
     }
 }

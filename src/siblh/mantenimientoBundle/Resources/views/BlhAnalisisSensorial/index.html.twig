@@ -7,7 +7,6 @@
         <thead>
             <tr>
                 <th>Id</th>
-                <th>Codigoanalisisfisicoquimico</th>
                 <th>Embalaje</th>
                 <th>Suciedad</th>
                 <th>Color</th>
@@ -20,7 +19,6 @@
         {% for entity in entities %}
             <tr>
                 <td><a href="{{ path('blhanalisissensorial_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
-                <td>{{ entity.codigoAnalisisFisicoQuimico }}</td>
                 <td>{{ entity.embalaje }}</td>
                 <td>{{ entity.suciedad }}</td>
                 <td>{{ entity.color }}</td>

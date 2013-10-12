@@ -7,7 +7,6 @@
         <thead>
             <tr>
                 <th>Id</th>
-                <th>Codigoanalisisfisicoquimico</th>
                 <th>Acidez1</th>
                 <th>Acidez2</th>
                 <th>Acidez3</th>
@@ -21,7 +20,6 @@
         {% for entity in entities %}
             <tr>
                 <td><a href="{{ path('blhacidez_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
-                <td>{{ entity.codigoAnalisisFisicoQuimico }}</td>
                 <td>{{ entity.acidez1 }}</td>
                 <td>{{ entity.acidez2 }}</td>
                 <td>{{ entity.acidez3 }}</td>

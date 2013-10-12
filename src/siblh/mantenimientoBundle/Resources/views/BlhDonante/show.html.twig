@@ -1,4 +1,4 @@
-{% extends 'siblhmantenimientoBundle::standard_layout.html.twig' %}
+{% extends '::base.html.twig' %}
 
 {% block body -%}
     <h1>BlhDonante</h1>
@@ -36,6 +36,14 @@
             <tr>
                 <th>Fecharegistrodonanteblh</th>
                 <td>{{ entity.fechaRegistroDonanteBlh|date('Y-m-d H:i:s') }}</td>
+            </tr>
+            <tr>
+                <th>Telefonofijo</th>
+                <td>{{ entity.telefonoFijo }}</td>
+            </tr>
+            <tr>
+                <th>Telefonomovil</th>
+                <td>{{ entity.telefonoMovil }}</td>
             </tr>
             <tr>
                 <th>Direccion</th>

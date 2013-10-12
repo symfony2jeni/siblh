@@ -13,7 +13,7 @@
                 <th>Segundonombre</th>
                 <th>Tercernombre</th>
                 <th>Primerapellido</th>
-                <th>Segundoapelido</th>
+                <th>Segundoapellido</th>
                 <th>Direccion</th>
                 <th>Actions</th>
             </tr>
@@ -22,13 +22,13 @@
         {% for entity in entities %}
             <tr>
                 <td><a href="{{ path('mntpaciente_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
-                <td>{% if entity.horaNacimiento %}{{ entity.horaNacimiento|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{{ entity.horaNacimiento }}</td>
                 <td>{% if entity.fechaNacimiento %}{{ entity.fechaNacimiento|date('Y-m-d H:i:s') }}{% endif %}</td>
                 <td>{{ entity.primerNombre }}</td>
                 <td>{{ entity.segundoNombre }}</td>
                 <td>{{ entity.tercerNombre }}</td>
                 <td>{{ entity.primerApellido }}</td>
-                <td>{{ entity.segundoApelido }}</td>
+                <td>{{ entity.segundoApellido }}</td>
                 <td>{{ entity.direccion }}</td>
                 <td>
                 <ul>

@@ -1,5 +1,4 @@
-{% extends 'siblhmantenimientoBundle::plantilla.html.twig' %}
-
+{% extends '::base.html.twig' %}
 
 {% block body -%}
     <h1>BlhCurva list</h1>
@@ -30,7 +29,6 @@
                 <td>{% if entity.fechaCurva %}{{ entity.fechaCurva|date('Y-m-d H:i:s') }}{% endif %}</td>
                 <td>{{ entity.cantidadFrascos }}</td>
                 <td>{{ entity.volumenPorFrasco }}</td>
-                <td>{{ entity.horaInicioCurva}}</td>
                 <td>{{ entity.horaInicioCurva }}</td>
                 <td>
                 <ul>

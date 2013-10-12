@@ -21,7 +21,7 @@ class AppKernel extends Kernel
            /** other bundes are here **/
        
             new Knp\Bundle\MenuBundle\KnpMenuBundle(),
-            new siblh\menuBundle\siblhmenuBundle(),
+           
 
             new jQuery\jQueryBundle\jQueryBundle(),
         );

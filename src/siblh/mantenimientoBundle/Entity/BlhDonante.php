@@ -74,6 +74,20 @@ class BlhDonante
     /**
      * @var string
      *
+     * @ORM\Column(name="telefono_fijo", type="string", length=9, nullable=true)
+     */
+    private $telefonoFijo;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="telefono_movil", type="string", length=9, nullable=true)
+     */
+    private $telefonoMovil;
+
+    /**
+     * @var string
+     *
      * @ORM\Column(name="direccion", type="string", length=100, nullable=true)
      */
     private $direccion;
@@ -88,7 +102,7 @@ class BlhDonante
     /**
      * @var string
      *
-     * @ORM\Column(name="registro", type="string", length=10, nullable=true)
+     * @ORM\Column(name="registro", type="string", length=12, nullable=true)
      */
     private $registro;
 
@@ -169,7 +183,6 @@ class BlhDonante
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="id_banco_de_leche", referencedColumnName="id")
      * })
-     *
      */
     private $idBancoDeLeche;
 
@@ -203,7 +216,6 @@ class BlhDonante
      */
     public function setCodigoDonante($codigoDonante)
     {
-
         $this->codigoDonante = $codigoDonante;
     
         return $this;
@@ -355,6 +367,52 @@ class BlhDonante
     public function getFechaRegistroDonanteBlh()
     {
         return $this->fechaRegistroDonanteBlh;
+    }
+
+    /**
+     * Set telefonoFijo
+     *
+     * @param string $telefonoFijo
+     * @return BlhDonante
+     */
+    public function setTelefonoFijo($telefonoFijo)
+    {
+        $this->telefonoFijo = $telefonoFijo;
+    
+        return $this;
+    }
+
+    /**
+     * Get telefonoFijo
+     *
+     * @return string 
+     */
+    public function getTelefonoFijo()
+    {
+        return $this->telefonoFijo;
+    }
+
+    /**
+     * Set telefonoMovil
+     *
+     * @param string $telefonoMovil
+     * @return BlhDonante
+     */
+    public function setTelefonoMovil($telefonoMovil)
+    {
+        $this->telefonoMovil = $telefonoMovil;
+    
+        return $this;
+    }
+
+    /**
+     * Get telefonoMovil
+     *
+     * @return string 
+     */
+    public function getTelefonoMovil()
+    {
+        return $this->telefonoMovil;
     }
 
     /**
@@ -701,12 +759,4 @@ class BlhDonante
     {
         return $this->idMunicipio;
     }
-
-  
-            public function __toString() {
-  return $this->codigoDonante;
 }
-   
-
-}
-

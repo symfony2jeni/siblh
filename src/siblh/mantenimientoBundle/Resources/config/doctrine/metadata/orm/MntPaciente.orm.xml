@@ -4,13 +4,13 @@
     <id name="id" type="integer" column="id">
       <generator strategy="SEQUENCE"/>
     </id>
-    <field name="horaNacimiento" type="date" column="hora_nacimiento" nullable="true"/>
+    <field name="horaNacimiento" type="time" column="hora_nacimiento" nullable="true"/>
     <field name="fechaNacimiento" type="date" column="fecha_nacimiento" nullable="false"/>
     <field name="primerNombre" type="string" column="primer_nombre" length="25" nullable="false"/>
     <field name="segundoNombre" type="string" column="segundo_nombre" length="25" nullable="true"/>
     <field name="tercerNombre" type="string" column="tercer_nombre" length="25" nullable="true"/>
     <field name="primerApellido" type="string" column="primer_apellido" length="25" nullable="false"/>
-    <field name="segundoApelido" type="string" column="segundo_apelido" length="25" nullable="true"/>
+    <field name="segundoApellido" type="string" column="segundo_apellido" length="25" nullable="true"/>
     <field name="direccion" type="string" column="direccion" length="100" nullable="false"/>
     <many-to-one field="idSexo" target-entity="CtlSexo">
       <join-columns>

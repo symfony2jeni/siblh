@@ -7,21 +7,21 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
-use siblh\mantenimientoBundle\Entity\BlhDonante;
-use siblh\mantenimientoBundle\Form\BlhDonanteType;
+use siblh\mantenimientoBundle\Entity\BlhLoteAnalisis;
+use siblh\mantenimientoBundle\Form\BlhLoteAnalisisType;
 
 /**
- * BlhDonante controller.
+ * BlhLoteAnalisis controller.
  *
- * @Route("/blhdonante")
+ * @Route("/blhloteanalisis")
  */
-class BlhDonanteController extends Controller
+class BlhLoteAnalisisController extends Controller
 {
 
     /**
-     * Lists all BlhDonante entities.
+     * Lists all BlhLoteAnalisis entities.
      *
-     * @Route("/", name="blhdonante")
+     * @Route("/", name="blhloteanalisis")
      * @Method("GET")
      * @Template()
      */
@@ -29,22 +29,22 @@ class BlhDonanteController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entities = $em->getRepository('siblhmantenimientoBundle:BlhDonante')->findAll();
+        $entities = $em->getRepository('siblhmantenimientoBundle:BlhLoteAnalisis')->findAll();
 
         return array(
             'entities' => $entities,
         );
     }
     /**
-     * Creates a new BlhDonante entity.
+     * Creates a new BlhLoteAnalisis entity.
      *
-     * @Route("/", name="blhdonante_create")
+     * @Route("/", name="blhloteanalisis_create")
      * @Method("POST")
-     * @Template("siblhmantenimientoBundle:BlhDonante:new.html.twig")
+     * @Template("siblhmantenimientoBundle:BlhLoteAnalisis:new.html.twig")
      */
     public function createAction(Request $request)
     {
-        $entity = new BlhDonante();
+        $entity = new BlhLoteAnalisis();
         $form = $this->createCreateForm($entity);
         $form->handleRequest($request);
 
@@ -53,7 +53,7 @@ class BlhDonanteController extends Controller
             $em->persist($entity);
             $em->flush();
 
-            return $this->redirect($this->generateUrl('blhdonante_show', array('id' => $entity->getId())));
+            return $this->redirect($this->generateUrl('blhloteanalisis_show', array('id' => $entity->getId())));
         }
 
         return array(
@@ -63,16 +63,16 @@ class BlhDonanteController extends Controller
     }
 
     /**
-    * Creates a form to create a BlhDonante entity.
+    * Creates a form to create a BlhLoteAnalisis entity.
     *
-    * @param BlhDonante $entity The entity
+    * @param BlhLoteAnalisis $entity The entity
     *
     * @return \Symfony\Component\Form\Form The form
     */
-    private function createCreateForm(BlhDonante $entity)
+    private function createCreateForm(BlhLoteAnalisis $entity)
     {
-        $form = $this->createForm(new BlhDonanteType(), $entity, array(
-            'action' => $this->generateUrl('blhdonante_create'),
+        $form = $this->createForm(new BlhLoteAnalisisType(), $entity, array(
+            'action' => $this->generateUrl('blhloteanalisis_create'),
             'method' => 'POST',
         ));
 
@@ -82,15 +82,15 @@ class BlhDonanteController extends Controller
     }
 
     /**
-     * Displays a form to create a new BlhDonante entity.
+     * Displays a form to create a new BlhLoteAnalisis entity.
      *
-     * @Route("/new", name="blhdonante_new")
+     * @Route("/new", name="blhloteanalisis_new")
      * @Method("GET")
      * @Template()
      */
     public function newAction()
     {
-        $entity = new BlhDonante();
+        $entity = new BlhLoteAnalisis();
         $form   = $this->createCreateForm($entity);
 
         return array(
@@ -100,9 +100,9 @@ class BlhDonanteController extends Controller
     }
 
     /**
-     * Finds and displays a BlhDonante entity.
+     * Finds and displays a BlhLoteAnalisis entity.
      *
-     * @Route("/{id}", name="blhdonante_show")
+     * @Route("/{id}", name="blhloteanalisis_show")
      * @Method("GET")
      * @Template()
      */
@@ -110,10 +110,10 @@ class BlhDonanteController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entity = $em->getRepository('siblhmantenimientoBundle:BlhDonante')->find($id);
+        $entity = $em->getRepository('siblhmantenimientoBundle:BlhLoteAnalisis')->find($id);
 
         if (!$entity) {
-            throw $this->createNotFoundException('Unable to find BlhDonante entity.');
+            throw $this->createNotFoundException('Unable to find BlhLoteAnalisis entity.');
         }
 
         $deleteForm = $this->createDeleteForm($id);
@@ -125,9 +125,9 @@ class BlhDonanteController extends Controller
     }
 
     /**
-     * Displays a form to edit an existing BlhDonante entity.
+     * Displays a form to edit an existing BlhLoteAnalisis entity.
      *
-     * @Route("/{id}/edit", name="blhdonante_edit")
+     * @Route("/{id}/edit", name="blhloteanalisis_edit")
      * @Method("GET")
      * @Template()
      */
@@ -135,10 +135,10 @@ class BlhDonanteController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entity = $em->getRepository('siblhmantenimientoBundle:BlhDonante')->find($id);
+        $entity = $em->getRepository('siblhmantenimientoBundle:BlhLoteAnalisis')->find($id);
 
         if (!$entity) {
-            throw $this->createNotFoundException('Unable to find BlhDonante entity.');
+            throw $this->createNotFoundException('Unable to find BlhLoteAnalisis entity.');
         }
 
         $editForm = $this->createEditForm($entity);
@@ -152,16 +152,16 @@ class BlhDonanteController extends Controller
     }
 
     /**
-    * Creates a form to edit a BlhDonante entity.
+    * Creates a form to edit a BlhLoteAnalisis entity.
     *
-    * @param BlhDonante $entity The entity
+    * @param BlhLoteAnalisis $entity The entity
     *
     * @return \Symfony\Component\Form\Form The form
     */
-    private function createEditForm(BlhDonante $entity)
+    private function createEditForm(BlhLoteAnalisis $entity)
     {
-        $form = $this->createForm(new BlhDonanteType(), $entity, array(
-            'action' => $this->generateUrl('blhdonante_update', array('id' => $entity->getId())),
+        $form = $this->createForm(new BlhLoteAnalisisType(), $entity, array(
+            'action' => $this->generateUrl('blhloteanalisis_update', array('id' => $entity->getId())),
             'method' => 'PUT',
         ));
 
@@ -170,20 +170,20 @@ class BlhDonanteController extends Controller
         return $form;
     }
     /**
-     * Edits an existing BlhDonante entity.
+     * Edits an existing BlhLoteAnalisis entity.
      *
-     * @Route("/{id}", name="blhdonante_update")
+     * @Route("/{id}", name="blhloteanalisis_update")
      * @Method("PUT")
-     * @Template("siblhmantenimientoBundle:BlhDonante:edit.html.twig")
+     * @Template("siblhmantenimientoBundle:BlhLoteAnalisis:edit.html.twig")
      */
     public function updateAction(Request $request, $id)
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entity = $em->getRepository('siblhmantenimientoBundle:BlhDonante')->find($id);
+        $entity = $em->getRepository('siblhmantenimientoBundle:BlhLoteAnalisis')->find($id);
 
         if (!$entity) {
-            throw $this->createNotFoundException('Unable to find BlhDonante entity.');
+            throw $this->createNotFoundException('Unable to find BlhLoteAnalisis entity.');
         }
 
         $deleteForm = $this->createDeleteForm($id);
@@ -193,7 +193,7 @@ class BlhDonanteController extends Controller
         if ($editForm->isValid()) {
             $em->flush();
 
-            return $this->redirect($this->generateUrl('blhdonante_edit', array('id' => $id)));
+            return $this->redirect($this->generateUrl('blhloteanalisis_edit', array('id' => $id)));
         }
 
         return array(
@@ -203,9 +203,9 @@ class BlhDonanteController extends Controller
         );
     }
     /**
-     * Deletes a BlhDonante entity.
+     * Deletes a BlhLoteAnalisis entity.
      *
-     * @Route("/{id}", name="blhdonante_delete")
+     * @Route("/{id}", name="blhloteanalisis_delete")
      * @Method("DELETE")
      */
     public function deleteAction(Request $request, $id)
@@ -215,21 +215,21 @@ class BlhDonanteController extends Controller
 
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
-            $entity = $em->getRepository('siblhmantenimientoBundle:BlhDonante')->find($id);
+            $entity = $em->getRepository('siblhmantenimientoBundle:BlhLoteAnalisis')->find($id);
 
             if (!$entity) {
-                throw $this->createNotFoundException('Unable to find BlhDonante entity.');
+                throw $this->createNotFoundException('Unable to find BlhLoteAnalisis entity.');
             }
 
             $em->remove($entity);
             $em->flush();
         }
 
-        return $this->redirect($this->generateUrl('blhdonante'));
+        return $this->redirect($this->generateUrl('blhloteanalisis'));
     }
 
     /**
-     * Creates a form to delete a BlhDonante entity by id.
+     * Creates a form to delete a BlhLoteAnalisis entity by id.
      *
      * @param mixed $id The entity id
      *
@@ -238,7 +238,7 @@ class BlhDonanteController extends Controller
     private function createDeleteForm($id)
     {
         return $this->createFormBuilder()
-            ->setAction($this->generateUrl('blhdonante_delete', array('id' => $id)))
+            ->setAction($this->generateUrl('blhloteanalisis_delete', array('id' => $id)))
             ->setMethod('DELETE')
             ->add('submit', 'submit', array('label' => 'Delete'))
             ->getForm()

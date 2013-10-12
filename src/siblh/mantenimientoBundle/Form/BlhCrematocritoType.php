@@ -15,7 +15,6 @@ class BlhCrematocritoType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('codigoAnalisisFisicoQuimico')
             ->add('crema1')
             ->add('crema2')
             ->add('crema3')
@@ -26,7 +25,7 @@ class BlhCrematocritoType extends AbstractType
             ->add('mediaCt')
             ->add('porcentajeCrema')
             ->add('kilocalorias')
-            ->add('idAnalisisFisicoQuimico')
+            ->add('idFrascoRecolectado')
         ;
     }
     

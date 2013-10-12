@@ -1,4 +1,5 @@
-{% extends 'siblhmantenimientoBundle::standard_layout.html.twig' %}
+{% extends '::base.html.twig' %}
+
 {% block body -%}
     <h1>BlhHistorialClinico list</h1>
 
@@ -16,7 +17,12 @@
                 <th>Patologiaembarazo</th>
                 <th>Periodointergenesico</th>
                 <th>Fechapartoanterior</th>
-                <th>Formulaobstetrica</th>
+                <th>Formulaobstetricag</th>
+                <th>Formulaobstetricap1</th>
+                <th>Formulaobstetricap2</th>
+                <th>Formulaobstetricaa</th>
+                <th>Formulaobstetricav</th>
+                <th>Formulaobstetricam</th>
                 <th>Actions</th>
             </tr>
         </thead>
@@ -34,7 +40,12 @@
                 <td>{{ entity.patologiaEmbarazo }}</td>
                 <td>{{ entity.periodoIntergenesico }}</td>
                 <td>{% if entity.fechaPartoAnterior %}{{ entity.fechaPartoAnterior|date('Y-m-d H:i:s') }}{% endif %}</td>
-                <td>{{ entity.formulaObstetrica }}</td>
+                <td>{{ entity.formulaObstetricaG }}</td>
+                <td>{{ entity.formulaObstetricaP1 }}</td>
+                <td>{{ entity.formulaObstetricaP2 }}</td>
+                <td>{{ entity.formulaObstetricaA }}</td>
+                <td>{{ entity.formulaObstetricaV }}</td>
+                <td>{{ entity.formulaObstetricaM }}</td>
                 <td>
                 <ul>
                     <li>

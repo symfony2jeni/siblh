@@ -15,13 +15,12 @@ class BlhAnalisisSensorialType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('codigoAnalisisFisicoQuimico')
             ->add('embalaje')
             ->add('suciedad')
             ->add('color')
             ->add('flavor')
             ->add('observacion')
-            ->add('idAnalisisFisicoQuimico')
+            ->add('idFrascoRecolectado')
         ;
     }
     

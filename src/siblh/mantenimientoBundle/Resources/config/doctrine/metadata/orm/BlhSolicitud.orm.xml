@@ -23,11 +23,7 @@
     <many-to-one field="idGrupoSolicitud" target-entity="BlhGrupoSolicitud">
       <join-columns>
         <join-column name="id_grupo_solicitud" referenced-column-name="id"/>
-<<<<<<< HEAD
-      </join-columnsl
-=======
       </join-columns>
->>>>>>> desarrollo
     </many-to-one>
   </entity>
 </doctrine-mapping>
