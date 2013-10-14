@@ -126,4 +126,8 @@ class BlhBancoDeLeche
     {
         return $this->idEstablecimiento;
     }
+    
+    public function __toString() {
+   return $this->codigoBancoDeLeche;
+}
 }

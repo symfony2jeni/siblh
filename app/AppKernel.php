@@ -20,10 +20,26 @@ class AppKernel extends Kernel
 
            /** other bundes are here **/
        
-            new Knp\Bundle\MenuBundle\KnpMenuBundle(),
            
-
             new jQuery\jQueryBundle\jQueryBundle(),
+            
+           /**Seguridad**/
+            new JMS\AopBundle\JMSAopBundle(),
+            new JMS\DiExtraBundle\JMSDiExtraBundle($this),
+            new JMS\SecurityExtraBundle\JMSSecurityExtraBundle(),
+            new FOS\UserBundle\FOSUserBundle(),
+            new Sonata\CacheBundle\SonataCacheBundle(),
+            new Sonata\BlockBundle\SonataBlockBundle(),
+            new Sonata\jQueryBundle\SonatajQueryBundle(),
+            new Knp\Bundle\MenuBundle\KnpMenuBundle(),
+            new Sonata\AdminBundle\SonataAdminBundle(),
+            new Sonata\DoctrineORMAdminBundle\SonataDoctrineORMAdminBundle(),
+            new Sonata\EasyExtendsBundle\SonataEasyExtendsBundle(),
+            new Sonata\UserBundle\SonataUserBundle('FOSUserBundle'),
+            
+            new Application\Sonata\UserBundle\ApplicationSonataUserBundle(), 
+
+
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

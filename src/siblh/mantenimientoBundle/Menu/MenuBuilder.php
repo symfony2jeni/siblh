@@ -4,7 +4,7 @@ namespace siblh\mantenimientoBundle\Menu;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Knp\Menu\FactoryInterface;
 use Symfony\Component\DependencyInjection\ContainerAware;
-
+use Sonata\AdminBundle\Admin\Pool;
 class MenuBuilder extends Controller
 {
     public function mainMenu(FactoryInterface $factory, array $options)
@@ -91,18 +91,20 @@ class MenuBuilder extends Controller
 
     	/*
     	You probably want to show user specific information such as the username here. That's possible! Use any of the below methods to do this.
-
-    	if($this->container->get('security.context')->isGranted(array('ROLE_ADMIN', 'ROLE_USER'))) {} // Check if the visitor has any authenticated roles
+*/
+    	if($this->container->get('security.context')->isGranted(array('ROLE_ADMIN','ROLE_USER'))) { // Check if the visitor has any authenticated roles
+        /* @var $username \FOS */
     	$username = $this->container->get('security.context')->getToken()->getUser()->getUsername(); // Get username of the current logged in user
 
-    	*/	
-		$menu->addChild('User', array('label' => 'Hi visitor'))
+    		
+		$menu->addChild('User', array('label' => $username))
 			->setAttribute('dropdown', true)
 			->setAttribute('icon', 'icon-user');
 
-		$menu['User']->addChild('Edit profile', array('route' => 'acme_hello_profile'))
+		$menu['User']->addChild('Cerrar Sesión', array('route' => 'sonata_user_admin_security_logout'))
 			->setAttribute('icon', 'icon-edit');
-
+    }
+       
         return $menu;
     }
 }

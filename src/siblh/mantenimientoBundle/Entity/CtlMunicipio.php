@@ -156,4 +156,7 @@ class CtlMunicipio
     {
         return $this->idDepartamento;
     }
+       public function __toString() {
+   return $this->nombre;
+}
 }
