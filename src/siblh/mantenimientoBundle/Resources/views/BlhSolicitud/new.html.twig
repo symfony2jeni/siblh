@@ -30,7 +30,7 @@
                 {{ form_errors(form.idReceptor) }}
                 {{ form_widget(form.idReceptor) }} </td>
                     
-                <td colspan = "2" align = "left">Codigo de Receptor</td>    
+                <td colspan = "2" align = "left">Codigo  Receptor</td>    
                 <td colspan = "4" align = "left">
                 <INPUT type=text STYLE="text-align:center" name="nombre" disabled="disabled" size=20 readonly="readonly" value= " {{ datos_receptor[0].codigo_receptor}} ">
                 </td>
@@ -137,11 +137,11 @@
                 {{ form_label(form.estado) }}
                 {{ form_errors(form.estado) }}
                 {{ form_widget(form.estado) }} </td>
-        <td colspan="3" align = "left"> 
+        {#<td colspan="3" align = "left"> 
                 
                 {{ form_label(form.idGrupoSolicitud) }}
                 {{ form_errors(form.idGrupoSolicitud) }}
-                {{ form_widget(form.idGrupoSolicitud) }} </td>
+                {{ form_widget(form.idGrupoSolicitud) }} </td>#}
         <td colspan="3" align = "left"> 
                 
                 {{ form_label(form.codigoSolicitud) }}

@@ -1,15 +1,137 @@
-{% extends '::base.html.twig' %}
+{% extends 'siblhmantenimientoBundle::plantilla.html.twig' %}
+
+{% block stylesheets %}
+  {{ parent() }}
+	<link href="{{ asset('bundles/siblhmantenimiento/css/form.css') }}" rel="stylesheet" type="text/css" />
+{% endblock %}
+        
+ {% block javascripts %}   
+{{parent()}}
+<script type="text/javascript" src="{{ asset('bundles/siblhmantenimiento/js/Solicitud/new.js') }}" ></script>
+ 
+{% endblock %}
 
 {% block body -%}
-    <h1>BlhSeguimientoReceptor creation</h1>
+    <h1>Registro de Seguimiento de Receptores</h1>
+    
+   
+   <table class="record_properties" align = "center" >
+       
+         <tr>
+        <td colspan = "2" align = "left" >Codigo Receptor</td>
+                <td colspan = "4" align = "left">
+                <INPUT type=text STYLE="text-align:center" name="nombre" disabled="disabled" size=20 readonly="readonly" value= " {{ datos_receptor[0].codigoReceptor}} ">
+                </td>
+                
+               </td>
+                {{ form_start(form) }}
+                {{ form_errors(form) }}
+                <td colspan="5" align = "left" style="visibility:hidden"> 
+                {{ form_label(form.idReceptor) }}
+                {{ form_errors(form.idReceptor) }}
+                {{ form_widget(form.idReceptor) }} </td>
+                <td colspan = "2" align = "left">Nombre del Receptor</td>
+                <td colspan = "5" align = "left">
+                <INPUT type=text STYLE="text-align:center" name="nombre" disabled="disabled" size=35 readonly="readonly" value= {{ datos_receptor[0].primer_nombre}}&nbsp;{{ datos_receptor[0].segundo_nombre  }}&nbsp;{{ datos_receptor[0].tercer_nombre  }}&nbsp;{{ datos_receptor[0].primer_apellido }}&nbsp;{{ datos_receptor[0].segundo_apellido }}>
+               </td>  
+              
+        </tr>
+         
+   
+      
+        </table>
+    
+        
+   
+        <table class="record_properties" align = "center" >
+          
+        <tr>
+        <td colspan="3" align = "left"> 
+                
+                {{ form_label(form.fechaSeguimiento) }}
+                {{ form_errors(form.fechaSeguimiento) }}
+                {{ form_widget(form.fechaSeguimiento,  { 'attr': {'size': '10'} })  }} </td>
+        <td colspan="3" align = "left"> 
+                
+                {{ form_label(form.semana) }}
+                {{ form_errors(form.semana) }}
+                {{ form_widget(form.semana) }} </td>
 
-    {{ form(form) }}
+                <td colspan="3" align = "left"> 
+                
+                {{ form_label(form.pesoSeguimiento) }}
+                {{ form_errors(form.pesoSeguimiento) }}
+                {{ form_widget(form.pesoSeguimiento) }} </td>
+       
+                <td colspan="3" align = "left"> 
+                
+                {{ form_label(form.gananciaDiaPeso) }}
+                {{ form_errors(form.gananciaDiaPeso) }}
+                {{ form_widget(form.gananciaDiaPeso) }} </td>
+        
+      
+        </tr>
+      <tr>
+        <td colspan="3" align = "left"> 
+                
+                {{ form_label(form.pcSeguimiento) }}
+                {{ form_errors(form.pcSeguimiento) }}
+                {{ form_widget(form.pcSeguimiento) }} </td>
+        <td colspan="3" align = "left"> 
+                
+                {{ form_label(form.tallaReceptor) }}
+                {{ form_errors(form.tallaReceptor) }}
+                {{ form_widget(form.tallaReceptor) }} </td>
+        <td colspan="3" align = "left"> 
+                
+                {{ form_label(form.gananciaDiaTalla) }}
+                {{ form_errors(form.gananciaDiaTalla) }}
+                {{ form_widget(form.gananciaDiaTalla) }} </td>
+        
+        
+        <tr>
+        
+        <td colspan="3" align = "left"> 
+                
+                {{ form_label(form.complicaciones) }}
+                {{ form_errors(form.complicaciones) }}
+                {{ form_widget(form.complicaciones) }} </td>
+       
+        
+                
+        </tr>
+        <tr align = 'rigth'>
+            <td colspan = '15' align = 'rigth'>  <input type="submit" value="GUARDAR"/></td>
+           
+           {{ form_end(form) }}
+          
+            <tr><td>
+        
+               <ul class="record_actions">
+                <li>
+                <a href="{{ path('blhsolicitud') }}">
+                Back to the list
+                </a>
+                </li>
+               </ul>
+                </td>
+            </tr>
+              
+      
+        
+    </table>
+       
+
+  
+      
+   
+   
 
         <ul class="record_actions">
-    <li>
-        <a href="{{ path('blhseguimientoreceptor') }}">
+    {#<li>
+        <a href="{{ path('blhsolicitud') }}">
             Back to the list
         </a>
-    </li>
+    </li>#}
 </ul>
 {% endblock %}

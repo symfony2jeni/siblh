@@ -1,7 +1,12 @@
-{% extends '::base.html.twig' %}
+{% extends 'siblhmantenimientoBundle::plantilla.html.twig' %}
+
+{% block javascripts %}
+    {{parent()}}
+    <script type="text/javascript" src="{{ asset('bundles/siblhmantenimiento/js/BlhSolicitud/index.js') }}" ></script>
+{% endblock %}
 
 {% block body -%}
-    <h1>BlhSolicitud list</h1>
+    <h1>Listado de Solicitudes</h1>
 
     <table class="records_list">
         <thead>
@@ -39,10 +44,10 @@
                 <td>
                 <ul>
                     <li>
-                        <a href="{{ path('blhsolicitud_show', { 'id': entity.id }) }}">show</a>
+                        <a href="{{ path('blhsolicitud_show', { 'id': entity.id }) }}">Mostrar</a>
                     </li>
                     <li>
-                        <a href="{{ path('blhsolicitud_edit', { 'id': entity.id }) }}">edit</a>
+                        <a href="{{ path('blhsolicitud_edit', { 'id': entity.id }) }}">Editar</a>
                     </li>
                 </ul>
                 </td>
@@ -51,11 +56,11 @@
         </tbody>
     </table>
 
-        <ul>
+        {#<ul>
         <li>
             <a href="{{ path('blhsolicitud_new') }}">
                 Create a new entry
             </a>
         </li>
-    </ul>
+    </ul>#}
     {% endblock %}

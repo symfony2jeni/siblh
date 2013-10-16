@@ -168,4 +168,101 @@ text-align: center;
 
    }
  
+   
+   
+ /*Agregados MARVIN*/  
 
+.records_list {
+    color: #FFFFFF;
+    font-size:11px;
+    font-weight: bold;
+    padding: 6px;
+    border:1px solid #C8C8F2;
+    line-height: 1.5em;
+    white-space: nowrap;
+    font-family: Verdana,Arial,Helvetica,sans-serif;
+    border-collapse: collapse;
+    border-spacing: 1px;
+}
+
+.records_list th{
+    font-family: verdana,arial,helvetica,sans-serif;
+    color: #ffffff;
+    background-color: #205B96;
+    font-weight: bold;
+    border-style: solid;
+    border-width: 1px;
+    border-color: #000000;
+}
+
+.records_list td {
+    border-style: solid;
+    border-width: 1px;
+    border-color: #000000;
+    color: #205B96;
+   
+}
+
+.records_list tr:hover {
+    background-color: #93b0eb;
+    border-style: solid;
+    border-width: 1px;
+    border-color: #000000;
+    color: #000000;
+}
+
+
+h1{
+    font-family: verdana,arial,helvetica,sans-serif;
+    color: #1d1e55;
+    font-weight: bold;
+    font-style: italic;
+    font-size: 18px;
+    text-align: center;
+}
+
+.record_properties{
+    color: #FFFFFF;
+    font-size:11px;
+    font-weight: bold;
+    padding: 6px;
+    border:1px solid #C8C8F2;
+    line-height: 1.5em;
+    white-space: nowrap;
+    font-family: Verdana,Arial,Helvetica,sans-serif;
+    border-collapse: collapse;
+    border-spacing: 1px;
+}
+
+.record_properties th{
+    font-family: verdana,arial,helvetica,sans-serif;
+    color: #ffffff;
+    background-color: #205B96;
+    font-weight: bold;
+    border-style: solid;
+    border-width: 1px;
+    border-color: #000000;
+    text-align: center;
+}
+
+
+.record_properties td {
+    border-style: solid;
+    border-width: 1px;
+    border-color: #000000;
+    color: #205B96;
+    text-align: center;
+   
+}
+
+label{
+    
+    font-family: Verdana,Arial,Helvetica,sans-serif;
+    font-weight: bold;
+    font-style: italic;
+}
+
+.record_actions li a:link {text-decoration:none; color:#205B96; font-weight: bold;} /* Link no visitado*/
+.record_actions li a:visited {text-decoration:none; color:#205B96} /*Link visitado*/
+.record_actions li a:active {text-decoration:none; color: #003399; background: #993333; } /*Link activo*/
+.record_actions li a:hover {text-decoration:underline; color:#000000; background-color: #6ac2c2;} /*Mause sobre el link*/ 

@@ -95,9 +95,16 @@ _NewFrascoRecolectado:
 _MantenimientoUsuarios:
   pattern:  /Mantenimiento/Usuarios
   defaults: { _controller: SonataAdminBundle:Core:dashboard} 
+
+_NewSeguimiento:
+  pattern:  /receptores/seguimiento
+  defaults: { _controller: siblhmantenimientoBundle:BlhSeguimientoReceptor:receptoresSeguimiento}    
   
 _NewSolicitudes:
   pattern:  /receptores_solicitud
   defaults: { _controller: siblhmantenimientoBundle:BlhSolicitud:receptores}  
   
+
+  
+
   

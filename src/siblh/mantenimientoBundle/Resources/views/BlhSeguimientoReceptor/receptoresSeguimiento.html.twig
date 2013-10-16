@@ -1,9 +1,9 @@
 {% extends 'siblhmantenimientoBundle::plantilla.html.twig' %}
 
-{% block javascripts %}
+{#{% block javascripts %}
     {{parent()}}
     <script type="text/javascript" src="{{ asset('bundles/siblhmantenimiento/js/Solicitud/index.js') }}" ></script>
-{% endblock %}
+{% endblock %}#}
 
 {% block body -%}
     <h1>Listado de Receptores</h1>
@@ -28,22 +28,22 @@
         </thead>
         <tbody>
             <tr>
-       {% for paciente in pacientes_receptores%}
+       {% for receptor in receptores_seguimiento%}
             
               {# <td><a href="{{ path('blhsolicitud_new', { 'id': paciente.id }) }}">{{ paciente.id }}</a></td>#}
-                <td>{{ paciente.codigoReceptor }}</td>
-                <td>{{ paciente.nombre1 }}</td>
-                <td>{{ paciente.nombre2 }}</td>
-                <td>{{ paciente.nombre3 }}</td>
+                <td>{{ receptor.codigoReceptor }}</td>
+                <td>{{ receptor.nombre1 }}</td>
+                <td>{{ receptor.nombre2 }}</td>
+                <td>{{ receptor.nombre3 }}</td>
         
-                <td>{{ paciente.apellido1 }}</td>
-                <td>{{ paciente.apellido2 }}</td>
+                <td>{{ receptor.apellido1 }}</td>
+                <td>{{ receptor.apellido2 }}</td>
                
                 <td>
                <div id='pagerSolicitudes' ></div>
                <div id='resultado' ></div>
                <ul><li>
-           <a href="{{ path('blhsolicitud_new', { 'id': paciente.id })}}">Nueva Solicitud</a></li></ul>
+           <a href="{{ path('blhseguimientoreceptor_new', { 'id': receptor.id })}}">Registrar Seguimiento</a></li></ul> 
                {# <ul>
                     <li>
                         <a href="{{ path('blhsolicitud_new', { 'id': paciente.id })}}">Nueva Soliciud</a>
@@ -51,7 +51,7 @@
                     
                                        
                 </ul>#}
-                </td>
+                </td> 
                 {% endfor %}
             </tr>
         

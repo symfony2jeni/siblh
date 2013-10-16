@@ -25,7 +25,7 @@ class BlhSeguimientoReceptorController extends Controller
      * @Method("GET")
      * @Template()
      */
-  /*  public function indexAction()
+   public function indexAction()
     {
         $em = $this->getDoctrine()->getManager();
 
@@ -34,7 +34,7 @@ class BlhSeguimientoReceptorController extends Controller
         return array(
             'entities' => $entities,
         );
-    }*/
+    }
     /**
      * Creates a new BlhSeguimientoReceptor entity.
      *
@@ -76,7 +76,7 @@ class BlhSeguimientoReceptorController extends Controller
             'method' => 'POST',
         ));
 
-        $form->add('submit', 'submit', array('label' => 'Create'));
+        //$form->add('submit', 'submit', array('label' => 'Create'));
 
         return $form;
     }
@@ -106,7 +106,7 @@ class BlhSeguimientoReceptorController extends Controller
      * @Method("GET")
      * @Template()
      */
- /*   public function showAction($id)
+    public function showAction($id)
     {
         $em = $this->getDoctrine()->getManager();
 
@@ -122,7 +122,7 @@ class BlhSeguimientoReceptorController extends Controller
             'entity'      => $entity,
             'delete_form' => $deleteForm->createView(),
         );
-    }*/
+    }
 
     /**
      * Displays a form to edit an existing BlhSeguimientoReceptor entity.
@@ -248,22 +248,22 @@ class BlhSeguimientoReceptorController extends Controller
     /**
      * Lists all BlhSeguimientoReceptor entities.
      *
-     * @Route("/", name="blhseguimientoreceptor")
+     * @Route("/receptores/seguimiento", name="blhreceptores_seguimiento")
      * @Method("GET")
      * @Template()
      */
  
- public function receptores_seguimientoAction()
+ public function receptoresSeguimientoAction()
     {
         $em = $this->getDoctrine()->getManager();      
         
         //Obteniendo lista de pacientes que son receptores y que estan en estado "Activo"  
-        $query = $em->createQuery("SELECT r.id, r.codigoReceptor, p.id as identificador, p.primerNombre as nombre1, p.segundoNombre as nombre2, p.primerApellido as apellido1, p.segundoApellido as apellido2 FROM siblhmantenimientoBundle:BlhReceptor r JOIN r.idPaciente p WHERE r.estadoReceptor = 'Activo'");
+        $query = $em->createQuery("SELECT r.id, r.codigoReceptor, p.id as identificador, p.primerNombre as nombre1, p.segundoNombre as nombre2, p.tercerNombre as nombre3, p.primerApellido as apellido1, p.segundoApellido as apellido2 FROM siblhmantenimientoBundle:BlhReceptor r JOIN r.idPaciente p WHERE r.estadoReceptor = 'Activo'");
         
         $receptores_seguimiento  = $query->getResult();
         
         return array(
-            'receptores_seguimiento' => $receptores_seguimiento         
+            'receptores_seguimiento' => $receptores_seguimiento,         
         );
         
     }
@@ -271,7 +271,7 @@ class BlhSeguimientoReceptorController extends Controller
       /**
      * Displays a form to create a new BlhSeguimientoReceptor entity.
      *
-     * @Route("/{id}", name="blhseguimientoreceptor_new")
+     * @Route("/new/{id}", name="blhseguimientoreceptor_new")
      * @Method("GET")
      * @Template()
      */
@@ -281,10 +281,11 @@ class BlhSeguimientoReceptorController extends Controller
          //mostrando los datos del receptor seleccionado
         $em = $this->getDoctrine()->getManager();
         
-        $query = $em->createQuery("SELECT r.id, p.primerNombre as primer_nombre, p.segundoNombre as segundo_nombre, p.primerApellido as primer_apellido, p.segundoApellido as segundo_apellido FROM siblhmantenimientoBundle:BlhReceptor r JOIN r.idPaciente p WHERE r.id = $id "); 
+        $query = $em->createQuery("SELECT r.id,r.codigoReceptor, p.primerNombre as primer_nombre, p.segundoNombre as segundo_nombre, p.tercerNombre as tercer_nombre, p.primerApellido as primer_apellido, p.segundoApellido as segundo_apellido FROM siblhmantenimientoBundle:BlhReceptor r JOIN r.idPaciente p WHERE r.id = $id "); 
         
         $datos_receptor  = $query->getResult();
         
+        $receptor = $em->getRepository('siblhmantenimientoBundle:BlhReceptor')->find($id);
      
         
         if (!$datos_receptor) {
@@ -294,6 +295,7 @@ class BlhSeguimientoReceptorController extends Controller
         
         
         $entity = new BlhSeguimientoReceptor();
+        $entity->setidReceptor($receptor);
         $form   = $this->createCreateForm($entity);
 
         return array(

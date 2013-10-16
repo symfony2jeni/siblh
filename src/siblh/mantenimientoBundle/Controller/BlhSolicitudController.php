@@ -146,10 +146,15 @@ class BlhSolicitudController extends Controller
         }
 
         $deleteForm = $this->createDeleteForm($id);
+        
+        
+        $ajax = $this->getRequest()->isXmlHttpRequest(); //agregando ajax a show
+        
 
         return array(
             'entity'      => $entity,
             'delete_form' => $deleteForm->createView(),
+            'ajax' => $ajax,
         );
     }
 
@@ -295,7 +300,7 @@ class BlhSolicitudController extends Controller
         $pacientes_receptores  = $query->getResult();
         
         return array(
-            'pacientes_receptores' => $pacientes_receptores         
+            'pacientes_receptores' => $pacientes_receptores,         
         );
         
     }
