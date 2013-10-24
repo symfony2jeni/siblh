@@ -17,12 +17,17 @@ class BlhSolicitudType extends AbstractType
         $builder
             ->add('codigoSolicitud')
             ->add('volumenPorDia')
-            ->add('acidezNecesaria')
+            ->add('acidezNecesaria','choice', 
+                    array('choices' => array('' => 'Seleccione un valor','Baja' => 'Baja(0-4 grados)','Aceptable' => 'Aceptable(4-8 grados)')))
+
             ->add('caloriasNecesarias')
             ->add('pesoDia')
             ->add('volumenPorToma')
             ->add('tomaPorDia')
-            ->add('fechaSolicitud')
+            ->add('fechaSolicitud' ,'date', 
+                    array(  'widget' => 'single_text',
+                            'format' => 'dd-MM-yy',
+                            'attr' => array('class' => 'date')))
             ->add('cuna')
             ->add('estado')
             ->add('responsable')

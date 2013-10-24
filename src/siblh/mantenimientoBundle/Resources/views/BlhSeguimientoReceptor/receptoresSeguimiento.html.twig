@@ -1,67 +1,42 @@
 {% extends 'siblhmantenimientoBundle::plantilla.html.twig' %}
 
-{#{% block javascripts %}
+{% block javascripts %}
     {{parent()}}
-    <script type="text/javascript" src="{{ asset('bundles/siblhmantenimiento/js/Solicitud/index.js') }}" ></script>
-{% endblock %}#}
+    <script type="text/javascript" src="{{ asset('bundles/siblhmantenimiento/js/BlhSeguimientoReceptor/receptoresSeguimiento.js') }}" ></script>
+{% endblock %}
 
 {% block body -%}
+    <link href="{{asset('bundles/jquery/jquery.jqGrid-4.5.4/css/ui.jqgrid.css')}}" rel="stylesheet"  type="text/css" media="all"/>  
+     <script type="text/javascript" src="{{asset('bundles/jquery/jquery.jqGrid-4.5.4/js/i18n/grid.locale-es.js')}}"></script>
+      <script type="text/javascript" src="{{asset('bundles/jquery/jquery.jqGrid-4.5.4/js/jquery.jqGrid.min.js')}}" ></script> 
     <h1>Listado de Receptores</h1>
-    <table  class="record_properties">
+    <table  id="listado_receptoresSeguimiento">
         <thead>
             <tr>
-                <th>Codigo Receptor</th>
-                <th>Primer Nombre</th>
-                <th>Segundo Nombre</th>
-                <th>Tercer Nombre</th>
-                <th>Primer Apellido</th>
-                <th>Segundo Apellido</th>
-                <th>Accion</th>
+                <th>Codigo</th>
+                <th>Nombres</th>
+                <th>Apellidos</th>
+                <th>Sexo</th>
+                <th>Acción</th>
             </tr>
-            {#<tr>
-                 <td><b>Codigo</b></td>
-                 <td colspan = "4" align = "center"><b>Nombre Receptor</b></td>
-                 
-                 
-                <td align = "center"><b>Accion</b></td>
-            </tr>#}
+            
         </thead>
         <tbody>
-            <tr>
+            
        {% for receptor in receptores_seguimiento%}
             
-              {# <td><a href="{{ path('blhsolicitud_new', { 'id': paciente.id }) }}">{{ paciente.id }}</a></td>#}
+              <tr>
                 <td>{{ receptor.codigoReceptor }}</td>
-                <td>{{ receptor.nombre1 }}</td>
-                <td>{{ receptor.nombre2 }}</td>
-                <td>{{ receptor.nombre3 }}</td>
-        
-                <td>{{ receptor.apellido1 }}</td>
-                <td>{{ receptor.apellido2 }}</td>
-               
-                <td>
-               <div id='pagerSolicitudes' ></div>
+                <td>{{ receptor.nombre1 }}&nbsp;{{ receptor.nombre2 }}&nbsp;{{ receptor.nombre3 }}</td>
+                <td>{{ receptor.apellido1 }}&nbsp;{{ receptor.apellido2 }}</td>      
+                <td>{{ receptor.sexo }}</td>
+                <td><a href="{{ path('blhseguimientoreceptor_new', { 'id': receptor.id })}}">Registrar Seguimiento</a></td>
+               </tr>
+                 {% endfor %}
+                  </tbody>
+                  </table>
+               <div id='pagerReceptoresSeguimiento' ></div>
                <div id='resultado' ></div>
-               <ul><li>
-           <a href="{{ path('blhseguimientoreceptor_new', { 'id': receptor.id })}}">Registrar Seguimiento</a></li></ul> 
-               {# <ul>
-                    <li>
-                        <a href="{{ path('blhsolicitud_new', { 'id': paciente.id })}}">Nueva Soliciud</a>
-                    </li>
-                    
-                                       
-                </ul>#}
-                </td> 
-                {% endfor %}
-            </tr>
-        
-            
-
-            
-            
-           
-        </tbody>
-    </table>
-
-        
+               
+     
     {% endblock %}

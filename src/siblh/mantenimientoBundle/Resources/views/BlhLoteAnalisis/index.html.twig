@@ -18,7 +18,7 @@
             <tr>
                 <td><a href="{{ path('blhloteanalisis_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
                 <td>{{ entity.codigoLoteAnalisis }}</td>
-                <td>{% if entity.fechaAnalisisFisicoQuimico %}{{ entity.fechaAnalisisFisicoQuimico|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{% if entity.fechaAnalisisFisicoQuimico %}{{ entity.fechaAnalisisFisicoQuimico|date('d-m-Y') }}{% endif %}</td>
                 <td>{{ entity.responsableAnalisis }}</td>
                 <td>
                 <ul>

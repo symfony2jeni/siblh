@@ -10,6 +10,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use siblh\mantenimientoBundle\Entity\BlhSeguimientoReceptor;
 use siblh\mantenimientoBundle\Form\BlhSeguimientoReceptorType;
 
+use siblh\mantenimientoBundle\Entity\BlhReceptor;
 /**
  * BlhSeguimientoReceptor controller.
  *
@@ -258,7 +259,7 @@ class BlhSeguimientoReceptorController extends Controller
         $em = $this->getDoctrine()->getManager();      
         
         //Obteniendo lista de pacientes que son receptores y que estan en estado "Activo"  
-        $query = $em->createQuery("SELECT r.id, r.codigoReceptor, p.id as identificador, p.primerNombre as nombre1, p.segundoNombre as nombre2, p.tercerNombre as nombre3, p.primerApellido as apellido1, p.segundoApellido as apellido2 FROM siblhmantenimientoBundle:BlhReceptor r JOIN r.idPaciente p WHERE r.estadoReceptor = 'Activo'");
+        $query = $em->createQuery("SELECT r.id, r.codigoReceptor, p.id as identificador, p.primerNombre as nombre1, p.segundoNombre as nombre2, p.tercerNombre as nombre3, p.primerApellido as apellido1, p.segundoApellido as apellido2, s.nombre as sexo FROM siblhmantenimientoBundle:BlhReceptor r JOIN r.idPaciente p JOIN p.idSexo s WHERE r.estadoReceptor = 'Activo'");
         
         $receptores_seguimiento  = $query->getResult();
         

@@ -27,7 +27,7 @@
                 <td>{{ entity.pcSeguimiento }}</td>
                 <td>{{ entity.gananciaDiaPeso }}</td>
                 <td>{{ entity.semana }}</td>
-                <td>{% if entity.fechaSeguimiento %}{{ entity.fechaSeguimiento|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{% if entity.fechaSeguimiento %}{{ entity.fechaSeguimiento|date('d-m-Y') }}{% endif %}</td>
                 <td>{{ entity.gananciaDiaTalla }}</td>
                 <td>{{ entity.complicaciones }}</td>
                 <td>

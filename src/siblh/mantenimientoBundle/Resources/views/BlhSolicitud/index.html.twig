@@ -37,7 +37,7 @@
                 <td>{{ entity.pesoDia }}</td>
                 <td>{{ entity.volumenPorToma }}</td>
                 <td>{{ entity.tomaPorDia }}</td>
-                <td>{% if entity.fechaSolicitud %}{{ entity.fechaSolicitud|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{% if entity.fechaSolicitud %}{{ entity.fechaSolicitud|date('d-m-Y') }}{% endif %}</td>
                 <td>{{ entity.cuna }}</td>
                 <td>{{ entity.estado }}</td>
                 <td>{{ entity.responsable }}</td>

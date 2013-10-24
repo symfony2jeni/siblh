@@ -1,6 +1,6 @@
 
-{% extends ajax ? 'siblhmantenimientoBundle::plantilla.html_ajax.twig' :
-                    'siblhmantenimientoBundle::plantilla.html.twig' %}
+{% extends ajax ? "siblhmantenimientoBundle::plantilla.html_ajax.twig" :
+                    "siblhmantenimientoBundle::plantilla.html.twig" %}
 {% block body -%}
     <h1>Solicitud</h1>
 
@@ -40,7 +40,7 @@
             </tr>
             <tr>
                 <th>Fechasolicitud</th>
-                <td>{{ entity.fechaSolicitud|date('Y-m-d H:i:s') }}</td>
+                <td>{{ entity.fechaSolicitud|date('d-m-Y') }}</td>
             </tr>
             <tr>
                 <th>Cuna</th>

@@ -16,7 +16,10 @@ class BlhLoteAnalisisType extends AbstractType
     {
         $builder
             ->add('codigoLoteAnalisis')
-            ->add('fechaAnalisisFisicoQuimico')
+            ->add('fechaAnalisisFisicoQuimico','date', 
+                    array(  'widget' => 'single_text',
+                            'format' => 'dd-MM-yy',
+                            'attr' => array('class' => 'date')))
             ->add('responsableAnalisis')
         ;
     }

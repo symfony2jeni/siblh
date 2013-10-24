@@ -1,137 +1,119 @@
 {% extends 'siblhmantenimientoBundle::plantilla.html.twig' %}
 
+
+
 {% block stylesheets %}
   {{ parent() }}
 	<link href="{{ asset('bundles/siblhmantenimiento/css/form.css') }}" rel="stylesheet" type="text/css" />
+        
 {% endblock %}
         
  {% block javascripts %}   
 {{parent()}}
-<script type="text/javascript" src="{{ asset('bundles/siblhmantenimiento/js/Solicitud/new.js') }}" ></script>
- 
+<script type="text/javascript" src="{{ asset('bundles/siblhmantenimiento/js/BlhSeguimientoReceptor/new.js') }}" ></script>
+
 {% endblock %}
 
 {% block body -%}
     <h1>Registro de Seguimiento de Receptores</h1>
     
    
-   <table class="record_properties" align = "center" >
-       
+   <table align = "center" width = "78%">
+        <tr><td colspan=2 align = "right" height=40  ></td></tr>
          <tr>
-        <td colspan = "2" align = "left" >Codigo Receptor</td>
-                <td colspan = "4" align = "left">
-                <INPUT type=text STYLE="text-align:center" name="nombre" disabled="disabled" size=20 readonly="readonly" value= " {{ datos_receptor[0].codigoReceptor}} ">
-                </td>
-                
-               </td>
-                {{ form_start(form) }}
-                {{ form_errors(form) }}
-                <td colspan="5" align = "left" style="visibility:hidden"> 
-                {{ form_label(form.idReceptor) }}
-                {{ form_errors(form.idReceptor) }}
-                {{ form_widget(form.idReceptor) }} </td>
-                <td colspan = "2" align = "left">Nombre del Receptor</td>
+             <td colspan = "2" align = "right"><b>Nombre del Receptor</b></td>
                 <td colspan = "5" align = "left">
                 <INPUT type=text STYLE="text-align:center" name="nombre" disabled="disabled" size=35 readonly="readonly" value= {{ datos_receptor[0].primer_nombre}}&nbsp;{{ datos_receptor[0].segundo_nombre  }}&nbsp;{{ datos_receptor[0].tercer_nombre  }}&nbsp;{{ datos_receptor[0].primer_apellido }}&nbsp;{{ datos_receptor[0].segundo_apellido }}>
                </td>  
-              
-        </tr>
-         
-   
-      
+               
+                {{ form_start(form) }}
+                {{ form_errors(form) }}
+                <td colspan="7" align = "right" style="visibility:hidden"> 
+                {{ form_label(form.idReceptor) }}
+                {{ form_errors(form.idReceptor) }}
+                {{ form_widget(form.idReceptor) }} </td>
+                <td colspan = "2" align = "right" ><b>Codigo Receptor</b></td>
+                <td width=150 align = "right">
+                <INPUT type=text STYLE="text-align:center" name="nombre" disabled="disabled" size=20 readonly="readonly" value= " {{ datos_receptor[0].codigoReceptor}} ">
+                </td>          
+        </tr>     
+      <tr><td colspan=2 align = "right" height=40  ></td></tr>
         </table>
     
         
    
-        <table class="record_properties" align = "center" >
+        <table align = "center" width = "72%" >
           
         <tr>
-        <td colspan="3" align = "left"> 
+        <td colspan="3" align = "right" title='Ingrese la fecha del seguimiento'><font color="red">*</font>  
                 
-                {{ form_label(form.fechaSeguimiento) }}
+                {{ form_label(form.fechaSeguimiento, 'Fecha') }}
                 {{ form_errors(form.fechaSeguimiento) }}
-                {{ form_widget(form.fechaSeguimiento,  { 'attr': {'size': '10'} })  }} </td>
-        <td colspan="3" align = "left"> 
+                {{ form_widget(form.fechaSeguimiento) }} </td>
+        <td colspan="3" align = "right"  title='Ingrese el numero de semana del seguimiento'><font color="red" >*</font>  
                 
                 {{ form_label(form.semana) }}
                 {{ form_errors(form.semana) }}
                 {{ form_widget(form.semana) }} </td>
-
-                <td colspan="3" align = "left"> 
+        
+         <td colspan="3" align = "right" title='Ingrese el perímetro cefálico del receptor en centímetros'><font color="red">*</font>  
                 
-                {{ form_label(form.pesoSeguimiento) }}
+                {{ form_label(form.pcSeguimiento,'Perímetro cefálico(cm)') }}
+                {{ form_errors(form.pcSeguimiento) }}
+                {{ form_widget(form.pcSeguimiento) }} </td>
+        </tr>
+        <tr><td colspan=2 align = "right" height=10  ></td></tr>
+      <tr>
+            <td colspan="3" align = "right" title='Ingrese el peso del receptor en gramos'><font color="red" >*</font>  
+                
+                {{ form_label(form.pesoSeguimiento, 'Peso(g)') }}
                 {{ form_errors(form.pesoSeguimiento) }}
                 {{ form_widget(form.pesoSeguimiento) }} </td>
        
-                <td colspan="3" align = "left"> 
+                <td colspan="3" align = "right"><font color="red">*</font>  
                 
-                {{ form_label(form.gananciaDiaPeso) }}
+                {{ form_label(form.gananciaDiaPeso, 'Ganancia de peso por dia(g)') }}
                 {{ form_errors(form.gananciaDiaPeso) }}
                 {{ form_widget(form.gananciaDiaPeso) }} </td>
-        
-      
-        </tr>
-      <tr>
-        <td colspan="3" align = "left"> 
+       
+        <td colspan="3" align = "right"  title='Ingrese la talla del receptor en centímetros'><font color="red">*</font>  
                 
-                {{ form_label(form.pcSeguimiento) }}
-                {{ form_errors(form.pcSeguimiento) }}
-                {{ form_widget(form.pcSeguimiento) }} </td>
-        <td colspan="3" align = "left"> 
-                
-                {{ form_label(form.tallaReceptor) }}
+                {{ form_label(form.tallaReceptor,'Talla(cm)') }}
                 {{ form_errors(form.tallaReceptor) }}
-                {{ form_widget(form.tallaReceptor) }} </td>
-        <td colspan="3" align = "left"> 
+                {{ form_widget(form.tallaReceptor) }} </td></tr>
+        <tr><td colspan=2 align = "right" height=10  ></td></tr>
+      <tr>
+          <td colspan="3" align = "right" ><font color="red">*</font>  
                 
-                {{ form_label(form.gananciaDiaTalla) }}
+                {{ form_label(form.gananciaDiaTalla,'Ganancia de talla por dia(cm)') }}
                 {{ form_errors(form.gananciaDiaTalla) }}
-                {{ form_widget(form.gananciaDiaTalla) }} </td>
-        
-        
-        <tr>
-        
-        <td colspan="3" align = "left"> 
-                
+                {{ form_widget(form.gananciaDiaTalla) }} </td> 
+          
+        <td colspan="3" align = "right"  title='Ingrese el detalle de las complicaciones del receptor'><font color="red">*</font>  
                 {{ form_label(form.complicaciones) }}
                 {{ form_errors(form.complicaciones) }}
-                {{ form_widget(form.complicaciones) }} </td>
+                {{ form_widget(form.complicaciones) }} </td></tr>
+        <tr><td colspan=2 align = "right" height=40  ></td></tr>
+        </table>
+        <table align = "center" width = "78%" >
+        <tr>
+            <td width=172 align = 'right'  ><font color="red">* Campos Requeridos</font></td>
+            <td width=900 align = 'right'><input type="submit" id='submit' title='Guardar Seguimiento de Receptor' value="GUARDAR"/><input type='reset' id='submit' title='Cancelar' value='Cancelar'/></td>
+        </tr>    
        
         
-                
-        </tr>
-        <tr align = 'rigth'>
-            <td colspan = '15' align = 'rigth'>  <input type="submit" value="GUARDAR"/></td>
-           
-           {{ form_end(form) }}
-          
-            <tr><td>
+        </table>
+
+  
         
-               <ul class="record_actions">
-                <li>
-                <a href="{{ path('blhsolicitud') }}">
-                Back to the list
-                </a>
-                </li>
-               </ul>
-                </td>
-            </tr>
-              
+        
+           {{ form_end(form) }}
+         
       
         
-    </table>
        
 
   
       
    
-   
-
-        <ul class="record_actions">
-    {#<li>
-        <a href="{{ path('blhsolicitud') }}">
-            Back to the list
-        </a>
-    </li>#}
-</ul>
 {% endblock %}

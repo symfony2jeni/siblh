@@ -159,4 +159,7 @@ class BlhDonacion
     {
         return $this->idDonante;
     }
+       public function __toString() {
+  return $this->responsableDonacion;
+}
 }

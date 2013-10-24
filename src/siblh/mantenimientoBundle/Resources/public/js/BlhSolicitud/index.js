@@ -12,7 +12,12 @@ $(".records_list td a").click(function(){
   elem.insertAfter($(".records_list"));
  
  // cargar mediante una llamada ajax la dirección que tiene href dentro de resultado 
- $('#resultado').load(href);
+ $('#resultado').load(href, function(){
+   $(this).dialog({
+        modal: true, 
+        width: 600
+   })
+});
  
  // Para que no haga el comportamiento normal del enlace y cargue la página
  return false;

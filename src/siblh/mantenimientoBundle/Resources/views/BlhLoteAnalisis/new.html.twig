@@ -1,15 +1,66 @@
 {% extends 'siblhmantenimientoBundle::plantilla.html.twig' %}
 
+{% block stylesheets %}
+  {{ parent() }}
+	<link href="{{ asset('bundles/siblhmantenimiento/css/form.css') }}" rel="stylesheet" type="text/css" />
+        
+{% endblock %}
+        
+ {% block javascripts %}   
+{{parent()}}
+<script type="text/javascript" src="{{ asset('bundles/siblhmantenimiento/js/BlhLoteAnalisis/new.js') }}" ></script>
+
+{% endblock %}
+
+
+
 {% block body -%}
-    <h1>BlhLoteAnalisis creation</h1>
+    <h1>Registro de lotes a analizar</h1>
+<table align = "center" width = "23%">
+        <tr><td colspan=2 align = "right" height=40  ></td></tr>
+         <tr>
+           
+                {{ form_start(form) }}
+                {{ form_errors(form) }}
+                <td width =100 align = "right" > 
+                {{ form_label(form.codigoLoteAnalisis, 'Código de lote') }}
+                {{ form_errors(form.codigoLoteAnalisis) }}
+                {{ form_widget(form.codigoLoteAnalisis) }} </td>
+                 
+            </tr>
+            <tr><td colspan=2 align = "right" height=10  ></td></tr>
+            
+            <tr>
+                <td width =100 align = "right" title='Ingrese la fecha en que se realiza el análisis' ><font color="red">*</font>  
+                {{ form_label(form.fechaAnalisisFisicoQuimico, 'Fecha análisis' ) }}
+                {{ form_errors(form.fechaAnalisisFisicoQuimico) }}
+                {{ form_widget(form.fechaAnalisisFisicoQuimico) }} </td>
+                       
+            </tr>  
+            <tr><td colspan=2 align = "right" height=10  ></td></tr>
+             <tr>
+                <td width =100 align = "right" title='Ingrese el nombre del responsable del análisis'><font color="red">*</font>  
+                {{ form_label(form.responsableAnalisis, 'Responsable') }}
+                {{ form_errors(form.responsableAnalisis) }}
+                {{ form_widget(form.responsableAnalisis,  { 'attr': {'size': '27'} }) }} </td>
+                       
+            </tr>   
+            <tr><td colspan=2 align = "right" height=40  ></td></tr>
+            </table>
+        <table align = "center" width = "30%" >
+        <tr>
+            <td width=200 align = 'right'  ><font color="red">* Campos Requeridos</font></td>
+            <td width=500 align = 'right'><input type="submit" id='submit' title='Guardar lote' value="GUARDAR"/><input type='reset' id='submit' title='Cancelar' value='Cancelar'/></td>
+        </tr>    
+       
+        
+        </table>
 
-    {{ form(form) }}
+  
+        
+        
+           {{ form_end(form) }}
 
-        <ul class="record_actions">
-    <li>
-        <a href="{{ path('blhloteanalisis') }}">
-            Back to the list
-        </a>
-    </li>
-</ul>
+
+      
 {% endblock %}
