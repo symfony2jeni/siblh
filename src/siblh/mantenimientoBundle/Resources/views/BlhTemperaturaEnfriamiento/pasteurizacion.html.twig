@@ -1,0 +1,54 @@
+{% extends 'siblhmantenimientoBundle::plantilla.html.twig' %}
+
+{% block body -%}
+    <h1>Listado de Donantes</h1>
+    <table class="records_list" border= "1">
+        <thead>
+            <tr>
+                 <td><b>Codigo</b></td>
+                 <td align = "center"><b>Codigo Pasteurizacion</b></td>
+                 <td align = "center"><b>Ciclo</b></td>
+                 <td align = "center"><b>Volumen Pasteurizado</b></td>
+                 <td align = "center"><b>Cantidad de Frascos</b></td>
+                 <td align = "center"><b>Fecha Pasteurizacion</b></td>
+                <td align = "center"><b>Accion</b></td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+       {% for pasteurizacion in pasteurizaciones%}
+            
+               <td><a href="{{ path('blhtemperaturaenfriamiento_new', { 'id': pasteurizacion.identificador }) }}">{{ pasteurizacion.identificador }}</a></td>
+                <td>{{ pasteurizacion.codigoPasteurizacion }}</td>
+                <td>{{ pasteurizacion.numCiclo }}</td>
+        
+                <td>{{ pasteurizacion.volumenPasteurizado }}</td>
+                <td>{{ pasteurizacion.numFrascosPasteurizados }}</td>
+                <td>{{ pasteurizacion.fechaPasteurizacion|date('d-m-Y') }}</td>
+               
+                <td>
+                <ul>
+                    <li>
+                        <a href="{{ path('blhtemperaturaenfriamiento_new', { 'id': pasteurizacion.identificador })}}">Temperatura Enfriamiento</a>
+                    </li>
+                    
+                                       
+                </ul>
+                </td></tr>
+        {% endfor %}
+            
+
+            
+          
+           
+        </tbody>
+    </table>
+
+    
+    
+        
+     
+   
+
+        
+    {% endblock %}

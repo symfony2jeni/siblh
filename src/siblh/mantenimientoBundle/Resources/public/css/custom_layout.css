@@ -53,6 +53,7 @@ div#pagina{
   position:relative;
   min-height: 880px;
 
+
  
      
         
@@ -155,17 +156,18 @@ text-align: center;
    
    
    div#contenido{
-   background-color:blue;
-   border-style: solid double;
+    background-color:blue;
     width:98%; 
+    height: 50%;
     text-align: center;
     margin-left: 10px ;
     margin-right: 30px;
     margin-top: 0em;
     background-color:white;
-  position:relative;
-  height:auto;
+    position:relative;
+    height:auto;
+     overflow:scroll;height:500px;width:98%;
 
    }
+   
  
-

@@ -16,17 +16,17 @@ class BlhIngresoReceptorType extends AbstractType
     {
         $builder
             ->add('pesoReceptor')
-            ->add('duracionCpap')
+            ->add('duracionCpap', 'text')
             ->add('clasificacionLubchengo')
-            ->add('diagnosticoIngreso')
-            ->add('duracionNpt')
-            ->add('apgar')
+            ->add('diagnosticoIngreso', 'textarea')
+            ->add('duracionNpt', 'text')
+            ->add('apgar', 'text')
             ->add('edadGestFur')
-            ->add('duracionVentilacion')
+            ->add('duracionVentilacion', 'text')
             ->add('edadGestBallard')
             ->add('pc')
             ->add('tallaIngreso')
-            ->add('idReceptor')
+           // ->add('idReceptor')
         ;
     }
     

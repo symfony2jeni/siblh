@@ -15,7 +15,7 @@ class BlhTemperaturaEnfriamientoType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('temperaturaE')
+            ->add('temperaturaE', 'number', array ( 'invalid_message'=>'Debe ser entre 0 y 30'))
             ->add('idPasteurizacion')
         ;
     }

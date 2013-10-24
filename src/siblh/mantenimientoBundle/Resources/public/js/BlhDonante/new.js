@@ -44,13 +44,16 @@ $('#siblh_mantenimientobundle_blhdonante_documentoIdentificacion').on('change', 
     switch( this.value ) {
         case 'DUI':
             regex ='\\d{8}-\\d';
+            $formato = '99999999-9';
             break;
         case 'Pasaporte':
            // data-bvalidator="regex[[A-Z][0-9]{8}]";
         regex ='A\\d{8}';
+        $formato = 'A99999999'; 
             break;
         case 'Carnet de Minoridad':
             regex ='[A-Z]\\d{5}';
+            $formato = 'X99999';
             break;
         
     } 
@@ -59,8 +62,30 @@ $('#siblh_mantenimientobundle_blhdonante_documentoIdentificacion').on('change', 
             attr('data-bvalidator', "regex["+regex+"]");
       //  attr('data-bvalidator', "regex[\\d{8}-\\d]");
  //  
-  
+  $('#siblh_mantenimientobundle_blhdonante_numeroDocumentoIdentificacion').
+        attr('data-bvalidator-msg', "Ingrese el numero de documento en el formato correcto "+$formato+""); 
+
 });
+
+
+  $('#siblh_mantenimientobundle_blhdonante_telefonoFijo').
+        attr('data-bvalidator', "regex[\\d{4}-\\d{4}]");
+
+$('#siblh_mantenimientobundle_blhdonante_telefonoFijo').
+        attr('data-bvalidator-msg', "Ingrese el telefono en el formato correcto 9999-9999");
+
+
+$('#siblh_mantenimientobundle_blhdonante_telefonoMovil').
+        attr('data-bvalidator', "regex[\\d{4}-\\d{4}]");
+ 
+$('#siblh_mantenimientobundle_blhdonante_telefonoMovil').
+        attr('data-bvalidator-msg', "Ingrese el telefono en el formato correcto 9999-9999"); 
+
+$('#siblh_mantenimientobundle_blhdonante_registro').
+        attr('data-bvalidator', "regex[\\d{6}-\\d{4}]");
+ 
+$('#siblh_mantenimientobundle_blhdonante_registro').
+        attr('data-bvalidator-msg', "Ingrese el registro en el formato correcto 999999-9999"); 
 
 });
 

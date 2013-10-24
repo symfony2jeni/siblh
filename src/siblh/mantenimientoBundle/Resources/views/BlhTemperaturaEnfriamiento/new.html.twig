@@ -1,9 +1,76 @@
-{% extends '::base.html.twig' %}
+{% extends 'siblhmantenimientoBundle::plantilla.html.twig' %}
+{% block stylesheets %}
+    {{ parent() }}
+	<link href="{{ asset('bundles/siblhmantenimiento/css/form.css') }}" rel="stylesheet" type="text/css" />
+{% endblock %}
+        {% block javascripts %}
 
+{{parent()}}
+
+<script type="text/javascript" src="{{ asset('bundles/siblhmantenimiento/js/BlhTemperaturaEnfriamiento/new.js') }}" ></script>
+       
+{% endblock %}
 {% block body -%}
     <h1>BlhTemperaturaEnfriamiento creation</h1>
+    
+    
+    <FORM> 
+   <table align = "center" >
+       
+       <tr>
+       <td align = "center">Codigo Pasteurizacion</td>
+        <td align = "center">
+        <INPUT type=text disabled="disabled" readonly="readonly" value= " {{ datos_pasteurizacion[0].codigoPasteurizacion }} "></td></tr>
+      
+    </table>
+    </form> 
+    
+    <form>
+     <table >
+         <td align = "left">
+         <tr align = "left"> Temperatura de Enfriamiento&nbsp;&nbsp;&nbsp;&nbsp;</tr></td>
+    {% for temperaturas in temperaturas%}
+   
+        
+        <td align = "left">
+        
+        <tr align = "left"><INPUT type=text disabled="disabled" size=5 readonly="readonly" value= " {{ temperaturas.temperaturaE }} "> </tr> </td>
+    
+   
+    
+    
+     {% endfor %}
 
-    {{ form(form) }}
+            </form>
+    
+    
+        {{ form_start(form) }}
+    {{ form_errors(form) }}
+    <td align = "left"><tr align = left>
+        {{ form_label(form.temperaturaE, ' ') }}
+        {{ form_errors(form.temperaturaE) }}
+        {{ form_widget(form.temperaturaE,  { 'attr': {'size': '5'} }) }}  </tr></td>
+    
+    
+    <td><tr colspan = 3><br><br> <input type="submit" class= "ui-button" value="Guardar"/></tr></td>
+    
+      
+    
+     </table>
+            
+            
+            <table >
+            
+            <tr>
+        <td style="visibility:hidden"><br><br>
+        {{ form_label(form.idPasteurizacion) }}
+        {{ form_errors(form.idPasteurizacion) }}
+        {{ form_widget(form.idPasteurizacion) }} 
+        </td>
+    </tr>
+    
+            </table>
+              {{ form_end(form) }}
 
         <ul class="record_actions">
     <li>

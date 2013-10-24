@@ -1,9 +1,117 @@
-{% extends '::base.html.twig' %}
+{% extends 'siblhmantenimientoBundle::plantilla.html.twig' %}
+{% block stylesheets %}
+    {{ parent() }}
+	<link href="{{ asset('bundles/siblhmantenimiento/css/form.css') }}" rel="stylesheet" type="text/css" />
+{% endblock %}
+        {% block javascripts %}
+
+{{parent()}}
+
+<script type="text/javascript" src="{{ asset('bundles/siblhmantenimiento/js/BlhEgresoReceptor/new.js') }}" ></script>
+       
+{% endblock %}
 
 {% block body -%}
     <h1>BlhEgresoReceptor creation</h1>
+    
+    <FORM> 
+   <table align = "center" >
+       
+       <tr>
+       <td align = "center">Codigo Receptor</td>
+        <td align = "center">
+        <INPUT type=text disabled="disabled" readonly="readonly" value= " {{ datos_receptores[0].codigoReceptor }} "></td></tr>
+      <tr>
+       <td >Nombre Recptor</td>
+        <td>
+         <INPUT name = "label2" type=text disabled="disabled" size=30 readonly="readonly" value= "{{ datos_receptores[0].nombre1}}&nbsp;{{ datos_receptores[0].nombre2  }}&nbsp;{{ datos_receptores[0].nombre3  }}&nbsp;{{ datos_receptores[0].apellido1  }} "></td>
+  
+    </tr>
+    <tr>
+       <td >Fecha registro BLH</td>
+        <td>
+         <INPUT name = "label2" id = "fecha" type=text disabled="disabled" size=30 readonly="readonly" value= "{{ datos_receptores[0].fechaRegistroBlh|date('Y-m-d') }} "></td>
+  
+    </tr>
+    </table>
+    </form>        
+    
+    {{ form_start(form) }}
+    {{ form_errors(form) }}
+    <table align = "center" WIDTH = "75%" >
+        <tr>
+    <td align = left><font color="red" >*</font> 
+        {{ form_label(form.fechaEgreso, 'Fecha de egreso') }}
+        {{ form_errors(form.fechaEgreso) }}
+        {{ form_widget(form.fechaEgreso) }} </td>
+        
+     <td align = left colspan = "2">
+        {{ form_label(form.estanciaHospitalaria, 'Dias de estancia hospitalaria') }}
+        {{ form_errors(form.estanciaHospitalaria) }}
+        {{ form_widget(form.estanciaHospitalaria,  { 'attr': {'size': '3'} }) }} </td>   
+        
+        </tr> 
+    
+    <tr>
+    <td align = left>
+        {{ form_label(form.permanenciaUcin, 'Permanencia en UCIN') }}
+        {{ form_errors(form.permanenciaUcin) }}
+        {{ form_widget(form.permanenciaUcin,  { 'attr': {'size': '3'} }) }} </td>
+        
+     <td align = left><font color="red" >*</font> 
+        {{ form_label(form.madreCanguro) }}
+        {{ form_errors(form.madreCanguro) }}
+        {{ form_widget(form.madreCanguro) }} </td>  
+         
+     <td align = left><font color="red" >*</font> 
+        {{ form_label(form.trasladoPeriferico, 'Traslado a periferico') }}
+        {{ form_errors(form.trasladoPeriferico) }}
+        {{ form_widget(form.trasladoPeriferico) }} </td>      
+        
+        </tr> 
+    
+     <tr>
+    <td align = left><font color="red" >*</font> 
+        {{ form_label(form.tipoEgreso, 'Tipo de egreso') }}
+        {{ form_errors(form.tipoEgreso) }}
+        {{ form_widget(form.tipoEgreso) }} </td>
+        
+     <td align = left colspan = "2">
+        {{ form_label(form.comentarioEgreso, 'Descripcion Egreso') }}
+        {{ form_errors(form.comentarioEgreso) }}
+        {{ form_widget(form.comentarioEgreso,  { 'attr': {'width': '370', 'resize' : 'none'} }) }} </td></tr> 
+     
+     
+      <tr><td align = left colspan = 3><font color="red" >*</font> 
+        {{ form_label(form.diagnosticoEgreso, 'Diagnostico de Egreso') }}
+        {{ form_errors(form.diagnosticoEgreso) }}
+        {{ form_widget(form.diagnosticoEgreso) }} </td></tr>
+        
+    <tr><td align = left colspan = "3">
+        {{ form_label(form.hospitalSeguimientoEgreso, 'Hosital de seguimiento egreso') }}
+        {{ form_errors(form.hospitalSeguimientoEgreso) }}
+        {{ form_widget(form.hospitalSeguimientoEgreso,  { 'attr': {'size': '60'} }) }} </td></tr>
+            
+     <tr style="visibility:hidden"><td align = left colspan = "3">
+        {{ form_label(form.idReceptor) }}
+        {{ form_errors(form.idReceptor) }}
+        {{ form_widget(form.idReceptor) }} </td></tr>        
+    
+    <tr><td align = "left"><font color="red" size = "2" face = "Comic Sans MS">* Campos requeridos</font>   </td>
+      <td colspan = '2' align = 'left'>
+                                      
+                                       
+                                       
+                                          
+   <input type="submit" class= "ui-button" value="Guardar"/></td></tr>
 
-    {{ form(form) }}
+        
+        </table>
+    
+    
+    
+     {{ form_end(form) }}
+    
 
         <ul class="record_actions">
     <li>

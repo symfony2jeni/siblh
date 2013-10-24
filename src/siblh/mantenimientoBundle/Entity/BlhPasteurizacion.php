@@ -366,4 +366,10 @@ class BlhPasteurizacion
     {
         return $this->idCurva;
     }
+    
+ public function __toString()
+    {
+       return $this->codigoPasteurizacion;
+    }   
+    
 }

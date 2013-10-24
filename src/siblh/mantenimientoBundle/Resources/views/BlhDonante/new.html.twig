@@ -23,7 +23,7 @@
     {{ form_start(form) }}
     {{ form_errors(form) }}
  
-  <table align = "center" width = "97%">
+  <table align = "center" width = "97%" >
      
    <tr>  
    <td align = "right"> <font color="red">*</font>
@@ -52,32 +52,27 @@
         {{ form_errors(form.procedencia) }}
         {{ form_widget(form.procedencia) }} </td>
         
-    <td WIDTH = "16" align = "left"><font color="red">*</font>
+    <td WIDTH = "13" align = "left"><font color="red">*</font>
         {{ form_label(form.fechaNacimiento) }} 
         {{ form_errors(form.fechaNacimiento) }}
         {{ form_widget(form.fechaNacimiento, {'attr':{'readonly': 'true'} }) }} </td>
         
-        <td><font color="red">*</font>
+        <td align = "left"><font color="red" >*</font>
         {{ form_label(form.estadoDonante) }} 
         {{ form_errors(form.estadoDonante) }}
         {{ form_widget(form.estadoDonante) }} </td> </tr>
         
-    
-        
-  
-    <tr>
-    
-  
-   <td align = "left"><font color="red">*</font>
+ <tr><td align = "left"><font color="red">*</font>
         {{ form_label(form.estadoCivil) }} 
         {{ form_errors(form.estadoCivil) }}
         {{ form_widget(form.estadoCivil) }} </td>
    <td align = "left"> 
-        {{ form_label(form.ocupacion) }} 
+        {{ form_label(form.ocupacion) }} &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; 
+                                         &nbsp;&nbsp; &nbsp; &nbsp;
         {{ form_errors(form.ocupacion) }}
         {{ form_widget(form.ocupacion) }} </td>
    
-   <td><font color="red">*</font>
+   <td align = "left"><font color="red">*</font>
         {{ form_label(form.nacionalidad) }}
         {{ form_errors(form.nacionalidad) }}
         {{ form_widget(form.nacionalidad) }}
@@ -95,7 +90,8 @@
   
   
    
-   <td> {{ form_label(form.escolaridad) }}
+   <td align = "left"> 
+        {{ form_label(form.escolaridad) }} &nbsp; &nbsp;&nbsp;
         {{ form_errors(form.escolaridad) }}
         {{ form_widget(form.escolaridad) }} </td></tr>
    
@@ -110,8 +106,8 @@
         {{ form_errors(form.numeroDocumentoIdentificacion) }}
         {{ form_widget(form.numeroDocumentoIdentificacion) }} </td>
        
-       <td align = "left" > 
-        {{ form_label(form.tipoColecta) }} 
+       <td align = "left" ><font color="red" >*</font>
+        {{ form_label(form.tipoColecta) }}&nbsp;
         {{ form_errors(form.tipoColecta) }}
         {{ form_widget(form.tipoColecta) }} </td>
    
@@ -119,42 +115,72 @@
    
    <tr>
    <td align = "left"><font color="red" >*</font> 
-        {{ form_label(form.idMunicipio) }} 
+        {{ form_label(form.idMunicipio) }}&nbsp;
         {{ form_errors(form.idMunicipio) }}
         {{ form_widget(form.idMunicipio,  { 'attr': {'required': 'true'} }) }} </td>
        
         <td align = "left">
-        {{ form_label(form.registro) }} 
+  &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+  &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+  &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+  &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+  &nbsp; 
+  <font color="black">999999-9999 <br>
+  &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+  &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+  &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+  &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;correlativo-anio</font><br>    
+        {{ form_label(form.registro) }} &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; 
+                                        &nbsp; &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; 
         {{ form_errors(form.registro) }}
         {{ form_widget(form.registro) }} </td>
   
   
-  <td >
+  <td align = "left">
         {{ form_label(form.fechaRegistroDonanteBlh, 'Fecha registro') }} 
         {{ form_errors(form.fechaRegistroDonanteBlh) }}
         {{ form_widget(form.fechaRegistroDonanteBlh, {'attr':{'readonly': 'true'} }) }} </td>
       </tr>
       
       <tr>
-       <td colspan = '3' align = "center" > 
-        {{ form_label(form.observaciones) }} <br>
+       <td align = "left" > 
+    &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+  &nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+  <font color="black">9999-9999</font><br> 
+        {{ form_label(form.telefonoFijo) }}&nbsp;&nbsp;&nbsp;&nbsp;
+        {{ form_errors(form.telefonoFijo) }}
+        {{ form_widget(form.telefonoFijo) }} </td>
+       <td align = "left" > 
+  &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+  &nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+  <font color="black">9999-9999</font><br> 
+        {{ form_label(form.telefonoMovil) }} &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;                                             
+        {{ form_errors(form.telefonoMovil) }}
+        {{ form_widget(form.telefonoMovil) }} </td>
+       <td align = "left" WIDTH = "10"><font color="red">*</font> 
+        {{ form_label(form.observaciones) }} 
         {{ form_errors(form.observaciones) }}
         {{ form_widget(form.observaciones,  { 'attr': {'size': '50'} }) }} </td>
       
       </tr>
    
-  <tr><td colspan = '2' align = 'right'>  <input type="submit" class= "ui-button" value="Guardar"/></td>
-      <td WIDTH = "10"><font color="red">* Campos requeridos</font>   </td>
+  <tr><td WIDTH = "10" align = "left"><font color="red" size = "2" face = "Comic Sans MS">* Campos requeridos</font>   </td>
+      <td colspan = '2' align = 'left'>&nbsp; &nbsp;&nbsp; &nbsp;
+                                       &nbsp; &nbsp;&nbsp; &nbsp; 
+                                       &nbsp; &nbsp;&nbsp; &nbsp;
+                                       &nbsp; &nbsp;&nbsp; &nbsp;
+          <input type="submit" class= "ui-button" value="Guardar"/></td>
+      
   </tr>
     </table>
     
 {{ form_end(form) }}
        
-  {#  <ul class="record_actions">
+   <ul class="record_actions">
     <li>
     <a href="{{ path('blhdonante') }}">
             Back to the list
     </a>
     </li>
-    </ul>  #}
+    </ul>  
 {% endblock %}

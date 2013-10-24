@@ -1,0 +1,53 @@
+{% extends 'siblhmantenimientoBundle::plantilla.html.twig' %}
+
+{% block body -%}
+    <h1>Listado de Donantes</h1>
+    <table class="records_list" border= "1">
+        <thead>
+            <tr>
+                 <td><b>Codigo</b></td>
+                 <td colspan = "4" align = "center"><b>Nombre Receptores</b></td>
+                 
+                 
+                <td align = "center"><b>Accion</b></td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+       {% for receptor in receptores_registrados%}
+            
+               <td><a href="{{ path('blhegresoreceptor_new', { 'id': receptor.identificador }) }}">{{ receptor.identificador }}</a></td>
+               <td>{{ receptor.codigoReceptor }}</td> 
+               <td>{{ receptor.nombre1 }}</td>
+                <td>{{ receptor.nombre2 }}</td>
+        
+                <td>{{ receptor.apellido1 }}</td>
+                <td>{{ receptor.apellido2 }}</td>
+               
+               
+                <td>
+                <ul>
+                    <li>
+                        <a href="{{ path('blhegresoreceptor_new', { 'id': receptor.identificador })}}">Egreso</a>
+                    </li>
+                    
+                                       
+                </ul>
+                </td></tr>
+        {% endfor %}
+            
+
+            
+          
+           
+        </tbody>
+    </table>
+
+    
+    
+        
+     
+   
+
+        
+    {% endblock %}

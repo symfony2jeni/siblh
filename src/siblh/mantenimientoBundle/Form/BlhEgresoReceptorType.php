@@ -15,15 +15,24 @@ class BlhEgresoReceptorType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('diagnosticoEgreso')
-            ->add('madreCanguro')
-            ->add('tipoEgreso')
-            ->add('comentarioEgreso')
-            ->add('trasladoPeriferico')
-            ->add('permanenciaUcin')
+            ->add('diagnosticoEgreso', 'textarea')
+            ->add('madreCanguro', 'choice', 
+                    array('choices' => array('' => ' ','Si' => 'Si',
+                          'No' => 'No')))
+            ->add('tipoEgreso', 'choice', 
+                    array('choices' => array('' => 'Seleccione un valor','Alta' => 'Alta',
+                          'Muerte' => 'Muerte')))
+            ->add('comentarioEgreso', 'textarea')
+            ->add('trasladoPeriferico', 'choice', 
+                    array('choices' => array('' => ' ','Si' => 'Si',
+                          'No' => 'No')))
+            ->add('permanenciaUcin', 'text')
             ->add('hospitalSeguimientoEgreso')
-            ->add('fechaEgreso')
-            ->add('estanciaHospitalaria')
+            ->add('fechaEgreso', 'date', 
+                    array(  'widget' => 'single_text',
+                            'format' => 'yy-MM-dd',
+                            'attr' => array('class' => 'date')))
+            ->add('estanciaHospitalaria', 'text')
             ->add('idReceptor')
         ;
     }

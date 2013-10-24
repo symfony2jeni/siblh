@@ -126,4 +126,12 @@ class BlhBancoDeLeche
     {
         return $this->idEstablecimiento;
     }
+    
+    public function __toString() 
+    {
+    
+        $nombre_estab=  $this->codigoBancoDeLeche.$this->idEstablecimiento;
+        $estab= substr($nombre_estab, 6);
+        return $estab;
+    }
 }

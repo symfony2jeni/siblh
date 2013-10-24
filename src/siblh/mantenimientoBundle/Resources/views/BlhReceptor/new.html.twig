@@ -1,10 +1,245 @@
-{% extends '::base.html.twig' %}
+{% extends 'siblhmantenimientoBundle::plantilla.html.twig' %}
+{% block stylesheets %}
+    {{ parent() }}
+	<link href="{{ asset('bundles/siblhmantenimiento/css/form.css') }}" rel="stylesheet" type="text/css" />
+{% endblock %}
+        {% block javascripts %}
+
+{{parent()}}
+
+<script type="text/javascript" src="{{ asset('bundles/siblhmantenimiento/js/BlhReceptor/new.js') }}" ></script>
+       
+{% endblock %}
 
 {% block body -%}
+
+
+
+<script type="text/javascript">
+function edad()
+ {
+var d = new Date();
+var hoy = d.getDate();
+//anios = hoy - fecha;
+//dias = anios * 365;
+alert(hoy);
+return  hoy;
+ }
+ </script>
+ 
+ 
+ 
+  <script type="text/javascript">
+function prueba(visible, id)
+ {
+
+var elemento = document.getElementById(id);
+elemento.style.visibility = visible ? "visible" : "hidden";
+ }
+</script>    
     <h1>BlhReceptor creation</h1>
+    
+    <FORM> 
+   <table align = "center" >
+       
+       <tr>
+       <td align = "right" colspan = "5">Numero de paciente</td>
+        <td align = "right" colspan = "2">
+        <INPUT type=text disabled="disabled" size=10 readonly="readonly" value= " {{ datos_pacientes[0].identificador }} "></td></tr>
+      <tr>
+       <td width= "130">Nombre paciente</td>
+        <td width= "70">
+         <INPUT name = "label2" type=text disabled="disabled" size=30 readonly="readonly" value= "{{ datos_pacientes[0].nombre1}}&nbsp;{{ datos_pacientes[0].nombre2  }}&nbsp;{{ datos_pacientes[0].nombre3  }}&nbsp;{{ datos_pacientes[0].apellido1  }} "></td>
+     <td width= "30">Sexo</td>
+        <td width= "30">
+         <INPUT name = "label3" type=text disabled="disabled" size=15 readonly="readonly" value= "{{ sexo[0].nombre}} "></td>
+         <td  align = "right">Registro</td>
+        <td align = "right">
+         <INPUT name = "label4" type=text disabled="disabled" size=10 readonly="readonly" value= "{{ numexp[0].numero}} "></td></tr>        
+      <tr>
+          <td width= "130">Direccion</td>
+        <td width= "70" colspan = "5" align = "left">
+         <INPUT type=text disabled="disabled" size=100 readonly="readonly" value= "{{ datos_pacientes[0].direccion}}"></td>
+      </tr> 
+      <tr>
+      <td width= "130">Fecha Nacimiento</td>
+        <td width= "70"  align = "left">
+         <INPUT id = "1" type= text disabled="disabled" size= 9  readonly="readonly" value= "{{ datos_pacientes[0].fechaNacimiento|date('d-m-Y') }}"></td>
+      </tr> 
+   
+   </table>
+     
+</form>
 
-    {{ form(form) }}
+    {{ form_start(form) }}
+    {{ form_errors(form) }}
+    <table align = "center" WIDTH = "90%">
+        <tr>
+    <td align = left>
+        {{ form_label(form.fechaRegistroBlh) }}
+        {{ form_errors(form.fechaRegistroBlh) }}
+        {{ form_widget(form.fechaRegistroBlh) }} </td>
+        
+    <td align = left><font color="red">*</font>
+        {{ form_label(form.edadDias) }}
+        {{ form_errors(form.edadDias) }}
+        {{ form_widget(form.edadDias, {'attr':{'readonly': 'true'} }) }} </td>
+   
+    <td align = left>
+        {{ form_label(form.procedencia) }}
+        {{ form_errors(form.procedencia) }}
+        {{ form_widget(form.procedencia) }} </td></tr>
+    <tr>
+    <td colspan = 2 align = left><font color="red">*</font>
+        {{ form_label(form.idBancoDeLeche) }}
+        {{ form_errors(form.idBancoDeLeche) }}
+        {{ form_widget(form.idBancoDeLeche) }} </td>  
+    <td>{{ form_label(form.estadoReceptor) }}
+        {{ form_errors(form.estadoReceptor) }}
+        {{ form_widget(form.estadoReceptor) }} </td>  
+    </tr>
+    
+    <tr style="visibility:hidden">
+        <td align = left>
+        {{ form_label(form.idPaciente) }}
+        {{ form_errors(form.idPaciente) }}
+        {{ form_widget(form.idPaciente) }} 
+        </td>
+    </tr>
+    
+    </table>
+    
+  
+    
+    {{ form_start(form1) }}
+    {{ form_errors(form1) }}
+    
+    
+    <table align = "center" >
+        <tr><td align = left><font color="red">*</font>
+        {{ form_label(form1.edadGestFur) }}
+        {{ form_errors(form1.edadGestFur) }}
+        {{ form_widget(form1.edadGestFur) }} </td> 
+                    
+       <td align = left><font color="red">*</font>
+        {{ form_label(form1.pesoReceptor, 'peso al nacer(gramos)') }}
+        {{ form_errors(form1.pesoReceptor) }}
+        {{ form_widget(form1.pesoReceptor) }} </td> 
+           
+       <td align = left>
+        {{ form_label(form1.tallaIngreso, 'Talla al nacer (cm)') }}
+        {{ form_errors(form1.tallaIngreso) }}
+        {{ form_widget(form1.tallaIngreso) }} </td></tr>
+       
+       <tr><td align = left><font color="red">*</font>
+        {{ form_label(form1.pc) }}
+        {{ form_errors(form1.pc) }} 
+          &nbsp; &nbsp;&nbsp; &nbsp;
+          &nbsp; &nbsp;&nbsp; &nbsp; 
+          &nbsp; &nbsp;&nbsp;
+        {{ form_widget(form1.pc) }} </td> 
+                   
+       <td align = left>
+          &nbsp; &nbsp;&nbsp; &nbsp;
+          &nbsp;
+        {{ form_label(form1.apgar) }}
+        {{ form_errors(form1.apgar) }}
+          &nbsp; &nbsp;&nbsp; &nbsp;
+          &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; 
+          &nbsp; &nbsp;&nbsp; &nbsp;               
+        {{ form_widget(form1.apgar) }} </td> 
+           
+       <td align = left><font color="red">*</font>
+        {{ form_label(form1.edadGestBallard) }}
+        {{ form_errors(form1.edadGestBallard) }}
+        {{ form_widget(form1.edadGestBallard) }} </td></tr>
+       
+       <tr>
+        
+           <td align = left><font color="red">*</font>
+               <form>
+                Clasificacion Lubchenco   
+               <input type="radio" name="group1" id="2" value="PEG"> PEG
+               <input type="radio" name="group1" id="3" value="AEG">AEG
+               <input type="radio" name="group1" id="4" value="GEG">GEG
+               </form>
+           
+           </td>
+           
+                        
+      <td align = left> 
 
+     
+        <label>Ventilacion mecanica:</label>
+        <input type="radio" name="group2" value="si" onClick="prueba(true, 'ventilacion');"> Si
+        <input type="radio" name="group2" value="no" onClick="prueba(false, 'ventilacion');"> No<br></td>
+ <td align = left id= "ventilacion" style="visibility:hidden"> 
+
+        {{ form_label(form1.duracionVentilacion) }}
+        {{ form_errors(form1.duracionVentilacion) }}
+        {{ form_widget(form1.duracionVentilacion,  { 'attr': {'size': '6'} }) }} </td> 
+    </tr>
+       
+    
+    <tr><td align = left>
+        {{ form_label(form1.diagnosticoIngreso) }}
+        {{ form_errors(form1.diagnosticoIngreso) }}
+        {{ form_widget(form1.diagnosticoIngreso,  { 'attr': {'size': '50'} }) }}  </td>
+               
+        <td align = center>
+        
+          <label>CPAP</label>
+        <input type="radio" name="group3" value="si" onClick="prueba(true, 'cpap');"> Si
+        <input type="radio" name="group3" value="no" onClick="prueba(false, 'cpap');"> No<br></td>
+ <td  id= "cpap" style="visibility:hidden" align = left> 
+
+        {{ form_label(form1.duracionCpap, 'Duracion de CPAP Nasal') }}
+        {{ form_errors(form1.duracionCpap) }}
+        {{ form_widget(form1.duracionCpap) }} </td>         
+    
+    </tr>
+    
+    
+       <tr>
+        <td align = left>
+        
+          <label>Uso de nutricion parenteral</label>
+        <input type="radio" name="group4" value="si" onClick="prueba(true, 'npt');"> Si
+        <input type="radio" name="group4" value="no" onClick="prueba(false, 'npt');"> No<br></td>
+ <td align = left id= "npt" style="visibility:hidden"> 
+
+        {{ form_label(form1.duracionNpt) }}
+        {{ form_errors(form1.duracionNpt) }}
+        {{ form_widget(form1.duracionNpt) }} </td> 
+        
+  <td style="visibility:visible" align = left>
+        {{ form_label(form1.clasificacionLubchengo, 'cl') }}
+        {{ form_errors(form1.clasificacionLubchengo) }}
+        {{ form_widget(form1.clasificacionLubchengo,  { 'attr': {'size': '3'} }) }}  </td>
+    
+    </tr>
+    <tr><td  align = "left"><font color="red" size = "2" face = "Comic Sans MS">* Campos requeridos</font>   </td>
+      <td colspan = '2' align = 'left'>&nbsp; &nbsp;&nbsp; &nbsp;
+                                       &nbsp; &nbsp;&nbsp; &nbsp; 
+                                       &nbsp; &nbsp;&nbsp; &nbsp;
+                                       &nbsp; &nbsp;&nbsp; &nbsp;
+         </td>
+      
+  </tr>
+  
+  <tr><td colspan = 3> <input type="submit" class= "ui-button" value="Guardar"/></td></tr>
+   
+       
+       
+       </table> 
+    
+    
+    
+    
+      {{ form_end(form) }}
+    
+      {{ form_end(form1) }}
+    
         <ul class="record_actions">
     <li>
         <a href="{{ path('blhreceptor') }}">
@@ -12,4 +247,5 @@
         </a>
     </li>
 </ul>
+     
 {% endblock %}

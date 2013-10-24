@@ -76,29 +76,12 @@ class BlhHistoriaActualController extends Controller
             'method' => 'POST',
         ));
 
-        $form->add('submit', 'submit', array('label' => 'Create'));
+      //  $form->add('submit', 'submit', array('label' => 'Create'));
 
         return $form;
     }
 
-    /**
-     * Displays a form to create a new BlhHistoriaActual entity.
-     *
-     * @Route("/new", name="blhhistoriaactual_new")
-     * @Method("GET")
-     * @Template()
-     */
-    public function newAction()
-    {
-        $entity = new BlhHistoriaActual();
-        $form   = $this->createCreateForm($entity);
-
-        return array(
-            'entity' => $entity,
-            'form'   => $form->createView(),
-        );
-    }
-
+  
     /**
      * Finds and displays a BlhHistoriaActual entity.
      *
@@ -244,4 +227,72 @@ class BlhHistoriaActualController extends Controller
             ->getForm()
         ;
     }
+    
+    //Creando nuevo controlador
+    
+     //Creando Nuevos Controladores
+     
+     
+    /**
+     * Lists all BlhHistorialClinico entity.
+     *
+     * @Route("/donantesHA", name="blhhistoriaactual_donantesHA")
+     * @Method("GET")
+     * @Template()
+     */
+    
+     public function donantesHAAction()
+    {
+        $em = $this->getDoctrine()->getManager();      
+        
+        //Obteniendo lista de donantes"  
+    //  $hisclinico =  $em->getRepository('siblhmantenimientoBundle:BlhHistorialClinico')->findAll();
+      // $query1 = $em->createQuery("SELECT distinct p.id as identificador FROM siblhmantenimientoBundle:BlhHistorialClinico j JOIN j.idDonante p");
+      // $hisclinico = $query1->getResult();
+        $query = $em->createQuery("SELECT p.id as identificador, p.primerNombre as nombre1, p.segundoNombre as nombre2, p.primerApellido as apellido1, p.segundoApellido as apellido2 FROM siblhmantenimientoBundle:BlhDonante p where p.id  not in (1,2,3,4,5)");
+        
+       //echo $hisclinico[idDonante];
+                
+        $donantes_registradas  = $query->getResult();
+        
+        return array(
+            'donantes_registradas' =>  $donantes_registradas,  
+             //   'hisclinico' => $hisclinico,
+        );
+        
+    }
+   
+   /**
+     * Displays a form to create a new BlhHistoriaActual entity.
+     *
+     * @Route("/new/{id}", name="blhhistoriaactual_new")
+     * @Method("GET")
+     * @Template()
+     */
+    public function newAction($id)
+    {
+        
+        
+          $em = $this->getDoctrine()->getManager();
+        $query = $em->createQuery("SELECT p.id as identificador, p.codigoDonante as codigo_donante, p.primerNombre as nombre1, p.segundoNombre as nombre2, p.primerApellido as apellido1, p.segundoApellido as apellido2 FROM siblhmantenimientoBundle:BlhDonante p  WHERE p.id = $id "); 
+        $datos_donantes  = $query->getResult();
+     //   $donante = $em->getRepository('siblhmantenimientoBundle:BlhDonante')->find($id);   
+       $donante = $em->getRepository('siblhmantenimientoBundle:BlhDonante')->find($datos_donantes[0]['identificador']);
+     
+        if (!$datos_donantes) {
+            throw $this->createNotFoundException('Unable to find BlhDonante entity');
+        }
+        
+        $entity = new BlhHistoriaActual();
+        $entity->setIdDonante($donante);
+        $form   = $this->createCreateForm($entity);
+
+        return array(
+            'entity' => $entity,
+            'form'   => $form->createView(),
+            'datos_donantes' =>  $datos_donantes, 
+        );
+    }
+
+
 }

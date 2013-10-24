@@ -1,0 +1,52 @@
+{% extends 'siblhmantenimientoBundle::plantilla.html.twig' %}
+
+{% block body -%}
+    <h1>Listado de Donantes</h1>
+    <table class="records_list" border= "1">
+        <thead>
+            <tr>
+                 <td><b>Codigo</b></td>
+                 <td colspan = "4" align = "center"><b>Nombre Donante</b></td>
+                 
+                 
+                <td align = "center"><b>Accion</b></td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+       {% for donante in donantes_registradas%}
+            
+               <td><a href="{{ path('blhhistoriaactual_new', { 'id': donante.identificador }) }}">{{ donante.identificador }}</a></td>
+                <td>{{ donante.nombre1 }}</td>
+                <td>{{ donante.nombre2 }}</td>
+        
+                <td>{{ donante.apellido1 }}</td>
+                <td>{{ donante.apellido2 }}</td>
+               
+               
+                <td>
+                <ul>
+                    <li>
+                        <a href="{{ path('blhhistoriaactual_new', { 'id': donante.identificador })}}">Historial clinico</a>
+                    </li>
+                    
+                                       
+                </ul>
+                </td></tr>
+        {% endfor %}
+            
+
+            
+          
+           
+        </tbody>
+    </table>
+
+    
+    
+        
+     
+   
+
+        
+    {% endblock %}

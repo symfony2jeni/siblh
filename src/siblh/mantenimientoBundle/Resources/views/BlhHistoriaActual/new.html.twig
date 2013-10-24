@@ -26,13 +26,26 @@ elemento.style.visibility = visible ? "visible" : "hidden";
  }
 </script>    
     
-    
+  <FORM> 
+   <table align = "center">
+       
+       <tr>
+       <td>Codigo de la Donante</td>
+        <td>
+        <INPUT type=text disabled="disabled" size=30 readonly="readonly" value= " {{ datos_donantes[0].codigo_donante }} "></td>
+        <td width= "70"></td>
+        <td width= "70"></td>
+        
+    </tr>        
+    </table>
+     
+</form>  
     
     {{ form_start(form) }}
  {{ form_start(form) }}
     {{ form_errors(form) }}
      <table align = "center">
-          <tr><td colspan = "3"> 
+          <tr><td colspan = "3" style="visibility:hidden"> 
         {{ form_label(form.idDonante) }}
         {{ form_errors(form.idDonante) }}
         {{ form_widget(form.idDonante) }} </td></tr>

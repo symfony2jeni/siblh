@@ -339,4 +339,9 @@ class MntPaciente
     {
         return $this->idSexo;
     }
+    
+     public function __toString()
+    {
+       return $this->primerNombre;
+    }
 }
