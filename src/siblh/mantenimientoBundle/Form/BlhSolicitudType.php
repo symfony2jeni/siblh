@@ -15,7 +15,7 @@ class BlhSolicitudType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('codigoSolicitud')
+             ->add('codigoSolicitud')
             ->add('volumenPorDia')
             ->add('acidezNecesaria','choice', 
                     array('choices' => array('' => 'Seleccione un valor','Baja' => 'Baja(0-4 grados)','Aceptable' => 'Aceptable(4-8 grados)')))
@@ -23,13 +23,14 @@ class BlhSolicitudType extends AbstractType
             ->add('caloriasNecesarias')
             ->add('pesoDia')
             ->add('volumenPorToma')
-            ->add('tomaPorDia')
+            ->add('tomaPorDia','text')
             ->add('fechaSolicitud' ,'date', 
                     array(  'widget' => 'single_text',
                             'format' => 'dd-MM-yy',
                             'attr' => array('class' => 'date')))
-            ->add('cuna')
-            ->add('estado')
+            ->add('cuna','text')
+            ->add('estado','choice', 
+                    array('choices' => array('' => 'Seleccione un valor','Pendiente' => 'Pendiente','Agrupada' => 'Agrupada','Despachada' => 'Despachada')))
             ->add('responsable')
            // ->add('idGrupoSolicitud')
             ->add('idReceptor')

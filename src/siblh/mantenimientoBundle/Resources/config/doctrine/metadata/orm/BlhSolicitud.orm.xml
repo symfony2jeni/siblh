@@ -13,8 +13,8 @@
     <field name="tomaPorDia" type="integer" column="toma_por_dia" nullable="false"/>
     <field name="fechaSolicitud" type="date" column="fecha_solicitud" nullable="false"/>
     <field name="cuna" type="integer" column="cuna" nullable="false"/>
-    <field name="estado" type="string" column="estado" length="1" nullable="false"/>
-    <field name="responsable" type="string" column="responsable" length="30" nullable="true"/>
+    <field name="estado" type="string" column="estado" length="10" nullable="false"/>
+    <field name="responsable" type="string" column="responsable" length="60" nullable="true"/>
     <many-to-one field="idReceptor" target-entity="BlhReceptor">
       <join-columns>
         <join-column name="id_receptor" referenced-column-name="id"/>

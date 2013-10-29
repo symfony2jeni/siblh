@@ -158,13 +158,6 @@ class BlhDonante
     /**
      * @var string
      *
-     * @ORM\Column(name="estado_donante", type="string", length=12, nullable=false)
-     */
-    private $estadoDonante;
-
-    /**
-     * @var string
-     *
      * @ORM\Column(name="tipo_colecta", type="string", length=10, nullable=false)
      */
     private $tipoColecta;
@@ -172,7 +165,7 @@ class BlhDonante
     /**
      * @var string
      *
-     * @ORM\Column(name="observaciones", type="string", length=300, nullable=true)
+     * @ORM\Column(name="observaciones", type="string", length=150, nullable=true)
      */
     private $observaciones;
 
@@ -646,29 +639,6 @@ class BlhDonante
     }
 
     /**
-     * Set estadoDonante
-     *
-     * @param string $estadoDonante
-     * @return BlhDonante
-     */
-    public function setEstadoDonante($estadoDonante)
-    {
-        $this->estadoDonante = $estadoDonante;
-    
-        return $this;
-    }
-
-    /**
-     * Get estadoDonante
-     *
-     * @return string 
-     */
-    public function getEstadoDonante()
-    {
-        return $this->estadoDonante;
-    }
-
-    /**
      * Set tipoColecta
      *
      * @param string $tipoColecta
@@ -759,7 +729,8 @@ class BlhDonante
     {
         return $this->idMunicipio;
     }
-       public function __toString() {
+               public function __toString() {
   return $this->codigoDonante;
 }
+   
 }

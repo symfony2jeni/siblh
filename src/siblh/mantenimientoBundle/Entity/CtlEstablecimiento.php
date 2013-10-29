@@ -149,7 +149,11 @@ class CtlEstablecimiento
      *
      * @return string 
      */
-            public function __toString() {
+    public function getFax()
+    {
+        return $this->fax;
+    }
+                public function __toString() {
    return $this->nombre;
 }
 }

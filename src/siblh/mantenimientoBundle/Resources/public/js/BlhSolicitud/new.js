@@ -1,5 +1,5 @@
 $(document).ready(function() { 
-     /*$('button').button();*/
+     $('#button').button();
      $.noConflict();
      $.datepicker.setDefaults($.datepicker.regional["es"]);
      
@@ -20,12 +20,10 @@ $(document).ready(function() {
   
        
     //Boton   
-    
-    $('#submit')
-      .button();
-      click(function( event ) {
-        event.preventDefault();
-      });
+   
+    $( "#boton" ).button();
+
+
        
  
   
@@ -45,37 +43,54 @@ $(document).ready(function() {
 
  $('#siblh_mantenimientobundle_blhsolicitud_volumenPorToma').
             attr('data-bvalidator', 'between[0:25],required');
- $('#siblh_mantenimientobundle_blhsolicitud_volumenPorToma').
-         attr('data-bvalidator-msg', "Ingrese un numero entre 0 y 25");
+
     
      
  $('#siblh_mantenimientobundle_blhsolicitud_caloriasNecesarias').
             attr('data-bvalidator', 'min[1],required');
     
  $('#siblh_mantenimientobundle_blhsolicitud_pesoDia').
-            attr('data-bvalidator', 'between[400:2500],number,required');
-  $('#siblh_mantenimientobundle_blhsolicitud_pesoDia').
-         attr('data-bvalidator-msg', "Ingrese un numero entre 400 y 2500");
+            attr('data-bvalidator', 'between[400:2500],required');
+  
     
  $('#siblh_mantenimientobundle_blhsolicitud_tomaPorDia').
-            attr('data-bvalidator', 'between[0:24],number,required');
-  $('#siblh_mantenimientobundle_blhsolicitud_tomaPorDia').
-         attr('data-bvalidator-msg', "Ingrese un numero entre 0 y 24");
+            attr('data-bvalidator', 'between[0:24],required');
+ 
     
  $('#siblh_mantenimientobundle_blhsolicitud_cuna').
             attr('data-bvalidator', 'min[1],required');
     
     
   $('#siblh_mantenimientobundle_blhsolicitud_responsable').
-            attr('data-bvalidator', 'alpha,required');
+            attr('data-bvalidator', 'alpha');
 
 
-                          
+  //Calculando campos                        
 
+var $VolumenToma; 
+var $VolumenDia;
+  $('#siblh_mantenimientobundle_blhsolicitud_volumenPorToma').on('input', function() {
+    
+    $VolumenToma = this.value;
+   
+    
+   
+});
+
+   $('#siblh_mantenimientobundle_blhsolicitud_tomaPorDia').on('input', function() {
+    
+     var $TomasDia = this.value;
+     $VolumenDia = $VolumenToma * $TomasDia;
+    
+   
+});
+
+$('#siblh_mantenimientobundle_blhsolicitud_volumenPorDia').on ('click', function() {
+ 
+this.value = $VolumenDia; } ); 
 
 });
 
 
 
       
-

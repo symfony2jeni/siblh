@@ -339,14 +339,7 @@ class MntPaciente
     {
         return $this->idSexo;
     }
-        
-
- public function __toString() 
-    {
-        $espacio = " ";
-        $nombre_estab =  $this->primerNombre.$espacio.$this->segundoNombre.$espacio.$this->tercerNombre.$espacio.$this->primerApellido.$espacio.$this->segundoApellido;
-       
-        return $nombre_estab;
-    }
-
+         public function __toString() {
+  return $this->primerNombre;
+}
 }

@@ -17,6 +17,7 @@ class MntExpedienteType extends AbstractType
         $builder
             ->add('numero')
             ->add('idPaciente')
+            ->add('idEstablecimiento')
         ;
     }
     

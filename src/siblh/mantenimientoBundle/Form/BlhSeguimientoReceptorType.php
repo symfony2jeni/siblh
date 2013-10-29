@@ -15,11 +15,11 @@ class BlhSeguimientoReceptorType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('tallaReceptor')
+        ->add('tallaReceptor')
             ->add('pesoSeguimiento')
             ->add('pcSeguimiento')
             ->add('gananciaDiaPeso')
-            ->add('semana')
+            ->add('semana','text')
             ->add('fechaSeguimiento','date', 
                     array(  'widget' => 'single_text',
                             'format' => 'dd-MM-yy',

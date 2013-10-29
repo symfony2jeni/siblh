@@ -1,4 +1,4 @@
-{% extends '::base.html.twig' %}
+{% extends  'siblhmantenimientoBundle::plantilla.html.twig'%}
 
 {% block body -%}
     <h1>BlhAcidez list</h1>
@@ -41,11 +41,5 @@
         </tbody>
     </table>
 
-        <ul>
-        <li>
-            <a href="{{ path('blhacidez_new') }}">
-                Create a new entry
-            </a>
-        </li>
-    </ul>
+      
     {% endblock %}

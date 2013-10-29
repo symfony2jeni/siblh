@@ -30,9 +30,13 @@ class BlhSeguimientoReceptorController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entities = $em->getRepository('siblhmantenimientoBundle:BlhSeguimientoReceptor')->findAll();
+        //$entities = $em->getRepository('siblhmantenimientoBundle:BlhSeguimientoReceptor')->findAll();
+        $query = $em->createQuery("SELECT s.id,s.fechaSeguimiento,s.semana,s.tallaReceptor,s.gananciaDiaTalla,s.pesoSeguimiento,s.gananciaDiaPeso,s.pcSeguimiento,s.complicaciones,p.primerNombre as nombre1, p.segundoNombre as nombre2, p.tercerNombre as nombre3, p.primerApellido as apellido1, p.segundoApellido as apellido2 FROM siblhmantenimientoBundle:BlhSeguimientoReceptor s JOIN s.idReceptor r JOIN r.idPaciente p");
+        
+        $entities  = $query->getResult();
 
         return array(
+           
             'entities' => $entities,
         );
     }
@@ -166,7 +170,7 @@ class BlhSeguimientoReceptorController extends Controller
             'method' => 'PUT',
         ));
 
-        $form->add('submit', 'submit', array('label' => 'Update'));
+       // $form->add('submit', 'submit', array('label' => 'Update'));
 
         return $form;
     }

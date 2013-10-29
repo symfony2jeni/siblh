@@ -3,7 +3,7 @@
 namespace siblh\mantenimientoBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Component\Validator\Constraints as Assert;
+
 /**
  * BlhSolicitud
  *
@@ -39,7 +39,7 @@ class BlhSolicitud
     /**
      * @var string
      *
-     * @ORM\Column(name="acidez_necesaria", type="string", length=9, nullable=false) 
+     * @ORM\Column(name="acidez_necesaria", type="string", length=9, nullable=false)
      */
     private $acidezNecesaria;
 
@@ -88,14 +88,14 @@ class BlhSolicitud
     /**
      * @var string
      *
-     * @ORM\Column(name="estado", type="string", length=1, nullable=false)
+     * @ORM\Column(name="estado", type="string", length=10, nullable=false)
      */
     private $estado;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="responsable", type="string", length=30, nullable=true)
+     * @ORM\Column(name="responsable", type="string", length=60, nullable=true)
      */
     private $responsable;
 

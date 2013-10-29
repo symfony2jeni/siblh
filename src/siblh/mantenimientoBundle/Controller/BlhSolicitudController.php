@@ -201,7 +201,7 @@ class BlhSolicitudController extends Controller
             'method' => 'PUT',
         ));
 
-        $form->add('submit', 'submit', array('label' => 'Update'));
+        //$form->add('submit', 'submit', array('label' => 'Update'));
 
         return $form;
     }
@@ -324,7 +324,7 @@ class BlhSolicitudController extends Controller
         //mostrando los datos del receptor seleccionado
         $em = $this->getDoctrine()->getManager();
         
-        $query = $em->createQuery("SELECT  i.edadGestFur, i.pesoReceptor, i.diagnosticoIngreso, r.id as id_receptor, r.procedencia as procedencia, r.codigoReceptor as codigo_receptor, p.fechaNacimiento as fecha_nacimiento, p.primerNombre as primer_nombre, p.segundoNombre as segundo_nombre, p.tercerNombre as tercer_nombre, p.primerApellido as primer_apellido, p.segundoApellido as segundo_apellido, s.nombre as sexo  FROM siblhmantenimientoBundle:BlhIngresoReceptor i JOIN i.idReceptor r JOIN r.idPaciente p JOIN p.idSexo s  WHERE r.id = $id "); 
+        $query = $em->createQuery("SELECT  r.edadGestFur, r.pesoReceptor, r.diagnosticoIngreso, r.id as id_receptor, r.procedencia, r.codigoReceptor, p.fechaNacimiento as fecha_nacimiento, p.primerNombre as primer_nombre, p.segundoNombre as segundo_nombre, p.tercerNombre as tercer_nombre, p.primerApellido as primer_apellido, p.segundoApellido as segundo_apellido, s.nombre as sexo  FROM siblhmantenimientoBundle:BlhReceptor  r JOIN r.idPaciente p JOIN p.idSexo s  WHERE r.id = $id "); 
         
         $datos_receptor  = $query->getResult();
         

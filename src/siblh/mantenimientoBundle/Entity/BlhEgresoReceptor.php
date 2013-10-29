@@ -46,7 +46,7 @@ class BlhEgresoReceptor
     /**
      * @var string
      *
-     * @ORM\Column(name="comentario_egreso", type="string", length=50, nullable=true)
+     * @ORM\Column(name="comentario_egreso", type="string", length=150, nullable=true)
      */
     private $comentarioEgreso;
 

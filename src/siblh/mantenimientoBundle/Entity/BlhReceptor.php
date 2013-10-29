@@ -58,6 +58,83 @@ class BlhReceptor
     private $edadDias;
 
     /**
+     * @var float
+     *
+     * @ORM\Column(name="peso_receptor", type="decimal", nullable=false)
+     */
+    private $pesoReceptor;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="duracion_cpap", type="integer", nullable=true)
+     */
+    private $duracionCpap;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="clasificacion_lubchengo", type="string", length=3, nullable=false)
+     */
+    private $clasificacionLubchengo;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="diagnostico_ingreso", type="string", length=50, nullable=true)
+     */
+    private $diagnosticoIngreso;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="duracion_npt", type="integer", nullable=true)
+     */
+    private $duracionNpt;
+
+    /**
+     * @var float
+     *
+     * @ORM\Column(name="apgar", type="decimal", nullable=true)
+     */
+    private $apgar;
+
+    /**
+     * @var float
+     *
+     * @ORM\Column(name="edad_gest_fur", type="decimal", nullable=false)
+     */
+    private $edadGestFur;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="duracion_ventilacion", type="integer", nullable=true)
+     */
+    private $duracionVentilacion;
+
+    /**
+     * @var float
+     *
+     * @ORM\Column(name="edad_gest_ballard", type="decimal", nullable=false)
+     */
+    private $edadGestBallard;
+
+    /**
+     * @var float
+     *
+     * @ORM\Column(name="pc", type="decimal", nullable=false)
+     */
+    private $pc;
+
+    /**
+     * @var float
+     *
+     * @ORM\Column(name="talla_ingreso", type="decimal", nullable=true)
+     */
+    private $tallaIngreso;
+
+    /**
      * @var \BlhBancoDeLeche
      *
      * @ORM\ManyToOne(targetEntity="BlhBancoDeLeche")
@@ -205,6 +282,259 @@ class BlhReceptor
     }
 
     /**
+     * Set pesoReceptor
+     *
+     * @param float $pesoReceptor
+     * @return BlhReceptor
+     */
+    public function setPesoReceptor($pesoReceptor)
+    {
+        $this->pesoReceptor = $pesoReceptor;
+    
+        return $this;
+    }
+
+    /**
+     * Get pesoReceptor
+     *
+     * @return float 
+     */
+    public function getPesoReceptor()
+    {
+        return $this->pesoReceptor;
+    }
+
+    /**
+     * Set duracionCpap
+     *
+     * @param integer $duracionCpap
+     * @return BlhReceptor
+     */
+    public function setDuracionCpap($duracionCpap)
+    {
+        $this->duracionCpap = $duracionCpap;
+    
+        return $this;
+    }
+
+    /**
+     * Get duracionCpap
+     *
+     * @return integer 
+     */
+    public function getDuracionCpap()
+    {
+        return $this->duracionCpap;
+    }
+
+    /**
+     * Set clasificacionLubchengo
+     *
+     * @param string $clasificacionLubchengo
+     * @return BlhReceptor
+     */
+    public function setClasificacionLubchengo($clasificacionLubchengo)
+    {
+        $this->clasificacionLubchengo = $clasificacionLubchengo;
+    
+        return $this;
+    }
+
+    /**
+     * Get clasificacionLubchengo
+     *
+     * @return string 
+     */
+    public function getClasificacionLubchengo()
+    {
+        return $this->clasificacionLubchengo;
+    }
+
+    /**
+     * Set diagnosticoIngreso
+     *
+     * @param string $diagnosticoIngreso
+     * @return BlhReceptor
+     */
+    public function setDiagnosticoIngreso($diagnosticoIngreso)
+    {
+        $this->diagnosticoIngreso = $diagnosticoIngreso;
+    
+        return $this;
+    }
+
+    /**
+     * Get diagnosticoIngreso
+     *
+     * @return string 
+     */
+    public function getDiagnosticoIngreso()
+    {
+        return $this->diagnosticoIngreso;
+    }
+
+    /**
+     * Set duracionNpt
+     *
+     * @param integer $duracionNpt
+     * @return BlhReceptor
+     */
+    public function setDuracionNpt($duracionNpt)
+    {
+        $this->duracionNpt = $duracionNpt;
+    
+        return $this;
+    }
+
+    /**
+     * Get duracionNpt
+     *
+     * @return integer 
+     */
+    public function getDuracionNpt()
+    {
+        return $this->duracionNpt;
+    }
+
+    /**
+     * Set apgar
+     *
+     * @param float $apgar
+     * @return BlhReceptor
+     */
+    public function setApgar($apgar)
+    {
+        $this->apgar = $apgar;
+    
+        return $this;
+    }
+
+    /**
+     * Get apgar
+     *
+     * @return float 
+     */
+    public function getApgar()
+    {
+        return $this->apgar;
+    }
+
+    /**
+     * Set edadGestFur
+     *
+     * @param float $edadGestFur
+     * @return BlhReceptor
+     */
+    public function setEdadGestFur($edadGestFur)
+    {
+        $this->edadGestFur = $edadGestFur;
+    
+        return $this;
+    }
+
+    /**
+     * Get edadGestFur
+     *
+     * @return float 
+     */
+    public function getEdadGestFur()
+    {
+        return $this->edadGestFur;
+    }
+
+    /**
+     * Set duracionVentilacion
+     *
+     * @param integer $duracionVentilacion
+     * @return BlhReceptor
+     */
+    public function setDuracionVentilacion($duracionVentilacion)
+    {
+        $this->duracionVentilacion = $duracionVentilacion;
+    
+        return $this;
+    }
+
+    /**
+     * Get duracionVentilacion
+     *
+     * @return integer 
+     */
+    public function getDuracionVentilacion()
+    {
+        return $this->duracionVentilacion;
+    }
+
+    /**
+     * Set edadGestBallard
+     *
+     * @param float $edadGestBallard
+     * @return BlhReceptor
+     */
+    public function setEdadGestBallard($edadGestBallard)
+    {
+        $this->edadGestBallard = $edadGestBallard;
+    
+        return $this;
+    }
+
+    /**
+     * Get edadGestBallard
+     *
+     * @return float 
+     */
+    public function getEdadGestBallard()
+    {
+        return $this->edadGestBallard;
+    }
+
+    /**
+     * Set pc
+     *
+     * @param float $pc
+     * @return BlhReceptor
+     */
+    public function setPc($pc)
+    {
+        $this->pc = $pc;
+    
+        return $this;
+    }
+
+    /**
+     * Get pc
+     *
+     * @return float 
+     */
+    public function getPc()
+    {
+        return $this->pc;
+    }
+
+    /**
+     * Set tallaIngreso
+     *
+     * @param float $tallaIngreso
+     * @return BlhReceptor
+     */
+    public function setTallaIngreso($tallaIngreso)
+    {
+        $this->tallaIngreso = $tallaIngreso;
+    
+        return $this;
+    }
+
+    /**
+     * Get tallaIngreso
+     *
+     * @return float 
+     */
+    public function getTallaIngreso()
+    {
+        return $this->tallaIngreso;
+    }
+
+    /**
      * Set idBancoDeLeche
      *
      * @param \siblh\mantenimientoBundle\Entity\BlhBancoDeLeche $idBancoDeLeche
@@ -249,7 +579,7 @@ class BlhReceptor
     {
         return $this->idPaciente;
     }
-    public function __toString() {
+       public function __toString() {
   return $this->codigoReceptor;
 }
 }

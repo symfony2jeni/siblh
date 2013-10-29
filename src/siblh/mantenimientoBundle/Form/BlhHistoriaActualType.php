@@ -15,7 +15,7 @@ class BlhHistoriaActualType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('pesoDonante')
+             ->add('pesoDonante')
              ->add('tallaDonante', 'number', array ( 'invalid_message'=>'Debe ser entre 1.5 y 2'))
             ->add('medicamento')
             ->add('habitoToxico')

@@ -6,56 +6,47 @@
 {% endblock %}
 
 {% block body -%}
+    <link href="{{asset('bundles/jquery/jquery.jqGrid-4.5.4/css/ui.jqgrid.css')}}" rel="stylesheet"  type="text/css" media="all"/>  
+     <script type="text/javascript" src="{{asset('bundles/jquery/jquery.jqGrid-4.5.4/js/i18n/grid.locale-es.js')}}"></script>
+      <script type="text/javascript" src="{{asset('bundles/jquery/jquery.jqGrid-4.5.4/js/jquery.jqGrid.min.js')}}" ></script>
     <h1>Listado de Solicitudes</h1>
 
-    <table class="records_list">
+    <table id="listado_solicitudes">
         <thead>
             <tr>
-                <th>Id</th>
-                <th>Codigosolicitud</th>
-                <th>Volumenpordia</th>
-                <th>Acideznecesaria</th>
-                <th>Caloriasnecesarias</th>
-                <th>Pesodia</th>
-                <th>Volumenportoma</th>
-                <th>Tomapordia</th>
-                <th>Fechasolicitud</th>
+                <th>Código&nbsp;Solicitud</th>
+                <th>Fecha</th>
+                <th>Peso&nbsp;del&nbsp;paciente(g)</th>
+                <th>Volumen&nbsp;por&nbsp;toma(ml)</th>
+                <th>Tomas&nbsp;por&nbsp;día</th>
+                <th>Calorías&nbsp;necesarias</th>
+                <th>Acidez&nbsp;Dornic</th>
+                <th>Volumen&nbsp;total&nbsp;por&nbsp;día</th>                
                 <th>Cuna</th>
-                <th>Estado</th>
                 <th>Responsable</th>
-                <th>Actions</th>
+                <th>Acción</th>
             </tr>
         </thead>
         <tbody>
         {% for entity in entities %}
             <tr>
-                <td><a href="{{ path('blhsolicitud_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
                 <td>{{ entity.codigoSolicitud }}</td>
-                <td>{{ entity.volumenPorDia }}</td>
-                <td>{{ entity.acidezNecesaria }}</td>
-                <td>{{ entity.caloriasNecesarias }}</td>
-                <td>{{ entity.pesoDia }}</td>
-                <td>{{ entity.volumenPorToma }}</td>
-                <td>{{ entity.tomaPorDia }}</td>
                 <td>{% if entity.fechaSolicitud %}{{ entity.fechaSolicitud|date('d-m-Y') }}{% endif %}</td>
+                <td>{{ entity.pesoDia|number_format(2, '.', ',') }}</td>
+                <td>{{ entity.volumenPorToma|number_format(2, '.', ',') }}</td>
+                <td>{{ entity.tomaPorDia }}</td>
+                <td>{{ entity.caloriasNecesarias }}</td>
+                <td>{{ entity.acidezNecesaria }}</td>
+                <td>{{ entity.volumenPorDia|number_format(2, '.', ',') }}</td>
                 <td>{{ entity.cuna }}</td>
-                <td>{{ entity.estado }}</td>
-                <td>{{ entity.responsable }}</td>
-                <td>
-                <ul>
-                    <li>
-                        <a href="{{ path('blhsolicitud_show', { 'id': entity.id }) }}">Mostrar</a>
-                    </li>
-                    <li>
-                        <a href="{{ path('blhsolicitud_edit', { 'id': entity.id }) }}">Editar</a>
-                    </li>
-                </ul>
-                </td>
+                <td>{{ entity.responsable }}</td>   
+               <td ><a href="{{ path('blhsolicitud_show', { 'id': entity.id })}}">Mostrar</a>
+                   <a href="{{ path('blhsolicitud_edit', { 'id': entity.id })}}">Editar</a></td>            
             </tr>
         {% endfor %}
         </tbody>
     </table>
-
+    <div id='pagerSolicitudes'></div>
         {#<ul>
         <li>
             <a href="{{ path('blhsolicitud_new') }}">

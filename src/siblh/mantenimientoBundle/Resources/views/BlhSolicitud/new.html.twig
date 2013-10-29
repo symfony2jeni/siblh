@@ -16,9 +16,6 @@
 {% endblock %}
 
 {% block body -%}
- <link href="{{ asset('bundles/jquery/bValidator-0.71/themes/bvalidator.theme.red.css') }}" rel="stylesheet" type="text/css" />  
-   <script type="text/javascript" src="{{ asset('bundles/jquery/bValidator-0.71/jquery.bvalidator.js')}}"></script>
-      <script type="text/javascript" src="{{ asset('bundles/jquery/bValidator-0.71/bvalidator.lang.es.js')}}" ></script>    
    
     <h1>Registro de Solicitudes de Leche Humana</h1>
     
@@ -37,7 +34,7 @@
              {#<td width="295" align = "left"></td>#}
                <td colspan=4 align = "right"> 
                 
-                {{ form_label(form.codigoSolicitud, 'Codigo de solicitud  ') }}
+                {{ form_label(form.codigoSolicitud, 'Código de solicitud  ') }}
                 {{ form_errors(form.codigoSolicitud) }}
                 {{ form_widget(form.codigoSolicitud) }} </td>
        </tr>
@@ -56,7 +53,7 @@
                     
                 <td width=450 align = "right"><b>Codigo de Receptor</b></td>    
                 <td width=100 align = "right">
-                <INPUT type=text STYLE="text-align:center" name="nombre" disabled="disabled" size=20 readonly="readonly" value= " {{ datos_receptor[0].codigo_receptor}} ">
+                <INPUT type=text STYLE="text-align:center" name="nombre" disabled="disabled" size=20 readonly="readonly" value= " {{ datos_receptor[0].codigoReceptor}} ">
                 </td>
                 
         </tr>
@@ -121,7 +118,7 @@
           </tr>
         <tr><td colspan=2 align = "right" height=10  ></td></tr>
       <tr>
-           <td colspan="1" align = "right" title='Ingrese el volumen por toma en mililitros'><font color="red">*</font> 
+           <td colspan="1" align = "right" title='Ingrese el volumen por cada toma en mililitros' ><font color="red">*</font> 
                 
                 {{ form_label(form.volumenPorToma,'Volumen por toma (ml)') }}
                 {{ form_errors(form.volumenPorToma) }}
@@ -135,7 +132,7 @@
                 {{ form_widget(form.tomaPorDia) }} </td>
         <td colspan="3" align = "right" title='Ingrese las calorias necesarias para el receptor'><font color="red">*</font> 
                 
-                {{ form_label(form.caloriasNecesarias) }}
+                {{ form_label(form.caloriasNecesarias,'Calorías necesarias') }}
                 {{ form_errors(form.caloriasNecesarias) }}
                 {{ form_widget(form.caloriasNecesarias) }} </td>
        
@@ -152,7 +149,7 @@
                 
                 {{ form_label(form.volumenPorDia,'Volumen total por día (ml)') }}
                 {{ form_errors(form.volumenPorDia) }}
-                {{ form_widget(form.volumenPorDia) }} </td>
+                {{ form_widget(form.volumenPorDia, {'attr':{ 'readonly': 'true' } }) }} </td>
         
         <td colspan="3" align = "right" title='Ingrese el nombre del responsable del receptor'> 
                 
@@ -168,7 +165,7 @@
                 
                 {{ form_label(form.estado) }}
                 {{ form_errors(form.estado) }}
-                {{ form_widget(form.estado, {'attr':{ 'value' : 's' }}) }} </td>
+                {{ form_widget(form.estado, {'attr':{ 'value' : 'Pendiente' }}) }} </td>
         
         </tr>
         <tr><td colspan=2 align = "right" height=30  ></td></tr>
@@ -176,7 +173,7 @@
         <table align = "center" width = "81%">
         <tr>
             <td width=135 align = 'left'  ><font color="red">* Campos Requeridos</font></td>
-             <td width=900 align = 'right' > <input type='submit' id='submit' title="Guardar Solicitud"  value="Guardar"/><input type='reset' id='submit' title='Cancelar' value='Cancelar'/></td>              
+             <td width=900 align = 'right' > <input type='submit' id="boton" title="Guardar Solicitud"  value="Guardar"/>{#<input type='reset' id="boton" title='Cancelar' value='Cancelar'/>#}</td>              
           </tr>
            </table>
            {{ form_end(form) }}

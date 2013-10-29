@@ -39,6 +39,16 @@ class MntExpediente
      */
     private $idPaciente;
 
+    /**
+     * @var \CtlEstablecimiento
+     *
+     * @ORM\ManyToOne(targetEntity="CtlEstablecimiento")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_establecimiento", referencedColumnName="id")
+     * })
+     */
+    private $idEstablecimiento;
+
 
 
     /**
@@ -95,5 +105,28 @@ class MntExpediente
     public function getIdPaciente()
     {
         return $this->idPaciente;
+    }
+
+    /**
+     * Set idEstablecimiento
+     *
+     * @param \siblh\mantenimientoBundle\Entity\CtlEstablecimiento $idEstablecimiento
+     * @return MntExpediente
+     */
+    public function setIdEstablecimiento(\siblh\mantenimientoBundle\Entity\CtlEstablecimiento $idEstablecimiento = null)
+    {
+        $this->idEstablecimiento = $idEstablecimiento;
+    
+        return $this;
+    }
+
+    /**
+     * Get idEstablecimiento
+     *
+     * @return \siblh\mantenimientoBundle\Entity\CtlEstablecimiento 
+     */
+    public function getIdEstablecimiento()
+    {
+        return $this->idEstablecimiento;
     }
 }

@@ -15,11 +15,11 @@ class BlhAnalisisSensorialType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('embalaje')
-            ->add('suciedad')
-            ->add('color')
-            ->add('flavor')
-            ->add('observacion')
+            ->add('embalaje', 'choice',array('choices' => array('' => 'Seleccione un valor','Aprobado' => 'Aprobado','Reprobado' => 'Reprobado')))
+            ->add('suciedad', 'choice',array('choices' => array('' => 'Seleccione un valor','Aprobado' => 'Aprobado','Reprobado' => 'Reprobado')))
+            ->add('color', 'choice',array('choices' => array('' => 'Seleccione un valor','Aprobado' => 'Aprobado','Reprobado' => 'Reprobado')))
+            ->add('flavor', 'choice',array('choices' => array('' => 'Seleccione un valor','Aprobado' => 'Aprobado','Reprobado' => 'Reprobado')))
+            ->add('observacion','textarea')
             ->add('idFrascoRecolectado')
         ;
     }

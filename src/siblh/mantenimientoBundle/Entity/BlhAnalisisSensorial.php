@@ -53,7 +53,7 @@ class BlhAnalisisSensorial
     /**
      * @var string
      *
-     * @ORM\Column(name="observacion", type="string", length=30, nullable=true)
+     * @ORM\Column(name="observacion", type="string", length=150, nullable=true)
      */
     private $observacion;
 

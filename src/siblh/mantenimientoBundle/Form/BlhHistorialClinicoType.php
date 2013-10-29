@@ -15,7 +15,7 @@ class BlhHistorialClinicoType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('amenorrea')
+           ->add('amenorrea')
             ->add('controlPrenatal')
             ->add('lugarControl')
             ->add('numeroControl')

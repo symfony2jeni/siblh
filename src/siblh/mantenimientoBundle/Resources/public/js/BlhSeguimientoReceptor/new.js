@@ -21,26 +21,10 @@ $(document).ready(function() {
        
     //Boton   
     
-    $('#submit')
+    $('#boton')
       .button();
-      click(function( event ) {
-        event.preventDefault();
-      });
-      
-   //Spiner   
- $(function() {
-    $( '#spinner' ).spinner({
-      spin: function( event, ui ) {
-        if ( ui.value > 50 ) {
-          $( this ).spinner( "value", 0 );
-          return false;
-        } else if ( ui.value < 0 ) {
-          $( this ).spinner( "value", 50 );
-          return false;
-        }
-      }
-    });
-  });
+     
+
   
 
       //Opciones del validador
@@ -54,38 +38,31 @@ $(document).ready(function() {
     
 
   
- /*$('#siblh_mantenimientobundle_blhsolicitud_fechaSolicitud').
-            attr('data-bvalidator', 'required');
+ $('#siblh_mantenimientobundle_blhseguimientoreceptor_fechaSeguimiento').
+            attr('data-bvalidator', 'date[dd.mm.yyyy],required');
 
- $('#siblh_mantenimientobundle_blhsolicitud_volumenPorToma').
-            attr('data-bvalidator', 'between[0:25],number,required');
- $('#siblh_mantenimientobundle_blhsolicitud_volumenPorToma').
-         attr('data-bvalidator-msg', "Ingrese un numero entre 0 y 25");
+  $('#siblh_mantenimientobundle_blhseguimientoreceptor_semana').
+            attr('data-bvalidator', 'min[1],required');
+
     
- $('#siblh_mantenimientobundle_blhsolicitud_acidezNecesaria').
-            attr('data-bvalidator', 'alpha,required');
      
- $('#siblh_mantenimientobundle_blhsolicitud_caloriasNecesarias').
-            attr('data-bvalidator', 'min,required,number');
+ $('#siblh_mantenimientobundle_blhseguimientoreceptor_pcSeguimiento').
+            attr('data-bvalidator', 'min[1],required');
     
- $('#siblh_mantenimientobundle_blhsolicitud_pesoDia').
-            attr('data-bvalidator', 'between[500:2500],number,required');
-  $('#siblh_mantenimientobundle_blhsolicitud_volumenPorToma').
-         attr('data-bvalidator-msg', "Ingrese un numero entre 500 y 2500");
+ $('#siblh_mantenimientobundle_blhseguimientoreceptor_pesoSeguimiento').
+            attr('data-bvalidator', 'between[400:2500],required');
+  
     
- $('#siblh_mantenimientobundle_blhsolicitud_tomaPorDia').
-            attr('data-bvalidator', 'between[0:24],number,required');
-  $('#siblh_mantenimientobundle_blhsolicitud_volumenPorToma').
-         attr('data-bvalidator-msg', "Ingrese un numero entre 0 y 24");
+ $('#siblh_mantenimientobundle_blhseguimientoreceptor_gananciaDiaPeso').
+            attr('data-bvalidator', 'between[0:50],required');
+ 
     
- $('#siblh_mantenimientobundle_blhsolicitud_cuna').
-            attr('data-bvalidator', 'min,required');
+ $('#siblh_mantenimientobundle_blhseguimientoreceptor_tallaReceptor').
+            attr('data-bvalidator', 'min[1],required');
     
     
-  $('#siblh_mantenimientobundle_blhsolicitud_responsable').
-            attr('data-bvalidator', 'alpha,required');*/
-
-
+  $('#siblh_mantenimientobundle_blhseguimientoreceptor_gananciaDiaTalla').
+            attr('data-bvalidator', 'min[0],required');
                           
 
 

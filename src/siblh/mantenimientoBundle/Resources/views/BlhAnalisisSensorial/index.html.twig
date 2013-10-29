@@ -1,7 +1,7 @@
-{% extends '::base.html.twig' %}
+{% extends  'siblhmantenimientoBundle::plantilla.html.twig'%}
 
 {% block body -%}
-    <h1>BlhAnalisisSensorial list</h1>
+    <h1>Listado de analisis </h1>
 
     <table class="records_list">
         <thead>
@@ -10,7 +10,7 @@
                 <th>Embalaje</th>
                 <th>Suciedad</th>
                 <th>Color</th>
-                <th>Flavor</th>
+                <th>Olor</th>
                 <th>Observacion</th>
                 <th>Actions</th>
             </tr>
@@ -39,11 +39,5 @@
         </tbody>
     </table>
 
-        <ul>
-        <li>
-            <a href="{{ path('blhanalisissensorial_new') }}">
-                Create a new entry
-            </a>
-        </li>
-    </ul>
+    
     {% endblock %}
