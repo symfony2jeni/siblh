@@ -9,7 +9,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use siblh\mantenimientoBundle\Entity\BlhReceptor;
 use siblh\mantenimientoBundle\Form\BlhReceptorType;
-use siblh\mantenimientoBundle\Entity\BlhIngresoReceptor;
+//use siblh\mantenimientoBundle\Entity\BlhIngresoReceptor;
 use siblh\mantenimientoBundle\Form\BlhIngresoReceptorType;
 
 /**
@@ -47,7 +47,7 @@ class BlhReceptorController extends Controller
     public function createAction(Request $request)
     {
         $entity = new BlhReceptor();
-        $entity1 = new BlhIngresoReceptor();
+       // $entity1 = new BlhIngresoReceptor();
         $form = $this->createCreateForm($entity);
         $form->handleRequest($request);
 
@@ -56,7 +56,7 @@ class BlhReceptorController extends Controller
             $em->persist($entity);
             $em->flush();
 
-            return $this->redirect($this->generateUrl('blhreceptor_show', array('id' => $entity->getId())));
+            return $this->redirect($this->generateUrl('blhreceptor', array('id' => $entity->getId())));
         }
 
         return array(
@@ -65,22 +65,7 @@ class BlhReceptorController extends Controller
         );
         
         
-        //Agregado
-         $form1 = $this->createCreateForm($entity1);
-        $form1->handleRequest($request);
-
-        if ($form1->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($entity1);
-            $em->flush();
-
-            return $this->redirect($this->generateUrl('blhreceptor_show', array('id' => $entity1->getId())));
-        }
-
-        return array(
-            'entity1' => $entity1,
-            'form1'   => $form1->createView(),
-        );
+        
     }
 
     /**
@@ -321,16 +306,16 @@ class BlhReceptorController extends Controller
         
         
         $entity = new BlhReceptor();
-         $entity1 = new BlhIngresoReceptor();
+      //   $entity1 = new BlhIngresoReceptor();
          $entity->setIdPaciente($paciente);
         $form   = $this->createCreateForm($entity);
-        $form1   = $this->createCreateForm1($entity1);
+      //  $form1   = $this->createCreateForm1($entity1);
 
         return array(
             'entity' => $entity,
             'form'   => $form->createView(),
-            'entity1' => $entity1,
-            'form1'   => $form1->createView(),
+         //   'entity1' => $entity1,
+         //   'form1'   => $form1->createView(),
             'datos_pacientes' =>  $datos_pacientes, 
             'sexo' => $sexo,
             'numexp' => $numexp,

@@ -8,7 +8,7 @@
     <field name="volumenRecolectado" type="decimal" column="volumen_recolectado" nullable="false"/>
     <field name="formaExtraccion" type="string" column="forma_extraccion" length="8" nullable="false"/>
     <field name="onzRecolectado" type="decimal" column="onz_recolectado" nullable="true"/>
-    <field name="observacionFrascoRecolectado" type="string" column="observacion_frasco_recolectado" length="30" nullable="true"/>
+    <field name="observacionFrascoRecolectado" type="string" column="observacion_frasco_recolectado" length="150" nullable="true"/>
     <many-to-one field="idLoteAnalisis" target-entity="BlhLoteAnalisis">
       <join-columns>
         <join-column name="id_lote_analisis" referenced-column-name="id"/>

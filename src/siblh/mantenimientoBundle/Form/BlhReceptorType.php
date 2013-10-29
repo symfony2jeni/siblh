@@ -15,7 +15,7 @@ class BlhReceptorType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-           // ->add('codigoReceptor')
+            ->add('codigoReceptor')
             ->add('fechaRegistroBlh', 'date', 
                     array(  'widget' => 'single_text',
                             'format' => 'yy-MM-dd',
@@ -25,6 +25,17 @@ class BlhReceptorType extends AbstractType
                     array('choices' => array('' => 'Seleccione un valor','Activo' => 'Activo',
                           'Egreso' => 'Egreso')))
             ->add('edadDias', 'text')
+            ->add('pesoReceptor')
+             ->add('duracionCpap', 'text')
+            ->add('clasificacionLubchengo')
+             ->add('diagnosticoIngreso', 'textarea')
+            ->add('duracionNpt', 'text')
+            ->add('apgar', 'text')
+            ->add('edadGestFur')
+            ->add('duracionVentilacion', 'text')
+            ->add('edadGestBallard')
+            ->add('pc')
+            ->add('tallaIngreso')
             ->add('idBancoDeLeche')
             ->add('idPaciente')
         ;

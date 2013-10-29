@@ -20,7 +20,7 @@ class BlhOpcionMenu
      * @ORM\GeneratedValue(strategy="SEQUENCE")
      * @ORM\SequenceGenerator(sequenceName="blh_opcion_menu_id_seq", allocationSize=1, initialValue=1)
      */
-    private $id;
+    public $id;
 
     /**
      * @var string

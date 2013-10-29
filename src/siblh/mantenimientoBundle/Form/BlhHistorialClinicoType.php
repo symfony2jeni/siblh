@@ -15,13 +15,13 @@ class BlhHistorialClinicoType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('amenorrea', 'text')
+            ->add('amenorrea')
             ->add('controlPrenatal', 'choice', 
                     array('choices' => array('' => ' ','Si' => 'Si',
                           'No' => 'No')))
             ->add('lugarControl')
             ->add('numeroControl', 'text')
-             ->add('fechaUltimaRegla', 'date', 
+            ->add('fechaUltimaRegla', 'date', 
                     array(  'widget' => 'single_text',
                             'format' => 'yy-MM-dd',
                             'attr' => array('class' => 'date')))
@@ -29,7 +29,7 @@ class BlhHistorialClinicoType extends AbstractType
                     array(  'widget' => 'single_text',
                             'format' => 'yy-MM-dd',
                             'attr' => array('class' => 'date')))
-              ->add('lugarParto','text', array('required'=>'false'))
+            ->add('lugarParto','text', array('required'=>'false'))
             ->add('patologiaEmbarazo','text', array('required'=>'false'))
 
             ->add('periodoIntergenesico', 'text')

@@ -1,28 +1,38 @@
-{% extends '::base.html.twig' %}
+{% extends 'siblhmantenimientoBundle::plantilla.html.twig' %}
 
+{% block javascripts %}
+    {{parent()}}
+   <script type="text/javascript" src="{{ asset('bundles/siblhmantenimiento/js/BlhEgresoReceptor/index.js') }}" ></script>
+{% endblock %}
+   
 {% block body -%}
-    <h1>BlhEgresoReceptor list</h1>
+ <link href="{{asset('bundles/jquery/jquery.jqGrid-4.5.4/css/ui.jqgrid.css')}}" rel="stylesheet"  type="text/css" media="all"/>  
+ 
+ <script type="text/javascript" src="{{asset('bundles/jquery/jquery.jqGrid-4.5.4/js/i18n/grid.locale-es.js')}}"></script>
+      <script type="text/javascript" src="{{asset('bundles/jquery/jquery.jqGrid-4.5.4/js/jquery.jqGrid.min.js')}}" ></script> 
 
-    <table class="records_list">
+ 
+    <h1>BlhEgresoReceptor list</h1>
+<table id = "listado_Egresos">
         <thead>
             <tr>
-                <th>Id</th>
-                <th>Diagnosticoegreso</th>
-                <th>Madrecanguro</th>
-                <th>Tipoegreso</th>
-                <th>Comentarioegreso</th>
-                <th>Trasladoperiferico</th>
-                <th>Permanenciaucin</th>
-                <th>Hospitalseguimientoegreso</th>
-                <th>Fechaegreso</th>
-                <th>Estanciahospitalaria</th>
+                
+                <th>Diagnostico&nbsp;de&nbsp;egreso</th>
+                <th>Madre&nbsp;canguro</th>
+                <th>Tipo&nbsp;de&nbsp;egreso</th>
+                <th>Comentario&nbsp;egreso</th>
+                <th>Traslado&nbsp;periferico</th>
+                <th>Permanencia&nbsp;ucin</th>
+                <th>Hospital&nbsp;de&nbsp;seguimiento</th>
+                <th>Fecha&nbsp;de&nbsp;egreso</th>
+                <th>Estancia&nbsp;hospitalaria</th>
                 <th>Actions</th>
             </tr>
         </thead>
         <tbody>
         {% for entity in entities %}
             <tr>
-                <td><a href="{{ path('blhegresoreceptor_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
+               
                 <td>{{ entity.diagnosticoEgreso }}</td>
                 <td>{{ entity.madreCanguro }}</td>
                 <td>{{ entity.tipoEgreso }}</td>
@@ -32,26 +42,11 @@
                 <td>{{ entity.hospitalSeguimientoEgreso }}</td>
                 <td>{% if entity.fechaEgreso %}{{ entity.fechaEgreso|date('Y-m-d H:i:s') }}{% endif %}</td>
                 <td>{{ entity.estanciaHospitalaria }}</td>
-                <td>
-                <ul>
-                    <li>
-                        <a href="{{ path('blhegresoreceptor_show', { 'id': entity.id }) }}">show</a>
-                    </li>
-                    <li>
-                        <a href="{{ path('blhegresoreceptor_edit', { 'id': entity.id }) }}">edit</a>
-                    </li>
-                </ul>
-                </td>
+                <td><a href="{{ path('blhegresoreceptor_edit', { 'id': entity.id }) }}">edit</a>
+                   
             </tr>
         {% endfor %}
         </tbody>
     </table>
-
-        <ul>
-        <li>
-            <a href="{{ path('blhegresoreceptor_new') }}">
-                Create a new entry
-            </a>
-        </li>
-    </ul>
+<div id='pagerEgresos' ></div>
     {% endblock %}

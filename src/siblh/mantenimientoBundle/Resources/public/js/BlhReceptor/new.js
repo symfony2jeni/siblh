@@ -68,18 +68,18 @@ $fn = new Date(parseFloat($fn.substr(6,4)), parseFloat($fn.substr(3,2))-1, parse
 $('#2').on ('click', function() {
     
    $valor = this.value;
-   alert ($valor);
+  // alert ($valor);
    
- $('#siblh_mantenimientobundle_blhingresoreceptor_clasificacionLubchengo').val (this.value); 
+ $('#siblh_mantenimientobundle_blhreceptor_clasificacionLubchengo').val (this.value); 
     
 });
 
 $('#3').on ('click', function() {
     
    $valor = this.value;
-   alert ($valor);
+  // alert ($valor);
     
- $('#siblh_mantenimientobundle_blhingresoreceptor_clasificacionLubchengo').val (this.value); 
+ $('#siblh_mantenimientobundle_blhreceptor_clasificacionLubchengo').val (this.value); 
     
 });
 
@@ -87,57 +87,57 @@ $('#3').on ('click', function() {
 $('#4').on ('click', function() {
     
    $valor = this.value;
-   alert ($valor);
+ //  alert ($valor);
     
- $('#siblh_mantenimientobundle_blhingresoreceptor_clasificacionLubchengo').val (this.value); 
+ $('#siblh_mantenimientobundle_blhreceptor_clasificacionLubchengo').val (this.value); 
     
 });
 
-$('#siblh_mantenimientobundle_blhingresoreceptor_edadGestFur').
+$('#siblh_mantenimientobundle_blhreceptor_edadGestFur').
         attr('data-bvalidator', 'between[0:52],required');
     
-$('#siblh_mantenimientobundle_blhingresoreceptor_edadGestFur').
+$('#siblh_mantenimientobundle_blhreceptor_edadGestFur').
         attr('data-bvalidator-msg', "Ingrese la edad en semanas de 0 a 52 semananas");  
 
-$('#siblh_mantenimientobundle_blhingresoreceptor_pesoReceptor').
+$('#siblh_mantenimientobundle_blhreceptor_pesoReceptor').
         attr('data-bvalidator', 'between[400:2500],required');
     
-$('#siblh_mantenimientobundle_blhingresoreceptor_pesoReceptor').
+$('#siblh_mantenimientobundle_blhreceptor_pesoReceptor').
         attr('data-bvalidator-msg', "Ingrese el peso entre 400 y 2500 gramos"); 
 
-$('#siblh_mantenimientobundle_blhingresoreceptor_tallaIngreso').
+$('#siblh_mantenimientobundle_blhreceptor_tallaIngreso').
         attr('data-bvalidator', 'between[30:60],required');
     
-$('#siblh_mantenimientobundle_blhingresoreceptor_tallaIngreso').
+$('#siblh_mantenimientobundle_blhreceptor_tallaIngreso').
         attr('data-bvalidator-msg', "Ingrese la talla entre 30 y 60 cm"); 
 
-$('#siblh_mantenimientobundle_blhingresoreceptor_pc').
+$('#siblh_mantenimientobundle_blhreceptor_pc').
         attr('data-bvalidator', 'between[30:60],required');
     
-$('#siblh_mantenimientobundle_blhingresoreceptor_pc').
+$('#siblh_mantenimientobundle_blhreceptor_pc').
         attr('data-bvalidator-msg', "Ingrese la talla entre 30 y 60 cm"); 
 
-$('#siblh_mantenimientobundle_blhingresoreceptor_apgar').
+$('#siblh_mantenimientobundle_blhreceptor_apgar').
         attr('data-bvalidator', 'between[30:60],required');
     
-$('#siblh_mantenimientobundle_blhingresoreceptor_apgar').
+$('#siblh_mantenimientobundle_blhreceptor_apgar').
         attr('data-bvalidator-msg', "Ingrese el valor apgar entre 30 y 60"); 
 
 
-$('#siblh_mantenimientobundle_blhingresoreceptor_edadGestBallard').
+$('#siblh_mantenimientobundle_blhreceptor_edadGestBallard').
         attr('data-bvalidator', 'between[0:52],required');
     
-$('#siblh_mantenimientobundle_blhingresoreceptor_edadGestBallard').
+$('#siblh_mantenimientobundle_blhreceptor_edadGestBallard').
         attr('data-bvalidator-msg', "Ingrese la edad en semanas de 0 a 52 semananas"); 
 
 
-$('#siblh_mantenimientobundle_blhingresoreceptor_duracionVentilacion').
+$('#siblh_mantenimientobundle_blhreceptor_duracionVentilacion').
         attr('data-bvalidator', 'between[0:52],required');
 
-$('#siblh_mantenimientobundle_blhingresoreceptor_duracionCpap').
+$('#siblh_mantenimientobundle_blhreceptor_duracionCpap').
         attr('data-bvalidator', 'between[0:52],required');
 
-$('#siblh_mantenimientobundle_blhingresoreceptor_duracionNpt').
+$('#siblh_mantenimientobundle_blhreceptor_duracionNpt').
         attr('data-bvalidator', 'between[0:52],required');
     
     

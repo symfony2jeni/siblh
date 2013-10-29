@@ -1,13 +1,13 @@
 {% extends 'siblhmantenimientoBundle::plantilla.html.twig' %}
 {% block stylesheets %}
     {{ parent() }}
-	<link href="{{ asset('bundles/siblhmantenimiento/css/form.css') }}" rel="stylesheet" type="text/css" />
+        <link href="{{ asset('bundles/siblhmantenimiento/css/form.css') }}" rel="stylesheet" type="text/css" />
 {% endblock %}
         {% block javascripts %}
 
 {{parent()}}
 
-<script type="text/javascript" src="{{ asset('bundles/siblhmantenimiento/js/BlhReceptor/new.js') }}" ></script>
+<script type="text/javascript" src="{{ asset('bundles/siblhmantenimiento/js/BlhReceptor/index.js') }}" ></script>
        
 {% endblock %}
 
@@ -111,48 +111,44 @@ elemento.style.visibility = visible ? "visible" : "hidden";
     
   
     
-    {{ form_start(form1) }}
-    {{ form_errors(form1) }}
-    
-    
-    <table align = "center" >
+      <table align = "center" >
         <tr><td align = left><font color="red">*</font>
-        {{ form_label(form1.edadGestFur) }}
-        {{ form_errors(form1.edadGestFur) }}
-        {{ form_widget(form1.edadGestFur) }} </td> 
+        {{ form_label(form.edadGestFur) }}
+        {{ form_errors(form.edadGestFur) }}
+        {{ form_widget(form.edadGestFur) }} </td> 
                     
        <td align = left><font color="red">*</font>
-        {{ form_label(form1.pesoReceptor, 'peso al nacer(gramos)') }}
-        {{ form_errors(form1.pesoReceptor) }}
-        {{ form_widget(form1.pesoReceptor) }} </td> 
+        {{ form_label(form.pesoReceptor, 'peso al nacer(gramos)') }}
+        {{ form_errors(form.pesoReceptor) }}
+        {{ form_widget(form.pesoReceptor) }} </td> 
            
        <td align = left>
-        {{ form_label(form1.tallaIngreso, 'Talla al nacer (cm)') }}
-        {{ form_errors(form1.tallaIngreso) }}
-        {{ form_widget(form1.tallaIngreso) }} </td></tr>
+        {{ form_label(form.tallaIngreso, 'Talla al nacer (cm)') }}
+        {{ form_errors(form.tallaIngreso) }}
+        {{ form_widget(form.tallaIngreso) }} </td></tr>
        
        <tr><td align = left><font color="red">*</font>
-        {{ form_label(form1.pc) }}
-        {{ form_errors(form1.pc) }} 
+        {{ form_label(form.pc) }}
+        {{ form_errors(form.pc) }} 
           &nbsp; &nbsp;&nbsp; &nbsp;
           &nbsp; &nbsp;&nbsp; &nbsp; 
           &nbsp; &nbsp;&nbsp;
-        {{ form_widget(form1.pc) }} </td> 
+        {{ form_widget(form.pc) }} </td> 
                    
        <td align = left>
           &nbsp; &nbsp;&nbsp; &nbsp;
           &nbsp;
-        {{ form_label(form1.apgar) }}
-        {{ form_errors(form1.apgar) }}
+        {{ form_label(form.apgar) }}
+        {{ form_errors(form.apgar) }}
           &nbsp; &nbsp;&nbsp; &nbsp;
           &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; 
           &nbsp; &nbsp;&nbsp; &nbsp;               
-        {{ form_widget(form1.apgar) }} </td> 
+        {{ form_widget(form.apgar) }} </td> 
            
        <td align = left><font color="red">*</font>
-        {{ form_label(form1.edadGestBallard) }}
-        {{ form_errors(form1.edadGestBallard) }}
-        {{ form_widget(form1.edadGestBallard) }} </td></tr>
+        {{ form_label(form.edadGestBallard) }}
+        {{ form_errors(form.edadGestBallard) }}
+        {{ form_widget(form.edadGestBallard) }} </td></tr>
        
        <tr>
         
@@ -175,16 +171,16 @@ elemento.style.visibility = visible ? "visible" : "hidden";
         <input type="radio" name="group2" value="no" onClick="prueba(false, 'ventilacion');"> No<br></td>
  <td align = left id= "ventilacion" style="visibility:hidden"> 
 
-        {{ form_label(form1.duracionVentilacion) }}
-        {{ form_errors(form1.duracionVentilacion) }}
-        {{ form_widget(form1.duracionVentilacion,  { 'attr': {'size': '6'} }) }} </td> 
+        {{ form_label(form.duracionVentilacion) }}
+        {{ form_errors(form.duracionVentilacion) }}
+        {{ form_widget(form.duracionVentilacion,  { 'attr': {'size': '6'} }) }} </td> 
     </tr>
        
     
     <tr><td align = left>
-        {{ form_label(form1.diagnosticoIngreso) }}
-        {{ form_errors(form1.diagnosticoIngreso) }}
-        {{ form_widget(form1.diagnosticoIngreso,  { 'attr': {'size': '50'} }) }}  </td>
+        {{ form_label(form.diagnosticoIngreso) }}
+        {{ form_errors(form.diagnosticoIngreso) }}
+        {{ form_widget(form.diagnosticoIngreso,  { 'attr': {'size': '50'} }) }}  </td>
                
         <td align = center>
         
@@ -193,9 +189,9 @@ elemento.style.visibility = visible ? "visible" : "hidden";
         <input type="radio" name="group3" value="no" onClick="prueba(false, 'cpap');"> No<br></td>
  <td  id= "cpap" style="visibility:hidden" align = left> 
 
-        {{ form_label(form1.duracionCpap, 'Duracion de CPAP Nasal') }}
-        {{ form_errors(form1.duracionCpap) }}
-        {{ form_widget(form1.duracionCpap) }} </td>         
+        {{ form_label(form.duracionCpap, 'Duracion de CPAP Nasal') }}
+        {{ form_errors(form.duracionCpap) }}
+        {{ form_widget(form.duracionCpap) }} </td>         
     
     </tr>
     
@@ -208,14 +204,14 @@ elemento.style.visibility = visible ? "visible" : "hidden";
         <input type="radio" name="group4" value="no" onClick="prueba(false, 'npt');"> No<br></td>
  <td align = left id= "npt" style="visibility:hidden"> 
 
-        {{ form_label(form1.duracionNpt) }}
-        {{ form_errors(form1.duracionNpt) }}
-        {{ form_widget(form1.duracionNpt) }} </td> 
+        {{ form_label(form.duracionNpt) }}
+        {{ form_errors(form.duracionNpt) }}
+        {{ form_widget(form.duracionNpt) }} </td> 
         
   <td style="visibility:visible" align = left>
-        {{ form_label(form1.clasificacionLubchengo, 'cl') }}
-        {{ form_errors(form1.clasificacionLubchengo) }}
-        {{ form_widget(form1.clasificacionLubchengo,  { 'attr': {'size': '3'} }) }}  </td>
+        {{ form_label(form.clasificacionLubchengo, 'cl') }}
+        {{ form_errors(form.clasificacionLubchengo) }}
+        {{ form_widget(form.clasificacionLubchengo,  { 'attr': {'size': '3'} }) }}  </td>
     
     </tr>
     <tr><td  align = "left"><font color="red" size = "2" face = "Comic Sans MS">* Campos requeridos</font>   </td>
@@ -238,7 +234,7 @@ elemento.style.visibility = visible ? "visible" : "hidden";
     
       {{ form_end(form) }}
     
-      {{ form_end(form1) }}
+     
     
         <ul class="record_actions">
     <li>

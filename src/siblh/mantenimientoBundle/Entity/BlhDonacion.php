@@ -32,7 +32,7 @@ class BlhDonacion
     /**
      * @var string
      *
-     * @ORM\Column(name="responsable_donacion", type="string", length=30, nullable=false)
+     * @ORM\Column(name="responsable_donacion", type="string", length=60, nullable=false)
      */
     private $responsableDonacion;
 
@@ -160,7 +160,7 @@ class BlhDonacion
         return $this->idDonante;
     }
     
-         public function __toString()
+     public function __toString()
     {
        return $this->responsableDonacion;
     }

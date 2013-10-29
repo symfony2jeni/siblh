@@ -53,7 +53,7 @@ class BlhHistorialClinicoController extends Controller
             $em->persist($entity);
             $em->flush();
 
-            return $this->redirect($this->generateUrl('blhhistorialclinico_show', array('id' => $entity->getId())));
+            return $this->redirect($this->generateUrl('blhhistorialclinico', array('id' => $entity->getId())));
         }
 
         return array(
@@ -130,7 +130,7 @@ class BlhHistorialClinicoController extends Controller
         return array(
             'entity'      => $entity,
             'edit_form'   => $editForm->createView(),
-            'delete_form' => $deleteForm->createView(),
+           'delete_form' => $deleteForm->createView(),
         );
     }
 
@@ -148,7 +148,7 @@ class BlhHistorialClinicoController extends Controller
             'method' => 'PUT',
         ));
 
-        $form->add('submit', 'submit', array('label' => 'Update'));
+        $form->add('submit', 'submit', array('label' => 'Actualizar'));
 
         return $form;
     }
@@ -223,7 +223,7 @@ class BlhHistorialClinicoController extends Controller
         return $this->createFormBuilder()
             ->setAction($this->generateUrl('blhhistorialclinico_delete', array('id' => $id)))
             ->setMethod('DELETE')
-            ->add('submit', 'submit', array('label' => 'Delete'))
+          //  ->add('submit', 'submit', array('label' => 'Delete'))
             ->getForm()
         ;
     }
@@ -249,7 +249,7 @@ class BlhHistorialClinicoController extends Controller
     //  $hisclinico =  $em->getRepository('siblhmantenimientoBundle:BlhHistorialClinico')->findAll();
       // $query1 = $em->createQuery("SELECT distinct p.id as identificador FROM siblhmantenimientoBundle:BlhHistorialClinico j JOIN j.idDonante p");
       // $hisclinico = $query1->getResult();
-        $query = $em->createQuery("SELECT p.id as identificador, p.primerNombre as nombre1, p.segundoNombre as nombre2, p.primerApellido as apellido1, p.segundoApellido as apellido2 FROM siblhmantenimientoBundle:BlhDonante p where p.id  not in (1,2,3,4,5)");
+        $query = $em->createQuery("SELECT p.id as identificador, p.primerNombre as nombre1, p.segundoNombre as nombre2, p.primerApellido as apellido1, p.segundoApellido as apellido2 FROM siblhmantenimientoBundle:BlhDonante p ");
         
        //echo $hisclinico[idDonante];
                 

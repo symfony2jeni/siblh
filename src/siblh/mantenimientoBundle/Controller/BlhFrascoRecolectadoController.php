@@ -53,7 +53,7 @@ class BlhFrascoRecolectadoController extends Controller
             $em->persist($entity);
             $em->flush();
 
-            return $this->redirect($this->generateUrl('blhfrascorecolectado_show', array('id' => $entity->getId())));
+            return $this->redirect($this->generateUrl('blhfrascorecolectado', array('id' => $entity->getId())));
         }
 
         return array(
@@ -320,6 +320,26 @@ class BlhFrascoRecolectadoController extends Controller
             'entity' => $entity,
             'form'   => $form->createView(),
              'datos_donacion' =>  $datos_donacion,  
+        );
+    }
+    
+    
+    
+     /**
+     * Lista de Frascos Recolectados entities.
+     *
+     * @Route("/frascos/analisis", name="blhfrascosAnalisis")
+     * @Method("GET")
+     * @Template()
+     */
+    public function frascosAnalisisAction()
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $entities = $em->getRepository('siblhmantenimientoBundle:BlhFrascoRecolectado')->findBy(array('idEstado' => 1));
+
+        return array(
+            'entities' => $entities,
         );
     }
 }

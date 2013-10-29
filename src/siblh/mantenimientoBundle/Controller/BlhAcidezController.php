@@ -84,20 +84,29 @@ class BlhAcidezController extends Controller
     /**
      * Displays a form to create a new BlhAcidez entity.
      *
-     * @Route("/new", name="blhacidez_new")
+     * @Route("/new/{id}", name="blhacidez_new")
      * @Method("GET")
      * @Template()
      */
-    public function newAction()
+    public function newAction($id)
     {
+        $em = $this->getDoctrine()->getManager();
+         $query = $em->createQuery("SELECT  f.codigoFrascoRecolectado,f.volumenRecolectado,f.onzRecolectado,d.primerNombre as nombre1,d.segundoNombre as nombre2,d.primerApellido as apellido1,d.segundoApellido as apellido2 FROM siblhmantenimientoBundle:BlhFrascoRecolectado  f JOIN f.idDonante d   WHERE f.id = $id "); 
+          $datos_frasco  = $query->getResult();
+        
+         $frasco = $em->getRepository('siblhmantenimientoBundle:BlhFrascoRecolectado')->find($id);
+         
         $entity = new BlhAcidez();
+         $entity->setidFrascoRecolectado($frasco);
         $form   = $this->createCreateForm($entity);
 
         return array(
+             'datos_frasco'  => $datos_frasco,
             'entity' => $entity,
             'form'   => $form->createView(),
         );
     }
+
 
     /**
      * Finds and displays a BlhAcidez entity.

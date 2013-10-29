@@ -88,7 +88,7 @@ class BlhPasteurizacion
     /**
      * @var string
      *
-     * @ORM\Column(name="responsable_pasteurizacion", type="string", length=30, nullable=false)
+     * @ORM\Column(name="responsable_pasteurizacion", type="string", length=60, nullable=false)
      */
     private $responsablePasteurizacion;
 
@@ -367,9 +367,8 @@ class BlhPasteurizacion
         return $this->idCurva;
     }
     
- public function __toString()
+    public function __toString()
     {
        return $this->codigoPasteurizacion;
-    }   
-    
+    }
 }

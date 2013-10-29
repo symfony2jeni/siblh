@@ -127,7 +127,7 @@ class BlhBancoDeLeche
         return $this->idEstablecimiento;
     }
     
-    public function __toString() 
+     public function __toString() 
     {
     
         $nombre_estab=  $this->codigoBancoDeLeche.$this->idEstablecimiento;

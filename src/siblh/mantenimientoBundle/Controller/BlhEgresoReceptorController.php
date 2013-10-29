@@ -53,7 +53,7 @@ class BlhEgresoReceptorController extends Controller
             $em->persist($entity);
             $em->flush();
 
-            return $this->redirect($this->generateUrl('blhegresoreceptor_show', array('id' => $entity->getId())));
+            return $this->redirect($this->generateUrl('blhegresoreceptor', array('id' => $entity->getId())));
         }
 
         return array(

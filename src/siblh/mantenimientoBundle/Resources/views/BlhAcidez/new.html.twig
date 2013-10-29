@@ -1,15 +1,117 @@
-{% extends '::base.html.twig' %}
+{% extends  'siblhmantenimientoBundle::plantilla.html.twig'%}
+
+
+{% block stylesheets %}
+    {{ parent() }}
+        <link href="{{ asset('bundles/siblhmantenimiento/css/form.css') }}" rel="stylesheet" type="text/css" />
+ 
+{% endblock %}
+        
+{% block javascripts %}
+    {{parent()}}
+    <script type="text/javascript" src="{{ asset('bundles/siblhmantenimiento/js/BlhAcidez/new.js') }}" ></script>
+
+{% endblock %}
 
 {% block body -%}
-    <h1>BlhAcidez creation</h1>
-
-    {{ form(form) }}
-
-        <ul class="record_actions">
-    <li>
-        <a href="{{ path('blhacidez') }}">
-            Back to the list
-        </a>
-    </li>
-</ul>
+   
+    <h1>Registro de Acidez Dornic</h1>
+    
+   
+   <table align = "center" width = "70%">
+        <tr><td colspan=2 align = "right" height=40  ></td></tr>
+       <tr>
+       <td colspan = "2" align = "right"><b>Donante</b></td>
+                <td colspan = "4" align = "left">
+                <INPUT type=text STYLE="text-align:center" name="nombre" disabled="disabled" size=35 readonly="readonly" value= "{{ datos_frasco[0].nombre1}}&nbsp;{{ datos_frasco[0].nombre2  }}&nbsp;{{ datos_frasco[0].apellido1 }}&nbsp;{{ datos_frasco[0].apellido2 }}">
+               </td>
+               
+               <td colspan="4" align = "left"></td>
+                {{ form_start(form) }}
+                {{ form_errors(form) }}
+             {#<td width="295" align = "left"></td>#}
+               <td colspan=4 align = "right" style="visibility:hidden"> 
+                
+                {{ form_label(form.idFrascoRecolectado) }}
+                {{ form_errors(form.idFrascoRecolectado) }}
+                {{ form_widget(form.idFrascoRecolectado) }} </td>
+               
+                
+       </tr>
+    <tr>
+                <td colspan = "2" align = "right"><b>Frasco</b></td>
+                <td colspan = "4" align = "left">
+                <INPUT type=text STYLE="text-align:center" name="nombre" disabled="disabled" size=20 readonly="readonly" value= "{{ datos_frasco[0].codigoFrascoRecolectado}}">
+               </td>
+               
+               <td colspan = "2" align = "right"><b>Volumen(ml)</b></td>
+                <td colspan = "4" align = "left">    
+                <INPUT type=text STYLE="text-align:center" name="nombre" disabled="disabled" size=20 readonly="readonly" value= "{{ datos_frasco[0].volumenRecolectado|number_format(2, '.', ',')}}">
+               </td>
+                    
+              <td colspan = "2" align = "right"><b>Volumen(onz)</b></td>
+                <td colspan = "4" align = "left">
+                <INPUT type=text STYLE="text-align:center" name="nombre" disabled="disabled" size=20 readonly="readonly" value= "{{ datos_frasco[0].onzRecolectado|number_format(2, '.', ',')}}">
+               </td>
+                
+        </tr>
+        <tr><td colspan=2 align = "right" height=40  ></td></tr>
+           
+      </table>
+   
+        <table align = "center" width = "60%">
+          
+        <tr>
+        <td   ><font color="red">*</font> 
+                
+                {{ form_label(form.acidez1, 'Acidez1') }}
+                {{ form_errors(form.acidez1) }}
+                {{ form_widget(form.acidez1) }} </td>
+        <td   colspan="3" align = "right" title='Ingrese la acidez dornic 2 del frasco'><font color="red">*</font> 
+                
+                {{ form_label(form.acidez2, 'Acidez 2') }}
+                {{ form_errors(form.acidez2) }}
+                {{ form_widget(form.acidez2) }} </td>
+        <td colspan="3" align = "right" title='Ingrese la acidez dornic 3 del frasco'><font color="red">*</font> 
+                
+                {{ form_label(form.acidez3, 'Acidez 3') }}
+                {{ form_errors(form.acidez3) }}
+                {{ form_widget(form.acidez3) }} </td>
+          </tr>
+        <tr><td colspan=2 align = "right" height=10  ></td></tr>
+      <tr>
+           <td colspan="3" align = "right" title='Media de acidez dornic'>
+                
+                {{ form_label(form.mediaAcidez) }}
+                {{ form_errors(form.mediaAcidez) }}
+                {{ form_widget(form.mediaAcidez) }} </td>
+           
+           <td colspan="1" align = "right" title='Ingrese el factor utilizado en el analisis del frasco' ><font color="red">*</font> 
+                
+                {{ form_label(form.factor) }}
+                {{ form_errors(form.factor) }}
+                {{ form_widget(form.factor) }} </td>
+      
+          
+        <td  colspan="3" align = "right" title='Resultado de acidez'>
+                
+                {{ form_label(form.resultado) }}
+                {{ form_errors(form.resultado) }}
+                {{ form_widget(form.resultado) }} </td>
+       
+       
+        </tr>
+        
+        <tr><td colspan=2 align = "right" height=30  ></td></tr>
+        </table>
+        <table align = "center" width = "70%">
+        <tr>
+            <td width=135 align = 'left'  ><font color="red">* Campos Requeridos</font></td>
+             <td width=900 align = 'right' > <input type='submit' id="boton" title="Guardar"  value="Guardar"/>{#<input type='reset' id="boton" title='Cancelar' value='Cancelar'/>#}</td>              
+          </tr>
+           </table>
+           {{ form_end(form) }}
+          
+           
+ 
 {% endblock %}

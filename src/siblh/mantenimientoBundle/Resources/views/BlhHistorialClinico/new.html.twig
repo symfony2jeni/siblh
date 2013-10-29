@@ -1,7 +1,7 @@
 {% extends 'siblhmantenimientoBundle::plantilla.html.twig' %}
 {% block stylesheets %}
     {{ parent() }}
-	<link href="{{ asset('bundles/siblhmantenimiento/css/form.css') }}" rel="stylesheet" type="text/css" />
+        <link href="{{ asset('bundles/siblhmantenimiento/css/form.css') }}" rel="stylesheet" type="text/css" />
 {% endblock %}
         {% block javascripts %}
 
@@ -57,22 +57,22 @@ elemento.style.visibility = visible ? "visible" : "hidden";
     <tr><td colspan = "2" align = "center"> Formula Obstetrica <br>
         {{ form_label(form.formulaObstetricaG, 'G') }}
         {{ form_errors(form.formulaObstetricaG) }}
-        {{ form_widget(form.formulaObstetricaG,  { 'attr': {'size': '1'} }) }}  
+        {{ form_widget(form.formulaObstetricaG,  { 'attr': {'size': '2'} }) }}  
         {{ form_label(form.formulaObstetricaP1, 'P') }}
         {{ form_errors(form.formulaObstetricaP1) }}
-        {{ form_widget(form.formulaObstetricaP1,  { 'attr': {'size': '1'} }) }}
+        {{ form_widget(form.formulaObstetricaP1,  { 'attr': {'size': '2'} }) }}
         {{ form_label(form.formulaObstetricaP2, 'P') }}
         {{ form_errors(form.formulaObstetricaP2) }}
-        {{ form_widget(form.formulaObstetricaP2,  { 'attr': {'size': '1'} }) }}
+        {{ form_widget(form.formulaObstetricaP2,  { 'attr': {'size': '2'} }) }}
         {{ form_label(form.formulaObstetricaA, 'A') }}
         {{ form_errors(form.formulaObstetricaA) }}
-        {{ form_widget(form.formulaObstetricaA,  { 'attr': {'size': '1'} }) }}
+        {{ form_widget(form.formulaObstetricaA,  { 'attr': {'size': '2'} }) }}
         {{ form_label(form.formulaObstetricaV, 'V') }}
         {{ form_errors(form.formulaObstetricaV) }}
-        {{ form_widget(form.formulaObstetricaV,  { 'attr': {'size': '1'} }) }}
+        {{ form_widget(form.formulaObstetricaV,  { 'attr': {'size': '2'} }) }}
         {{ form_label(form.formulaObstetricaM, 'M') }}
         {{ form_errors(form.formulaObstetricaM) }}
-        {{ form_widget(form.formulaObstetricaM,  { 'attr': {'size': '1'} }) }}</td>  
+        {{ form_widget(form.formulaObstetricaM,  { 'attr': {'size': '2'} }) }}</td>  
  
    <td align = "left"><font color="red" >*</font> 
         {{ form_label(form.periodoIntergenesico) }}
@@ -97,9 +97,9 @@ elemento.style.visibility = visible ? "visible" : "hidden";
         {{ form_widget(form.numeroControl, {'attr': { 'required' : 'false'} }) }}</td></tr>
   
   <tr>
-   <td align = "left"> {{ form_label(form.fechaUltimaRegla ) }}
+   <td align = "left"> {{ form_label(form.fechaUltimaRegla) }}
         {{ form_errors(form.fechaUltimaRegla ) }}
-        {{ form_widget(form.fechaUltimaRegla ) }}</td>
+        {{ form_widget(form.fechaUltimaRegla, {'attr':{'readonly': 'true' } } ) }}</td>
        
        
   <td align = "left"><label>Partos anteriores</label>
@@ -109,7 +109,7 @@ elemento.style.visibility = visible ? "visible" : "hidden";
    
    <td id = "partoant" style="visibility:hidden"> {{ form_label(form.fechaPartoAnterior) }}
         {{ form_errors(form.fechaPartoAnterior) }}
-        {{ form_widget(form.fechaPartoAnterior) }}</td>
+        {{ form_widget(form.fechaPartoAnterior, {'attr':{'readonly': 'true' } }) }}</td>
   
  </tr>
   
@@ -118,7 +118,7 @@ elemento.style.visibility = visible ? "visible" : "hidden";
         {{ form_label(form.fechaParto) }}
                &nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
         {{ form_errors(form.fechaParto) }}
-        {{ form_widget(form.fechaParto) }}</td>
+        {{ form_widget(form.fechaParto, {'attr':{'readonly': 'true' } }) }}</td>
    
    <td align = "left"> 
 
@@ -173,7 +173,7 @@ elemento.style.visibility = visible ? "visible" : "hidden";
         <ul class="record_actions">
     <li>
         <a href="{{ path('blhhistorialclinico') }}">
-            Back to the list
+            Ver listado
         </a>
     </li>
 </ul>

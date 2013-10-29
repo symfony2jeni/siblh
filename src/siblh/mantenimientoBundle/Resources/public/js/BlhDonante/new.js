@@ -1,5 +1,5 @@
 $(document).ready(function() { 
-     $('button').button();
+        $('button').button();
      $.noConflict();
      $.datepicker.setDefaults($.datepicker.regional["es"]);
    $('input[id$="_fechaNacimiento"]').datepicker({ dateFormat: 'yy-MM-dd',  
@@ -86,6 +86,19 @@ $('#siblh_mantenimientobundle_blhdonante_registro').
  
 $('#siblh_mantenimientobundle_blhdonante_registro').
         attr('data-bvalidator-msg', "Ingrese el registro en el formato correcto 999999-9999"); 
+
+
+
+$(function() {
+    $( document ).tooltip();
+    
+   
+           });
+
+
+
+
+  
 
 });
 

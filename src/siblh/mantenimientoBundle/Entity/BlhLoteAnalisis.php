@@ -39,7 +39,7 @@ class BlhLoteAnalisis
     /**
      * @var string
      *
-     * @ORM\Column(name="responsable_analisis", type="string", length=30, nullable=false)
+     * @ORM\Column(name="responsable_analisis", type="string", length=60, nullable=false)
      */
     private $responsableAnalisis;
 

@@ -72,6 +72,13 @@ class BlhHistoriaActual
     private $imc;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="estado_donante", type="string", length=12, nullable=false)
+     */
+    private $estadoDonante;
+
+    /**
      * @var \BlhDonante
      *
      * @ORM\ManyToOne(targetEntity="BlhDonante")
@@ -252,6 +259,29 @@ class BlhHistoriaActual
     public function getImc()
     {
         return $this->imc;
+    }
+
+    /**
+     * Set estadoDonante
+     *
+     * @param string $estadoDonante
+     * @return BlhHistoriaActual
+     */
+    public function setEstadoDonante($estadoDonante)
+    {
+        $this->estadoDonante = $estadoDonante;
+    
+        return $this;
+    }
+
+    /**
+     * Get estadoDonante
+     *
+     * @return string 
+     */
+    public function getEstadoDonante()
+    {
+        return $this->estadoDonante;
     }
 
     /**

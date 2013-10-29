@@ -1,8 +1,7 @@
-
 {% extends 'siblhmantenimientoBundle::plantilla.html.twig' %}
 {% block stylesheets %}
     {{ parent() }}
-	<link href="{{ asset('bundles/siblhmantenimiento/css/form.css') }}" rel="stylesheet" type="text/css" />
+        <link href="{{ asset('bundles/siblhmantenimiento/css/form.css') }}" rel="stylesheet" type="text/css" />
  
 {% endblock %}
 {% block javascripts %}
@@ -15,18 +14,14 @@
  
 {% block body -%}
     <h1>Registro de Donante</h1>
-
-
-  {#  {{ form(form) }} 
-{#Creando el form #} 
-
+    
     {{ form_start(form) }}
     {{ form_errors(form) }}
  
   <table align = "center" width = "97%" >
      
    <tr>  
-   <td align = "right"> <font color="red">*</font>
+   <td align = "right" > <font color="red">*</font>
         {{ form_label(form.primerNombre) }}
         {{ form_errors(form.primerNombre) }}
         {{ form_widget(form.primerNombre,  { 'attr': {'size': '15'} }) }} </td> 
@@ -57,10 +52,8 @@
         {{ form_errors(form.fechaNacimiento) }}
         {{ form_widget(form.fechaNacimiento, {'attr':{'readonly': 'true'} }) }} </td>
         
-        <td align = "left"><font color="red" >*</font>
-        {{ form_label(form.estadoDonante) }} 
-        {{ form_errors(form.estadoDonante) }}
-        {{ form_widget(form.estadoDonante) }} </td> </tr>
+        <td align = "left">
+        </td> </tr>
         
  <tr><td align = "left"><font color="red">*</font>
         {{ form_label(form.estadoCivil) }} 
@@ -143,7 +136,7 @@
       </tr>
       
       <tr>
-       <td align = "left" > 
+       <td align = "left"  title="prueba"> 
     &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
   &nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
   <font color="black">9999-9999</font><br> 
@@ -175,12 +168,12 @@
     </table>
     
 {{ form_end(form) }}
-       
-   <ul class="record_actions">
+
+        <ul class="record_actions">
     <li>
-    <a href="{{ path('blhdonante') }}">
-            Back to the list
-    </a>
+        <a href="{{ path('blhdonante') }}">
+            Ver listado
+        </a>
     </li>
-    </ul>  
+</ul>
 {% endblock %}

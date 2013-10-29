@@ -53,7 +53,7 @@ class BlhFrascoProcesado
     /**
      * @var string
      *
-     * @ORM\Column(name="observacion_frasco_procesado", type="string", length=30, nullable=true)
+     * @ORM\Column(name="observacion_frasco_procesado", type="string", length=150, nullable=true)
      */
     private $observacionFrascoProcesado;
 

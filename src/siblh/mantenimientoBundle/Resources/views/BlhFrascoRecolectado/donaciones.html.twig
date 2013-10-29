@@ -1,38 +1,36 @@
 {% extends 'siblhmantenimientoBundle::plantilla.html.twig' %}
 
+{% block javascripts %}
+    {{parent()}}
+   <script type="text/javascript" src="{{ asset('bundles/siblhmantenimiento/js/BlhFrascoRecolectado/donaciones.js') }}" ></script>
+{% endblock %}
+   
 {% block body -%}
+ <link href="{{asset('bundles/jquery/jquery.jqGrid-4.5.4/css/ui.jqgrid.css')}}" rel="stylesheet"  type="text/css" media="all"/>  
+ 
+ <script type="text/javascript" src="{{asset('bundles/jquery/jquery.jqGrid-4.5.4/js/i18n/grid.locale-es.js')}}"></script>
+      <script type="text/javascript" src="{{asset('bundles/jquery/jquery.jqGrid-4.5.4/js/jquery.jqGrid.min.js')}}" ></script> 
+
     <h1>Listado de Donaciones</h1>
-    <table class="records_list" border= "1">
-        <thead>
+    <table id = "listado_donantes">
+       <thead>
             <tr>
-                 <td><b>Codigo</b></td>
-                 <td colspan = "4" align = "center"><b>Nombre Donante</b></td>
-                 
-                 
-                <td align = "center"><b>Accion</b></td>
+                <th>id</th>
+                <th>FechaDonacion</th>
+                 <th>Nombre</th>
+                <th>Accion</th>
+                
             </tr>
+          
         </thead>
         <tbody>
-            <tr>
-       {% for donacion in donaciones_donantes%}
             
+       {% for donacion in donaciones_donantes%}
+            <tr>
                <td><a href="{{ path('blhfrascorecolectado_new', { 'id': donacion.id }) }}">{{ donacion.id }}</a></td>
                 <td>{{ donacion.fechaDonacion|date('d-m-Y')}}</td>
-                <td>{{ donacion.nombre1 }}</td>
-                <td>{{ donacion.nombre2 }}</td>
-        
-                <td>{{ donacion.apellido1 }}</td>
-                <td>{{ donacion.apellido2 }}</td>
-               
-                <td>
-                <ul>
-                    <li>
-                        <a href="{{ path('blhfrascorecolectado_new', { 'id': donacion.id })}}">Nueva donacion</a>
-                    </li>
-                    
-                                       
-                </ul>
-                </td></tr>
+                 <td>{{ donacion.nombre1 }} {{ donacion.nombre2 }} {{ donacion.apellido1 }} {{ donacion.apellido2 }}</td>
+               <td><a href="{{ path('blhfrascorecolectado_new', { 'id': donacion.id })}}"><font color="blue"><u>Registrar Donacion</u></font></a></td></tr>
         {% endfor %}
             
 
@@ -42,5 +40,6 @@
         </tbody>
     </table>
 
-        
+      <div id='pagerdonantes' ></div>
+  
     {% endblock %}

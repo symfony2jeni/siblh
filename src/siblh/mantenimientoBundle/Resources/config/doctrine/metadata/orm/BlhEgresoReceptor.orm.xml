@@ -7,7 +7,7 @@
     <field name="diagnosticoEgreso" type="string" column="diagnostico_egreso" length="50" nullable="false"/>
     <field name="madreCanguro" type="string" column="madre_canguro" length="2" nullable="false"/>
     <field name="tipoEgreso" type="string" column="tipo_egreso" length="6" nullable="false"/>
-    <field name="comentarioEgreso" type="string" column="comentario_egreso" length="50" nullable="true"/>
+    <field name="comentarioEgreso" type="string" column="comentario_egreso" length="150" nullable="true"/>
     <field name="trasladoPeriferico" type="string" column="traslado_periferico" length="2" nullable="false"/>
     <field name="permanenciaUcin" type="integer" column="permanencia_ucin" nullable="true"/>
     <field name="hospitalSeguimientoEgreso" type="string" column="hospital_seguimiento_egreso" length="30" nullable="true"/>

@@ -1,8 +1,7 @@
-
 {% extends 'siblhmantenimientoBundle::plantilla.html.twig' %}
 {% block stylesheets %}
     {{ parent() }}
-	<link href="{{ asset('bundles/siblhmantenimiento/css/form.css') }}" rel="stylesheet" type="text/css" />
+        <link href="{{ asset('bundles/siblhmantenimiento/css/form.css') }}" rel="stylesheet" type="text/css" />
 {% endblock %}
 
 {% block javascripts %}
@@ -100,10 +99,18 @@ elemento.style.visibility = visible ? "visible" : "hidden";
         {{ form_label(form.patologiaDonante) }}
         {{ form_errors(form.patologiaDonante) }}
         {{ form_widget(form.patologiaDonante,  { 'attr': {'size': '40'} }) }} </td>  </tr> 
-  <tr> <td colspan = "2"> 
+  <tr> <td > 
         {{ form_label(form.motivoDonacion, "Motivo por el cual dona leche:") }}
         {{ form_errors(form.motivoDonacion) }}
-        {{ form_widget(form.motivoDonacion,  { 'attr': {'size': '50'} }) }} </td>  </tr> 
+        {{ form_widget(form.motivoDonacion,  { 'attr': {'size': '50'} }) }} </td>  
+          
+        <td align = "left"><font color="red" >*</font>
+        {{ form_label(form.estadoDonante) }} 
+        {{ form_errors(form.estadoDonante) }}
+        {{ form_widget(form.estadoDonante) }} </td> 
+        </tr>   
+          
+
           
      <tr><td colspan = '3' align = 'center'>  <input type="submit"  class= "ui-button" value="Guardar"/></td></tr>
    

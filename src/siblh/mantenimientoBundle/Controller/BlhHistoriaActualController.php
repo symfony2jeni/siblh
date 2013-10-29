@@ -53,7 +53,7 @@ class BlhHistoriaActualController extends Controller
             $em->persist($entity);
             $em->flush();
 
-            return $this->redirect($this->generateUrl('blhhistoriaactual_show', array('id' => $entity->getId())));
+            return $this->redirect($this->generateUrl('blhhistoriaactual', array('id' => $entity->getId())));
         }
 
         return array(
@@ -249,7 +249,7 @@ class BlhHistoriaActualController extends Controller
     //  $hisclinico =  $em->getRepository('siblhmantenimientoBundle:BlhHistorialClinico')->findAll();
       // $query1 = $em->createQuery("SELECT distinct p.id as identificador FROM siblhmantenimientoBundle:BlhHistorialClinico j JOIN j.idDonante p");
       // $hisclinico = $query1->getResult();
-        $query = $em->createQuery("SELECT p.id as identificador, p.primerNombre as nombre1, p.segundoNombre as nombre2, p.primerApellido as apellido1, p.segundoApellido as apellido2 FROM siblhmantenimientoBundle:BlhDonante p where p.id  not in (1,2,3,4,5)");
+        $query = $em->createQuery("SELECT p.id as identificador, p.primerNombre as nombre1, p.segundoNombre as nombre2, p.primerApellido as apellido1, p.segundoApellido as apellido2 FROM siblhmantenimientoBundle:BlhDonante p ");
         
        //echo $hisclinico[idDonante];
                 

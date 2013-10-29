@@ -53,7 +53,7 @@ class BlhFrascoRecolectado
     /**
      * @var string
      *
-     * @ORM\Column(name="observacion_frasco_recolectado", type="string", length=30, nullable=true)
+     * @ORM\Column(name="observacion_frasco_recolectado", type="string", length=150, nullable=true)
      */
     private $observacionFrascoRecolectado;
 
@@ -314,5 +314,10 @@ class BlhFrascoRecolectado
     public function getIdLoteAnalisis()
     {
         return $this->idLoteAnalisis;
+    }
+    
+     public function __toString()
+    {
+       return $this->codigoFrascoRecolectado;
     }
 }

@@ -1,82 +1,96 @@
-{% extends '::base.html.twig' %}
+{% extends 'siblhmantenimientoBundle::plantilla.html.twig' %}
 
 {% block body -%}
-    <h1>BlhHistorialClinico</h1>
+    <h1>Historial Clinico</h1>
+    <table  align = "center" >
+        <tr>
+        
+            <td><a href="{{ path('blhhistorialclinico_edit', { 'id': entity.id }) }}">
+                    <font color="#2E9AFE" size = "2" face = "Comic Sans MS"><b>Editar</b></font> 
+            
+            </td></tr>
+            
+    
+    </table>
 
-    <table class="record_properties">
+    <table class="record_properties" border = "1"  align = "center" bordercolor="#A4A4A4">
         <tbody>
             <tr>
-                <th>Id</th>
+                <th bgcolor="#2E9AFE">Id</th>
                 <td>{{ entity.id }}</td>
             </tr>
             <tr>
-                <th>Amenorrea</th>
+                <th bgcolor="#2E9AFE">Amenorrea</th>
                 <td>{{ entity.amenorrea }}</td>
             </tr>
             <tr>
-                <th>Controlprenatal</th>
+                <th bgcolor="#2E9AFE">Controlprenatal</th>
                 <td>{{ entity.controlPrenatal }}</td>
             </tr>
             <tr>
-                <th>Lugarcontrol</th>
+                <th bgcolor="#2E9AFE">Lugarcontrol</th>
                 <td>{{ entity.lugarControl }}</td>
             </tr>
             <tr>
-                <th>Numerocontrol</th>
+                <th bgcolor="#2E9AFE">Numerocontrol</th>
                 <td>{{ entity.numeroControl }}</td>
             </tr>
             <tr>
-                <th>Fechaultimaregla</th>
+                <th bgcolor="#2E9AFE">Fechaultimaregla</th>
                 <td>{{ entity.fechaUltimaRegla|date('Y-m-d H:i:s') }}</td>
             </tr>
             <tr>
-                <th>Fechaparto</th>
+                <th bgcolor="#2E9AFE">Fechaparto</th>
                 <td>{{ entity.fechaParto|date('Y-m-d H:i:s') }}</td>
             </tr>
             <tr>
-                <th>Lugarparto</th>
+                <th bgcolor="#2E9AFE">Lugarparto</th>
                 <td>{{ entity.lugarParto }}</td>
             </tr>
             <tr>
-                <th>Patologiaembarazo</th>
+                <th bgcolor="#2E9AFE">Patologiaembarazo</th>
                 <td>{{ entity.patologiaEmbarazo }}</td>
             </tr>
             <tr>
-                <th>Periodointergenesico</th>
+                <th bgcolor="#2E9AFE">Periodointergenesico</th>
                 <td>{{ entity.periodoIntergenesico }}</td>
             </tr>
             <tr>
-                <th>Fechapartoanterior</th>
+                <th bgcolor="#2E9AFE">Fechapartoanterior</th>
                 <td>{{ entity.fechaPartoAnterior|date('Y-m-d H:i:s') }}</td>
             </tr>
             <tr>
-                <th>Formulaobstetricag</th>
+                <th bgcolor="#2E9AFE">Formulaobstetricag</th>
                 <td>{{ entity.formulaObstetricaG }}</td>
             </tr>
             <tr>
-                <th>Formulaobstetricap1</th>
+                <th bgcolor="#2E9AFE">Formulaobstetricap1</th>
                 <td>{{ entity.formulaObstetricaP1 }}</td>
             </tr>
             <tr>
-                <th>Formulaobstetricap2</th>
+                <th bgcolor="#2E9AFE">Formulaobstetricap2</th>
                 <td>{{ entity.formulaObstetricaP2 }}</td>
             </tr>
             <tr>
-                <th>Formulaobstetricaa</th>
+                <th bgcolor="#2E9AFE">Formulaobstetricaa</th>
                 <td>{{ entity.formulaObstetricaA }}</td>
             </tr>
             <tr>
-                <th>Formulaobstetricav</th>
+                <th bgcolor="#2E9AFE">Formulaobstetricav</th>
                 <td>{{ entity.formulaObstetricaV }}</td>
             </tr>
             <tr>
-                <th>Formulaobstetricam</th>
+                <th bgcolor="#2E9AFE">Formulaobstetricam</th>
                 <td>{{ entity.formulaObstetricaM }}</td>
             </tr>
         </tbody>
     </table>
 
-        <ul class="record_actions">
+    
+    
+      
+    {#
+      <ul class="record_actions">
     <li>
         <a href="{{ path('blhhistorialclinico') }}">
             Back to the list
@@ -88,5 +102,5 @@
         </a>
     </li>
     <li>{{ form(delete_form) }}</li>
-</ul>
+</ul> #}
 {% endblock %}

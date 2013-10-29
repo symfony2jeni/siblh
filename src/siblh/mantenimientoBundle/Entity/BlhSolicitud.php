@@ -88,14 +88,14 @@ class BlhSolicitud
     /**
      * @var string
      *
-     * @ORM\Column(name="estado", type="string", length=1, nullable=false)
+     * @ORM\Column(name="estado", type="string", length=10, nullable=false)
      */
     private $estado;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="responsable", type="string", length=30, nullable=true)
+     * @ORM\Column(name="responsable", type="string", length=60, nullable=true)
      */
     private $responsable;
 

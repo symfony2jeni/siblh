@@ -1,39 +1,36 @@
 {% extends 'siblhmantenimientoBundle::plantilla.html.twig' %}
 
+{% block javascripts %}
+    {{parent()}}
+   <script type="text/javascript" src="{{ asset('bundles/siblhmantenimiento/js/BlhEgresoReceptor/pacientesreceptores.js') }}" ></script>
+{% endblock %}
+   
 {% block body -%}
-    <h1>Listado de Donantes</h1>
-    <table class="records_list" border= "1">
-        <thead>
+ <link href="{{asset('bundles/jquery/jquery.jqGrid-4.5.4/css/ui.jqgrid.css')}}" rel="stylesheet"  type="text/css" media="all"/>  
+ 
+ <script type="text/javascript" src="{{asset('bundles/jquery/jquery.jqGrid-4.5.4/js/i18n/grid.locale-es.js')}}"></script>
+      <script type="text/javascript" src="{{asset('bundles/jquery/jquery.jqGrid-4.5.4/js/jquery.jqGrid.min.js')}}" ></script> 
+
+    <h1>Listado de Receptores</h1>
+    <table id = "listado_pacientes">
+         <thead>
             <tr>
-                 <td><b>Codigo</b></td>
-                 <td colspan = "4" align = "center"><b>Nombre Receptores</b></td>
-                 
-                 
-                <td align = "center"><b>Accion</b></td>
+                <th>id</th>
+                <th>Codigo</th>
+                <th>Nombre</th>
+                <th>Accion</th>
+                
             </tr>
+          
         </thead>
         <tbody>
             <tr>
        {% for receptor in receptores_registrados%}
             
                <td><a href="{{ path('blhegresoreceptor_new', { 'id': receptor.identificador }) }}">{{ receptor.identificador }}</a></td>
-               <td>{{ receptor.codigoReceptor }}</td> 
-               <td>{{ receptor.nombre1 }}</td>
-                <td>{{ receptor.nombre2 }}</td>
-        
-                <td>{{ receptor.apellido1 }}</td>
-                <td>{{ receptor.apellido2 }}</td>
-               
-               
-                <td>
-                <ul>
-                    <li>
-                        <a href="{{ path('blhegresoreceptor_new', { 'id': receptor.identificador })}}">Egreso</a>
-                    </li>
-                    
-                                       
-                </ul>
-                </td></tr>
+               <td>{{ receptor.codigoReceptor }}</td>
+               <td>{{ receptor.nombre1 }} {{ receptor.nombre2 }} {{ receptor.apellido1 }} {{ receptor.apellido2 }}</td>
+                <td><a href="{{ path('blhegresoreceptor_new', { 'id': receptor.identificador })}}"><font color="blue"><u>Registrar Egreso</u></font></a></td></tr>
         {% endfor %}
             
 
@@ -45,9 +42,10 @@
 
     
     
-        
+   <div id='pagerpacientes' ></div>
+
+        {% endblock %}     
      
    
 
         
-    {% endblock %}
