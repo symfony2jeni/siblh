@@ -60,7 +60,7 @@ class BlhSolicitudController extends Controller
             $em->persist($entity);
             $em->flush();
 
-            return $this->redirect($this->generateUrl('blhsolicitud_show', array('id' => $entity->getId())));
+            return $this->redirect($this->generateUrl('blhsolicitud', array('id' => $entity->getId())));
         }
         
          return array(

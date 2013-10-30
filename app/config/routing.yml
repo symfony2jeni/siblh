@@ -104,6 +104,9 @@ _NewSolicitudes:
   pattern:  /receptores_solicitud
   defaults: { _controller: siblhmantenimientoBundle:BlhSolicitud:receptores}  
   
+_NewAnalisisFisico:
+  pattern:  /frascos/analisis
+  defaults: { _controller: siblhmantenimientoBundle:BlhFrascoRecolectado:frascosAnalisis}    
 
   
 

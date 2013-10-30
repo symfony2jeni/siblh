@@ -53,7 +53,7 @@ class BlhAnalisisSensorialController extends Controller
             $em->persist($entity);
             $em->flush();
 
-            return $this->redirect($this->generateUrl('blhanalisissensorial_show', array('id' => $entity->getId())));
+            return $this->redirect($this->generateUrl('blhanalisissensorial', array('id' => $entity->getId())));
         }
 
         return array(

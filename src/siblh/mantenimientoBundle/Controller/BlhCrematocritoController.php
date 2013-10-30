@@ -53,7 +53,7 @@ class BlhCrematocritoController extends Controller
             $em->persist($entity);
             $em->flush();
 
-            return $this->redirect($this->generateUrl('blhcrematocrito_show', array('id' => $entity->getId())));
+            return $this->redirect($this->generateUrl('blhcrematocrito', array('id' => $entity->getId())));
         }
 
         return array(

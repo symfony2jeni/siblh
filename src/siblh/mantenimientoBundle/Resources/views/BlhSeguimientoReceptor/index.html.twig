@@ -16,9 +16,9 @@
                 <th>Fecha</th>
                 <th>Semana</th>
                 <th>Talla(cm)</th>
-                <th>Ganancia&nbsp;de&nbsp;talla&nbsp;por&nbsp;día(cm)</th>
+                <th>Ganancia&nbsp;talla&nbsp;por&nbsp;día(cm)</th>
                 <th>Peso(g)</th>
-                <th>Ganancia&nbsp;de&nbsp;peso&nbsp;por&nbsp;día(g)</th>
+                <th>Ganancia&nbsp;peso&nbsp;por&nbsp;día(g)</th>
                 <th>Perímetro&nbsp;cefálico(cm)</th>            
                 <th>Complicaciones</th>
                 <th>Acción</th>
@@ -36,8 +36,7 @@
                 <td>{{ entity.gananciaDiaPeso|number_format(2, '.', ',') }}</td>
                 <td>{{ entity.pcSeguimiento|number_format(2, '.', ',') }}</td>
                 <td>{{ entity.complicaciones }}</td>
-                <td><a href="{{ path('blhseguimientoreceptor_show', { 'id': entity.id }) }}">Mostrar</a>
-                    <a href="{{ path('blhseguimientoreceptor_edit', { 'id': entity.id }) }}">Editar</a></td>
+                <td><a href="{{ path('blhseguimientoreceptor_edit', { 'id': entity.id }) }}"><font color="blue"><u>Editar</u></font></a></td>
                {# <td>
                 <ul>
                     <li>

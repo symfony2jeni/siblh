@@ -19,7 +19,6 @@
         <tbody>
         {% for entity in entities %}
             <tr>
-                <td><a href="{{ path('blhacidez_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
                 <td>{{ entity.acidez1 }}</td>
                 <td>{{ entity.acidez2 }}</td>
                 <td>{{ entity.acidez3 }}</td>
@@ -29,10 +28,7 @@
                 <td>
                 <ul>
                     <li>
-                        <a href="{{ path('blhacidez_show', { 'id': entity.id }) }}">show</a>
-                    </li>
-                    <li>
-                        <a href="{{ path('blhacidez_edit', { 'id': entity.id }) }}">edit</a>
+                        <a href="{{ path('blhacidez_edit', { 'id': entity.id }) }}">Editar</a>
                     </li>
                 </ul>
                 </td>

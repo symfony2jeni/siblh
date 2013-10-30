@@ -55,7 +55,7 @@ class BlhGrupoSolicitudController extends Controller
             $em->persist($entity);
             $em->flush();
 
-            return $this->redirect($this->generateUrl('blhgruposolicitud_show', array('id' => $entity->getId())));
+            return $this->redirect($this->generateUrl('blhgruposolicitud', array('id' => $entity->getId())));
         }
 
         return array(

@@ -1,6 +1,6 @@
 $(document).ready(function() { 
      $('#button').button();
-     $.noConflict();
+   $.noConflict();
      $.datepicker.setDefaults($.datepicker.regional["es"]);
      
        //Calendario  

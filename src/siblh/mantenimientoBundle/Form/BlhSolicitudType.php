@@ -30,7 +30,7 @@ class BlhSolicitudType extends AbstractType
                             'attr' => array('class' => 'date')))
             ->add('cuna','text')
             ->add('estado','choice', 
-                    array('choices' => array('' => 'Seleccione un valor','Pendiente' => 'Pendiente','Agrupada' => 'Agrupada','Despachada' => 'Despachada')))
+                    array('choices' => array('Pendiente' => 'Pendiente','Agrupada' => 'Agrupada','Despachada' => 'Despachada')))
             ->add('responsable')
            // ->add('idGrupoSolicitud')
             ->add('idReceptor')

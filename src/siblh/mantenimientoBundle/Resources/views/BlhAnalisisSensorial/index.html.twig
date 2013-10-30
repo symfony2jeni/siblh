@@ -6,7 +6,6 @@
     <table class="records_list">
         <thead>
             <tr>
-                <th>Id</th>
                 <th>Embalaje</th>
                 <th>Suciedad</th>
                 <th>Color</th>
@@ -18,7 +17,6 @@
         <tbody>
         {% for entity in entities %}
             <tr>
-                <td><a href="{{ path('blhanalisissensorial_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
                 <td>{{ entity.embalaje }}</td>
                 <td>{{ entity.suciedad }}</td>
                 <td>{{ entity.color }}</td>
@@ -27,10 +25,7 @@
                 <td>
                 <ul>
                     <li>
-                        <a href="{{ path('blhanalisissensorial_show', { 'id': entity.id }) }}">show</a>
-                    </li>
-                    <li>
-                        <a href="{{ path('blhanalisissensorial_edit', { 'id': entity.id }) }}">edit</a>
+                        <a href="{{ path('blhanalisissensorial_edit', { 'id': entity.id }) }}">Editar</a>
                     </li>
                 </ul>
                 </td>

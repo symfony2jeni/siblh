@@ -21,7 +21,7 @@
                 <th>Tomas&nbsp;por&nbsp;día</th>
                 <th>Calorías&nbsp;necesarias</th>
                 <th>Acidez&nbsp;Dornic</th>
-                <th>Volumen&nbsp;total&nbsp;por&nbsp;día</th>                
+                <th>Volumen&nbsp;total&nbsp;por&nbsp;día(ml)</th>                
                 <th>Cuna</th>
                 <th>Responsable</th>
                 <th>Acción</th>
@@ -40,8 +40,7 @@
                 <td>{{ entity.volumenPorDia|number_format(2, '.', ',') }}</td>
                 <td>{{ entity.cuna }}</td>
                 <td>{{ entity.responsable }}</td>   
-               <td ><a href="{{ path('blhsolicitud_show', { 'id': entity.id })}}">Mostrar</a>
-                   <a href="{{ path('blhsolicitud_edit', { 'id': entity.id })}}">Editar</a></td>            
+               <td ><a href="{{ path('blhsolicitud_edit', { 'id': entity.id })}}"><font color="blue"><u>Editar</u></font></a></td>            
             </tr>
         {% endfor %}
         </tbody>

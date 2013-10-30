@@ -30,7 +30,7 @@
                 <td>{{ receptor.nombre1 }}&nbsp;{{ receptor.nombre2 }}&nbsp;{{ receptor.nombre3 }}</td>
                 <td>{{ receptor.apellido1 }}&nbsp;{{ receptor.apellido2 }}</td>      
                 <td>{{ receptor.sexo }}</td>
-                <td><a href="{{ path('blhseguimientoreceptor_new', { 'id': receptor.id })}}">Registrar Seguimiento</a></td>
+                <td><a href="{{ path('blhseguimientoreceptor_new', { 'id': receptor.id })}}"><font color="blue"><u>Registrar Seguimiento</u></font></a></td>
                </tr>
                  {% endfor %}
                   </tbody>
