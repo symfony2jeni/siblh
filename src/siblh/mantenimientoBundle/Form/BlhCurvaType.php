@@ -15,13 +15,16 @@ class BlhCurvaType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('tiempo1')
-            ->add('tiempo2')
-            ->add('tiempo3')
-            ->add('valorCurva')
-            ->add('fechaCurva')
-            ->add('cantidadFrascos')
-            ->add('volumenPorFrasco')
+            ->add('tiempo1','number', array ( 'invalid_message'=>'Debe ser entre 5 y 10'))
+            ->add('tiempo2', 'number', array ( 'invalid_message'=>'Debe ser entre 5 y 10'))
+            ->add('tiempo3','number', array ( 'invalid_message'=>'Debe ser entre 5 y 10'))
+            /*->add('valorCurva') */
+            ->add('fechaCurva', 'date', 
+                    array(  'widget' => 'single_text',
+                            'format' => 'yy-MM-dd',
+                            'attr' => array('class' => 'date')))
+            ->add('cantidadFrascos','number',array ( 'invalid_message'=>'Debe ser entre 5 y 25 '))
+            ->add('volumenPorFrasco','number',array ( 'invalid_message'=>'Debe ser entre 25 y 75 ml'))
             ->add('horaInicioCurva')
         ;
     }

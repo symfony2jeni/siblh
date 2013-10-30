@@ -9,6 +9,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use siblh\mantenimientoBundle\Entity\BlhTemperaturaPasteurizacion;
 use siblh\mantenimientoBundle\Form\BlhTemperaturaPasteurizacionType;
+//use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * BlhTemperaturaPasteurizacion controller.
@@ -45,7 +46,7 @@ class BlhTemperaturaPasteurizacionController extends Controller
     public function createAction(Request $request)
     {
         $entity = new BlhTemperaturaPasteurizacion();
-        $form = $this->createCreateForm($entity);
+       $form = $this->createCreateForm($entity); 
         $form->handleRequest($request);
 
         if ($form->isValid()) {
@@ -76,7 +77,7 @@ class BlhTemperaturaPasteurizacionController extends Controller
             'method' => 'POST',
         ));
 
-        $form->add('submit', 'submit', array('label' => 'Create'));
+     //   $form->add('submit', 'submit', array('label' => 'Guardar'));
 
         return $form;
     }
@@ -88,7 +89,7 @@ class BlhTemperaturaPasteurizacionController extends Controller
      * @Method("GET")
      * @Template()
      */
-    public function newAction()
+    /* public function newAction()
     {
         $entity = new BlhTemperaturaPasteurizacion();
         $form   = $this->createCreateForm($entity);
@@ -97,7 +98,8 @@ class BlhTemperaturaPasteurizacionController extends Controller
             'entity' => $entity,
             'form'   => $form->createView(),
         );
-    }
+    } */
+
 
     /**
      * Finds and displays a BlhTemperaturaPasteurizacion entity.
@@ -106,7 +108,7 @@ class BlhTemperaturaPasteurizacionController extends Controller
      * @Method("GET")
      * @Template()
      */
-    public function showAction($id)
+     public function showAction($id)
     {
         $em = $this->getDoctrine()->getManager();
 
@@ -228,6 +230,8 @@ class BlhTemperaturaPasteurizacionController extends Controller
         return $this->redirect($this->generateUrl('blhtemperaturapasteurizacion'));
     }
 
+    
+    
     /**
      * Creates a form to delete a BlhTemperaturaPasteurizacion entity by id.
      *
@@ -243,5 +247,76 @@ class BlhTemperaturaPasteurizacionController extends Controller
             ->add('submit', 'submit', array('label' => 'Delete'))
             ->getForm()
         ;
+    }
+
+  
+    //Creando nuevo controlador
+    
+     //Creando Nuevos Controladores
+     
+     
+    /**
+     * Lists all BlhFrascoRecolectado entities.
+     *
+     * @Route("/", name="blhtemppasteurizacion")
+     * @Method("GET")
+     * @Template()
+     */
+ 
+ public function pasteurizacionesAction()
+    {
+        $em = $this->getDoctrine()->getManager();      
+        
+        //Obteniendo lista de pasteurizaciones  
+        $query = $em->createQuery("SELECT r.id, r.codigoPasteurizacion,r.fechaPasteurizacion, r.responsablePasteurizacion FROM siblhmantenimientoBundle:BlhPasteurizacion r");
+        //Obtengo resultado y lo guardo
+        $pasteurizaciones_frascos  = $query->getResult();
+        //retorno lista de pasteurizaciones que ha sido almacenada en una arreglo
+        //donde en el .twig sera recorrida.
+        return array(
+            'pasteurizaciones_frascos' =>  $pasteurizaciones_frascos        
+        );
+        
+    }
+    
+    
+     /**
+     * Displays a form to create a new BlhFrascoRecolectado entity.
+     *
+     * @Route("/new/{id}", name="blhtemperaturapasteurizacion_new")
+     * @Method("GET")
+     * @Template()
+     */
+      public function newAction($id)
+    {
+         $em = $this->getDoctrine()->getManager();
+        
+         $query = $em->createQuery("SELECT r.id , r.codigoPasteurizacion, r.fechaPasteurizacion, r.horaInicioP, r.horaFinalP FROM siblhmantenimientoBundle:BlhPasteurizacion r WHERE r.id = $id "); 
+         $pasteurizaciones_frascos  = $query->getResult(); 
+ //Obteniendo los datos que necesito presentar en mi entrada donde el id de pasteurizacion que seleccione de listado 
+ //sea igual al id del regitro de la tabla a mostrar
+         $pasteurizacion = $em->getRepository('siblhmantenimientoBundle:BlhPasteurizacion')->find($id); 
+ //Capturando id    
+       
+        if (!$pasteurizaciones_frascos) {
+            throw $this->createNotFoundException('Unable to find BlhTemperaturaP entity');
+        }
+        
+        //Creando la entidad 
+        $entity = new BlhTemperaturaPasteurizacion(); 
+        $entity->setidPasteurizacion($pasteurizacion); 
+//establecer que el idPasteurizacion de la  tabla temperaturaP sea igual al id obtenido 
+//que se encuentra en la variable $pasteurizcion.
+        
+        
+        $form   = $this->createCreateForm($entity);  
+        
+
+        return array(
+            'pasteurizaciones_frascos' =>  $pasteurizaciones_frascos,  
+            'entity' => $entity,
+            'form'   => $form->createView(),
+            
+        ); 
     }
 }

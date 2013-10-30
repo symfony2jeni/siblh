@@ -3,56 +3,70 @@
 {% block body -%}
     <h1>Editar Donante</h1>
     
-     <table class="records_list" border = "1"  align = "center" bordercolor="#848484">
-         
-         <tr><th bgcolor="#2E9AFE">Primer Nombre</th>
-        <td>{{ form(edit_form.primerNombre) }}</td></tr>
-        <tr><th bgcolor="#2E9AFE">Segundo Nombre</th>
-        <td>{{ form(edit_form.segundoNombre) }}</td></tr>
-        <tr><th bgcolor="#2E9AFE">Primer Apellido</th>
-        <td>{{ form(edit_form.primerApellido) }}</td></tr>
-        <tr><th bgcolor="#2E9AFE">Segundo Apellido</th>
-        <td>{{ form(edit_form.segundoApellido) }}</td></tr>
-        <tr><th bgcolor="#2E9AFE">Fecha Nacimiento</th>
-        <td>{{ form(edit_form.fechaNacimiento) }}</td></tr>
-        <tr><th bgcolor="#2E9AFE">Telefono</th>
-        <td>{{ form(edit_form.telefonoFijo) }}</td></tr>
-        <tr><th bgcolor="#2E9AFE">Celular</th>
-        <td>{{ form(edit_form.telefonoMovil) }}</td></tr>
-        <tr><th bgcolor="#2E9AFE">Direccion</th>
-        <td>{{ form(edit_form.direccion) }}</td></tr>
-         <tr><th bgcolor="#2E9AFE">Procedencia</th>
-        <td>{{ form(edit_form.procedencia) }}</td></tr>
-        <tr><th bgcolor="#2E9AFE">Registro</th>
-        <td>{{ form(edit_form.registro) }}</td></tr>
-        <tr><th bgcolor="#2E9AFE">Numero Documento</th>
-        <td>{{ form(edit_form.numeroDocumentoIdentificacion) }}</td></tr>
-         <tr><th bgcolor="#2E9AFE">Documento Identificacion</th>
-        <td>{{ form(edit_form.documentoIdentificacion) }}</td></tr>
-         <tr><th bgcolor="#2E9AFE">Ocupacion</th>
-        <td>{{ form(edit_form.ocupacion) }}</td></tr>
-         <tr><th bgcolor="#2E9AFE">Estado Civil</th>
-        <td>{{ form(edit_form.estadoCivil) }}</td></tr>
-         <tr><th bgcolor="#2E9AFE">Nacionalidad</th>
-        <td>{{ form(edit_form.nacionalidad) }}</td></tr>
-         <tr><th bgcolor="#2E9AFE">Escolaridad</th>
-        <td>{{ form(edit_form.escolaridad) }}</td></tr>
-         <tr><th bgcolor="#2E9AFE">Tipo Colecta</th>
-        <td>{{ form(edit_form.tipoColecta) }}</td></tr>
-         <tr><th bgcolor="#2E9AFE">Observaciones</th>
-        <td>{{ form(edit_form.observaciones) }}</td></tr>
-        <tr><th bgcolor="#2E9AFE">Municipio</th>
-        <td>{{ form(edit_form.idMunicipio) }}</td></tr>
+    {{ form_start(edit_form) }}
+    {{ form_errors(edit_form) }}
+    
+<table class="records_list"   align = "center" >
+          
+       
+        <tr><td colspan=2 align = "left" height=10  ></td></tr>
+        <tr><td align='left' ><font color="red">*</font>{{ form_label(edit_form.primerNombre,'Primer Nombre') }}</td><td align='left'>{{ form_widget(edit_form.primerNombre) }}</td></tr>
+        <tr><td colspan=2 align = "left" height=10  ></td></tr>
+        <tr><td align='left' ><font color="red">*</font>{{ form_label(edit_form.segundoNombre,'Segundo Nombre') }}</td><td align='left'>{{ form_widget(edit_form.segundoNombre) }}</td></tr>
+        <tr><td colspan=2 align = "left" height=10  ></td></tr>
+        <tr><td align='left' ><font color="red">*</font>{{ form_label(edit_form.primerApellido,'Primer Apellido') }}</td><td align='left'>{{ form_widget(edit_form.primerApellido) }}</td></tr>
+        <tr><td colspan=2 align = "left" height=10  ></td></tr>
+        <tr><td align='left' ><font color="red">*</font>{{ form_label(edit_form.segundoApellido,'Segundo Apellido') }}</td><td align='left'>{{ form_widget(edit_form.segundoApellido) }}</td></tr>
+        <tr><td colspan=2 align = "left" height=10  ></td></tr>
+        <tr><td align='left' ><font color="red">*</font>{{ form_label(edit_form.fechaNacimiento,'Fecha Nacimiento') }}</td><td align='left'>{{ form_widget(edit_form.fechaNacimiento) }}</td></tr>
+        <tr><td colspan=2 align = "left" height=10  ></td></tr>
+        <tr><td align='left' ><font color="red">*</font>{{ form_label(edit_form.telefonoFijo,'Telefono') }}</td><td align='left'>{{ form_widget(edit_form.telefonoFijo) }}</td></tr>
+        <tr><td colspan=2 align = "left" height=10  ></td></tr>
+        <tr><td align='left' ><font color="red">*</font>{{ form_label(edit_form.telefonoMovil,'Celular') }}</td><td align='left'>{{ form_widget(edit_form.telefonoMovil) }}</td></tr>
+        <tr><td colspan=2 align = "left" height=10  ></td></tr>
+        <tr><td align='left' ><font color="red">*</font>{{ form_label(edit_form.direccion,'Direccion') }}</td><td align='left'>{{ form_widget(edit_form.direccion) }}</td></tr>
+          
+        <tr><td colspan=2 align = "left" height=10  ></td></tr>
+        <tr><td align='left' ><font color="red">*</font>{{ form_label(edit_form.procedencia,'Procedencia') }}</td><td align='left'>{{ form_widget(edit_form.procedencia) }}</td></tr>
+        <tr><td colspan=2 align = "left" height=10  ></td></tr>
+        <tr><td align='left' ><font color="red">*</font>{{ form_label(edit_form.registro,'Registro') }}</td><td align='left'>{{ form_widget(edit_form.registro) }}</td></tr>
+        <tr><td colspan=2 align = "left" height=10  ></td></tr>
+        <tr><td align='left' ><font color="red">*</font>{{ form_label(edit_form.fechaRegistroDonanteBlh,'Fecha Registro') }}</td><td align='left'>{{ form_widget(edit_form.fechaRegistroDonanteBlh) }}</td></tr>
+        <tr><td colspan=2 align = "left" height=10  ></td></tr>
+        <tr><td align='left' ><font color="red">*</font>{{ form_label(edit_form.numeroDocumentoIdentificacion,'Numero Documento') }}</td><td align='left'>{{ form_widget(edit_form.numeroDocumentoIdentificacion) }}</td></tr>
+        <tr><td colspan=2 align = "left" height=10  ></td></tr>
+        <tr><td align='left' ><font color="red">*</font>{{ form_label(edit_form.documentoIdentificacion,'Documento Identificacion') }}</td><td align='left'>{{ form_widget(edit_form.documentoIdentificacion) }}</td></tr>
+        <tr><td colspan=2 align = "left" height=10  ></td></tr>
+        <tr><td align='left' ><font color="red">*</font>{{ form_label(edit_form.ocupacion,'Ocupacion') }}</td><td align='left'>{{ form_widget(edit_form.ocupacion) }}</td></tr>
+        <tr><td colspan=2 align = "left" height=10  ></td></tr>
+        <tr><td align='left' ><font color="red">*</font>{{ form_label(edit_form.estadoCivil,'Estado Civil') }}</td><td align='left'>{{ form_widget(edit_form.estadoCivil) }}</td></tr>
+        <tr><td colspan=2 align = "left" height=10  ></td></tr>
+        <tr><td align='left' ><font color="red">*</font>{{ form_label(edit_form.nacionalidad,'Nacionalidad') }}</td><td align='left'>{{ form_widget(edit_form.nacionalidad) }}</td></tr>
+        <tr><td colspan=2 align = "left" height=10  ></td></tr>
+        <tr><td align='left' ><font color="red">*</font>{{ form_label(edit_form.escolaridad,'Escolaridad') }}</td><td align='left'>{{ form_widget(edit_form.escolaridad) }}</td></tr>
+        <tr><td colspan=2 align = "left" height=10  ></td></tr>
+        <tr><td align='left' ><font color="red">*</font>{{ form_label(edit_form.tipoColecta,'Tipo Colecta') }}</td><td align='left'>{{ form_widget(edit_form.tipoColecta) }}</td></tr>
+        <tr><td colspan=2 align = "left" height=10  ></td></tr>
+        <tr><td align='left' ><font color="red">*</font>{{ form_label(edit_form.observaciones,'Observaciones') }}</td><td align='left'>{{ form_widget(edit_form.observaciones) }}</td></tr>
+        <tr><td colspan=2 align = "left" height=10  ></td></tr>
+        <tr><td align='left' ><font color="red">*</font>{{ form_label(edit_form.idMunicipio,'Municipio') }}</td><td align='left'>{{ form_widget(edit_form.idMunicipio) }}</td></tr>
+       <tr style="visibility:hidden"><td align='left' ><font color="red">*</font>{{ form_label(edit_form.idBancoDeLeche,'blh') }}</td><td align='left'>{{ form_widget(edit_form.idBancoDeLeche) }}</td></tr>
+
+
+      
+        <tr><td colspan = '3' align = 'center'>  <input type="submit" class= "ui-button" value="Actualizar"/></td></tr>
+
          
 
          
           </table>
+    {{ form_end(edit_form) }}
 
     <table>
         <tr>
             <td>
         <a href="{{ path('blhdonante') }}">
-            Back to the list
+            Back to the list </a>
         </td></tr></table>
 
 {% endblock %}

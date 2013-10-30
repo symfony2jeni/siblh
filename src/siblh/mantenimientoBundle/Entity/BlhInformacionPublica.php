@@ -3,12 +3,15 @@
 namespace siblh\mantenimientoBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 /**
  * BlhInformacionPublica
  *
  * @ORM\Table(name="blh_informacion_publica")
  * @ORM\Entity
+ * @ORM\HasLifecycleCallbacks
  */
 class BlhInformacionPublica
 {
@@ -22,18 +25,22 @@ class BlhInformacionPublica
      */
     private $id;
 
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="documento", type="blob", nullable=false)
+   /**
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
-    private $documento;
-
+    public $path;
+    
+     /**
+     * @Assert\File(maxSize="6000000")
+     */
+    private $file;
+    
     /**
      * @var string
      *
      * @ORM\Column(name="tipo", type="string", length=15, nullable=false)
      */
+    
     private $tipo;
 
     /**
@@ -70,29 +77,6 @@ class BlhInformacionPublica
     public function getId()
     {
         return $this->id;
-    }
-
-    /**
-     * Set documento
-     *
-     * @param string $documento
-     * @return BlhInformacionPublica
-     */
-    public function setDocumento($documento)
-    {
-        $this->documento = $documento;
-    
-        return $this;
-    }
-
-    /**
-     * Get documento
-     *
-     * @return string 
-     */
-    public function getDocumento()
-    {
-        return $this->documento;
     }
 
     /**
@@ -186,4 +170,136 @@ class BlhInformacionPublica
     {
         return $this->idBancoDeLeche;
     }
+    
+   
+    
+    
+   
+
+    /**
+     * Get file.
+     *
+     * @return UploadedFile
+     */
+    public function getFile()
+    {
+        return $this->file;
+    }
+    
+    
+    
+    
+
+
+    public function getWebPath()
+    {
+        return null === $this->path
+            ? null
+            : $this->getUploadDir().'/'.$this->path;
+    }
+
+    protected function getUploadRootDir()
+    {
+        // la ruta absoluta del directorio donde se deben
+        // guardar los archivos cargados
+        return __DIR__.'/../../../../web/'.$this->getUploadDir();
+    }
+
+    protected function getUploadDir()
+    {
+        return 'uploads/documents';
+    }
+   
+
+
+private $temp;
+
+    /**
+     * Sets file.
+     *
+     * @param UploadedFile $file
+     */
+    public function setFile(UploadedFile $file = null)
+    {
+        $this->file = $file;
+        // check if we have an old image path
+        if (is_file($this->getAbsolutePath())) {
+            // store the old name to delete after the update
+            $this->temp = $this->getAbsolutePath();
+        } else {
+            $this->path = 'initial';
+        }
+    }
+
+    /**
+     * @ORM\PrePersist()
+     * @ORM\PreUpdate()
+     */
+    public function preUpload()
+    {
+        if (null !== $this->getFile()) {
+            $this->path = $this->getFile()->guessExtension();
+        }
+    }
+
+    /**
+     * @ORM\PostPersist()
+     * @ORM\PostUpdate()
+     */
+    public function upload()
+    {
+        if (null === $this->getFile()) {
+            return;
+        }
+
+        // check if we have an old image
+        if (isset($this->temp)) {
+            // delete the old image
+            unlink($this->temp);
+            // clear the temp image path
+            $this->temp = null;
+        }
+
+        // you must throw an exception here if the file cannot be moved
+        // so that the entity is not persisted to the database
+        // which the UploadedFile move() method does
+        $this->getFile()->move(
+            $this->getUploadRootDir(),
+            $this->id.'.'.$this->getFile()->guessExtension()
+        );
+
+        $this->setFile(null);
+    }
+
+    /**
+     * @ORM\PreRemove()
+     */
+    public function storeFilenameForRemove()
+    {
+        $this->temp = $this->getAbsolutePath();
+    }
+
+    /**
+     * @ORM\PostRemove()
+     */
+    public function removeUpload()
+    {
+        if (isset($this->temp)) {
+            unlink($this->temp);
+        }
+    }
+
+    public function getAbsolutePath()
+    {
+        return null === $this->path
+            ? null
+            : $this->getUploadRootDir().'/'.$this->id.'.'.$this->path;
+    }
+
+
+
+
+
+
+    
 }

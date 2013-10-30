@@ -4,7 +4,7 @@
     <id name="id" type="integer" column="id">
       <generator strategy="SEQUENCE"/>
     </id>
-    <field name="documento" type="blob" column="documento" nullable="false"/>
+    <field name="path" type="string" column="path" nullable="false"/>
     <field name="tipo" type="string" column="tipo" length="15" nullable="false"/>
     <field name="nombreDocumento" type="string" column="nombre_documento" length="30" nullable="false"/>
     <field name="fechaPublicacion" type="date" column="fecha_publicacion" nullable="false"/>
