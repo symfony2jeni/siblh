@@ -49,17 +49,17 @@ elemento.style.visibility = visible ? "visible" : "hidden";
         {{ form_errors(form.idDonante) }}
         {{ form_widget(form.idDonante) }} </td></tr>
        <tr><td> 
-        {{ form_label(form.pesoDonante, 'Peso en Kg') }}
+        {{ form_label(form.pesoDonante, 'Peso') }}
         {{ form_errors(form.pesoDonante) }}
-        {{ form_widget(form.pesoDonante) }} </td>
+        {{ form_widget(form.pesoDonante,  { 'attr': {'title': 'Peso en Kg'} }) }} </td>
     <td> 
         {{ form_label(form.tallaDonante) }}
         {{ form_errors(form.tallaDonante) }}
-        {{ form_widget(form.tallaDonante) }} </td>
+        {{ form_widget(form.tallaDonante,  { 'attr': {'title': 'Talla en cm'} }) }} </td>
  
    <td> {{ form_label(form.imc) }}
         {{ form_errors(form.imc) }}
-        {{ form_widget(form.imc) }} </td>  </tr>
+        {{ form_widget(form.imc,  { 'attr': {'title': 'Peso Kg/Talla cm^2'} }) }} </td>  </tr>
                    
                    
    <tr><td > 
@@ -118,12 +118,10 @@ elemento.style.visibility = visible ? "visible" : "hidden";
    
     {{ form_end(form) }}
 
-
-        <ul class="record_actions">
-    <li>
+<table align = "center">
+    <tr><td>
         <a href="{{ path('blhhistoriaactual') }}">
-            Back to the list
+            Ver listado
         </a>
-    </li>
-</ul>
+   </td></tr></table>
 {% endblock %}

@@ -57,22 +57,22 @@ elemento.style.visibility = visible ? "visible" : "hidden";
     <tr><td colspan = "2" align = "center"> Formula Obstetrica <br>
         {{ form_label(form.formulaObstetricaG, 'G') }}
         {{ form_errors(form.formulaObstetricaG) }}
-        {{ form_widget(form.formulaObstetricaG,  { 'attr': {'size': '2'} }) }}  
+        {{ form_widget(form.formulaObstetricaG,  { 'attr': {'size': '2', 'title':'Embarazos'} }) }}  
         {{ form_label(form.formulaObstetricaP1, 'P') }}
         {{ form_errors(form.formulaObstetricaP1) }}
-        {{ form_widget(form.formulaObstetricaP1,  { 'attr': {'size': '2'} }) }}
+        {{ form_widget(form.formulaObstetricaP1,  { 'attr': {'size': '2', 'title':'Partos'} }) }}
         {{ form_label(form.formulaObstetricaP2, 'P') }}
         {{ form_errors(form.formulaObstetricaP2) }}
-        {{ form_widget(form.formulaObstetricaP2,  { 'attr': {'size': '2'} }) }}
+        {{ form_widget(form.formulaObstetricaP2,  { 'attr': {'size': '2', 'title':'Prematuros'} }) }}
         {{ form_label(form.formulaObstetricaA, 'A') }}
         {{ form_errors(form.formulaObstetricaA) }}
-        {{ form_widget(form.formulaObstetricaA,  { 'attr': {'size': '2'} }) }}
+        {{ form_widget(form.formulaObstetricaA,  { 'attr': {'size': '2', 'title':'Abortos'} }) }}
         {{ form_label(form.formulaObstetricaV, 'V') }}
         {{ form_errors(form.formulaObstetricaV) }}
-        {{ form_widget(form.formulaObstetricaV,  { 'attr': {'size': '2'} }) }}
+        {{ form_widget(form.formulaObstetricaV,  { 'attr': {'size': '2', 'title':'Vivos'} }) }}
         {{ form_label(form.formulaObstetricaM, 'M') }}
         {{ form_errors(form.formulaObstetricaM) }}
-        {{ form_widget(form.formulaObstetricaM,  { 'attr': {'size': '2'} }) }}</td>  
+        {{ form_widget(form.formulaObstetricaM,  { 'attr': {'size': '2', 'title':'Muertos'} }) }}</td>  
  
    <td align = "left"><font color="red" >*</font> 
         {{ form_label(form.periodoIntergenesico) }}
@@ -154,7 +154,7 @@ elemento.style.visibility = visible ? "visible" : "hidden";
         {{ form_label(form.amenorrea) }}
        &nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         {{ form_errors(form.amenorrea) }}
-        {{ form_widget(form.amenorrea,  { 'attr': {'size': '4'} }) }}</td></tr>
+        {{ form_widget(form.amenorrea,  { 'attr': {'size': '4', 'title': 'Semanas'} }) }}</td></tr>
     
    <tr><td align = "left"><font color="red" size = "2" face = "Comic Sans MS">* Campos requeridos</font>   </td>
       <td colspan = '2' align = 'left'>&nbsp; &nbsp;&nbsp; &nbsp;
@@ -170,11 +170,11 @@ elemento.style.visibility = visible ? "visible" : "hidden";
    </table>
    
     {{ form_end(form) }}
-        <ul class="record_actions">
-    <li>
+<table align = "center">
+    <tr><td>
+        
         <a href="{{ path('blhhistorialclinico') }}">
             Ver listado
         </a>
-    </li>
-</ul>
+   </td></tr></table>
 {% endblock %}

@@ -113,20 +113,10 @@
         {{ form_widget(form.idMunicipio,  { 'attr': {'required': 'true'} }) }} </td>
        
         <td align = "left">
-  &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
-  &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
-  &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
-  &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
-  &nbsp; 
-  <font color="black">999999-9999 <br>
-  &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
-  &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
-  &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
-  &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;correlativo-anio</font><br>    
-        {{ form_label(form.registro) }} &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; 
-                                        &nbsp; &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; 
+     
+        {{ form_label(form.registro) }}                                       
         {{ form_errors(form.registro) }}
-        {{ form_widget(form.registro) }} </td>
+        {{ form_widget(form.registro,  { 'attr': {'title': '999999-9999 correlativo-anio'} }) }} </td>
   
   
   <td align = "left">
@@ -136,20 +126,20 @@
       </tr>
       
       <tr>
-       <td align = "left"  title="prueba"> 
-    &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
-  &nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
-  <font color="black">9999-9999</font><br> 
+       <td align = "left" > 
+   
+
+  
+
         {{ form_label(form.telefonoFijo) }}&nbsp;&nbsp;&nbsp;&nbsp;
         {{ form_errors(form.telefonoFijo) }}
-        {{ form_widget(form.telefonoFijo) }} </td>
+        {{ form_widget(form.telefonoFijo,  { 'attr': {'title': '9999-9999'} }) }} </td>
        <td align = "left" > 
-  &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
-  &nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
-  <font color="black">9999-9999</font><br> 
+
+  
         {{ form_label(form.telefonoMovil) }} &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;                                             
         {{ form_errors(form.telefonoMovil) }}
-        {{ form_widget(form.telefonoMovil) }} </td>
+        {{ form_widget(form.telefonoMovil,  { 'attr': {'title': '9999-9999'} }) }} </td>
        <td align = "left" WIDTH = "10"><font color="red">*</font> 
         {{ form_label(form.observaciones) }} 
         {{ form_errors(form.observaciones) }}
@@ -169,11 +159,9 @@
     
 {{ form_end(form) }}
 
-        <ul class="record_actions">
-    <li>
+    <table align = "center">
+        <tr><td>
         <a href="{{ path('blhdonante') }}">
-            Ver listado
-        </a>
-    </li>
-</ul>
+            Ver listado</a>
+        </td></tr></table>
 {% endblock %}

@@ -7,7 +7,7 @@
 
 {{parent()}}
 
-<script type="text/javascript" src="{{ asset('bundles/siblhmantenimiento/js/BlhReceptor/index.js') }}" ></script>
+<script type="text/javascript" src="{{ asset('bundles/siblhmantenimiento/js/BlhReceptor/new.js') }}" ></script>
        
 {% endblock %}
 
@@ -73,7 +73,7 @@ elemento.style.visibility = visible ? "visible" : "hidden";
 
     {{ form_start(form) }}
     {{ form_errors(form) }}
-    <table align = "center" WIDTH = "90%">
+    <table align = "center" WIDTH = "90%" >
         <tr>
     <td align = left>
         {{ form_label(form.fechaRegistroBlh) }}
@@ -107,7 +107,7 @@ elemento.style.visibility = visible ? "visible" : "hidden";
         </td>
     </tr>
     
-    </table>
+    </table >
     
   
     
@@ -115,17 +115,17 @@ elemento.style.visibility = visible ? "visible" : "hidden";
         <tr><td align = left><font color="red">*</font>
         {{ form_label(form.edadGestFur) }}
         {{ form_errors(form.edadGestFur) }}
-        {{ form_widget(form.edadGestFur) }} </td> 
+        {{ form_widget(form.edadGestFur,  { 'attr': {'title': 'Semanas'} }) }} </td> 
                     
        <td align = left><font color="red">*</font>
-        {{ form_label(form.pesoReceptor, 'peso al nacer(gramos)') }}
+        {{ form_label(form.pesoReceptor, 'peso al nacer') }}
         {{ form_errors(form.pesoReceptor) }}
-        {{ form_widget(form.pesoReceptor) }} </td> 
+        {{ form_widget(form.pesoReceptor,  { 'attr': {'title': 'Peso en gramos'} }) }} </td> 
            
        <td align = left>
-        {{ form_label(form.tallaIngreso, 'Talla al nacer (cm)') }}
+        {{ form_label(form.tallaIngreso, 'Talla al nacer') }}
         {{ form_errors(form.tallaIngreso) }}
-        {{ form_widget(form.tallaIngreso) }} </td></tr>
+        {{ form_widget(form.tallaIngreso,  { 'attr': {'title': 'Talla en cm'} }) }} </td></tr>
        
        <tr><td align = left><font color="red">*</font>
         {{ form_label(form.pc) }}
@@ -133,7 +133,7 @@ elemento.style.visibility = visible ? "visible" : "hidden";
           &nbsp; &nbsp;&nbsp; &nbsp;
           &nbsp; &nbsp;&nbsp; &nbsp; 
           &nbsp; &nbsp;&nbsp;
-        {{ form_widget(form.pc) }} </td> 
+        {{ form_widget(form.pc,  { 'attr': {'title': 'Perimetro cefalico'} }) }} </td> 
                    
        <td align = left>
           &nbsp; &nbsp;&nbsp; &nbsp;
@@ -148,7 +148,7 @@ elemento.style.visibility = visible ? "visible" : "hidden";
        <td align = left><font color="red">*</font>
         {{ form_label(form.edadGestBallard) }}
         {{ form_errors(form.edadGestBallard) }}
-        {{ form_widget(form.edadGestBallard) }} </td></tr>
+        {{ form_widget(form.edadGestBallard,  { 'attr': {'title': 'Semanas'} }) }} </td></tr>
        
        <tr>
         
@@ -208,17 +208,17 @@ elemento.style.visibility = visible ? "visible" : "hidden";
         {{ form_errors(form.duracionNpt) }}
         {{ form_widget(form.duracionNpt) }} </td> 
         
-  <td style="visibility:visible" align = left>
+  <td style="visibility:hidden" align = left >
         {{ form_label(form.clasificacionLubchengo, 'cl') }}
         {{ form_errors(form.clasificacionLubchengo) }}
         {{ form_widget(form.clasificacionLubchengo,  { 'attr': {'size': '3'} }) }}  </td>
     
     </tr>
     <tr><td  align = "left"><font color="red" size = "2" face = "Comic Sans MS">* Campos requeridos</font>   </td>
-      <td colspan = '2' align = 'left'>&nbsp; &nbsp;&nbsp; &nbsp;
-                                       &nbsp; &nbsp;&nbsp; &nbsp; 
-                                       &nbsp; &nbsp;&nbsp; &nbsp;
-                                       &nbsp; &nbsp;&nbsp; &nbsp;
+      <td colspan = '2' align = 'left' style="visibility:hidden">
+        {{ form_label(form.codigoReceptor) }}
+        {{ form_errors(form.codigoReceptor) }}
+        {{ form_widget(form.codigoReceptor) }}
          </td>
       
   </tr>
@@ -235,13 +235,10 @@ elemento.style.visibility = visible ? "visible" : "hidden";
       {{ form_end(form) }}
     
      
-    
-        <ul class="record_actions">
-    <li>
+     <table align = "center">
+        <tr><td>
         <a href="{{ path('blhreceptor') }}">
-            Back to the list
-        </a>
-    </li>
-</ul>
+           Ver listado</a>
+        </td></tr></table>
      
 {% endblock %}

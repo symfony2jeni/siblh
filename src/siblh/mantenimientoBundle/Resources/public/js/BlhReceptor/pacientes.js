@@ -5,7 +5,7 @@ $(document).ready(function() {
         rowNum:20, 
         height:300,
         gridview: true, 
-        caption: "Seleccione la donante",
+        caption: "Seleccione el paciente",
         
         
         colModel :[

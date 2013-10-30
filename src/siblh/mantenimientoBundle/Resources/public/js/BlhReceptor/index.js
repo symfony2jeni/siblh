@@ -1,6 +1,6 @@
-$(document).ready(function() {
-
- tableToGrid("#listado_receptores", {
+$(document).ready(function() { 
+     $.noConflict();
+	tableToGrid("#listado_receptores", {
         pager : '#pagerreceptores',
         rowNum:10, 
         gridview: true, 

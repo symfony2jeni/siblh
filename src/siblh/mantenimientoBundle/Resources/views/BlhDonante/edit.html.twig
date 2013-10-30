@@ -1,16 +1,58 @@
-{% extends '::base.html.twig' %}
+{% extends 'siblhmantenimientoBundle::plantilla.html.twig' %}
 
 {% block body -%}
-    <h1>BlhDonante edit</h1>
+    <h1>Editar Donante</h1>
+    
+     <table class="records_list" border = "1"  align = "center" bordercolor="#848484">
+         
+         <tr><th bgcolor="#2E9AFE">Primer Nombre</th>
+        <td>{{ form(edit_form.primerNombre) }}</td></tr>
+        <tr><th bgcolor="#2E9AFE">Segundo Nombre</th>
+        <td>{{ form(edit_form.segundoNombre) }}</td></tr>
+        <tr><th bgcolor="#2E9AFE">Primer Apellido</th>
+        <td>{{ form(edit_form.primerApellido) }}</td></tr>
+        <tr><th bgcolor="#2E9AFE">Segundo Apellido</th>
+        <td>{{ form(edit_form.segundoApellido) }}</td></tr>
+        <tr><th bgcolor="#2E9AFE">Fecha Nacimiento</th>
+        <td>{{ form(edit_form.fechaNacimiento) }}</td></tr>
+        <tr><th bgcolor="#2E9AFE">Telefono</th>
+        <td>{{ form(edit_form.telefonoFijo) }}</td></tr>
+        <tr><th bgcolor="#2E9AFE">Celular</th>
+        <td>{{ form(edit_form.telefonoMovil) }}</td></tr>
+        <tr><th bgcolor="#2E9AFE">Direccion</th>
+        <td>{{ form(edit_form.direccion) }}</td></tr>
+         <tr><th bgcolor="#2E9AFE">Procedencia</th>
+        <td>{{ form(edit_form.procedencia) }}</td></tr>
+        <tr><th bgcolor="#2E9AFE">Registro</th>
+        <td>{{ form(edit_form.registro) }}</td></tr>
+        <tr><th bgcolor="#2E9AFE">Numero Documento</th>
+        <td>{{ form(edit_form.numeroDocumentoIdentificacion) }}</td></tr>
+         <tr><th bgcolor="#2E9AFE">Documento Identificacion</th>
+        <td>{{ form(edit_form.documentoIdentificacion) }}</td></tr>
+         <tr><th bgcolor="#2E9AFE">Ocupacion</th>
+        <td>{{ form(edit_form.ocupacion) }}</td></tr>
+         <tr><th bgcolor="#2E9AFE">Estado Civil</th>
+        <td>{{ form(edit_form.estadoCivil) }}</td></tr>
+         <tr><th bgcolor="#2E9AFE">Nacionalidad</th>
+        <td>{{ form(edit_form.nacionalidad) }}</td></tr>
+         <tr><th bgcolor="#2E9AFE">Escolaridad</th>
+        <td>{{ form(edit_form.escolaridad) }}</td></tr>
+         <tr><th bgcolor="#2E9AFE">Tipo Colecta</th>
+        <td>{{ form(edit_form.tipoColecta) }}</td></tr>
+         <tr><th bgcolor="#2E9AFE">Observaciones</th>
+        <td>{{ form(edit_form.observaciones) }}</td></tr>
+        <tr><th bgcolor="#2E9AFE">Municipio</th>
+        <td>{{ form(edit_form.idMunicipio) }}</td></tr>
+         
 
-    {{ form(edit_form) }}
+         
+          </table>
 
-        <ul class="record_actions">
-    <li>
+    <table>
+        <tr>
+            <td>
         <a href="{{ path('blhdonante') }}">
             Back to the list
-        </a>
-    </li>
-    <li>{{ form(delete_form) }}</li>
-</ul>
+        </td></tr></table>
+
 {% endblock %}
