@@ -76,7 +76,7 @@ _NewHistorialClinico:
     defaults: { _controller: siblhmantenimientoBundle:BlhHistorialClinico:new}
     
 _NewHistoriaActual:
-    pattern:  /HistoriaActual/Nueva
+    pattern:  /donantesHA/
     defaults: { _controller: siblhmantenimientoBundle:BlhHistoriaActual:new}  
     
 _NewCurva:
@@ -89,7 +89,7 @@ _NewAnalisisMicro:
  
 
 _NewFrascoRecolectado:
-    pattern:  /blhfrascorecolectado/
+    pattern:  /donaciones/
     defaults: { _controller: siblhmantenimientoBundle:BlhFrascoRecolectado:donaciones} 
 
 _MantenimientoUsuarios:

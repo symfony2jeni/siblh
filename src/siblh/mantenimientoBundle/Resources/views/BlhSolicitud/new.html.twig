@@ -20,7 +20,7 @@
     <h1>Registro de Solicitudes de Leche Humana</h1>
     
    
-   <table align = "center" width = "81%" >
+   <table align = "center" width = "100%" >
         <tr><td colspan=2 align = "right" height=40  ></td></tr>
        <tr>
        <td colspan = "2" align = "right"><b>Servicio</b></td>
@@ -87,7 +87,7 @@
         </tr>
         </table>
     
-        <table align = "center" width = "81%" >
+        <table align = "center" width = "100%" >
         <tr>
         <td width=141 align = "right"><b>Diagnóstico</b></td>
                 <td width=642 align = "left">
@@ -97,20 +97,20 @@
         <tr><td colspan="3" align = "right" height=40  ></td></tr>
         </table>
    
-        <table align = "center" width = "71%">
+        <table align = "center" width = "100%">
           
         <tr>
-        <td   colspan="1" align = "right" title='Ingrese la fecha de registro de la solicitud'><font color="red">*</font> 
+        <td   colspan="1" align = "right"><font color="red">*</font> 
                 
                 {{ form_label(form.fechaSolicitud, 'Fecha') }}
                 {{ form_errors(form.fechaSolicitud) }}
                 {{ form_widget(form.fechaSolicitud) }} </td>
-        <td   colspan="3" align = "right" title='Ingrese el numero de cuna del receptor'><font color="red">*</font> 
+        <td   colspan="3" align = "right" ><font color="red">*</font> 
                 
-                {{ form_label(form.cuna) }}
+                {{ form_label(form.cuna,'No. de cuna') }}
                 {{ form_errors(form.cuna) }}
                 {{ form_widget(form.cuna) }} </td>
-        <td colspan="3" align = "right" title='Ingrese el peso del receptor en gramos'><font color="red">*</font> 
+        <td colspan="3" align = "right"><font color="red">*</font> 
                 
                 {{ form_label(form.pesoDia, 'Peso del paciente(g)') }}
                 {{ form_errors(form.pesoDia) }}
@@ -118,19 +118,19 @@
           </tr>
         <tr><td colspan=2 align = "right" height=10  ></td></tr>
       <tr>
-           <td colspan="1" align = "right" title='Ingrese el volumen por cada toma en mililitros' ><font color="red">*</font> 
+           <td colspan="1" align = "right" ><font color="red">*</font> 
                 
                 {{ form_label(form.volumenPorToma,'Volumen por toma (ml)') }}
                 {{ form_errors(form.volumenPorToma) }}
                 {{ form_widget(form.volumenPorToma) }} </td>
       
           
-        <td  colspan="3" align = "right" title='Ingrese la cantidad de tomas diarias del receptor'><font color="red">*</font> 
+        <td  colspan="3" align = "right"><font color="red">*</font> 
                 
                 {{ form_label(form.tomaPorDia, 'Tomas por día') }}
                 {{ form_errors(form.tomaPorDia) }}
                 {{ form_widget(form.tomaPorDia) }} </td>
-        <td colspan="3" align = "right" title='Ingrese las calorias necesarias para el receptor'><font color="red">*</font> 
+        <td colspan="3" align = "right"><font color="red">*</font> 
                 
                 {{ form_label(form.caloriasNecesarias,'Calorías necesarias') }}
                 {{ form_errors(form.caloriasNecesarias) }}
@@ -151,7 +151,7 @@
                 {{ form_errors(form.volumenPorDia) }}
                 {{ form_widget(form.volumenPorDia, {'attr':{ 'readonly': 'true' } }) }} </td>
         
-        <td colspan="3" align = "right" title='Ingrese el nombre del responsable del receptor'> 
+        <td colspan="3" align = "right"> 
                 
                 {{ form_label(form.responsable) }}
                 {{ form_errors(form.responsable) }}
@@ -161,7 +161,7 @@
         <tr>
             
         
-        <td colspan="3" align = "right" style="visibility:true"> 
+        <td colspan="3" align = "right" style="visibility:hidden"> 
                 
                 {{ form_label(form.estado) }}
                 {{ form_errors(form.estado) }}
@@ -170,7 +170,7 @@
         </tr>
         <tr><td colspan=2 align = "right" height=30  ></td></tr>
         </table>
-        <table align = "center" width = "81%">
+        <table align = "center" width = "100%">
         <tr>
             <td width=135 align = 'left'  ><font color="red">* Campos Requeridos</font></td>
              <td width=900 align = 'right' > <input type='submit' id="boton" title="Guardar Solicitud"  value="Guardar"/></td>              

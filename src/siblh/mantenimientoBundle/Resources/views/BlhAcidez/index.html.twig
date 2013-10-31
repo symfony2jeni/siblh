@@ -1,19 +1,27 @@
 {% extends  'siblhmantenimientoBundle::plantilla.html.twig'%}
 
-{% block body -%}
-    <h1>BlhAcidez list</h1>
+{% block javascripts %}
+    {{parent()}}
+    <script type="text/javascript" src="{{ asset('bundles/siblhmantenimiento/js/BlhAcidez/index.js') }}" ></script>
+{% endblock %}
 
-    <table class="records_list">
+{% block body -%}
+    <h1>Litado resultados de acidez dornic</h1>
+    
+        <link href="{{asset('bundles/jquery/jquery.jqGrid-4.5.4/css/ui.jqgrid.css')}}" rel="stylesheet"  type="text/css" media="all"/>  
+     <script type="text/javascript" src="{{asset('bundles/jquery/jquery.jqGrid-4.5.4/js/i18n/grid.locale-es.js')}}"></script>
+      <script type="text/javascript" src="{{asset('bundles/jquery/jquery.jqGrid-4.5.4/js/jquery.jqGrid.min.js')}}" ></script>
+
+    <table id="listado_Acidez">
         <thead>
             <tr>
-                <th>Id</th>
-                <th>Acidez1</th>
-                <th>Acidez2</th>
-                <th>Acidez3</th>
+                <th>Acidez&nbsp;1</th>
+                <th>Acidez&nbsp;2</th>
+                <th>Acidez&nbsp;3</th>
                 <th>Factor</th>
                 <th>Resultado</th>
-                <th>Mediaacidez</th>
-                <th>Actions</th>
+                <th>Media&nbsp;Acidez</th>
+                <th>Acción</th>
             </tr>
         </thead>
         <tbody>
@@ -25,17 +33,11 @@
                 <td>{{ entity.factor }}</td>
                 <td>{{ entity.resultado }}</td>
                 <td>{{ entity.mediaAcidez }}</td>
-                <td>
-                <ul>
-                    <li>
-                        <a href="{{ path('blhacidez_edit', { 'id': entity.id }) }}">Editar</a>
-                    </li>
-                </ul>
-                </td>
-            </tr>
+                <td><a href="{{ path('blhacidez_edit', { 'id': entity.id }) }}"><font color="blue"><u>Editar</u></font></a></td>
+                  
         {% endfor %}
         </tbody>
     </table>
-
+ <div id='pagerAcidez'></div>
       
     {% endblock %}

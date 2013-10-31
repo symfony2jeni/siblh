@@ -1,17 +1,27 @@
 {% extends  'siblhmantenimientoBundle::plantilla.html.twig'%}
 
-{% block body -%}
-    <h1>Listado de analisis </h1>
+{% block javascripts %}
+    {{parent()}}
+    <script type="text/javascript" src="{{ asset('bundles/siblhmantenimiento/js/BlhAnalisisSensorial/index.js') }}" ></script>
+{% endblock %}
 
-    <table class="records_list">
+
+{% block body -%}
+     <link href="{{asset('bundles/jquery/jquery.jqGrid-4.5.4/css/ui.jqgrid.css')}}" rel="stylesheet"  type="text/css" media="all"/>  
+     <script type="text/javascript" src="{{asset('bundles/jquery/jquery.jqGrid-4.5.4/js/i18n/grid.locale-es.js')}}"></script>
+      <script type="text/javascript" src="{{asset('bundles/jquery/jquery.jqGrid-4.5.4/js/jquery.jqGrid.min.js')}}" ></script>
+    
+    <h1>Listado de analisis sensorial </h1>
+
+    <table id="listado_Sensorial">
         <thead>
             <tr>
                 <th>Embalaje</th>
                 <th>Suciedad</th>
                 <th>Color</th>
                 <th>Olor</th>
-                <th>Observacion</th>
-                <th>Actions</th>
+                <th>Observación</th>
+                <th>Acción</th>
             </tr>
         </thead>
         <tbody>
@@ -22,17 +32,12 @@
                 <td>{{ entity.color }}</td>
                 <td>{{ entity.flavor }}</td>
                 <td>{{ entity.observacion }}</td>
-                <td>
-                <ul>
-                    <li>
-                        <a href="{{ path('blhanalisissensorial_edit', { 'id': entity.id }) }}">Editar</a>
-                    </li>
-                </ul>
-                </td>
+                <td><a href="{{ path('blhanalisissensorial_edit', { 'id': entity.id }) }}"><font color="blue"><u>Editar</u></font></a></td>
+             
             </tr>
         {% endfor %}
         </tbody>
     </table>
-
+    <div id='pagerSensorial'></div>
     
     {% endblock %}

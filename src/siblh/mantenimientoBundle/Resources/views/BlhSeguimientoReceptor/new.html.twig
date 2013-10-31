@@ -18,7 +18,7 @@
     <h1>Registro de Seguimiento de Receptores</h1>
     
    
-   <table align = "center" width = "78%">
+   <table align = "center" width = "100%">
         <tr><td colspan=2 align = "right" height=40  ></td></tr>
          <tr>
              <td colspan = "2" align = "right"><b>Nombre del Receptor</b></td>
@@ -42,7 +42,7 @@
     
         
    
-        <table align = "center" width = "72%" >
+        <table align = "center" width = "100%" >
           
         <tr>
         <td colspan="3" align = "right" title='Ingrese la fecha del seguimiento'><font color="red">*</font>  
@@ -83,19 +83,20 @@
                 {{ form_widget(form.tallaReceptor) }} </td></tr>
         <tr><td colspan=2 align = "right" height=10  ></td></tr>
       <tr>
-          <td colspan="3" align = "right" ><font color="red">*</font>  
+          <td colspan="4" align = "left" ><font color="red">*</font>  
                 
-                {{ form_label(form.gananciaDiaTalla,'Ganancia de talla por dia(cm)') }}
+                {{ form_label(form.gananciaDiaTalla,'Ganancia de talla por día(cm)') }}
                 {{ form_errors(form.gananciaDiaTalla) }}
                 {{ form_widget(form.gananciaDiaTalla) }} </td> 
           
-        <td colspan="3" align = "right"  title='Ingrese el detalle de las complicaciones del receptor'><font color="red">*</font>  
+        <td colspan="4" align = "left"  title='Ingrese el detalle de las complicaciones del receptor'><font color="red">*</font>  
                 {{ form_label(form.complicaciones) }}
                 {{ form_errors(form.complicaciones) }}
-                {{ form_widget(form.complicaciones) }} </td></tr>
+                {{ form_widget(form.complicaciones) }} </td>
+        <td colspan=2 align = "right" height=40  ></td></tr>
         <tr><td colspan=2 align = "right" height=40  ></td></tr>
         </table>
-        <table align = "center" width = "78%" >
+        <table align = "center" width = "100%" >
         <tr>
             <td width=172 align = 'right'  ><font color="red">* Campos Requeridos</font></td>
             <td width=900 align = 'right'><input type="submit" id='boton' title='Guardar Seguimiento de Receptor' value="GUARDAR"/>{#<input type='reset' id='boton' title='Cancelar' value='Cancelar'/>#}</td>

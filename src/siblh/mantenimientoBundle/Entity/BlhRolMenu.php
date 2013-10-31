@@ -30,7 +30,7 @@ class BlhRolMenu
      *   @ORM\JoinColumn(name="id_menu", referencedColumnName="id")
      * })
      */
-    private $idMenu;
+    public $idMenu;
 
     /**
      * @var \BlhRol
@@ -40,7 +40,7 @@ class BlhRolMenu
      *   @ORM\JoinColumn(name="id_rol", referencedColumnName="id")
      * })
      */
-    private $idRol;
+    public $idRol;
 
 
 
