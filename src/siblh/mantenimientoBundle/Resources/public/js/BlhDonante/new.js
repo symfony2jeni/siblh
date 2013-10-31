@@ -2,7 +2,7 @@ $(document).ready(function() {
         $('button').button();
      $.noConflict();
      $.datepicker.setDefaults($.datepicker.regional["es"]);
-   $('input[id$="_fechaNacimiento"]').datepicker({ dateFormat: 'yy-MM-dd',  
+   $('input[id$="_fechaNacimiento"]').datepicker({ dateFormat: 'yy-mm-dd',  
                            changeMonth: true,
                            changeYear: true,
                            clearStatus: 'Borra fecha actual',  
@@ -15,7 +15,7 @@ $(document).ready(function() {
                                              "Jul", "Ago", "Sep", "Oct", "Nov", "Dic"]
                           });
                           
-     $('input[id$="_fechaRegistroDonanteBlh"]').datepicker({ dateFormat: 'yy-MM-dd',  
+     $('input[id$="_fechaRegistroDonanteBlh"]').datepicker({ dateFormat: 'yy-mm-dd',  
                            changeMonth: true,
                            changeYear: true,
                            clearStatus: 'Borra fecha actual',  

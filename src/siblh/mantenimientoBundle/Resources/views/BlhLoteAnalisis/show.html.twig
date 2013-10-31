@@ -1,4 +1,4 @@
-{% extends '::base.html.twig' %}
+{% extends 'siblhmantenimientoBundle::plantilla.html.twig' %}
 
 {% block body -%}
     <h1>BlhLoteAnalisis</h1>
@@ -15,7 +15,7 @@
             </tr>
             <tr>
                 <th>Fechaanalisisfisicoquimico</th>
-                <td>{{ entity.fechaAnalisisFisicoQuimico|date('Y-m-d H:i:s') }}</td>
+                <td>{{ entity.fechaAnalisisFisicoQuimico|date('d-m-Y') }}</td>
             </tr>
             <tr>
                 <th>Responsableanalisis</th>

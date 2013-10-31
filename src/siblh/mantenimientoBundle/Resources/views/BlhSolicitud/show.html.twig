@@ -1,7 +1,8 @@
-{% extends '::base.html.twig' %}
 
+{% extends ajax ? "siblhmantenimientoBundle::plantilla.html_ajax.twig" :
+                    "siblhmantenimientoBundle::plantilla.html.twig" %}
 {% block body -%}
-    <h1>BlhSolicitud</h1>
+    <h1>Solicitud</h1>
 
     <table class="record_properties">
         <tbody>
@@ -39,7 +40,7 @@
             </tr>
             <tr>
                 <th>Fechasolicitud</th>
-                <td>{{ entity.fechaSolicitud|date('Y-m-d H:i:s') }}</td>
+                <td>{{ entity.fechaSolicitud|date('d-m-Y') }}</td>
             </tr>
             <tr>
                 <th>Cuna</th>
@@ -59,14 +60,14 @@
         <ul class="record_actions">
     <li>
         <a href="{{ path('blhsolicitud') }}">
-            Back to the list
+            Regresar a Lista de Solicitudes
         </a>
     </li>
     <li>
         <a href="{{ path('blhsolicitud_edit', { 'id': entity.id }) }}">
-            Edit
+            Editar
         </a>
-    </li>
+    {#</li>
     <li>{{ form(delete_form) }}</li>
-</ul>
+</ul>#}
 {% endblock %}

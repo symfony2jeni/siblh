@@ -1,12 +1,11 @@
-{% extends '::base.html.twig' %}
+{% extends 'siblhmantenimientoBundle::plantilla.html.twig' %}
 
 {% block body -%}
-    <h1>BlhCrematocrito list</h1>
+    <h1>Listado de analisis de crematocrito</h1>
 
     <table class="records_list">
         <thead>
             <tr>
-                <th>Id</th>
                 <th>Crema1</th>
                 <th>Crema2</th>
                 <th>Crema3</th>
@@ -23,7 +22,6 @@
         <tbody>
         {% for entity in entities %}
             <tr>
-                <td><a href="{{ path('blhcrematocrito_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
                 <td>{{ entity.crema1 }}</td>
                 <td>{{ entity.crema2 }}</td>
                 <td>{{ entity.crema3 }}</td>
@@ -37,10 +35,7 @@
                 <td>
                 <ul>
                     <li>
-                        <a href="{{ path('blhcrematocrito_show', { 'id': entity.id }) }}">show</a>
-                    </li>
-                    <li>
-                        <a href="{{ path('blhcrematocrito_edit', { 'id': entity.id }) }}">edit</a>
+                        <a href="{{ path('blhcrematocrito_edit', { 'id': entity.id }) }}">Editar</a>
                     </li>
                 </ul>
                 </td>
@@ -49,11 +44,4 @@
         </tbody>
     </table>
 
-        <ul>
-        <li>
-            <a href="{{ path('blhcrematocrito_new') }}">
-                Create a new entry
-            </a>
-        </li>
-    </ul>
     {% endblock %}

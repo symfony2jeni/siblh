@@ -116,6 +116,9 @@ $('#siblh_mantenimientobundle_blhhistorialclinico_numeroControl').
 $('#siblh_mantenimientobundle_blhhistorialclinico_amenorrea').
         attr('data-bvalidator-msg', "El valor debe estar entre 1 y 38"); 
 
+<<<<<<< HEAD
+});
+=======
  //Opciones del validador
     var optionsRed = { 
         classNamePrefix: 'bvalidator_red_', 
@@ -144,3 +147,4 @@ $('#siblh_mantenimientobundle_blhhistorialclinico_amenorrea').
            });
 
 });
+>>>>>>> 3899c6647e42cf42b1e4acec41ebe1f51b6a8ba1

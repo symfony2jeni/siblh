@@ -12,70 +12,54 @@ siblhmantenimiento:
     type:     annotation
     prefix:   /
 
+#FOSUSERBUNDLE    
+fos_user_security:
+    resource: "@FOSUserBundle/Resources/config/routing/security.xml"
 
+
+sonata_user_profile:
+    resource: "@SonataUserBundle/Resources/config/routing/profile.xml"
+    prefix: /profile
+
+
+fos_user_register:
+    resource: "@FOSUserBundle/Resources/config/routing/registration.xml"
+    prefix: /register
+
+fos_user_resetting:
+    resource: "@FOSUserBundle/Resources/config/routing/resetting.xml"
+    prefix: /resetting
+
+fos_user_change_password:
+    resource: "@FOSUserBundle/Resources/config/routing/change_password.xml"
+    prefix: /profile
     
+#PARA SONATAADMINBUNDLE
+sonata_page_cache:
+    resource: '@SonataCacheBundle/Resources/config/routing/cache.xml'
+    prefix: /
+    
+admin:
+    resource: '@SonataAdminBundle/Resources/config/routing/sonata_admin.xml'
+    prefix: /admin
 
+_sonata_admin:
+    resource: .
+    type: sonata_admin
+    prefix: /admin
+
+sonata_user:
+    resource: '@SonataUserBundle/Resources/config/routing/admin_security.xml'
+    prefix: /admin
 
 #DIRECCIONANDO EL MENU
-
-
-
 
     
 _home:
     pattern:  /inicio
     defaults: { _controller: siblhmantenimientoBundle:Default:index}
-
-siblh_hello_homepage:
-    pattern:  /admin/
-    defaults: { _controller: siblhmantenimientoBundle:Default:index }
-
-siblh_hello_projects:
-    pattern:  /admin/projects
-    defaults: { _controller: siblhmantenimientoBundle:Default:projects }
-
-siblh_hello_projects_add:
-    pattern:  /admin/projects/add
-    defaults: { _controller: siblhmantenimientoBundle:Default:addProject }
-
-siblh_hello_employees:
-    pattern:  /admin/employees
-    defaults: { _controller: siblhmantenimientoBundle:Default:employees }
-
-siblh_hello_employees_add:
-    pattern:  /admin/employees/add
-    defaults: { _controller: siblhmantenimientoBundle:Default:addEmployee }
-
-siblh_hello_profile:
-    pattern:  /admin/profile
-    defaults: { _controller: siblhmantenimientoBundle:Default:profile }
-
-
-acme_hello_homepage:
-    pattern:  /admin/
-    defaults: { _controller: siblhmantenimientoBundle:Default:index }
     
 
-    
-acme_hello_projects:
-    pattern:  /admin/projects
-    defaults: { _controller: siblhmantenimientoBundle:Default:projects }
-
-acme_hello_projects_add:
-    pattern:  /admin/projects/add
-    defaults: { _controller: siblhmantenimientoBundle:Default:addProject }
-
-acme_hello_employees:
-    pattern:  /admin/employees
-    defaults: { _controller: siblhmantenimientoBundle:Default:employees }
-
-acme_hello_employees_add:
-    pattern:  /admin/employees/add
-    defaults: { _controller: siblhmantenimientoBundle:Default:addEmployee }
-
-acme_hello_profile:
-    pattern:  /admin/profile
-    defaults: { _controller: siblhmantenimientoBundle:Default:profile }
 
 
 
@@ -123,12 +107,19 @@ _NewTemperaturaE:
 _MantenimientoUsuarios:
   pattern:  /Mantenimiento/Usuarios
   defaults: { _controller: SonataAdminBundle:Core:dashboard} 
+
+_NewSeguimiento:
+  pattern:  /receptores/seguimiento
+  defaults: { _controller: siblhmantenimientoBundle:BlhSeguimientoReceptor:receptoresSeguimiento}    
   
 _NewSolicitudes:
   pattern:  /receptores_solicitud
   defaults: { _controller: siblhmantenimientoBundle:BlhSolicitud:receptores}  
   
-  
+_NewAnalisisFisico:
+  pattern:  /frascos/analisis
+  defaults: { _controller: siblhmantenimientoBundle:BlhFrascoRecolectado:frascosAnalisis}    
+
 _NewTempPasteurizacion:
   pattern:  /blhtemppasteurizacion/
   defaults: { _controller: siblhmantenimientoBundle:BlhTemperaturaPasteurizacion:pasteurizaciones} 
@@ -138,4 +129,5 @@ _NewInformacionPublica:
   defaults: { _controller: siblhmantenimientoBundle:BlhInformacionPublica:new} 
   
   
+
   

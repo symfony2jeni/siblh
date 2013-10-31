@@ -1,15 +1,152 @@
-{% extends '::base.html.twig' %}
+{% extends  'siblhmantenimientoBundle::plantilla.html.twig'%}
+
+
+{% block stylesheets %}
+    {{ parent() }}
+	<link href="{{ asset('bundles/siblhmantenimiento/css/form.css') }}" rel="stylesheet" type="text/css" />
+ 
+{% endblock %}
+        
+{% block javascripts %}
+
+{{parent()}}
+
+<script type="text/javascript" src="{{ asset('bundles/siblhmantenimiento/js/BlhCrematocrito/new.js') }}" ></script>
+        
+{% endblock %}
 
 {% block body -%}
-    <h1>BlhCrematocrito creation</h1>
-
-    {{ form(form) }}
-
-        <ul class="record_actions">
-    <li>
-        <a href="{{ path('blhcrematocrito') }}">
-            Back to the list
-        </a>
-    </li>
-</ul>
+   
+    <h1>Registro de Crematocrito</h1>
+    
+   
+   <table align = "center" width = "90%">
+        <tr><td colspan=2 align = "right" height=40  ></td></tr>
+       <tr>
+       <td colspan = "2" align = "right"><b>Donante</b></td>
+                <td colspan = "4" align = "left">
+                <INPUT type=text STYLE="text-align:center" name="nombre" disabled="disabled" size=35 readonly="readonly" value= "{{ datos_frasco[0].nombre1}}&nbsp;{{ datos_frasco[0].nombre2  }}&nbsp;{{ datos_frasco[0].apellido1 }}&nbsp;{{ datos_frasco[0].apellido2 }}">
+               </td>
+               
+               <td colspan="4" align = "left"></td>
+                {{ form_start(form) }}
+                {{ form_errors(form) }}
+             {#<td width="295" align = "left"></td>#}
+               <td colspan=4 align = "right" style="visibility:hidden"> 
+                
+                {{ form_label(form.idFrascoRecolectado) }}
+                {{ form_errors(form.idFrascoRecolectado) }}
+                {{ form_widget(form.idFrascoRecolectado) }} </td>
+               
+                
+       </tr>
+    <tr>
+                <td colspan = "2" align = "right"><b>Frasco</b></td>
+                <td colspan = "4" align = "left">
+                <INPUT type=text STYLE="text-align:center" name="nombre" disabled="disabled" size=20 readonly="readonly" value= "{{ datos_frasco[0].codigoFrascoRecolectado}}">
+               </td>
+               
+               <td colspan = "2" align = "right"><b>Volumen(ml)</b></td>
+                <td colspan = "4" align = "left">    
+                <INPUT type=text STYLE="text-align:center" name="nombre" disabled="disabled" size=20 readonly="readonly" value= "{{ datos_frasco[0].volumenRecolectado|number_format(2, '.', ',')}}">
+               </td>
+                    
+              <td colspan = "2" align = "right"><b>Volumen(onz)</b></td>
+                <td colspan = "4" align = "left">
+                <INPUT type=text STYLE="text-align:center" name="nombre" disabled="disabled" size=20 readonly="readonly" value= "{{ datos_frasco[0].onzRecolectado|number_format(2, '.', ',')}}">
+               </td>
+                
+        </tr>
+        <tr><td colspan=2 align = "right" height=40  ></td></tr>
+           
+      </table>
+   
+        <table align = "center" width = "90%">
+          
+        <tr>
+        <td   colspan="1" align = "right" >
+                
+                {{ form_label(form.crema1, 'Crema 1 (ml)') }}
+                {{ form_errors(form.crema1) }}
+                {{ form_widget(form.crema1) }} </td>
+        <td   colspan="3" align = "right">
+                
+                {{ form_label(form.crema2,'Crema 2 (ml)') }}
+                {{ form_errors(form.crema2) }}
+                {{ form_widget(form.crema2) }} </td>
+        <td colspan="3" align = "right" >
+                
+                {{ form_label(form.crema3,'Crema 3 (ml)') }}
+                {{ form_errors(form.crema3) }}
+                {{ form_widget(form.crema3) }} </td>
+          </tr>
+        <tr><td colspan=2 align = "right" height=10  ></td></tr>
+      <tr>
+           <td colspan="3" align = "right" >
+                
+                {{ form_label(form.ct1, 'Coliformes  1 (ml)') }}
+                {{ form_errors(form.ct1) }}
+                {{ form_widget(form.ct1) }} </td>
+           
+           <td colspan="1" align = "right" >
+                
+                {{ form_label(form.ct2, 'Coliformes  2 (ml)') }}
+                {{ form_errors(form.ct2) }}
+                {{ form_widget(form.ct2) }} </td>
+      
+          
+        <td  colspan="3" align = "right">
+                
+                {{ form_label(form.ct3, 'Coliformes 3 (ml)') }}
+                {{ form_errors(form.ct3) }}
+                {{ form_widget(form.ct3)}} </td>
+       
+       
+        </tr>
+         <tr><td colspan=2 align = "right" height=10  ></td></tr>
+      <tr>
+           <td colspan="3" align = "right" title='Media de crema'>
+                
+                {{ form_label(form.mediaCrema, 'Media crema(ml)') }}
+                {{ form_errors(form.mediaCrema) }}
+                {{ form_widget(form.mediaCrema) }} </td>
+           
+           <td colspan="1" align = "right" >
+                
+                {{ form_label(form.mediaCt, 'Media coliformes(ml)') }}
+                {{ form_errors(form.mediaCt) }}
+                {{ form_widget(form.mediaCt) }} </td>
+      
+          
+        <td  colspan="3" align = "right" >
+                
+                {{ form_label(form.porcentajeCrema) }}
+                {{ form_errors(form.porcentajeCrema) }}
+                {{ form_widget(form.porcentajeCrema)}} </td>
+       
+       
+        </tr>
+           <tr><td colspan=2 align = "right" height=10  ></td></tr>
+      <tr>
+           <td colspan="3" align = "right" >
+                
+                {{ form_label(form.kilocalorias) }}
+                {{ form_errors(form.kilocalorias) }}
+                {{ form_widget(form.kilocalorias) }} </td>
+        </tr>    
+           
+           
+        <tr><td colspan=2 align = "right" height=30  ></td></tr>
+       
+        </table>
+        <table align = "center" width = "90%">
+        <tr>
+            <td width=135 align = 'left'  >
+             <td width=900 align = 'right' > <input type='submit' id="boton" title="Guardar"  value="Guardar"/>{#<input type='reset' id="boton" title='Cancelar' value='Cancelar'/>#}</td>              
+          </tr>
+           </table>
+           {{ form_end(form) }}
+          
+           
+ 
 {% endblock %}

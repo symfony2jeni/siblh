@@ -579,7 +579,6 @@ class BlhReceptor
     {
         return $this->idPaciente;
     }
-
 public function __toString()
     {
        return $this->codigoReceptor;

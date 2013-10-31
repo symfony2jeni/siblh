@@ -323,8 +323,7 @@ class BlhFrascoRecolectadoController extends Controller
         );
     }
     
-    
-    
+
      /**
      * Lista de Frascos Recolectados entities.
      *

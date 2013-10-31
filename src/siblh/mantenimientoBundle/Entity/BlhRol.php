@@ -20,12 +20,12 @@ class BlhRol
      * @ORM\GeneratedValue(strategy="SEQUENCE")
      * @ORM\SequenceGenerator(sequenceName="blh_rol_id_seq", allocationSize=1, initialValue=1)
      */
-    private $id;
+    public $id;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="nombre_rol", type="string", length=15, nullable=false)
+     * @ORM\Column(name="nombre_rol", type="string", length=30, nullable=false)
      */
     private $nombreRol;
 
@@ -93,4 +93,7 @@ class BlhRol
     {
         return $this->descripcionRol;
     }
+       public function __toString() {
+            return $this->nombreRol;
+        }
 }

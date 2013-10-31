@@ -29,7 +29,7 @@ file that was distributed with this source code.
         <link rel="stylesheet" href="{{ asset('bundles/sonatajquery/themes/flick/jquery-ui-1.8.16.custom.css') }}" type="text/css" media="all" />
            
         <link rel="stylesheet" href="{{ asset('bundles/sonataadmin/bootstrap/css/bootstrap.min.css') }}" type="text/css" media="all"  />
-        <link rel="stylesheet" href="{{ asset('bundles/minsalsiaps/css/custom_bootstrap.min.css') }}" type="text/css" media="all"  />
+        <link rel="stylesheet" href="{{ asset('bundles/siblhmantenimiento/css/custom_bootstrap.min.css') }}" type="text/css" media="all"  />
         <link rel="stylesheet" href="{{ asset('bundles/sonataadmin/bootstrap/css/bootstrap-responsive.min.css') }}" type="text/css" media="all" />
 
         <!-- base application asset -->
@@ -37,8 +37,8 @@ file that was distributed with this source code.
         <link rel="stylesheet" href="{{ asset('bundles/sonataadmin/css/colors.css') }}" type="text/css" media="all" />
 
         <!-- AGREGADAS POR EQUIPO SIAPS-->
-        <link href="{{ asset('bundles/minsalsiaps/imagenes/escudo.png') }}" type="image/png" rel="Shortcut Icon" />
-        <link rel="stylesheet" href="{{ asset('bundles/minsalsiaps/css/custom_layout.css') }}" type="text/css" media="all" />     
+        <link href="{{ asset('bundles/siblhmantenimiento/imagenes/escudo.png') }}" type="image/png" rel="Shortcut Icon" />
+        <link rel="stylesheet" href="{{ asset('bundles/siblhmantenimiento/css/custom_layout.css') }}" type="text/css" media="all" />     
         {% endblock %}
 
         {% block javascripts %}
@@ -88,11 +88,14 @@ file that was distributed with this source code.
                         {% if admin_pool is defined %}
                             <div class="navbar-text pull-right">{% include admin_pool.getTemplate('user_block') %}</div>
 
+                            {% if app.security.token and is_granted('ROLE_SONATA_ADMIN') %}
+                            {% else %}
                             {%block logo %}
                                 <div id="banner" >
-                                    <img src={{ asset('bundles/minsalsiaps/imagenes/logo_salud.png') }} />
+                                    <img src={{ asset('bundles/siblhmantenimiento/imagenes/logo_salud.png') }} /> 
                                 </div>
                             {% endblock %}
+                            {% endif %} 
 
                             <div class="nav-collapse">
                                 <ul class="nav">
@@ -205,9 +208,9 @@ file that was distributed with this source code.
                     </div>
                 </div>
             </div>
-            <div id="divpie">
-                <img src={{ asset('bundles/minsalsiaps/imagenes/pie_siaps.png') }} />
-            </div>
+           {# <div id="divpie">
+                <img src={{ asset('bundles/siblhmantenimiento/imagenes/pie_siaps.png') }} />
+            </div>#}
         </div>
     </body>
 </html>

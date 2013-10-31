@@ -10,6 +10,8 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use siblh\mantenimientoBundle\Entity\BlhGrupoSolicitud;
 use siblh\mantenimientoBundle\Form\BlhGrupoSolicitudType;
 
+use siblh\mantenimientoBundle\Entity\BlhReceptor;
+
 /**
  * BlhGrupoSolicitud controller.
  *
@@ -53,7 +55,7 @@ class BlhGrupoSolicitudController extends Controller
             $em->persist($entity);
             $em->flush();
 
-            return $this->redirect($this->generateUrl('blhgruposolicitud_show', array('id' => $entity->getId())));
+            return $this->redirect($this->generateUrl('blhgruposolicitud', array('id' => $entity->getId())));
         }
 
         return array(
@@ -244,4 +246,27 @@ class BlhGrupoSolicitudController extends Controller
             ->getForm()
         ;
     }
+    
+     /**
+     * Lista de solicitudes a agrupar
+     *
+     * @Route("/seleccion/solicitudes", name="blhseleccionsolicitudes")
+     * @Method("GET")
+     * @Template()
+     */
+    public function seleccionSolicitudesAction()
+    {
+        $em = $this->getDoctrine()->getManager();
+        
+        $query = $em->createQuery("SELECT s.codigoSolicitud, s.fechaSolicitud, s.acidezNecesaria, s.caloriasNecesarias, s.volumenPorToma, s.tomaPorDia, p.primerNombre as nombre1, p.segundoNombre as nombre2, p.tercerNombre as nombre3, p.primerApellido as apellido1, p.segundoApellido as apellido2 FROM siblhmantenimientoBundle:BlhSolicitud s JOIN s.idReceptor r JOIN r.idPaciente p WHERE s.estado = 's' ");
+        
+        $solicitudes = $query->getResult();
+
+ 
+
+        return array(
+            'solicitudes' => $solicitudes,
+        );
+    }
+    
 }

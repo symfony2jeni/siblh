@@ -1,49 +1,43 @@
-{% extends '::base.html.twig' %}
+{% extends  'siblhmantenimientoBundle::plantilla.html.twig'%}
+
+{% block javascripts %}
+    {{parent()}}
+    <script type="text/javascript" src="{{ asset('bundles/siblhmantenimiento/js/BlhAnalisisSensorial/index.js') }}" ></script>
+{% endblock %}
+
 
 {% block body -%}
-    <h1>BlhAnalisisSensorial list</h1>
+     <link href="{{asset('bundles/jquery/jquery.jqGrid-4.5.4/css/ui.jqgrid.css')}}" rel="stylesheet"  type="text/css" media="all"/>  
+     <script type="text/javascript" src="{{asset('bundles/jquery/jquery.jqGrid-4.5.4/js/i18n/grid.locale-es.js')}}"></script>
+      <script type="text/javascript" src="{{asset('bundles/jquery/jquery.jqGrid-4.5.4/js/jquery.jqGrid.min.js')}}" ></script>
+    
+    <h1>Listado de analisis sensorial </h1>
 
-    <table class="records_list">
+    <table id="listado_Sensorial">
         <thead>
             <tr>
-                <th>Id</th>
                 <th>Embalaje</th>
                 <th>Suciedad</th>
                 <th>Color</th>
-                <th>Flavor</th>
-                <th>Observacion</th>
-                <th>Actions</th>
+                <th>Olor</th>
+                <th>Observación</th>
+                <th>Acción</th>
             </tr>
         </thead>
         <tbody>
         {% for entity in entities %}
             <tr>
-                <td><a href="{{ path('blhanalisissensorial_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
                 <td>{{ entity.embalaje }}</td>
                 <td>{{ entity.suciedad }}</td>
                 <td>{{ entity.color }}</td>
                 <td>{{ entity.flavor }}</td>
                 <td>{{ entity.observacion }}</td>
-                <td>
-                <ul>
-                    <li>
-                        <a href="{{ path('blhanalisissensorial_show', { 'id': entity.id }) }}">show</a>
-                    </li>
-                    <li>
-                        <a href="{{ path('blhanalisissensorial_edit', { 'id': entity.id }) }}">edit</a>
-                    </li>
-                </ul>
-                </td>
+                <td><a href="{{ path('blhanalisissensorial_edit', { 'id': entity.id }) }}"><font color="blue"><u>Editar</u></font></a></td>
+             
             </tr>
         {% endfor %}
         </tbody>
     </table>
-
-        <ul>
-        <li>
-            <a href="{{ path('blhanalisissensorial_new') }}">
-                Create a new entry
-            </a>
-        </li>
-    </ul>
+    <div id='pagerSensorial'></div>
+    
     {% endblock %}

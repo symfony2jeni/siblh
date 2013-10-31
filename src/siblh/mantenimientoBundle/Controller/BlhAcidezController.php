@@ -53,7 +53,7 @@ class BlhAcidezController extends Controller
             $em->persist($entity);
             $em->flush();
 
-            return $this->redirect($this->generateUrl('blhacidez_show', array('id' => $entity->getId())));
+            return $this->redirect($this->generateUrl('blhacidez', array('id' => $entity->getId())));
         }
 
         return array(
@@ -76,7 +76,7 @@ class BlhAcidezController extends Controller
             'method' => 'POST',
         ));
 
-        $form->add('submit', 'submit', array('label' => 'Create'));
+       // $form->add('submit', 'submit', array('label' => 'Create'));
 
         return $form;
     }

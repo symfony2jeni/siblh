@@ -1,0 +1,57 @@
+{% extends 'siblhmantenimientoBundle::plantilla.html.twig' %}
+
+{% block javascripts %}
+    {{parent()}}
+    <script type="text/javascript" src="{{ asset('bundles/siblhmantenimiento/js/BlhGrupoSolicitud/seleccionSolicitudes.js') }}" ></script>
+{% endblock %}
+
+{% block body -%}
+    
+ <link href="{{asset('bundles/jquery/jquery.jqGrid-4.5.4/css/ui.jqgrid.css')}}" rel="stylesheet"  type="text/css" media="all"/>  
+     <script type="text/javascript" src="{{asset('bundles/jquery/jquery.jqGrid-4.5.4/js/i18n/grid.locale-es.js')}}"></script>
+      <script type="text/javascript" src="{{asset('bundles/jquery/jquery.jqGrid-4.5.4/js/jquery.jqGrid.min.js')}}" ></script>     
+    
+<h1>Listado de Solicitudes</h1>
+<table id="list13">
+
+<thead>
+            <tr>
+                <th>Codigo </th>
+                <th>Fecha</th>
+                <th>Nombres</th>
+                <th>Apellidos</th>
+                <th>Acidez</th>
+                <th>Calorias</th>
+                <th>VolumenPorToma</th>
+                <th>TomaPorDia</th>
+            </tr>
+            
+        </thead>
+        <tbody>
+             {% for solicitud in solicitudes%}
+            
+              <tr>
+               {#<td><a href="{{ path('blhsolicitud_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>#}
+                <td>{{ solicitud.codigoSolicitud }}</td>
+                <td>{{ solicitud.fechaSolicitud|date('d-m-Y') }}</td>
+                <td>{{ solicitud.nombre1 }}&nbsp;{{ solicitud.nombre2 }}&nbsp;{{ solicitud.nombre3 }}</td>
+                <td>{{ solicitud.apellido1 }}&nbsp;{{ solicitud.apellido2 }}</td>      
+                <td>{{ solicitud.acidezNecesaria }}</td>
+                <td>{{ solicitud.caloriasNecesarias }}</td>
+                <td>{{ solicitud.volumenPorToma }}</td>
+                <td>{{ solicitud.tomaPorDia }}</td>                
+                {% endfor %}
+                  </tbody>
+                  </table>
+<div id="pager13"></div>
+<div id='resultado' ></div>
+<a href="javascript:void(0)" id="cm1">Get Selected id's</a>
+
+
+{% set text = cm1 %}
+
+               
+           <a href="{{ path('blhseguimientoreceptor_show', { 'id': entity.id }) }}">show</a>
+     
+        
+    {% endblock %}

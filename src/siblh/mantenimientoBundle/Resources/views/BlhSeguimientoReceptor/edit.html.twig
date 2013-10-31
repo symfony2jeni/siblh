@@ -1,16 +1,51 @@
-{% extends '::base.html.twig' %}
+{% extends 'siblhmantenimientoBundle::plantilla.html.twig' %}
+
+{% block javascripts %}
+
+{{parent()}}
+
+<script type="text/javascript" src="{{ asset('bundles/siblhmantenimiento/js/BlhSeguimientoReceptor/edit.js') }}" ></script>
+        
+{% endblock %}
 
 {% block body -%}
-    <h1>BlhSeguimientoReceptor edit</h1>
+    <h1>Editar SeguimientoReceptor</h1>
 
-    {{ form(edit_form) }}
+    <table align='center'>
+    {{ form_start(edit_form) }}
+    {{ form_errors(edit_form) }}
+<tr>
+    <tr><td align='right'><font color="red">*</font>{{ form_label(edit_form.fechaSeguimiento,'Fecha') }}{{ form_widget(edit_form.fechaSeguimiento) }}</td></tr>
+    <tr><td colspan=2 align = "right" height=10  ></td></tr>
+    <tr><td align='right'><font color="red">*</font>{{ form_label(edit_form.semana) }}{{ form_widget(edit_form.semana) }}</td></tr>
+    <tr><td colspan=2 align = "right" height=10  ></td></tr>
+    <tr><td align='right'><font color="red">*</font>{{ form_label(edit_form.pcSeguimiento,'Perímetro cefálico(cm)') }}{{ form_widget(edit_form.pcSeguimiento) }}</td></tr>
+    <tr><td colspan=2 align = "right" height=10  ></td></tr>
+    <tr><td align='right'><font color="red">*</font>{{ form_label(edit_form.pesoSeguimiento,'Peso(g)') }}{{ form_widget(edit_form.pesoSeguimiento) }}</td></tr>
+    <tr><td colspan=2 align = "right" height=10  ></td></tr>
+    <tr><td align='right'><font color="red">*</font>{{ form_label(edit_form.gananciaDiaPeso, ' Ganancia de peso por día(g) ') }}{{ form_widget(edit_form.gananciaDiaPeso) }}</td></tr>
+    <tr><td colspan=2 align = "right" height=10  ></td></tr>
+    <tr><td align='right'><font color="red">*</font>{{ form_label(edit_form.tallaReceptor,'Talla(cm)') }}{{ form_widget(edit_form.tallaReceptor) }}</td></tr>
+    <tr><td colspan=2 align = "right" height=10  ></td></tr>
+    <tr><td align='right'><font color="red">*</font>{{form_label(edit_form.gananciaDiaTalla,'Ganancia de talla por dia(cm) ') }}{{form_widget(edit_form.gananciaDiaTalla) }}</td></tr>
+    <tr><td colspan=2 align = "right" height=10  ></td></tr>
+    <tr><td align='right'>{{form_label(edit_form.complicaciones) }}{{form_widget(edit_form.complicaciones) }}</td></tr>
+    <tr><td colspan=2 align = "right" height=10  ></td></tr>
+    <tr><td align='right' style="visibility:hidden">{{ form_label(edit_form.idReceptor) }}{{ form_widget(edit_form.idReceptor) }}</td></tr>
+    <tr><td align = 'left'  ><font color="red">* Campos Requeridos</font></td></tr>
+    <tr><td colspan=2 align = "right" height=10  ></td></tr>
 
-        <ul class="record_actions">
-    <li>
+</table>
+    <table align = "center">
+           <tr>
+             <td align = 'center' > <input type='submit' id='boton' title="Actualizar Solicitud"  value="Actualizar"/></td>              
+          </tr>
+           </table>
+    {{ form_end(edit_form) }}
+  
+
         <a href="{{ path('blhseguimientoreceptor') }}">
-            Back to the list
+            Regresar a listado de seguimientos
         </a>
-    </li>
-    <li>{{ form(delete_form) }}</li>
-</ul>
+
 {% endblock %}

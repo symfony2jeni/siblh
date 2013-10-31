@@ -60,7 +60,7 @@ class BlhSolicitudController extends Controller
             $em->persist($entity);
             $em->flush();
 
-            return $this->redirect($this->generateUrl('blhsolicitud_show', array('id' => $entity->getId())));
+            return $this->redirect($this->generateUrl('blhsolicitud', array('id' => $entity->getId())));
         }
         
          return array(
@@ -137,6 +137,8 @@ class BlhSolicitudController extends Controller
      */
    public function showAction($id)
     {
+       
+        
         $em = $this->getDoctrine()->getManager();
 
         $entity = $em->getRepository('siblhmantenimientoBundle:BlhSolicitud')->find($id);
@@ -146,10 +148,15 @@ class BlhSolicitudController extends Controller
         }
 
         $deleteForm = $this->createDeleteForm($id);
+        
+        $ajax = $this->getRequest()->isXmlHttpRequest(); //agregando ajax a show
+       
+        
 
         return array(
-            'entity'      => $entity,
+            'entity'  => $entity,
             'delete_form' => $deleteForm->createView(),
+            'ajax' => $ajax,
         );
     }
 
@@ -194,7 +201,7 @@ class BlhSolicitudController extends Controller
             'method' => 'PUT',
         ));
 
-        $form->add('submit', 'submit', array('label' => 'Update'));
+        //$form->add('submit', 'submit', array('label' => 'Update'));
 
         return $form;
     }
@@ -287,15 +294,18 @@ class BlhSolicitudController extends Controller
  
  public function receptoresAction()
     {
-        $em = $this->getDoctrine()->getManager();      
+        $em = $this->getDoctrine()->getManager();   
+        
+        $entities = $em->getRepository('siblhmantenimientoBundle:BlhReceptor')->findAll();
         
         //Obteniendo lista de pacientes que son receptores y que estan en estado "Activo"  
-        $query = $em->createQuery("SELECT r.id, r.codigoReceptor, p.id as identificador, p.primerNombre as nombre1, p.segundoNombre as nombre2, p.tercerNombre as nombre3, p.primerApellido as apellido1, p.segundoApellido as apellido2 FROM siblhmantenimientoBundle:BlhReceptor r JOIN r.idPaciente p WHERE r.estadoReceptor = 'Activo'");
+        $query = $em->createQuery("SELECT r.id, r.codigoReceptor, p.id as identificador, p.primerNombre as nombre1, p.segundoNombre as nombre2, p.tercerNombre as nombre3, p.primerApellido as apellido1, p.segundoApellido as apellido2, s.nombre as sexo FROM siblhmantenimientoBundle:BlhReceptor r JOIN r.idPaciente p JOIN p.idSexo s WHERE r.estadoReceptor = 'Activo'");
         
         $pacientes_receptores  = $query->getResult();
         
         return array(
-            'pacientes_receptores' => $pacientes_receptores         
+            'pacientes_receptores' => $pacientes_receptores,         
+            'entities' => $entities,
         );
         
     }
@@ -314,7 +324,7 @@ class BlhSolicitudController extends Controller
         //mostrando los datos del receptor seleccionado
         $em = $this->getDoctrine()->getManager();
         
-        $query = $em->createQuery("SELECT  i.edadGestFur, i.pesoReceptor, i.diagnosticoIngreso, r.id as id_receptor, r.codigoReceptor as codigo_receptor, p.fechaNacimiento as fecha_nacimiento, p.primerNombre as primer_nombre, p.segundoNombre as segundo_nombre, p.tercerNombre as tercer_nombre, p.primerApellido as primer_apellido, p.segundoApellido as segundo_apellido, s.nombre as sexo  FROM siblhmantenimientoBundle:BlhIngresoReceptor i JOIN i.idReceptor r JOIN r.idPaciente p JOIN p.idSexo s  WHERE r.id = $id "); 
+        $query = $em->createQuery("SELECT  r.edadGestFur, r.pesoReceptor, r.diagnosticoIngreso, r.id as id_receptor, r.procedencia, r.codigoReceptor, p.fechaNacimiento as fecha_nacimiento, p.primerNombre as primer_nombre, p.segundoNombre as segundo_nombre, p.tercerNombre as tercer_nombre, p.primerApellido as primer_apellido, p.segundoApellido as segundo_apellido, s.nombre as sexo  FROM siblhmantenimientoBundle:BlhReceptor  r JOIN r.idPaciente p JOIN p.idSexo s  WHERE r.id = $id "); 
         
         $datos_receptor  = $query->getResult();
         

@@ -15,8 +15,11 @@ class BlhLoteAnalisisType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('codigoLoteAnalisis')
-            ->add('fechaAnalisisFisicoQuimico')
+          ->add('codigoLoteAnalisis')
+            ->add('fechaAnalisisFisicoQuimico','date', 
+                    array(  'widget' => 'single_text',
+                            'format' => 'dd-MM-yy',
+                            'attr' => array('class' => 'date')))
             ->add('responsableAnalisis')
         ;
     }

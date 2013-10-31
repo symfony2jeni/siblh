@@ -4,7 +4,7 @@
     <id name="id" type="integer" column="id">
       <generator strategy="SEQUENCE"/>
     </id>
-    <field name="nombreRol" type="string" column="nombre_rol" length="15" nullable="false"/>
+    <field name="nombreRol" type="string" column="nombre_rol" length="30" nullable="false"/>
     <field name="descripcionRol" type="string" column="descripcion_rol" length="50" nullable="true"/>
   </entity>
 </doctrine-mapping>

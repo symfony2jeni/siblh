@@ -63,4 +63,5 @@ class BlhExamen
     {
         return $this->nombreExamen;
     }
+  
 }

@@ -2,17 +2,20 @@
 
 {% block javascripts %}
     {{parent()}}
-    <script type="text/javascript" src="{{ asset('bundles/siblhmantenimiento/js/BlhSeguimientoReceptor/frascosAnalisis.js') }}" ></script>
+    <script type="text/javascript" src="{{ asset('bundles/siblhmantenimiento/js/BlhFrascoRecolectado/frascosAnalisis.js') }}" ></script>
 {% endblock %}
 
 {% block body -%}
+     <link href="{{asset('bundles/jquery/jquery.jqGrid-4.5.4/css/ui.jqgrid.css')}}" rel="stylesheet"  type="text/css" media="all"/>  
+     <script type="text/javascript" src="{{asset('bundles/jquery/jquery.jqGrid-4.5.4/js/i18n/grid.locale-es.js')}}"></script>
+      <script type="text/javascript" src="{{asset('bundles/jquery/jquery.jqGrid-4.5.4/js/jquery.jqGrid.min.js')}}" ></script>
+    
     <h1>Listado de frascos para analisis fisico-quimico</h1>
 
-    <table class="records_list">
+    <table id="listado_frascosAnalisis">
         <thead>
-            <tr>
-             
-                <th>Codigo&nbsp;Frasco</th>
+            <tr>          
+                <th>Código&nbsp;Frasco</th>
                 <th>Volumen&nbsp;Recolectado(ml)</th>
                 <th>Volumen&nbsp;Recolectado(onz)</th>
                 <th>Forma&nbsp;Extracción</th>          
@@ -29,14 +32,15 @@
                 <td>{{ entity.onzRecolectado }}</td>
                 <td>{{ entity.formaExtraccion }}</td>                
                 <td>{{ entity.observacionFrascoRecolectado }}</td>
-                <td><a href="{{ path('blhanalisissensorial_new', { 'id': entity.id }) }}">Analisis Sensorial</a><br>
-                    <a href="{{ path('blhacidez_new', { 'id': entity.id }) }}">Acidez</a><br>
+                <td><a href="{{ path('blhanalisissensorial_new', { 'id': entity.id }) }}">Analisis Sensorial</a>
+                    <a href="{{ path('blhacidez_new', { 'id': entity.id }) }}">Acidez</a>
                     <a href="{{ path('blhcrematocrito_new', { 'id': entity.id }) }}">Crematocrito</a>
                 </td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
+    <div id='pagerFrascosAnalisis' ></div>
 
   
     {% endblock %}

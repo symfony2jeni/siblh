@@ -20,6 +20,7 @@ class BlhAnalisisMicrobiologicoType extends AbstractType
              'choices' => array(
               'Negativo' => 'Negativo',
               'Positivo' => 'Positivo',),'required'    => true       /* se presente la opcion x defecto ausencia*/
+
                                                         )
                   )
                 ->add('control', 'choice', array(
@@ -37,6 +38,7 @@ class BlhAnalisisMicrobiologicoType extends AbstractType
               'Resiembra' => 'Resiembra',               ),
              'required'    => true 
                     )
+
        /* repositorio*/ )
             ->add('idFrascoProcesado',null,array(
                 'required' => true));

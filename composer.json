@@ -7,7 +7,7 @@
         "psr-0": { "": "src/" }
     },
     "require": {
-        "php": ">=5.3.3",
+       "php": ">=5.3.3",
         "symfony/symfony": "2.3.*",
         "doctrine/orm": ">=2.2.3,<2.4-dev",
         "doctrine/doctrine-bundle": "1.2.*",
@@ -20,10 +20,25 @@
         "sensio/generator-bundle": "2.3.*",
         "incenteev/composer-parameter-handler": "~2.0",
 
-        "knplabs/knp-menu-bundle": "dev-master", 
+        
+        "jms/security-extra-bundle": "1.5.*",
+        "jms/di-extra-bundle": "1.4.*",
+        
+        "friendsofsymfony/user-bundle": "*",
+        "sonata-project/cache-bundle": "dev-master",
+        "sonata-project/block-bundle": "2.*@dev",
+        "sonata-project/jquery-bundle": "1.8.*",
+        
+        "knplabs/knp-menu-bundle": "1.1.*@dev",
+        "knplabs/knp-menu": "1.1.*@dev",
+      
+        "sonata-project/exporter": "1.*",
+        "sonata-project/admin-bundle": "dev-master",
+        "sonata-project/doctrine-orm-admin-bundle": "dev-master",
+        "sonata-project/intl-bundle": "dev-master",
+        "sonata-project/easy-extends-bundle": "*",
+        "sonata-project/user-bundle": "dev-master"
 
-
-        "knplabs/knp-menu": "2.0.*@dev"
     },
     "scripts": {
         "post-install-cmd": [
@@ -44,7 +59,7 @@
     "config": {
         "bin-dir": "bin"
     },
-    "minimum-stability": "stable",
+    "minimum-stability": "alpha",
     "extra": {
         "symfony-app-dir": "app",
         "symfony-web-dir": "web",

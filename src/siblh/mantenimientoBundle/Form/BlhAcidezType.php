@@ -15,9 +15,9 @@ class BlhAcidezType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('acidez1','text')
-            ->add('acidez2')
-            ->add('acidez3')
+            ->add('acidez1', 'text')
+            ->add('acidez2','text')
+            ->add('acidez3', 'text')
             ->add('factor')
             ->add('resultado')
             ->add('mediaAcidez')

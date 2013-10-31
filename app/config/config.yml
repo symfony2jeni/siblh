@@ -1,14 +1,15 @@
 imports:
     - { resource: parameters.yml }
     - { resource: security.yml }
+   
 
 framework:
     #esi:             ~
-    #translator:      { fallback: %locale% }
+    translator:      { fallback: %locale% }
     secret:          %secret%
     router:
         resource: "%kernel.root_dir%/config/routing.yml"
-        strict_requirements: ~
+        strict_requirements: %kernel.debug%
     form:            ~
     csrf_protection: ~
     validation:      { enable_annotations: true }
@@ -19,7 +20,6 @@ framework:
     trusted_proxies: ~
     session:         ~
     fragments:       ~
-    http_method_override: true
 
 # Twig Configuration
 twig:
@@ -49,13 +49,15 @@ doctrine:
         user:     %database_user%
         password: %database_password%
         charset:  UTF8
+        types:
+            json: Sonata\Doctrine\Types\JsonType
         # if using pdo_sqlite as your database driver, add the path in parameters.yml
         # e.g. database_path: %kernel.root_dir%/data/data.db3
         # path:     %database_path%
 
     orm:
         auto_generate_proxy_classes: %kernel.debug%
-        auto_mapping: true
+        auto_mapping: true  
 
 # Swiftmailer Configuration
 swiftmailer:
@@ -64,3 +66,80 @@ swiftmailer:
     username:  %mailer_user%
     password:  %mailer_password%
     spool:     { type: memory }
+
+#KNPMENUBUNDLE
+knp_menu:
+    twig:  # use "twig: false" to disable the Twig extension and the TwigRenderer
+        template: knp_menu.html.twig
+    templating: false # if true, enables the helper for PHP templates
+    default_renderer: twig # The renderer to use, list is also available by default
+#FOSUSERBUNDLE    
+fos_user:
+    db_driver:        orm # can be orm or odm
+    firewall_name:    main
+    user_class:        siblh\mantenimientoBundle\Entity\User
+
+    group:
+        group_class:  Application\Sonata\UserBundle\Entity\Group
+
+    profile:  # Authentication Form
+        form:
+            type:               fos_user_profile
+            handler:            fos_user.profile.form.handler.default
+            name:               fos_user_profile_form
+            validation_groups:  [Authentication] # Please note : this is not the default value
+
+#SONATACACHEBUNCLE
+sonata_cache:
+    caches:
+        apc:
+            token:  s3cur3   #token used to clear the related cache
+            prefix: test     #prefix to ensure there is no clash between instances
+            servers:
+                - { domain: kooqit.local, ip: 127.0.0.1, port: 80}
+#SONATABLOCKBUNDLE
+sonata_block:
+    default_contexts: [cms]
+    blocks:
+        sonata.admin.block.admin_list:
+            contexts:   [admin]
+
+        #sonata.admin_doctrine_orm.block.audit:
+        #    contexts:   [admin]
+
+        sonata.block.service.text:
+        sonata.block.service.rss:
+
+#SONATAADMINBUNDLE
+sonata_admin:
+    security:
+        handler: sonata.admin.security.handler.role
+    title:      MINSAL::SIBLH
+    title_logo: /bundles/siblhmantenimientosiaps/imagenes/logo_salud.png
+    templates:
+        # default global templates
+        layout:  siblhmantenimientoBundle::standard_layout.html.twig
+        ajax:    SonataAdminBundle::ajax_layout.html.twig
+
+        # default actions templates, should extend a global templates
+        #list:    SonataAdminBundle:CRUD:list.html.twig
+        show:    SonataAdminBundle:CRUD:show.html.twig
+        edit:    SonataAdminBundle:CRUD:edit.html.twig
+
+    dashboard:
+        blocks:
+            # display a dashboard block
+            - { position: left, type: sonata.admin.block.admin_list }
+#SONATAUSERBUNDLE
+sonata_user:
+    security_acl:     false
+    class:
+        user:         siblh\mantenimientoBundle\Entity\User
+        group:        Application\Sonata\UserBundle\Entity\Group
+
+    profile:  # Profile Form (firstname, lastname, etc ...)
+        form:
+            type:               sonata.user.profile
+            handler:            sonata.user.profile.form.handler.default
+            name:               sonata_user_profile_form
+            validation_groups:  [Profile]

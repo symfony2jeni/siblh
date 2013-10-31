@@ -21,6 +21,7 @@ class BlhReceptorType extends AbstractType
                             'format' => 'yy-MM-dd',
                             'attr' => array('class' => 'date')))
             ->add('procedencia')
+
             ->add('estadoReceptor', 'choice', 
                     array('choices' => array('' => 'Seleccione un valor','Activo' => 'Activo',
                           'Egreso' => 'Egreso')))

@@ -76,7 +76,11 @@ class BlhAnalisisMicrobiologicoController extends Controller
             'method' => 'POST',
         ));
 
-      //  $form->add('submit', 'submit', array('label' => 'Create'));
+
+
+        $form->add('submit', 'submit', array('label' => 'Guardar'));
+   /**   $form->add('submit', 'submit', array('label' => 'Create')); */
+       
 
         return $form;
     }
@@ -244,4 +248,5 @@ class BlhAnalisisMicrobiologicoController extends Controller
             ->getForm()
         ;
     }
+  
 }

@@ -1,36 +1,43 @@
-{% extends '::base.html.twig' %}
-
+{% extends 'siblhmantenimientoBundle::plantilla.html.twig' %}
+{% block javascripts %}
+    {{parent()}}
+    <script type="text/javascript" src="{{ asset('bundles/siblhmantenimiento/js/BlhSeguimientoReceptor/index.js') }}" ></script>
+{% endblock %}
 {% block body -%}
-    <h1>BlhSeguimientoReceptor list</h1>
+     <link href="{{asset('bundles/jquery/jquery.jqGrid-4.5.4/css/ui.jqgrid.css')}}" rel="stylesheet"  type="text/css" media="all"/>  
+     <script type="text/javascript" src="{{asset('bundles/jquery/jquery.jqGrid-4.5.4/js/i18n/grid.locale-es.js')}}"></script>
+      <script type="text/javascript" src="{{asset('bundles/jquery/jquery.jqGrid-4.5.4/js/jquery.jqGrid.min.js')}}" ></script>
+    <h1>Listado de seguimientos a receptores</h1>
 
-    <table class="records_list">
+    <table id="listado_Seguimiento">
         <thead>
             <tr>
-                <th>Id</th>
-                <th>Tallareceptor</th>
-                <th>Pesoseguimiento</th>
-                <th>Pcseguimiento</th>
-                <th>Gananciadiapeso</th>
+                <th>Nombre&nbsp;receptor</th> 
+                <th>Fecha</th>
                 <th>Semana</th>
-                <th>Fechaseguimiento</th>
-                <th>Gananciadiatalla</th>
+                <th>Talla(cm)</th>
+                <th>Ganancia&nbsp;talla&nbsp;por&nbsp;día(cm)</th>
+                <th>Peso(g)</th>
+                <th>Ganancia&nbsp;peso&nbsp;por&nbsp;día(g)</th>
+                <th>Perímetro&nbsp;cefálico(cm)</th>            
                 <th>Complicaciones</th>
-                <th>Actions</th>
+                <th>Acción</th>
             </tr>
         </thead>
         <tbody>
         {% for entity in entities %}
             <tr>
-                <td><a href="{{ path('blhseguimientoreceptor_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
-                <td>{{ entity.tallaReceptor }}</td>
-                <td>{{ entity.pesoSeguimiento }}</td>
-                <td>{{ entity.pcSeguimiento }}</td>
-                <td>{{ entity.gananciaDiaPeso }}</td>
+                <td>{{ entity.nombre1 }}&nbsp;{{entity.nombre2 }}&nbsp;{{ entity.nombre3 }}&nbsp;{{ entity.nombre3 }}&nbsp;{{ entity.apellido1 }}&nbsp;{{ entity.apellido2 }}</td>
+                <td>{% if entity.fechaSeguimiento %}{{ entity.fechaSeguimiento|date('d-m-Y') }}{% endif %}</td>
                 <td>{{ entity.semana }}</td>
-                <td>{% if entity.fechaSeguimiento %}{{ entity.fechaSeguimiento|date('Y-m-d H:i:s') }}{% endif %}</td>
-                <td>{{ entity.gananciaDiaTalla }}</td>
+                <td>{{ entity.tallaReceptor|number_format(2, '.', ',') }}</td>
+                <td>{{ entity.gananciaDiaTalla|number_format(2, '.', ',') }}</td>
+                <td>{{ entity.pesoSeguimiento|number_format(2, '.', ',') }}</td>
+                <td>{{ entity.gananciaDiaPeso|number_format(2, '.', ',') }}</td>
+                <td>{{ entity.pcSeguimiento|number_format(2, '.', ',') }}</td>
                 <td>{{ entity.complicaciones }}</td>
-                <td>
+                <td><a href="{{ path('blhseguimientoreceptor_edit', { 'id': entity.id }) }}"><font color="blue"><u>Editar</u></font></a></td>
+               {# <td>
                 <ul>
                     <li>
                         <a href="{{ path('blhseguimientoreceptor_show', { 'id': entity.id }) }}">show</a>
@@ -39,17 +46,12 @@
                         <a href="{{ path('blhseguimientoreceptor_edit', { 'id': entity.id }) }}">edit</a>
                     </li>
                 </ul>
-                </td>
+                </td>#}
             </tr>
         {% endfor %}
         </tbody>
     </table>
+    <div id='pagerSeguimiento' ></div>
 
-        <ul>
-        <li>
-            <a href="{{ path('blhseguimientoreceptor_new') }}">
-                Create a new entry
-            </a>
-        </li>
-    </ul>
+       
     {% endblock %}

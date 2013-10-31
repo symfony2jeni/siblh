@@ -315,6 +315,7 @@ class BlhFrascoRecolectado
     {
         return $this->idLoteAnalisis;
     }
+
     
      public function __toString()
     {
