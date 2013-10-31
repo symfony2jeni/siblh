@@ -1,0 +1,43 @@
+{% extends 'siblhmantenimientoBundle::plantilla.html.twig' %}
+
+{% block javascripts %}
+    {{parent()}}
+   <script type="text/javascript" src="{{ asset('bundles/siblhmantenimiento/js/BlhHistorialClinico/donantes.js') }}" ></script>
+{% endblock %}
+   
+{% block body -%}
+ <link href="{{asset('bundles/jquery/jquery.jqGrid-4.5.4/css/ui.jqgrid.css')}}" rel="stylesheet"  type="text/css" media="all"/>  
+ 
+ <script type="text/javascript" src="{{asset('bundles/jquery/jquery.jqGrid-4.5.4/js/i18n/grid.locale-es.js')}}"></script>
+      <script type="text/javascript" src="{{asset('bundles/jquery/jquery.jqGrid-4.5.4/js/jquery.jqGrid.min.js')}}" ></script> 
+    <h1>Listado de Donantes</h1>
+    <table id = "listado_donantes">
+       
+            
+             <thead>
+            <tr>
+                <th>id</th>
+                <th>Nombre</th>
+                <th>Accion</th>
+                
+            </tr>
+          
+        </thead>
+        <tbody>
+           
+       {% for donante in donantes_registradas%}
+            <tr>
+               <td><a href="{{ path('blhhistorialclinico_new', { 'id': donante.identificador }) }}">{{ donante.identificador }}</a></td>
+                <td>{{ donante.nombre1 }} {{ donante.nombre2 }} {{ donante.apellido1 }} {{ donante.apellido2 }}</td>
+                <td><a href="{{ path('blhhistorialclinico_new', { 'id': donante.identificador })}}"><font color="blue"><u>Registrar Historial Clinico</u></font></a></td></tr>
+        {% endfor %}
+            
+
+            
+          
+           
+        </tbody>
+    </table>
+    <div id='pagerdonantes' ></div>
+
+        {% endblock %}

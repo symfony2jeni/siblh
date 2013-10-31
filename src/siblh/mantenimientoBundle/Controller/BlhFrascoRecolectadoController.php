@@ -53,7 +53,7 @@ class BlhFrascoRecolectadoController extends Controller
             $em->persist($entity);
             $em->flush();
 
-            return $this->redirect($this->generateUrl('blhfrascorecolectado_show', array('id' => $entity->getId())));
+            return $this->redirect($this->generateUrl('blhfrascorecolectado', array('id' => $entity->getId())));
         }
 
         return array(
@@ -109,7 +109,7 @@ class BlhFrascoRecolectadoController extends Controller
      * @Method("GET")
      * @Template()
      */
-   /* public function showAction($id)
+   public function showAction($id)
     {
         $em = $this->getDoctrine()->getManager();
 
@@ -125,7 +125,7 @@ class BlhFrascoRecolectadoController extends Controller
             'entity'      => $entity,
             'delete_form' => $deleteForm->createView(),
         );
-    }*/
+    }
 
     /**
      * Displays a form to edit an existing BlhFrascoRecolectado entity.
@@ -168,7 +168,7 @@ class BlhFrascoRecolectadoController extends Controller
             'method' => 'PUT',
         ));
 
-        $form->add('submit', 'submit', array('label' => 'Update'));
+      //  $form->add('submit', 'submit', array('label' => 'Update'));
 
         return $form;
     }
@@ -256,7 +256,7 @@ class BlhFrascoRecolectadoController extends Controller
     /**
      * Lists all BlhFrascoRecolectado entities.
      *
-     * @Route("/", name="blhfrascorecolectado")
+     * @Route("/donaciones", name="blhfrascorecolectado_donaciones")
      * @Method("GET")
      * @Template()
      */
@@ -280,7 +280,7 @@ class BlhFrascoRecolectadoController extends Controller
      /**
      * Displays a form to create a new BlhFrascoRecolectado entity.
      *
-     * @Route("/{id}", name="blhfrascorecolectado_new")
+     * @Route("/new/{id}", name="blhfrascorecolectado_new")
      * @Method("GET")
      * @Template()
      */
@@ -302,7 +302,7 @@ class BlhFrascoRecolectadoController extends Controller
      //  echo $datos_donacion[0]['id'];
        
         if (!$datos_donacion) {
-            throw $this->createNotFoundException('Unable to find BlhSolicitud entity');
+            throw $this->createNotFoundException('Unable to find BlhDonante entity');
         }
         
         
@@ -323,6 +323,7 @@ class BlhFrascoRecolectadoController extends Controller
         );
     }
     
+
      /**
      * Lista de Frascos Recolectados entities.
      *

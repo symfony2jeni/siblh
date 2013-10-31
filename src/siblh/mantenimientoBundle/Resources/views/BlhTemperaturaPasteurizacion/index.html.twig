@@ -1,4 +1,10 @@
-{% extends '::base.html.twig' %}
+{% extends 'siblhmantenimientoBundle::plantilla.html.twig' %}
+
+{#{% block javascripts %}
+    {{parent()}}
+    <script type="text/javascript" src="{{ asset('bundles/siblhmantenimiento/js/BlhTempPasteurizacion/index.js') }}" ></script>
+{% endblock %}  #}
+
 
 {% block body -%}
     <h1>BlhTemperaturaPasteurizacion list</h1>
@@ -19,10 +25,10 @@
                 <td>
                 <ul>
                     <li>
-                        <a href="{{ path('blhtemperaturapasteurizacion_show', { 'id': entity.id }) }}">show</a>
+                        <a href="{{ path('blhtemperaturapasteurizacion_show', { 'id': entity.id }) }}">Detalle</a>
                     </li>
                     <li>
-                        <a href="{{ path('blhtemperaturapasteurizacion_edit', { 'id': entity.id }) }}">edit</a>
+                        <a href="{{ path('blhtemperaturapasteurizacion_edit', { 'id': entity.id }) }}">Actualizar</a>
                     </li>
                 </ul>
                 </td>
@@ -31,9 +37,10 @@
         </tbody>
     </table>
 
+   
         <ul>
         <li>
-            <a href="{{ path('blhtemperaturapasteurizacion_new') }}">
+            <a href="{{ path('blhtemppasteurizacion') }}">
                 Create a new entry
             </a>
         </li>

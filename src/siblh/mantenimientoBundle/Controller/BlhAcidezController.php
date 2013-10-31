@@ -107,6 +107,7 @@ class BlhAcidezController extends Controller
         );
     }
 
+
     /**
      * Finds and displays a BlhAcidez entity.
      *

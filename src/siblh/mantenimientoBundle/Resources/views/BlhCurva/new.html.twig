@@ -1,7 +1,7 @@
 {% extends 'siblhmantenimientoBundle::plantilla.html.twig' %}
 {% block stylesheets %}
     {{ parent() }}
-	<link href="{{ asset('bundles/siblhmantenimiento/css/form.css') }}" rel="stylesheet" type="text/css" />
+       <link href="{{ asset('bundles/siblhmantenimiento/css/form.css') }}" rel="stylesheet" type="text/css" />
  {% endblock %}
 
 
@@ -30,24 +30,25 @@
      
    <tr>
        <td colspan="4" align="right">
- <P align="right">{{ form_label(form.fechaCurva, 'Fecha de analisis' )}} </P>
+
+ <P align="right"><font color="red">*</font> {{ form_label(form.fechaCurva, 'Fecha de Analisis' )}} </P>
        {{ form_errors(form.fechaCurva) }}
        {{ form_widget(form.fechaCurva) }} <br><br><br></td>
    </tr>
    
    <tr>
-       <td colspan="2" align="left"> <center>{{ form_label(form.cantidadFrascos, 'Cantidad' )}}
+      <td colspan="2" align="left"><center><font color="red">*</font>{{ form_label(form.cantidadFrascos, 'Cantidad de Frascos' )}}
        {{ form_errors(form.cantidadFrascos) }}
        {{ form_widget(form.cantidadFrascos) }} </center><br></td>
    
-      <td colspan="2" align="right"> <center>{{ form_label(form.volumenPorFrasco, 'Volumen' )}}
+      <td colspan="2" align="right"><center><font color="red">*</font>{{ form_label(form.volumenPorFrasco, 'Volumen ML de Frascos' )}}
        {{ form_errors(form.volumenPorFrasco) }}
        {{ form_widget(form.volumenPorFrasco) }} </center><br></td>
        
          <tr>  
-    <td colspan="4" align="center"> 
+    <td colspan="4" align="center">
         {{ form_label(form.horaInicioCurva, 'Hora inicio')}}
-               {{ form_errors(form.horaInicioCurva) }}
+        {{ form_errors(form.horaInicioCurva)}}
         {{ form_widget(form.horaInicioCurva) }} <br></td>
          </tr>
    
@@ -56,11 +57,11 @@
     
     <tr>          
       <td>
- <P align="center"> {{ form_label(form.tiempo1, 'Tiempo1 ' )}}</P></td>
+ <P align="center"><font color="red">*</font>  {{ form_label(form.tiempo1, 'Tiempo1 ' )}}</P></td>
       <td>
-<P align="center"> {{ form_label(form.tiempo2, 'Tiempo2 ') }}</P></td>
+<P align="center"><font color="red">*</font>  {{ form_label(form.tiempo2, 'Tiempo2 ') }}</P></td>
       <td>
-<P align="center"> {{ form_label(form.tiempo3, 'Tiempo3 ')}}</P></td>
+<P align="center"><font color="red">*</font>  {{ form_label(form.tiempo3, 'Tiempo3 ')}}</P></td>
    </tr>
  
  <tr> 
@@ -81,7 +82,7 @@
  
  <tr>
 <td colspan = '3' align = 'center'>  <input type="submit" class= "ui-button" value="Guardar"/></td></tr>
- 
+<td  WIDTH = "10"><font color="red">* Campos requeridos</font>   </td>
 </table> 
     {{ form_end(form) }}
 
@@ -93,8 +94,3 @@
     </li>
 </ul>
 {% endblock %}
-    
-
-
-
-

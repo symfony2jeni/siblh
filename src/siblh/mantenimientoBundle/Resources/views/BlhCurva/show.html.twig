@@ -1,4 +1,4 @@
-{% extends '::base.html.twig' %}
+{% extends 'siblhmantenimientoBundle::plantilla.html.twig' %}
 
 {% block body -%}
     <h1>BlhCurva</h1>
@@ -39,7 +39,7 @@
             </tr>
             <tr>
                 <th>Horainiciocurva</th>
-                <td>{{ entity.horaInicioCurva }}</td>
+                <td>{{ entity.horaInicioCurva|date('Y-m-d H:i:s') }}</td>
             </tr>
         </tbody>
     </table>

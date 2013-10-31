@@ -78,11 +78,7 @@ class BlhCurvaController extends Controller
             'method' => 'POST',
         ));
 
-
-       
-
-     /**   $form->add('submit', 'submit', array('label' => 'Create')); */
-
+      //  $form->add('submit', 'submit', array('label' => 'Create'));
 
         return $form;
     }

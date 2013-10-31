@@ -53,7 +53,7 @@ class BlhEgresoReceptorController extends Controller
             $em->persist($entity);
             $em->flush();
 
-            return $this->redirect($this->generateUrl('blhegresoreceptor_show', array('id' => $entity->getId())));
+            return $this->redirect($this->generateUrl('blhegresoreceptor', array('id' => $entity->getId())));
         }
 
         return array(
@@ -76,28 +76,12 @@ class BlhEgresoReceptorController extends Controller
             'method' => 'POST',
         ));
 
-        $form->add('submit', 'submit', array('label' => 'Create'));
+      //  $form->add('submit', 'submit', array('label' => 'Create'));
 
         return $form;
     }
 
-    /**
-     * Displays a form to create a new BlhEgresoReceptor entity.
-     *
-     * @Route("/new", name="blhegresoreceptor_new")
-     * @Method("GET")
-     * @Template()
-     */
-    public function newAction()
-    {
-        $entity = new BlhEgresoReceptor();
-        $form   = $this->createCreateForm($entity);
-
-        return array(
-            'entity' => $entity,
-            'form'   => $form->createView(),
-        );
-    }
+    
 
     /**
      * Finds and displays a BlhEgresoReceptor entity.
@@ -244,4 +228,67 @@ class BlhEgresoReceptorController extends Controller
             ->getForm()
         ;
     }
+    
+//Creando nuevo controlador
+    
+     //Creando Nuevos Controladores
+     
+     
+    /**
+     * Lists all BlhEgresoReceptor entity.
+     *
+     * @Route("/pacientesreceptores", name="blhegresoreceptor_pacientesreceptores")
+     * @Method("GET")
+     * @Template()
+     */
+ 
+ public function pacientesreceptoresAction()
+    {
+        $em = $this->getDoctrine()->getManager();      
+        
+        //Obteniendo lista de pacientes"  
+        $query = $em->createQuery("SELECT r.id as identificador, r.codigoReceptor, p.primerNombre as nombre1, p.segundoNombre as nombre2, p.tercerNombre as nombre3, p.primerApellido as apellido1, p.segundoApellido as apellido2 FROM siblhmantenimientoBundle:BlhReceptor r join r.idPaciente p WHERE r.estadoReceptor = 'Activo'");
+        
+       //echo $hisclinico[idDonante];
+                
+        $receptores_registrados  = $query->getResult();
+        
+        return array(
+            'receptores_registrados' =>  $receptores_registrados,  
+         
+        );
+        
+    }
+       
+ /**
+     * Displays a form to create a new BlhEgresoReceptor entity.
+     *
+     * @Route("/new/{id}", name="blhegresoreceptor_new")
+     * @Method("GET")
+     * @Template()
+     */
+    public function newAction($id)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $query = $em->createQuery("SELECT r.id as identificador, r.codigoReceptor,r.fechaRegistroBlh, p.primerNombre as nombre1, p.segundoNombre as nombre2, p.tercerNombre as nombre3, p.primerApellido as apellido1, p.segundoApellido as apellido2, p.direccion, p.fechaNacimiento FROM siblhmantenimientoBundle:BlhReceptor r join r.idPaciente p  WHERE r.id = $id "); 
+        $datos_receptores  = $query->getResult();
+        $receptor = $em->getRepository('siblhmantenimientoBundle:BlhReceptor')->find($datos_receptores[0]['identificador']);
+      
+        if (!$datos_receptores) {
+            throw $this->createNotFoundException('Unable to find MntPaciente entity');
+        }
+       
+        
+        
+        $entity = new BlhEgresoReceptor();
+         $entity->setIdReceptor($receptor );
+        $form   = $this->createCreateForm($entity);
+
+        return array(
+            'entity' => $entity,
+            'form'   => $form->createView(),
+            'datos_receptores' =>  $datos_receptores, 
+        );
+    }   
+    
 }

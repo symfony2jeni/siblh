@@ -76,30 +76,12 @@ class BlhTemperaturaEnfriamientoController extends Controller
             'method' => 'POST',
         ));
 
-        $form->add('submit', 'submit', array('label' => 'Create'));
+      //  $form->add('submit', 'submit', array('label' => 'Create'));
 
         return $form;
     }
 
-    /**
-     * Displays a form to create a new BlhTemperaturaEnfriamiento entity.
-     *
-     * @Route("/new", name="blhtemperaturaenfriamiento_new")
-     * @Method("GET")
-     * @Template()
-     */
-    public function newAction()
-    {
-        $entity = new BlhTemperaturaEnfriamiento();
-        $form   = $this->createCreateForm($entity);
-
-        return array(
-            'entity' => $entity,
-            'form'   => $form->createView(),
-        );
-    }
-
-    /**
+     /**
      * Finds and displays a BlhTemperaturaEnfriamiento entity.
      *
      * @Route("/{id}", name="blhtemperaturaenfriamiento_show")
@@ -244,4 +226,71 @@ class BlhTemperaturaEnfriamientoController extends Controller
             ->getForm()
         ;
     }
+    
+    //Creando nuevo controlador
+    
+     //Creando Nuevos Controladores
+     
+     
+    /**
+     * Lists all BlhTemperaturaEnfriamiento entity.
+     *
+     * @Route("/pasteurizacion", name="blhtemperaturaenfriamiento_pasteurizacion")
+     * @Method("GET")
+     * @Template()
+     */
+public function pasteurizacionAction()
+    {
+        $em = $this->getDoctrine()->getManager();      
+        
+        //Obteniendo lista de pacientes"  
+        $query = $em->createQuery("SELECT r.id as identificador, r.codigoPasteurizacion, r.numCiclo, r.volumenPasteurizado, r.numFrascosPasteurizados, r.fechaPasteurizacion FROM siblhmantenimientoBundle:BlhPasteurizacion r");
+        
+       //echo $hisclinico[idDonante];
+                
+        $pasteurizaciones  = $query->getResult();
+        
+        return array(
+            'pasteurizaciones' =>  $pasteurizaciones,  
+         
+        );
+        
+    }
+   
+
+/**
+     * Displays a form to create a new BlhTemperaturaEnfriamiento entity.
+     *
+     * @Route("/new/{id}", name="blhtemperaturaenfriamiento_new")
+     * @Method("GET")
+     * @Template()
+     */
+    public function newAction($id)
+    {
+        
+         $em = $this->getDoctrine()->getManager();
+        $query = $em->createQuery("SELECT r.id as identificador, r.codigoPasteurizacion, r.numCiclo, r.volumenPasteurizado, r.numFrascosPasteurizados, r.fechaPasteurizacion FROM siblhmantenimientoBundle:BlhPasteurizacion r WHERE r.id = $id "); 
+        $datos_pasteurizacion  = $query->getResult();
+ $query2 = $em->createQuery("SELECT r.temperaturaE FROM siblhmantenimientoBundle:BlhTemperaturaEnfriamiento r  join r.idPasteurizacion p WHERE p.id = $id "); 
+        $temperaturas  = $query2->getResult();
+
+         $pasteurizacion = $em->getRepository('siblhmantenimientoBundle:BlhPasteurizacion')->find($datos_pasteurizacion[0]['identificador']);
+      
+        if (!$datos_pasteurizacion) {
+            throw $this->createNotFoundException('Unable to find MntPaciente entity');
+        }
+       
+       
+        
+        $entity = new BlhTemperaturaEnfriamiento();
+         $entity->setIdPasteurizacion($pasteurizacion );
+        $form   = $this->createCreateForm($entity);
+
+        return array(
+            'entity' => $entity,
+            'form'   => $form->createView(),
+            'datos_pasteurizacion' =>  $datos_pasteurizacion, 
+            'temperaturas' =>  $temperaturas, 
+        );
+    }    
 }

@@ -1,32 +1,47 @@
-{% extends '::base.html.twig' %}
+{% extends 'siblhmantenimientoBundle::plantilla.html.twig' %}
+
+{% block stylesheets %}
+    {{ parent() }}
+        <link href="{{ asset('bundles/siblhmantenimiento/css/form.css') }}" rel="stylesheet" type="text/css" />
+ {% endblock %}
+
 
 {% block body -%}
-    <h1>BlhTemperaturaPasteurizacion</h1>
+    <h1> Tiempo Registrado</h1>
 
-    <table class="record_properties">
-        <tbody>
+
+    <table class="records_list" border= "1" bordercolor="silver" align = "center" >
+        
+        <tr>
+         <td colspan = '2' >Registro</td> 
+         <td>Accion</td>
+        </tr>
             <tr>
-                <th>Id</th>
+                <th align = "left">Codigo</th>
                 <td>{{ entity.id }}</td>
+                
+                <td>          
+            <a href="{{ path('blhtemperaturapasteurizacion') }}">
+             Regresar a la lista </a>
+         </td>
+                
             </tr>
             <tr>
-                <th>Temperaturap</th>
+                <th>Temperatura</th>
                 <td>{{ entity.temperaturaP }}</td>
-            </tr>
-        </tbody>
-    </table>
-
-        <ul class="record_actions">
-    <li>
-        <a href="{{ path('blhtemperaturapasteurizacion') }}">
-            Back to the list
-        </a>
-    </li>
-    <li>
-        <a href="{{ path('blhtemperaturapasteurizacion_edit', { 'id': entity.id }) }}">
-            Edit
-        </a>
-    </li>
-    <li>{{ form(delete_form) }}</li>
-</ul>
+               
+                  <td>
+        <a  href="{{ path('blhtemperaturapasteurizacion_edit', { 'id': entity.id }) }}">
+            Actualizar
+        </a></td>
+             
+           
+          </tr>
+          </table>
+ 
+  <ul>
+    {{ form(delete_form) }}
+ </ul>
+        
+        
 {% endblock %}

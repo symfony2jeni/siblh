@@ -72,12 +72,12 @@ _NewDonante:
     defaults: { _controller: siblhmantenimientoBundle:BlhDonante:new}
 
 _NewHistorialClinico:
-    pattern:  /HistorialClinico/Nuevo
-    defaults: { _controller: siblhmantenimientoBundle:BlhHistorialClinico:new}
+    pattern:  /donantes/
+    defaults: { _controller: siblhmantenimientoBundle:BlhHistorialClinico:donantes}
     
 _NewHistoriaActual:
     pattern:  /donantesHA/
-    defaults: { _controller: siblhmantenimientoBundle:BlhHistoriaActual:new}  
+    defaults: { _controller: siblhmantenimientoBundle:BlhHistoriaActual:donantesHA}  
     
 _NewCurva:
     pattern:  /Curva/Nueva
@@ -91,6 +91,18 @@ _NewAnalisisMicro:
 _NewFrascoRecolectado:
     pattern:  /donaciones/
     defaults: { _controller: siblhmantenimientoBundle:BlhFrascoRecolectado:donaciones} 
+    
+_NewReceptor:
+    pattern:  /pacientes/
+    defaults: { _controller: siblhmantenimientoBundle:BlhReceptor:pacientes}      
+    
+_NewEgreso:
+    pattern:  /pacientesreceptores/
+    defaults: { _controller: siblhmantenimientoBundle:BlhEgresoReceptor:pacientesreceptores}  
+    
+_NewTemperaturaE:
+    pattern:  /pasteurizacion/
+    defaults: { _controller: siblhmantenimientoBundle:BlhTemperaturaEnfriamiento:pasteurizacion}      
 
 _MantenimientoUsuarios:
   pattern:  /Mantenimiento/Usuarios
@@ -108,6 +120,14 @@ _NewAnalisisFisico:
   pattern:  /frascos/analisis
   defaults: { _controller: siblhmantenimientoBundle:BlhFrascoRecolectado:frascosAnalisis}    
 
+_NewTempPasteurizacion:
+  pattern:  /blhtemppasteurizacion/
+  defaults: { _controller: siblhmantenimientoBundle:BlhTemperaturaPasteurizacion:pasteurizaciones} 
+    
+_NewInformacionPublica:
+  pattern:  /InfoPublica/
+  defaults: { _controller: siblhmantenimientoBundle:BlhInformacionPublica:new} 
+  
   
 
   

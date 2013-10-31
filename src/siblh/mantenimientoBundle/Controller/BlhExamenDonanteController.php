@@ -53,7 +53,7 @@ class BlhExamenDonanteController extends Controller
             $em->persist($entity);
             $em->flush();
 
-            return $this->redirect($this->generateUrl('blhexamendonante_show', array('id' => $entity->getId())));
+            return $this->redirect($this->generateUrl('blhexamendonante', array('id' => $entity->getId())));
         }
 
         return array(

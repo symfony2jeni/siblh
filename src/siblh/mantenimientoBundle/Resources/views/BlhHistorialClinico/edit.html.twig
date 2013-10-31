@@ -1,14 +1,52 @@
-{% extends '::base.html.twig' %}
+{% extends 'siblhmantenimientoBundle::plantilla.html.twig' %}
 
 {% block body -%}
-    <h1>BlhHistorialClinico edit</h1>
+    <h1>Editar Historial Clinico</h1>
 
-    {{ form(edit_form) }}
-
+ 
+    
+    <table class="records_list" border = "1"  align = "center" bordercolor="#848484">
+    
+    <tr><th bgcolor="#2E9AFE">Amenorrea</th>
+        <td>{{ form(edit_form.amenorrea) }}</td></tr>
+    <tr><th bgcolor="#2E9AFE">Control prenatal</th>
+        <td>{{ form(edit_form.controlPrenatal) }}</td></tr>
+    <tr><th bgcolor="#2E9AFE">Lugar de control</th>
+        <td>{{ form(edit_form.lugarControl) }}</td></tr>
+     <tr><th bgcolor="#2E9AFE">Numero de controles</th>
+        <td>{{ form(edit_form.numeroControl) }}</td></tr>
+     <tr><th bgcolor="#2E9AFE">Fecha de ultima regla</th>
+        <td>{{ form(edit_form.fechaUltimaRegla) }}</td></tr>
+     <tr><th bgcolor="#2E9AFE">Fecha de parto</th>
+        <td>{{ form(edit_form.fechaParto) }}</td></tr>
+     <tr><th bgcolor="#2E9AFE">Lugar de parto</th>
+        <td>{{ form(edit_form.lugarParto) }}</td></tr>
+     <tr><th bgcolor="#2E9AFE">Patologias</th>
+        <td>{{ form(edit_form.patologiaEmbarazo) }}</td></tr>
+     <tr><th bgcolor="#2E9AFE">Periodo intergenesico</th>
+        <td>{{ form(edit_form.periodoIntergenesico) }}</td></tr>
+     <tr><th bgcolor="#2E9AFE">Fecha parto anterior</th>
+        <td>{{ form(edit_form.fechaPartoAnterior) }}</td></tr>
+     <tr> <th bgcolor="#2E9AFE" colspan = "2">Formula obstetrica</th></tr>
+     <tr><th bgcolor="#2E9AFE">G</th>
+        <td>{{ form(edit_form.formulaObstetricaG,  { 'attr': {'size': '2'} }) }}</td></tr>
+     <tr><th bgcolor="#2E9AFE">P</th>
+        <td>{{ form(edit_form.formulaObstetricaP1,  { 'attr': {'size': '2'} }) }}</td></tr>
+      <tr><th bgcolor="#2E9AFE">P</th>
+        <td>{{ form(edit_form.formulaObstetricaP2,  { 'attr': {'size': '2'} }) }}</td></tr>
+      <tr><th bgcolor="#2E9AFE">A</th>
+        <td>{{ form(edit_form.formulaObstetricaA,  { 'attr': {'size': '2'} }) }}</td></tr>
+    <tr><th bgcolor="#2E9AFE">V</th>
+        <td>{{ form(edit_form.formulaObstetricaV,  { 'attr': {'size': '2'} }) }}</td></tr>
+    <tr><th bgcolor="#2E9AFE">M</th>
+        <td>{{ form(edit_form.formulaObstetricaM,  { 'attr': {'size': '2'} }) }}</td></tr>
+    </table>
+    
+     
         <ul class="record_actions">
     <li>
         <a href="{{ path('blhhistorialclinico') }}">
-            Back to the list
+            Ver Listado
         </a>
     </li>
     <li>{{ form(delete_form) }}</li>

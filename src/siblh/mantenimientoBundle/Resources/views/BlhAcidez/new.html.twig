@@ -4,11 +4,9 @@
 {% block stylesheets %}
     {{ parent() }}
 	<link href="{{ asset('bundles/siblhmantenimiento/css/form.css') }}" rel="stylesheet" type="text/css" />
- 
 {% endblock %}
         
 {% block javascripts %}
-
 {{parent()}}
 
 <script type="text/javascript" src="{{ asset('bundles/siblhmantenimiento/js/BlhAcidez/new.js') }}" ></script>
@@ -69,34 +67,33 @@
                 {{ form_label(form.acidez1, 'Acidez 1') }}
                 {{ form_errors(form.acidez1) }}
                 {{ form_widget(form.acidez1) }} </td>
-        <td   colspan="3" align = "right" ><font color="red">*</font> 
-                
+       <td   colspan="3" align = "right" ><font color="red">*</font>           
                 {{ form_label(form.acidez2, 'Acidez 2') }}
                 {{ form_errors(form.acidez2) }}
                 {{ form_widget(form.acidez2) }} </td>
-        <td colspan="3" align = "right"><font color="red">*</font> 
-                
+
+        <td colspan="3" align = "right"><font color="red">*</font>                 
                 {{ form_label(form.acidez3, 'Acidez 3') }}
                 {{ form_errors(form.acidez3) }}
                 {{ form_widget(form.acidez3) }} </td>
           </tr>
         <tr><td colspan=2 align = "right" height=10  ></td></tr>
       <tr>
-           <td colspan="3" align = "right" >
-                
+
+	        <td colspan="3" align = "right" >              
                 {{ form_label(form.mediaAcidez) }}
                 {{ form_errors(form.mediaAcidez) }}
                 {{ form_widget(form.mediaAcidez) }} </td>
            
-           <td colspan="1" align = "right" ><font color="red">*</font> 
-                
+
+           <td colspan="1" align = "right" ><font color="red">*</font>             
                 {{ form_label(form.factor) }}
                 {{ form_errors(form.factor) }}
                 {{ form_widget(form.factor) }} </td>
       
-          
-        <td  colspan="3" align = "right" >
-                
+      
+           <td  colspan="3" align = "right" >
+              
                 {{ form_label(form.resultado) }}
                 {{ form_errors(form.resultado) }}
                 {{ form_widget(form.resultado) }} </td>

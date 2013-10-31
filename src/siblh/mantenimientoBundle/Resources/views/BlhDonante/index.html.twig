@@ -1,45 +1,49 @@
-{% extends '::base.html.twig' %}
+{% extends 'siblhmantenimientoBundle::plantilla.html.twig' %}
 
+{% block javascripts %}
+    {{parent()}}
+   <script type="text/javascript" src="{{ asset('bundles/siblhmantenimiento/js/BlhDonante/index.js') }}" ></script>
+{% endblock %}
+   
 {% block body -%}
+ <link href="{{asset('bundles/jquery/jquery.jqGrid-4.5.4/css/ui.jqgrid.css')}}" rel="stylesheet"  type="text/css" media="all"/>  
+ 
+ <script type="text/javascript" src="{{asset('bundles/jquery/jquery.jqGrid-4.5.4/js/i18n/grid.locale-es.js')}}"></script>
+      <script type="text/javascript" src="{{asset('bundles/jquery/jquery.jqGrid-4.5.4/js/jquery.jqGrid.min.js')}}" ></script> 
+
+ 
     <h1>BlhDonante list</h1>
 
-    <table class="records_list">
+    <table id = "listado_donantes">
         <thead>
             <tr>
-                <th>Id</th>
-                <th>Codigodonante</th>
-                <th>Primernombre</th>
-                <th>Segundonombre</th>
-                <th>Primerapellido</th>
-                <th>Segundoapellido</th>
-                <th>Fechanacimiento</th>
-                <th>Fecharegistrodonanteblh</th>
-                <th>Telefonofijo</th>
-                <th>Telefonomovil</th>
+                
+                <th>Codigo</th>
+                <th colspan = "4">Nombre</th>
+                <th>Fecha&nbsp;Nacimiento</th>
+                <th>Fecha&nbsp;de&nbsp;registro</th>
+                <th>Telefono&nbsp;fijo</th>
+                <th>Celular</th>
                 <th>Direccion</th>
                 <th>Procedencia</th>
                 <th>Registro</th>
-                <th>Numerodocumentoidentificacion</th>
-                <th>Documentoidentificacion</th>
+                 <th>Documento&nbsp;de&nbsp;identificacion</th>
+                <th>Numero&nbsp;de&nbsp;documento</th>               
                 <th>Edad</th>
                 <th>Ocupacion</th>
-                <th>Estadocivil</th>
+                <th>Estado&nbsp;civil</th>
                 <th>Nacionalidad</th>
                 <th>Escolaridad</th>
-                <th>Tipocolecta</th>
+               <th>Tipo&nbsp;de&nbsp;colecta</th>
                 <th>Observaciones</th>
-                <th>Actions</th>
+                <th>Accion</th>
             </tr>
         </thead>
         <tbody>
         {% for entity in entities %}
             <tr>
-                <td><a href="{{ path('blhdonante_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
                 <td>{{ entity.codigoDonante }}</td>
-                <td>{{ entity.primerNombre }}</td>
-                <td>{{ entity.segundoNombre }}</td>
-                <td>{{ entity.primerApellido }}</td>
-                <td>{{ entity.segundoApellido }}</td>
+                <td>{{ entity.primerNombre }} {{ entity.segundoNombre }} {{ entity.primerApellido }} {{ entity.segundoApellido }}</td>
                 <td>{% if entity.fechaNacimiento %}{{ entity.fechaNacimiento|date('Y-m-d H:i:s') }}{% endif %}</td>
                 <td>{% if entity.fechaRegistroDonanteBlh %}{{ entity.fechaRegistroDonanteBlh|date('Y-m-d H:i:s') }}{% endif %}</td>
                 <td>{{ entity.telefonoFijo }}</td>
@@ -56,26 +60,11 @@
                 <td>{{ entity.escolaridad }}</td>
                 <td>{{ entity.tipoColecta }}</td>
                 <td>{{ entity.observaciones }}</td>
-                <td>
-                <ul>
-                    <li>
-                        <a href="{{ path('blhdonante_show', { 'id': entity.id }) }}">show</a>
-                    </li>
-                    <li>
-                        <a href="{{ path('blhdonante_edit', { 'id': entity.id }) }}">edit</a>
-                    </li>
-                </ul>
-                </td>
+                <td><a href="{{ path('blhdonante_edit', { 'id': entity.id }) }}"><font color="blue"><u>Editar</u></font></a></td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
-
-        <ul>
-        <li>
-            <a href="{{ path('blhdonante_new') }}">
-                Create a new entry
-            </a>
-        </li>
-    </ul>
+<div id='pagerdonantes' ></div>
+        
     {% endblock %}

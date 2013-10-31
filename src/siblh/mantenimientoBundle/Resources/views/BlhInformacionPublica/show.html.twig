@@ -1,4 +1,4 @@
-{% extends '::base.html.twig' %}
+{% extends 'siblhmantenimientoBundle::plantilla.html.twig'%}
 
 {% block body -%}
     <h1>BlhInformacionPublica</h1>
@@ -11,7 +11,7 @@
             </tr>
             <tr>
                 <th>Documento</th>
-                <td>{{ entity.documento }}</td>
+                <td>{{ entity.path }}</td>
             </tr>
             <tr>
                 <th>Tipo</th>

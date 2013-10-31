@@ -16,18 +16,24 @@ class BlhReceptorType extends AbstractType
     {
         $builder
             ->add('codigoReceptor')
-            ->add('fechaRegistroBlh')
+            ->add('fechaRegistroBlh', 'date', 
+                    array(  'widget' => 'single_text',
+                            'format' => 'yy-MM-dd',
+                            'attr' => array('class' => 'date')))
             ->add('procedencia')
-            ->add('estadoReceptor')
-            ->add('edadDias')
+
+            ->add('estadoReceptor', 'choice', 
+                    array('choices' => array('' => 'Seleccione un valor','Activo' => 'Activo',
+                          'Egreso' => 'Egreso')))
+            ->add('edadDias', 'text')
             ->add('pesoReceptor')
-            ->add('duracionCpap')
+             ->add('duracionCpap', 'text')
             ->add('clasificacionLubchengo')
-            ->add('diagnosticoIngreso')
-            ->add('duracionNpt')
-            ->add('apgar')
+             ->add('diagnosticoIngreso', 'textarea')
+            ->add('duracionNpt', 'text')
+            ->add('apgar', 'text')
             ->add('edadGestFur')
-            ->add('duracionVentilacion')
+            ->add('duracionVentilacion', 'text')
             ->add('edadGestBallard')
             ->add('pc')
             ->add('tallaIngreso')

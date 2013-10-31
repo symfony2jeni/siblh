@@ -15,7 +15,7 @@ class BlhCurvaType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-             ->add('tiempo1','number', array ( 'invalid_message'=>'Debe ser entre 5 y 10'))
+           ->add('tiempo1','number', array ( 'invalid_message'=>'Debe ser entre 5 y 10'))
             ->add('tiempo2', 'number', array ( 'invalid_message'=>'Debe ser entre 5 y 10'))
             ->add('tiempo3','number', array ( 'invalid_message'=>'Debe ser entre 5 y 10'))
             /*->add('valorCurva') */

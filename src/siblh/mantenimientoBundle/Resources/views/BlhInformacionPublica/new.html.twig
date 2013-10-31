@@ -1,15 +1,64 @@
-{% extends '::base.html.twig' %}
+{% extends 'siblhmantenimientoBundle::plantilla.html.twig' %} 
+
+ {% block stylesheets %}
+    {{ parent() }}
+        <link href="{{ asset('bundles/siblhmantenimiento/css/form.css') }}" rel="stylesheet" type="text/css" />
+ {% endblock %}
+        
+ {% block javascripts %}
+    {{parent()}}
+    
+    <script type="text/javascript" src="{{ asset('bundles/siblhmantenimiento/js/BlhInformacionPublica/new.js') }}" ></script>
+    
+ {% endblock %}
+
 
 {% block body -%}
-    <h1>BlhInformacionPublica creation</h1>
+    <h1>Registro de Informacion Publica</h1>
 
-    {{ form(form) }}
+    
+ {{ form_start(form) }}
+    {{ form_errors(form) }}
+    
+ <table border=0 align="center" CellSpacing="25" >
+      <tr> 
+        <td align="left">{{ form_label(form.idBancoDeLeche, 'Banco de Leche') }}
+         <td> {{ form_errors(form.idBancoDeLeche) }}
+        {{ form_widget(form.idBancoDeLeche) }}
+             
+                 
+    <tr> 
+        <td align="left">{{ form_label(form.tipo, 'Tipo' )}}
+        <td> {{ form_errors(form.tipo) }}
+        {{ form_widget(form.tipo) }}
+        
+     <tr> 
+        <td align="left">{{ form_label(form.nombreDocumento, 'Titulo documento') }}
+         <td> {{ form_errors(form.nombreDocumento) }}
+        {{ form_widget(form.nombreDocumento) }}
+        
+     <tr> 
+        <td align="left">{{ form_label(form.fechaPublicacion, 'Fecha publicacion')}}
+         <td>{{ form_errors(form.fechaPublicacion) }}
+        {{ form_widget(form.fechaPublicacion) }}
 
-        <ul class="record_actions">
-    <li>
-        <a href="{{ path('blhinformacionpublica') }}">
-            Back to the list
-        </a>
-    </li>
-</ul>
+  {# Al escribir la plantilla, no olvidar fijar el atributo enctype.#}                          
+  <tr> 
+        <td colspan = '2'><form action="#" method="post" {{ form_enctype(form.file) }}>
+        {{ form_widget(form.file) }}
+                        
+  <tr>                   
+     <td colspan = '2'> <input type="submit" class= "ui-button" value="Upload Documento" />
+</form>
+ 
+
+
+ 
+</table> 
+   
+
+  
+{{ form_end(form) }}   
+    
+
 {% endblock %}

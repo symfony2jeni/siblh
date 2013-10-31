@@ -273,4 +273,9 @@ class BlhCurva
     {
         return $this->horaInicioCurva;
     }
+    
+     public function __toString()
+    {
+       return $this->valorCurva;
+    }
 }

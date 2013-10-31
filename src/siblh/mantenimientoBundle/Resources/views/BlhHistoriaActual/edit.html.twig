@@ -1,16 +1,32 @@
-{% extends '::base.html.twig' %}
+{% extends 'siblhmantenimientoBundle::plantilla.html.twig' %}
 
 {% block body -%}
-    <h1>BlhHistoriaActual edit</h1>
+    <h1>Actualizar Historia Actual</h1>
+ <table class="records_list" border = "1"  align = "center" bordercolor="#848484">
+         
+         <tr><th bgcolor="#2E9AFE">Peso</th>
+        <td>{{ form(edit_form.pesoDonante) }}</td></tr>
+        <tr><th bgcolor="#2E9AFE">Talla</th>
+        <td>{{ form(edit_form.tallaDonante) }}</td></tr>
+        <tr><th bgcolor="#2E9AFE">Medicamento</th>
+        <td>{{ form(edit_form.medicamento) }}</td></tr>
+        <tr><th bgcolor="#2E9AFE">Habitos toxicos</th>
+        <td>{{ form(edit_form.habitoToxico) }}</td></tr>
+        <tr><th bgcolor="#2E9AFE">Motivo de la donacion</th>
+        <td>{{ form(edit_form.motivoDonacion) }}</td></tr>
+        <tr><th bgcolor="#2E9AFE">Patologias</th>
+        <td>{{ form(edit_form.patologiaDonante) }}</td></tr>
+        <tr><th bgcolor="#2E9AFE">IMC</th>
+        <td>{{ form(edit_form.imc) }}</td></tr>
+        <tr><th bgcolor="#2E9AFE">Estado de Donante</th>
+        <td>{{ form(edit_form.estadoDonante) }}</td></tr>
+    
+ </table>
 
-    {{ form(edit_form) }}
-
-        <ul class="record_actions">
-    <li>
+    <table align = "center">
+        <tr>
+            <td>
         <a href="{{ path('blhhistoriaactual') }}">
-            Back to the list
-        </a>
-    </li>
-    <li>{{ form(delete_form) }}</li>
-</ul>
+            Ver listado </a>
+         </td></tr></table>
 {% endblock %}

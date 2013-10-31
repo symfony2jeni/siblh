@@ -1,7 +1,9 @@
 $(document).ready(function() { 
    $('button').button();
    $('#siblh_mantenimientobundle_blhhistoriaactual_tallaDonante').
-        attr('data-bvalidator', 'between[1:2],required');
+        attr('data-bvalidator', 'between[100:200],required');
+$('#siblh_mantenimientobundle_blhhistoriaactual_pesoDonante').
+        attr('data-bvalidator', 'between[22:136],required');
  
    
  
@@ -14,5 +16,24 @@ $(document).ready(function() {
     //Validar el formulario
          $.noConflict();
     $('form').bValidator(optionsRed);
+    
+    $(function() {
+    $( document ).tooltip({
+      position: {
+        my: "center bottom-20",
+        at: "center top",
+        using: function( position, feedback ) {
+          $( this ).css( position );
+          $( "<div>" )
+            .addClass( "arrow" )
+            .addClass( feedback.vertical )
+            .addClass( feedback.horizontal )
+            .appendTo( this );
+        }
+      }
+    });
+        
+           });
+
 });
 

@@ -15,11 +15,23 @@ class BlhInformacionPublicaType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('documento')
-            ->add('tipo')
+            ->add('tipo', 'choice', array(
+             'choices' => array(
+              'Estadistica' => 'Estadistica',
+              'Informacion Tecnica' => 'Informacion Tecnica',
+              'Charla' => 'Charla',
+                               ),
+             'required'    => true  ))
+                    
             ->add('nombreDocumento')
-            ->add('fechaPublicacion')
-            ->add('idBancoDeLeche')
+            ->add('fechaPublicacion', 'date', 
+                    array(  'widget' => 'single_text',
+                            'format' => 'yy-MM-dd',
+                            'attr' => array('class' => 'date'
+                                )))
+            ->add('idBancoDeLeche',null,array(
+                'required' => true))
+            ->add('file')
         ;
     }
     

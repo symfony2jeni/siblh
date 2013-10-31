@@ -1,7 +1,7 @@
 {% extends 'siblhmantenimientoBundle::plantilla.html.twig' %}
 {% block stylesheets %}
     {{ parent() }}
-	<link href="{{ asset('bundles/siblhmantenimiento/css/form.css') }}" rel="stylesheet" type="text/css" />
+        <link href="{{ asset('bundles/siblhmantenimiento/css/form.css') }}" rel="stylesheet" type="text/css" />
 {% endblock %}
         {% block javascripts %}
 
@@ -27,97 +27,150 @@ var elemento = document.getElementById(id);
 elemento.style.visibility = visible ? "visible" : "hidden";
 
  }
+ 
 </script>
+
+ <FORM> 
+   <table align = "center">
+       
+       <tr>
+       <td>Codigo de la Donante</td>
+        <td>
+        <INPUT type=text disabled="disabled" size=30 readonly="readonly" value= " {{ datos_donantes[0].codigo_donante }} "></td>
+        <td width= "70"></td>
+        <td width= "70"></td>
+        
+    </tr>        
+    </table>
+     
+</form>
  
    {{ form_start(form) }}
     {{ form_errors(form) }}
    
  
-  <table align = "center">
-       <tr><td> 
+  <table align = "center" >
+       <tr><td style="visibility:hidden"> 
         {{ form_label(form.idDonante) }}
         {{ form_errors(form.idDonante) }}
-        {{ form_widget(form.idDonante) }} </td>
-   {#  <td> 
-        {{ form_label(form.formulaObstetrica) }}
-        {{ form_errors(form.formulaObstetrica) }}
-        {{ form_widget(form.formulaObstetrica) }} </td>  #}
+        {{ form_widget(form.idDonante) }} </td></tr>
+    <tr><td colspan = "2" align = "center"> Formula Obstetrica <br>
+        {{ form_label(form.formulaObstetricaG, 'G') }}
+        {{ form_errors(form.formulaObstetricaG) }}
+        {{ form_widget(form.formulaObstetricaG,  { 'attr': {'size': '2', 'title':'Embarazos'} }) }}  
+        {{ form_label(form.formulaObstetricaP1, 'P') }}
+        {{ form_errors(form.formulaObstetricaP1) }}
+        {{ form_widget(form.formulaObstetricaP1,  { 'attr': {'size': '2', 'title':'Partos'} }) }}
+        {{ form_label(form.formulaObstetricaP2, 'P') }}
+        {{ form_errors(form.formulaObstetricaP2) }}
+        {{ form_widget(form.formulaObstetricaP2,  { 'attr': {'size': '2', 'title':'Prematuros'} }) }}
+        {{ form_label(form.formulaObstetricaA, 'A') }}
+        {{ form_errors(form.formulaObstetricaA) }}
+        {{ form_widget(form.formulaObstetricaA,  { 'attr': {'size': '2', 'title':'Abortos'} }) }}
+        {{ form_label(form.formulaObstetricaV, 'V') }}
+        {{ form_errors(form.formulaObstetricaV) }}
+        {{ form_widget(form.formulaObstetricaV,  { 'attr': {'size': '2', 'title':'Vivos'} }) }}
+        {{ form_label(form.formulaObstetricaM, 'M') }}
+        {{ form_errors(form.formulaObstetricaM) }}
+        {{ form_widget(form.formulaObstetricaM,  { 'attr': {'size': '2', 'title':'Muertos'} }) }}</td>  
  
-   <td> {{ form_label(form.periodoIntergenesico) }}
+   <td align = "left"><font color="red" >*</font> 
+        {{ form_label(form.periodoIntergenesico) }}
         {{ form_errors(form.periodoIntergenesico) }}
-        {{ form_widget(form.periodoIntergenesico) }} </td>  </tr>
+        {{ form_widget(form.periodoIntergenesico,  { 'attr': {'size': '4'} }) }} </td>  </tr>
   
    <tr>
-   <td>   {{ form_label(form.controlPrenatal) }}
+   <td align = "left"><font color="red" >*</font> 
+        {{ form_label(form.controlPrenatal) }}&nbsp;
         {{ form_errors(form.controlPrenatal) }}
         {{ form_widget(form.controlPrenatal) }}</td>
   
-   <td > 
+   <td id = "lugC"> 
         {{ form_label(form.lugarControl) }}
         {{ form_errors(form.lugarControl) }}
         {{ form_widget(form.lugarControl) }} </td>
            
-   <td> {{ form_label(form.numeroControl) }}
+   <td id = "numC" align = "left"> 
+        {{ form_label(form.numeroControl) }}
+            &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;            
         {{ form_errors(form.numeroControl) }}
-        {{ form_widget(form.numeroControl) }}</td></tr>
+        {{ form_widget(form.numeroControl, {'attr': { 'required' : 'false'} }) }}</td></tr>
   
   <tr>
-   <td> {{ form_label(form.fechaUltimaRegla ) }}
+   <td align = "left"> {{ form_label(form.fechaUltimaRegla) }}
         {{ form_errors(form.fechaUltimaRegla ) }}
-        {{ form_widget(form.fechaUltimaRegla ) }}</td>
+        {{ form_widget(form.fechaUltimaRegla, {'attr':{'readonly': 'true' } } ) }}</td>
+       
+       
+  <td align = "left"><label>Partos anteriores</label>
+   <input type="radio" name="group3" value="si" onClick="prueba(true,'partoant');"> Si
+<input type="radio" name="group3" value="no" onClick="prueba(false,'partoant');"> No<br></td>
+     
    
-   <td> {{ form_label(form.fechaPartoAnterior) }}
+   <td id = "partoant" style="visibility:hidden"> {{ form_label(form.fechaPartoAnterior) }}
         {{ form_errors(form.fechaPartoAnterior) }}
-        {{ form_widget(form.fechaPartoAnterior) }}</td>
+        {{ form_widget(form.fechaPartoAnterior, {'attr':{'readonly': 'true' } }) }}</td>
   
-  <td>  {{ form_label(form.fechaParto) }}
-        {{ form_errors(form.fechaParto) }}
-        {{ form_widget(form.fechaParto) }}</td></tr>
+ </tr>
   
   <tr>
-   <td> {{ form_label(form.amenorrea) }}
-        {{ form_errors(form.amenorrea) }}
-        {{ form_widget(form.amenorrea) }}</td>
-   <td> 
+       <td align = "left"><font color="red" >*</font> 
+        {{ form_label(form.fechaParto) }}
+               &nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+        {{ form_errors(form.fechaParto) }}
+        {{ form_widget(form.fechaParto, {'attr':{'readonly': 'true' } }) }}</td>
+   
+   <td align = "left"> 
 
-        <label>Parto en Hospital:</label><br>
-   <input type="radio" name="group2" value="si" onClick="prueba(false,'lugar');"> Si<br>
+        <label>Parto en Hospital</label>
+   <input type="radio" name="group2" value="si" onClick="prueba(false,'lugar');"> Si
 <input type="radio" name="group2" value="no" onClick="prueba(true,'lugar');"> No<br></td>
 
  
 
 
-    <td id="lugar" style="visibility:hidden">
-
+    <td align = "left" id="lugar" style="visibility:hidden"><font color="red" >*</font> 
         {{ form_label(form.lugarParto) }}
+        &nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         {{ form_errors(form.lugarParto) }}
         {{ form_widget(form.lugarParto, {'attr': { 'value' : 'N/A'} }) }}</td>   </tr>
     {# ,  { 'attr': {'disabled': 'disabled'} }#}
     <tr>
    
-   <td> 
+   <td  align = "left"> 
 
-         <label>Patologia durante el embarazo:</label><br>
-   <input type="radio" name="group" value="si" onClick="prueba(true,'patologia');"> Si<br>
+         <label>Patologia en el embarazo</label>
+   <input type="radio" name="group" value="si" onClick="prueba(true,'patologia');"> Si
 <input type="radio" name="group" value="no" onClick="prueba(false,'patologia');"> No<br></td>
 
 
-    <td id = "patologia" style="visibility:hidden"> 
+    <td   align = "left" id = "patologia" style="visibility:hidden"> 
 
-        {{ form_label(form.patologiaEmbarazo) }}
+        {{ form_label(form.patologiaEmbarazo, 'Patologias') }}
         {{ form_errors(form.patologiaEmbarazo) }}
-        {{ form_widget(form.patologiaEmbarazo, {'attr': { 'value' : 'N/A'} }) }}</td> </tr>
+        {{ form_widget(form.patologiaEmbarazo, {'attr': { 'value' : 'N/A'} }) }}</td> 
+    
+    <td align = "left"> 
+        {{ form_label(form.amenorrea) }}
+       &nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        {{ form_errors(form.amenorrea) }}
+        {{ form_widget(form.amenorrea,  { 'attr': {'size': '4', 'title': 'Semanas'} }) }}</td></tr>
     
    <tr><td colspan = '3' align = 'center'>  <input type="submit"  value="Guardar"/></td></tr>
-   
+
+   <tr><td align = "left"><font color="red" size = "2" face = "Comic Sans MS">* Campos requeridos</font>   </td>
+      <td colspan = '2' align = 'left'>&nbsp; &nbsp;&nbsp; &nbsp;
+                                       &nbsp; &nbsp;&nbsp; &nbsp; 
+                                       &nbsp; &nbsp;&nbsp; &nbsp;
+                                       &nbsp; &nbsp;&nbsp; &nbsp;
    </table>
    
     {{ form_end(form) }}
-        <ul class="record_actions">
-    <li>
+<table align = "center">
+    <tr><td>
+        
         <a href="{{ path('blhhistorialclinico') }}">
-            Back to the list
+            Ver listado
         </a>
-    </li>
-</ul>
+   </td></tr></table>
 {% endblock %}

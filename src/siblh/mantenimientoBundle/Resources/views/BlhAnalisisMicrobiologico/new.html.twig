@@ -1,9 +1,20 @@
-{# {% extends '::base.html.twig' %} #}
+{% extends 'siblhmantenimientoBundle::plantilla.html.twig' %} 
 
- {% extends 'siblhmantenimientoBundle::plantilla.html.twig' %} 
+{% block stylesheets %}
+    {{ parent() }}
+        <link href="{{ asset('bundles/siblhmantenimiento/css/form.css') }}" rel="stylesheet" type="text/css" />
+ {% endblock %}
+        
+        
+        {% block javascripts %}
+    {{parent()}}
+    
+    <script type="text/javascript" src="{{ asset('bundles/siblhmantenimiento/js/BlhAnalisisMicrobiologico/new.js') }}" ></script>
+    
+{% endblock %}
 
 {% block body -%}
-    <h1> ANALIS MICROBIOLOGICO</h1>
+    <h1> Registro Analisis Microbiologico</h1>
 
    {# {{ form(form) }} #}
 
@@ -26,18 +37,28 @@
     <td>
         {{ form_errors(form.idFrascoProcesado) }}
         {{ form_widget(form.idFrascoProcesado) }} </td>
+     
+    
     <td>   
         {{ form_errors(form.coliformesTotales) }}
         {{ form_widget(form.coliformesTotales) }} </td>
+    
+     
     <td> 
         {{ form_errors(form.control) }}
         {{ form_widget(form.control) }} </td>
-    <td>  
+    
+    
+    <td>
          {{ form_errors(form.situacion) }}
-         {{ form_widget(form.situacion) }} 
-    </td>  
+         {{ form_widget(form.situacion) }}   
+    </td> 
+     
     
  </tr>
+ 
+ <tr>
+<td colspan = '7' align = 'center'>  <input type="submit" class= "ui-button" value="Guardar"/></td></tr>
 </table> 
    
    {# <input type="submit" /> #}
@@ -45,11 +66,6 @@
 {{ form_end(form) }}
 
     
-        <ul class="record_actions">
-    <li>
-        <a href="{{ path('blhanalisismicrobiologico') }}">
-            Back to the list
-        </a>
-    </li>
-</ul>
+   
 {% endblock %}
+

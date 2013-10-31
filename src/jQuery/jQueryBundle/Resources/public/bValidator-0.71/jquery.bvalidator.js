@@ -694,7 +694,7 @@
 						doNotshowMessages = 1;
 
 					// if value is not required and is empty
-					if((!flagRequired && !flagValempty && !validator.required(inputValue)) || $(this).attr(options.forceValidAttr) == 'true')
+					if((!flagRequired && !flagValempty && !validator.required(inputValue)) || $(this).attr(options.forceValidAttr) == 'false')
 						is_valid = 1;
 
 					if(!is_valid){

@@ -1,0 +1,37 @@
+{% extends 'siblhmantenimientoBundle::plantilla.html.twig' %}
+
+{% block javascripts %}
+    {{parent()}}
+   <script type="text/javascript" src="{{ asset('bundles/siblhmantenimiento/js/BlhReceptor/pacientes.js') }}" ></script>
+{% endblock %}
+   
+{% block body -%}
+ <link href="{{asset('bundles/jquery/jquery.jqGrid-4.5.4/css/ui.jqgrid.css')}}" rel="stylesheet"  type="text/css" media="all"/>  
+ 
+ <script type="text/javascript" src="{{asset('bundles/jquery/jquery.jqGrid-4.5.4/js/i18n/grid.locale-es.js')}}"></script>
+      <script type="text/javascript" src="{{asset('bundles/jquery/jquery.jqGrid-4.5.4/js/jquery.jqGrid.min.js')}}" ></script> 
+
+    <h1>Listado de Pacientes</h1>
+    <table id = "listado_pacientes">
+        <thead>
+            <tr>
+                <th>id</th>
+                <th>Nombre</th>
+                <th>Accion</th>
+                
+            </tr>
+          
+        </thead>
+        <tbody>
+            <tr>
+       {% for paciente in pacientes_registrados%}
+            
+               <td><a href="{{ path('blhreceptor_new', { 'id': paciente.identificador }) }}">{{ paciente.identificador }}</a></td>
+                <td>{{ paciente.nombre1 }} {{ paciente.nombre2 }} {{ paciente.apellido1 }} {{ paciente.apellido2 }}</td>
+                <td><a href="{{ path('blhreceptor_new', { 'id': paciente.identificador })}}"><font color="blue"><u>Registrar Receptor</u></font></a></td></tr>
+        {% endfor %}
+            
+        </tbody>
+        </table>
+      <div id='pagerpacientes' ></div>
+        {% endblock %}

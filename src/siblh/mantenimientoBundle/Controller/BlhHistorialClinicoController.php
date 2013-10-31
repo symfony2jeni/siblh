@@ -53,7 +53,7 @@ class BlhHistorialClinicoController extends Controller
             $em->persist($entity);
             $em->flush();
 
-            return $this->redirect($this->generateUrl('blhhistorialclinico_show', array('id' => $entity->getId())));
+            return $this->redirect($this->generateUrl('blhhistorialclinico', array('id' => $entity->getId())));
         }
 
         return array(
@@ -76,29 +76,12 @@ class BlhHistorialClinicoController extends Controller
             'method' => 'POST',
         ));
 
-        $form->add('submit', 'submit', array('label' => 'Create'));
+     //   $form->add('submit', 'submit', array('label' => 'Create'));
 
         return $form;
     }
 
-    /**
-     * Displays a form to create a new BlhHistorialClinico entity.
-     *
-     * @Route("/new", name="blhhistorialclinico_new")
-     * @Method("GET")
-     * @Template()
-     */
-    public function newAction()
-    {
-        $entity = new BlhHistorialClinico();
-        $form   = $this->createCreateForm($entity);
-
-        return array(
-            'entity' => $entity,
-            'form'   => $form->createView(),
-        );
-    }
-
+    
     /**
      * Finds and displays a BlhHistorialClinico entity.
      *
@@ -147,7 +130,7 @@ class BlhHistorialClinicoController extends Controller
         return array(
             'entity'      => $entity,
             'edit_form'   => $editForm->createView(),
-            'delete_form' => $deleteForm->createView(),
+           'delete_form' => $deleteForm->createView(),
         );
     }
 
@@ -165,7 +148,7 @@ class BlhHistorialClinicoController extends Controller
             'method' => 'PUT',
         ));
 
-        $form->add('submit', 'submit', array('label' => 'Update'));
+        $form->add('submit', 'submit', array('label' => 'Actualizar'));
 
         return $form;
     }
@@ -240,8 +223,88 @@ class BlhHistorialClinicoController extends Controller
         return $this->createFormBuilder()
             ->setAction($this->generateUrl('blhhistorialclinico_delete', array('id' => $id)))
             ->setMethod('DELETE')
-            ->add('submit', 'submit', array('label' => 'Delete'))
+          //  ->add('submit', 'submit', array('label' => 'Delete'))
             ->getForm()
         ;
     }
+    
+  //Creando nuevo controlador
+    
+     //Creando Nuevos Controladores
+     
+     
+    /**
+     * Lists all BlhHistorialClinico entity.
+     *
+     * @Route("/donantes", name="blhhistorialclinico_donantes")
+     * @Method("GET")
+     * @Template()
+     */
+ 
+ public function donantesAction()
+    {
+        $em = $this->getDoctrine()->getManager();      
+        
+        //Obteniendo lista de donantes"  
+    //  $hisclinico =  $em->getRepository('siblhmantenimientoBundle:BlhHistorialClinico')->findAll();
+      // $query1 = $em->createQuery("SELECT distinct p.id as identificador FROM siblhmantenimientoBundle:BlhHistorialClinico j JOIN j.idDonante p");
+      // $hisclinico = $query1->getResult();
+        $query = $em->createQuery("SELECT p.id as identificador, p.primerNombre as nombre1, p.segundoNombre as nombre2, p.primerApellido as apellido1, p.segundoApellido as apellido2 FROM siblhmantenimientoBundle:BlhDonante p ");
+        
+       //echo $hisclinico[idDonante];
+                
+        $donantes_registradas  = $query->getResult();
+        
+        return array(
+            'donantes_registradas' =>  $donantes_registradas,  
+             //   'hisclinico' => $hisclinico,
+        );
+        
+    }
+      
+    
+    
+    /**
+     * Displays a form to create a new BlhHistorialClinico entity.
+     *
+     * @Route("/new/{id}", name="blhhistorialclinico_new")
+     * @Method("GET")
+     * @Template()
+     */
+    public function newAction($id)
+    {
+        
+        $em = $this->getDoctrine()->getManager();
+        $query = $em->createQuery("SELECT p.id as identificador, p.codigoDonante as codigo_donante, p.primerNombre as nombre1, p.segundoNombre as nombre2, p.primerApellido as apellido1, p.segundoApellido as apellido2 FROM siblhmantenimientoBundle:BlhDonante p  WHERE p.id = $id "); 
+        $datos_donantes  = $query->getResult();
+     //   $donante = $em->getRepository('siblhmantenimientoBundle:BlhDonante')->find($id);   
+       $donante = $em->getRepository('siblhmantenimientoBundle:BlhDonante')->find($datos_donantes[0]['identificador']);
+     
+        if (!$datos_donantes) {
+            throw $this->createNotFoundException('Unable to find BlhDonante entity');
+        }
+        
+        
+        $entity = new BlhHistorialClinico();
+         $entity->setIdDonante($donante);
+        $form   = $this->createCreateForm($entity);
+
+        return array(
+            'entity' => $entity,
+            'form'   => $form->createView(),
+            'datos_donantes' =>  $datos_donantes, 
+        );
+    }
+
+    
+    
 }
+
+
+
+
+
+
+
+
+

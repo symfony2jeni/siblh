@@ -1,35 +1,45 @@
-{% extends '::base.html.twig' %}
+{% extends 'siblhmantenimientoBundle::plantilla.html.twig' %}
 
+{% block javascripts %}
+    {{parent()}}
+   <script type="text/javascript" src="{{ asset('bundles/siblhmantenimiento/js/BlhReceptor/index.js') }}" ></script>
+{% endblock %}
+   
 {% block body -%}
+ <link href="{{asset('bundles/jquery/jquery.jqGrid-4.5.4/css/ui.jqgrid.css')}}" rel="stylesheet"  type="text/css" media="all"/>  
+ 
+ <script type="text/javascript" src="{{asset('bundles/jquery/jquery.jqGrid-4.5.4/js/i18n/grid.locale-es.js')}}"></script>
+      <script type="text/javascript" src="{{asset('bundles/jquery/jquery.jqGrid-4.5.4/js/jquery.jqGrid.min.js')}}" ></script> 
+
+ 
     <h1>BlhReceptor list</h1>
 
-    <table class="records_list">
+<table id = "listado_receptores">
         <thead>
             <tr>
-                <th>Id</th>
-                <th>Codigoreceptor</th>
-                <th>Fecharegistroblh</th>
+                
+                <th>Codigo</th>
+                <th>Fecha&nbsp;de&nbsp;registro</th>
                 <th>Procedencia</th>
-                <th>Estadoreceptor</th>
-                <th>Edaddias</th>
+                <th>Estado&nbsp;de&nbsp;receptor</th>
+                <th>Edad&nbsp;en&nbsp;dias</th>
                 <th>Pesoreceptor</th>
                 <th>Duracioncpap</th>
-                <th>Clasificacionlubchengo</th>
-                <th>Diagnosticoingreso</th>
-                <th>Duracionnpt</th>
+                <th>Clasificacion&nbsp;lubchengo</th>
+                <th>Diagnostico&nbsp;de&nbsp;ingreso</th>
+                <th>Duracio&nbsp;nnpt</th>
                 <th>Apgar</th>
-                <th>Edadgestfur</th>
+                <th>Edadgest&nbsp;fur</th>
                 <th>Duracionventilacion</th>
-                <th>Edadgestballard</th>
+                <th>Edadgest&nbsp;ballard</th>
                 <th>Pc</th>
-                <th>Tallaingreso</th>
-                <th>Actions</th>
+                <th>Talla&nbsp;de&nbsp;ingreso</th>
+                <th>Accion</th>
             </tr>
         </thead>
         <tbody>
         {% for entity in entities %}
             <tr>
-                <td><a href="{{ path('blhreceptor_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
                 <td>{{ entity.codigoReceptor }}</td>
                 <td>{% if entity.fechaRegistroBlh %}{{ entity.fechaRegistroBlh|date('Y-m-d H:i:s') }}{% endif %}</td>
                 <td>{{ entity.procedencia }}</td>
@@ -46,26 +56,12 @@
                 <td>{{ entity.edadGestBallard }}</td>
                 <td>{{ entity.pc }}</td>
                 <td>{{ entity.tallaIngreso }}</td>
-                <td>
-                <ul>
-                    <li>
-                        <a href="{{ path('blhreceptor_show', { 'id': entity.id }) }}">show</a>
-                    </li>
-                    <li>
-                        <a href="{{ path('blhreceptor_edit', { 'id': entity.id }) }}">edit</a>
-                    </li>
-                </ul>
+                <td><a href="{{ path('blhreceptor_edit', { 'id': entity.id }) }}">edit</a>
                 </td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
 
-        <ul>
-        <li>
-            <a href="{{ path('blhreceptor_new') }}">
-                Create a new entry
-            </a>
-        </li>
-    </ul>
+        <div id='pagerreceptores' ></div>
     {% endblock %}
