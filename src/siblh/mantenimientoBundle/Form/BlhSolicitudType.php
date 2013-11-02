@@ -15,7 +15,7 @@ class BlhSolicitudType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-             ->add('codigoSolicitud')
+             //->add('codigoSolicitud')
             ->add('volumenPorDia')
             ->add('acidezNecesaria','choice', 
                     array('choices' => array('' => 'Seleccione un valor','Baja' => 'Baja(0-4 grados)','Aceptable' => 'Aceptable(4-8 grados)')))
