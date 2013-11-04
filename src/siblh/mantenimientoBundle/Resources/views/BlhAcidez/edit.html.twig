@@ -1,16 +1,46 @@
-{% extends  'siblhmantenimientoBundle::plantilla.html.twig'%}
+{% extends 'siblhmantenimientoBundle::plantilla.html.twig' %}
+
+{% block javascripts %}
+
+{{parent()}}
+
+<script type="text/javascript" src="{{ asset('bundles/siblhmantenimiento/js/BlhSeguimientoReceptor/edit.js') }}" ></script>
+        
+{% endblock %}
 
 {% block body -%}
-    <h1>BlhAcidez edit</h1>
+    <h1>Editar Analisis de Acidez Dornic</h1>
 
-    {{ form(edit_form) }}
+    <table align='center'>
+    {{ form_start(edit_form) }}
+    {{ form_errors(edit_form) }}
+<tr>
+    <tr><td align='right'>{{ form_label(edit_form.acidez1,'Acidez 1') }}{{ form_widget(edit_form.acidez1) }}</td></tr>
+    <tr><td colspan=2 align = "right" height=10  ></td></tr>
+    <tr><td align='right'>{{ form_label(edit_form.acidez2,'Acidez 2') }}{{ form_widget(edit_form.acidez2) }}</td></tr>
+    <tr><td colspan=2 align = "right" height=10  ></td></tr>
+    <tr><td align='right'>{{ form_label(edit_form.acidez3,'Acidez 3') }}{{ form_widget(edit_form.acidez3) }}</td></tr>
+    <tr><td colspan=2 align = "right" height=10  ></td></tr>
+    <tr><td align='right'>{{ form_label(edit_form.mediaAcidez,'Media acidez') }}{{ form_widget(edit_form.mediaAcidez) }}</td></tr>
+    <tr><td colspan=2 align = "right" height=10  ></td></tr>
+    <tr><td align='right'>{{ form_label(edit_form.factor) }}{{ form_widget(edit_form.factor) }}</td></tr>
+    <tr><td colspan=2 align = "right" height=10  ></td></tr>
+    <tr><td align='right'>{{ form_label(edit_form.resultado) }}{{ form_widget(edit_form.resultado) }}</td></tr>
+    <tr><td colspan=2 align = "right" height=10  ></td></tr>
+    <tr><td align='right' style="visibility:hidden">{{ form_label(edit_form.idFrascoRecolectado) }}{{ form_widget(edit_form.idFrascoRecolectado) }}</td></tr>
+    <tr><td colspan=2 align = "right" height=10  ></td></tr>
 
-        <ul class="record_actions">
-    <li>
+</table>
+    <table align = "center">
+           <tr>
+             <td align = 'center' > <input type='submit' id='boton' title="Actualizar Analisis de Acidez Dornic"  value="Actualizar"/></td>              
+          </tr>
+           </table>
+    {{ form_end(edit_form) }}
+  
+
         <a href="{{ path('blhacidez') }}">
-            Back to the list
+            Regresar a listado de Analisis de Acidez 
         </a>
-    </li>
-    <li>{{ form(delete_form) }}</li>
-</ul>
+
 {% endblock %}

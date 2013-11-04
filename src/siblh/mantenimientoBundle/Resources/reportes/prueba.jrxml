@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="prueba" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="b188e95c-216f-4df0-a3fa-2cd91cdd0978">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="4"/>
+	<queryString>
+		<![CDATA[select embalaje, suciedad, color, flavor, observacion from blh_analisis_sensorial;]]>
+	</queryString>
+	<field name="embalaje" class="java.lang.String"/>
+	<field name="suciedad" class="java.lang.String"/>
+	<field name="color" class="java.lang.String"/>
+	<field name="flavor" class="java.lang.String"/>
+	<field name="observacion" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="c00cf4bb-10a3-4108-a66d-8860f2fcdea4" x="302" y="28" width="190" height="20"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Listado de Analisis Sensorial]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch">
+			<textField>
+				<reportElement uuid="bbdf3768-13ad-4f00-93c1-c6cfff43f7d0" x="0" y="15" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[Embalaje]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="798988b0-06e4-417e-89ff-694d9e0dcd2f" x="171" y="15" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[Suciedad]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="d89ae1f5-324c-4271-9093-770c6f9a757a" x="342" y="15" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[Color]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="42a52cde-3031-4140-b9dd-a63e328151e6" x="516" y="15" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[Olor]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="538689ba-27c7-432f-9ade-44665fa9166a" x="702" y="15" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[Oservacion]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="61" splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="125" splitType="Stretch"/>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>
