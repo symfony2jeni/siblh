@@ -1,7 +1,10 @@
 $(document).ready(function() { 
-     $('#button').button();
-   $.noConflict();
-     $.datepicker.setDefaults($.datepicker.regional["es"]);
+    // $('#button').button();
+     
+      
+    
+ $.noConflict();
+    $.datepicker.setDefaults($.datepicker.regional["es"]);
      
        //Calendario  
      $('input[id$="_fechaSolicitud"]').datepicker({ dateFormat: 'dd-mm-yy',  
@@ -14,6 +17,16 @@ $(document).ready(function() {
                            monthNamesShort: ["Ene", "Feb", "Mar", "Abr", "May", "Jun",
                                              "Jul", "Ago", "Sep", "Oct", "Nov", "Dic"]
                           });  
+                          
+      //Opciones del validador
+    var optionsRed = {
+        classNamePrefix: 'bvalidator_red_',
+        lang: 'es'
+    };
+
+    //Validar el formulario
+   //  $.noConflict();
+    $('form').bValidator(optionsRed);
     //Tooltip                      
       
     $( document ).tooltip({
@@ -41,15 +54,8 @@ $(document).ready(function() {
  
   
 
-      //Opciones del validador
-    var optionsRed = {
-        classNamePrefix: 'bvalidator_red_',
-        lang: 'es'
-    };
-
-    //Validar el formulario
-    $('form').bValidator(optionsRed);
-
+$('#siblh_mantenimientobundle_blhsolicitud_cuna').
+            attr('data-bvalidator', 'between[1:50],required');
   
  $('#siblh_mantenimientobundle_blhsolicitud_fechaSolicitud').
             attr('data-bvalidator', 'date[dd.mm.yyyy],required');
@@ -70,9 +76,7 @@ $(document).ready(function() {
             attr('data-bvalidator', 'between[0:24],required');
  
     
- $('#siblh_mantenimientobundle_blhsolicitud_cuna').
-            attr('data-bvalidator', 'min[1],required');
-    
+
     
   $('#siblh_mantenimientobundle_blhsolicitud_responsable').
             attr('data-bvalidator', 'alpha');
@@ -103,7 +107,3 @@ $('#siblh_mantenimientobundle_blhsolicitud_volumenPorDia').on ('click', function
 this.value = $VolumenDia; } ); 
 
 });
-
-
-
-      

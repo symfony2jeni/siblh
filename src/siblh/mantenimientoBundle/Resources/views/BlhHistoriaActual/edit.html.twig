@@ -2,24 +2,30 @@
 
 {% block body -%}
     <h1>Actualizar Historia Actual</h1>
- <table class="records_list" border = "1"  align = "center" bordercolor="#848484">
+ <table  align = "center">
+     
+     
+   <tr><td  align = "left" height=10  ></td></tr>
+   <tr><td align='left'><font color="red">*</font>{{ form_label(edit_form.pesoDonante) }}</td><td align='left'>{{ form_widget(edit_form.pesoDonante) }}</td></tr>
+   <tr><td  align = "left" height=10  ></td></tr>
+   <tr><td align='left'><font color="red">*</font>{{ form_label(edit_form.tallaDonante) }}</td><td align='left'>{{ form_widget(edit_form.tallaDonante) }}</td></tr>
+   <tr><td  align = "left" height=10  ></td></tr>
+   <tr><td align='left'>{{ form_label(edit_form.medicamento) }}</td><td align='left'>{{ form_widget(edit_form.medicamento) }}</td></tr>
+   <tr><td  align = "left" height=10  ></td></tr>
+   <tr><td align='left'>{{ form_label(edit_form.habitoToxico) }}</td><td align='left'>{{ form_widget(edit_form.habitoToxico) }}</td></tr>
+   <tr><td  align = "left" height=10  ></td></tr>
+   <tr><td align='left'><font color="red">*</font>{{ form_label(edit_form.motivoDonacion) }}</td><td align='left'>{{ form_widget(edit_form.motivoDonacion) }}</td></tr>
+   <tr><td  align = "left" height=10  ></td></tr>
+   <tr><td align='left'>{{ form_label(edit_form.patologiaDonante) }}</td><td align='left'>{{ form_widget(edit_form.patologiaDonante) }}</td></tr>
+   <tr><td  align = "left" height=10  ></td></tr>
+   <tr><td align='left'><font color="red">*</font>{{ form_label(edit_form.imc) }}</td><td align='left'>{{ form_widget(edit_form.imc) }}</td></tr>
+   <tr><td  align = "left" height=10  ></td></tr>
+   <tr><td align='left'><font color="red">*</font>{{ form_label(edit_form.estadoDonante) }}</td><td align='left'>{{ form_widget(edit_form.estadoDonante) }}</td></tr>
+
          
-         <tr><th bgcolor="#2E9AFE">Peso</th>
-        <td>{{ form(edit_form.pesoDonante) }}</td></tr>
-        <tr><th bgcolor="#2E9AFE">Talla</th>
-        <td>{{ form(edit_form.tallaDonante) }}</td></tr>
-        <tr><th bgcolor="#2E9AFE">Medicamento</th>
-        <td>{{ form(edit_form.medicamento) }}</td></tr>
-        <tr><th bgcolor="#2E9AFE">Habitos toxicos</th>
-        <td>{{ form(edit_form.habitoToxico) }}</td></tr>
-        <tr><th bgcolor="#2E9AFE">Motivo de la donacion</th>
-        <td>{{ form(edit_form.motivoDonacion) }}</td></tr>
-        <tr><th bgcolor="#2E9AFE">Patologias</th>
-        <td>{{ form(edit_form.patologiaDonante) }}</td></tr>
-        <tr><th bgcolor="#2E9AFE">IMC</th>
-        <td>{{ form(edit_form.imc) }}</td></tr>
-        <tr><th bgcolor="#2E9AFE">Estado de Donante</th>
-        <td>{{ form(edit_form.estadoDonante) }}</td></tr>
+       
+        <tr><td colspan = '2' align = 'center'>  <input type="submit" class= "ui-button" value="Actualizar"/></td></tr>
+
     
  </table>
 

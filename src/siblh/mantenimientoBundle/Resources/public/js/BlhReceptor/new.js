@@ -50,14 +50,14 @@ $fn = new Date(parseFloat($fn.substr(6,4)), parseFloat($fn.substr(3,2))-1, parse
 } ) ;
     
   $.datepicker.setDefaults($.datepicker.regional["es"]);
-   $('input[id$="_fechaRegistroBlh"]').datepicker({ dateFormat: 'yy-MM-dd',  
+   $('input[id$="_fechaRegistroBlh"]').datepicker({ dateFormat: 'yy-mm-dd',  
                            changeMonth: true,
                            changeYear: true,
                            clearStatus: 'Borra fecha actual',  
                            defaultDate: 'today',
-                           minDate: '2012-10-08',
+                          // minDate: '2010-01-01',
                            maxDate: 'today',
-                         // yearRange: ':-13y',
+                        //yearRange: '-35y:-13y',
                            dayNamesMin: ["Do", "Lu", "Ma", "Mi", "Ju", "Vi", "Sa"],
                            monthNamesShort: ["Ene", "Feb", "Mar", "Abr", "May", "Jun",
                                              "Jul", "Ago", "Sep", "Oct", "Nov", "Dic"]

@@ -5,41 +5,71 @@
 
  
     
-    <table class="records_list" border = "1"  align = "center" bordercolor="#848484">
+    <table  align = "center" >
+   <tr><td  align = "left" height=10  ></td></tr>
+        <tr><td align='left'>{{ form_label(edit_form.amenorrea) }}</td><td align='left'>{{ form_widget(edit_form.amenorrea) }}</td></tr>
+        <tr><td  align = "left" height=10  ></td></tr>
+        <tr><td align='left' ><font color="red">*</font>{{ form_label(edit_form.controlPrenatal) }}</td><td align='left'>{{ form_widget(edit_form.controlPrenatal) }}</td></tr>
+             
+      <tr><td  align = "left" height=10  ></td></tr>
+     <tr><td align='left' ><b>{{ form_label(edit_form.lugarControl) }}</b></td>
+         <td align='left' >    {{ form_widget(edit_form.lugarControl) }}</td></tr>
+       <tr><td  align = "left" height=10  ></td></tr>
+     <tr><td align='left' ><b>{{ form_label(edit_form.numeroControl) }}</b></td>
+         <td align='left' >    {{ form_widget(edit_form.numeroControl) }}</td></tr>
+     
+     <tr><td  align = "left" height=10  ></td></tr>
+     <tr><td align='left' ><b>{{ form_label(edit_form.fechaUltimaRegla) }}</b></td>
+         <td align='left' >   {{ form_widget(edit_form.fechaUltimaRegla) }}</td></tr>
+      <tr><td  align = "left" height=10  ></td></tr>
+     <tr><td align='left' ><b><font color="red">*</font>
+                               {{ form_label(edit_form.fechaParto) }}</b></td>
+          <td align='left' >                     {{ form_widget(edit_form.fechaParto) }}</td></tr>
+             <tr><td  align = "left" height=10  ></td></tr>
+     <tr><td align='left' ><b><font color="red">*</font>
+                               {{ form_label(edit_form.lugarParto) }}</b></td>
+          <td align='left' >                     {{ form_widget(edit_form.lugarParto) }}</td></tr>
+             <tr><td  align = "left" height=10  ></td></tr>
+     <tr><td align='left' ><b>{{ form_label(edit_form.patologiaEmbarazo) }}</b></td>
+           <td align='left'>                    {{ form_widget(edit_form.patologiaEmbarazo) }}</td></tr>
+     <tr><td  align = "left" height=10  ></td></tr>
+     <tr><td align='left'><b><font color="red">*</font>
+                               {{ form_label(edit_form.periodoIntergenesico) }}</b></td>
+         <td align='left' >    {{ form_widget(edit_form.periodoIntergenesico) }}</td></tr>
+              <tr><td  align = "left" height=10  ></td></tr>
+     <tr><td align='left' ><b>{{ form_label(edit_form.fechaPartoAnterior) }}</b></td>
+          <td align='left' >  {{ form_widget(edit_form.fechaPartoAnterior) }}</td></tr>
+      </table>
+    <table align = "center"> 
+     <tr><td align='center' colspan = "6"><b>Formula obstetrica</b></td></tr>
+     <tr><td align='left' ><b>{{ form_label(edit_form.formulaObstetricaG, 'G') }}
+                               {{ form_widget(edit_form.formulaObstetricaG,  { 'attr': {'size': '2'} }) }}</td>
+    <td align='left' ><b>{{ form_label(edit_form.formulaObstetricaP1, 'P') }}
+                               {{ form_widget(edit_form.formulaObstetricaP1,  { 'attr': {'size': '2'} }) }}</td>
+      <td align='left' ><b>{{ form_label(edit_form.formulaObstetricaP2, 'P') }}
+                               {{ form_widget(edit_form.formulaObstetricaP2,  { 'attr': {'size': '2'} }) }}</td>
+     <td align='left' ><b>{{ form_label(edit_form.formulaObstetricaA, 'A') }}
+                               {{ form_widget(edit_form.formulaObstetricaA,  { 'attr': {'size': '2'} }) }}</td>
+      <td align='left' ><b>{{ form_label(edit_form.formulaObstetricaV, 'V') }}
+                               {{ form_widget(edit_form.formulaObstetricaV,  { 'attr': {'size': '2'} }) }}</td>
+       <td align='left' ><b>{{ form_label(edit_form.formulaObstetricaM, 'M') }}
+                               {{ form_widget(edit_form.formulaObstetricaM,  { 'attr': {'size': '2'} }) }}</td></tr>
+
+
+
+
     
-    <tr><th bgcolor="#2E9AFE">Amenorrea</th>
-        <td>{{ form(edit_form.amenorrea) }}</td></tr>
-    <tr><th bgcolor="#2E9AFE">Control prenatal</th>
-        <td>{{ form(edit_form.controlPrenatal) }}</td></tr>
-    <tr><th bgcolor="#2E9AFE">Lugar de control</th>
-        <td>{{ form(edit_form.lugarControl) }}</td></tr>
-     <tr><th bgcolor="#2E9AFE">Numero de controles</th>
-        <td>{{ form(edit_form.numeroControl) }}</td></tr>
-     <tr><th bgcolor="#2E9AFE">Fecha de ultima regla</th>
-        <td>{{ form(edit_form.fechaUltimaRegla) }}</td></tr>
-     <tr><th bgcolor="#2E9AFE">Fecha de parto</th>
-        <td>{{ form(edit_form.fechaParto) }}</td></tr>
-     <tr><th bgcolor="#2E9AFE">Lugar de parto</th>
-        <td>{{ form(edit_form.lugarParto) }}</td></tr>
-     <tr><th bgcolor="#2E9AFE">Patologias</th>
-        <td>{{ form(edit_form.patologiaEmbarazo) }}</td></tr>
-     <tr><th bgcolor="#2E9AFE">Periodo intergenesico</th>
-        <td>{{ form(edit_form.periodoIntergenesico) }}</td></tr>
-     <tr><th bgcolor="#2E9AFE">Fecha parto anterior</th>
-        <td>{{ form(edit_form.fechaPartoAnterior) }}</td></tr>
-     <tr> <th bgcolor="#2E9AFE" colspan = "2">Formula obstetrica</th></tr>
-     <tr><th bgcolor="#2E9AFE">G</th>
-        <td>{{ form(edit_form.formulaObstetricaG,  { 'attr': {'size': '2'} }) }}</td></tr>
-     <tr><th bgcolor="#2E9AFE">P</th>
-        <td>{{ form(edit_form.formulaObstetricaP1,  { 'attr': {'size': '2'} }) }}</td></tr>
-      <tr><th bgcolor="#2E9AFE">P</th>
-        <td>{{ form(edit_form.formulaObstetricaP2,  { 'attr': {'size': '2'} }) }}</td></tr>
-      <tr><th bgcolor="#2E9AFE">A</th>
-        <td>{{ form(edit_form.formulaObstetricaA,  { 'attr': {'size': '2'} }) }}</td></tr>
-    <tr><th bgcolor="#2E9AFE">V</th>
-        <td>{{ form(edit_form.formulaObstetricaV,  { 'attr': {'size': '2'} }) }}</td></tr>
-    <tr><th bgcolor="#2E9AFE">M</th>
-        <td>{{ form(edit_form.formulaObstetricaM,  { 'attr': {'size': '2'} }) }}</td></tr>
+    
+ 
+    
+   
+ 
+        
+   
+         
+    
+        <tr><td colspan = '6' align = 'center'>  <input type="submit" class= "ui-button" value="Actualizar"/></td></tr>
+
     </table>
     
      

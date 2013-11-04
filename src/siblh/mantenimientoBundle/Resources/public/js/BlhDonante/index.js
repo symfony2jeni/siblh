@@ -1,4 +1,10 @@
 $(document).ready(function() {
+    
+    $('#reporte').click(function(){
+      var url="/app_dev.php/reportes/reporte/prueba/Prueba/pdf";
+       window.open(url,'_blank');
+       return false;
+    });
 
  tableToGrid("#listado_donantes", {
         pager : '#pagerdonantes',
