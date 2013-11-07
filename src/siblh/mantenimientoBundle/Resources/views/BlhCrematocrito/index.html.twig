@@ -1,47 +1,50 @@
 {% extends 'siblhmantenimientoBundle::plantilla.html.twig' %}
 
+{% block javascripts %}
+    {{parent()}}
+    <script type="text/javascript" src="{{ asset('bundles/siblhmantenimiento/js/BlhCrematocrito/index.js') }}" ></script>
+{% endblock %}
+
 {% block body -%}
+    <link href="{{asset('bundles/jquery/jquery.jqGrid-4.5.4/css/ui.jqgrid.css')}}" rel="stylesheet"  type="text/css" media="all"/> 
+     <script type="text/javascript" src="{{asset('bundles/jquery/jquery.jqGrid-4.5.4/js/i18n/grid.locale-es.js')}}"></script>
+      <script type="text/javascript" src="{{asset('bundles/jquery/jquery.jqGrid-4.5.4/js/jquery.jqGrid.min.js')}}" ></script>
+      
     <h1>Listado de analisis de crematocrito</h1>
 
-    <table class="records_list">
+    <table id="listado_crematocrito">
         <thead>
             <tr>
-                <th>Crema1</th>
-                <th>Crema2</th>
-                <th>Crema3</th>
-                <th>Ct1</th>
-                <th>Ct2</th>
-                <th>Ct3</th>
-                <th>Mediacrema</th>
-                <th>Mediact</th>
-                <th>Porcentajecrema</th>
+                <th>Crema&nbsp;1(ml)</th>
+                <th>Crema&nbsp;2(ml)</th>
+                <th>Crema&nbsp;3(ml)</th>
+                <th>Coliformes&nbsp;1(ml)</th>
+                <th>Coliformes&nbsp;2(ml)</th>
+                <th>Coliformes&nbsp;3(ml)</th>
+                <th>Media&nbsp;crema(ml)</th>
+                <th>Media&nbsp;coliformes(ml)</th>
+                <th>Porcentaje&nbsp;crema</th>
                 <th>Kilocalorias</th>
-                <th>Actions</th>
+                <th>Acción</th>
             </tr>
         </thead>
         <tbody>
         {% for entity in entities %}
             <tr>
-                <td>{{ entity.crema1 }}</td>
-                <td>{{ entity.crema2 }}</td>
-                <td>{{ entity.crema3 }}</td>
-                <td>{{ entity.ct1 }}</td>
-                <td>{{ entity.ct2 }}</td>
-                <td>{{ entity.ct3 }}</td>
-                <td>{{ entity.mediaCrema }}</td>
-                <td>{{ entity.mediaCt }}</td>
-                <td>{{ entity.porcentajeCrema }}</td>
-                <td>{{ entity.kilocalorias }}</td>
-                <td>
-                <ul>
-                    <li>
-                        <a href="{{ path('blhcrematocrito_edit', { 'id': entity.id }) }}">Editar</a>
-                    </li>
-                </ul>
-                </td>
+                <td>{{ entity.crema1|number_format(2, '.', ',') }}</td>
+                <td>{{ entity.crema2|number_format(2, '.', ',') }}</td>
+                <td>{{ entity.crema3|number_format(2, '.', ',') }}</td>
+                <td>{{ entity.ct1|number_format(2, '.', ',') }}</td>
+                <td>{{ entity.ct2|number_format(2, '.', ',') }}</td>
+                <td>{{ entity.ct3|number_format(2, '.', ',') }}</td>
+                <td>{{ entity.mediaCrema|number_format(2, '.', ',') }}</td>
+                <td>{{ entity.mediaCt|number_format(2, '.', ',') }}</td>
+                <td>{{ entity.porcentajeCrema|number_format(2, '.', ',') }}</td>
+                <td>{{ entity.kilocalorias|number_format(2, '.', ',') }}</td>
+                <td><a href="{{ path('blhcrematocrito_edit', { 'id': entity.id }) }}"><font color="blue"><u>Editar</u></font></a></td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
-
+    <div id='pagerCrematocrito'></div>
     {% endblock %}

@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="prueba" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="b188e95c-216f-4df0-a3fa-2cd91cdd0978">
 	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="4"/>
+	<property name="ireport.y" value="0"/>
 	<queryString>
 		<![CDATA[select embalaje, suciedad, color, flavor, observacion from blh_analisis_sensorial;]]>
 	</queryString>
@@ -26,39 +26,75 @@
 		</band>
 	</title>
 	<pageHeader>
-		<band height="35" splitType="Stretch">
-			<textField>
-				<reportElement uuid="bbdf3768-13ad-4f00-93c1-c6cfff43f7d0" x="0" y="15" width="100" height="20"/>
-				<textElement/>
-				<textFieldExpression><![CDATA[Embalaje]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement uuid="798988b0-06e4-417e-89ff-694d9e0dcd2f" x="171" y="15" width="100" height="20"/>
-				<textElement/>
-				<textFieldExpression><![CDATA[Suciedad]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement uuid="d89ae1f5-324c-4271-9093-770c6f9a757a" x="342" y="15" width="100" height="20"/>
-				<textElement/>
-				<textFieldExpression><![CDATA[Color]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement uuid="42a52cde-3031-4140-b9dd-a63e328151e6" x="516" y="15" width="100" height="20"/>
-				<textElement/>
-				<textFieldExpression><![CDATA[Olor]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement uuid="538689ba-27c7-432f-9ade-44665fa9166a" x="702" y="15" width="100" height="20"/>
-				<textElement/>
-				<textFieldExpression><![CDATA[Oservacion]]></textFieldExpression>
-			</textField>
-		</band>
+		<band height="35" splitType="Stretch"/>
 	</pageHeader>
 	<columnHeader>
-		<band height="61" splitType="Stretch"/>
+		<band height="61" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="9863a6fc-f8c5-4b84-ac22-60ec7c96bead" x="0" y="39" width="100" height="20"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Embalaje]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="958b4462-de04-42b4-94bc-0b9fc440550b" x="167" y="41" width="100" height="20"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Suciedad]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="40d7fec5-fdac-4103-b035-a403c9b663eb" x="339" y="41" width="100" height="20"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Color]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="9e59041f-75b3-4802-bc76-cf2c9dcb9e08" x="520" y="39" width="100" height="20"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Olor]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="86f56dcd-9edf-4f57-9bfe-f8942e96f18b" x="702" y="39" width="100" height="20"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Observacion]]></text>
+			</staticText>
+		</band>
 	</columnHeader>
 	<detail>
-		<band height="125" splitType="Stretch"/>
+		<band height="125" splitType="Stretch">
+			<textField>
+				<reportElement uuid="647ba2ed-865f-4aa7-8d14-bbee4a8f1917" x="0" y="22" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{embalaje}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="1983b9fb-866c-4790-aff8-49bc4d106328" x="167" y="22" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{suciedad}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="4fd19b0c-edea-4f48-a102-19c6a0433d79" x="339" y="22" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{color}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="6b0d5a99-682a-49f0-987c-03b2567f716f" x="520" y="22" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{flavor}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="30962cc7-8eb0-46df-850f-3f6149a64a7f" x="702" y="22" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{observacion}]]></textFieldExpression>
+			</textField>
+		</band>
 	</detail>
 	<columnFooter>
 		<band height="45" splitType="Stretch"/>

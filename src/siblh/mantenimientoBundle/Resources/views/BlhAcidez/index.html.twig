@@ -6,12 +6,12 @@
 {% endblock %}
 
 {% block body -%}
-    <h1>Litado resultados de acidez dornic</h1>
     
-        <link href="{{asset('bundles/jquery/jquery.jqGrid-4.5.4/css/ui.jqgrid.css')}}" rel="stylesheet"  type="text/css" media="all"/>  
+    <link href="{{asset('bundles/jquery/jquery.jqGrid-4.5.4/css/ui.jqgrid.css')}}" rel="stylesheet"  type="text/css" media="all"/> 
      <script type="text/javascript" src="{{asset('bundles/jquery/jquery.jqGrid-4.5.4/js/i18n/grid.locale-es.js')}}"></script>
       <script type="text/javascript" src="{{asset('bundles/jquery/jquery.jqGrid-4.5.4/js/jquery.jqGrid.min.js')}}" ></script>
-
+      
+<h1>Litado resultados de acidez dornic</h1>
     <table id="listado_Acidez">
         <thead>
             <tr>
@@ -30,9 +30,9 @@
                 <td>{{ entity.acidez1 }}</td>
                 <td>{{ entity.acidez2 }}</td>
                 <td>{{ entity.acidez3 }}</td>
-                <td>{{ entity.factor }}</td>
-                <td>{{ entity.resultado }}</td>
-                <td>{{ entity.mediaAcidez }}</td>
+                <td>{{ entity.factor|number_format(2, '.', ',') }}</td>
+                <td>{{ entity.resultado|number_format(2, '.', ',') }}</td>
+                <td>{{ entity.mediaAcidez|number_format(2, '.', ',') }}</td>
                 <td><a href="{{ path('blhacidez_edit', { 'id': entity.id }) }}"><font color="blue"><u>Editar</u></font></a></td>
                   
         {% endfor %}
