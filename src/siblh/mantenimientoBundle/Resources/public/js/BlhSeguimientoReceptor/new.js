@@ -38,8 +38,33 @@ $(document).ready(function() {
     $('#boton')
       .button();
      
-
   
+ $('#siblh_mantenimientobundle_blhseguimientoreceptor_fechaSeguimiento').
+            attr('data-bvalidator', 'required');
+
+  $('#siblh_mantenimientobundle_blhseguimientoreceptor_semana').
+            attr('data-bvalidator', 'required,min[1]');
+
+    
+     
+ $('#siblh_mantenimientobundle_blhseguimientoreceptor_pcSeguimiento').
+            attr('data-bvalidator', 'required,min[1]');
+    
+ $('#siblh_mantenimientobundle_blhseguimientoreceptor_pesoSeguimiento').
+            attr('data-bvalidator', 'required,between[400:2500]');
+  
+    
+ $('#siblh_mantenimientobundle_blhseguimientoreceptor_gananciaDiaPeso').
+            attr('data-bvalidator', 'required,min[0]');
+ 
+    
+ $('#siblh_mantenimientobundle_blhseguimientoreceptor_tallaReceptor').
+            attr('data-bvalidator', 'required,min[1]');
+    
+    
+  $('#siblh_mantenimientobundle_blhseguimientoreceptor_gananciaDiaTalla').
+            attr('data-bvalidator', 'required,min[0]');
+    
 
       //Opciones del validador
     var optionsRed = {
@@ -49,35 +74,6 @@ $(document).ready(function() {
 
     //Validar el formulario
     $('form').bValidator(optionsRed);
-    
-
-  
- $('#siblh_mantenimientobundle_blhseguimientoreceptor_fechaSeguimiento').
-            attr('data-bvalidator', 'date[dd.mm.yyyy],required');
-
-  $('#siblh_mantenimientobundle_blhseguimientoreceptor_semana').
-            attr('data-bvalidator', 'min[1],required');
-
-    
-     
- $('#siblh_mantenimientobundle_blhseguimientoreceptor_pcSeguimiento').
-            attr('data-bvalidator', 'min[1],required');
-    
- $('#siblh_mantenimientobundle_blhseguimientoreceptor_pesoSeguimiento').
-            attr('data-bvalidator', 'between[400:2500],required');
-  
-    
- $('#siblh_mantenimientobundle_blhseguimientoreceptor_gananciaDiaPeso').
-            attr('data-bvalidator', 'between[0:50],required');
- 
-    
- $('#siblh_mantenimientobundle_blhseguimientoreceptor_tallaReceptor').
-            attr('data-bvalidator', 'min[1],required');
-    
-    
-  $('#siblh_mantenimientobundle_blhseguimientoreceptor_gananciaDiaTalla').
-            attr('data-bvalidator', 'min[0],required');
-                          
 
 
 });

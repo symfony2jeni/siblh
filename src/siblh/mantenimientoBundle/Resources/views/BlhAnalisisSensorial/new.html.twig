@@ -18,7 +18,8 @@
 {% block body -%}
    
     <h1>Registro de Analisis Sensorial</h1>
-    
+     {{ form_start(form) }}
+     {{ form_errors(form) }}
    
    <table align = "center" width = "60%" >
         <tr><td colspan=2 align = "right" height=40  ></td></tr>
@@ -29,8 +30,7 @@
                </td>
                
                <td colspan="4" align = "left"></td>
-                {{ form_start(form) }}
-                {{ form_errors(form) }}
+               
              {#<td width="295" align = "left"></td>#}
                <td colspan=4 align = "right" style="visibility:hidden"> 
                 

@@ -1,9 +1,7 @@
-{% extends  'siblhmantenimientoBundle::plantilla.html.twig'%}
-
-
+{% extends 'siblhmantenimientoBundle::plantilla.html.twig' %}
 {% block stylesheets %}
     {{ parent() }}
-	<link href="{{ asset('bundles/siblhmantenimiento/css/form.css') }}" rel="stylesheet" type="text/css" />
+        <link href="{{ asset('bundles/siblhmantenimiento/css/form.css') }}" rel="stylesheet" type="text/css" />
  
 {% endblock %}
         
@@ -19,7 +17,8 @@
    
     <h1>Registro de Solicitudes de Leche Humana</h1>
     
-   
+   {{ form_start(form) }}
+   {{ form_errors(form) }}
    <table align = "center" width = "100%" >
         <tr><td colspan=2 align = "right" height=40  ></td></tr>
        <tr>
@@ -29,8 +28,7 @@
                </td>
                
                <td colspan="5" align = "left"></td>
-                {{ form_start(form) }}
-                {{ form_errors(form) }}
+                
              {#<td width="295" align = "left"></td>#}
                {#<td colspan=4 align = "right"> 
                 
@@ -172,23 +170,9 @@
         </table>
         <table align = "center" width = "100%">
         <tr>
-            <td width=135 align = 'left'  ><font color="red">* Campos Requeridos</font></td>
-            
-            
-            <div id="dialog-message" title="Download complete">
-            <p>
-            <span class="ui-icon ui-icon-circle-check" style="float: left; margin: 0 7px 50px 0;"></span>
-            Your files have downloaded successfully into the My Downloads folder.
-            </p>
-            <p>
-              Currently using <b>36% of your storage space</b>.
-             </p>
-            </div>
- 
-            <p><a href="blh_solicitud"></a></p>
- 
-           {# <button id="abrir">Abrir diálogo</button>#}
-             <td width=900 align = 'right' > <input type='submit' id="boton" title="Guardar Solicitud"  value="Guardar"/></td>              
+            <td width=135 align = 'left'  ><font color="red">* Campos requeridos</font></td>
+
+             <td width=900 align = 'center' > <input type='submit' id="boton" title="Guardar Solicitud"  value="Guardar"/></td>              
           </tr>
            </table>
            {{ form_end(form) }}

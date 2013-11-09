@@ -2,7 +2,7 @@ $(document).ready(function() {
      $('button').button();
      $.noConflict();
      $.datepicker.setDefaults($.datepicker.regional["es"]);
-   $('input[id$="_fechaUltimaRegla"]').datepicker({ dateFormat: 'yy-MM-dd',  
+   $('input[id$="_fechaUltimaRegla"]').datepicker({ dateFormat: 'yy-mm-dd',  
                            changeMonth: true,
                            changeYear: true,
                            defaultDate: null,
@@ -142,7 +142,7 @@ $('#siblh_mantenimientobundle_blhhistorialclinico_amenorrea').
       }
     });
         
-           });
+});
 
 });
 

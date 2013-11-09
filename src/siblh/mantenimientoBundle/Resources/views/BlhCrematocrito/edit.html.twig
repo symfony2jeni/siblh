@@ -1,10 +1,15 @@
 {% extends 'siblhmantenimientoBundle::plantilla.html.twig' %}
 
+{% block stylesheets %}
+    {{ parent() }}
+	<link href="{{ asset('bundles/siblhmantenimiento/css/form.css') }}" rel="stylesheet" type="text/css" />
+ 
+{% endblock %}
 {% block javascripts %}
 
 {{parent()}}
 
-<script type="text/javascript" src="{{ asset('bundles/siblhmantenimiento/js/BlhSeguimientoReceptor/edit.js') }}" ></script>
+<script type="text/javascript" src="{{ asset('bundles/siblhmantenimiento/js/BlhCrematocrito/edit.js') }}" ></script>
         
 {% endblock %}
 
@@ -15,21 +20,21 @@
     {{ form_start(edit_form) }}
     {{ form_errors(edit_form) }}
 <tr>
-    <tr><td align='right'>{{ form_label(edit_form.crema1,'Crema 1(ml)') }}{{ form_widget(edit_form.crema1) }}</td></tr>
+    <tr><td align='right'>{{ form_label(edit_form.crema1,'Crema 1(mm)') }}{{ form_widget(edit_form.crema1) }}</td></tr>
     <tr><td colspan=2 align = "right" height=10  ></td></tr>
-    <tr><td align='right'>{{ form_label(edit_form.crema2,'Crema 2(ml)') }}{{ form_widget(edit_form.crema2) }}</td></tr>
+    <tr><td align='right'>{{ form_label(edit_form.crema2,'Crema 2(mm)') }}{{ form_widget(edit_form.crema2) }}</td></tr>
     <tr><td colspan=2 align = "right" height=10  ></td></tr>
-    <tr><td align='right'>{{ form_label(edit_form.crema3,'Crema 3(ml)') }}{{ form_widget(edit_form.crema3) }}</td></tr>
+    <tr><td align='right'>{{ form_label(edit_form.crema3,'Crema 3(mm)') }}{{ form_widget(edit_form.crema3) }}</td></tr>
     <tr><td colspan=2 align = "right" height=10  ></td></tr>
-    <tr><td align='right'>{{ form_label(edit_form.ct1,'Coliformes 1(ml)') }}{{ form_widget(edit_form.ct1) }}</td></tr>
+    <tr><td align='right'>{{ form_label(edit_form.ct1,'Coliformes 1(mm)') }}{{ form_widget(edit_form.ct1) }}</td></tr>
     <tr><td colspan=2 align = "right" height=10  ></td></tr>
-    <tr><td align='right'>{{ form_label(edit_form.ct2,'Coliformes 2(ml)') }}{{ form_widget(edit_form.ct2) }}</td></tr>
+    <tr><td align='right'>{{ form_label(edit_form.ct2,'Coliformes 2(mm)') }}{{ form_widget(edit_form.ct2) }}</td></tr>
     <tr><td colspan=2 align = "right" height=10  ></td></tr>
-    <tr><td align='right'>{{ form_label(edit_form.ct3,'Coliformes 3(ml)') }}{{ form_widget(edit_form.ct3) }}</td></tr>
+    <tr><td align='right'>{{ form_label(edit_form.ct3,'Coliformes 3(mm)') }}{{ form_widget(edit_form.ct3) }}</td></tr>
     <tr><td colspan=2 align = "right" height=10  ></td></tr>
-    <tr><td align='right'>{{form_label(edit_form.mediaCrema,'Media crema(ml) ') }}{{form_widget(edit_form.mediaCrema) }}</td></tr>
+    <tr><td align='right'>{{form_label(edit_form.mediaCrema,'Media crema(mm) ') }}{{form_widget(edit_form.mediaCrema) }}</td></tr>
     <tr><td colspan=2 align = "right" height=10  ></td></tr>
-    <tr><td align='right'>{{form_label(edit_form.mediaCt,'Media coliformes(ml)') }}{{form_widget(edit_form.mediaCt) }}</td></tr>
+    <tr><td align='right'>{{form_label(edit_form.mediaCt,'Media coliformes(mm)') }}{{form_widget(edit_form.mediaCt) }}</td></tr>
     <tr><td colspan=2 align = "right" height=10  ></td></tr>
     <tr><td align='right'>{{form_label(edit_form.porcentajeCrema,'Porcentaje crema') }}{{form_widget(edit_form.porcentajeCrema) }}</td></tr>
     <tr><td colspan=2 align = "right" height=10  ></td></tr>

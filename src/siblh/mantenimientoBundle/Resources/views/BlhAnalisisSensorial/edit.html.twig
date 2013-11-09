@@ -1,19 +1,25 @@
 {% extends 'siblhmantenimientoBundle::plantilla.html.twig' %}
 
+{% block stylesheets %}
+    {{ parent() }}
+	<link href="{{ asset('bundles/siblhmantenimiento/css/form.css') }}" rel="stylesheet" type="text/css" />
+ 
+{% endblock %}
+
 {% block javascripts %}
 
 {{parent()}}
 
-<script type="text/javascript" src="{{ asset('bundles/siblhmantenimiento/js/BlhSeguimientoReceptor/edit.js') }}" ></script>
+<script type="text/javascript" src="{{ asset('bundles/siblhmantenimiento/js/BlhAnalisisSensorial/edit.js') }}" ></script>
         
 {% endblock %}
 
 {% block body -%}
     <h1>Editar Analisis Sensorial</h1>
-
-    <table align='center'>
     {{ form_start(edit_form) }}
     {{ form_errors(edit_form) }}
+    
+    <table align='center'>
 <tr>
     <tr><td align='right'>{{ form_label(edit_form.embalaje) }}{{ form_widget(edit_form.embalaje) }}</td></tr>
     <tr><td colspan=2 align = "right" height=10  ></td></tr>

@@ -18,16 +18,16 @@ var bValidatorOptions = {
 			'max':        'Por favor, introduzca un numero menor o igual que {0}.',
 			'between':    'Por favor, introducza un numero entre {0} y {1}.',
 			'required':   'Este campo es obligatorio.',
-			'alpha':      'Por favor, introduzca s�lo caracteres alfab�ticos.',
-			'alphanum':   'Por favor, introduzca s�lo caracteres alfanum�ricos.',
-			'digit':      'Por favor, introduzca s�lo d�gitos.',
-			'number':     'Por favor, introduzca un n�mero v�lido.',
-			'email':      'Por favor, introduzca un e-mail v�lido.',
-			'image':      'Este campo s�lo deber�a contener im�genes',
-			'url':        'Por favor, introduza una URL v�lida.',
-			'ip4':        'Por favor, introduzca una direcci�n IPv4 v�lida',
-			'ip6':        'Por favor, introduzca una direcci�n IPv6 v�lida',
-			'date':       'Por favor, introduzca una fecha v�lida con el formato {0}.'
+			'alpha':      'Por favor, introduzca sólo  caracteres alfabéticos.',
+			'alphanum':   'Por favor, introduzca sólo  caracteres alfanumérico.',
+			'digit':      'Por favor, introduzca sólo  dígitos.',
+			'number':     'Por favor, introduzca un número válido.',
+			'email':      'Por favor, introduzca un e-mail válido.',
+			'image':      'Este campo sólo debería contener imágenes',
+			'url':        'Por favor, introduza una URL válida.',
+			'ip4':        'Por favor, introduzca una dirección IPv4 válida',
+			'ip6':        'Por favor, introduzca una dirección IPv6 válida',
+			'date':       'Por favor, introduzca una fecha válida con el formato {0}.'
                                                 
 		}
 	}

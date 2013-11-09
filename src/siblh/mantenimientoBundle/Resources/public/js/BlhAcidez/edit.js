@@ -24,8 +24,10 @@ $(document).ready(function() {
     
     $('#boton')
       .button();
-     
+      
+   
 
+ 
   
 
       //Opciones del validador
@@ -61,6 +63,8 @@ var $Acidez1;
 var $Acidez2; 
 var $Acidez3; 
 var $mediaAcidez;
+var $factor;
+var $resultado;
 
   $('#siblh_mantenimientobundle_blhacidez_acidez1').on('input', function() {
     
@@ -92,8 +96,26 @@ $mediaAcidez = Math.round( $mediaAcidez* 100) / 100;
  
 this.value = $mediaAcidez; } ); 
 
+   $('#siblh_mantenimientobundle_blhacidez_factor').on('input', function() {
+    
+ $factor = this.value;
 
 });
+
+$('#siblh_mantenimientobundle_blhacidez_resultado').on ('click', function() {
+ 
+
+$resultado = $mediaAcidez*$factor;
+//Redondeando el resultado a 2 decimales 
+$resultado = Math.round( $resultado* 100) / 100;
+ 
+this.value = $resultado; } ); 
+
+});
+
+
+
+      
 
 
 

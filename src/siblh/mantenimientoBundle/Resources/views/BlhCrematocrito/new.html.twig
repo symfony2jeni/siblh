@@ -19,8 +19,9 @@
    
     <h1>Registro de Crematocrito</h1>
     
-   
-   <table align = "center" width = "90%">
+   {{ form_start(form) }}
+   {{ form_errors(form) }}
+   <table align = "center" width = "90%" >
         <tr><td colspan=2 align = "right" height=40  ></td></tr>
        <tr>
        <td colspan = "2" align = "right"><b>Donante</b></td>
@@ -29,8 +30,7 @@
                </td>
                
                <td colspan="4" align = "left"></td>
-                {{ form_start(form) }}
-                {{ form_errors(form) }}
+                
              {#<td width="295" align = "left"></td>#}
                <td colspan=4 align = "right" style="visibility:hidden"> 
                 
@@ -66,17 +66,17 @@
         <tr>
         <td   colspan="1" align = "right" >
                 
-                {{ form_label(form.crema1, 'Crema 1(ml)') }}
+                {{ form_label(form.crema1, 'Crema 1(mm)') }}
                 {{ form_errors(form.crema1) }}
                 {{ form_widget(form.crema1) }} </td>
         <td   colspan="3" align = "right">
                 
-                {{ form_label(form.crema2,'Crema 2(ml)') }}
+                {{ form_label(form.crema2,'Crema 2(mm)') }}
                 {{ form_errors(form.crema2) }}
                 {{ form_widget(form.crema2) }} </td>
         <td colspan="3" align = "right" >
                 
-                {{ form_label(form.crema3,'Crema 3(ml)') }}
+                {{ form_label(form.crema3,'Crema 3(mm)') }}
                 {{ form_errors(form.crema3) }}
                 {{ form_widget(form.crema3) }} </td>
           </tr>
@@ -84,20 +84,20 @@
       <tr>
            <td colspan="3" align = "right" >
                 
-                {{ form_label(form.ct1, 'Coliformes  1(ml)') }}
+                {{ form_label(form.ct1, 'Coliformes  1(mm)') }}
                 {{ form_errors(form.ct1) }}
                 {{ form_widget(form.ct1) }} </td>
            
            <td colspan="1" align = "right" >
                 
-                {{ form_label(form.ct2, 'Coliformes  2(ml)') }}
+                {{ form_label(form.ct2, 'Coliformes  2(mm)') }}
                 {{ form_errors(form.ct2) }}
                 {{ form_widget(form.ct2) }} </td>
       
           
         <td  colspan="3" align = "right">
                 
-                {{ form_label(form.ct3, 'Coliformes 3(ml)') }}
+                {{ form_label(form.ct3, 'Coliformes 3(mm)') }}
                 {{ form_errors(form.ct3) }}
                 {{ form_widget(form.ct3)}} </td>
        
@@ -105,15 +105,15 @@
         </tr>
          <tr><td colspan=2 align = "right" height=10  ></td></tr>
       <tr>
-           <td colspan="3" align = "right" title='Media de crema'>
+           <td colspan="3" align = "right" >
                 
-                {{ form_label(form.mediaCrema, 'Media crema(ml)') }}
+                {{ form_label(form.mediaCrema, 'Media crema(mm)') }}
                 {{ form_errors(form.mediaCrema) }}
                 {{ form_widget(form.mediaCrema) }} </td>
            
            <td colspan="1" align = "right" >
                 
-                {{ form_label(form.mediaCt, 'Media coliformes(ml)') }}
+                {{ form_label(form.mediaCt, 'Media coliformes(mm)') }}
                 {{ form_errors(form.mediaCt) }}
                 {{ form_widget(form.mediaCt) }} </td>
       

@@ -40,58 +40,26 @@ $(document).ready(function() {
     
 
   
- $('#siblh_mantenimientobundle_blhacidez_acidez1').
+ $('#siblh_mantenimientobundle_blhcrematocrito_crema1').
             attr('data-bvalidator', 'min[1],required');
 
-  $('#siblh_mantenimientobundle_blhacidez_acidez2').
+  $('#siblh_mantenimientobundle_blhcrematocrito_crema2').
             attr('data-bvalidator', 'min[1],required');
     
- $('#siblh_mantenimientobundle_blhacidez_acidez3').
+ $('#siblh_mantenimientobundle_blhcrematocrito_crema3').
             attr('data-bvalidator', 'min[1],required');
     
- $('#siblh_mantenimientobundle_blhacidez_factor').
+ $('#siblh_mantenimientobundle_blhcrematocrito_ct1').
             attr('data-bvalidator', 'min[1],required');
   
  
-                          
+  $('#siblh_mantenimientobundle_blhcrematocrito_ct2').
+            attr('data-bvalidator', 'min[1],required');                         
+
+ $('#siblh_mantenimientobundle_blhcrematocrito_ct3').
+            attr('data-bvalidator', 'min[1],required');
 
 
-//Calculando campos                        
-
-var $Acidez1; 
-var $Acidez2; 
-var $Acidez3; 
-var $mediaAcidez;
-
-  $('#siblh_mantenimientobundle_blhacidez_acidez1').on('input', function() {
-    
-   $Acidez1 = parseInt(this.value);
-   
-    
-   
-});
-
-   $('#siblh_mantenimientobundle_blhacidez_acidez2').on('input', function() {
-    
-     $Acidez2 = parseInt(this.value);
-    
-   
-});
-   $('#siblh_mantenimientobundle_blhacidez_acidez3').on('input', function() {
-    
-   $Acidez3 = parseInt(this.value);
- $mediaAcidez= ($Acidez1 + $Acidez2 + $Acidez3)/3;
-
-});
-
-    
-$('#siblh_mantenimientobundle_blhacidez_mediaAcidez').on ('click', function() {
- 
-//Redondeando el resultado a 2 decimales 
-$mediaAcidez = Math.round( $mediaAcidez* 100) / 100;
- 
- 
-this.value = $mediaAcidez; } ); 
 
 
 });

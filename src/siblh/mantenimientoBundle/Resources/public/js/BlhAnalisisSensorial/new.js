@@ -25,6 +25,11 @@ $(document).ready(function() {
    
     $( "#boton" ).button();
       
+    $('#siblh_mantenimientobundle_blhanalisissensorial_observacion').
+            attr('data-bvalidator', 'required');
+
+   
+      
       //Opciones del validador
     var optionsRed = {
         classNamePrefix: 'bvalidator_red_',
@@ -35,11 +40,7 @@ $(document).ready(function() {
     $('form').bValidator(optionsRed);
 
   
- $('#siblh_mantenimientobundle_blhsolicitud_fechaSolicitud').
-            attr('data-bvalidator', 'date[dd.mm.yyyy],required');
-
- $('#siblh_mantenimientobundle_blhsolicitud_volumenPorToma').
-            attr('data-bvalidator', 'between[0:25],required');
+ 
 
 
 });

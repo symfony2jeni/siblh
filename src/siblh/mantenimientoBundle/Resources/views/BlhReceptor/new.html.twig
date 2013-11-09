@@ -93,7 +93,7 @@ elemento.style.visibility = visible ? "visible" : "hidden";
     <td colspan = 2 align = left><font color="red">*</font>
         {{ form_label(form.idBancoDeLeche) }}
         {{ form_errors(form.idBancoDeLeche) }}
-        {{ form_widget(form.idBancoDeLeche) }} </td>  
+        {{ form_widget(form.idBancoDeLeche, {'attr':{'required': 'true'} }) }} </td>  
     <td>{{ form_label(form.estadoReceptor) }}
         {{ form_errors(form.estadoReceptor) }}
         {{ form_widget(form.estadoReceptor) }} </td>  

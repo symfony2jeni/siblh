@@ -28,7 +28,7 @@ class BlhSolicitudType extends AbstractType
                     array(  'widget' => 'single_text',
                             'format' => 'dd-MM-yyyy',
                             'attr' => array('class' => 'date')))
-            ->add('cuna','text')
+            ->add('cuna', 'text')
             ->add('estado','choice', 
                     array('choices' => array('Pendiente' => 'Pendiente','Agrupada' => 'Agrupada','Despachada' => 'Despachada')))
             ->add('responsable')
