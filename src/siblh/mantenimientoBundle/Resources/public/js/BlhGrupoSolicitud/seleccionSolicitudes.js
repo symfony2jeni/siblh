@@ -1,22 +1,5 @@
 $(document).ready(function() {
-   
 
-    Enlace = function() {}
-    Enlace.cambiar = function() {
-        $("#list13 td a").click(function() {
-
-            var href = $(this).attr('href');
-
-            $('#resultado').load(href, function() {
-                $(this).dialog({
-                    modal: true,
-                    width: 600
-                });
-
-            });
-            return false;
-        });
-    }
  
  tableToGrid("#list13",{
    	//url:'server.php?q=2',
@@ -52,13 +35,28 @@ jQuery("#list13").jqGrid('navGrid','#pager13',{add:false,edit:false,del:false}
 	
 );
 
-jQuery("#cm1").click( function() {
-	var s;
-	s = jQuery("#list13").jqGrid('getGridParam','selarrrow');
-	alert(s);
-});
-jQuery("#cm1s").click( function() {
+var $s;
+var $x=1;
+/*jQuery("#cm1").click( function() {
+	
+	$s = jQuery("#list13").jqGrid('getGridParam','selarrrow');
+	alert($s);
+        //$('#2').val (s);
+       // $("#2").val ($x);
+});*/
+
+
+$('#prueba').on ('click', function() {
+    
+  $s = jQuery("#list13").jqGrid('getGridParam','selarrrow');
+	//alert($s);  
+ 
+this.value = $s; } ); 
+ 
+
+
+/*jQuery("#cm1s").click( function() {
 	jQuery("#list13").jqGrid('setSelection',"13");
-});
+});*/
 
 });

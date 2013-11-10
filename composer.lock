@@ -1567,12 +1567,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/sonata-project/SonataAdminBundle.git",
-                "reference": "0b83f78589129d99afbfa1ac7b4b4a733c9c9870"
+                "reference": "3290929cc9d28ea100ba5f0856bc84f556349194"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sonata-project/SonataAdminBundle/zipball/0b83f78589129d99afbfa1ac7b4b4a733c9c9870",
-                "reference": "0b83f78589129d99afbfa1ac7b4b4a733c9c9870",
+                "url": "https://api.github.com/repos/sonata-project/SonataAdminBundle/zipball/3290929cc9d28ea100ba5f0856bc84f556349194",
+                "reference": "3290929cc9d28ea100ba5f0856bc84f556349194",
                 "shasum": ""
             },
             "require": {
@@ -1626,7 +1626,7 @@
                 },
                 {
                     "name": "Sonata Community",
-                    "homepage": "https://github.com/sonata-project/SonataDoctrineMongoDBAdminBundle/contributors"
+                    "homepage": "https://github.com/sonata-project/SonataAdminBundle/contributors"
                 }
             ],
             "description": "Symfony SonataAdminBundle",
@@ -1637,7 +1637,7 @@
                 "bootstrap",
                 "sonata"
             ],
-            "time": "2013-11-07 23:05:02"
+            "time": "2013-11-08 13:10:20"
         },
         {
             "name": "sonata-project/block-bundle",
@@ -2146,12 +2146,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/sonata-project/SonataUserBundle.git",
-                "reference": "04a441cff942155cc0a18bf2dccaabd8be65c3ea"
+                "reference": "aa0fb0279f6a998ef98ebbc36fd18e875402b23b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sonata-project/SonataUserBundle/zipball/04a441cff942155cc0a18bf2dccaabd8be65c3ea",
-                "reference": "04a441cff942155cc0a18bf2dccaabd8be65c3ea",
+                "url": "https://api.github.com/repos/sonata-project/SonataUserBundle/zipball/aa0fb0279f6a998ef98ebbc36fd18e875402b23b",
+                "reference": "aa0fb0279f6a998ef98ebbc36fd18e875402b23b",
                 "shasum": ""
             },
             "require": {
@@ -2201,7 +2201,7 @@
                 "sonata",
                 "user"
             ],
-            "time": "2013-11-07 16:04:37"
+            "time": "2013-11-08 15:57:42"
         },
         {
             "name": "swiftmailer/swiftmailer",

@@ -258,7 +258,7 @@ class BlhGrupoSolicitudController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
         
-        $query = $em->createQuery("SELECT s.codigoSolicitud, s.fechaSolicitud, s.acidezNecesaria, s.caloriasNecesarias, s.volumenPorToma, s.tomaPorDia, p.primerNombre as nombre1, p.segundoNombre as nombre2, p.tercerNombre as nombre3, p.primerApellido as apellido1, p.segundoApellido as apellido2 FROM siblhmantenimientoBundle:BlhSolicitud s JOIN s.idReceptor r JOIN r.idPaciente p WHERE s.estado = 's' ");
+        $query = $em->createQuery("SELECT s.codigoSolicitud, s.fechaSolicitud, s.acidezNecesaria, s.caloriasNecesarias, s.volumenPorToma, s.tomaPorDia, p.primerNombre as nombre1, p.segundoNombre as nombre2, p.tercerNombre as nombre3, p.primerApellido as apellido1, p.segundoApellido as apellido2 FROM siblhmantenimientoBundle:BlhSolicitud s JOIN s.idReceptor r JOIN r.idPaciente p WHERE s.estado = 'Pendiente' ");
         
         $solicitudes = $query->getResult();
 
@@ -267,6 +267,29 @@ class BlhGrupoSolicitudController extends Controller
         return array(
             'solicitudes' => $solicitudes,
         );
+    }
+    
+     /**
+     * Lista de solicitudes a agrupar
+     *
+     *@Route("/{agrupar}", name="agrupar_solicitudes")
+     * @Method("GET")
+     * @Template()
+     */
+    public function agruparSolicitudesAction($agrupar)
+    {
+       // $mivariable = $_POST["agrupar"];  
+        $em = $this->getDoctrine()->getManager();
+        
+        $query = $em->createQuery("SELECT s.codigoSolicitud, s.fechaSolicitud, s.acidezNecesaria, s.caloriasNecesarias, s.volumenPorToma, s.tomaPorDia, p.primerNombre as nombre1, p.segundoNombre as nombre2, p.tercerNombre as nombre3, p.primerApellido as apellido1, p.segundoApellido as apellido2 FROM siblhmantenimientoBundle:BlhSolicitud s JOIN s.idReceptor r JOIN r.idPaciente p WHERE s.estado = 'Pendiente' ");
+        
+        $solicitudes = $query->getResult();
+
+ 
+
+        /*return array(
+            'solicitudes' => $solicitudes,
+        );*/
     }
     
 }

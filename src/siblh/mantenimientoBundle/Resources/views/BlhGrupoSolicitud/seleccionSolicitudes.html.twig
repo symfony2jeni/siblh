@@ -45,13 +45,19 @@
                   </table>
 <div id="pager13"></div>
 <div id='resultado' ></div>
-<a href="javascript:void(0)" id="cm1">Get Selected id's</a>
+{#<a href="javascript:void(0)" id="cm1">Get Selected id's</a>#}
+<a href="{{ path('agrupar_solicitudes',{'agrupar':'<a href="javascript:void(0)" id="cm1></a>"'})}}"> Agrupar <a/>
+{#<FORM method="GET" action="BlhGrupoSolicitudController.php">
+   <table align = "center" >
+       
+       <tr>
+       <td>prueba</td>
+        <td>
+        <INPUT  name="prueba" id="prueba" type=text size=10 ></td></tr>
+       <INPUT  name="Agrupar" type=submit  value="Agrupar" size=15 ></td></tr>
+</table>
+</FORM>#}
 
-
-{% set text = cm1 %}
-
-               
-           <a href="{{ path('blhseguimientoreceptor_show', { 'id': entity.id }) }}">show</a>
-     
+{#{% set text = cm1 %}#}
         
     {% endblock %}

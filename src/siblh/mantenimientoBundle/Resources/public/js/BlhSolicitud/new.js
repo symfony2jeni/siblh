@@ -70,7 +70,7 @@ $('#siblh_mantenimientobundle_blhsolicitud_cuna').
     
      
  $('#siblh_mantenimientobundle_blhsolicitud_caloriasNecesarias').
-            attr('data-bvalidator', 'required,digit,min[1]');
+            attr('data-bvalidator', 'required,min[1]');
     
  $('#siblh_mantenimientobundle_blhsolicitud_pesoDia').
             attr('data-bvalidator', 'required,between[400:2500]');
