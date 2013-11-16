@@ -12,18 +12,19 @@
       <script type="text/javascript" src="{{asset('bundles/jquery/jquery.jqGrid-4.5.4/js/jquery.jqGrid.min.js')}}" ></script>     
     
 <h1>Listado de Solicitudes</h1>
-<table id="list13">
+<table id="Multiselect">
 
 <thead>
             <tr>
-                <th>Codigo </th>
+                <th>id</th>
+                <th>Codigo</th>
                 <th>Fecha</th>
                 <th>Nombres</th>
                 <th>Apellidos</th>
                 <th>Acidez</th>
                 <th>Calorias</th>
-                <th>VolumenPorToma</th>
-                <th>TomaPorDia</th>
+                <th>Volumen&nbsp;por&nbsp;toma</th>
+                <th>Tomas&nbsp;por&nbsp;dia</th>
             </tr>
             
         </thead>
@@ -31,7 +32,7 @@
              {% for solicitud in solicitudes%}
             
               <tr>
-               {#<td><a href="{{ path('blhsolicitud_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>#}
+                <td>{{ solicitud.id }}</td>
                 <td>{{ solicitud.codigoSolicitud }}</td>
                 <td>{{ solicitud.fechaSolicitud|date('d-m-Y') }}</td>
                 <td>{{ solicitud.nombre1 }}&nbsp;{{ solicitud.nombre2 }}&nbsp;{{ solicitud.nombre3 }}</td>
@@ -43,21 +44,16 @@
                 {% endfor %}
                   </tbody>
                   </table>
-<div id="pager13"></div>
-<div id='resultado' ></div>
-{#<a href="javascript:void(0)" id="cm1">Get Selected id's</a>#}
-<a href="{{ path('agrupar_solicitudes',{'agrupar':'<a href="javascript:void(0)" id="cm1></a>"'})}}"> Agrupar <a/>
-{#<FORM method="GET" action="BlhGrupoSolicitudController.php">
-   <table align = "center" >
-       
-       <tr>
-       <td>prueba</td>
-        <td>
-        <INPUT  name="prueba" id="prueba" type=text size=10 ></td></tr>
-       <INPUT  name="Agrupar" type=submit  value="Agrupar" size=15 ></td></tr>
-</table>
-</FORM>#}
+<div id="pagerMultiselect"></div>
+{#<a href="javascript:void(0)" id="agrupar" >Get Selected id's</a>#}
 
-{#{% set text = cm1 %}#}
-        
-    {% endblock %}
+<FORM method="POST" action="{{path("blhagruparsolicitudes")}}" >
+   <table align = "center" >     
+       <tr>
+        <td>
+        <INPUT  name="var" id="var" type=text size=10 ></td></tr>
+       <tr><td><INPUT  id='agrupar' name="agrupar" type=submit  value="Agrupar"></td></tr>
+</table>
+</FORM>
+            
+{% endblock %}

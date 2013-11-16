@@ -30,6 +30,7 @@ class BlhLoteAnalisisController extends Controller
         $em = $this->getDoctrine()->getManager();
 
         $entities = $em->getRepository('siblhmantenimientoBundle:BlhLoteAnalisis')->findAll();
+       // $Lotes = $em->getRepository('siblhmantenimientoBundle:BlhLoteAnalisis')->findOneBy(array('carnet' => 'PA06010'));
 
         return array(
             'entities' => $entities,
@@ -47,12 +48,43 @@ class BlhLoteAnalisisController extends Controller
         $entity = new BlhLoteAnalisis();
         $form = $this->createCreateForm($entity);
         $form->handleRequest($request);
-
-        if ($form->isValid()) {
+        
+        //obteniendo los ids a agrupar//
+         $request = $this->getRequest();
+         $ids_agrupar = $request->get('var');//obteniendo string enviado desde input
+         $ids= explode(",",$ids_agrupar);//transformando string recibido en un array
+         
+         $tamanio = count($ids);//contado el tamanio del nuevo vector   
+        
+        
+         
+        if($ids_agrupar==0){
+            return $this->redirect(
+            $this->generateUrl('blhloteanalisis_new'));
+        }   
+        else{
+        if ($form->isValid() ) {
             $em = $this->getDoctrine()->getManager();
             $em->persist($entity);
             $em->flush();
-
+            
+           
+        
+        //Obteniendo el id lote creado//
+            $id_lote= $entity->getId();
+       //Obteniendo el objeto lote creado//
+        $lote = $em->getRepository('siblhmantenimientoBundle:BlhLoteAnalisis')->find($id_lote);
+        
+        //Recorriendo todos los frascos a ingresar al nuevo lote//
+        for ($i = 0; $i < $tamanio; $i++) {
+           $frasco_lote = $em->getRepository('siblhmantenimientoBundle:BlhFrascoRecolectado')->find($ids[$i]); //obteniendo el frasco a agrupar en lote
+           $frasco_lote->setIdLoteAnalisis($lote);//seteando el nuevo lote al frasco agrupado
+           $em->persist($frasco_lote);
+           $em->flush();
+            
+        }
+            
+            
             return $this->redirect($this->generateUrl('blhloteanalisis_show', array('id' => $entity->getId())));
         }
 
@@ -61,6 +93,7 @@ class BlhLoteAnalisisController extends Controller
             'form'   => $form->createView(),
         );
     }
+    }//final else
 
     /**
     * Creates a form to create a BlhLoteAnalisis entity.
@@ -88,17 +121,29 @@ class BlhLoteAnalisisController extends Controller
      * @Method("GET")
      * @Template()
      */
-    public function newAction()
-    {
+    public function newAction()         
+     {
+        
+        
+            //INICIO NEW ORIGINAL//
         $entity = new BlhLoteAnalisis();
         $form   = $this->createCreateForm($entity);
+        //FIN NEW ORIGINAL//
+        
+         //Obteniendo listado de frascos para lote
+         $em = $this->getDoctrine()->getManager();
+         $frascos = $em->getRepository('siblhmantenimientoBundle:BlhFrascoRecolectado')->findBy(array('idEstado' => 1,  'idLoteAnalisis'=>NULL));
+       
+     
 
         return array(
             'entity' => $entity,
             'form'   => $form->createView(),
+            'frascos'=>$frascos,
         );
-    }
-
+     }
+    
+    
     /**
      * Finds and displays a BlhLoteAnalisis entity.
      *
@@ -244,4 +289,68 @@ class BlhLoteAnalisisController extends Controller
             ->getForm()
         ;
     }
+    
+    
+    
+     /**
+     * Lista de solicitudes a agrupar
+     *
+     *@Route("/seleccion/solicitudes", name="blhagruparsolicitudes")
+     * @Method("POST")
+     * @Template()
+     */
+   /* public function lotesAction()
+    {     
+
+        //obteniendo los ids a agrupar//
+         $request = $this->getRequest();
+         $ids_agrupar = $request->get('var');
+         $ids= explode(",",$ids_agrupar);
+       
+         $tamanio = count($ids);   
+        
+        if($ids_agrupar==0){
+            return $this->redirect(
+            $this->generateUrl('blhseleccionsolicitudes'));
+        }
+        else{
+       $em = $this->getDoctrine()->getManager();
+       //Creando el grupo para la agrupacion//     
+       
+        $Grupo_solicitud = new BlhGrupoSolicitud();
+        $em->persist($Grupo_solicitud);
+        $em->flush();
+        
+        $id_Grupo= $Grupo_solicitud->getId();
+        $Grupo_solicitud->setcodigoGrupoSolicitud($id_Grupo);//seteando el codigo de grupo
+        
+        //Obteniendo el id grupo creado//
+        $Grupo = $em->getRepository('siblhmantenimientoBundle:BlhGrupoSolicitud')->find($id_Grupo);
+       
+      
+        
+        
+         
+            
+        for ($i = 0; $i < $tamanio; $i++) {
+           $agrupacion = $em->getRepository('siblhmantenimientoBundle:BlhSolicitud')->find($ids[$i]);
+           $agrupacion->setIdGrupoSolicitud($Grupo);//seteando el nuevo grupo a la solicitud agrupada
+           $agrupacion->setestado('Agrupada');//cambiando estado de solicitud
+           $em->persist($agrupacion);
+           $em->flush();
+            
+        }
+        }
+        
+        //Fin de agrupacion
+    
+
+        return $this->redirect(
+    $this->generateUrl('blhseleccionsolicitudes')
+);
+   
+    }*/
+    
+
+
 }

@@ -1,8 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="LecheDespachadaPorReceptor" language="groovy" pageWidth="1080" pageHeight="842" columnWidth="1040" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="f9a6b3e7-bc9d-47df-a88d-6268cbdf4bc7">
 	<property name="ireport.zoom" value="1.0"/>
-	<property name="ireport.x" value="88"/>
+	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
+	<queryString>
+		<![CDATA[select row_number() OVER (ORDER BY fp.codigo_frasco_procesado) as N, fp.codigo_frasco_procesado as cod, fp.volumen_frasco_pasteurizado as ml,
+fp.volumen_frasco_pasteurizado * 0.033814 as onz, fp.acidez_total as acidez, fp.kcalorias_totales as kc,
+p.fecha_pasteurizacion::date+'6 month'::interval  as venci
+from blh_frasco_procesado fp, blh_pasteurizacion p
+where fp.id_pasteurizacion = p.id;]]>
+	</queryString>
+	<field name="n" class="java.lang.Long"/>
+	<field name="cod" class="java.lang.String"/>
+	<field name="ml" class="java.math.BigDecimal"/>
+	<field name="onz" class="java.math.BigDecimal"/>
+	<field name="acidez" class="java.math.BigDecimal"/>
+	<field name="kc" class="java.math.BigDecimal"/>
+	<field name="venci" class="java.sql.Timestamp"/>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
@@ -30,11 +44,11 @@
 				<text><![CDATA[MINISTERIO DE SALUD]]></text>
 			</staticText>
 			<image>
-				<reportElement uuid="cfeeaf5b-9b30-4565-966b-73b1b321ca58" x="25" y="0" width="158" height="107"/>
+				<reportElement uuid="cfeeaf5b-9b30-4565-966b-73b1b321ca58" x="25" y="5" width="158" height="107"/>
 				<imageExpression><![CDATA["/home/omar/NetBeansProjects/siblh/src/siblh/mantenimientoBundle/Resources/reportes/blh.jpg"]]></imageExpression>
 			</image>
 			<image>
-				<reportElement uuid="e99245b9-5753-4e60-8506-125a94f85b7a" x="859" y="0" width="158" height="107"/>
+				<reportElement uuid="e99245b9-5753-4e60-8506-125a94f85b7a" x="859" y="6" width="158" height="107"/>
 				<imageExpression><![CDATA["/home/omar/NetBeansProjects/siblh/src/siblh/mantenimientoBundle/Resources/reportes/minsal2.jpg"]]></imageExpression>
 			</image>
 		</band>
@@ -82,42 +96,42 @@
 	<columnHeader>
 		<band height="26" splitType="Stretch">
 			<staticText>
-				<reportElement uuid="e9114d9b-39ef-4257-b991-a581bd5b0b4d" x="25" y="6" width="59" height="20"/>
+				<reportElement uuid="e9114d9b-39ef-4257-b991-a581bd5b0b4d" x="109" y="6" width="59" height="20"/>
 				<textElement>
 					<font isBold="true"/>
 				</textElement>
 				<text><![CDATA[Fecha]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="873af8f2-49ad-4b8a-b935-94cd139aed70" x="125" y="6" width="100" height="20"/>
+				<reportElement uuid="873af8f2-49ad-4b8a-b935-94cd139aed70" x="212" y="6" width="100" height="20"/>
 				<textElement>
 					<font isBold="true"/>
 				</textElement>
 				<text><![CDATA[Frasco Pasteurizado]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="388e3fe1-514f-4602-b637-c875d3ec719a" x="274" y="6" width="123" height="20"/>
+				<reportElement uuid="388e3fe1-514f-4602-b637-c875d3ec719a" x="355" y="6" width="123" height="20"/>
 				<textElement>
 					<font isBold="true"/>
 				</textElement>
 				<text><![CDATA[Volumen por toma(ml)]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="e849eaa5-f916-4eab-a961-40861aa5a0eb" x="442" y="6" width="100" height="20"/>
+				<reportElement uuid="e849eaa5-f916-4eab-a961-40861aa5a0eb" x="520" y="6" width="100" height="20"/>
 				<textElement>
 					<font isBold="true"/>
 				</textElement>
 				<text><![CDATA[Tomas por día]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="828ab71f-56b6-4216-8a59-37b11c3da36b" x="597" y="6" width="100" height="20"/>
+				<reportElement uuid="828ab71f-56b6-4216-8a59-37b11c3da36b" x="656" y="6" width="100" height="20"/>
 				<textElement>
 					<font isBold="true"/>
 				</textElement>
 				<text><![CDATA[Calorías/Onza]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="1e4fd955-1fda-4d11-a326-a617ce11bab2" x="759" y="6" width="100" height="20"/>
+				<reportElement uuid="1e4fd955-1fda-4d11-a326-a617ce11bab2" x="789" y="6" width="100" height="20"/>
 				<textElement>
 					<font isBold="true"/>
 				</textElement>
@@ -130,42 +144,54 @@
 				</textElement>
 				<text><![CDATA[Volumen por día]]></text>
 			</staticText>
+			<staticText>
+				<reportElement uuid="fb2d4446-5fc2-4d4c-917e-966f98a66dcb" x="25" y="6" width="33" height="20"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[N.]]></text>
+			</staticText>
 		</band>
 	</columnHeader>
 	<detail>
 		<band height="53" splitType="Stretch">
 			<textField>
-				<reportElement uuid="c71a3130-ca2e-4cd1-ada3-486bfb083ee6" x="25" y="14" width="59" height="20"/>
+				<reportElement uuid="c71a3130-ca2e-4cd1-ada3-486bfb083ee6" x="109" y="14" width="59" height="20"/>
 				<textElement/>
 				<textFieldExpression><![CDATA[$F{field}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement uuid="49df2f09-45f2-482b-99d1-23c2387009de" x="125" y="14" width="100" height="20"/>
+				<reportElement uuid="49df2f09-45f2-482b-99d1-23c2387009de" x="212" y="14" width="100" height="20"/>
 				<textElement/>
 				<textFieldExpression><![CDATA[$F{field}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement uuid="e400d674-32e0-468c-a114-78c296e8056a" x="274" y="14" width="100" height="20"/>
+				<reportElement uuid="e400d674-32e0-468c-a114-78c296e8056a" x="355" y="14" width="100" height="20"/>
 				<textElement/>
 				<textFieldExpression><![CDATA[$F{field}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement uuid="0beb0001-1e90-41b5-902e-1234fa801a36" x="442" y="14" width="100" height="20"/>
+				<reportElement uuid="0beb0001-1e90-41b5-902e-1234fa801a36" x="520" y="14" width="100" height="20"/>
 				<textElement/>
 				<textFieldExpression><![CDATA[$F{field}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement uuid="040d25c3-2ce6-4600-8227-77edd639cb40" x="597" y="14" width="100" height="20"/>
+				<reportElement uuid="040d25c3-2ce6-4600-8227-77edd639cb40" x="656" y="14" width="100" height="20"/>
 				<textElement/>
 				<textFieldExpression><![CDATA[$F{field}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement uuid="067dd144-cc98-40bf-85a6-4bb57909cce5" x="759" y="14" width="100" height="20"/>
+				<reportElement uuid="067dd144-cc98-40bf-85a6-4bb57909cce5" x="789" y="14" width="100" height="20"/>
 				<textElement/>
 				<textFieldExpression><![CDATA[$F{field}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement uuid="727b2408-86c8-4f34-b185-4f85a56d9973" x="917" y="14" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{field}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="8b1cb66e-9ccc-45d6-95f2-edf721aab041" x="25" y="14" width="57" height="20"/>
 				<textElement/>
 				<textFieldExpression><![CDATA[$F{field}]]></textFieldExpression>
 			</textField>

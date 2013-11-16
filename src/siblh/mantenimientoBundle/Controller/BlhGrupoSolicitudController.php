@@ -11,7 +11,7 @@ use siblh\mantenimientoBundle\Entity\BlhGrupoSolicitud;
 use siblh\mantenimientoBundle\Form\BlhGrupoSolicitudType;
 
 use siblh\mantenimientoBundle\Entity\BlhReceptor;
-
+use siblh\mantenimientoBundle\Entity\BlhSolicitud;
 /**
  * BlhGrupoSolicitud controller.
  *
@@ -258,38 +258,73 @@ class BlhGrupoSolicitudController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
         
-        $query = $em->createQuery("SELECT s.codigoSolicitud, s.fechaSolicitud, s.acidezNecesaria, s.caloriasNecesarias, s.volumenPorToma, s.tomaPorDia, p.primerNombre as nombre1, p.segundoNombre as nombre2, p.tercerNombre as nombre3, p.primerApellido as apellido1, p.segundoApellido as apellido2 FROM siblhmantenimientoBundle:BlhSolicitud s JOIN s.idReceptor r JOIN r.idPaciente p WHERE s.estado = 'Pendiente' ");
+        $query = $em->createQuery("SELECT s.id, s.codigoSolicitud, s.fechaSolicitud, s.acidezNecesaria, s.caloriasNecesarias, s.volumenPorToma, s.tomaPorDia, p.primerNombre as nombre1, p.segundoNombre as nombre2, p.tercerNombre as nombre3, p.primerApellido as apellido1, p.segundoApellido as apellido2 FROM siblhmantenimientoBundle:BlhSolicitud s JOIN s.idReceptor r JOIN r.idPaciente p WHERE s.estado = 'Pendiente' ");
         
         $solicitudes = $query->getResult();
-
- 
+     
 
         return array(
             'solicitudes' => $solicitudes,
         );
     }
-    
+     
      /**
      * Lista de solicitudes a agrupar
      *
-     *@Route("/{agrupar}", name="agrupar_solicitudes")
-     * @Method("GET")
+     *@Route("/seleccion/solicitudes", name="blhagruparsolicitudes")
+     * @Method("POST")
      * @Template()
      */
-    public function agruparSolicitudesAction($agrupar)
-    {
-       // $mivariable = $_POST["agrupar"];  
-        $em = $this->getDoctrine()->getManager();
-        
-        $query = $em->createQuery("SELECT s.codigoSolicitud, s.fechaSolicitud, s.acidezNecesaria, s.caloriasNecesarias, s.volumenPorToma, s.tomaPorDia, p.primerNombre as nombre1, p.segundoNombre as nombre2, p.tercerNombre as nombre3, p.primerApellido as apellido1, p.segundoApellido as apellido2 FROM siblhmantenimientoBundle:BlhSolicitud s JOIN s.idReceptor r JOIN r.idPaciente p WHERE s.estado = 'Pendiente' ");
-        
-        $solicitudes = $query->getResult();
+    public function agruparSolicitudesAction()
+    {     
 
- 
+        //obteniendo los ids a agrupar//
+         $request = $this->getRequest();
+         $ids_agrupar = $request->get('var');
+         $ids= explode(",",$ids_agrupar);
+       
+         $tamanio = count($ids);   
+        
+        if($ids_agrupar==0){
+            return $this->redirect(
+            $this->generateUrl('blhseleccionsolicitudes'));
+        }
+        else{
+       $em = $this->getDoctrine()->getManager();
+       //Creando el grupo para la agrupacion//     
+       
+        $Grupo_solicitud = new BlhGrupoSolicitud();
+        $em->persist($Grupo_solicitud);
+        $em->flush();
+        
+        $id_Grupo= $Grupo_solicitud->getId();
+        $Grupo_solicitud->setcodigoGrupoSolicitud($id_Grupo);//seteando el codigo de grupo
+        
+        //Obteniendo el id grupo creado//
+        $Grupo = $em->getRepository('siblhmantenimientoBundle:BlhGrupoSolicitud')->find($id_Grupo);
+       
+      
+        
+        
+         
+            
+        for ($i = 0; $i < $tamanio; $i++) {
+           $agrupacion = $em->getRepository('siblhmantenimientoBundle:BlhSolicitud')->find($ids[$i]);
+           $agrupacion->setIdGrupoSolicitud($Grupo);//seteando el nuevo grupo a la solicitud agrupada
+           $agrupacion->setestado('Agrupada');//cambiando estado de solicitud
+           $em->persist($agrupacion);
+           $em->flush();
+            
+        }
+        }
+        
+        //Fin de agrupacion
+    
 
-        /*return array(
-            'solicitudes' => $solicitudes,
-        );*/
+        return $this->redirect(
+    $this->generateUrl('blhseleccionsolicitudes')
+);
+   
     }
     
 }

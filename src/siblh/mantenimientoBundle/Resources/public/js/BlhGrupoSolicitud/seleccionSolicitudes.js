@@ -1,62 +1,62 @@
 $(document).ready(function() {
-
- 
- tableToGrid("#list13",{
-   	//url:'server.php?q=2',
-	datatype: "json",
-   	
+        tableToGrid("#Multiselect",{
    	colModel:[
-   		{name:'Codigo',index:'Codigo', width:55},
-   		{name:'Fecha',index:'Fecha', width:90},
-   		{name:'Nombres',index:'Nombres', width:100},
-                {name:'Apellidos',index:'Apellidos', width:100},
-   		{name:'Acidez',index:'Acidez', width:80},
-   		{name:'Calorias',index:'Calorias', width:80},		
-   		{name:'VolumenPorToma',index:'VolumenPorToma', width:80},		
-   		{name:'TomaPorDia',index:'TomaPorDia', width:150}		
+   		{name:'id',index:'id', width:10, align:'Center', hidden:true},
+   		{name:'Codigo',index:'Codigo', width:25, align:'Center'},
+   		{name:'Fecha',index:'Fecha', width:25, align:'Center'},
+   		{name:'Nombres',index:'Nombres', width:80, align:'Center'},
+   		{name:'Apellidos',index:'Apellidos', width:80, align:'Center'},		
+   		{name:'Acidez',index:'Acidez', width:15, align:'Center'},		
+   		{name:'Calorias',index:'Calorias', width:15, align:'Center'},	
+                {name:'Volumen&nbsp;por&nbsp;toma',index:'Volumen&nbsp;por&nbsp;toma', width:25, align:'Center'},
+                {name:'Tomas&nbsp;por&nbsp;dia',index:'Tomas&nbsp;por&nbsp;dia', width:25, align:'Center'}
    	],
-          loadComplete: function (){
-            Enlace.cambiar();
-            $("TD").css('white-space','normal');
-        },
    	rowNum:10,
-   	pager: '#pager13',
-   	sortname: 'Codigo',
-        viewrecords: true,
-        sortorder: "asc",
+        gridview: true, 
+   	pager: '#pagerMultiselect',
+   	sortname: 'id',
+        viewrecords: false,
+        sortorder: "desc",
 	multiselect: true,
 	caption: "Seleccione las solicitudes a agrupar"
-       
-	//editurl:"someurl.php"
-      
 });
-jQuery("#list13").jqGrid('sortGrid',"Codigo",true);
-jQuery("#list13").jqGrid('navGrid','#pager13',{add:false,edit:false,del:false}
-	
-);
-
-var $s;
-var $x=1;
-/*jQuery("#cm1").click( function() {
-	
-	$s = jQuery("#list13").jqGrid('getGridParam','selarrrow');
-	alert($s);
-        //$('#2').val (s);
-       // $("#2").val ($x);
-});*/
 
 
-$('#prueba').on ('click', function() {
+//jQuery("#Multiselect").jqGrid('sortGrid',"Nombres",true);
+jQuery("#Multiselect").jqGrid('navGrid','#pagerMultiselect',{add:false,del:false,edit:false,search:true, reload: true});
+jQuery("#agrupar").on ('click', function() {
+        
+        var corr_seleccionados = jQuery("#Multiselect").jqGrid('getGridParam','selarrrow');
+	var todos_id = jQuery("#Multiselect").jqGrid('getCol','id');      
+        var total_filas = jQuery("#Multiselect").jqGrid('getDataIDs');
+        var s = new Array();
+      
     
-  $s = jQuery("#list13").jqGrid('getGridParam','selarrrow');
-	//alert($s);  
- 
-this.value = $s; } ); 
- 
+        if (corr_seleccionados.length > 4 || corr_seleccionados.length === 0){
+            if (corr_seleccionados.length === 0){
+                alert('No se ha selelcionado ninguna solicitud para agrupar');
+               
+                 $('#var').val(0);
+            }
+            else{
+             alert("Solo puede elegir como maximo 4 solicitudes por grupo"); }//fin else interno  
+             
+             $('#var').val(0);
+            }//final if interno
+            else{
+           for(i= 0 ; i < corr_seleccionados.length ; i++){
+            for(j = 0; j < total_filas.length ; j++){
+                if (corr_seleccionados[i] === total_filas[j]){
+                s[i] = todos_id[j]; 
+            }//final if interno 
+        }//final for externo
+        }//fin de for externo
+        
+        $('#var').val(s);
+        
+       }//fin de else
 
-
-/*jQuery("#cm1s").click( function() {
-	jQuery("#list13").jqGrid('setSelection',"13");
-});*/
+	
+});
 
 });

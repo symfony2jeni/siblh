@@ -63,4 +63,8 @@ class BlhGrupoSolicitud
     {
         return $this->codigoGrupoSolicitud;
     }
+    public function __toString()
+    {
+       return $this->codigoGrupoSolicitudo;
+    }
 }

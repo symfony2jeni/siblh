@@ -59,6 +59,9 @@ _home:
     pattern:  /inicio
     defaults: { _controller: siblhmantenimientoBundle:Default:index}
     
+fos_js_routing:
+    resource: "@FOSJsRoutingBundle/Resources/config/routing/routing.xml"
+    
 
 
 

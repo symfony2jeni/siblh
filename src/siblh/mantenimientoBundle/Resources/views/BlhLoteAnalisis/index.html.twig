@@ -6,30 +6,19 @@
     <table class="records_list">
         <thead>
             <tr>
-                <th>Id</th>
-                <th>Codigoloteanalisis</th>
-                <th>Fechaanalisisfisicoquimico</th>
-                <th>Responsableanalisis</th>
-                <th>Actions</th>
+                <th>Codigo&nbsp;lote</th>
+                <th>Fecha</th>
+                <th>Responsable&nbsp;analisis</th>
+                <th>Acción</th>
             </tr>
         </thead>
         <tbody>
         {% for entity in entities %}
-            <tr>
-                <td><a href="{{ path('blhloteanalisis_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
+            <tr>                
                 <td>{{ entity.codigoLoteAnalisis }}</td>
                 <td>{% if entity.fechaAnalisisFisicoQuimico %}{{ entity.fechaAnalisisFisicoQuimico|date('d-m-Y') }}{% endif %}</td>
                 <td>{{ entity.responsableAnalisis }}</td>
-                <td>
-                <ul>
-                    <li>
-                        <a href="{{ path('blhloteanalisis_show', { 'id': entity.id }) }}">show</a>
-                    </li>
-                    <li>
-                        <a href="{{ path('blhloteanalisis_edit', { 'id': entity.id }) }}">edit</a>
-                    </li>
-                </ul>
-                </td>
+                <td><a href="{{ path('blhacidez_edit', { 'id': entity.id }) }}"><font color="blue"><u>Asignar Frascos a lote </u></font></a></td>               
             </tr>
         {% endfor %}
         </tbody>
