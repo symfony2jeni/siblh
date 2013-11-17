@@ -1,4 +1,4 @@
-{% extends '::base.html.twig' %}
+{% extends 'siblhmantenimientoBundle::plantilla.html.twig' %}
 
 {% block body -%}
     <h1>BlhPasteurizacion list</h1>
@@ -28,11 +28,11 @@
                 <td>{{ entity.numCiclo }}</td>
                 <td>{{ entity.volumenPasteurizado }}</td>
                 <td>{{ entity.numFrascosPasteurizados }}</td>
-                <td>{% if entity.fechaPasteurizacion %}{{ entity.fechaPasteurizacion|date('Y-m-d H:i:s') }}{% endif %}</td>
-                <td>{{ entity.horaInicioP }}</td>
-                <td>{{ entity.horaFinalP }}</td>
-                <td>{{ entity.horaInicioE }}</td>
-                <td>{{ entity.horaFinalE }}</td>
+                <td>{% if entity.fechaPasteurizacion %}{{ entity.fechaPasteurizacion|date('Y-m-d') }}{% endif %}</td>
+                <td>{{ entity.horaInicioP|date('H:i:s') }}</td>
+                <td>{{ entity.horaFinalP|date('H:i:s') }}</td>
+                <td>{{ entity.horaInicioE|date('H:i:s') }}</td>
+                <td>{{ entity.horaFinalE|date('H:i:s') }}</td>
                 <td>{{ entity.responsablePasteurizacion }}</td>
                 <td>
                 <ul>

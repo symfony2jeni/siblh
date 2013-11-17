@@ -15,12 +15,12 @@ class BlhFrascoProcesadoType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('codigoFrascoProcesado')
+            //->add('codigoFrascoProcesado')
             ->add('volumenFrascoPasteurizado')
-            ->add('acidezTotal')
-            ->add('kcaloriasTotales')
+            //->add('acidezTotal')
+            //->add('kcaloriasTotales')
             ->add('observacionFrascoProcesado')
-            ->add('idEstado')
+            //->add('idEstado')
             ->add('idPasteurizacion')
         ;
     }

@@ -1,44 +1,4 @@
-$(document).ready(function() { 
-     /*$('button').button();*/
-     $.noConflict();
-     $.datepicker.setDefaults($.datepicker.regional["es"]);
-     
-       //Calendario  
-     $('input[id$="_fechaAnalisisFisicoQuimico"]').datepicker({ dateFormat: 'dd-mm-yy',  
-                           changeMonth: true,
-                           changeYear: true,
-                           clearStatus: 'Borra fecha actual',  
-                          defaultDate: '2012-01-01',
-                            yearRange: '2012:y',
-                           dayNamesMin: ["Do", "Lu", "Ma", "Mi", "Ju", "Vi", "Sa"],
-                           monthNamesShort: ["Ene", "Feb", "Mar", "Abr", "May", "Jun",
-                                             "Jul", "Ago", "Sep", "Oct", "Nov", "Dic"]
-                          });  
-    //Tooltip                      
- 
-    $( document ).tooltip();
-  
-       
-    //Boton   
-    
-      $( "#boton" ).button();
-      
-   //Spiner   
- $(function() {
-    $( '#spinner' ).spinner({
-      spin: function( event, ui ) {
-        if ( ui.value > 50 ) {
-          $( this ).spinner( "value", 0 );
-          return false;
-        } else if ( ui.value < 0 ) {
-          $( this ).spinner( "value", 50 );
-          return false;
-        }
-      }
-    });
-  });
-  
-//GRID para listado de frascos//
+//GRID para listado de frascos a combinar//
   tableToGrid("#frascosLote", {
         pager : '#pagerfrascosLote',
         rowNum:10, 
@@ -97,9 +57,5 @@ jQuery("#lote").on ('click', function() {
 
 	
 });
-
-});
-
-
 
 

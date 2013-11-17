@@ -1,15 +1,33 @@
-{% extends '::base.html.twig' %}
+{% extends 'siblhmantenimientoBundle::plantilla.html.twig' %}
+
+        
+ {% block javascripts %}   
+{{parent()}}
+<script type="text/javascript" src="{{ asset('bundles/siblhmantenimiento/js/BlhFrascoProcesado/new.js') }}" ></script>
+
+{% endblock %}
+
 
 {% block body -%}
-    <h1>BlhFrascoProcesado creation</h1>
+<link href="{{asset('bundles/jquery/jquery.jqGrid-4.5.4/css/ui.jqgrid.css')}}" rel="stylesheet"  type="text/css" media="all"/>  
+<script type="text/javascript" src="{{asset('bundles/jquery/jquery.jqGrid-4.5.4/js/i18n/grid.locale-es.js')}}"></script>
+<script type="text/javascript" src="{{asset('bundles/jquery/jquery.jqGrid-4.5.4/js/jquery.jqGrid.min.js')}}" ></script>
+    <h1>Combinacion de frascos procesados</h1>
+       {{ form_start(form) }}
+       {{ form_errors(form) }}
+<table align = "center" width = "70%" >
 
-    {{ form(form) }}
+    
 
-        <ul class="record_actions">
-    <li>
-        <a href="{{ path('blhfrascoprocesado') }}">
-            Back to the list
-        </a>
-    </li>
-</ul>
+
+
+<tr><td colspan=2 align = "right" height=40  ></td></tr>
+         <tr>
+           
+             
+                <td width =100 align = "right" > 
+                {{ form_label(form.codigoLoteAnalisis, 'Código de lote') }}
+                {{ form_errors(form.codigoLoteAnalisis) }}
+                {{ form_widget(form.codigoLoteAnalisis) }} </td>                 
+           
 {% endblock %}
