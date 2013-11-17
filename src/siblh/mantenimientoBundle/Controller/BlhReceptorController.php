@@ -32,9 +32,14 @@ class BlhReceptorController extends Controller
         $em = $this->getDoctrine()->getManager();
 
         $entities = $em->getRepository('siblhmantenimientoBundle:BlhReceptor')->findAll();
-
+         //Obtener banco de leche//
+              
+        $userEst = $this->container->get('security.context')->getToken()->getUser()->getIdEst();
+        $query1 = $em->createQuery("SELECT e.nombre, e.direccion, e.telefono FROM siblhmantenimientoBundle:CtlEstablecimiento e WHERE e.id = $userEst");
+        $establecimiento = $query1->getResult(); 
         return array(
             'entities' => $entities,
+            'hospital' => $establecimiento,
         );
     }
     /**
@@ -50,18 +55,36 @@ class BlhReceptorController extends Controller
        // $entity1 = new BlhIngresoReceptor();
         $form = $this->createCreateForm($entity);
         $form->handleRequest($request);
-
+//Obtener banco de leche//
+        $em = $this->getDoctrine()->getManager();     
+        $userEst = $this->container->get('security.context')->getToken()->getUser()->getIdEst();
+        $query1 = $em->createQuery("SELECT e.nombre, e.direccion, e.telefono FROM siblhmantenimientoBundle:CtlEstablecimiento e WHERE e.id = $userEst");
+        $establecimiento = $query1->getResult(); 
+  /*      $query2 = $em->createQuery("SELECT b.id FROM siblhmantenimientoBundle:BlhBancoDeLeche b WHERE b.idEstablecimiento = $userEst");
+        $id_blh = $query2->getResult(); 
+        $codigo=$id_blh[0]['id']; 
+        echo $codigo;
+        $blh = $em->getRepository('siblhmantenimientoBundle:BlhBancoDeLeche')->find($codigo);
+      */
+        
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $em->persist($entity);
             $em->flush();
-
+            
+        /*    $idnuevoreceptor = $entity->getId();
+            $receptor = $em->getRepository('siblhmantenimientoBundle:BlhReceptor')->find($idnuevoreceptor);
+            $receptor->setIdBancoDeLeche($blh);
+              $em->persist($entity);
+            $em->flush();*/
             return $this->redirect($this->generateUrl('blhreceptor', array('id' => $entity->getId())));
         }
-
+ 
         return array(
             'entity' => $entity,
             'form'   => $form->createView(),
+            'hospital' => $establecimiento,
+                    
         );
         
         
@@ -142,11 +165,21 @@ class BlhReceptorController extends Controller
 
         $editForm = $this->createEditForm($entity);
         $deleteForm = $this->createDeleteForm($id);
-
+         //Obtener banco de leche//
+              
+      $userEst = $this->container->get('security.context')->getToken()->getUser()->getIdEst();
+      /*  $query1 = $em->createQuery("SELECT b.id FROM siblhmantenimientoBundle:BlhBancoDeLeche b WHERE b.idEstablecimiento = $userEst");
+        $id_blh = $query1->getResult(); 
+        $codigo=$id_blh[0]['id']; */
+       
+       $query1 = $em->createQuery("SELECT e.nombre, e.direccion, e.telefono FROM siblhmantenimientoBundle:CtlEstablecimiento e WHERE e.id = $userEst");
+        $establecimiento = $query1->getResult(); 
+     
         return array(
             'entity'      => $entity,
             'edit_form'   => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
+            'hospital' => $establecimiento,
         );
     }
 
@@ -164,7 +197,7 @@ class BlhReceptorController extends Controller
             'method' => 'PUT',
         ));
 
-        $form->add('submit', 'submit', array('label' => 'Update'));
+      //  $form->add('submit', 'submit', array('label' => 'Update'));
 
         return $form;
     }
@@ -264,14 +297,24 @@ class BlhReceptorController extends Controller
         $em = $this->getDoctrine()->getManager();      
         
         //Obteniendo lista de pacientes"  
-        $query = $em->createQuery("SELECT p.id as identificador, p.primerNombre as nombre1, p.segundoNombre as nombre2, p.tercerNombre as nombre3, p.primerApellido as apellido1, p.segundoApellido as apellido2 FROM siblhmantenimientoBundle:MntPaciente p");
+        $query = $em->createQuery("SELECT p.id as identificador, p.primerNombre as nombre1, p.segundoNombre as nombre2, 
+            p.tercerNombre as nombre3, p.primerApellido as apellido1, p.segundoApellido as apellido2 
+            FROM siblhmantenimientoBundle:MntPaciente p where p.id not in (select pac.id from siblhmantenimientoBundle:BlhReceptor r 
+JOIN r.idPaciente pac)");  
         
-       //echo $hisclinico[idDonante];
-                
         $pacientes_registrados  = $query->getResult();
-        
+         //Obtener banco de leche//
+              
+      $userEst = $this->container->get('security.context')->getToken()->getUser()->getIdEst();
+      /*  $query1 = $em->createQuery("SELECT b.id FROM siblhmantenimientoBundle:BlhBancoDeLeche b WHERE b.idEstablecimiento = $userEst");
+        $id_blh = $query1->getResult(); 
+        $codigo=$id_blh[0]['id']; */
+       
+       $query1 = $em->createQuery("SELECT e.nombre, e.direccion, e.telefono FROM siblhmantenimientoBundle:CtlEstablecimiento e WHERE e.id = $userEst");
+        $establecimiento = $query1->getResult(); 
         return array(
-            'pacientes_registrados' =>  $pacientes_registrados,  
+            'pacientes_registrados' =>  $pacientes_registrados, 
+             'hospital' => $establecimiento,
          
         );
         
@@ -302,24 +345,68 @@ class BlhReceptorController extends Controller
         if (!$datos_pacientes) {
             throw $this->createNotFoundException('Unable to find MntPaciente entity');
         }
+         
+        //Obtener banco de leche//
+              
+       $userEst = $this->container->get('security.context')->getToken()->getUser()->getIdEst();
+      
+        $query1 = $em->createQuery("SELECT e.nombre, e.direccion, e.telefono FROM siblhmantenimientoBundle:CtlEstablecimiento e WHERE e.id = $userEst");
+        $establecimiento = $query1->getResult(); 
+        $queryi = $em->createQuery("SELECT b.id FROM siblhmantenimientoBundle:BlhBancoDeLeche b WHERE b.idEstablecimiento = $userEst");
+       $id_blh = $queryi->getResult(); 
+       $codigo=$id_blh[0]['id']; 
        
-        
-        
+       $blh = $em->getRepository('siblhmantenimientoBundle:BlhBancoDeLeche')->find($codigo);
+       
         $entity = new BlhReceptor();
-      //   $entity1 = new BlhIngresoReceptor();
-         $entity->setIdPaciente($paciente);
+        $entity->setIdBancoDeLeche($blh);
+        $entity->setIdPaciente($paciente);
         $form   = $this->createCreateForm($entity);
-      //  $form1   = $this->createCreateForm1($entity1);
-
+        
         return array(
             'entity' => $entity,
             'form'   => $form->createView(),
-         //   'entity1' => $entity1,
-         //   'form1'   => $form1->createView(),
             'datos_pacientes' =>  $datos_pacientes, 
             'sexo' => $sexo,
             'numexp' => $numexp,
+            'hospital' => $establecimiento,
         );
     }
+    
+    /**
+     * @Route("/avance/receptor",name="AvanceReceptor")
+     * @Method("GET") 
+     * @Template()
+     */
+    
+ 
+ public function AvanceReceptorAction()
+    {
+        $em = $this->getDoctrine()->getManager();      
+        
+        //Obteniendo lista de pacientes"  
+        $query = $em->createQuery("SELECT r.id as identificador, p.primerNombre as nombre1, p.segundoNombre as nombre2, 
+            p.tercerNombre as nombre3, p.primerApellido as apellido1, p.segundoApellido as apellido2,  r.codigoReceptor
+            FROM siblhmantenimientoBundle:BlhReceptor r join r.idPaciente p where r.estadoReceptor = 'Activo'
+            and r.id in (select rec.id from siblhmantenimientoBundle:BlhSeguimientoReceptor sr 
+JOIN sr.idReceptor rec)");  
+         
+        $receptores_registrados  = $query->getResult();
+           //Obtener banco de leche//
+              
+      $userEst = $this->container->get('security.context')->getToken()->getUser()->getIdEst();
+      /*  $query1 = $em->createQuery("SELECT b.id FROM siblhmantenimientoBundle:BlhBancoDeLeche b WHERE b.idEstablecimiento = $userEst");
+        $id_blh = $query1->getResult(); 
+        $codigo=$id_blh[0]['id']; */
+       
+       $query1 = $em->createQuery("SELECT e.nombre, e.direccion, e.telefono FROM siblhmantenimientoBundle:CtlEstablecimiento e WHERE e.id = $userEst");
+        $establecimiento = $query1->getResult(); 
+        return array(
+            'receptores_registrados' =>  $receptores_registrados,  
+            'hospital' => $establecimiento,
+         
+        );
+        
+    }   
    
 }

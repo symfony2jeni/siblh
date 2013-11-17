@@ -1,59 +1,177 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="prueba" language="groovy" pageWidth="612" pageHeight="792" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="c04c4cb8-4181-4d71-9432-68e5d2cd66d8">
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="censodonante" language="groovy" pageWidth="1440" pageHeight="792" columnWidth="1400" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="c04c4cb8-4181-4d71-9432-68e5d2cd66d8">
 	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="0"/>
+	<property name="ireport.y" value="49"/>
+	<parameter name="fechai" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
 	<queryString>
-		<![CDATA[select codigo_donante, primer_nombre, primer_apellido
-from blh_donante;]]>
+		<![CDATA[select row_number() OVER (ORDER BY dt.codigo_donante), dt.codigo_donante,fr.codigo_frasco_recolectado,
+dt.primer_nombre ||' ' ||dt.segundo_nombre||' '||dt.primer_apellido||' '||dt.segundo_apellido as Donante,
+dt.edad, dt.procedencia, fr.volumen_recolectado, fr.onz_recolectado,
+e.nombre_estado as Estado, dn.fecha_donacion::date+'15 days'::interval  as fecha_vencimiento
+from blh_donante dt, blh_donacion dn, blh_frasco_recolectado fr, blh_estado e
+where dn.id_donante = dt.id and fr.id_donacion = dn.id
+and e.id = fr.id_estado and dn.fecha_donacion >= to_date($P{fechai}, 'DD-MM-YYYY')
+order by dt.codigo_donante;]]>
 	</queryString>
+	<field name="row_number" class="java.lang.Long"/>
 	<field name="codigo_donante" class="java.lang.String"/>
-	<field name="primer_nombre" class="java.lang.String"/>
-	<field name="primer_apellido" class="java.lang.String"/>
+	<field name="codigo_frasco_recolectado" class="java.lang.String"/>
+	<field name="donante" class="java.lang.String"/>
+	<field name="edad" class="java.lang.Integer"/>
+	<field name="procedencia" class="java.lang.String"/>
+	<field name="volumen_recolectado" class="java.math.BigDecimal"/>
+	<field name="onz_recolectado" class="java.math.BigDecimal"/>
+	<field name="estado" class="java.lang.String"/>
+	<field name="fecha_vencimiento" class="java.sql.Timestamp"/>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
 	<title>
-		<band height="79" splitType="Stretch"/>
+		<band height="79" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="32a77ab7-85bd-45ca-a841-a8d07f9493e0" x="378" y="18" width="566" height="32"/>
+				<textElement>
+					<font fontName="SansSerif" size="26" isBold="true"/>
+				</textElement>
+				<text><![CDATA[CENSO DE REGISTRO DE DONANTES]]></text>
+			</staticText>
+			<image>
+				<reportElement uuid="969da6f7-85b9-4611-ad4a-dc48bb013c71" x="39" y="0" width="168" height="79"/>
+				<imageExpression><![CDATA["/home/jeni/NetBeansProjects/siblh/src/siblh/mantenimientoBundle/Resources/reportes/blh.jpg"]]></imageExpression>
+			</image>
+			<image>
+				<reportElement uuid="a7495c0a-1db6-4827-b017-d331528cc4c8" x="1194" y="0" width="204" height="68"/>
+				<imageExpression><![CDATA["/home/jeni/NetBeansProjects/siblh/src/siblh/mantenimientoBundle/Resources/reportes/minsal2.jpg"]]></imageExpression>
+			</image>
+		</band>
 	</title>
 	<pageHeader>
-		<band height="35" splitType="Stretch"/>
+		<band height="35" splitType="Stretch">
+			<textField>
+				<reportElement uuid="8eaa42ae-8ce2-4f15-aefe-4349a8611eaa" x="274" y="6" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$P{fechai}]]></textFieldExpression>
+			</textField>
+		</band>
 	</pageHeader>
 	<columnHeader>
 		<band height="61" splitType="Stretch">
 			<staticText>
-				<reportElement uuid="d75c6d89-f46c-48dd-9704-4d930d93f381" x="29" y="23" width="100" height="20"/>
-				<textElement/>
-				<text><![CDATA[codigo]]></text>
+				<reportElement uuid="d75c6d89-f46c-48dd-9704-4d930d93f381" x="10" y="23" width="100" height="20"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Codigo Donante]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="cfe7a70c-26c9-4728-8c15-10b45343e8a9" x="213" y="23" width="100" height="20"/>
-				<textElement/>
-				<text><![CDATA[nombre]]></text>
+				<reportElement uuid="cfe7a70c-26c9-4728-8c15-10b45343e8a9" x="149" y="23" width="100" height="20"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Codigo Frasco]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="8e9d2d0d-1e31-408a-971c-06dadf490f22" x="389" y="23" width="100" height="20"/>
-				<textElement/>
-				<text><![CDATA[apellido]]></text>
+				<reportElement uuid="8e9d2d0d-1e31-408a-971c-06dadf490f22" x="378" y="23" width="100" height="20"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Donante]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="856769d1-68d4-4565-b3ec-a942681f90dd" x="548" y="23" width="57" height="20"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Edad]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="0a5d428a-7de9-48d0-8b02-cf1833ecfebf" x="660" y="23" width="100" height="20"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Procedencia]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="f095f953-db67-46ba-bcf3-b7ac7085a732" x="791" y="23" width="100" height="20"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Volumen ml]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="8066ec4b-5a55-41ee-b27d-879f04b54cd4" x="944" y="23" width="84" height="20"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Volumen onz]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="b1a22f91-a40e-4049-ac1b-be8d6d8e3727" x="1094" y="23" width="65" height="20"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Estado]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="376e1b67-4069-4b82-a40f-01ddf5923d0f" x="1204" y="23" width="100" height="20"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Fecha Vencimiento]]></text>
 			</staticText>
 		</band>
 	</columnHeader>
 	<detail>
-		<band height="125" splitType="Stretch">
+		<band height="20" splitType="Stretch">
 			<textField isStretchWithOverflow="true">
-				<reportElement uuid="71f7cdbc-1130-4f0c-b2a1-74ceaea5d79e" x="29" y="0" width="125" height="20"/>
+				<reportElement uuid="71f7cdbc-1130-4f0c-b2a1-74ceaea5d79e" x="10" y="0" width="110" height="15"/>
 				<textElement/>
 				<textFieldExpression><![CDATA[$F{codigo_donante}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement uuid="d69dad03-8049-4706-8aa4-5839b181bbfe" x="213" y="0" width="125" height="20"/>
+				<reportElement uuid="d69dad03-8049-4706-8aa4-5839b181bbfe" x="132" y="0" width="160" height="15"/>
 				<textElement/>
-				<textFieldExpression><![CDATA[$F{primer_nombre}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{codigo_frasco_recolectado}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement uuid="31c22554-83da-42e4-b703-3da4c82d133d" x="376" y="0" width="140" height="20"/>
+				<reportElement uuid="31c22554-83da-42e4-b703-3da4c82d133d" x="313" y="0" width="212" height="15"/>
 				<textElement/>
-				<textFieldExpression><![CDATA[$F{primer_apellido}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{donante}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="959d71de-a962-4f86-a5d5-cbf269540e15" x="555" y="0" width="74" height="15"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{edad}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="c187c82f-8aa8-4fcb-9300-70155b7b3c16" x="660" y="0" width="113" height="15"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{procedencia}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="3bf32cdd-48fc-49ab-b295-96367d56e43d" x="793" y="0" width="136" height="15"/>
+				<textElement>
+					<paragraph lineSpacing="Proportional"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{volumen_recolectado}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="faf2d8e2-d743-4b42-9c01-4ca47faa448b" x="954" y="0" width="111" height="15"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{onz_recolectado}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="93c8629c-35eb-41d9-bc0f-ca39090dd04e" x="1086" y="0" width="73" height="15"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{estado}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="cbdc6a8a-4d0c-4e2d-974b-4263d5048a6c" x="1194" y="0" width="127" height="15"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{fecha_vencimiento}]]></textFieldExpression>
 			</textField>
 		</band>
 	</detail>

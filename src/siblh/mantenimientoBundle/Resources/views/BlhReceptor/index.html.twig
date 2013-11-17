@@ -11,7 +11,8 @@
  <script type="text/javascript" src="{{asset('bundles/jquery/jquery.jqGrid-4.5.4/js/i18n/grid.locale-es.js')}}"></script>
       <script type="text/javascript" src="{{asset('bundles/jquery/jquery.jqGrid-4.5.4/js/jquery.jqGrid.min.js')}}" ></script> 
 
- 
+ <a href="{{ path('mostrar_receptores',{'report_name':'Receptores','report_format':'pdf'})}}" id="reporte"> Reporte </a>
+  
     <h1>BlhReceptor list</h1>
 
 <table id = "listado_receptores">
@@ -56,7 +57,7 @@
                 <td>{{ entity.edadGestBallard }}</td>
                 <td>{{ entity.pc }}</td>
                 <td>{{ entity.tallaIngreso }}</td>
-                <td><a href="{{ path('blhreceptor_edit', { 'id': entity.id }) }}">edit</a>
+                    <td><a href="{{ path('blhreceptor_edit', { 'id': entity.id }) }}"><font color="blue"><u>Editar</u></font></a>
                 </td>
             </tr>
         {% endfor %}

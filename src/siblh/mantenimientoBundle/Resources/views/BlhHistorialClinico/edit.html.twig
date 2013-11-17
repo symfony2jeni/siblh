@@ -1,9 +1,20 @@
 {% extends 'siblhmantenimientoBundle::plantilla.html.twig' %}
+{% block stylesheets %}
+    {{ parent() }}
+        <link href="{{ asset('bundles/siblhmantenimiento/css/form.css') }}" rel="stylesheet" type="text/css" />
+{% endblock %}
+        {% block javascripts %}
 
+{{parent()}}
+
+<script type="text/javascript" src="{{ asset('bundles/siblhmantenimiento/js/BlhHistorialClinico/edit.js') }}" ></script>
+       
+{% endblock %}
 {% block body -%}
     <h1>Editar Historial Clinico</h1>
 
- 
+  {{ form_start(edit_form) }}
+    {{ form_errors(edit_form) }}
     
     <table  align = "center" >
    <tr><td  align = "left" height=10  ></td></tr>
@@ -41,6 +52,7 @@
           <td align='left' >  {{ form_widget(edit_form.fechaPartoAnterior) }}</td></tr>
       </table>
     <table align = "center"> 
+        <tr><td align='center' colspan = "6"><b></b></td></tr>
      <tr><td align='center' colspan = "6"><b>Formula obstetrica</b></td></tr>
      <tr><td align='left' ><b>{{ form_label(edit_form.formulaObstetricaG, 'G') }}
                                {{ form_widget(edit_form.formulaObstetricaG,  { 'attr': {'size': '2'} }) }}</td>
@@ -57,7 +69,8 @@
 
 
 
-
+    <tr style="visibility:hidden"><td align='center' colspan = "6">{{ form_label(edit_form.idDonante, 'id') }}
+                               {{ form_widget(edit_form.idDonante,  { 'attr': {'size': '2'} }) }}</td></tr>
     
     
  
@@ -72,13 +85,12 @@
 
     </table>
     
-     
-        <ul class="record_actions">
-    <li>
+      {{ form_end(edit_form) }}
+       <table align = 'center'>
+        <tr>
+            <td>
         <a href="{{ path('blhhistorialclinico') }}">
             Ver Listado
-        </a>
-    </li>
-    <li>{{ form(delete_form) }}</li>
-</ul>
+      </a>
+        </td></tr></table>
 {% endblock %}

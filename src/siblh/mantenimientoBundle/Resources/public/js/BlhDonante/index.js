@@ -1,10 +1,10 @@
 $(document).ready(function() {
     
-    $('#reporte').click(function(){
+  /* $('#reporte').click(function(){
       var url="/app_dev.php/reportes/reporte/prueba/Prueba/pdf";
        window.open(url,'_blank');
        return false;
-    });
+    }); */
 
  tableToGrid("#listado_donantes", {
         pager : '#pagerdonantes',
@@ -50,4 +50,24 @@ $(document).ready(function() {
         search:true,
         reload:true
     });
+    
+    
+    
+    
+    $('#exportar_pdf').click(function() {
+        $x=$('#fechai').val();
+    alert ($x);
+          if ($('.ui-paging-info').text() != 'Sin registros que mostrar') {
+                    $.noConflict();
+          url = Routing.generate('_exportar_reporte') + '/Prueba/pdf?fechai=' + $('#fechai').val();
+           window.open(url, '_blank');
+           return false;
+             }
+      else {
+           return false;
+       }
+       
+      
+       
+   });
      });

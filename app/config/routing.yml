@@ -51,6 +51,11 @@ _sonata_admin:
 sonata_user:
     resource: '@SonataUserBundle/Resources/config/routing/admin_security.xml'
     prefix: /admin
+ 
+ 
+fos_js_routing:
+    resource: "@FOSJsRoutingBundle/Resources/config/routing/routing.xml" 
+ 
 
 #DIRECCIONANDO EL MENU
 
@@ -66,7 +71,8 @@ _home:
 #DIRECCIONANDO ENTRADAS DESDE EL MENU
     
     #Entradas de Jeni
- 
+    
+    
 _NewDonante:
     pattern:  /Donante/Nueva
     defaults: { _controller: siblhmantenimientoBundle:BlhDonante:new}
@@ -128,6 +134,11 @@ _NewInformacionPublica:
   pattern:  /InfoPublica/
   defaults: { _controller: siblhmantenimientoBundle:BlhInformacionPublica:new} 
   
+_NewPasteurizacion:
+  pattern:  /curvas/
+  defaults: { _controller: siblhmantenimientoBundle:BlhPasteurizacion:curvas} 
   
-
   
+_NewCensoDonante:
+  pattern:  /censodonante/
+  defaults: { _controller: siblhmantenimientoBundle:GeneraReportes:CensoDonante}

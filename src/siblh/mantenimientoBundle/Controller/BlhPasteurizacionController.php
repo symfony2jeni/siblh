@@ -30,9 +30,14 @@ class BlhPasteurizacionController extends Controller
         $em = $this->getDoctrine()->getManager();
 
         $entities = $em->getRepository('siblhmantenimientoBundle:BlhPasteurizacion')->findAll();
-
+      //Obtener banco de leche//
+      
+      $userEst = $this->container->get('security.context')->getToken()->getUser()->getIdEst();
+      $query1 = $em->createQuery("SELECT e.nombre, e.direccion, e.telefono FROM siblhmantenimientoBundle:CtlEstablecimiento e WHERE e.id = $userEst");
+      $establecimiento = $query1->getResult(); 
         return array(
             'entities' => $entities,
+            'hospital' => $establecimiento,
         );
     }
     /**
@@ -52,6 +57,8 @@ class BlhPasteurizacionController extends Controller
             $em = $this->getDoctrine()->getManager();
             $em->persist($entity);
             $em->flush();
+           //  $em = $this->getDoctrine()->getManager();
+       
 
             return $this->redirect($this->generateUrl('blhpasteurizacion_show', array('id' => $entity->getId())));
         }
@@ -59,6 +66,7 @@ class BlhPasteurizacionController extends Controller
         return array(
             'entity' => $entity,
             'form'   => $form->createView(),
+            'ciclo'  => $numciclo,
         );
     }
 
@@ -76,29 +84,12 @@ class BlhPasteurizacionController extends Controller
             'method' => 'POST',
         ));
 
-        $form->add('submit', 'submit', array('label' => 'Create'));
+      //  $form->add('submit', 'submit', array('label' => 'Create'));
 
         return $form;
     }
 
-    /**
-     * Displays a form to create a new BlhPasteurizacion entity.
-     *
-     * @Route("/new", name="blhpasteurizacion_new")
-     * @Method("GET")
-     * @Template()
-     */
-    public function newAction()
-    {
-        $entity = new BlhPasteurizacion();
-        $form   = $this->createCreateForm($entity);
-
-        return array(
-            'entity' => $entity,
-            'form'   => $form->createView(),
-        );
-    }
-
+    
     /**
      * Finds and displays a BlhPasteurizacion entity.
      *
@@ -143,11 +134,16 @@ class BlhPasteurizacionController extends Controller
 
         $editForm = $this->createEditForm($entity);
         $deleteForm = $this->createDeleteForm($id);
-
+        //Obtener banco de leche//
+      
+        $userEst = $this->container->get('security.context')->getToken()->getUser()->getIdEst();
+        $query1 = $em->createQuery("SELECT e.nombre, e.direccion, e.telefono FROM siblhmantenimientoBundle:CtlEstablecimiento e WHERE e.id = $userEst");
+        $establecimiento = $query1->getResult(); 
         return array(
             'entity'      => $entity,
             'edit_form'   => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
+            'hospital' => $establecimiento,
         );
     }
 
@@ -244,4 +240,89 @@ class BlhPasteurizacionController extends Controller
             ->getForm()
         ;
     }
+    
+    
+     //Creando nuevo controlador
+    
+     //Creando Nuevos Controladores
+     
+     
+    /**
+     * Lists all BlhTemperaturaEnfriamiento entity.
+     *
+     * @Route("/curvas", name="blhpasteurizacion_curvas")
+     * @Method("GET")
+     * @Template()
+     */
+public function curvasAction()
+    {
+        $em = $this->getDoctrine()->getManager();      
+        
+        //Obteniendo lista de curvas"  
+       $query = $em->createQuery("SELECT c.id as iden, c.valorCurva as valorCurva, 
+                   c.fechaCurva, c.cantidadFrascos as cantidadFrascos, c.volumenPorFrasco as volumenPorFrasco 
+                   FROM siblhmantenimientoBundle:BlhPasteurizacion p join p.idCurva c group By c.id
+                   having (max(p.numCiclo) < 30) ");
+  //or (max(p.numCiclo) like )
+        
+        
+        // or (max(p.numCiclo) is null)
+        
+      $curvas  = $query-> getResult() ;
+        //Obtener banco de leche//
+      
+      $userEst = $this->container->get('security.context')->getToken()->getUser()->getIdEst();
+      $query1 = $em->createQuery("SELECT e.nombre, e.direccion, e.telefono FROM siblhmantenimientoBundle:CtlEstablecimiento e WHERE e.id = $userEst");
+      $establecimiento = $query1->getResult(); 
+        return array(
+            'curvas' =>  $curvas,  
+            'hospital' => $establecimiento,
+         
+        );
+        
+    }
+    
+    /**
+     * Displays a form to create a new BlhPasteurizacion entity.
+     *
+     * @Route("/new/{id}", name="blhpasteurizacion_new")
+     * @Method("GET")
+     * @Template()
+     */
+    public function newAction($id)            
+      {
+        
+        $em = $this->getDoctrine()->getManager();
+        $query = $em->createQuery("SELECT c.id as iden, c.valorCurva as valorCurva, 
+                   c.fechaCurva, c.cantidadFrascos as cantidadFrascos, c.volumenPorFrasco as volumenPorFrasco 
+                   FROM siblhmantenimientoBundle:BlhCurva c  WHERE c.id = $id "); 
+        $datos_curva  = $query->getResult();
+        $curva = $em->getRepository('siblhmantenimientoBundle:BlhCurva')->find($datos_curva[0]['iden']);
+ 
+        
+        if (!$datos_curva) {
+            throw $this->createNotFoundException('Unable to find BlhCurva entity');
+        }
+        $entity = new BlhPasteurizacion();
+        $entity->setIdCurva($curva);
+        $form   = $this->createCreateForm($entity);
+           
+     //Obtener banco de leche//
+      
+      $userEst = $this->container->get('security.context')->getToken()->getUser()->getIdEst();
+      $query1 = $em->createQuery("SELECT e.nombre, e.direccion, e.telefono FROM siblhmantenimientoBundle:CtlEstablecimiento e WHERE e.id = $userEst");
+      $establecimiento = $query1->getResult(); 
+        
+        
+        
+
+        return array(
+            'entity' => $entity,
+            'form'   => $form->createView(),
+            'datos_curva' =>  $datos_curva,
+            'hospital' => $establecimiento,
+         
+        );
+    }
+
 }

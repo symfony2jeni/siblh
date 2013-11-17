@@ -1,0 +1,310 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="seguimientoreceptor" language="groovy" pageWidth="864" pageHeight="792" columnWidth="824" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="3adbbb88-01ad-43ca-b1a6-a831e79e5c51">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="95"/>
+	<style name="table">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<subDataset name="New Dataset 1" uuid="8d042197-4bbe-4f60-aad3-076336a141b5">
+		<parameter name="id" class="java.lang.Integer"/>
+		<queryString>
+			<![CDATA[select r.codigo_receptor, p.primer_nombre || ' ' || p.segundo_nombre || ' ' ||
+p.tercer_nombre || ' ' || p.primer_apellido || ' ' || p.segundo_apellido as nombre,
+sr.talla_receptor, sr.peso_seguimiento, sr.pc_seguimiento, sr.ganancia_dia_peso,
+sr.ganancia_dia_talla, sr.semana, sr.fecha_seguimiento, sr.complicaciones
+
+from blh_seguimiento_receptor sr join blh_receptor r
+on r.id = sr.id_receptor join mnt_paciente p
+on p.id = r.id_paciente
+where sr.id_receptor = $P{id};]]>
+		</queryString>
+		<field name="codigo_receptor" class="java.lang.String"/>
+		<field name="nombre" class="java.lang.String"/>
+		<field name="talla_receptor" class="java.math.BigDecimal"/>
+		<field name="peso_seguimiento" class="java.math.BigDecimal"/>
+		<field name="pc_seguimiento" class="java.math.BigDecimal"/>
+		<field name="ganancia_dia_peso" class="java.math.BigDecimal"/>
+		<field name="ganancia_dia_talla" class="java.math.BigDecimal"/>
+		<field name="semana" class="java.lang.Integer"/>
+		<field name="fecha_seguimiento" class="java.sql.Date"/>
+		<field name="complicaciones" class="java.lang.String"/>
+	</subDataset>
+	<parameter name="id" class="java.lang.Integer"/>
+	<queryString>
+		<![CDATA[select r.codigo_receptor, p.primer_nombre || ' ' || p.segundo_nombre || ' ' ||
+p.tercer_nombre || ' ' || p.primer_apellido || ' ' || p.segundo_apellido as nombre,
+sr.talla_receptor, sr.peso_seguimiento, sr.pc_seguimiento, sr.ganancia_dia_peso,
+sr.ganancia_dia_talla, sr.semana, sr.fecha_seguimiento, sr.complicaciones
+
+from blh_seguimiento_receptor sr join blh_receptor r
+on r.id = sr.id_receptor join mnt_paciente p
+on p.id = r.id_paciente
+where sr.id_receptor = $P{id};]]>
+	</queryString>
+	<field name="codigo_receptor" class="java.lang.String"/>
+	<field name="nombre" class="java.lang.String"/>
+	<field name="talla_receptor" class="java.math.BigDecimal"/>
+	<field name="peso_seguimiento" class="java.math.BigDecimal"/>
+	<field name="pc_seguimiento" class="java.math.BigDecimal"/>
+	<field name="ganancia_dia_peso" class="java.math.BigDecimal"/>
+	<field name="ganancia_dia_talla" class="java.math.BigDecimal"/>
+	<field name="semana" class="java.lang.Integer"/>
+	<field name="fecha_seguimiento" class="java.sql.Date"/>
+	<field name="complicaciones" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="124" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="ad575806-380a-4600-bf91-348858938278" x="272" y="73" width="318" height="35"/>
+				<textElement>
+					<font fontName="Comic Sans MS" size="14"/>
+				</textElement>
+				<text><![CDATA[SEGUIMIENTO DE AVANCES DE RECEPTOR]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="b0395238-b05e-440c-bd21-eafdca7e9794" x="337" y="25" width="182" height="24"/>
+				<textElement>
+					<font fontName="Comic Sans MS" size="14"/>
+				</textElement>
+				<text><![CDATA[MINISTERIO DE SALUD]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="1f0d5180-65e2-497a-a172-348824cb875e" x="319" y="49" width="223" height="24"/>
+				<textElement>
+					<font fontName="Comic Sans MS" size="14"/>
+				</textElement>
+				<text><![CDATA[HOSPITAL DE MATERNIDAD]]></text>
+			</staticText>
+			<image>
+				<reportElement uuid="7a91c1e6-ffec-4ab2-bca3-e5734ba12f4a" x="9" y="9" width="158" height="107"/>
+				<imageExpression><![CDATA["/home/jeni/NetBeansProjects/siblh/src/siblh/mantenimientoBundle/Resources/reportes/blh.jpg"]]></imageExpression>
+			</image>
+			<image>
+				<reportElement uuid="206e14bb-4aaa-44e8-9bb0-a07056127fa8" x="662" y="9" width="158" height="101"/>
+				<imageExpression><![CDATA["/home/jeni/NetBeansProjects/siblh/src/siblh/mantenimientoBundle/Resources/reportes/minsal2.jpg"]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="349" splitType="Stretch">
+			<componentElement>
+				<reportElement uuid="397d0de7-1a13-43c8-8de0-15d165a37984" key="table" style="table" x="9" y="43" width="796" height="175"/>
+				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
+					<datasetRun subDataset="New Dataset 1" uuid="73e5a874-b1ef-4e42-b704-c7eccc72eda4">
+						<datasetParameter name="id">
+							<datasetParameterExpression><![CDATA[$P{id}]]></datasetParameterExpression>
+						</datasetParameter>
+						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+					</datasetRun>
+					<jr:column width="81" uuid="0eea71f1-100f-49c2-8945-69e72bb3f491">
+						<jr:columnHeader style="table_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement uuid="45a3f7c0-f0e4-4905-bb0e-e272440b0527" x="5" y="9" width="69" height="19"/>
+								<textElement>
+									<font size="12" isBold="true"/>
+								</textElement>
+								<text><![CDATA[Talla (cm)]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="table_TD" height="20" rowSpan="1">
+							<textField pattern="###0.00">
+								<reportElement uuid="eb78040f-4761-49eb-a231-e973dfe6952c" x="0" y="0" width="74" height="20"/>
+								<textElement/>
+								<textFieldExpression><![CDATA[$F{talla_receptor}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="81" uuid="11455266-049d-4171-bbe3-ca01df05692e">
+						<jr:columnHeader style="table_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement uuid="d94fe889-3425-4909-9229-373a9c0def8b" x="5" y="9" width="67" height="19"/>
+								<textElement>
+									<font size="12" isBold="true"/>
+								</textElement>
+								<text><![CDATA[Peso (gr)]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="table_TD" height="20" rowSpan="1">
+							<textField pattern="###0.00">
+								<reportElement uuid="df9d9078-f10e-4f0d-9003-ee96c58a1abc" x="0" y="0" width="72" height="20"/>
+								<textElement/>
+								<textFieldExpression><![CDATA[$F{peso_seguimiento}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="82" uuid="6387f1fc-e4a1-4726-a894-0eb325b293bd">
+						<jr:columnHeader style="table_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement uuid="52cb43d9-ea8e-4e63-bc62-a8e461033e5e" x="0" y="10" width="71" height="19"/>
+								<textElement>
+									<font size="12" isBold="true"/>
+								</textElement>
+								<text><![CDATA[Perimetro Cefalico]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="table_TD" height="20" rowSpan="1">
+							<textField pattern="###0.00">
+								<reportElement uuid="fbc75e76-cc5f-4855-a679-1f632ca1d163" x="0" y="0" width="71" height="20"/>
+								<textElement/>
+								<textFieldExpression><![CDATA[$F{pc_seguimiento}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="137" uuid="524679df-0f2b-40b6-a877-0cab01c10928">
+						<jr:columnHeader style="table_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement uuid="6b32067e-3920-4790-9bd8-33b5f82fda1f" x="0" y="0" width="133" height="29"/>
+								<textElement textAlignment="Center">
+									<font size="12" isBold="true"/>
+								</textElement>
+								<text><![CDATA[Ganancia diaria de Peso]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="table_TD" height="20" rowSpan="1">
+							<textField pattern="###0.00">
+								<reportElement uuid="fcddfad8-5b1a-4bc0-b51d-7996781200ab" x="0" y="0" width="90" height="20"/>
+								<textElement/>
+								<textFieldExpression><![CDATA[$F{ganancia_dia_peso}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="127" uuid="34cc1794-08e0-4a8d-8871-540577817aaa">
+						<jr:columnHeader style="table_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement uuid="8d132e15-25ec-48bd-a686-dd1dc0f7baa9" x="0" y="0" width="117" height="28"/>
+								<textElement textAlignment="Center">
+									<font size="12" isBold="true"/>
+								</textElement>
+								<text><![CDATA[Ganancia diaria de Talla]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="table_TD" height="20" rowSpan="1">
+							<textField pattern="###0.00">
+								<reportElement uuid="9122c5b4-2cc1-41c0-a53a-aa5e0a52a637" x="0" y="0" width="90" height="20"/>
+								<textElement/>
+								<textFieldExpression><![CDATA[$F{ganancia_dia_talla}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="65" uuid="4fd2cb62-f0f0-4196-9f36-add9100eed82">
+						<jr:columnHeader style="table_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement uuid="73845d86-9085-4f48-9226-a606b62bf942" x="0" y="9" width="62" height="19"/>
+								<textElement>
+									<font size="12" isBold="true"/>
+								</textElement>
+								<text><![CDATA[Semana]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="table_TD" height="20" rowSpan="1">
+							<textField>
+								<reportElement uuid="af21a8f2-8f7f-4ef5-8dac-691e1e7d687f" x="0" y="0" width="62" height="20"/>
+								<textElement/>
+								<textFieldExpression><![CDATA[$F{semana}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="95" uuid="e2fb1c0f-c39f-4ba2-8455-267fdd61dbcf">
+						<jr:columnHeader style="table_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement uuid="64ae18ad-e083-4240-9aad-f5bf0620e7b8" x="0" y="0" width="90" height="28"/>
+								<textElement textAlignment="Center">
+									<font size="12" isBold="true"/>
+								</textElement>
+								<text><![CDATA[Fecha de Seguimiento]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="table_TD" height="20" rowSpan="1">
+							<textField>
+								<reportElement uuid="91dae53f-3800-421d-be25-a3b6ab882c41" x="0" y="0" width="90" height="20"/>
+								<textElement/>
+								<textFieldExpression><![CDATA[$F{fecha_seguimiento}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="100" uuid="71808404-741b-4f51-8ee8-000d1e191271">
+						<jr:columnHeader style="table_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement uuid="ed75de21-fe44-4c2f-92c7-30ff168fa81f" x="0" y="9" width="100" height="19"/>
+								<textElement>
+									<font size="12" isBold="true"/>
+								</textElement>
+								<text><![CDATA[Complicaciones]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="table_TD" height="20" rowSpan="1">
+							<textField>
+								<reportElement uuid="aca4bab2-7732-415e-9031-aa23637e0e06" x="0" y="0" width="90" height="20"/>
+								<textElement/>
+								<textFieldExpression><![CDATA[$F{complicaciones}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+				</jr:table>
+			</componentElement>
+			<staticText>
+				<reportElement uuid="b14ccf5f-4db2-4ad5-9d95-f53710487801" x="73" y="9" width="123" height="20"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Codigo Receptor:]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="344fac90-db57-4b42-b950-8f7c9398f3b7" x="216" y="9" width="135" height="20"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{codigo_receptor}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="702eb70b-05f0-4576-af9f-408cb3d0eee1" x="392" y="9" width="75" height="20"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Receptor:]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="01f65c04-3ab4-4f57-ae37-2e5ea4f2e94e" x="480" y="10" width="342" height="20"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nombre}]]></textFieldExpression>
+			</textField>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="125" splitType="Stretch"/>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

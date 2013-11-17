@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="alertaprealmacenado" language="groovy" pageWidth="576" pageHeight="792" columnWidth="536" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="9ef1ee4b-570f-4f3e-8f26-8e5d4b2ebeff">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="20"/>
+	<queryString>
+		<![CDATA[select row_number() OVER (ORDER BY fr.codigo_frasco_recolectado) as N, fr.codigo_frasco_recolectado as cod,
+ fr.volumen_recolectado as ml,
+ to_date(to_char(don.fecha_donacion::date+'15 days'::interval, 'YYYY-MM-DD'), 'YYYY-MM-DD')  as vence
+from blh_frasco_recolectado fr, blh_donacion don
+where don.id = fr.id_donacion
+and EXTRACT(day FROM age(don.fecha_donacion::date+'15 days'::interval,current_date)) < 3
+order by fr.codigo_frasco_recolectado;]]>
+	</queryString>
+	<field name="n" class="java.lang.Long"/>
+	<field name="cod" class="java.lang.String"/>
+	<field name="ml" class="java.math.BigDecimal"/>
+	<field name="vence" class="java.sql.Date"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="138" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="98080761-be4e-4304-b095-3ae94bcd0ce5" x="114" y="7" width="273" height="24" forecolor="#FF0000"/>
+				<textElement>
+					<font fontName="Comic Sans MS" size="14"/>
+				</textElement>
+				<text><![CDATA[ALERTA DE LECHE PREALMACENADA]]></text>
+			</staticText>
+			<image>
+				<reportElement uuid="a0c3284e-6a05-460f-86fb-5d5533cc9691" x="174" y="31" width="158" height="101"/>
+				<imageExpression><![CDATA["/home/jeni/NetBeansProjects/siblh/src/siblh/mantenimientoBundle/Resources/reportes/alerta.jpg"]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="9b6275e0-f86b-42c3-8340-cc8a146179d9" x="132" y="9" width="242" height="20"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[FRASCOS PROXIMOS A VENCERSE]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="61" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="861dad4e-07e1-4df6-bfd4-25c881482999" x="47" y="41" width="18" height="20"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[N.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="25645065-4dec-420b-b001-b3f41075d1fc" x="97" y="41" width="104" height="20"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Codigo Frasco]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="f86babc6-f925-4307-8649-da8233955642" x="221" y="41" width="100" height="20"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Volumen (ml)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="6e79c040-52c8-42da-a982-4b1ef5b2df3f" x="321" y="41" width="146" height="20"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Fecha Vencimiento]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="37" splitType="Stretch">
+			<textField>
+				<reportElement uuid="b74fbedb-f86a-44a6-a358-4a8fd9eac28c" x="47" y="7" width="34" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{n}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="bacb9a31-9365-49b7-972e-2c18ec44a674" x="101" y="7" width="95" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{cod}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###0.00">
+				<reportElement uuid="07ca81d6-0826-42a9-bc89-e78193a45cec" x="240" y="7" width="44" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{ml}]]></textFieldExpression>
+			</textField>
+			<textField pattern="yyyy/MM/dd">
+				<reportElement uuid="2674a495-670d-4155-b8ee-2dfd5ed9a399" x="340" y="7" width="95" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{vence}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

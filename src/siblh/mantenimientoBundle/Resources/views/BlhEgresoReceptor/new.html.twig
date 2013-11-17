@@ -12,7 +12,7 @@
 {% endblock %}
 
 {% block body -%}
-    <h1>BlhEgresoReceptor creation</h1>
+    <h1>Registro de Egreso Receptor</h1>
     
     <FORM> 
    <table align = "center" >
@@ -112,12 +112,10 @@
     
      {{ form_end(form) }}
     
-
-        <ul class="record_actions">
-    <li>
+ <table align = 'center'>
+        <tr>
+            <td>
         <a href="{{ path('blhegresoreceptor') }}">
-            Back to the list
-        </a>
-    </li>
-</ul>
+             Ver listado </a>
+        </td></tr></table>
 {% endblock %}
