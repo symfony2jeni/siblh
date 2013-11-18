@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="seguimientoreceptor" language="groovy" pageWidth="864" pageHeight="792" columnWidth="824" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="3adbbb88-01ad-43ca-b1a6-a831e79e5c51">
 	<property name="ireport.zoom" value="1.0"/>
-	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="95"/>
+	<property name="ireport.x" value="157"/>
+	<property name="ireport.y" value="157"/>
 	<style name="table">
 		<box>
 			<pen lineWidth="1.0" lineColor="#000000"/>
@@ -25,6 +25,9 @@
 	</style>
 	<subDataset name="New Dataset 1" uuid="8d042197-4bbe-4f60-aad3-076336a141b5">
 		<parameter name="id" class="java.lang.Integer"/>
+		<parameter name="codigo" class="java.lang.Integer">
+			<defaultValueExpression><![CDATA[$P{codigo}]]></defaultValueExpression>
+		</parameter>
 		<queryString>
 			<![CDATA[select r.codigo_receptor, p.primer_nombre || ' ' || p.segundo_nombre || ' ' ||
 p.tercer_nombre || ' ' || p.primer_apellido || ' ' || p.segundo_apellido as nombre,
@@ -34,7 +37,8 @@ sr.ganancia_dia_talla, sr.semana, sr.fecha_seguimiento, sr.complicaciones
 from blh_seguimiento_receptor sr join blh_receptor r
 on r.id = sr.id_receptor join mnt_paciente p
 on p.id = r.id_paciente
-where sr.id_receptor = $P{id};]]>
+where sr.id_receptor = $P{id}
+and (r.id_banco_de_leche = $P{codigo});]]>
 		</queryString>
 		<field name="codigo_receptor" class="java.lang.String"/>
 		<field name="nombre" class="java.lang.String"/>
@@ -48,6 +52,10 @@ where sr.id_receptor = $P{id};]]>
 		<field name="complicaciones" class="java.lang.String"/>
 	</subDataset>
 	<parameter name="id" class="java.lang.Integer"/>
+	<parameter name="codigo" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[$P{codigo}]]></defaultValueExpression>
+	</parameter>
+	<parameter name="nombre" class="java.lang.String"/>
 	<queryString>
 		<![CDATA[select r.codigo_receptor, p.primer_nombre || ' ' || p.segundo_nombre || ' ' ||
 p.tercer_nombre || ' ' || p.primer_apellido || ' ' || p.segundo_apellido as nombre,
@@ -57,7 +65,8 @@ sr.ganancia_dia_talla, sr.semana, sr.fecha_seguimiento, sr.complicaciones
 from blh_seguimiento_receptor sr join blh_receptor r
 on r.id = sr.id_receptor join mnt_paciente p
 on p.id = r.id_paciente
-where sr.id_receptor = $P{id};]]>
+where sr.id_receptor = $P{id}
+and (r.id_banco_de_leche = $P{codigo});]]>
 	</queryString>
 	<field name="codigo_receptor" class="java.lang.String"/>
 	<field name="nombre" class="java.lang.String"/>
@@ -75,34 +84,34 @@ where sr.id_receptor = $P{id};]]>
 	<title>
 		<band height="124" splitType="Stretch">
 			<staticText>
-				<reportElement uuid="ad575806-380a-4600-bf91-348858938278" x="272" y="73" width="318" height="35"/>
+				<reportElement uuid="ad575806-380a-4600-bf91-348858938278" x="272" y="87" width="318" height="35"/>
 				<textElement>
 					<font fontName="Comic Sans MS" size="14"/>
 				</textElement>
 				<text><![CDATA[SEGUIMIENTO DE AVANCES DE RECEPTOR]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="b0395238-b05e-440c-bd21-eafdca7e9794" x="337" y="25" width="182" height="24"/>
+				<reportElement uuid="b0395238-b05e-440c-bd21-eafdca7e9794" x="337" y="17" width="182" height="24"/>
 				<textElement>
 					<font fontName="Comic Sans MS" size="14"/>
 				</textElement>
 				<text><![CDATA[MINISTERIO DE SALUD]]></text>
-			</staticText>
-			<staticText>
-				<reportElement uuid="1f0d5180-65e2-497a-a172-348824cb875e" x="319" y="49" width="223" height="24"/>
-				<textElement>
-					<font fontName="Comic Sans MS" size="14"/>
-				</textElement>
-				<text><![CDATA[HOSPITAL DE MATERNIDAD]]></text>
 			</staticText>
 			<image>
 				<reportElement uuid="7a91c1e6-ffec-4ab2-bca3-e5734ba12f4a" x="9" y="9" width="158" height="107"/>
 				<imageExpression><![CDATA["/home/jeni/NetBeansProjects/siblh/src/siblh/mantenimientoBundle/Resources/reportes/blh.jpg"]]></imageExpression>
 			</image>
 			<image>
-				<reportElement uuid="206e14bb-4aaa-44e8-9bb0-a07056127fa8" x="662" y="9" width="158" height="101"/>
+				<reportElement uuid="206e14bb-4aaa-44e8-9bb0-a07056127fa8" x="677" y="9" width="158" height="101"/>
 				<imageExpression><![CDATA["/home/jeni/NetBeansProjects/siblh/src/siblh/mantenimientoBundle/Resources/reportes/minsal2.jpg"]]></imageExpression>
 			</image>
+			<textField>
+				<reportElement uuid="b58a583c-1fe1-4ca6-b812-d30476a5fa87" x="167" y="40" width="508" height="47"/>
+				<textElement textAlignment="Center">
+					<font size="16" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{nombre}]]></textFieldExpression>
+			</textField>
 		</band>
 	</title>
 	<pageHeader>
@@ -113,9 +122,12 @@ where sr.id_receptor = $P{id};]]>
 			<componentElement>
 				<reportElement uuid="397d0de7-1a13-43c8-8de0-15d165a37984" key="table" style="table" x="9" y="43" width="796" height="175"/>
 				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
-					<datasetRun subDataset="New Dataset 1" uuid="73e5a874-b1ef-4e42-b704-c7eccc72eda4">
+					<datasetRun subDataset="New Dataset 1" uuid="1c0d778b-c8f9-4fd1-bd37-d745c43833fe">
 						<datasetParameter name="id">
 							<datasetParameterExpression><![CDATA[$P{id}]]></datasetParameterExpression>
+						</datasetParameter>
+						<datasetParameter name="codigo">
+							<datasetParameterExpression><![CDATA[$P{codigo}]]></datasetParameterExpression>
 						</datasetParameter>
 						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
 					</datasetRun>

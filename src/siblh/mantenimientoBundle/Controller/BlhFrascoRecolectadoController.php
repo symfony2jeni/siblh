@@ -281,21 +281,21 @@ class BlhFrascoRecolectadoController extends Controller
  
  public function donacionesAction()
     {
-        $em = $this->getDoctrine()->getManager();      
-        
+        $em = $this->getDoctrine()->getManager();   
+        $userEst = $this->container->get('security.context')->getToken()->getUser()->getIdEst();
+        $query1 = $em->createQuery("SELECT e.nombre, e.direccion, e.telefono FROM siblhmantenimientoBundle:CtlEstablecimiento e WHERE e.id = $userEst");
+        $establecimiento = $query1->getResult(); 
+        $queryb = $em->createQuery("SELECT b.id FROM siblhmantenimientoBundle:BlhBancoDeLeche b WHERE b.idEstablecimiento = $userEst");
+        $id_blh = $queryb->getResult(); 
+        $codigo=$id_blh[0]['id']; 
         //Obteniendo lista de pacientes que son receptores y que estan en estado "Activo"  
-        $query = $em->createQuery("SELECT r.id, r.fechaDonacion, r.responsableDonacion, p.id as identificador, p.primerNombre as nombre1, p.segundoNombre as nombre2, p.primerApellido as apellido1, p.segundoApellido as apellido2 FROM siblhmantenimientoBundle:BlhDonacion r JOIN r.idDonante p");
+        $query = $em->createQuery("SELECT r.id, r.fechaDonacion, r.responsableDonacion, p.id as identificador, p.primerNombre as nombre1, p.segundoNombre as nombre2, p.primerApellido as apellido1, p.segundoApellido as apellido2 FROM siblhmantenimientoBundle:BlhDonacion r JOIN r.idDonante p
+            where p.idBancoDeLeche = $codigo");
         
         $donaciones_donantes  = $query->getResult();
         //Obtener banco de leche//
               
-       $userEst = $this->container->get('security.context')->getToken()->getUser()->getIdEst();
-      /*  $query1 = $em->createQuery("SELECT b.id FROM siblhmantenimientoBundle:BlhBancoDeLeche b WHERE b.idEstablecimiento = $userEst");
-        $id_blh = $query1->getResult(); 
-        $codigo=$id_blh[0]['id']; */
        
-        $query1 = $em->createQuery("SELECT e.nombre, e.direccion, e.telefono FROM siblhmantenimientoBundle:CtlEstablecimiento e WHERE e.id = $userEst");
-        $establecimiento = $query1->getResult(); 
         return array(
             'donaciones_donantes' =>  $donaciones_donantes,
             'hospital' => $establecimiento,

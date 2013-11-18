@@ -265,8 +265,10 @@ class ReporteController extends Controller {
        $request = $this->getRequest();
        $fecha_inicio = $request->get('fechai');
        $fecha_fin = $request->get('fechaf');
+       $id = $request->get('id');
+       $nombre = $request->get('nombre');
        
-       $report_params = array('fechai' => $fecha_inicio, 'fechaf' => $fecha_fin);
+       $report_params = array('fechai' => $fecha_inicio, 'fechaf' => $fecha_fin, 'id' => $id, 'nombre' => $nombre);
        $client = new JasperClient($jasper_url, $jasper_username, $jasper_password);
 
        $contentType = (($report_format == 'HTML') ? 'text' : 'application') .
@@ -298,8 +300,10 @@ class ReporteController extends Controller {
        $request = $this->getRequest();
        $fecha_inicio = $request->get('fechai');
        $fecha_fin = $request->get('fechaf');
+       $id = $request->get('id');
+       $nombre = $request->get('nombre');
        
-       $report_params = array('fechai' => $fecha_inicio, 'fechaf' => $fecha_fin);
+       $report_params = array('fechai' => $fecha_inicio, 'fechaf' => $fecha_fin, 'id' => $id, 'nombre' => $nombre);
        $client = new JasperClient($jasper_url, $jasper_username, $jasper_password);
 
        $contentType = (($report_format == 'HTML') ? 'text' : 'application') .
@@ -329,6 +333,7 @@ class ReporteController extends Controller {
 
        $request = $this->getRequest();
        $codigo = $request->get('codigo');
+     echo  var_dump($codigo); exit(); 
       
        
        $report_params = array('codigo' => $codigo);
@@ -387,9 +392,9 @@ class ReporteController extends Controller {
  
 ////////////////////////////////////////
    /**
-    * @Route("/reporte/{report_name}/{report_format}/{id}", name="_exportar_reporte_avancer", options={"expose"=true})
+    * @Route("/reporte/{report_name}/{report_format}/{id}/{codigo}/{nombre}", name="_exportar_reporte_avancer", options={"expose"=true})
     */
-   public function exportarReporteAvanceReceptorAction($report_name, $report_format, $id) {
+   public function exportarReporteAvanceReceptorAction($report_name, $report_format, $id, $codigo, $nombre) {
        //$report_format='pdf';
        //$usuario = $this->container->get('security.context')->getToken()->getUser();
        //var_dump($usuario);exit;
@@ -402,7 +407,7 @@ class ReporteController extends Controller {
      //  $identificador = $request->get('identificador');
       // $fecha_fin = $request->get('fechaf');
        
-       $report_params = array('id' => $id);
+       $report_params = array('id' => $id,'codigo' => $codigo,'nombre' => $nombre);
        $client = new JasperClient($jasper_url, $jasper_username, $jasper_password);
 
        $contentType = (($report_format == 'HTML') ? 'text' : 'application') .

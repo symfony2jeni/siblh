@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="controlmicrobiologico" language="groovy" pageWidth="720" pageHeight="792" columnWidth="680" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="61d95ca2-80d3-4f6f-bb5e-cfb8fd1f234e">
 	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="111"/>
+	<property name="ireport.y" value="0"/>
 	<style name="table">
 		<box>
 			<pen lineWidth="1.0" lineColor="#000000"/>
@@ -26,12 +26,16 @@
 	<subDataset name="New Dataset 1" uuid="8f787340-0b04-4b25-850c-35fa99f92fdb">
 		<parameter name="fechai" class="java.lang.String"/>
 		<parameter name="fechaf" class="java.lang.String"/>
+		<parameter name="id" class="java.lang.String">
+			<defaultValueExpression><![CDATA[$P{id}]]></defaultValueExpression>
+		</parameter>
 		<queryString>
 			<![CDATA[select fp.codigo_frasco_procesado, amicro.coliformes_totales as col,
 amicro.control, amicro.situacion, p.fecha_pasteurizacion
 from blh_analisis_microbiologico amicro join blh_frasco_procesado fp
 on fp.id = amicro.id_frasco_procesado join blh_pasteurizacion p
-on p.id = fp.id_pasteurizacion and (p.fecha_pasteurizacion between to_date($P{fechai},'YYYY-MM-DD') and to_date($P{fechaf},'YYYY-MM-DD'));]]>
+on p.id = fp.id_pasteurizacion and (p.fecha_pasteurizacion between to_date($P{fechai},'YYYY-MM-DD') and to_date($P{fechaf},'YYYY-MM-DD'))
+and (substring(p.codigo_pasteurizacion from 1 for 2) = $P{id});]]>
 		</queryString>
 		<field name="codigo_frasco_procesado" class="java.lang.String"/>
 		<field name="col" class="java.lang.String"/>
@@ -41,13 +45,18 @@ on p.id = fp.id_pasteurizacion and (p.fecha_pasteurizacion between to_date($P{fe
 	</subDataset>
 	<parameter name="fechai" class="java.lang.String"/>
 	<parameter name="fechaf" class="java.lang.String"/>
+	<parameter name="id" class="java.lang.String">
+		<defaultValueExpression><![CDATA[$P{id}]]></defaultValueExpression>
+	</parameter>
+	<parameter name="nombre" class="java.lang.String"/>
 	<queryString>
 		<![CDATA[select fp.codigo_frasco_procesado, amicro.coliformes_totales as col,
 amicro.control, amicro.situacion, p.fecha_pasteurizacion
 from blh_analisis_microbiologico amicro join blh_frasco_procesado fp
 on fp.id = amicro.id_frasco_procesado join blh_pasteurizacion p
 on p.id = fp.id_pasteurizacion
-and (p.fecha_pasteurizacion between to_date($P{fechai},'YYYY-MM-DD') and to_date($P{fechaf},'YYYY-MM-DD'));]]>
+and (p.fecha_pasteurizacion between to_date($P{fechai},'YYYY-MM-DD') and to_date($P{fechaf},'YYYY-MM-DD'))
+and (substring(p.codigo_pasteurizacion from 1 for 2) = $P{id});]]>
 	</queryString>
 	<field name="codigo_frasco_procesado" class="java.lang.String"/>
 	<field name="col" class="java.lang.String"/>
@@ -60,7 +69,7 @@ and (p.fecha_pasteurizacion between to_date($P{fechai},'YYYY-MM-DD') and to_date
 	<title>
 		<band height="162" splitType="Stretch">
 			<staticText>
-				<reportElement uuid="9619161d-d137-4c24-b520-2aaf1e92b0be" x="191" y="68" width="270" height="51"/>
+				<reportElement uuid="9619161d-d137-4c24-b520-2aaf1e92b0be" x="191" y="98" width="270" height="51"/>
 				<textElement textAlignment="Center">
 					<font fontName="Comic Sans MS" size="14"/>
 				</textElement>
@@ -73,25 +82,25 @@ and (p.fecha_pasteurizacion between to_date($P{fechai},'YYYY-MM-DD') and to_date
 				</textElement>
 				<text><![CDATA[MINISTERIO DE SALUD]]></text>
 			</staticText>
-			<staticText>
-				<reportElement uuid="e2350081-c82b-4eef-85a6-90063b60e0c1" x="217" y="44" width="223" height="24"/>
-				<textElement>
-					<font fontName="Comic Sans MS" size="14"/>
-				</textElement>
-				<text><![CDATA[HOSPITAL DE MATERNIDAD]]></text>
-			</staticText>
 			<image>
-				<reportElement uuid="44c86a22-263e-40b6-b461-487a79dc0546" x="11" y="20" width="158" height="107"/>
+				<reportElement uuid="44c86a22-263e-40b6-b461-487a79dc0546" x="5" y="20" width="158" height="107"/>
 				<imageExpression><![CDATA["/home/jeni/NetBeansProjects/siblh/src/siblh/mantenimientoBundle/Resources/reportes/blh.jpg"]]></imageExpression>
 			</image>
 			<image>
-				<reportElement uuid="84954fa5-ead5-41ff-9565-475abfd3d21f" x="506" y="18" width="158" height="101"/>
+				<reportElement uuid="84954fa5-ead5-41ff-9565-475abfd3d21f" x="539" y="18" width="158" height="101"/>
 				<imageExpression><![CDATA["/home/jeni/NetBeansProjects/siblh/src/siblh/mantenimientoBundle/Resources/reportes/minsal2.jpg"]]></imageExpression>
 			</image>
+			<textField>
+				<reportElement uuid="45c12cbe-1094-40b5-94ba-b643936a89d6" x="147" y="48" width="392" height="50"/>
+				<textElement textAlignment="Center">
+					<font size="16" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{nombre}]]></textFieldExpression>
+			</textField>
 		</band>
 	</title>
 	<pageHeader>
-		<band height="110" splitType="Stretch">
+		<band height="93" splitType="Stretch">
 			<staticText>
 				<reportElement uuid="e33209be-a428-468c-a8f6-0510a6f4c286" x="91" y="47" width="100" height="20"/>
 				<textElement>
@@ -130,20 +139,23 @@ and (p.fecha_pasteurizacion between to_date($P{fechai},'YYYY-MM-DD') and to_date
 		</band>
 	</pageHeader>
 	<columnHeader>
-		<band height="177" splitType="Stretch">
+		<band height="163" splitType="Stretch">
 			<componentElement>
 				<reportElement uuid="438e27be-1abe-4967-888a-a6ed9c651a06" key="table" style="table" x="53" y="10" width="623" height="140"/>
 				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
-					<datasetRun subDataset="New Dataset 1" uuid="25ce0d23-cea5-48bd-9c58-6f4577fac9dd">
+					<datasetRun subDataset="New Dataset 1" uuid="0880dbd9-f940-41d4-ac7a-0ad603deca08">
 						<datasetParameter name="fechai">
 							<datasetParameterExpression><![CDATA[$P{fechai}]]></datasetParameterExpression>
 						</datasetParameter>
 						<datasetParameter name="fechaf">
 							<datasetParameterExpression><![CDATA[$P{fechaf}]]></datasetParameterExpression>
 						</datasetParameter>
+						<datasetParameter name="id">
+							<datasetParameterExpression><![CDATA[$P{id}]]></datasetParameterExpression>
+						</datasetParameter>
 						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
 					</datasetRun>
-					<jr:column width="114" uuid="90332809-d283-4b18-9fca-df7ba13016b7">
+					<jr:column width="129" uuid="90332809-d283-4b18-9fca-df7ba13016b7">
 						<jr:columnHeader style="table_CH" height="30" rowSpan="1">
 							<staticText>
 								<reportElement uuid="297a2598-0a05-4776-b62b-0008524c9f5d" x="6" y="5" width="104" height="25"/>
@@ -155,7 +167,7 @@ and (p.fecha_pasteurizacion between to_date($P{fechai},'YYYY-MM-DD') and to_date
 						</jr:columnHeader>
 						<jr:detailCell style="table_TD" height="20" rowSpan="1">
 							<textField>
-								<reportElement uuid="8143feab-7135-40b4-accc-a71a32b4938a" x="6" y="0" width="90" height="20"/>
+								<reportElement uuid="8143feab-7135-40b4-accc-a71a32b4938a" x="6" y="0" width="123" height="20"/>
 								<textElement/>
 								<textFieldExpression><![CDATA[$F{codigo_frasco_procesado}]]></textFieldExpression>
 							</textField>

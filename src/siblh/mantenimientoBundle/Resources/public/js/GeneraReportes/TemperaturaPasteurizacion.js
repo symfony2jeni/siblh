@@ -17,7 +17,9 @@ $(document).ready(function() {
    // alert ($x);
          // if ($('.ui-paging-info').text() != 'Sin registros que mostrar') {
                   //  $.noConflict();
-          url = Routing.generate('_exportar_reporte_Tpasteurizacion') + '/TemperaturaPasteurizacion/pdf?codigo=' + $('#codigo').val();
+                   $micadena=String($('#codigo').val());
+                  console.log($micadena);
+          url = Routing.generate('_exportar_reporte_Tpasteurizacion') + '/TemperaturaPasteurizacion/pdf?codigo=' + $micadena;
          // url = Routing.generate('_exportar_reporte') + '/Prueba/pdf?fechai=' + $('#fechai').val();  
         window.open(url, '_blank');
            return false;

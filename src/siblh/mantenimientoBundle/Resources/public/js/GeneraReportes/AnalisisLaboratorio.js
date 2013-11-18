@@ -43,7 +43,7 @@ $(document).ready(function() {
    // alert ($x);
          // if ($('.ui-paging-info').text() != 'Sin registros que mostrar') {
                   //  $.noConflict();
-          url = Routing.generate('_exportar_reporte_laboratorio') + '/AnalisisLaboratorio/pdf?fechai=' + $('#fechai').val() + '&fechaf=' + $('#fechaf').val();
+          url = Routing.generate('_exportar_reporte_laboratorio') + '/AnalisisLaboratorio/pdf?fechai=' + $('#fechai').val() + '&fechaf=' + $('#fechaf').val()+ '&id=' + $('#id').val()+ '&nombre=' + $('#nombre').val();
          // url = Routing.generate('_exportar_reporte') + '/Prueba/pdf?fechai=' + $('#fechai').val();  
         window.open(url, '_blank');
            return false;

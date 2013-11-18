@@ -90,7 +90,7 @@
 tp.temperatura_p
 from blh_pasteurizacion p join blh_temperatura_pasteurizacion tp
 on tp.id_pasteurizacion = p.id
-and p.codigo_pasteurizacion = to_char($P{codigo}, '99SG999SG9999');]]>
+and p.codigo_pasteurizacion like $P{codigo};]]>
 		</queryString>
 		<field name="minuto" class="java.lang.Long"/>
 		<field name="temperatura_p" class="java.lang.Integer"/>
@@ -102,7 +102,7 @@ and p.codigo_pasteurizacion = to_char($P{codigo}, '99SG999SG9999');]]>
 		<![CDATA[select p.fecha_pasteurizacion, p.hora_inicio_p, tp.temperatura_p, p.hora_final_p
 from blh_pasteurizacion p join blh_temperatura_pasteurizacion tp
 on tp.id_pasteurizacion = p.id
-and p.codigo_pasteurizacion = to_char($P{codigo}, '99SG999SG9999');]]>
+and p.codigo_pasteurizacion like $P{codigo};]]>
 	</queryString>
 	<field name="fecha_pasteurizacion" class="java.sql.Date"/>
 	<field name="hora_inicio_p" class="java.sql.Time"/>

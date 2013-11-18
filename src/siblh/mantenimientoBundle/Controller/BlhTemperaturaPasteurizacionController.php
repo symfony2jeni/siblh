@@ -276,18 +276,23 @@ class BlhTemperaturaPasteurizacionController extends Controller
  public function pasteurizacionesAction()
     {
         $em = $this->getDoctrine()->getManager();      
-        
+        $userEst = $this->container->get('security.context')->getToken()->getUser()->getIdEst();
+        $query1 = $em->createQuery("SELECT e.nombre, e.direccion, e.telefono FROM siblhmantenimientoBundle:CtlEstablecimiento e WHERE e.id = $userEst");
+        $establecimiento = $query1->getResult(); 
+         $queryb = $em->createQuery("SELECT b.id FROM siblhmantenimientoBundle:BlhBancoDeLeche b WHERE b.idEstablecimiento = $userEst");
+        $id_blh = $queryb->getResult(); 
+        $codigo=$id_blh[0]['id']; 
+         if ($codigo<10){
+        $idp='0'.$codigo;
+        $idp = (string)$idp;
+         }
+        else{$idp = (string)$codigo;}
         //Obteniendo lista de pasteurizaciones  
-        $query = $em->createQuery("SELECT r.id, r.codigoPasteurizacion,r.fechaPasteurizacion, r.responsablePasteurizacion FROM siblhmantenimientoBundle:BlhPasteurizacion r");
+        $query = $em->createQuery("SELECT r.id, r.codigoPasteurizacion,r.fechaPasteurizacion, r.responsablePasteurizacion FROM siblhmantenimientoBundle:BlhPasteurizacion r
+                                   where substring(r.codigoPasteurizacion,1,2) = '$idp'");
         //Obtengo resultado y lo guardo
         $pasteurizaciones_frascos  = $query->getResult();
-        //retorno lista de pasteurizaciones que ha sido almacenada en una arreglo
-        //donde en el .twig sera recorrida.
-         //Obtener banco de leche//
-        
-      $userEst = $this->container->get('security.context')->getToken()->getUser()->getIdEst();
-      $query1 = $em->createQuery("SELECT e.nombre, e.direccion, e.telefono FROM siblhmantenimientoBundle:CtlEstablecimiento e WHERE e.id = $userEst");
-      $establecimiento = $query1->getResult(); 
+     
         return array(
             'pasteurizaciones_frascos' =>  $pasteurizaciones_frascos,
             'hospital' => $establecimiento,

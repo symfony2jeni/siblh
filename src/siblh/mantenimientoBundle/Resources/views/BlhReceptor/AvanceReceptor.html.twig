@@ -31,7 +31,7 @@
        {% for receptor in receptores_registrados%}
                 <td>{{ receptor.codigoReceptor }}</td> 
                 <td>{{ receptor.nombre1 }} {{ receptor.nombre2 }} {{ receptor.apellido1 }} {{ receptor.apellido2 }}</td>
-                <td><a href="{{ path('_exportar_reporte_avancer',{'report_name':'AvanceReceptor','report_format':'pdf', 'id': receptor.identificador })}}"  target="_blank"  id="reporte"> Avance Nutricional </a></td></tr>
+                <td><a href="{{ path('_exportar_reporte_avancer',{'report_name':'AvanceReceptor','report_format':'pdf', 'id': receptor.identificador, 'codigo': codigo,'nombre': nombre })}}"  target="_blank"  id="reporte"> Avance Nutricional </a></td></tr>
 
 
 

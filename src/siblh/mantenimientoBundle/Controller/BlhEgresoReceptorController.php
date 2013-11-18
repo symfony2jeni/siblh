@@ -254,22 +254,25 @@ class BlhEgresoReceptorController extends Controller
  
  public function pacientesreceptoresAction()
     {
-        $em = $this->getDoctrine()->getManager();      
+        $em = $this->getDoctrine()->getManager();   
+         //Obtener banco de leche//   
+        $userEst = $this->container->get('security.context')->getToken()->getUser()->getIdEst();
+        $query1 = $em->createQuery("SELECT e.nombre, e.direccion, e.telefono FROM siblhmantenimientoBundle:CtlEstablecimiento e WHERE e.id = $userEst");
+        $establecimiento = $query1->getResult(); 
+        $queryb = $em->createQuery("SELECT b.id FROM siblhmantenimientoBundle:BlhBancoDeLeche b WHERE b.idEstablecimiento = $userEst");
+        $id_blh = $queryb->getResult(); 
+        $codigo=$id_blh[0]['id']; 
         
         //Obteniendo lista de pacientes"  
         $query = $em->createQuery("SELECT r.id as identificador, r.codigoReceptor, p.primerNombre as nombre1, p.segundoNombre as nombre2, p.tercerNombre as nombre3, p.primerApellido as apellido1, p.segundoApellido as apellido2 
             FROM siblhmantenimientoBundle:BlhReceptor r join r.idPaciente p 
             WHERE r.estadoReceptor = 'Activo' and r.id  not in (select rec.id from siblhmantenimientoBundle:BlhEgresoReceptor e 
-JOIN e.idReceptor rec)");
+JOIN e.idReceptor rec) and r.idBancoDeLeche = $codigo");
         
        //echo $hisclinico[idDonante];
                 
         $receptores_registrados  = $query->getResult();
-         //Obtener banco de leche//
-              
-        $userEst = $this->container->get('security.context')->getToken()->getUser()->getIdEst();
-        $query1 = $em->createQuery("SELECT e.nombre, e.direccion, e.telefono FROM siblhmantenimientoBundle:CtlEstablecimiento e WHERE e.id = $userEst");
-        $establecimiento = $query1->getResult(); 
+        
         
         return array(
             'receptores_registrados' =>  $receptores_registrados, 

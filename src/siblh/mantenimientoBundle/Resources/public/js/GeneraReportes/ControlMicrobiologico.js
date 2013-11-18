@@ -55,7 +55,7 @@ $ff= $('#fechaf').val();
         else
             {
 */
-          url = Routing.generate('_exportar_reporte_cmicrobiologico') + '/ControlMicrobiologico/pdf?fechai=' + $('#fechai').val() + '&fechaf=' + $('#fechaf').val();
+          url = Routing.generate('_exportar_reporte_cmicrobiologico') + '/ControlMicrobiologico/pdf?fechai=' + $('#fechai').val() + '&fechaf=' + $('#fechaf').val()+ '&id=' + $('#id').val()+ '&nombre=' + $('#nombre').val();
          // url = Routing.generate('_exportar_reporte') + '/Prueba/pdf?fechai=' + $('#fechai').val();  
         window.open(url, '_blank');
            return false;

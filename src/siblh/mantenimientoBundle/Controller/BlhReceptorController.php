@@ -400,10 +400,16 @@ JOIN sr.idReceptor rec)");
         $codigo=$id_blh[0]['id']; */
        
        $query1 = $em->createQuery("SELECT e.nombre, e.direccion, e.telefono FROM siblhmantenimientoBundle:CtlEstablecimiento e WHERE e.id = $userEst");
-        $establecimiento = $query1->getResult(); 
+       $establecimiento = $query1->getResult(); 
+       $query2 = $em->createQuery("SELECT b.id FROM siblhmantenimientoBundle:BlhBancoDeLeche b WHERE b.idEstablecimiento = $userEst");
+       $id_blh = $query2->getResult(); 
+       $codigo=$id_blh[0]['id']; 
+      $nombre=$establecimiento[0]['nombre']; 
         return array(
             'receptores_registrados' =>  $receptores_registrados,  
             'hospital' => $establecimiento,
+            'codigo' => $codigo,
+            'nombre' => $nombre    
          
         );
         

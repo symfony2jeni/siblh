@@ -251,19 +251,28 @@ class BlhTemperaturaEnfriamientoController extends Controller
      */
 public function pasteurizacionAction()
     {
-        $em = $this->getDoctrine()->getManager();      
+        $em = $this->getDoctrine()->getManager();  
+            //Obtener banco de leche//        
+        $userEst = $this->container->get('security.context')->getToken()->getUser()->getIdEst();
+        $query1 = $em->createQuery("SELECT e.nombre, e.direccion, e.telefono FROM siblhmantenimientoBundle:CtlEstablecimiento e WHERE e.id = $userEst");
+        $establecimiento = $query1->getResult(); 
+        $queryb = $em->createQuery("SELECT b.id FROM siblhmantenimientoBundle:BlhBancoDeLeche b WHERE b.idEstablecimiento = $userEst");
+        $id_blh = $queryb->getResult(); 
+        $codigo=$id_blh[0]['id']; 
+         if ($codigo<10){
+        $idp='0'.$codigo;
+        $idp = (string)$idp;
+         }
+        else{$idp = (string)$codigo;}
         
         //Obteniendo lista de pacientes"  
-        $query = $em->createQuery("SELECT r.id as identificador, r.codigoPasteurizacion, r.numCiclo, r.volumenPasteurizado, r.numFrascosPasteurizados, r.fechaPasteurizacion FROM siblhmantenimientoBundle:BlhPasteurizacion r");
+        $query = $em->createQuery("SELECT r.id as identificador, r.codigoPasteurizacion, r.numCiclo, r.volumenPasteurizado, r.numFrascosPasteurizados, r.fechaPasteurizacion FROM siblhmantenimientoBundle:BlhPasteurizacion r
+                                   where substring(r.codigoPasteurizacion,1,2) = '$idp'");
         
        //echo $hisclinico[idDonante];
                 
         $pasteurizaciones  = $query->getResult();
-        //Obtener banco de leche//
-        
-      $userEst = $this->container->get('security.context')->getToken()->getUser()->getIdEst();
-      $query1 = $em->createQuery("SELECT e.nombre, e.direccion, e.telefono FROM siblhmantenimientoBundle:CtlEstablecimiento e WHERE e.id = $userEst");
-      $establecimiento = $query1->getResult(); 
+    
         return array(
             'pasteurizaciones' =>  $pasteurizaciones, 
             'hospital' => $establecimiento,

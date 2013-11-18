@@ -77,7 +77,24 @@ class GeneraReportesController extends Controller
     public function AnalisisLaboratorioAction()
             
              {
-        return array();
+         
+       $em = $this->getDoctrine()->getManager();  
+          //Obtener banco de leche//
+        
+      $userEst = $this->container->get('security.context')->getToken()->getUser()->getIdEst();
+      $query1 = $em->createQuery("SELECT e.nombre, e.direccion, e.telefono FROM siblhmantenimientoBundle:CtlEstablecimiento e WHERE e.id = $userEst");
+      $establecimiento = $query1->getResult(); 
+      
+      $query2 = $em->createQuery("SELECT b.id FROM siblhmantenimientoBundle:BlhBancoDeLeche b WHERE b.idEstablecimiento = $userEst");
+      $id_blh = $query2->getResult(); 
+      $codigo=$id_blh[0]['id']; 
+          if ($codigo<10){
+        $id='0'.$codigo;}
+        else{$id = strval($codigo);}
+      
+        return array('hospital' => $establecimiento,
+                     'id' => $id
+                );
           }  
           
  /**
@@ -87,7 +104,23 @@ class GeneraReportesController extends Controller
     public function ControlMicrobiologicoAction()
             
              {
-        return array();
+         $em = $this->getDoctrine()->getManager();  
+          //Obtener banco de leche//
+        
+      $userEst = $this->container->get('security.context')->getToken()->getUser()->getIdEst();
+      $query1 = $em->createQuery("SELECT e.nombre, e.direccion, e.telefono FROM siblhmantenimientoBundle:CtlEstablecimiento e WHERE e.id = $userEst");
+      $establecimiento = $query1->getResult(); 
+      
+      $query2 = $em->createQuery("SELECT b.id FROM siblhmantenimientoBundle:BlhBancoDeLeche b WHERE b.idEstablecimiento = $userEst");
+      $id_blh = $query2->getResult(); 
+      $codigo=$id_blh[0]['id']; 
+          if ($codigo<10){
+        $id='0'.$codigo;}
+        else{$id = strval($codigo);}
+      
+        return array('hospital' => $establecimiento,
+                     'id' => $id
+                );
           }           
  /**
      * @Route("/temperatura/pasteurizacion",name="TemperaturaPasteurizacion")
@@ -96,7 +129,13 @@ class GeneraReportesController extends Controller
     public function TemperaturaPasteurizacionAction()
             
              {
-        return array();
+         $em = $this->getDoctrine()->getManager();  
+          //Obtener banco de leche//
+        
+      $userEst = $this->container->get('security.context')->getToken()->getUser()->getIdEst();
+      $query1 = $em->createQuery("SELECT e.nombre, e.direccion, e.telefono FROM siblhmantenimientoBundle:CtlEstablecimiento e WHERE e.id = $userEst");
+      $establecimiento = $query1->getResult(); 
+        return array('hospital' => $establecimiento,);
           }           
  /**
      * @Route("/temperatura/enfriamiento",name="TemperaturaEnfriamiento")
