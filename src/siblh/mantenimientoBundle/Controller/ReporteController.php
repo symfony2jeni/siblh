@@ -114,6 +114,41 @@ class ReporteController extends Controller {
 
         return $response;
     }
+    
+    
+     //Controller para leche donada
+    
+      /**
+     *
+     * @Route("/reporte/lechepasteurizada/{report_name}/{report_format}", name="mostrar_frascosp")
+     * @Template()
+     */
+    public function ReporteLechePasteurizadaAction($report_name, $report_format) {
+        //$report_format='pdf';
+        $jasper_url = JASPER_URL;
+        $jasper_username = JASPER_USER;
+        $jasper_password = JASPER_PASSWORD;
+        $report_unit = "/reports/" . $report_name;  //rutadejasperserverreports
+        $report_params = array();
+
+        $client = new JasperClient($jasper_url, $jasper_username, $jasper_password);
+
+        $contentType = (($report_format == 'HTML') ? 'text' : 'application') .
+                '/' . strtolower($report_format);
+
+        $result = $client->requestReport($report_unit, $report_format, $report_params);
+
+        $response = new Response();
+        $response->headers->set('Content-Type', $contentType);
+        //if (strtoupper($report_format) != 'HTML')
+        //$response->headers->set('Content-disposition', 'attachment; filename="' . $report_name . '.' . strtolower($report_format) . '"');
+        $response->setContent($result);
+
+        return $response;
+    }
+    
+    
+    
   
 //Controller para alerta de leche donada
     
@@ -253,7 +288,7 @@ class ReporteController extends Controller {
    /**
     * @Route("/reporte/{report_name}/{report_format}", name="_exportar_reporte_laboratorio", options={"expose"=true})
     */
-   public function exportarReporteAnalisisLaboratorio($report_name, $report_format) {
+   public function exportarReporteAnalisisLaboratorioAction($report_name, $report_format) {
        //$report_format='pdf';
        //$usuario = $this->container->get('security.context')->getToken()->getUser();
        //var_dump($usuario);exit;
@@ -288,7 +323,7 @@ class ReporteController extends Controller {
  /**
     * @Route("/reporte/{report_name}/{report_format}", name="_exportar_reporte_cmicrobiologico", options={"expose"=true})
     */
-   public function exportarReporteControlMicrobiologico($report_name, $report_format) {
+   public function exportarReporteControlMicrobiologicoAction($report_name, $report_format) {
        //$report_format='pdf';
        //$usuario = $this->container->get('security.context')->getToken()->getUser();
        //var_dump($usuario);exit;
