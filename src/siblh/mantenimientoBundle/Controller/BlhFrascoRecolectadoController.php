@@ -341,4 +341,20 @@ class BlhFrascoRecolectadoController extends Controller
             'entities' => $entities,
         );
     }
+    
+      /**
+     * Lists all BlhReceptor entity.
+     *
+     * @Route("/listado/reportes/laboratorio", name="reportes_laboratorio")
+     * @Method("GET")
+     * @Template()
+     */
+ 
+ public function listadoReportesLaboratorioAction()
+    {
+
+        
+        return array();
+        
+    }
 }

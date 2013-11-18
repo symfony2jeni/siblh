@@ -21,7 +21,7 @@ $(document).ready(function() {
        
     //Boton   
     
-      $( "#boton" ).button();
+      $( "#lote" ).button();
       
    //Spiner   
  $(function() {

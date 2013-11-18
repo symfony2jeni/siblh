@@ -1,0 +1,57 @@
+{% extends  'siblhmantenimientoBundle::plantilla.html.twig'%}
+
+{% block javascripts %}
+    {{parent()}}
+    <script type="text/javascript" src="{{ asset('bundles/siblhmantenimiento/js/BlhReceptor/listadoReportesReceptores.js') }}" ></script>
+{% endblock %}
+
+{% block body -%}
+    
+    <link href="{{asset('bundles/jquery/jquery.jqGrid-4.5.4/css/ui.jqgrid.css')}}" rel="stylesheet"  type="text/css" media="all"/> 
+     <script type="text/javascript" src="{{asset('bundles/jquery/jquery.jqGrid-4.5.4/js/i18n/grid.locale-es.js')}}"></script>
+      <script type="text/javascript" src="{{asset('bundles/jquery/jquery.jqGrid-4.5.4/js/jquery.jqGrid.min.js')}}" ></script>
+      
+<h1>Listado de reportes de donantes</h1>
+    <div align='center'>
+    <table id="reportesReceptores">
+        <thead>
+            <tr>
+                <th>Reporte</th>
+                <th>Acción</th>
+            </tr>
+             <tr>
+                <th>Reporte</th>
+                <th>Acción</th>
+            </tr>
+             <tr>
+                <th>Reporte</th>
+                <th>Acción</th>
+            </tr>
+            <tr>
+                <th>Reporte</th>
+                <th>Acción</th>
+            </tr>
+        </thead>
+        <tbody>
+     
+       <tr> 
+          <td>Censo de registro de receptores </td> 
+          <td>editar</td></tr>
+       <tr> 
+          <td>Leche despachada por receptor</td> 
+          <td>editar</td></tr>
+        <tr> 
+          <td>Avance nutricional y complicaciones</td> 
+          <td>editar</td></tr>
+        <tr> 
+          <td>Informacion especifica de receptor</td> 
+          <td>editar</td></tr>
+        
+        </tbody>
+    </table>
+     </div>
+
+      
+    {% endblock %}
+
+

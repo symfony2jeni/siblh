@@ -118,7 +118,7 @@ sonata_admin:
     title_logo: /bundles/siblhmantenimientosiaps/imagenes/logo_salud.png
     templates:
         # default global templates
-        layout:  siblhmantenimientoBundle::standard_layout.html.twig
+        layout:  SonataAdminBundle::standard_layout.html.twig
         ajax:    SonataAdminBundle::ajax_layout.html.twig
 
         # default actions templates, should extend a global templates

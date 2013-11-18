@@ -28,6 +28,33 @@
                 <td width =100 align = "right" > 
                 {{ form_label(form.codigoLoteAnalisis, 'Código de lote') }}
                 {{ form_errors(form.codigoLoteAnalisis) }}
-                {{ form_widget(form.codigoLoteAnalisis) }} </td>                 
+                {{ form_widget(form.codigoLoteAnalisis) }} </td>        
+                    
+ <table id="frascosLote">
+        <thead>
+            <tr>
+                <th>id</th>
+                <th>Código&nbsp;Frasco</th>
+                <th>Volumen&nbsp;Recolectado(ml)</th>
+                <th>Volumen&nbsp;Recolectado(onz)</th>
+                <th>Forma&nbsp;Extracción</th>          
+                <th>Observaciones</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for frasco in frascos %}
+            <tr>
+               <td>{{ frasco.id}}</td>
+                <td>{{ frasco.codigoFrascoRecolectado }}</td>
+                <td>{{ frasco.volumenRecolectado }}</td>
+                <td>{{ frasco.onzRecolectado }}</td>
+                <td>{{ frasco.formaExtraccion }}</td>                
+                <td>{{ frasco.observacionFrascoRecolectado }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    <div id='pagerfrascosLote' ></div>                      
+                    
            
 {% endblock %}

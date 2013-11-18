@@ -244,4 +244,23 @@ class BlhDonanteController extends Controller
             ->getForm()
         ;
     }
+    
+     
+     
+     
+    /**
+     * Lists all BlhReceptor entity.
+     *
+     * @Route("/listado/reportes/donantes", name="reportes_donantes")
+     * @Method("GET")
+     * @Template()
+     */
+ 
+ public function listadoReportesDonantesAction()
+    {
+
+        
+        return array();
+        
+    }
 }

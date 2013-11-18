@@ -1,6 +1,6 @@
 //GRID para listado de frascos a combinar//
-  tableToGrid("#frascosLote", {
-        pager : '#pagerfrascosLote',
+  tableToGrid("#frascosCombinar", {
+        pager : '#pagerfrascosCombinar',
         rowNum:10, 
         gridview: true,
         multiselect:true,
@@ -20,7 +20,7 @@
        
     });
   //  jQuery("#frascosLote").jqGrid('sortGrid',"Código&nbsp;Frasco",true);
-    jQuery("#frascosLote").jqGrid('navGrid','#pagerfrascosLote', {
+    jQuery("#frascosCombinar").jqGrid('navGrid','#frascosCombinar', {
         edit:false, 
         add:false, 
         del:false,
@@ -28,11 +28,10 @@
         reload:true      
     });
                           
-jQuery("#lote").on ('click', function() {
-        
-        var corr_seleccionados = jQuery("#frascosLote").jqGrid('getGridParam','selarrrow');
-	var todos_id = jQuery("#frascosLote").jqGrid('getCol','id');      
-        var total_filas = jQuery("#frascosLote").jqGrid('getDataIDs');
+jQuery("#lote").on ('click', function() {        
+        var corr_seleccionados = jQuery("#frascosCombinar").jqGrid('getGridParam','selarrrow');
+	var todos_id = jQuery("#frascosCombinar").jqGrid('getCol','id');      
+        var total_filas = jQuery("#frascosCombinar").jqGrid('getDataIDs');
         var s = new Array();
       
     

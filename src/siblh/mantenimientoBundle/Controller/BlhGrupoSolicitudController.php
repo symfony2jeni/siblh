@@ -258,7 +258,19 @@ class BlhGrupoSolicitudController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
         
-        $query = $em->createQuery("SELECT s.id, s.codigoSolicitud, s.fechaSolicitud, s.acidezNecesaria, s.caloriasNecesarias, s.volumenPorToma, s.tomaPorDia, p.primerNombre as nombre1, p.segundoNombre as nombre2, p.tercerNombre as nombre3, p.primerApellido as apellido1, p.segundoApellido as apellido2 FROM siblhmantenimientoBundle:BlhSolicitud s JOIN s.idReceptor r JOIN r.idPaciente p WHERE s.estado = 'Pendiente' ");
+        $userEst = $this->container->get('security.context')->getToken()->getUser()->getIdEst();
+         
+        
+        $query1 = $em->createQuery("SELECT b.id FROM siblhmantenimientoBundle:BlhBancoDeLeche b WHERE b.idEstablecimiento = $userEst");
+        $id_blh = $query1->getResult();
+        $codigo=$id_blh[0]['id'];
+       // $codigo=implode("", $id_blh);
+
+        if ($codigo<10){
+        $id='0'.$codigo;}
+        else{$id = strval($codigo);}
+        
+        $query = $em->createQuery("SELECT s.id, s.codigoSolicitud, s.fechaSolicitud, s.acidezNecesaria, s.caloriasNecesarias, s.volumenPorToma, s.tomaPorDia, p.primerNombre as nombre1, p.segundoNombre as nombre2, p.tercerNombre as nombre3, p.primerApellido as apellido1, p.segundoApellido as apellido2 FROM siblhmantenimientoBundle:BlhSolicitud s JOIN s.idReceptor r JOIN r.idPaciente p WHERE s.estado = 'Pendiente' AND (SUBSTRING(s.codigoSolicitud, 1, 2)='$id')");
         
         $solicitudes = $query->getResult();
      
@@ -282,8 +294,11 @@ class BlhGrupoSolicitudController extends Controller
          $request = $this->getRequest();
          $ids_agrupar = $request->get('var');
          $ids= explode(",",$ids_agrupar);
+         
+         
        
          $tamanio = count($ids);   
+         
         
         if($ids_agrupar==0){
             return $this->redirect(

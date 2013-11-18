@@ -1,0 +1,108 @@
+{% extends  'siblhmantenimientoBundle::plantilla.html.twig'%}
+
+{% block javascripts %}
+    {{parent()}}
+    <script type="text/javascript" src="{{ asset('bundles/siblhmantenimiento/js/BlhFrascoRecolectado/listadoReportesLaboratorio.js') }}" ></script>
+{% endblock %}
+
+{% block body -%}
+    
+    <link href="{{asset('bundles/jquery/jquery.jqGrid-4.5.4/css/ui.jqgrid.css')}}" rel="stylesheet"  type="text/css" media="all"/> 
+     <script type="text/javascript" src="{{asset('bundles/jquery/jquery.jqGrid-4.5.4/js/i18n/grid.locale-es.js')}}"></script>
+      <script type="text/javascript" src="{{asset('bundles/jquery/jquery.jqGrid-4.5.4/js/jquery.jqGrid.min.js')}}" ></script>
+      
+<h1>Listado de reportes de laboratorio</h1>
+    <div align='center'>
+    <table id="reportesLaboratorio">
+        <thead>
+            <tr>
+                <th>Reporte</th>
+                <th>Acción</th>
+            </tr>
+             <tr>
+                <th>Reporte</th>
+                <th>Acción</th>
+            </tr>
+             <tr>
+                <th>Reporte</th>
+                <th>Acción</th>
+            </tr>
+            <tr>
+                <th>Reporte</th>
+                <th>Acción</th>
+            </tr>
+            <tr>
+                <th>Reporte</th>
+                <th>Acción</th>
+            </tr>
+            <tr>
+                <th>Reporte</th>
+                <th>Acción</th>
+            </tr>
+            <tr>
+                <th>Reporte</th>
+                <th>Acción</th>
+            </tr>
+            <tr>
+                <th>Reporte</th>
+                <th>Acción</th>
+            </tr>
+            <tr>
+                <th>Reporte</th>
+                <th>Acción</th>
+            </tr>
+            <tr>
+                <th>Reporte</th>
+                <th>Acción</th>
+            </tr>
+            <tr>
+                <th>Reporte</th>
+                <th>Acción</th>
+            </tr>
+        </thead>
+        <tbody>
+     
+       <tr> 
+          <td>Vencimiento de leche prealmacenada </td> 
+          <td>editar</td></tr>
+       <tr> 
+          <td>Vencimiento de leche pasteurizada</td> 
+          <td>editar</td></tr>
+        <tr> 
+          <td>Leche despachada segun solicitudes agrupadas</td> 
+          <td>editar</td></tr>
+        <tr> 
+          <td>Resultados de analisis de laboratorio</td> 
+          <td>editar</td></tr>
+         <tr> 
+          <td>Frascos de leche combinados y pasteurizados</td> 
+          <td>editar</td></tr>
+          <tr> 
+          <td>Temperatura de pasteurizacion</td> 
+          <td>editar</td></tr>
+           <tr> 
+          <td>Temperatura de enfriamiento</td> 
+          <td>editar</td></tr>
+            <tr> 
+          <td>Resultados de control de calidad microbiologico</td> 
+          <td>editar</td></tr>
+             <tr> 
+          <td>Leche descartada durante el proceso</td> 
+          <td>editar</td></tr>
+              <tr> 
+          <td>frascos prealmacenados aprobados y r eprobados</td> 
+          <td>editar</td></tr>
+               <tr> 
+          <td>frascos pasteurizados aprobados y reprobados</td> 
+          <td>editar</td></tr>
+        
+        </tbody>
+    </table>
+     </div>
+
+      
+    {% endblock %}
+
+
+
+

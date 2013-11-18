@@ -1,0 +1,49 @@
+{% extends  'siblhmantenimientoBundle::plantilla.html.twig'%}
+
+{% block javascripts %}
+    {{parent()}}
+    <script type="text/javascript" src="{{ asset('bundles/siblhmantenimiento/js/BlhBancoDeLeche/listadoEstadisticas.js') }}" ></script>
+{% endblock %}
+
+{% block body -%}
+    
+    <link href="{{asset('bundles/jquery/jquery.jqGrid-4.5.4/css/ui.jqgrid.css')}}" rel="stylesheet"  type="text/css" media="all"/> 
+     <script type="text/javascript" src="{{asset('bundles/jquery/jquery.jqGrid-4.5.4/js/i18n/grid.locale-es.js')}}"></script>
+      <script type="text/javascript" src="{{asset('bundles/jquery/jquery.jqGrid-4.5.4/js/jquery.jqGrid.min.js')}}" ></script>
+      
+<h1>Listado de reportes de donantes</h1>
+    <div align='center'>
+    <table id="listadoEstadisticas">
+        <thead>
+            <tr>
+                <th>Reporte</th>
+                <th>Acción</th>
+            </tr>
+             <tr>
+                <th>Reporte</th>
+                <th>Acción</th>
+            </tr>
+             <tr>
+                <th>Reporte</th>
+                <th>Acción</th>
+            </tr>
+        </thead>
+        <tbody>
+     
+       <tr> 
+          <td>Estadisticas de leche humana </td> 
+          <td>editar</td></tr>
+       <tr> 
+          <td>Estadisticas de donantes en un periodo determinado</td> 
+          <td>editar</td></tr>
+        <tr> 
+          <td>Estadisticas de receptores en un periodo determinado </td> 
+          <td>editar</td></tr>
+
+        
+        </tbody>
+    </table>
+     </div>
+
+      
+    {% endblock %}

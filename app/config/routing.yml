@@ -108,7 +108,7 @@ _NewTemperaturaE:
     defaults: { _controller: siblhmantenimientoBundle:BlhTemperaturaEnfriamiento:pasteurizacion}      
 
 _MantenimientoUsuarios:
-  pattern:  /Mantenimiento/Usuarios
+  pattern:  /admin/siblh/mantenimiento/user/list
   defaults: { _controller: SonataAdminBundle:Core:dashboard} 
 
 _NewSeguimiento:

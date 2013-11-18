@@ -321,5 +321,25 @@ class BlhReceptorController extends Controller
             'numexp' => $numexp,
         );
     }
+    
+    
+        
+    /**
+     * Lists all BlhReceptor entity.
+     *
+     * @Route("/listado/reportes/receptores", name="reportes_receptores")
+     * @Method("GET")
+     * @Template()
+     */
+ 
+ public function listadoReportesReceptoresAction()
+    {
+
+        
+        return array();
+        
+    }
+    
+  
    
 }

@@ -244,4 +244,20 @@ class BlhBancoDeLecheController extends Controller
             ->getForm()
         ;
     }
+          /**
+     * Lists all BlhReceptor entity.
+     *
+     * @Route("/listado/estadisticas", name="lisatdo_estadisticas")
+     * @Method("GET")
+     * @Template()
+     */
+ 
+ public function listadoEstadisticasAction()
+    {
+
+        
+        return array();
+        
+    }
+    
 }

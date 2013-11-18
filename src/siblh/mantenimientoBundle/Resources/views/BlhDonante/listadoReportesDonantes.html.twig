@@ -1,0 +1,56 @@
+{% extends  'siblhmantenimientoBundle::plantilla.html.twig'%}
+
+{% block javascripts %}
+    {{parent()}}
+    <script type="text/javascript" src="{{ asset('bundles/siblhmantenimiento/js/BlhDonante/listadoReportesDonantes.js') }}" ></script>
+{% endblock %}
+
+{% block body -%}
+    
+    <link href="{{asset('bundles/jquery/jquery.jqGrid-4.5.4/css/ui.jqgrid.css')}}" rel="stylesheet"  type="text/css" media="all"/> 
+     <script type="text/javascript" src="{{asset('bundles/jquery/jquery.jqGrid-4.5.4/js/i18n/grid.locale-es.js')}}"></script>
+      <script type="text/javascript" src="{{asset('bundles/jquery/jquery.jqGrid-4.5.4/js/jquery.jqGrid.min.js')}}" ></script>
+      
+<h1>Listado de reportes de donantes</h1>
+    <div align='center'>
+    <table id="reportesDonantes">
+        <thead>
+            <tr>
+                <th>Reporte</th>
+                <th>Acción</th>
+            </tr>
+             <tr>
+                <th>Reporte</th>
+                <th>Acción</th>
+            </tr>
+             <tr>
+                <th>Reporte</th>
+                <th>Acción</th>
+            </tr>
+            <tr>
+                <th>Reporte</th>
+                <th>Acción</th>
+            </tr>
+        </thead>
+        <tbody>
+     
+       <tr> 
+          <td>Censo de registro de donantes </td> 
+          <td>editar</td></tr>
+       <tr> 
+          <td>Leche donada por cada donante</td> 
+          <td>editar</td></tr>
+        <tr> 
+          <td>Informacion especifica de donante </td> 
+          <td>editar</td></tr>
+        <tr> 
+          <td>Registro de donaciones por donante</td> 
+          <td>editar</td></tr>
+        
+        </tbody>
+    </table>
+     </div>
+
+      
+    {% endblock %}
+
