@@ -253,4 +253,22 @@ class BlhAcidezController extends Controller
             ->getForm()
         ;
     }
+    
+       /**
+     * Lista de Frascos Recolectados entities.
+     *
+     * @Route("/frascos/analisisAcidez", name="blhfrascosAnalisis_acidez")
+     * @Method("GET")
+     * @Template()
+     */
+    public function frascosAnalisisAcidezAction()
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $entities = $em->getRepository('siblhmantenimientoBundle:BlhFrascoRecolectado')->findBy(array('idEstado' => 7));
+
+        return array(
+            'entities' => $entities,
+        );
+    }
 }

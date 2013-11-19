@@ -2,7 +2,7 @@
 
 {% block javascripts %}
     {{parent()}}
-    <script type="text/javascript" src="{{ asset('bundles/siblhmantenimiento/js/BlhFrascoRecolectado/frascosAnalisis.js') }}" ></script>
+    <script type="text/javascript" src="{{ asset('bundles/siblhmantenimiento/js/BlhCrematocrito/frascosAnalisisCrematocrito.js') }}" ></script>
 {% endblock %}
 
 {% block body -%}
@@ -10,9 +10,9 @@
      <script type="text/javascript" src="{{asset('bundles/jquery/jquery.jqGrid-4.5.4/js/i18n/grid.locale-es.js')}}"></script>
       <script type="text/javascript" src="{{asset('bundles/jquery/jquery.jqGrid-4.5.4/js/jquery.jqGrid.min.js')}}" ></script>
     
-    <h1>Listado de frascos para analisis fisico-quimico</h1>
+    <h1>Listado de frascos para analisis de crematocrito</h1>
 
-    <table id="listado_frascosAnalisis">
+    <table id="frascosAnalisisCrematocrito">
         <thead>
             <tr>          
                 <th>Código&nbsp;Frasco</th>
@@ -26,21 +26,17 @@
         <tbody>
         {% for entity in entities %}
             <tr>
-               
                 <td>{{ entity.codigoFrascoRecolectado }}</td>
                 <td>{{ entity.volumenRecolectado }}</td>
                 <td>{{ entity.onzRecolectado }}</td>
                 <td>{{ entity.formaExtraccion }}</td>                
                 <td>{{ entity.observacionFrascoRecolectado }}</td>
-                <td><a href="{{ path('blhanalisissensorial_new', { 'id': entity.id }) }}">Analisis Sensorial</a>
-                    <a href="{{ path('blhacidez_new', { 'id': entity.id }) }}">Acidez</a>
-                    <a href="{{ path('blhcrematocrito_new', { 'id': entity.id }) }}">Crematocrito</a>
-                </td>
-            </tr>
+                <td><a href="{{ path('blhcrematocrito_new', { 'id': entity.id }) }}"><font color="blue"><u>Crematocrito</u></font></a></td>              
+                </tr>
         {% endfor %}
         </tbody>
     </table>
-    <div id='pagerFrascosAnalisis' ></div>
+    <div id='pagerFrascosAnalisisCrematocrito' ></div>
 
   
     {% endblock %}

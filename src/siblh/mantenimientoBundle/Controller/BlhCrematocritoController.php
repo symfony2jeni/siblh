@@ -251,4 +251,23 @@ class BlhCrematocritoController extends Controller
             ->getForm()
         ;
     }
+    
+           /**
+     * Lista de Frascos Recolectados entities.
+     *
+     * @Route("/frascos/analisisCrematocrito", name="blhfrascosAnalisis_crematocrito")
+     * @Method("GET")
+     * @Template()
+     */
+    public function frascosAnalisisCrematocritoAction()
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $entities = $em->getRepository('siblhmantenimientoBundle:BlhFrascoRecolectado')->findBy(array('idEstado' => 5));
+
+        return array(
+            'entities' => $entities,
+        );
+    }
+    
 }

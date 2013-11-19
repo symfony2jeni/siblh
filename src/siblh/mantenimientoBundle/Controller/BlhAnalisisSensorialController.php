@@ -255,6 +255,23 @@ class BlhAnalisisSensorialController extends Controller
             ->getForm()
         ;
     }
+    /**
+     * Lista de Frascos Recolectados entities.
+     *
+     * @Route("/frascos/analisisSensorial", name="blhfrascosAnalisis_sensorial")
+     * @Method("GET")
+     * @Template()
+     */
+    public function frascosAnalisisSensorialAction()
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $entities = $em->getRepository('siblhmantenimientoBundle:BlhFrascoRecolectado')->findBy(array('idEstado' => 1));
+
+        return array(
+            'entities' => $entities,
+        );
+    }
     
    
 }

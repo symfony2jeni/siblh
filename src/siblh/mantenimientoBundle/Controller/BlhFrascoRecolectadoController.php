@@ -324,23 +324,7 @@ class BlhFrascoRecolectadoController extends Controller
     }
     
 
-     /**
-     * Lista de Frascos Recolectados entities.
-     *
-     * @Route("/frascos/analisis", name="blhfrascosAnalisis")
-     * @Method("GET")
-     * @Template()
-     */
-    public function frascosAnalisisAction()
-    {
-        $em = $this->getDoctrine()->getManager();
-
-        $entities = $em->getRepository('siblhmantenimientoBundle:BlhFrascoRecolectado')->findBy(array('idEstado' => 1));
-
-        return array(
-            'entities' => $entities,
-        );
-    }
+     
     
       /**
      * Lists all BlhReceptor entity.

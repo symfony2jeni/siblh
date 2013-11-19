@@ -15,9 +15,8 @@ $(document).ready(function() {
             {name:'Volumen&nbsp;Recolectado(onz)', width:40,align:'center'},
             {name:'Forma&nbsp;Extracción', width:40,align:'center'},
             {name:'Observaciones', width:20,align:'center'}, 
-            {name:'Acción', width:20,align:'center'},  
-        ],
-       
+            {name:'Acción', width:20,align:'center'}  
+        ]       
     });
     jQuery("#listado_frascosAnalisis").jqGrid('sortGrid',"Código&nbsp;Frasco",true);
     jQuery("#listado_frascosAnalisis").jqGrid('navGrid','#pagerFrascosAnalisis', {
