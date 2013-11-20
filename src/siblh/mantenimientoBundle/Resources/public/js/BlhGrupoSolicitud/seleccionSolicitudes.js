@@ -1,4 +1,5 @@
 $(document).ready(function() {
+        $("#agrupar").button();
         tableToGrid("#Multiselect",{
    	colModel:[
    		{name:'id',index:'id', width:10, align:'Center', hidden:true},
@@ -58,5 +59,7 @@ jQuery("#agrupar").on ('click', function() {
 
 	
 });
+
+
 
 });

@@ -18,8 +18,11 @@ class BlhPasteurizacionType extends AbstractType
             ->add('codigoPasteurizacion')
             ->add('numCiclo')
             ->add('volumenPasteurizado')
-            ->add('numFrascosPasteurizados')
-            ->add('fechaPasteurizacion')
+            ->add('numFrascosPasteurizados', 'text')
+            ->add('fechaPasteurizacion', 'date', 
+                    array(  'widget' => 'single_text',
+                            'format' => 'yy-MM-dd',
+                            'attr' => array('class' => 'date')))
             ->add('horaInicioP')
             ->add('horaFinalP')
             ->add('horaInicioE')

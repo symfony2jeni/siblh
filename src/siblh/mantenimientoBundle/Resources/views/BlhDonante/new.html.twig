@@ -74,7 +74,7 @@
         {{ form_errors(form.direccion) }}
         {{ form_widget(form.direccion,  { 'attr': {'size': '100'} }) }} </td></tr>  
    
-    <tr><td colspan = "2" align = "left"><font color="red">*</font>
+    <tr><td colspan = "2" align = "left" style="visibility:hidden"><font color="red">*</font>
         {{ form_label(form.idBancoDeLeche, 'Banco de Leche') }} 
         {{ form_errors(form.idBancoDeLeche) }}
         {{ form_widget(form.idBancoDeLeche,  { 'attr': {'required': 'true'} }) }}</td>

@@ -1,4 +1,15 @@
 $(document).ready(function() { 
+    
+    $('#reporte').click(function(){
+      var url="/app_dev.php/reportes/reporte/receptores/Receptores/pdf";
+       window.open(url,'_blank');
+       return false;
+    });
+    
+ 
+//window.open("/app_dev.php/pacientes/");  
+
+    
      $.noConflict();
 	tableToGrid("#listado_receptores", {
         pager : '#pagerreceptores',

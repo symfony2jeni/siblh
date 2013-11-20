@@ -51,6 +51,11 @@ _sonata_admin:
 sonata_user:
     resource: '@SonataUserBundle/Resources/config/routing/admin_security.xml'
     prefix: /admin
+ 
+ 
+fos_js_routing:
+    resource: "@FOSJsRoutingBundle/Resources/config/routing/routing.xml" 
+ 
 
 #DIRECCIONANDO EL MENU
 
@@ -68,8 +73,8 @@ fos_js_routing:
 
 #DIRECCIONANDO ENTRADAS DESDE EL MENU
     
-    #Entradas de Jeni
- 
+    
+    
 _NewDonante:
     pattern:  /Donante/Nueva
     defaults: { _controller: siblhmantenimientoBundle:BlhDonante:new}
@@ -119,9 +124,9 @@ _NewSolicitudes:
   pattern:  /receptores_solicitud
   defaults: { _controller: siblhmantenimientoBundle:BlhSolicitud:receptores}  
   
-_NewAnalisisFisico:
-  pattern:  /frascos/analisis
-  defaults: { _controller: siblhmantenimientoBundle:BlhFrascoRecolectado:frascosAnalisis}    
+_NewAnalisisSensorial:
+  pattern:  /frascos/analisisSensorial
+  defaults: { _controller: siblhmantenimientoBundle:BlhAnalisisSensorial:frascosAnalisisSensorial}    
 
 _NewTempPasteurizacion:
   pattern:  /blhtemppasteurizacion/
@@ -131,6 +136,45 @@ _NewInformacionPublica:
   pattern:  /InfoPublica/
   defaults: { _controller: siblhmantenimientoBundle:BlhInformacionPublica:new} 
   
-  
+_NewPasteurizacion:
+  pattern:  /curvas/
+  defaults: { _controller: siblhmantenimientoBundle:BlhPasteurizacion:curvas} 
 
+_NewAnalisisAcidez:
+  pattern:  /frascos/analisisAcidez
+  defaults: { _controller: siblhmantenimientoBundle:BlhAcidez:frascosAnalisisAcidez} 
   
+_NewAnalisisCrematocrito:
+  pattern:  /frascos/analisisCrematocrito
+  defaults: { _controller: siblhmantenimientoBundle:BlhCrematocrito:frascosAnalisisCrematocrito} 
+  
+_NewAnalisisCrematocrito:
+  pattern:  /frascos/analisisCrematocrito
+  defaults: { _controller: siblhmantenimientoBundle:BlhCrematocrito:frascosAnalisisCrematocrito} 
+  
+_NewGrupoSolicitudes:
+  pattern:  /seleccion/solicitudes
+  defaults: { _controller: siblhmantenimientoBundle:BlhGrupoSolicitud:seleccionSolicitudes} 
+  
+_NewLoteAnalisis:
+  pattern:  /new
+  defaults: { _controller: siblhmantenimientoBundle:BlhLoteAnalisis:new} 
+  
+  
+  
+#Reportes  
+_NewReportesDonantes:
+  pattern:  /listado/reportes/donantes
+  defaults: { _controller: siblhmantenimientoBundle:BlhDonante:listadoReportesDonantes}
+
+_NewReportesReceptores:
+  pattern:  /listado/reportes/receptores
+  defaults: { _controller: siblhmantenimientoBundle:BlhReceptor:listadoReportesReceptores}
+  
+_NewReportesLaboratorio:
+  pattern:  /listado/reportes/laboratorio
+  defaults: { _controller: siblhmantenimientoBundle:BlhFrascoRecolectado:listadoReportesLaboratorio}
+  
+_NewEstadisticas:
+  pattern:  /listado/estadisticas
+  defaults: { _controller: siblhmantenimientoBundle:BlhBancoDeLeche:listadoEstadisticas}

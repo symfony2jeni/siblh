@@ -20,21 +20,21 @@ class BlhSubOpcionMenu
      * @ORM\GeneratedValue(strategy="SEQUENCE")
      * @ORM\SequenceGenerator(sequenceName="blh_sub_opcion_menu_id_seq", allocationSize=1, initialValue=1)
      */
-    private $id;
+    public $id;
 
     /**
      * @var string
      *
      * @ORM\Column(name="nombre_sub_opcion", type="string", length=50, nullable=false)
      */
-    private $nombreSubOpcion;
+    public $nombreSubOpcion;
 
     /**
      * @var string
      *
      * @ORM\Column(name="url_sub_opcion", type="string", length=100, nullable=false)
      */
-    private $urlSubOpcion;
+    public $urlSubOpcion;
 
     /**
      * @var \BlhOpcionMenu

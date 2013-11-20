@@ -1,0 +1,44 @@
+{% extends 'siblhmantenimientoBundle::plantilla.html.twig' %}
+{% block javascripts %}
+    {{parent()}}
+   <script type="text/javascript" src="{{ asset('bundles/siblhmantenimiento/js/GeneraReportes/ControlMicrobiologico.js') }}" ></script>
+{% endblock %}
+   
+{% block body -%}
+ <link href="{{asset('bundles/jquery/jquery.jqGrid-4.5.4/css/ui.jqgrid.css')}}" rel="stylesheet"  type="text/css" media="all"/>  
+ 
+ <script type="text/javascript" src="{{asset('bundles/jquery/jquery.jqGrid-4.5.4/js/i18n/grid.locale-es.js')}}"></script>
+      <script type="text/javascript" src="{{asset('bundles/jquery/jquery.jqGrid-4.5.4/js/jquery.jqGrid.min.js')}}" ></script> 
+ <script type="text/javascript" src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
+      <script src="{{ path('fos_js_routing_js', {"callback": "fos.Router.setData"}) }}"></script>
+  {% block stylesheets %}
+    {{ parent() }}
+        <link href="{{ asset('bundles/siblhmantenimiento/css/form.css') }}" rel="stylesheet" type="text/css" />
+ 
+{% endblock %}   
+        <h1>Resultado de Control de calidad microbiologico</h1>
+        <div style="width:50%; margin:0 auto;">
+        
+       <form> 
+        <table   align = "center">
+            <tr><td colspan = 2 align = "center"><b>Fecha de Realizacion de Control Microbiologico</b><p></td></tr>
+            <tr><td><font color="blue"><b>Fecha Inicio</b></font></td>
+                <td><INPUT id="fechai" name = "fechai" type=text  readonly="readonly" value=0></td></tr>
+        <tr><td><font color="blue"><b>Fecha Final</b></font></td>
+                <td> <INPUT id="fechaf" name = "fechaf" type=text readonly="readonly" value=0></td></tr>
+         <tr style="visibility:hidden"><td colspan =2> <INPUT id="id" size=2 name = "blh" type=text readonly="readonly" value= " {{ id }} "></td></tr>
+        <tr style="visibility:hidden"><td colspan =2> <INPUT id="nombre"  name = "blh" type=text readonly="readonly" value= " {{ hospital[0].nombre }} "></td></tr>
+        <tr><td colspan = 2 align = "center">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <input id = "exportar_pdf4" type="submit" value="Guardar" /></td></tr>
+         
+       
+        
+        
+        
+        </table>   </form> </div>
+     
+ 
+ 
+
+
+ {% endblock %}
+

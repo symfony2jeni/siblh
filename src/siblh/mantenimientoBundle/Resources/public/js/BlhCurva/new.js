@@ -7,7 +7,7 @@
       $.noConflict();
       
      $.datepicker.setDefaults($.datepicker.regional["es"]);
-   $('input[id$="_fechaCurva"]').datepicker({ dateFormat: 'yy-MM-dd',  
+   $('input[id$="_fechaCurva"]').datepicker({ dateFormat: 'yy-mm-dd',  
                            changeMonth: true,
                            changeYear: true,
                            clearStatus: 'Borra fecha actual',  

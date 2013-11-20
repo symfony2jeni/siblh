@@ -28,11 +28,16 @@ class BlhInformacionPublicaController extends Controller
     public function indexAction()
     {
         $em = $this->getDoctrine()->getManager();
-
         $entities = $em->getRepository('siblhmantenimientoBundle:BlhInformacionPublica')->findAll();
-
+        //Obtener banco de leche//
+        
+      $userEst = $this->container->get('security.context')->getToken()->getUser()->getIdEst();
+      $query1 = $em->createQuery("SELECT e.nombre, e.direccion, e.telefono FROM siblhmantenimientoBundle:CtlEstablecimiento e WHERE e.id = $userEst");
+      $establecimiento = $query1->getResult(); 
+            
         return array(
             'entities' => $entities,
+            'hospital' => $establecimiento,
         );
     }
     /**
@@ -90,12 +95,27 @@ class BlhInformacionPublicaController extends Controller
      */
     public function newAction()
     {
+            //Obtener banco de leche//
+      $em = $this->getDoctrine()->getManager();   
+      $userEst = $this->container->get('security.context')->getToken()->getUser()->getIdEst();
+      $query1 = $em->createQuery("SELECT e.nombre, e.direccion, e.telefono FROM siblhmantenimientoBundle:CtlEstablecimiento e WHERE e.id = $userEst");
+      $establecimiento = $query1->getResult(); 
+      
+      //seteando el banco de leche al nuevo objeto//
+       $queryi = $em->createQuery("SELECT b.id FROM siblhmantenimientoBundle:BlhBancoDeLeche b WHERE b.idEstablecimiento = $userEst");
+       $id_blh = $queryi->getResult(); 
+       $codigo=$id_blh[0]['id']; 
+       $blh = $em->getRepository('siblhmantenimientoBundle:BlhBancoDeLeche')->find($codigo);
+        
+        
         $entity = new BlhInformacionPublica();
+        $entity->setIdBancoDeLeche($blh);
         $form   = $this->createCreateForm($entity);
-
+     
         return array(
             'entity' => $entity,
             'form'   => $form->createView(),
+            'hospital' => $establecimiento,
         );
     }
 
@@ -143,11 +163,17 @@ class BlhInformacionPublicaController extends Controller
 
         $editForm = $this->createEditForm($entity);
         $deleteForm = $this->createDeleteForm($id);
+         //Obtener banco de leche//
+        
+      $userEst = $this->container->get('security.context')->getToken()->getUser()->getIdEst();
+      $query1 = $em->createQuery("SELECT e.nombre, e.direccion, e.telefono FROM siblhmantenimientoBundle:CtlEstablecimiento e WHERE e.id = $userEst");
+      $establecimiento = $query1->getResult(); 
 
         return array(
             'entity'      => $entity,
             'edit_form'   => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
+            'hospital' => $establecimiento,
         );
     }
 

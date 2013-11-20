@@ -22,34 +22,35 @@
     
  <table border=0 align="center" CellSpacing="25" >
       <tr> 
-        <td align="left">{{ form_label(form.idBancoDeLeche, 'Banco de Leche') }}
-         <td> {{ form_errors(form.idBancoDeLeche) }}
-        {{ form_widget(form.idBancoDeLeche) }}
+        <td align="left" style="visibility:hidden">{{ form_label(form.idBancoDeLeche, 'Banco de Leche') }}
+          {{ form_errors(form.idBancoDeLeche) }}
+        {{ form_widget(form.idBancoDeLeche) }}</td></tr> 
              
                  
     <tr> 
-        <td align="left">{{ form_label(form.tipo, 'Tipo' )}}
-        <td> {{ form_errors(form.tipo) }}
-        {{ form_widget(form.tipo) }}
+        <td align="left">{{ form_label(form.tipo, 'Tipo documento' )}}
+         {{ form_errors(form.tipo) }}
+        {{ form_widget(form.tipo) }}<td></tr> 
         
      <tr> 
         <td align="left">{{ form_label(form.nombreDocumento, 'Titulo documento') }}
-         <td> {{ form_errors(form.nombreDocumento) }}
-        {{ form_widget(form.nombreDocumento) }}
+         {{ form_errors(form.nombreDocumento) }}
+        {{ form_widget(form.nombreDocumento) }}</td></tr> 
         
      <tr> 
         <td align="left">{{ form_label(form.fechaPublicacion, 'Fecha publicacion')}}
-         <td>{{ form_errors(form.fechaPublicacion) }}
-        {{ form_widget(form.fechaPublicacion) }}
+         {{ form_errors(form.fechaPublicacion) }}
+        {{ form_widget(form.fechaPublicacion) }}</td></tr> 
 
   {# Al escribir la plantilla, no olvidar fijar el atributo enctype.#}                          
   <tr> 
         <td colspan = '2'><form action="#" method="post" {{ form_enctype(form.file) }}>
-        {{ form_widget(form.file) }}
+        {{ form_widget(form.file) }}</td>
+                <tr><td colspan=2 align = "right" height=30  ></td></tr>
                         
   <tr>                   
-     <td colspan = '2'> <input type="submit" class= "ui-button" value="Upload Documento" />
-</form>
+     <td colspan = '2'> <input type="submit" id='boton' value="Subir Documento" /></td></tr>
+
  
 
 

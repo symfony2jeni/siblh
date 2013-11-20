@@ -15,7 +15,7 @@ $(document).ready(function() {
                                              "Jul", "Ago", "Sep", "Oct", "Nov", "Dic"]
                           });
                           
-     $('input[id$="_fechaParto"]').datepicker({ dateFormat: 'yy-MM-dd',  
+     $('input[id$="_fechaParto"]').datepicker({ dateFormat: 'yy-mm-dd',  
                            changeMonth: true,
                            changeYear: true,
                            defaultDate: '-y',
@@ -26,7 +26,7 @@ $(document).ready(function() {
                                              "Jul", "Ago", "Sep", "Oct", "Nov", "Dic"]
                           });      
                           
-    $('input[id$="_fechaPartoAnterior"]').datepicker({ dateFormat: 'yy-MM-dd',  
+    $('input[id$="_fechaPartoAnterior"]').datepicker({ dateFormat: 'yy-mm-dd',  
                            changeMonth: true,
                            changeYear: true,
                            defaultDate: null,

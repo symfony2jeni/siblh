@@ -11,7 +11,7 @@
      <script type="text/javascript" src="{{asset('bundles/jquery/jquery.jqGrid-4.5.4/js/i18n/grid.locale-es.js')}}"></script>
       <script type="text/javascript" src="{{asset('bundles/jquery/jquery.jqGrid-4.5.4/js/jquery.jqGrid.min.js')}}" ></script>
       
-<h1>Listado de reportes de donantes</h1>
+<h1>Listado de reportes de receptores</h1>
     <div align='center'>
     <table id="reportesReceptores">
         <thead>
@@ -35,14 +35,14 @@
         <tbody>
      
        <tr> 
-          <td>Censo de registro de receptores </td> 
-          <td>editar</td></tr>
+          <td>Censo de registro de receptores</td> 
+          <td><a href="{{ path('CensoReceptores') }}"><font color="blue"><u>Generar Reporte</u></font></a></td></tr>
        <tr> 
           <td>Leche despachada por receptor</td> 
           <td>editar</td></tr>
         <tr> 
           <td>Avance nutricional y complicaciones</td> 
-          <td>editar</td></tr>
+          <td><a href="{{ path('AvanceReceptor') }}"><font color="blue"><u>Generar Reporte</u></font></a></td></tr>
         <tr> 
           <td>Informacion especifica de receptor</td> 
           <td>editar</td></tr>

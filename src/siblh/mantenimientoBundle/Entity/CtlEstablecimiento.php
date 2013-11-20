@@ -20,28 +20,28 @@ class CtlEstablecimiento
      * @ORM\GeneratedValue(strategy="SEQUENCE")
      * @ORM\SequenceGenerator(sequenceName="ctl_establecimiento_id_seq", allocationSize=1, initialValue=1)
      */
-    private $id;
+    public $id;
 
     /**
      * @var string
      *
      * @ORM\Column(name="nombre", type="string", length=150, nullable=false)
      */
-    private $nombre;
+    public $nombre;
 
     /**
      * @var string
      *
      * @ORM\Column(name="direccion", type="string", length=250, nullable=false)
      */
-    private $direccion;
+    public $direccion;
 
     /**
      * @var string
      *
      * @ORM\Column(name="telefono", type="string", length=15, nullable=false)
      */
-    private $telefono;
+    public $telefono;
 
     /**
      * @var string

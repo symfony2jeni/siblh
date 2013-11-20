@@ -89,7 +89,7 @@ order by fr.codigo_frasco_recolectado;]]>
 				<textElement/>
 				<textFieldExpression><![CDATA[$F{cod}]]></textFieldExpression>
 			</textField>
-			<textField>
+			<textField pattern="###0.00">
 				<reportElement uuid="07ca81d6-0826-42a9-bc89-e78193a45cec" x="240" y="7" width="44" height="20"/>
 				<textElement/>
 				<textFieldExpression><![CDATA[$F{ml}]]></textFieldExpression>

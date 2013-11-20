@@ -11,7 +11,8 @@
      <script type="text/javascript" src="{{asset('bundles/jquery/jquery.jqGrid-4.5.4/js/i18n/grid.locale-es.js')}}"></script>
       <script type="text/javascript" src="{{asset('bundles/jquery/jquery.jqGrid-4.5.4/js/jquery.jqGrid.min.js')}}" ></script>     
     
-<h1>Listado de Solicitudes</h1>
+<h1>Listado de Solicitudes para agrupar</h1>
+<FORM method="POST" action="{{path("blhagruparsolicitudes")}}" >
 <table id="Multiselect">
 
 <thead>
@@ -47,10 +48,10 @@
 <div id="pagerMultiselect"></div>
 {#<a href="javascript:void(0)" id="agrupar" >Get Selected id's</a>#}
 
-<FORM method="POST" action="{{path("blhagruparsolicitudes")}}" >
+
    <table align = "center" >     
        <tr>
-        <td>
+        <td style="visibility:hidden">
         <INPUT  name="var" id="var" type=text size=10 ></td></tr>
        <tr><td><INPUT  id='agrupar' name="agrupar" type=submit  value="Agrupar"></td></tr>
 </table>

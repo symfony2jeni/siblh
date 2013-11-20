@@ -30,9 +30,14 @@ class BlhTemperaturaEnfriamientoController extends Controller
         $em = $this->getDoctrine()->getManager();
 
         $entities = $em->getRepository('siblhmantenimientoBundle:BlhTemperaturaEnfriamiento')->findAll();
-
+         //Obtener banco de leche//
+        
+        $userEst = $this->container->get('security.context')->getToken()->getUser()->getIdEst();
+        $query1 = $em->createQuery("SELECT e.nombre, e.direccion, e.telefono FROM siblhmantenimientoBundle:CtlEstablecimiento e WHERE e.id = $userEst");
+        $establecimiento = $query1->getResult(); 
         return array(
             'entities' => $entities,
+            'hospital' => $establecimiento,
         );
     }
     /**
@@ -125,11 +130,16 @@ class BlhTemperaturaEnfriamientoController extends Controller
 
         $editForm = $this->createEditForm($entity);
         $deleteForm = $this->createDeleteForm($id);
-
+         //Obtener banco de leche//
+        
+        $userEst = $this->container->get('security.context')->getToken()->getUser()->getIdEst();
+        $query1 = $em->createQuery("SELECT e.nombre, e.direccion, e.telefono FROM siblhmantenimientoBundle:CtlEstablecimiento e WHERE e.id = $userEst");
+        $establecimiento = $query1->getResult(); 
         return array(
             'entity'      => $entity,
             'edit_form'   => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
+             'hospital' => $establecimiento,
         );
     }
 
@@ -241,17 +251,31 @@ class BlhTemperaturaEnfriamientoController extends Controller
      */
 public function pasteurizacionAction()
     {
-        $em = $this->getDoctrine()->getManager();      
+        $em = $this->getDoctrine()->getManager();  
+            //Obtener banco de leche//        
+        $userEst = $this->container->get('security.context')->getToken()->getUser()->getIdEst();
+        $query1 = $em->createQuery("SELECT e.nombre, e.direccion, e.telefono FROM siblhmantenimientoBundle:CtlEstablecimiento e WHERE e.id = $userEst");
+        $establecimiento = $query1->getResult(); 
+        $queryb = $em->createQuery("SELECT b.id FROM siblhmantenimientoBundle:BlhBancoDeLeche b WHERE b.idEstablecimiento = $userEst");
+        $id_blh = $queryb->getResult(); 
+        $codigo=$id_blh[0]['id']; 
+         if ($codigo<10){
+        $idp='0'.$codigo;
+        $idp = (string)$idp;
+         }
+        else{$idp = (string)$codigo;}
         
         //Obteniendo lista de pacientes"  
-        $query = $em->createQuery("SELECT r.id as identificador, r.codigoPasteurizacion, r.numCiclo, r.volumenPasteurizado, r.numFrascosPasteurizados, r.fechaPasteurizacion FROM siblhmantenimientoBundle:BlhPasteurizacion r");
+        $query = $em->createQuery("SELECT r.id as identificador, r.codigoPasteurizacion, r.numCiclo, r.volumenPasteurizado, r.numFrascosPasteurizados, r.fechaPasteurizacion FROM siblhmantenimientoBundle:BlhPasteurizacion r
+                                   where substring(r.codigoPasteurizacion,1,2) = '$idp'");
         
        //echo $hisclinico[idDonante];
                 
         $pasteurizaciones  = $query->getResult();
-        
+    
         return array(
-            'pasteurizaciones' =>  $pasteurizaciones,  
+            'pasteurizaciones' =>  $pasteurizaciones, 
+            'hospital' => $establecimiento,
          
         );
         
@@ -268,13 +292,13 @@ public function pasteurizacionAction()
     public function newAction($id)
     {
         
-         $em = $this->getDoctrine()->getManager();
-        $query = $em->createQuery("SELECT r.id as identificador, r.codigoPasteurizacion, r.numCiclo, r.volumenPasteurizado, r.numFrascosPasteurizados, r.fechaPasteurizacion FROM siblhmantenimientoBundle:BlhPasteurizacion r WHERE r.id = $id "); 
-        $datos_pasteurizacion  = $query->getResult();
- $query2 = $em->createQuery("SELECT r.temperaturaE FROM siblhmantenimientoBundle:BlhTemperaturaEnfriamiento r  join r.idPasteurizacion p WHERE p.id = $id "); 
-        $temperaturas  = $query2->getResult();
+       $em = $this->getDoctrine()->getManager();
+       $query = $em->createQuery("SELECT r.id as identificador, r.codigoPasteurizacion, r.numCiclo, r.volumenPasteurizado, r.numFrascosPasteurizados, r.fechaPasteurizacion FROM siblhmantenimientoBundle:BlhPasteurizacion r WHERE r.id = $id "); 
+       $datos_pasteurizacion  = $query->getResult();
+       $query2 = $em->createQuery("SELECT r.temperaturaE FROM siblhmantenimientoBundle:BlhTemperaturaEnfriamiento r  join r.idPasteurizacion p WHERE p.id = $id "); 
+       $temperaturas  = $query2->getResult();
 
-         $pasteurizacion = $em->getRepository('siblhmantenimientoBundle:BlhPasteurizacion')->find($datos_pasteurizacion[0]['identificador']);
+       $pasteurizacion = $em->getRepository('siblhmantenimientoBundle:BlhPasteurizacion')->find($datos_pasteurizacion[0]['identificador']);
       
         if (!$datos_pasteurizacion) {
             throw $this->createNotFoundException('Unable to find MntPaciente entity');
@@ -282,15 +306,21 @@ public function pasteurizacionAction()
        
        
         
-        $entity = new BlhTemperaturaEnfriamiento();
-         $entity->setIdPasteurizacion($pasteurizacion );
-        $form   = $this->createCreateForm($entity);
-
+      $entity = new BlhTemperaturaEnfriamiento();
+      $entity->setIdPasteurizacion($pasteurizacion );
+      $form   = $this->createCreateForm($entity);
+        
+      //Obtener banco de leche//
+        
+      $userEst = $this->container->get('security.context')->getToken()->getUser()->getIdEst();
+      $query1 = $em->createQuery("SELECT e.nombre, e.direccion, e.telefono FROM siblhmantenimientoBundle:CtlEstablecimiento e WHERE e.id = $userEst");
+      $establecimiento = $query1->getResult(); 
         return array(
             'entity' => $entity,
             'form'   => $form->createView(),
             'datos_pasteurizacion' =>  $datos_pasteurizacion, 
             'temperaturas' =>  $temperaturas, 
+            'hospital' => $establecimiento,
         );
     }    
 }

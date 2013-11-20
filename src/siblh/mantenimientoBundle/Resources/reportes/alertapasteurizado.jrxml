@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="alertaprealmacenado" language="groovy" pageWidth="576" pageHeight="792" columnWidth="536" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="9ef1ee4b-570f-4f3e-8f26-8e5d4b2ebeff">
 	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="0"/>
+	<property name="ireport.y" value="172"/>
 	<queryString>
 		<![CDATA[select row_number() OVER (ORDER BY fp.codigo_frasco_procesado) as N, fp.codigo_frasco_procesado as cod,
 fp.volumen_frasco_pasteurizado as ml,
@@ -90,7 +90,7 @@ order by fp.codigo_frasco_procesado;]]>
 				<textElement/>
 				<textFieldExpression><![CDATA[$F{cod}]]></textFieldExpression>
 			</textField>
-			<textField>
+			<textField pattern="###0.00">
 				<reportElement uuid="07ca81d6-0826-42a9-bc89-e78193a45cec" x="240" y="7" width="44" height="20"/>
 				<textElement/>
 				<textFieldExpression><![CDATA[$F{ml}]]></textFieldExpression>
@@ -106,7 +106,13 @@ order by fp.codigo_frasco_procesado;]]>
 		<band height="45" splitType="Stretch"/>
 	</columnFooter>
 	<pageFooter>
-		<band height="54" splitType="Stretch"/>
+		<band height="54" splitType="Stretch">
+			<textField>
+				<reportElement uuid="9e0f56c8-320a-4a37-ad3c-69d68c40fdc7" x="486" y="24" width="34" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
 	</pageFooter>
 	<summary>
 		<band height="42" splitType="Stretch"/>

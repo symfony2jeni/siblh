@@ -30,9 +30,14 @@ class BlhAnalisisSensorialController extends Controller
         $em = $this->getDoctrine()->getManager();
 
         $entities = $em->getRepository('siblhmantenimientoBundle:BlhAnalisisSensorial')->findAll();
-
+         //Obtener banco de leche//
+              
+       $userEst = $this->container->get('security.context')->getToken()->getUser()->getIdEst();
+       $query1 = $em->createQuery("SELECT e.nombre, e.direccion, e.telefono FROM siblhmantenimientoBundle:CtlEstablecimiento e WHERE e.id = $userEst");
+        $establecimiento = $query1->getResult();  
         return array(
             'entities' => $entities,
+            'hospital' => $establecimiento,
         );
     }
     /**
@@ -101,12 +106,17 @@ class BlhAnalisisSensorialController extends Controller
         $entity = new BlhAnalisisSensorial();
         $entity->setidFrascoRecolectado($frasco);
         $form   = $this->createCreateForm($entity);
-        
+        //Obtener banco de leche//
+              
+        $userEst = $this->container->get('security.context')->getToken()->getUser()->getIdEst();
+        $query1 = $em->createQuery("SELECT e.nombre, e.direccion, e.telefono FROM siblhmantenimientoBundle:CtlEstablecimiento e WHERE e.id = $userEst");
+        $establecimiento = $query1->getResult(); 
 
         return array(
             'datos_frasco'  => $datos_frasco,
             'entity' => $entity,
             'form'   => $form->createView(),
+            'hospital' => $establecimiento,
         );
     }
 
@@ -154,11 +164,18 @@ class BlhAnalisisSensorialController extends Controller
 
         $editForm = $this->createEditForm($entity);
         $deleteForm = $this->createDeleteForm($id);
-
+          
+        //Obtener banco de leche//
+              
+        $userEst = $this->container->get('security.context')->getToken()->getUser()->getIdEst();
+        $query1 = $em->createQuery("SELECT e.nombre, e.direccion, e.telefono FROM siblhmantenimientoBundle:CtlEstablecimiento e WHERE e.id = $userEst");
+        $establecimiento = $query1->getResult(); 
+     
         return array(
             'entity'      => $entity,
             'edit_form'   => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
+             'hospital' => $establecimiento,
         );
     }
 
@@ -265,11 +282,18 @@ class BlhAnalisisSensorialController extends Controller
     public function frascosAnalisisSensorialAction()
     {
         $em = $this->getDoctrine()->getManager();
+        
+         //Obtener banco de leche//
+        
+      $userEst = $this->container->get('security.context')->getToken()->getUser()->getIdEst();
+      $query1 = $em->createQuery("SELECT e.nombre, e.direccion, e.telefono FROM siblhmantenimientoBundle:CtlEstablecimiento e WHERE e.id = $userEst");
+      $establecimiento = $query1->getResult(); 
 
         $entities = $em->getRepository('siblhmantenimientoBundle:BlhFrascoRecolectado')->findBy(array('idEstado' => 1));
 
         return array(
             'entities' => $entities,
+            'hospital' => $establecimiento,
         );
     }
     

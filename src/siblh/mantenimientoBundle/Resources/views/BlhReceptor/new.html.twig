@@ -90,7 +90,7 @@ elemento.style.visibility = visible ? "visible" : "hidden";
         {{ form_errors(form.procedencia) }}
         {{ form_widget(form.procedencia) }} </td></tr>
     <tr>
-    <td colspan = 2 align = left><font color="red">*</font>
+    <td colspan = 2 align = left style="visibility:hidden"><font color="red">*</font>
         {{ form_label(form.idBancoDeLeche) }}
         {{ form_errors(form.idBancoDeLeche) }}
         {{ form_widget(form.idBancoDeLeche, {'attr':{'required': 'true'} }) }} </td>  

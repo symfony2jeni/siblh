@@ -1,5 +1,14 @@
 {% extends 'siblhmantenimientoBundle::plantilla.html.twig' %}
+{% block stylesheets %}
+    {{ parent() }}
+        <link href="{{ asset('bundles/siblhmantenimiento/css/form.css') }}" rel="stylesheet" type="text/css" />
+{% endblock %}
 
+{% block javascripts %}
+    {{parent()}}
+    <script type="text/javascript" src="{{ asset('bundles/siblhmantenimiento/js/BlhFrascoRecolectado/edit.js') }}" ></script>
+
+{% endblock %}
 {% block body -%}
     <h1>Editar Frasco Recolectado</h1>
     {{ form_start(edit_form) }}

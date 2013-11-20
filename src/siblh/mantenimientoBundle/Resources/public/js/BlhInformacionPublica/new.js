@@ -6,7 +6,7 @@
 
 
  $(document).ready(function() { 
-      $('button').button(); 
+     
       $.noConflict();
       
      $.datepicker.setDefaults($.datepicker.regional["es"]);
@@ -21,7 +21,7 @@
                                              "Jul", "Ago", "Sep", "Oct", "Nov", "Dic"]
                           });
 
-   
+    $('#boton').button(); 
     //Opciones del validador
     var optionsRed = { 
         classNamePrefix: 'bvalidator_red_', 

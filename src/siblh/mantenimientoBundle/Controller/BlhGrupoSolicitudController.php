@@ -32,9 +32,15 @@ class BlhGrupoSolicitudController extends Controller
         $em = $this->getDoctrine()->getManager();
 
         $entities = $em->getRepository('siblhmantenimientoBundle:BlhGrupoSolicitud')->findAll();
+        
+              //Obtener banco de leche//  
+      $userEst = $this->container->get('security.context')->getToken()->getUser()->getIdEst();
+      $query1 = $em->createQuery("SELECT e.nombre, e.direccion, e.telefono FROM siblhmantenimientoBundle:CtlEstablecimiento e WHERE e.id = $userEst");
+      $establecimiento = $query1->getResult(); 
 
         return array(
             'entities' => $entities,
+            'hospital' => $establecimiento,
         );
     }
     /**
@@ -145,11 +151,18 @@ class BlhGrupoSolicitudController extends Controller
 
         $editForm = $this->createEditForm($entity);
         $deleteForm = $this->createDeleteForm($id);
+        
+         //Obtener banco de leche//  
+      $userEst = $this->container->get('security.context')->getToken()->getUser()->getIdEst();
+      $query1 = $em->createQuery("SELECT e.nombre, e.direccion, e.telefono FROM siblhmantenimientoBundle:CtlEstablecimiento e WHERE e.id = $userEst");
+      $establecimiento = $query1->getResult(); 
+           
 
         return array(
             'entity'      => $entity,
             'edit_form'   => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
+             'hospital' => $establecimiento,
         );
     }
 
@@ -265,6 +278,11 @@ class BlhGrupoSolicitudController extends Controller
         $id_blh = $query1->getResult();
         $codigo=$id_blh[0]['id'];
        // $codigo=implode("", $id_blh);
+        
+           //Obtener banco de leche//
+        $userEst = $this->container->get('security.context')->getToken()->getUser()->getIdEst();
+        $query2 = $em->createQuery("SELECT e.nombre, e.direccion, e.telefono FROM siblhmantenimientoBundle:CtlEstablecimiento e WHERE e.id = $userEst");
+        $establecimiento = $query2->getResult(); 
 
         if ($codigo<10){
         $id='0'.$codigo;}
@@ -277,6 +295,7 @@ class BlhGrupoSolicitudController extends Controller
 
         return array(
             'solicitudes' => $solicitudes,
+                'hospital' => $establecimiento,
         );
     }
      

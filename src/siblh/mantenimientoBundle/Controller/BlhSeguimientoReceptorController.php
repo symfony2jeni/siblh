@@ -34,10 +34,17 @@ class BlhSeguimientoReceptorController extends Controller
         $query = $em->createQuery("SELECT s.id,s.fechaSeguimiento,s.semana,s.tallaReceptor,s.gananciaDiaTalla,s.pesoSeguimiento,s.gananciaDiaPeso,s.pcSeguimiento,s.complicaciones,p.primerNombre as nombre1, p.segundoNombre as nombre2, p.tercerNombre as nombre3, p.primerApellido as apellido1, p.segundoApellido as apellido2 FROM siblhmantenimientoBundle:BlhSeguimientoReceptor s JOIN s.idReceptor r JOIN r.idPaciente p");
         
         $entities  = $query->getResult();
+        
+          //Obtener banco de leche//
+              
+       $userEst = $this->container->get('security.context')->getToken()->getUser()->getIdEst();
+        $query1 = $em->createQuery("SELECT e.nombre, e.direccion, e.telefono FROM siblhmantenimientoBundle:CtlEstablecimiento e WHERE e.id = $userEst");
+        $establecimiento = $query1->getResult(); 
 
         return array(
            
             'entities' => $entities,
+            'hospital' => $establecimiento,
         );
     }
     /**
@@ -148,11 +155,16 @@ class BlhSeguimientoReceptorController extends Controller
 
         $editForm = $this->createEditForm($entity);
         $deleteForm = $this->createDeleteForm($id);
+        
+         $userEst = $this->container->get('security.context')->getToken()->getUser()->getIdEst();
+        $query1 = $em->createQuery("SELECT e.nombre, e.direccion, e.telefono FROM siblhmantenimientoBundle:CtlEstablecimiento e WHERE e.id = $userEst");
+        $establecimiento = $query1->getResult(); 
 
         return array(
             'entity'      => $entity,
             'edit_form'   => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
+            'hospital' => $establecimiento,
         );
     }
 
@@ -267,8 +279,15 @@ class BlhSeguimientoReceptorController extends Controller
         
         $receptores_seguimiento  = $query->getResult();
         
+         //Obtener banco de leche//
+        
+      $userEst = $this->container->get('security.context')->getToken()->getUser()->getIdEst();
+      $query1 = $em->createQuery("SELECT e.nombre, e.direccion, e.telefono FROM siblhmantenimientoBundle:CtlEstablecimiento e WHERE e.id = $userEst");
+      $establecimiento = $query1->getResult(); 
+        
         return array(
-            'receptores_seguimiento' => $receptores_seguimiento,         
+            'receptores_seguimiento' => $receptores_seguimiento,     
+            'hospital' => $establecimiento,
         );
         
     }
@@ -291,6 +310,13 @@ class BlhSeguimientoReceptorController extends Controller
         $datos_receptor  = $query->getResult();
         
         $receptor = $em->getRepository('siblhmantenimientoBundle:BlhReceptor')->find($id);
+        
+        
+         //Obtener banco de leche//
+        
+      $userEst = $this->container->get('security.context')->getToken()->getUser()->getIdEst();
+      $query1 = $em->createQuery("SELECT e.nombre, e.direccion, e.telefono FROM siblhmantenimientoBundle:CtlEstablecimiento e WHERE e.id = $userEst");
+      $establecimiento = $query1->getResult(); 
      
         
         if (!$datos_receptor) {
@@ -307,6 +333,7 @@ class BlhSeguimientoReceptorController extends Controller
             'entity' => $entity,
             'form'   => $form->createView(),
             'datos_receptor' => $datos_receptor,
+            'hospital' => $establecimiento,
         );
     }
     

@@ -1,4 +1,11 @@
 $(document).ready(function() {
+    
+    $('#reporte').click(function(){
+      var url="/app_dev.php/reportes/reporte/lechedonada/LecheDonada/pdf";
+       window.open(url,'_blank');
+       return false;
+    });
+    
 
  tableToGrid("#listado_frascos", {
         pager : '#pagerfrascos',

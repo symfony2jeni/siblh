@@ -26,7 +26,7 @@
                 <th>Hospital&nbsp;de&nbsp;seguimiento</th>
                 <th>Fecha&nbsp;de&nbsp;egreso</th>
                 <th>Estancia&nbsp;hospitalaria</th>
-                <th>Actions</th>
+                <th>Accion</th>
             </tr>
         </thead>
         <tbody>
@@ -42,7 +42,7 @@
                 <td>{{ entity.hospitalSeguimientoEgreso }}</td>
                 <td>{% if entity.fechaEgreso %}{{ entity.fechaEgreso|date('Y-m-d H:i:s') }}{% endif %}</td>
                 <td>{{ entity.estanciaHospitalaria }}</td>
-                <td><a href="{{ path('blhegresoreceptor_edit', { 'id': entity.id }) }}">edit</a>
+                <td><a href="{{ path('blhegresoreceptor_edit', { 'id': entity.id }) }}"><font color="blue"><u>Editar</u></font></a></td>
                    
             </tr>
         {% endfor %}

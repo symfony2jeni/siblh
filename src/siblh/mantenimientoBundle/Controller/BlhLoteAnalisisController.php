@@ -31,9 +31,14 @@ class BlhLoteAnalisisController extends Controller
 
         $entities = $em->getRepository('siblhmantenimientoBundle:BlhLoteAnalisis')->findAll();
        // $Lotes = $em->getRepository('siblhmantenimientoBundle:BlhLoteAnalisis')->findOneBy(array('carnet' => 'PA06010'));
-
+        
+           //Obtener banco de leche//
+        $userEst = $this->container->get('security.context')->getToken()->getUser()->getIdEst();
+        $query2 = $em->createQuery("SELECT e.nombre, e.direccion, e.telefono FROM siblhmantenimientoBundle:CtlEstablecimiento e WHERE e.id = $userEst");
+        $establecimiento = $query2->getResult(); 
         return array(
             'entities' => $entities,
+            'hospital' => $establecimiento,
         );
     }
     /**
@@ -134,12 +139,16 @@ class BlhLoteAnalisisController extends Controller
          $em = $this->getDoctrine()->getManager();
          $frascos = $em->getRepository('siblhmantenimientoBundle:BlhFrascoRecolectado')->findBy(array('idEstado' => 1,  'idLoteAnalisis'=>NULL));
        
-     
+              //Obtener banco de leche//
+        $userEst = $this->container->get('security.context')->getToken()->getUser()->getIdEst();
+        $query2 = $em->createQuery("SELECT e.nombre, e.direccion, e.telefono FROM siblhmantenimientoBundle:CtlEstablecimiento e WHERE e.id = $userEst");
+        $establecimiento = $query2->getResult(); 
 
         return array(
             'entity' => $entity,
             'form'   => $form->createView(),
             'frascos'=>$frascos,
+            'hospital' => $establecimiento,
         );
      }
     
@@ -188,11 +197,17 @@ class BlhLoteAnalisisController extends Controller
 
         $editForm = $this->createEditForm($entity);
         $deleteForm = $this->createDeleteForm($id);
+        
+           //Obtener banco de leche//
+        $userEst = $this->container->get('security.context')->getToken()->getUser()->getIdEst();
+        $query2 = $em->createQuery("SELECT e.nombre, e.direccion, e.telefono FROM siblhmantenimientoBundle:CtlEstablecimiento e WHERE e.id = $userEst");
+        $establecimiento = $query2->getResult(); 
 
         return array(
             'entity'      => $entity,
             'edit_form'   => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
+            'hospital' => $establecimiento,
         );
     }
 

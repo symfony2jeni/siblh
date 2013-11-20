@@ -1,10 +1,60 @@
 
 {% extends 'siblhmantenimientoBundle::plantilla.html.twig'%}
+{% block javascripts %}
+    {{parent()}}
+   <script type="text/javascript" src="{{ asset('bundles/siblhmantenimiento/js/Default/index.js') }}" ></script>
+{% endblock %}
 
 {% block body %}
 
 
 <h1>¡¡¡¡¡ Bienvenido !!!!!</h1>
 
+
+
+
+<FORM> 
+   <table align = "center" >
+       
+       <tr style="visibility:hidden">
+       <td>Numero</td>
+        <td>
+        <INPUT id = "1" type=text disabled="disabled" size=10 readonly="readonly" value= " {{ resultado }} "></td></tr> 
+   
+   </table>
+     
+</form>
+
+<table>
+    <tr style="visibility:hidden"> <td>
+<div id="dialog-message" title="Alerta de vencimiento">
+  <p>
+    <span class="ui-icon ui-icon-alert" style="float: left; margin: 0 7px 50px 0;"></span>
+    Frascos de leche prealmacenada proximos a vencerse.
+  </p>
+   <a href="{{ path('mostrar_alerta',{'report_name':'AlertaPrealmacenado','report_format':'pdf'})}}" id="reporte"><font color="blue" size = "2" face = "Comic Sans MS"> Ver reporte de frascos prealmacenados</font></a>
+
+  
+</div>
+                    </td>
+ </tr>
+ </table>
+
+
+<table>
+    <tr style="visibility:hidden"> <td>
+<div id="dialog-message2" title="Alerta de vencimiento">
+  <p>
+    <span class="ui-icon ui-icon-alert" style="float: left; margin: 0 7px 50px 0;"></span>
+    Frascos de leche pasteurizados proximos a vencerse.
+  </p>
+   <a href="{{ path('mostrar_alerta2',{'report_name':'AlertaPasteurizado','report_format':'pdf'})}}" id="reporte2"><font color="blue" size = "2" face = "Comic Sans MS"> Ver reporte de frascos pasteurizados</font></a>
+
+  
+</div>
+                    </td>
+ </tr>
+ </table>
+     
 
 {% endblock %}

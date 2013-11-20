@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="prueba" language="groovy" pageWidth="1440" pageHeight="792" columnWidth="1400" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="c04c4cb8-4181-4d71-9432-68e5d2cd66d8">
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="censodonante" language="groovy" pageWidth="1440" pageHeight="792" columnWidth="1400" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="c04c4cb8-4181-4d71-9432-68e5d2cd66d8">
 	<property name="ireport.zoom" value="1.0"/>
-	<property name="ireport.x" value="140"/>
-	<property name="ireport.y" value="0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="49"/>
 	<parameter name="fechai" class="java.lang.String">
 		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
 	</parameter>
@@ -13,7 +13,7 @@ dt.edad, dt.procedencia, fr.volumen_recolectado, fr.onz_recolectado,
 e.nombre_estado as Estado, dn.fecha_donacion::date+'15 days'::interval  as fecha_vencimiento
 from blh_donante dt, blh_donacion dn, blh_frasco_recolectado fr, blh_estado e
 where dn.id_donante = dt.id and fr.id_donacion = dn.id
-and e.id = fr.id_estado and dt.primer_nombre = $P{fechai}
+and e.id = fr.id_estado and dn.fecha_donacion >= to_date($P{fechai}, 'DD-MM-YYYY')
 order by dt.codigo_donante;]]>
 	</queryString>
 	<field name="row_number" class="java.lang.Long"/>
@@ -51,7 +51,7 @@ order by dt.codigo_donante;]]>
 	<pageHeader>
 		<band height="35" splitType="Stretch">
 			<textField>
-				<reportElement uuid="9e42d3ce-69b0-4464-96a3-9e808dc5d5fa" x="234" y="14" width="100" height="20"/>
+				<reportElement uuid="8eaa42ae-8ce2-4f15-aefe-4349a8611eaa" x="274" y="6" width="100" height="20"/>
 				<textElement/>
 				<textFieldExpression><![CDATA[$P{fechai}]]></textFieldExpression>
 			</textField>
@@ -125,7 +125,7 @@ order by dt.codigo_donante;]]>
 		</band>
 	</columnHeader>
 	<detail>
-		<band height="100" splitType="Stretch">
+		<band height="20" splitType="Stretch">
 			<textField isStretchWithOverflow="true">
 				<reportElement uuid="71f7cdbc-1130-4f0c-b2a1-74ceaea5d79e" x="10" y="0" width="110" height="15"/>
 				<textElement/>

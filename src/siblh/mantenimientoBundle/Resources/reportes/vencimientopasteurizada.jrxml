@@ -2,13 +2,52 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="vencimientoprealmacenada" language="groovy" pageWidth="720" pageHeight="792" columnWidth="680" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="a235e65f-fc70-45be-967f-452266abf6cd">
 	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="27"/>
+	<property name="ireport.y" value="0"/>
+	<style name="table">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<subDataset name="New Dataset 1" uuid="e8af777e-1a8e-440c-bd92-34598f6558bd">
+		<queryString>
+			<![CDATA[select row_number() OVER (ORDER BY fp.codigo_frasco_procesado) as N, fp.codigo_frasco_procesado as cod, fp.volumen_frasco_pasteurizado as ml,
+fp.volumen_frasco_pasteurizado * 0.033814 as onz, fp.acidez_total as acidez, fp.kcalorias_totales as kc,
+p.fecha_pasteurizacion::date+'6 month'::interval  as venci
+from blh_frasco_procesado fp, blh_pasteurizacion p
+where fp.id_pasteurizacion = p.id
+and fp.id_estado = 2;]]>
+		</queryString>
+		<field name="n" class="java.lang.Long"/>
+		<field name="cod" class="java.lang.String"/>
+		<field name="ml" class="java.math.BigDecimal"/>
+		<field name="onz" class="java.math.BigDecimal"/>
+		<field name="acidez" class="java.math.BigDecimal"/>
+		<field name="kc" class="java.math.BigDecimal"/>
+		<field name="venci" class="java.sql.Timestamp"/>
+	</subDataset>
 	<queryString>
 		<![CDATA[select row_number() OVER (ORDER BY fp.codigo_frasco_procesado) as N, fp.codigo_frasco_procesado as cod, fp.volumen_frasco_pasteurizado as ml,
 fp.volumen_frasco_pasteurizado * 0.033814 as onz, fp.acidez_total as acidez, fp.kcalorias_totales as kc,
 p.fecha_pasteurizacion::date+'6 month'::interval  as venci
 from blh_frasco_procesado fp, blh_pasteurizacion p
-where fp.id_pasteurizacion = p.id;]]>
+where fp.id_pasteurizacion = p.id
+and fp.id_estado = 2
+order by p.fecha_pasteurizacion]]>
 	</queryString>
 	<field name="n" class="java.lang.Long"/>
 	<field name="cod" class="java.lang.String"/>
@@ -23,21 +62,21 @@ where fp.id_pasteurizacion = p.id;]]>
 	<title>
 		<band height="127" splitType="Stretch">
 			<staticText>
-				<reportElement uuid="12df2c9b-d1ed-4131-9543-e77010c2221f" x="231" y="14" width="182" height="24"/>
+				<reportElement uuid="12df2c9b-d1ed-4131-9543-e77010c2221f" x="240" y="14" width="182" height="24"/>
 				<textElement>
 					<font fontName="Comic Sans MS" size="14"/>
 				</textElement>
 				<text><![CDATA[MINISTERIO DE SALUD]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="f7af9109-a2b6-4918-b77c-b7d627f54622" x="184" y="62" width="322" height="24"/>
+				<reportElement uuid="f7af9109-a2b6-4918-b77c-b7d627f54622" x="193" y="62" width="322" height="24"/>
 				<textElement>
 					<font fontName="Comic Sans MS" size="14"/>
 				</textElement>
 				<text><![CDATA[VENCIMIENTO DE LECHE PASTEURIZADA]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="684f9903-6ede-4455-bedc-972fc1f01fcd" x="216" y="38" width="211" height="24"/>
+				<reportElement uuid="684f9903-6ede-4455-bedc-972fc1f01fcd" x="225" y="38" width="211" height="24"/>
 				<textElement>
 					<font fontName="Comic Sans MS" size="14"/>
 				</textElement>
@@ -48,7 +87,7 @@ where fp.id_pasteurizacion = p.id;]]>
 				<imageExpression><![CDATA["/home/jeni/NetBeansProjects/siblh/src/siblh/mantenimientoBundle/Resources/reportes/blh.jpg"]]></imageExpression>
 			</image>
 			<image>
-				<reportElement uuid="e9e9021a-b20e-4b64-98e9-15819b985e29" x="513" y="8" width="158" height="101"/>
+				<reportElement uuid="e9e9021a-b20e-4b64-98e9-15819b985e29" x="519" y="8" width="158" height="101"/>
 				<imageExpression><![CDATA["/home/jeni/NetBeansProjects/siblh/src/siblh/mantenimientoBundle/Resources/reportes/minsal2.jpg"]]></imageExpression>
 			</image>
 		</band>
@@ -57,145 +96,145 @@ where fp.id_pasteurizacion = p.id;]]>
 		<band height="35" splitType="Stretch"/>
 	</pageHeader>
 	<columnHeader>
-		<band height="67" splitType="Stretch">
-			<staticText>
-				<reportElement uuid="b5b5c9bf-38f9-44eb-a162-12e2ee610176" x="11" y="45" width="24" height="14"/>
-				<textElement>
-					<font size="12" isBold="true"/>
-				</textElement>
-				<text><![CDATA[N.]]></text>
-			</staticText>
-			<staticText>
-				<reportElement uuid="4d6fd5e7-a50c-489c-920e-ef9b93248226" x="50" y="45" width="61" height="14"/>
-				<textElement>
-					<font size="12" isBold="true"/>
-				</textElement>
-				<text><![CDATA[Codigo]]></text>
-			</staticText>
-			<staticText>
-				<reportElement uuid="41bc7bc1-2c1a-4f50-a223-ce917bfada5e" x="-344" y="47" width="48" height="20"/>
-				<textElement/>
-				<text><![CDATA[Codigo]]></text>
-			</staticText>
-			<staticText>
-				<reportElement uuid="746905da-516e-4e0b-b480-2e12fd3426dd" x="-344" y="47" width="48" height="20"/>
-				<textElement/>
-				<text><![CDATA[Codigo]]></text>
-			</staticText>
-			<staticText>
-				<reportElement uuid="469f52cf-4f0c-41e8-93ce-03810b178380" x="-344" y="47" width="48" height="20"/>
-				<textElement/>
-				<text><![CDATA[Codigo]]></text>
-			</staticText>
-			<staticText>
-				<reportElement uuid="b3d76031-b7c1-44a6-aa02-c80e3b4886ce" x="-383" y="53" width="24" height="14"/>
-				<textElement/>
-				<text><![CDATA[N.]]></text>
-			</staticText>
-			<staticText>
-				<reportElement uuid="f3689b32-d46f-4faf-aeb1-fd175b1668f9" x="129" y="36" width="57" height="14"/>
-				<textElement>
-					<font size="12" isBold="true"/>
-				</textElement>
-				<text><![CDATA[Volumen]]></text>
-			</staticText>
-			<staticText>
-				<reportElement uuid="3dbab460-788b-4c82-bd69-a97fa70b5290" x="204" y="32" width="68" height="15"/>
-				<textElement>
-					<font size="12" isBold="true"/>
-				</textElement>
-				<text><![CDATA[Volumen]]></text>
-			</staticText>
-			<staticText>
-				<reportElement uuid="fc765a08-7c51-458e-8b4d-2a46ef614663" x="215" y="50" width="41" height="16"/>
-				<textElement>
-					<font size="12" isBold="true"/>
-				</textElement>
-				<text><![CDATA[onz]]></text>
-			</staticText>
-			<staticText>
-				<reportElement uuid="1a06c27c-ea12-4cfa-83dd-8163e6f588d3" x="287" y="42" width="101" height="15"/>
-				<textElement>
-					<font size="12" isBold="true"/>
-				</textElement>
-				<text><![CDATA[Acidez Dornic]]></text>
-			</staticText>
-			<staticText>
-				<reportElement uuid="599bd2c0-4fbe-43b3-a734-ca1e81ee4440" x="399" y="45" width="72" height="14"/>
-				<textElement>
-					<font size="12" isBold="true"/>
-				</textElement>
-				<text><![CDATA[Kcalorias]]></text>
-			</staticText>
-			<staticText>
-				<reportElement uuid="7d2e5190-e1b7-4237-abad-95907e9de2a9" x="486" y="45" width="163" height="16"/>
-				<textElement>
-					<font size="12" isBold="true"/>
-				</textElement>
-				<text><![CDATA[Fecha de vencimiento]]></text>
-			</staticText>
-			<staticText>
-				<reportElement uuid="ad27166c-9e9c-4226-bf56-22db50ec9cff" x="146" y="50" width="23" height="14"/>
-				<textElement>
-					<font size="12" isBold="true"/>
-				</textElement>
-				<text><![CDATA[ml]]></text>
-			</staticText>
+		<band height="159" splitType="Stretch">
+			<componentElement>
+				<reportElement uuid="0c470c4d-9f9d-4a46-8d46-5b0982a6cf88" key="table" style="table" x="15" y="6" width="661" height="75"/>
+				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
+					<datasetRun subDataset="New Dataset 1" uuid="6a6df9cc-0714-4d72-99ba-5b645df44452">
+						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+					</datasetRun>
+					<jr:column width="61" uuid="0001e6fc-1f76-4251-a03b-3bdb18185daf">
+						<jr:columnHeader style="table_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement uuid="ce4176c3-5d56-4abc-a645-23d8d3600fa6" x="13" y="4" width="26" height="24"/>
+								<textElement>
+									<font size="12" isBold="true"/>
+								</textElement>
+								<text><![CDATA[N.]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="table_TD" height="20" rowSpan="1">
+							<textField>
+								<reportElement uuid="a51443ff-1fd0-4b84-b4ea-a566fdeb6f32" x="19" y="0" width="33" height="20"/>
+								<textElement/>
+								<textFieldExpression><![CDATA[$F{n}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="118" uuid="4325a93f-9aef-4831-a682-64ab08b686f8">
+						<jr:columnHeader style="table_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement uuid="c42ef127-64bc-4680-8097-da5bd84c7765" x="4" y="4" width="109" height="24"/>
+								<textElement>
+									<font size="12" isBold="true"/>
+								</textElement>
+								<text><![CDATA[Codigo Frasco]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="table_TD" height="20" rowSpan="1">
+							<textField>
+								<reportElement uuid="7bae8dc8-d602-4ccb-8fbe-017ef7dcb8ea" x="0" y="0" width="113" height="20"/>
+								<textElement/>
+								<textFieldExpression><![CDATA[$F{cod}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="76" uuid="0d96e4ab-d736-45fb-94ad-aae50b59e44a">
+						<jr:columnHeader style="table_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement uuid="d7a81e6e-aaa5-40bc-9177-1e5334f637db" x="0" y="0" width="71" height="30"/>
+								<textElement textAlignment="Center">
+									<font size="12" isBold="true"/>
+								</textElement>
+								<text><![CDATA[Volumen (ml)]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="table_TD" height="20" rowSpan="1">
+							<textField>
+								<reportElement uuid="926f341c-3c41-4a9c-8c58-2d9c100ef64f" x="0" y="0" width="71" height="20"/>
+								<textElement/>
+								<textFieldExpression><![CDATA[$F{ml}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="78" uuid="a7a2c19b-99e1-4263-b26b-51fddc740943">
+						<jr:columnHeader style="table_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement uuid="1c26e51b-6bef-418f-a54b-13dea5a18b5b" x="0" y="0" width="69" height="30"/>
+								<textElement textAlignment="Center">
+									<font size="12" isBold="true"/>
+								</textElement>
+								<text><![CDATA[Volumen (onz)]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="table_TD" height="20" rowSpan="1">
+							<textField>
+								<reportElement uuid="df92c584-9d16-4f3c-9406-e4f511433ec5" x="0" y="0" width="69" height="20"/>
+								<textElement/>
+								<textFieldExpression><![CDATA[$F{onz}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="90" uuid="ed9267bc-6a98-431e-b86f-4523aceb697e">
+						<jr:columnHeader style="table_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement uuid="16391231-a048-4f57-9ff9-e1e0ca6476b4" x="13" y="5" width="55" height="19"/>
+								<textElement>
+									<font size="12" isBold="true"/>
+								</textElement>
+								<text><![CDATA[Acidez]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="table_TD" height="20" rowSpan="1">
+							<textField>
+								<reportElement uuid="d96ab786-2d48-4b33-aed5-d84ec374f00e" x="0" y="0" width="90" height="20"/>
+								<textElement/>
+								<textFieldExpression><![CDATA[$F{acidez}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="107" uuid="1c55b7d8-a45a-4a41-b2b6-7e507fd82467">
+						<jr:columnHeader style="table_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement uuid="0f8f3aad-3520-4e48-a33c-ade7326d0696" x="9" y="6" width="90" height="24"/>
+								<textElement>
+									<font size="12" isBold="true"/>
+								</textElement>
+								<text><![CDATA[Kilocalorias]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="table_TD" height="20" rowSpan="1">
+							<textField>
+								<reportElement uuid="45d75026-bb97-4c9f-8a52-332b60e85bbe" x="0" y="0" width="90" height="20"/>
+								<textElement/>
+								<textFieldExpression><![CDATA[$F{kc}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="108" uuid="d089064c-532b-438a-9e72-9a62afc4838a">
+						<jr:columnHeader style="table_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement uuid="f284cece-f232-4a6b-ac39-381faee2076f" x="0" y="0" width="108" height="30"/>
+								<textElement textAlignment="Center">
+									<font size="12" isBold="true"/>
+								</textElement>
+								<text><![CDATA[Fecha de Vencimiento]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="table_TD" height="20" rowSpan="1">
+							<textField>
+								<reportElement uuid="f698c88d-0707-4498-8ff5-4d18edab9124" x="0" y="0" width="90" height="20"/>
+								<textElement/>
+								<textFieldExpression><![CDATA[$F{venci}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+				</jr:table>
+			</componentElement>
 		</band>
 	</columnHeader>
 	<detail>
-		<band height="34" splitType="Stretch">
-			<textField>
-				<reportElement uuid="27cb60fa-8e9c-4a76-974b-ea7f48ce431f" x="9" y="6" width="35" height="15"/>
-				<textElement/>
-				<textFieldExpression><![CDATA[$F{n}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement uuid="d1338059-876f-4f59-9e08-16f1a72cdb58" x="-382" y="17" width="35" height="15"/>
-				<textElement/>
-				<textFieldExpression><![CDATA[$F{n}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement uuid="054f7811-48e9-4126-94b7-85b8895e32ca" x="-382" y="17" width="35" height="15"/>
-				<textElement/>
-				<textFieldExpression><![CDATA[$F{n}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement uuid="52346a67-7db9-4073-94a2-8340bc5c41b7" x="54" y="4" width="45" height="18"/>
-				<textElement/>
-				<textFieldExpression><![CDATA[$F{cod}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement uuid="af1a6f27-c987-468b-aa80-80ce12289488" x="-313" y="14" width="100" height="20"/>
-				<textElement/>
-				<textFieldExpression><![CDATA[]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement uuid="4c0e9d68-2331-46f2-b441-c0cb39fefef4" x="127" y="6" width="57" height="16"/>
-				<textElement/>
-				<textFieldExpression><![CDATA[$F{ml}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement uuid="62429b08-0fc4-4929-b261-5a888c6b24a5" x="214" y="3" width="46" height="16"/>
-				<textElement/>
-				<textFieldExpression><![CDATA[$F{onz}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement uuid="65b20332-9af1-4bfc-8f52-50cec03c4db0" x="296" y="3" width="59" height="16"/>
-				<textElement/>
-				<textFieldExpression><![CDATA[$F{acidez}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement uuid="4b5b49b0-336c-4ef2-827b-4ba99bb8bb63" x="399" y="5" width="40" height="14"/>
-				<textElement/>
-				<textFieldExpression><![CDATA[$F{kc}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement uuid="8ba26303-a851-413f-867b-46745645b7aa" x="506" y="4" width="60" height="15"/>
-				<textElement/>
-				<textFieldExpression><![CDATA[$F{venci}]]></textFieldExpression>
-			</textField>
-		</band>
+		<band height="34" splitType="Stretch"/>
 	</detail>
 	<columnFooter>
 		<band height="45" splitType="Stretch"/>

@@ -10,9 +10,12 @@
  
  <script type="text/javascript" src="{{asset('bundles/jquery/jquery.jqGrid-4.5.4/js/i18n/grid.locale-es.js')}}"></script>
       <script type="text/javascript" src="{{asset('bundles/jquery/jquery.jqGrid-4.5.4/js/jquery.jqGrid.min.js')}}" ></script> 
+ <script type="text/javascript" src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
+      <script src="{{ path('fos_js_routing_js', {"callback": "fos.Router.setData"}) }}"></script>
+     
+     
 
- <a href="{{ path('mostrar_reporte',{'report_name':'Prueba','report_format':'pdf'})}}" id="reporte"> Reporte </a>
-    <h1>BlhDonante list</h1>
+ <h1>Listado de Donantes</h1>
 
     <table id = "listado_donantes">
         <thead>
