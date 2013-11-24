@@ -22,19 +22,19 @@
     <table align='center'>
     
 <tr>
-    <tr><td align='right'><font color="red">*</font>{{ form_label(edit_form.fechaSeguimiento,'Fecha') }}{{ form_widget(edit_form.fechaSeguimiento) }}</td></tr>
+    <tr><td align='right'><font color="red">*</font>{{ form_label(edit_form.fechaSeguimiento,'Fecha') }}{{ form_widget(edit_form.fechaSeguimiento, {'attr':{ 'readonly': 'true', 'title': 'Dar clic y seleccionar la fecha de seguimiento' } }) }}</td></tr>
     <tr><td colspan=2 align = "right" height=10  ></td></tr>
-    <tr><td align='right'><font color="red">*</font>{{ form_label(edit_form.semana) }}{{ form_widget(edit_form.semana) }}</td></tr>
+    <tr><td align='right'><font color="red">*</font>{{ form_label(edit_form.semana) }}{{ form_widget(edit_form.semana, { 'attr': {'title': 'Por favor ingrese la semana de seguimiento, ejemplo: 1, 2, 3, etc.'} }) }}</td></tr>
     <tr><td colspan=2 align = "right" height=10  ></td></tr>
-    <tr><td align='right'><font color="red">*</font>{{ form_label(edit_form.pcSeguimiento,'Perímetro cefálico(cm)') }}{{ form_widget(edit_form.pcSeguimiento) }}</td></tr>
+    <tr><td align='right'><font color="red">*</font>{{ form_label(edit_form.pcSeguimiento,'Perímetro cefálico(cm)') }}{{ form_widget(edit_form.pcSeguimiento,  { 'attr': {'title': 'Por favor ingrese el perímetro cefálico, entre 20 y 40 cm'} }) }}</td></tr>
     <tr><td colspan=2 align = "right" height=10  ></td></tr>
-    <tr><td align='right'><font color="red">*</font>{{ form_label(edit_form.pesoSeguimiento,'Peso(g)') }}{{ form_widget(edit_form.pesoSeguimiento) }}</td></tr>
+    <tr><td align='right'><font color="red">*</font>{{ form_label(edit_form.pesoSeguimiento,'Peso(g)') }}{{ form_widget(edit_form.pesoSeguimiento, { 'attr': {'title': 'Por favor ingrese el peso, entre 400 y 2500 g'} }) }}</td></tr>
     <tr><td colspan=2 align = "right" height=10  ></td></tr>
-    <tr><td align='right'><font color="red">*</font>{{ form_label(edit_form.gananciaDiaPeso, ' Ganancia de peso por día(g) ') }}{{ form_widget(edit_form.gananciaDiaPeso) }}</td></tr>
+    <tr><td align='right'><font color="red">*</font>{{ form_label(edit_form.gananciaDiaPeso, ' Ganancia de peso por día(g) ') }}{{ form_widget(edit_form.gananciaDiaPeso,{ 'attr': {'title': 'Por favor ingrese la ganancia de peso, entre 0 y 100 g'} }) }}</td></tr>
     <tr><td colspan=2 align = "right" height=10  ></td></tr>
-    <tr><td align='right'><font color="red">*</font>{{ form_label(edit_form.tallaReceptor,'Talla(cm)') }}{{ form_widget(edit_form.tallaReceptor) }}</td></tr>
+    <tr><td align='right'><font color="red">*</font>{{ form_label(edit_form.tallaReceptor,'Talla(cm)') }}{{ form_widget(edit_form.tallaReceptor,{ 'attr': {'title': 'Por favor ingrese la talla, entre 30 y 60 cm'} }) }}</td></tr>
     <tr><td colspan=2 align = "right" height=10  ></td></tr>
-    <tr><td align='right'><font color="red">*</font>{{form_label(edit_form.gananciaDiaTalla,'Ganancia de talla por dia(cm) ') }}{{form_widget(edit_form.gananciaDiaTalla) }}</td></tr>
+    <tr><td align='right'><font color="red">*</font>{{form_label(edit_form.gananciaDiaTalla,'Ganancia de talla por dia(cm) ') }}{{form_widget(edit_form.gananciaDiaTalla, { 'attr': {'title': 'Por favor ingrese la ganancia de talla, entre 0 y 10 cm'} }) }}</td></tr>
     <tr><td colspan=2 align = "right" height=10  ></td></tr>
     <tr><td align='right'>{{form_label(edit_form.complicaciones) }}{{form_widget(edit_form.complicaciones) }}</td></tr>
     <tr><td colspan=2 align = "right" height=10  ></td></tr>

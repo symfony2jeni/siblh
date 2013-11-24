@@ -8,7 +8,7 @@ $(document).ready(function() {
                            changeMonth: true,
                            changeYear: true,
                            clearStatus: 'Borra fecha actual',  
-                          defaultDate: '2012-01-01',
+                          defaultDate: '01-01-2012',
                             yearRange: '2012:y',
                            dayNamesMin: ["Do", "Lu", "Ma", "Mi", "Ju", "Vi", "Sa"],
                            monthNamesShort: ["Ene", "Feb", "Mar", "Abr", "May", "Jun",
@@ -16,8 +16,20 @@ $(document).ready(function() {
                           });  
     //Tooltip                      
  
-    $( document ).tooltip();
-  
+     $( document ).tooltip({
+      position: {
+        my: "center bottom-20",
+        at: "center top",
+        using: function( position, feedback ) {
+          $( this ).css( position );
+          $( "<div>" )
+            .addClass( "arrow" )
+            .addClass( feedback.vertical )
+            .addClass( feedback.horizontal )
+            .appendTo( this );
+        }
+      }
+    });  
        
     //Boton   
     
@@ -38,6 +50,23 @@ $(document).ready(function() {
     });
   });
   
+   $('#siblh_mantenimientobundle_blhloteanalisis_fechaAnalisisFisicoQuimico').
+            attr('data-bvalidator', 'required');
+
+  $('#siblh_mantenimientobundle_blhloteanalisis_responsableAnalisis').
+            attr('data-bvalidator', 'required');
+
+    
+
+      //Opciones del validador
+    var optionsRed = {
+        classNamePrefix: 'bvalidator_red_',
+        lang: 'es'
+    };
+
+    //Validar el formulario
+    $('form').bValidator(optionsRed);
+  
 //GRID para listado de frascos//
   tableToGrid("#frascosLote", {
         pager : '#pagerfrascosLote',
@@ -55,7 +84,7 @@ $(document).ready(function() {
             {name:'Volumen&nbsp;Recolectado(ml)', width:15,align:'center'},
             {name:'Volumen&nbsp;Recolectado(onz)', width:15,align:'center'},
             {name:'Forma&nbsp;Extracción', width:15,align:'center'}, 
-            {name:'Observaciones', width:35,align:'center'}                
+            {name:'Observaciones', width:35,align:'center', editable:true}                
         ]
        
     });

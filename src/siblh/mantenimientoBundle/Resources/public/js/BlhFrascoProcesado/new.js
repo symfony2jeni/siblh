@@ -1,33 +1,32 @@
+$(document).ready(function() { 
+ //url = Routing.generate('blhfrascoprocesado_create');
 //GRID para listado de frascos a combinar//
   tableToGrid("#frascosCombinar", {
+       
         pager : '#pagerfrascosCombinar',
         rowNum:10, 
         gridview: true,
         multiselect:true,
         sortname: 'Código&nbsp;Frasco',
-        sortOrder: 'desc',
+        sortOrder: 'desc',     
        // height:'100%',
         //width:1400,
-        caption: "Seleccione los frascos a analizar en lote",
+        caption: "Seleccione los frascos a combinar",
+        cellEdit: true,
+        mtype: 'POST',
+        editurl:'siblhmantenimientoBundle::BlhFrascoProcesado.php',
+        Cellsubmit:'local',
+        
         colModel :[
             {name:'id',width:15,align:'center'},
             {name:'Código&nbsp;Frasco',width:15,align:'center'},
-            {name:'Volumen&nbsp;Recolectado(ml)', width:15,align:'center'},
-            {name:'Volumen&nbsp;Recolectado(onz)', width:15,align:'center'},
-            {name:'Forma&nbsp;Extracción', width:15,align:'center'}, 
-            {name:'Observaciones', width:35,align:'center'}                
+            {name:'Acidez', width:15,align:'center'},
+            {name:'Volumen&nbsp;a&nbsp;combinar', width:15,align:'center', editable:true, editrules:{number:true},sorttype:'number',formatter:'number', numberfmt:''}            
         ]
-       
+        
     });
   //  jQuery("#frascosLote").jqGrid('sortGrid',"Código&nbsp;Frasco",true);
-    jQuery("#frascosCombinar").jqGrid('navGrid','#frascosCombinar', {
-        edit:false, 
-        add:false, 
-        del:false,
-        search:true,
-        reload:true      
-    });
-                          
+    jQuery("#frascosCombinar").jqGrid('navGrid','#pagerfrascosCombinar',{add:false,del:false,edit:false,position:'right'});              
 jQuery("#lote").on ('click', function() {        
         var corr_seleccionados = jQuery("#frascosCombinar").jqGrid('getGridParam','selarrrow');
 	var todos_id = jQuery("#frascosCombinar").jqGrid('getCol','id');      
@@ -56,5 +55,5 @@ jQuery("#lote").on ('click', function() {
 
 	
 });
-
+});
 

@@ -21,7 +21,7 @@
      {{ form_start(form) }}
      {{ form_errors(form) }}
    
-   <table align = "center" width = "60%" >
+   <table align = "center" width = "60%">
         <tr><td colspan=2 align = "right" height=40  ></td></tr>
        <tr>
        <td colspan = "2" align = "right"><b>Donante</b></td>
@@ -29,14 +29,14 @@
                 <INPUT type=text STYLE="text-align:center" name="nombre" disabled="disabled" size=35 readonly="readonly" value= "{{ datos_frasco[0].nombre1}}&nbsp;{{ datos_frasco[0].nombre2  }}&nbsp;{{ datos_frasco[0].apellido1 }}&nbsp;{{ datos_frasco[0].apellido2 }}">
                </td>
                
-               <td colspan="4" align = "left"></td>
-               
-             {#<td width="295" align = "left"></td>#}
                <td colspan=4 align = "right" style="visibility:hidden"> 
                 
                 {{ form_label(form.idFrascoRecolectado) }}
                 {{ form_errors(form.idFrascoRecolectado) }}
                 {{ form_widget(form.idFrascoRecolectado) }} </td>
+               <td colspan = "4" align = "right"><b>Fecha analisis</b></td>
+                <td colspan = "2" align = "left">
+                <INPUT type=text STYLE="text-align:center" name="nombre" disabled="disabled" size=20 readonly="readonly" value= "{{ datos_frasco[0].fecha|date('d-m-Y') }}"></td>
                
                 
        </tr>
@@ -61,44 +61,26 @@
            
       </table>
    
-        <table align = "center" width = "45%" >
+        <table align = "center" width = "45%">
           
         <tr>
-        <td   colspan="1" align = "right" >
-                
-                {{ form_label(form.embalaje) }}
-                {{ form_errors(form.embalaje) }}
-                {{ form_widget(form.embalaje) }} </td>
-        <td   colspan="3" align = "right" >
-                
-                {{ form_label(form.suciedad) }}
-                {{ form_errors(form.suciedad) }}
-                {{ form_widget(form.suciedad) }} </td>
-       
+        <td width=100  align = "right" >{{ form_label(form.embalaje) }}</td>
+        <td align = "left">{{ form_widget(form.embalaje) }} </td>
+        <td align = "right" >{{ form_label(form.suciedad) }}</td>
+        <td align = "left">{{ form_widget(form.suciedad) }} </td>
           </tr>
-        <tr><td colspan=2 align = "right" height=10  ></td></tr>
+        <tr><td align = "right" height=10  ></td></tr>
       <tr>
-           <td colspan="3" align = "right" >
-                
-                {{ form_label(form.color) }}
-                {{ form_errors(form.color) }}
-                {{ form_widget(form.color) }} </td>
-           <td colspan="3" align = "right" >
-                
-                {{ form_label(form.flavor,'Olor') }}
-                {{ form_errors(form.flavor) }}
-                {{ form_widget(form.flavor) }} </td>
-           
-
+           <td align = "right" >{{ form_label(form.color) }}</td>
+           <td align = "left"> {{ form_widget(form.color) }} </td>
+           <td width=100 align = "right" >{{ form_label(form.flavor,'Olor') }}</td>
+           <td align = "left"> {{ form_widget(form.flavor) }} </td>
         </tr>
-        <tr><td colspan=2 align = "right" height=10  ></td></tr>
-        <tr><td colspan="3" align = "right" >
-                
-                {{ form_label(form.observacion, 'Observaciones') }}
-                {{ form_errors(form.observacion) }}
-                {{ form_widget(form.observacion) }} </td></tr>
+        <tr><td align = "right" height=10  ></td></tr>
+        <tr><td  align = "right" >{{ form_label(form.observacion, 'Observaciones') }}</td>
+        <td align = "left">{{ form_widget(form.observacion) }} </td></tr>
         
-        <tr><td colspan=2 align = "right" height=30  ></td></tr>
+        <tr><td align = "right" height=30  ></td></tr>
         </table>
         <table align = "center" width = "78%">
         <tr>

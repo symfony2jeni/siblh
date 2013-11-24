@@ -97,7 +97,7 @@ class BlhAnalisisSensorialController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
         
-         $query = $em->createQuery("SELECT  f.codigoFrascoRecolectado,f.volumenRecolectado,f.onzRecolectado,d.primerNombre as nombre1,d.segundoNombre as nombre2,d.primerApellido as apellido1,d.segundoApellido as apellido2 FROM siblhmantenimientoBundle:BlhFrascoRecolectado  f JOIN f.idDonante d   WHERE f.id = $id "); 
+         $query = $em->createQuery("SELECT  f.codigoFrascoRecolectado,f.volumenRecolectado,f.onzRecolectado,d.primerNombre as nombre1,d.segundoNombre as nombre2,d.primerApellido as apellido1,d.segundoApellido as apellido2, l.fechaAnalisisFisicoQuimico as fecha FROM siblhmantenimientoBundle:BlhFrascoRecolectado  f JOIN f.idDonante d JOIN f.idLoteAnalisis l   WHERE f.id = $id "); 
         
         $datos_frasco  = $query->getResult();
         
@@ -289,7 +289,9 @@ class BlhAnalisisSensorialController extends Controller
       $query1 = $em->createQuery("SELECT e.nombre, e.direccion, e.telefono FROM siblhmantenimientoBundle:CtlEstablecimiento e WHERE e.id = $userEst");
       $establecimiento = $query1->getResult(); 
 
-        $entities = $em->getRepository('siblhmantenimientoBundle:BlhFrascoRecolectado')->findBy(array('idEstado' => 1));
+      $query = $em->createQuery("SELECT f.id, f.codigoFrascoRecolectado,f.volumenRecolectado, f.onzRecolectado, f.formaExtraccion, f.observacionFrascoRecolectado FROM siblhmantenimientoBundle:BlhFrascoRecolectado f  WHERE f.idEstado = 1 AND f.idLoteAnalisis IS NOT NULL");
+      $entities = $query->getResult(); 
+       
 
         return array(
             'entities' => $entities,

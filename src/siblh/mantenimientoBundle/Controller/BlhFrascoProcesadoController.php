@@ -83,37 +83,12 @@ class BlhFrascoProcesadoController extends Controller
             'method' => 'POST',
         ));
 
-        $form->add('submit', 'submit', array('label' => 'Create'));
+        //$form->add('submit', 'submit', array('label' => 'Create'));
 
         return $form;
     }
 
-    /**
-     * Displays a form to create a new BlhFrascoProcesado entity.
-     *
-     * @Route("/new", name="blhfrascoprocesado_new")
-     * @Method("GET")
-     * @Template()
-     */
-    public function newAction()
-    {
-        $entity = new BlhFrascoProcesado();
-        $form   = $this->createCreateForm($entity);
-         //Obtener banco de leche//
-        $em = $this->getDoctrine()->getManager();       
-      $userEst = $this->container->get('security.context')->getToken()->getUser()->getIdEst();
-      /*  $query1 = $em->createQuery("SELECT b.id FROM siblhmantenimientoBundle:BlhBancoDeLeche b WHERE b.idEstablecimiento = $userEst");
-        $id_blh = $query1->getResult(); 
-        $codigo=$id_blh[0]['id']; */
-       
-       $query1 = $em->createQuery("SELECT e.nombre, e.direccion, e.telefono FROM siblhmantenimientoBundle:CtlEstablecimiento e WHERE e.id = $userEst");
-        $establecimiento = $query1->getResult(); 
-        return array(
-            'entity' => $entity,
-            'form'   => $form->createView(),
-            'hospital' => $establecimiento,
-        );
-    }
+   
 
     /**
      * Finds and displays a BlhFrascoProcesado entity.
@@ -270,4 +245,78 @@ class BlhFrascoProcesadoController extends Controller
             ->getForm()
         ;
     }
+    
+      /**
+     * Lista de todos los Receptores Registrados.
+     *
+     * @Route("/seleccion/pasteurizacion", name="sleccion_pasteurizacion")
+     * @Method("GET")
+     * @Template()
+     */
+ 
+ public function seleccionPasteurizacionAction()
+    {
+        $em = $this->getDoctrine()->getManager();   
+        
+        
+         //Obtener banco de leche//
+        
+      $userEst = $this->container->get('security.context')->getToken()->getUser()->getIdEst();
+      $query1 = $em->createQuery("SELECT e.nombre, e.direccion, e.telefono FROM siblhmantenimientoBundle:CtlEstablecimiento e WHERE e.id = $userEst");
+      $establecimiento = $query1->getResult(); 
+        
+       //Obteniendo las pasteurizaciones a las que aun no se les ha combinado frascos procesados
+       
+       $query = $em->createQuery("SELECT p.id, p.codigoPasteurizacion, p.numCiclo, p.volumenPasteurizado,p.numFrascosPasteurizados, p.fechaPasteurizacion, p.responsablePasteurizacion FROM siblhmantenimientoBundle:BlhPasteurizacion p where p.id not in (select f.id  from siblhmantenimientoBundle:BlhFrascoProcesado f JOIN f.idPasteurizacion pas)");
+        
+         $pasteurizaciones = $query->getResult();
+     
+       
+        return array(
+            'pasteurizaciones' => $pasteurizaciones,         
+            'hospital' => $establecimiento,
+        );
+        
+    }
+    
+     /**
+     * Displays a form to create a new BlhFrascoProcesado entity.
+     *
+     * @Route("/new/{id}", name="blhfrascoprocesado_new")
+     * @Method("GET")
+     * @Template()
+     */
+    public function newAction($id)
+    {
+
+//Obtener banco de leche//
+        $em = $this->getDoctrine()->getManager();       
+        $userEst = $this->container->get('security.context')->getToken()->getUser()->getIdEst();
+     
+      
+        $pasteurizacion = $em->getRepository('siblhmantenimientoBundle:BlhPasteurizacion')->find($id);
+       
+        $query1 = $em->createQuery("SELECT e.nombre, e.direccion, e.telefono FROM siblhmantenimientoBundle:CtlEstablecimiento e WHERE e.id = $userEst");
+        $establecimiento = $query1->getResult(); 
+        
+        //Obtener los frascos a combinar
+        
+       $query = $em->createQuery("select fr.id, fr.codigoFrascoRecolectado, a.resultado  from siblhmantenimientoBundle:BlhAcidez a join a.idFrascoRecolectado fr  where fr.idEstado = 6");
+        $frascos_combinar = $query->getResult(); 
+       //$Acidez = $em->createQuery("SELECT e.nombre, e.direccion, e.telefono FROM siblhmantenimientoBundle:CtlEstablecimiento e WHERE e.id = $userEst");
+        //$frascos_combinar = $em->getRepository('siblhmantenimientoBundle:BlhFrascoRecolectado')->findBy(array('idEstado' => 6));
+        
+        $entity = new BlhFrascoProcesado();
+        $entity->setIdPasteurizacion($pasteurizacion);
+        $form   = $this->createCreateForm($entity);
+        
+        return array(
+            'entity' => $entity,
+            'form'   => $form->createView(),
+            'hospital' => $establecimiento,
+            'frascos_combinar'=> $frascos_combinar,
+            'pasteurizacion'=> $pasteurizacion,
+        );
+    }
 }
+

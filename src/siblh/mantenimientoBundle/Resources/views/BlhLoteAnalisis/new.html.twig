@@ -32,7 +32,7 @@
                 <td width =100 align = "right"  ><font color="red">*</font>  
                 {{ form_label(form.fechaAnalisisFisicoQuimico, 'Fecha análisis' ) }}
                 {{ form_errors(form.fechaAnalisisFisicoQuimico) }}
-                {{ form_widget(form.fechaAnalisisFisicoQuimico) }} </td>
+                {{ form_widget(form.fechaAnalisisFisicoQuimico, {'attr':{ 'readonly': 'true', 'title': 'Dar clic y seleccionar la fecha de registro' } }) }} </td>
                        
      
      
@@ -40,7 +40,7 @@
                 <td width =100 align = "right" ><font color="red">*</font>  
                 {{ form_label(form.responsableAnalisis, 'Responsable') }}
                 {{ form_errors(form.responsableAnalisis) }}
-                {{ form_widget(form.responsableAnalisis,  { 'attr': {'size': '27'} }) }} </td></tr>
+                {{ form_widget(form.responsableAnalisis,  { 'attr': {'size': '30' } }) }} </td></tr>
                 
                 <tr><td colspan=2 align = "right" height=40  ></td></tr>
             </table>

@@ -22,22 +22,21 @@
    {{ form_start(form) }}
    {{ form_errors(form) }}
    <table align = "center" width = "90%" >
-        <tr><td colspan=2 align = "right" height=40  ></td></tr>
+        <tr><td colspan=2 align = "right" height=40></td></tr>
        <tr>
        <td colspan = "2" align = "right"><b>Donante</b></td>
                 <td colspan = "4" align = "left">
                 <INPUT type=text STYLE="text-align:center" name="nombre" disabled="disabled" size=35 readonly="readonly" value= "{{ datos_frasco[0].nombre1}}&nbsp;{{ datos_frasco[0].nombre2  }}&nbsp;{{ datos_frasco[0].apellido1 }}&nbsp;{{ datos_frasco[0].apellido2 }}">
                </td>
-               
-               <td colspan="4" align = "left"></td>
-                
-             {#<td width="295" align = "left"></td>#}
+  
                <td colspan=4 align = "right" style="visibility:hidden"> 
                 
                 {{ form_label(form.idFrascoRecolectado) }}
                 {{ form_errors(form.idFrascoRecolectado) }}
                 {{ form_widget(form.idFrascoRecolectado) }} </td>
-               
+                <td colspan = "4" align = "right"><b>Fecha analisis</b></td>
+                <td colspan = "2" align = "left">
+                <INPUT type=text STYLE="text-align:center" name="nombre" disabled="disabled" size=20 readonly="readonly" value= "{{ datos_frasco[0].fecha|date('d-m-Y') }}"></td>
                 
        </tr>
     <tr>
@@ -64,79 +63,48 @@
         <table align = "center" width = "90%">
           
         <tr>
-        <td   colspan="1" align = "right" >
-                
-                {{ form_label(form.crema1, 'Crema 1(mm)') }}
-                {{ form_errors(form.crema1) }}
-                {{ form_widget(form.crema1) }} </td>
-        <td   colspan="3" align = "right">
-                
-                {{ form_label(form.crema2,'Crema 2(mm)') }}
-                {{ form_errors(form.crema2) }}
-                {{ form_widget(form.crema2) }} </td>
-        <td colspan="3" align = "right" >
-                
-                {{ form_label(form.crema3,'Crema 3(mm)') }}
-                {{ form_errors(form.crema3) }}
-                {{ form_widget(form.crema3) }} </td>
+        <td  align = "right" >{{ form_label(form.crema1, 'Crema 1(mm)') }}</td>
+        <td align = "left">{{ form_widget(form.crema1) }} </td>
+        <td align = "right">{{ form_label(form.crema2,'Crema 2(mm)') }}</td>
+        <td align = "left">{{ form_widget(form.crema2) }} </td>
+        <td align = "right" >{{ form_label(form.crema3,'Crema 3(mm)') }}</td>
+        <td align = "left">{{ form_widget(form.crema3) }} </td>
           </tr>
-        <tr><td colspan=2 align = "right" height=10  ></td></tr>
+        <tr><td align = "right" height=10  ></td></tr>
       <tr>
-           <td colspan="3" align = "right" >
-                
-                {{ form_label(form.ct1, 'Coliformes  1(mm)') }}
-                {{ form_errors(form.ct1) }}
-                {{ form_widget(form.ct1) }} </td>
+           <td align = "right" >{{ form_label(form.ct1, 'Coliformes  1(mm)') }}</td>
+           <td align = "left">{{ form_widget(form.ct1) }} </td>
            
-           <td colspan="1" align = "right" >
-                
-                {{ form_label(form.ct2, 'Coliformes  2(mm)') }}
-                {{ form_errors(form.ct2) }}
-                {{ form_widget(form.ct2) }} </td>
-      
-          
-        <td  colspan="3" align = "right">
-                
-                {{ form_label(form.ct3, 'Coliformes 3(mm)') }}
-                {{ form_errors(form.ct3) }}
-                {{ form_widget(form.ct3)}} </td>
+           <td align = "right" >{{ form_label(form.ct2, 'Coliformes  2(mm)') }}</td>
+           <td align = "left">{{ form_widget(form.ct2) }} </td>
+               
+           <td align = "right">{{ form_label(form.ct3, 'Coliformes 3(mm)') }}</td>
+           <td align = "left">{{ form_widget(form.ct3)}} </td>
        
        
         </tr>
-         <tr><td colspan=2 align = "right" height=10  ></td></tr>
+         <tr><td  align = "right" height=10  ></td></tr>
       <tr>
-           <td colspan="3" align = "right" >
-                
-                {{ form_label(form.mediaCrema, 'Media crema(mm)') }}
-                {{ form_errors(form.mediaCrema) }}
-                {{ form_widget(form.mediaCrema) }} </td>
+           <td align = "right" >{{ form_label(form.mediaCrema, 'Media crema(mm)') }}</td>
+           <td align = "left">{{ form_widget(form.mediaCrema) }} </td>
            
-           <td colspan="1" align = "right" >
-                
-                {{ form_label(form.mediaCt, 'Media coliformes(mm)') }}
-                {{ form_errors(form.mediaCt) }}
-                {{ form_widget(form.mediaCt) }} </td>
+           <td align = "right" >{{ form_label(form.mediaCt, 'Media coliformes(mm)') }}</td>
+           <td align = "left">{{ form_widget(form.mediaCt) }} </td>
       
           
-        <td  colspan="3" align = "right" >
-                
-                {{ form_label(form.porcentajeCrema) }}
-                {{ form_errors(form.porcentajeCrema) }}
-                {{ form_widget(form.porcentajeCrema)}} </td>
+        <td align = "right" >{{ form_label(form.porcentajeCrema) }}</td>
+        <td align = "left">{{ form_widget(form.porcentajeCrema)}} </td>
        
        
         </tr>
-           <tr><td colspan=2 align = "right" height=10  ></td></tr>
+           <tr><td align = "right" height=10  ></td></tr>
       <tr>
-           <td colspan="3" align = "right" >
-                
-                {{ form_label(form.kilocalorias) }}
-                {{ form_errors(form.kilocalorias) }}
-                {{ form_widget(form.kilocalorias) }} </td>
+           <td align = "right" >{{ form_label(form.kilocalorias) }}</td>
+           <td align = "left">{{ form_widget(form.kilocalorias) }} </td>
         </tr>    
            
            
-        <tr><td colspan=2 align = "right" height=30  ></td></tr>
+        <tr><td  align = "right" height=30  ></td></tr>
        
         </table>
         <table align = "center" width = "90%">

@@ -100,8 +100,8 @@ class BlhAcidezController extends Controller
     public function newAction($id)
     {
         $em = $this->getDoctrine()->getManager();
-         $query = $em->createQuery("SELECT  f.codigoFrascoRecolectado,f.volumenRecolectado,f.onzRecolectado,d.primerNombre as nombre1,d.segundoNombre as nombre2,d.primerApellido as apellido1,d.segundoApellido as apellido2 FROM siblhmantenimientoBundle:BlhFrascoRecolectado  f JOIN f.idDonante d   WHERE f.id = $id "); 
-          $datos_frasco  = $query->getResult();
+        $query = $em->createQuery("SELECT  f.codigoFrascoRecolectado,f.volumenRecolectado,f.onzRecolectado,d.primerNombre as nombre1,d.segundoNombre as nombre2,d.primerApellido as apellido1,d.segundoApellido as apellido2, l.fechaAnalisisFisicoQuimico as fecha FROM siblhmantenimientoBundle:BlhFrascoRecolectado  f JOIN f.idDonante d JOIN f.idLoteAnalisis l   WHERE f.id = $id ");        
+        $datos_frasco  = $query->getResult();
         
          $frasco = $em->getRepository('siblhmantenimientoBundle:BlhFrascoRecolectado')->find($id);
          
@@ -289,8 +289,11 @@ class BlhAcidezController extends Controller
       $userEst = $this->container->get('security.context')->getToken()->getUser()->getIdEst();
       $query1 = $em->createQuery("SELECT e.nombre, e.direccion, e.telefono FROM siblhmantenimientoBundle:CtlEstablecimiento e WHERE e.id = $userEst");
       $establecimiento = $query1->getResult(); 
+      
+       $query = $em->createQuery("SELECT f.id, f.codigoFrascoRecolectado,f.volumenRecolectado, f.onzRecolectado, f.formaExtraccion, f.observacionFrascoRecolectado FROM siblhmantenimientoBundle:BlhFrascoRecolectado f  WHERE f.idEstado = 7 AND f.idLoteAnalisis IS NOT NULL");
+      $entities = $query->getResult(); 
 
-        $entities = $em->getRepository('siblhmantenimientoBundle:BlhFrascoRecolectado')->findBy(array('idEstado' => 7));
+        //$entities = $em->getRepository('siblhmantenimientoBundle:BlhFrascoRecolectado')->findBy(array('idEstado' => 7));
 
         return array(
             'entities' => $entities,

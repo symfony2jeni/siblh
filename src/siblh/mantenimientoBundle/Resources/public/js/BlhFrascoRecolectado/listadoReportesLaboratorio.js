@@ -7,7 +7,7 @@ $(document).ready(function() {
         rowNum:5, 
         rownumbers: true,
         gridview: false,
-        caption: "Reportes disponibles para receptores",
+        caption: "Listado de reportes de laboratorio",
         colNames:['Reporte','Acción'],
         colModel :[
             {name:'Reporte',width:15,align:'center'},

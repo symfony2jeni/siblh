@@ -15,9 +15,9 @@ $(document).ready(function() {
             {name:'Nombres', width:40,align:'center'},
             {name:'Apellidos', width:40,align:'center'},
             {name:'Sexo', width:20,align:'center'}, 
-            {name:'Acción', width:20,align:'center'}, 
+            {name:'Acción', width:20,align:'center'} 
     
-        ],
+        ]
        
     });
     jQuery("#listado_receptoresSeguimiento").jqGrid('sortGrid',"Código&nbsp;Receptor",true);

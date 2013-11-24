@@ -16,10 +16,10 @@ class BlhFrascoProcesadoType extends AbstractType
     {
         $builder
             //->add('codigoFrascoProcesado')
-            ->add('volumenFrascoPasteurizado')
+            //->add('volumenFrascoPasteurizado')
             //->add('acidezTotal')
             //->add('kcaloriasTotales')
-            ->add('observacionFrascoProcesado')
+            ->add('observacionFrascoProcesado', 'textarea')
             //->add('idEstado')
             ->add('idPasteurizacion')
         ;
@@ -42,4 +42,7 @@ class BlhFrascoProcesadoType extends AbstractType
     {
         return 'siblh_mantenimientobundle_blhfrascoprocesado';
     }
+    
+  
+    
 }

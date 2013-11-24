@@ -8,7 +8,7 @@ $(document).ready(function() {
                            changeMonth: true,
                            changeYear: true,
                            clearStatus: 'Borra fecha actual',  
-                          defaultDate: '2012-01-01',
+                          defaultDate: '01-01-2012',
                             yearRange: '2012:y',
                            dayNamesMin: ["Do", "Lu", "Ma", "Mi", "Ju", "Vi", "Sa"],
                            monthNamesShort: ["Ene", "Feb", "Mar", "Abr", "May", "Jun",
@@ -48,22 +48,22 @@ $(document).ready(function() {
     
      
  $('#siblh_mantenimientobundle_blhseguimientoreceptor_pcSeguimiento').
-            attr('data-bvalidator', 'required,min[1]');
+            attr('data-bvalidator', 'required,between[20:40]');
     
  $('#siblh_mantenimientobundle_blhseguimientoreceptor_pesoSeguimiento').
             attr('data-bvalidator', 'required,between[400:2500]');
   
     
  $('#siblh_mantenimientobundle_blhseguimientoreceptor_gananciaDiaPeso').
-            attr('data-bvalidator', 'required,min[0]');
+            attr('data-bvalidator', 'required,between[0:100]');
  
     
  $('#siblh_mantenimientobundle_blhseguimientoreceptor_tallaReceptor').
-            attr('data-bvalidator', 'required,min[1]');
+            attr('data-bvalidator', 'required,between[30:60]');
     
     
   $('#siblh_mantenimientobundle_blhseguimientoreceptor_gananciaDiaTalla').
-            attr('data-bvalidator', 'required,min[0]');
+            attr('data-bvalidator', 'required,between[0:10]');
     
 
       //Opciones del validador

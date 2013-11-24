@@ -12,49 +12,65 @@
 <link href="{{asset('bundles/jquery/jquery.jqGrid-4.5.4/css/ui.jqgrid.css')}}" rel="stylesheet"  type="text/css" media="all"/>  
 <script type="text/javascript" src="{{asset('bundles/jquery/jquery.jqGrid-4.5.4/js/i18n/grid.locale-es.js')}}"></script>
 <script type="text/javascript" src="{{asset('bundles/jquery/jquery.jqGrid-4.5.4/js/jquery.jqGrid.min.js')}}" ></script>
-    <h1>Combinacion de frascos procesados</h1>
+    <h1>Combinacion de frascos</h1>
        {{ form_start(form) }}
        {{ form_errors(form) }}
-<table align = "center" width = "70%" >
+<table align = "center" width = "70%" border=1 >
 
-    
-
-
-
-<tr><td colspan=2 align = "right" height=40  ></td></tr>
-         <tr>
-           
-             
-                <td width =100 align = "right" > 
-                {{ form_label(form.codigoLoteAnalisis, 'Código de lote') }}
-                {{ form_errors(form.codigoLoteAnalisis) }}
-                {{ form_widget(form.codigoLoteAnalisis) }} </td>        
+<tr>
+       <td colspan = "2" align = "right"><b>Pasteurizacion</b></td>
+                <td width = "100" align = "left">
+                <INPUT type=text STYLE="text-align:center" name="nombre" disabled="disabled" size=35 readonly="readonly" value= "{{ pasteurizacion.codigoPasteurizacion}}">
+               </td>
+               <td  width = "100" align = "right"><b>Cantidad de frascos</b></td>
+               <td width = "100" align = "left">
+                <INPUT type=text STYLE="text-align:center" name="nombre" disabled="disabled" size=35 readonly="readonly" value= "{{ pasteurizacion.numFrascosPasteurizados}}">
+               </td>
+               <td  width = "100" align = "right"><b>Volumen</b></td>
+               <td width = "100" align = "left">
+                <INPUT type=text STYLE="text-align:center" name="nombre" disabled="disabled" size=35 readonly="readonly" value= "{{ pasteurizacion.volumenPasteurizado}}">
+               </td>                        
+       </tr>
+       
+       <tr><td colspan=2 align = "right" height=40  > {{ form_label(form.idPasteurizacion) }} {{ form_widget(form.idPasteurizacion) }}</td></tr>
+       
+             </table>       
                     
- <table id="frascosLote">
+ <table id="frascosCombinar">
         <thead>
             <tr>
                 <th>id</th>
                 <th>Código&nbsp;Frasco</th>
-                <th>Volumen&nbsp;Recolectado(ml)</th>
-                <th>Volumen&nbsp;Recolectado(onz)</th>
-                <th>Forma&nbsp;Extracción</th>          
-                <th>Observaciones</th>
+                <th>Acidez</th>   
+                <th>Volumen&nbsp;a&nbsp;combinar</th>                
             </tr>
         </thead>
         <tbody>
-        {% for frasco in frascos %}
+        {% for frasco in frascos_combinar %}
             <tr>
                <td>{{ frasco.id}}</td>
                 <td>{{ frasco.codigoFrascoRecolectado }}</td>
-                <td>{{ frasco.volumenRecolectado }}</td>
-                <td>{{ frasco.onzRecolectado }}</td>
-                <td>{{ frasco.formaExtraccion }}</td>                
-                <td>{{ frasco.observacionFrascoRecolectado }}</td>
+                <td>{{ frasco.resultado }}</td>
             </tr>
         {% endfor %}
         </tbody>
+        
     </table>
-    <div id='pagerfrascosLote' ></div>                      
-                    
+    <div id='pagerfrascosCombinar' ></div>    
+    
+    
+   <table align = "center" width = "70%" border=1> 
+                 
+   
+               <tr>
+                <td>{{ form_label(form.observacionFrascoProcesado, 'Observaciones del frasco') }}
+                {{ form_widget(form.observacionFrascoProcesado) }} </td> 
+       </tr>
+          
+  <tr><td style="visibility:hidden"><INPUT  name="var" id="var" type=text size=10 ></td></tr>      
+ <td align= 'center'><INPUT  id='lote' name="agrupar" type=submit title="Combinar frascos" value="Combinar"></td>
+
+</table>
+ {{ form_end(form) }}                    
            
 {% endblock %}

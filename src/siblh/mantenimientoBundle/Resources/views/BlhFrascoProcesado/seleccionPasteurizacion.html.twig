@@ -1,0 +1,45 @@
+{% extends 'siblhmantenimientoBundle::plantilla.html.twig' %}
+
+{% block javascripts %}
+    {{parent()}}
+    <script type="text/javascript" src="{{ asset('bundles/siblhmantenimiento/js/BlhFrascoProcesado/seleccionPasteurizacion.js') }}" ></script>
+{% endblock %}
+
+{% block body -%}
+    <link href="{{asset('bundles/jquery/jquery.jqGrid-4.5.4/css/ui.jqgrid.css')}}" rel="stylesheet"  type="text/css" media="all"/> 
+     <script type="text/javascript" src="{{asset('bundles/jquery/jquery.jqGrid-4.5.4/js/i18n/grid.locale-es.js')}}"></script>
+      <script type="text/javascript" src="{{asset('bundles/jquery/jquery.jqGrid-4.5.4/js/jquery.jqGrid.min.js')}}" ></script>
+      
+    
+    <h1>Pasteurizaciones disponibles para agrupacion de frascos</h1>
+    <div align='center'>
+    <table id="seleccionPasteurizacion">
+        <thead>
+            <tr>
+                <th>Código</th>
+                <th>Ciclo</th>
+                <th>Volumen&nbsp;pasteurizado</th>
+                <th>Cantidad&nbsp;de&nbsp;frascos</th>
+                <th>Fecha&nbsp;pasteurizacion</th>
+                <th>Responsable&nbsp;pasteurizacion</th>
+                <th>Acción</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for pasteurizacion in pasteurizaciones %}
+            <tr>
+                <td>{{ pasteurizacion.codigoPasteurizacion }}</td>
+                <td>{{ pasteurizacion.numCiclo }}</td>
+                <td>{{ pasteurizacion.volumenPasteurizado|number_format(2, '.', ',')}}</td>
+                <td>{{ pasteurizacion.numFrascosPasteurizados }}</td>
+                <td>{% if pasteurizacion.fechaPasteurizacion %}{{ pasteurizacion.fechaPasteurizacion|date('d-m-Y') }}{% endif %}</td>              
+                <td>{{ pasteurizacion.responsablePasteurizacion }}</td>
+                <td><a href="{{ path('blhfrascoprocesado_new', { 'id': pasteurizacion.id }) }}"><font color="blue"><u>Combinar Frascos</u></font></a></td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+     </div>       
+
+    {% endblock %}
+
