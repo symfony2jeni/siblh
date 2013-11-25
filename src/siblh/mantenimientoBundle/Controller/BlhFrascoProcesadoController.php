@@ -54,6 +54,16 @@ class BlhFrascoProcesadoController extends Controller
         $entity = new BlhFrascoProcesado();
         $form = $this->createCreateForm($entity);
         $form->handleRequest($request);
+        
+        //obteniendo los ids a agrupar//
+         $request = $this->getRequest();
+         $ids_agrupar = $request->get('idscombinar');//obteniendo string enviado desde input
+        // $ids= explode(",",$ids_agrupar);//transformando string recibido en un array
+         
+         
+       // $request = $this->getRequest();
+         $ivl_agrupar = $request->get('vlcombinar');//obteniendo string enviado desde input
+        // $vl= explode(",",$ivl_agrupar);//transformando string recibido en un array
 
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
@@ -301,12 +311,34 @@ class BlhFrascoProcesadoController extends Controller
         
         //Obtener los frascos a combinar
         
-       $query = $em->createQuery("select fr.id, fr.codigoFrascoRecolectado, a.resultado  from siblhmantenimientoBundle:BlhAcidez a join a.idFrascoRecolectado fr  where fr.idEstado = 6");
-        $frascos_combinar = $query->getResult(); 
-       //$Acidez = $em->createQuery("SELECT e.nombre, e.direccion, e.telefono FROM siblhmantenimientoBundle:CtlEstablecimiento e WHERE e.id = $userEst");
-        //$frascos_combinar = $em->getRepository('siblhmantenimientoBundle:BlhFrascoRecolectado')->findBy(array('idEstado' => 6));
+       $query = $em->createQuery("select fr.id, fr.codigoFrascoRecolectado, a.resultado  from siblhmantenimientoBundle:BlhAcidez a join a.idFrascoRecolectado fr  where fr.idEstado = 6 AND fr.idLoteAnalisis IS NOT NULL ORDER BY fr.id");
+       $frascos_combinar = $query->getResult(); 
+       $query2 = $em->createQuery("SELECT fr.id, fr.codigoFrascoRecolectado, fr.volumenRecolectado vl, c.kilocalorias FROM siblhmantenimientoBundle:BlhCrematocrito c join c.idFrascoRecolectado fr  where fr.idEstado = 6 AND fr.idLoteAnalisis IS NOT NULL ORDER BY fr.id");      
+       $calorias = $query2->getResult(); 
+        $filas = count($calorias );
+       $query3 = $em->createQuery("SELECT sum(frfp.volumenAgregado) as agregado, fr.id FROM siblhmantenimientoBundle:BlhFrascoRecolectadoFrascoP frfp  join frfp.idFrascoRecolectado fr  where fr.idEstado = 6 AND fr.idLoteAnalisis IS NOT NULL GROUP BY fr.id ORDER BY fr.id");      
+       $volumen_agregado = $query3->getResult(); 
+       $resultCount = count($volumen_agregado);
+       if($resultCount==0)
+           
+           
+           {
+           for ($i=0; $i<$filas; $i++)
+           {
+              $volumen_agregado[$i]['agregado']= 0;
+               $volumen_agregado[$i]['id'] = $calorias[$i]['id']; 
+           }
+           
+           //$volumen_agregado=$filas;
+           }
+           
+          for ($i=0; $i<$filas; $i++)
+           {
+             $vldisponible= $calorias[$i]['vl'] -  $volumen_agregado[$i]['agregado'];
+           }
+           
         
-        $entity = new BlhFrascoProcesado();
+       $entity = new BlhFrascoProcesado();
         $entity->setIdPasteurizacion($pasteurizacion);
         $form   = $this->createCreateForm($entity);
         
@@ -316,6 +348,9 @@ class BlhFrascoProcesadoController extends Controller
             'hospital' => $establecimiento,
             'frascos_combinar'=> $frascos_combinar,
             'pasteurizacion'=> $pasteurizacion,
+            'calorias'=>$calorias,
+            'volumen_agregado'=>$volumen_agregado,
+            'vldisponible'=>$vldisponible,
         );
     }
 }

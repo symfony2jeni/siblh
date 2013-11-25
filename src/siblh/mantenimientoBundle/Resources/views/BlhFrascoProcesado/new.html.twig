@@ -9,9 +9,6 @@
 
 
 {% block body -%}
-<link href="{{asset('bundles/jquery/jquery.jqGrid-4.5.4/css/ui.jqgrid.css')}}" rel="stylesheet"  type="text/css" media="all"/>  
-<script type="text/javascript" src="{{asset('bundles/jquery/jquery.jqGrid-4.5.4/js/i18n/grid.locale-es.js')}}"></script>
-<script type="text/javascript" src="{{asset('bundles/jquery/jquery.jqGrid-4.5.4/js/jquery.jqGrid.min.js')}}" ></script>
     <h1>Combinacion de frascos</h1>
        {{ form_start(form) }}
        {{ form_errors(form) }}
@@ -34,26 +31,52 @@
        
        <tr><td colspan=2 align = "right" height=40  > {{ form_label(form.idPasteurizacion) }} {{ form_widget(form.idPasteurizacion) }}</td></tr>
        
-             </table>       
+             </table>   
+    {#<input type="checkbox" name="option1" value="{{ frasco.id}}">#}
+                 {# <td>Volumen&nbsp;disponible</td> #}
                     
- <table id="frascosCombinar">
-        <thead>
+ <table border=1>
+     <head>
             <tr>
-                <th>id</th>
-                <th>Código&nbsp;Frasco</th>
-                <th>Acidez</th>   
-                <th>Volumen&nbsp;a&nbsp;combinar</th>                
+                <td>box</td>
+                <td>id</td>
+                <td>Código&nbsp;Frasco</td>
+                <td>Acidez</td>
+                <td>idCalorias</td>
+                <td>Calorias</td>
+                <td>VolumenRecolectado</td>
+                <td>idAgregado</td>
+                <td>Agregado</td>
+                <td>VolumenDisponible</td>
+                <td>Volumen&nbsp;a&nbsp;combinar</td>                
             </tr>
-        </thead>
-        <tbody>
-        {% for frasco in frascos_combinar %}
-            <tr>
-               <td>{{ frasco.id}}</td>
-                <td>{{ frasco.codigoFrascoRecolectado }}</td>
-                <td>{{ frasco.resultado }}</td>
-            </tr>
+            </head>
+            <body>
+   {%set frasco = frascos_combinar%}
+   {%set caloria = calorias%}
+   {%set volumen_agregado=volumen_agregado%}
+        {% for i in 0 ..1%}
+                <tr>
+              <td><input type="checkbox" name="idscombinar[]" id="idscombinar_{{ frasco[i].id}}" value="{{ frasco[i].id}}"/></td>
+               <td>{{ frasco[i].id}}</td>
+                <td>{{ frasco[i].codigoFrascoRecolectado }}</td>
+                <td>{{ frasco[i].resultado }}</td>
+                
+       
+               <td>{{caloria[i].id}}</td>
+                <td>{{ caloria[i].kilocalorias }}</td>  
+                <td><input id = "vl"  type=text value = "{{ caloria[i].vl }}"/> </td>  
+       
+               
+               <td>{{volumen_agregado[i].id}}</td>
+                <td><input type=text value = "{{ volumen_agregado[i].agregado }}"/> </td>  
+                 <td><input id= "disponible" type=number value ="{{vldisponible}}"  /> </td>  
+      
+                <td><input name="vlcombinar[]" id="vlcombinar_{{volumen_agregado[i].id}}" type=text/></td>   
+                </tr>
         {% endfor %}
-        </tbody>
+          
+        </body>
         
     </table>
     <div id='pagerfrascosCombinar' ></div>    
