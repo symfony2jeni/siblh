@@ -20,7 +20,7 @@ class BlhFrascoProcesadoType extends AbstractType
             //->add('acidezTotal')
             //->add('kcaloriasTotales')
             ->add('observacionFrascoProcesado', 'textarea')
-            //->add('idEstado')
+            ->add('idEstado')
             ->add('idPasteurizacion')
         ;
     }

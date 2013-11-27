@@ -17,34 +17,12 @@ $(document).ready(function() {
           if ($(this).is(':checked')){
               document.getElementById("vlcombinar_"+aux[1]).disabled = false;
               document.getElementById("vlcombinar_"+aux[1]).focus();
-              
-            $('#vlcombinar_'+aux[1]).attr('data-bvalidator', 'between[1:300]'); 
-            
-         //Opciones del validador
-                var optionsRed = { 
-                classNamePrefix: 'bvalidator_red_', 
-                lang: 'es'
-                };
- 
-                //Validar el formulario
-                 $('form').bValidator(optionsRed);   
-         
              }
           else
               {
                 document.getElementById("vlcombinar_"+aux[1]).disabled = true;
                 document.getElementById("vlcombinar_"+aux[1]).value="";
-                
-                  $('#vlcombinar_'+aux[1]).attr('data-bvalidator', 'between[1:300]'); 
-         //Opciones del validador
-                var optionsRed = { 
-                classNamePrefix: 'bvalidator_red_', 
-                lang: 'es'
-                };
- 
-                //Validar el formulario
-                 $('form').bValidator(optionsRed);   
-                
+                         
              
               }
         }); 

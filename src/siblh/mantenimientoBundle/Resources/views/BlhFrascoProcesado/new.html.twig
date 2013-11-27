@@ -1,5 +1,9 @@
 {% extends 'siblhmantenimientoBundle::plantilla.html.twig' %}
-
+{% block stylesheets %}
+    {{ parent() }}
+        <link href="{{ asset('bundles/siblhmantenimiento/css/form.css') }}" rel="stylesheet" type="text/css" />
+ 
+{% endblock %}
         
  {% block javascripts %}   
 {{parent()}}
@@ -29,54 +33,56 @@
                </td>                        
        </tr>
        
-       <tr><td colspan=2 align = "right" height=40  > {{ form_label(form.idPasteurizacion) }} {{ form_widget(form.idPasteurizacion) }}</td></tr>
+       <tr><td colspan=2 align = "right" height=40  > {{ form_label(form.idPasteurizacion) }} {{ form_widget(form.idPasteurizacion) }}</td>
+           <td colspan=2 align = "right" height=40  > {{ form_label(form.idEstado) }} {{ form_widget(form.idEstado) }}</td></tr>
        
              </table>   
     {#<input type="checkbox" name="option1" value="{{ frasco.id}}">#}
                  {# <td>Volumen&nbsp;disponible</td> #}
-                    
- <table border=1>
-     <head>
-            <tr>
-                <td>box</td>
-                <td>id</td>
-                <td>Código&nbsp;Frasco</td>
-                <td>Acidez</td>
-                <td>idCalorias</td>
-                <td>Calorias</td>
-                <td>VolumenRecolectado</td>
-                <td>idAgregado</td>
-                <td>Agregado</td>
-                <td>VolumenDisponible</td>
-                <td>Volumen&nbsp;a&nbsp;combinar</td>                
-            </tr>
-            </head>
-            <body>
    {%set frasco = frascos_combinar%}
    {%set caloria = calorias%}
    {%set volumen_agregado=volumen_agregado%}
-        {% for i in 0 ..1%}
+   {%set vldisponible = vldisponible%}    
+   {%set tamanio = frasco | length%}      
+   {%set tamanio1 = caloria | length %}
+{% if tamanio != 0 or tamanio1 != 0 %}                       
+ <table border=1>
+     <thead>
+            <tr>
+                <th>box</th>
+                <th>id</th>
+                <th>Código&nbsp;Frasco</th>
+                <th>Acidez</th>
+                <th>idCalorias</th>
+                <th>Calorias</th>
+                <th>VolumenRecolectado</th>
+                <th>idAgregado</th>
+                <th>Agregado</th>
+                <th>VolumenDisponible</th>
+                <th>Volumen&nbsp;a&nbsp;combinar</th>                
+            </tr>
+            </thead>
+            <tbody>
+            
+        {% for i in 0 ..(tamanio-1)%}
                 <tr>
               <td><input type="checkbox" name="idscombinar[]" id="idscombinar_{{ frasco[i].id}}" value="{{ frasco[i].id}}"/></td>
                <td>{{ frasco[i].id}}</td>
                 <td>{{ frasco[i].codigoFrascoRecolectado }}</td>
-                <td>{{ frasco[i].resultado }}</td>
-                
-       
+                <td>{{ frasco[i].resultado }}</td>                      
                <td>{{caloria[i].id}}</td>
                 <td>{{ caloria[i].kilocalorias }}</td>  
                 <td><input id = "vl"  type=text value = "{{ caloria[i].vl }}"/> </td>  
-       
-               
+                      
                <td>{{volumen_agregado[i].id}}</td>
                 <td><input type=text value = "{{ volumen_agregado[i].agregado }}"/> </td>  
-                 <td><input id= "disponible" type=number value ="{{vldisponible}}"  /> </td>  
+                 <td><input id= "disponible" name='vldisponible' type=text value ="{{vldisponible[i]}}"  /> </td>  
       
                 <td><input name="vlcombinar[]" id="vlcombinar_{{volumen_agregado[i].id}}" type=text/></td>   
                 </tr>
         {% endfor %}
           
-        </body>
+        </tbody>
         
     </table>
     <div id='pagerfrascosCombinar' ></div>    
@@ -94,6 +100,43 @@
  <td align= 'center'><INPUT  id='lote' name="agrupar" type=submit title="Combinar frascos" value="Combinar"></td>
 
 </table>
+{%endif%}
+    
+{% if tamanio == 0 or tamanio1 == 0   %} 
+     
+    <table border=1 align='center' width=1000>
+         <thead>
+            <tr>
+                <th>box</th>
+                <th>id</th>
+                <th>Código&nbsp;Frasco</th>
+                <th>Acidez</th>
+                <th>idCalorias</th>
+                <th>Calorias</th>
+                <th>VolumenRecolectado</th>
+                <th>idAgregado</th>
+                <th>Agregado</th>
+                <th>VolumenDisponible</th>
+                <th>Volumen&nbsp;a&nbsp;combinar</th>                
+            </tr>
+     </thead>
+                <tbody>
+                <tr>
+                 <td>No existen frascos para combinar</td>   
+                </tr>
+                </tbody>
+    </table>     
+    <table border=1 align='center' width=1000>
+    <tr><td align = "right" height=40  ></td></tr>
+               <tr>
+                <td>{{ form_label(form.observacionFrascoProcesado, 'prueba') }}
+                {{ form_widget(form.observacionFrascoProcesado) }} </td> 
+    </tr>
+    </table>                
+                        
+         
+     {%endif%}  
+    
  {{ form_end(form) }}                    
            
 {% endblock %}
