@@ -1,0 +1,563 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="InfoEspecificaDonante" language="groovy" pageWidth="612" pageHeight="792" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="1c51697c-f257-4b69-9507-ac504faa80d2">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="488"/>
+	<parameter name="nombre" class="java.lang.String"/>
+	<parameter name="id" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[select * from
+blh_donante d
+join blh_historia_actual ha on d.id=ha.id_donante
+join blh_historial_clinico hc on ha.id_donante=hc.id_donante
+WHERE d.codigo_donante= $P{id};]]>
+	</queryString>
+	<field name="id" class="java.lang.Integer"/>
+	<field name="id_municipio" class="java.lang.Integer"/>
+	<field name="id_banco_de_leche" class="java.lang.Integer"/>
+	<field name="codigo_donante" class="java.lang.String"/>
+	<field name="primer_nombre" class="java.lang.String"/>
+	<field name="segundo_nombre" class="java.lang.String"/>
+	<field name="primer_apellido" class="java.lang.String"/>
+	<field name="segundo_apellido" class="java.lang.String"/>
+	<field name="fecha_nacimiento" class="java.sql.Date"/>
+	<field name="fecha_registro_donante_blh" class="java.sql.Date"/>
+	<field name="telefono_fijo" class="java.lang.String"/>
+	<field name="telefono_movil" class="java.lang.String"/>
+	<field name="direccion" class="java.lang.String"/>
+	<field name="procedencia" class="java.lang.String"/>
+	<field name="registro" class="java.lang.String"/>
+	<field name="numero_documento_identificacion" class="java.lang.String"/>
+	<field name="documento_identificacion" class="java.lang.String"/>
+	<field name="edad" class="java.lang.Integer"/>
+	<field name="ocupacion" class="java.lang.String"/>
+	<field name="estado_civil" class="java.lang.String"/>
+	<field name="nacionalidad" class="java.lang.String"/>
+	<field name="escolaridad" class="java.lang.String"/>
+	<field name="tipo_colecta" class="java.lang.String"/>
+	<field name="observaciones" class="java.lang.String"/>
+	<field name="id_donante" class="java.lang.Integer"/>
+	<field name="peso_donante" class="java.math.BigDecimal"/>
+	<field name="talla_donante" class="java.math.BigDecimal"/>
+	<field name="medicamento" class="java.lang.String"/>
+	<field name="habito_toxico" class="java.lang.String"/>
+	<field name="motivo_donacion" class="java.lang.String"/>
+	<field name="patologia_donante" class="java.lang.String"/>
+	<field name="imc" class="java.math.BigDecimal"/>
+	<field name="estado_donante" class="java.lang.String"/>
+	<field name="amenorrea" class="java.lang.Integer"/>
+	<field name="control_prenatal" class="java.lang.String"/>
+	<field name="lugar_control" class="java.lang.String"/>
+	<field name="numero_control" class="java.lang.Integer"/>
+	<field name="fecha_ultima_regla" class="java.sql.Date"/>
+	<field name="fecha_parto" class="java.sql.Date"/>
+	<field name="lugar_parto" class="java.lang.String"/>
+	<field name="patologia_embarazo" class="java.lang.String"/>
+	<field name="periodo_intergenesico" class="java.lang.Integer"/>
+	<field name="fecha_parto_anterior" class="java.sql.Date"/>
+	<field name="formula_obstetrica_g" class="java.lang.String"/>
+	<field name="formula_obstetrica_p1" class="java.lang.String"/>
+	<field name="formula_obstetrica_p2" class="java.lang.String"/>
+	<field name="formula_obstetrica_a" class="java.lang.String"/>
+	<field name="formula_obstetrica_v" class="java.lang.String"/>
+	<field name="formula_obstetrica_m" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="111" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="49a064cf-78cd-4756-a192-68b78cc8fb8f" x="220" y="6" width="168" height="20"/>
+				<textElement>
+					<font fontName="Comic Sans MS" size="13" isBold="true"/>
+				</textElement>
+				<text><![CDATA[MINISTERIO DE SALUD ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="7ffd4b7f-d970-4c85-8d6d-2243eaceeacf" x="151" y="82" width="291" height="20"/>
+				<textElement textAlignment="Center">
+					<font fontName="Comic Sans MS" size="13" isBold="false"/>
+				</textElement>
+				<text><![CDATA[INFORMACION ESPECIFICA DE DONANTE]]></text>
+			</staticText>
+			<image>
+				<reportElement uuid="791828be-9c1c-4a56-8021-b4d99750aab6" x="6" y="6" width="134" height="93"/>
+				<imageExpression><![CDATA["/home/jeni/NetBeansProjects/siblh/src/siblh/mantenimientoBundle/Resources/reportes/blh.jpg"]]></imageExpression>
+			</image>
+			<image>
+				<reportElement uuid="f6260754-e826-4e76-9434-8a2459432ac0" x="451" y="6" width="120" height="93"/>
+				<imageExpression><![CDATA["/home/jeni/NetBeansProjects/siblh/src/siblh/mantenimientoBundle/Resources/reportes/minsal2.jpg"]]></imageExpression>
+			</image>
+			<textField>
+				<reportElement uuid="78bfb559-f41d-4cbd-9780-42d76094de53" x="148" y="36" width="294" height="40"/>
+				<textElement textAlignment="Center">
+					<font fontName="Comic Sans MS" size="13"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{nombre}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="229" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="5963af3e-d7c9-4dc2-bb42-5ef8190cc3ce" x="4" y="7" width="118" height="15"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[DATOS GENERALES]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="ed7874e8-1021-433d-8eaf-5d99b44db7c4" x="330" y="37" width="112" height="15"/>
+				<textElement/>
+				<text><![CDATA[Numero de donante:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="595b826e-1593-4fe5-8446-0eb42e4b9ddc" x="1" y="52" width="51" height="15"/>
+				<textElement/>
+				<text><![CDATA[Nombre:]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="4c197adc-4a54-48a8-be2c-7d40ab202d15" x="51" y="52" width="54" height="15"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{primer_nombre}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="11567afa-f168-41fe-87cb-f29b2641a935" x="105" y="52" width="47" height="15"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{segundo_nombre}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="1365626e-0c6c-4bd7-b22c-b099bbf3ccc3" x="152" y="52" width="45" height="15"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{primer_apellido}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="030dafa7-c30f-43da-8777-4cbb89252815" x="197" y="52" width="49" height="15"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{segundo_apellido}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="723d7a02-e108-438e-b037-54094556d323" x="1" y="84" width="51" height="15"/>
+				<textElement/>
+				<text><![CDATA[Registro:]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="ec0f1418-f909-476f-8814-2764683f2b11" x="50" y="84" width="100" height="15"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{registro}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="137b3142-b596-47f6-be6a-a997486dc923" x="184" y="85" width="33" height="15"/>
+				<textElement/>
+				<text><![CDATA[Edad:]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="3d3d1681-d716-4b70-a2d9-afd711afc3f5" x="217" y="85" width="50" height="15"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{edad}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="53ffbb4d-e1fc-4921-9e4b-a8067a0b2478" x="324" y="85" width="132" height="15"/>
+				<textElement/>
+				<text><![CDATA[Servicio de Procedencia:]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="5889ee34-5eb1-4e4f-b1fe-59e9525e5c54" x="456" y="85" width="100" height="15"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{procedencia}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="40ae8fab-2a54-4140-9203-8c1cca6fedce" x="386" y="117" width="70" height="15"/>
+				<textElement/>
+				<text><![CDATA[Nacionalidad:]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="44fe3e17-5027-4090-ac35-f6ba515ba7c0" x="456" y="117" width="100" height="15"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{nacionalidad}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="d4e5d5de-fcd4-4cdd-a439-36e076fa2194" x="1" y="116" width="52" height="15"/>
+				<textElement/>
+				<text><![CDATA[Direccion:]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="c2f33d17-7f3c-40da-9809-08a9ea8c8079" x="53" y="116" width="312" height="15"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{direccion}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="24548b25-a0ba-4ba5-8eab-3e4cf91f9062" x="1" y="148" width="50" height="15"/>
+				<textElement/>
+				<text><![CDATA[Telefono:]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="bc444707-3a23-4e62-b14e-2a55e3a61a37" x="51" y="148" width="100" height="15"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{telefono_fijo}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="b2d0c596-33a7-47ec-9b0d-f13df7db4a41" x="183" y="148" width="62" height="15"/>
+				<textElement/>
+				<text><![CDATA[Ocupacion:]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="1f932f0c-b1c2-4488-bfc7-3cd5645918c0" x="245" y="148" width="100" height="15"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{ocupacion}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="159607e1-ab10-4c4c-991a-d7a98e7bb263" x="393" y="148" width="63" height="15"/>
+				<textElement/>
+				<text><![CDATA[Escolaridad:]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="2118930d-c04f-4306-adbd-3e35d78c8a4a" x="456" y="148" width="100" height="15"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{escolaridad}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="2c97fc0b-83a0-44ad-8cbd-d7b86f5bf133" x="4" y="208" width="93" height="15"/>
+				<textElement/>
+				<text><![CDATA[Fecha de registro:]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="7d4af898-dc44-4c73-9ccd-5498f40b2e11" x="96" y="208" width="52" height="15"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{fecha_registro_donante_blh}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="29c45652-bcc9-47e8-ab3a-145dc3b2dc74" x="3" y="178" width="133" height="15"/>
+				<textElement/>
+				<text><![CDATA[Documento de identidad:]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="97d58743-d40d-4f93-8160-15ab8b853f53" x="136" y="178" width="100" height="15"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{documento_identificacion}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="64897a9e-cea7-4767-a7f6-f20c2292e083" x="270" y="178" width="186" height="15"/>
+				<textElement/>
+				<text><![CDATA[Numero de documento de identidad:]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="dadc0d1c-85d7-4dbb-b2f4-cf15aa161b93" x="454" y="178" width="100" height="15"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{numero_documento_identificacion}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement uuid="fa6acf4e-eacb-499f-9e0a-454137ef2633" x="53" y="67" width="191" height="1"/>
+			</line>
+			<line>
+				<reportElement uuid="71a8df0f-3fa1-40ab-8ac3-748cb54ea614" x="53" y="99" width="97" height="1"/>
+			</line>
+			<line>
+				<reportElement uuid="d5094300-452f-4b81-8f4a-15e2401aa715" x="220" y="100" width="45" height="1"/>
+			</line>
+			<line>
+				<reportElement uuid="161ed293-6583-4496-b48e-c5b4fc911d9e" x="460" y="100" width="96" height="1"/>
+			</line>
+			<line>
+				<reportElement uuid="c61613c1-e176-4f66-8fde-949ed98422ec" x="456" y="132" width="100" height="1"/>
+			</line>
+			<line>
+				<reportElement uuid="80eb4a71-e56a-4a18-afa4-4c127407864d" x="53" y="131" width="312" height="1"/>
+			</line>
+			<line>
+				<reportElement uuid="6541b64a-7cb0-4422-a685-b2e1d322039d" x="54" y="162" width="95" height="1"/>
+			</line>
+			<line>
+				<reportElement uuid="91dd07c4-68be-4b48-9949-6bab55714fd4" x="246" y="161" width="99" height="1"/>
+			</line>
+			<line>
+				<reportElement uuid="9014ace1-1b00-4b11-8b94-5a2b9de80e66" x="460" y="163" width="94" height="1"/>
+			</line>
+			<line>
+				<reportElement uuid="22de9955-a4b0-40ba-b9af-d1b28bf365b4" x="137" y="192" width="100" height="1"/>
+			</line>
+			<line>
+				<reportElement uuid="dda9fdea-1229-44b0-a289-ab01322a192c" x="456" y="191" width="100" height="1"/>
+			</line>
+			<line>
+				<reportElement uuid="5870f3cc-b1f3-4ab3-9089-73712db4db53" x="97" y="223" width="100" height="1"/>
+			</line>
+			<textField>
+				<reportElement uuid="49db2425-9246-4791-a9d7-c0f90634ee4a" x="448" y="34" width="108" height="20"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{id}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="370" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="b1dab131-ff13-4e49-ad79-b1a81ba9e3d5" x="8" y="32" width="118" height="15"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[HISTORIAL CLINICO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="79dc5a35-3db5-43f2-a928-2f09f0ca3809" x="7" y="67" width="100" height="15"/>
+				<textElement/>
+				<text><![CDATA[Formula Obstetrica:]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="67c87be7-3049-4c58-bcbc-8211605af987" x="117" y="67" width="15" height="15"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{formula_obstetrica_g}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="74863e25-4c40-4e88-9473-f87922050ace" x="132" y="67" width="15" height="15"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{formula_obstetrica_p1}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="b7dd2dc6-0f54-45ce-94a0-da13c58476b5" x="150" y="67" width="15" height="15"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{formula_obstetrica_p2}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="5bae35fe-55da-41ea-8433-4b791fb55fcb" x="164" y="67" width="15" height="15"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{formula_obstetrica_a}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="31c5daf4-860d-48dc-bccf-84fce345baa2" x="182" y="67" width="15" height="15"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{formula_obstetrica_v}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="67c55e05-8dbc-4ec5-b12e-aa37b999b6a4" x="200" y="67" width="15" height="16"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{formula_obstetrica_m}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="8978f692-f201-489a-9dea-b66b0c7a5793" x="295" y="67" width="117" height="15"/>
+				<textElement/>
+				<text><![CDATA[Periodo Intergenesico:]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="c797b23f-de9e-4d25-968a-ee82dfed839e" x="412" y="67" width="100" height="15"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{periodo_intergenesico}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="48b3bb33-55b0-492f-80ec-8088833d9aff" x="6" y="92" width="93" height="15"/>
+				<textElement/>
+				<text><![CDATA[Control Penatral:]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="1bee0c99-e757-4142-bd79-26bfa2f928fc" x="97" y="92" width="33" height="15"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{control_prenatal}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="2e3356ac-9b04-4395-809c-7f1bd5228764" x="395" y="92" width="117" height="15"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{lugar_control}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="af772523-22aa-4eda-bd35-a94ee2fff52b" x="295" y="92" width="100" height="15"/>
+				<textElement/>
+				<text><![CDATA[Lugar de Control:]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="844ff14a-6555-46ff-a1f2-c7c33849df69" x="124" y="122" width="52" height="15"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{fecha_ultima_regla}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="07fe5921-de1a-40fa-bf38-4026753fec29" x="5" y="122" width="118" height="15"/>
+				<textElement/>
+				<text><![CDATA[Fecha de ultima regla:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="af8db850-e44d-40ae-9601-427ccf365f5b" x="295" y="122" width="117" height="15"/>
+				<textElement/>
+				<text><![CDATA[Fecha de parto actual:]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="5eac672b-00cf-449f-be5a-04240ecf0a0a" x="412" y="122" width="52" height="15"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{fecha_parto}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="e0d682ac-3ef5-4606-8512-370f5311e096" x="5" y="152" width="150" height="15"/>
+				<textElement/>
+				<text><![CDATA[Patologia durante embarazo:]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="fef89346-b872-45f3-a2f0-1bc7fd3add01" x="153" y="152" width="26" height="15"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{patologia_embarazo}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement uuid="963975d5-fc26-4fa0-ac05-01f1ebcdc959" x="412" y="83" width="100" height="1"/>
+			</line>
+			<line>
+				<reportElement uuid="beadb554-0d82-48c2-ab69-6c670eb70034" x="398" y="107" width="114" height="1"/>
+			</line>
+			<line>
+				<reportElement uuid="a20b9340-f97b-4081-be78-f5626b3ca387" x="99" y="108" width="31" height="1"/>
+			</line>
+			<line>
+				<reportElement uuid="bd7307d5-7c78-4485-a7a9-ca76a0a91920" x="127" y="137" width="100" height="1"/>
+			</line>
+			<line>
+				<reportElement uuid="b5dc464c-f53b-4e43-80e9-1c6a807fbcb5" x="412" y="136" width="100" height="1"/>
+			</line>
+			<line>
+				<reportElement uuid="7595ef7d-593f-4f25-a3d2-4c9b817b0783" x="155" y="167" width="24" height="1"/>
+			</line>
+			<line>
+				<reportElement uuid="87c29578-21fb-47be-b944-3488c5a5e4f8" x="118" y="82" width="100" height="1"/>
+			</line>
+			<staticText>
+				<reportElement uuid="d3149185-d68b-46ac-b7be-15ec6496a799" x="9" y="200" width="120" height="15"/>
+				<textElement>
+					<font isBold="true" isItalic="false"/>
+				</textElement>
+				<text><![CDATA[HISTORIAL ACTUAL]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="80edc398-ceb7-4cb8-9dc1-ba4c9d87a479" x="10" y="215" width="33" height="15"/>
+				<textElement/>
+				<text><![CDATA[Peso:]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="db892490-fe72-45ee-b0f4-9e67bfe43365" x="43" y="215" width="69" height="15"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{peso_donante}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="3930d13f-db25-408c-8649-76d5c3c9f350" x="238" y="215" width="65" height="15"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{talla_donante}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="e1c9f32c-6c34-4b0b-8209-906db2a5bf49" x="208" y="215" width="30" height="15"/>
+				<textElement/>
+				<text><![CDATA[Talla:]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="313f67a1-716f-468e-ab8a-c0050fbeb2a5" x="398" y="215" width="100" height="15"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{imc}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="ef027b68-7381-47b5-8755-718ebce57607" x="372" y="215" width="27" height="15"/>
+				<textElement/>
+				<text><![CDATA[Imc:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="8cbcc11a-54d3-4368-ac89-1ab76c2223cc" x="10" y="243" width="117" height="15"/>
+				<textElement/>
+				<text><![CDATA[Uso de medicamentos:]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="145a4cc6-ce00-41e1-9132-69623e8ca154" x="127" y="243" width="35" height="15"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{medicamento}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="ef6b28bd-bf0d-4853-9ba5-ce855850553e" x="208" y="243" width="95" height="15"/>
+				<textElement/>
+				<text><![CDATA[Habitos toxicos:]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="fc7fe601-2caa-478c-9afb-0b6345e8b8d0" x="303" y="243" width="38" height="15"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{habito_toxico}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="15598561-3c29-4aaf-927a-7b54fa056f2e" x="7" y="275" width="194" height="15"/>
+				<textElement/>
+				<text><![CDATA[Patologia al momento de entrevista:]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="7a4944f7-675d-42b7-837a-81ccaf94b6d3" x="201" y="275" width="26" height="15"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{patologia_donante}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="905a3771-d44e-4b47-bbfc-0ff3a28a99d0" x="8" y="304" width="130" height="15"/>
+				<textElement/>
+				<text><![CDATA[Motivo por el cual dona:]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="ebc9c8b5-7307-4ad5-b192-26dac95e239a" x="138" y="304" width="407" height="15"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{motivo_donacion}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="72e78c6f-5a34-49b4-88ed-a43209deb491" x="8" y="336" width="92" height="15"/>
+				<textElement/>
+				<text><![CDATA[Estado donante:]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="ceba98f0-a156-48fa-9b90-9833a4f2f72d" x="100" y="336" width="100" height="15"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{estado_donante}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="d5b324ad-3d5c-44c9-9f30-5ea0f61422b0" x="346" y="336" width="199" height="15"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{observaciones}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="fe721c43-c832-4795-94db-5ab352799322" x="262" y="336" width="84" height="15"/>
+				<textElement/>
+				<text><![CDATA[Observaciones:]]></text>
+			</staticText>
+			<line>
+				<reportElement uuid="96b9560a-85fb-4564-8d6d-5a3ca7c38a86" x="43" y="230" width="69" height="1"/>
+			</line>
+			<line>
+				<reportElement uuid="b88d8df4-8c3a-42c8-9526-82f08153a1a3" x="241" y="230" width="62" height="1"/>
+			</line>
+			<line>
+				<reportElement uuid="05380306-8eec-4c93-b890-1917da0e434e" x="399" y="231" width="99" height="1"/>
+			</line>
+			<line>
+				<reportElement uuid="f22ea06b-7a6c-4366-8505-8250d6963850" x="127" y="258" width="33" height="1"/>
+			</line>
+			<line>
+				<reportElement uuid="40e5acb7-7fd7-4cdf-837d-63c50e5d3e8e" x="303" y="258" width="38" height="1"/>
+			</line>
+			<line>
+				<reportElement uuid="ac6a5e38-29d2-444d-854b-040405c634ed" x="201" y="289" width="26" height="1"/>
+			</line>
+			<line>
+				<reportElement uuid="d94c64a8-9e99-4148-bbe1-1ee128949d5e" x="141" y="319" width="404" height="1"/>
+			</line>
+			<line>
+				<reportElement uuid="807891df-c5b3-4b34-9346-3b9e5e432075" x="106" y="350" width="93" height="1"/>
+			</line>
+			<line>
+				<reportElement uuid="103665a8-eee0-4296-9dfd-8e776b217c34" x="349" y="350" width="197" height="1"/>
+			</line>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="2" splitType="Stretch"/>
+	</detail>
+	<columnFooter>
+		<band height="12" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="30" splitType="Stretch">
+			<textField>
+				<reportElement uuid="47355a25-c194-4fd3-9281-3cd2669f29d2" x="472" y="10" width="82" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="4" splitType="Stretch"/>
+	</summary>
+</jasperReport>

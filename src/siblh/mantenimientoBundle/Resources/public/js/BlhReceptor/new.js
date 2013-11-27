@@ -112,10 +112,10 @@ $('#siblh_mantenimientobundle_blhreceptor_tallaIngreso').
         attr('data-bvalidator-msg', "Ingrese la talla entre 30 y 60 cm"); 
 
 $('#siblh_mantenimientobundle_blhreceptor_pc').
-        attr('data-bvalidator', 'between[30:60],required');
+        attr('data-bvalidator', 'between[20:40],required');
     
 $('#siblh_mantenimientobundle_blhreceptor_pc').
-        attr('data-bvalidator-msg', "Ingrese la talla entre 30 y 60 cm"); 
+        attr('data-bvalidator-msg', "Ingrese la talla entre 20 y 40 cm"); 
 
 $('#siblh_mantenimientobundle_blhreceptor_apgar').
         attr('data-bvalidator', 'between[30:60],required');

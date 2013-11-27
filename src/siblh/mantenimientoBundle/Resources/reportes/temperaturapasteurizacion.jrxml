@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="temperaturapasteurizacion" language="groovy" printOrder="Horizontal" pageWidth="648" pageHeight="842" columnWidth="608" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="41abadda-2d4f-4afc-bf46-b91f9f7253f9">
 	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="250"/>
+	<property name="ireport.y" value="0"/>
 	<style name="table">
 		<box>
 			<pen lineWidth="1.0" lineColor="#000000"/>
@@ -84,25 +84,24 @@
 		</box>
 	</style>
 	<subDataset name="New Dataset 1" uuid="1b7a3c45-79c8-4110-baa2-b3efe0578d47">
-		<parameter name="codigo" class="java.lang.String"/>
+		<parameter name="id" class="java.lang.String"/>
 		<queryString>
 			<![CDATA[select row_number() OVER (ORDER BY p.codigo_pasteurizacion) * 5 as minuto,
 tp.temperatura_p
 from blh_pasteurizacion p join blh_temperatura_pasteurizacion tp
 on tp.id_pasteurizacion = p.id
-and p.codigo_pasteurizacion like $P{codigo};]]>
+and p.codigo_pasteurizacion = $P{id};]]>
 		</queryString>
 		<field name="minuto" class="java.lang.Long"/>
 		<field name="temperatura_p" class="java.lang.Integer"/>
 	</subDataset>
-	<parameter name="codigo" class="java.lang.String">
-		<defaultValueExpression><![CDATA[$P{codigo}]]></defaultValueExpression>
-	</parameter>
+	<parameter name="nombre" class="java.lang.String"/>
+	<parameter name="id" class="java.lang.String"/>
 	<queryString>
 		<![CDATA[select p.fecha_pasteurizacion, p.hora_inicio_p, tp.temperatura_p, p.hora_final_p
 from blh_pasteurizacion p join blh_temperatura_pasteurizacion tp
 on tp.id_pasteurizacion = p.id
-and p.codigo_pasteurizacion like $P{codigo};]]>
+and p.codigo_pasteurizacion = $P{id};]]>
 	</queryString>
 	<field name="fecha_pasteurizacion" class="java.sql.Date"/>
 	<field name="hora_inicio_p" class="java.sql.Time"/>
@@ -117,7 +116,7 @@ and p.codigo_pasteurizacion like $P{codigo};]]>
 	<pageHeader>
 		<band height="156" splitType="Stretch">
 			<staticText>
-				<reportElement uuid="7c96a0ff-7097-45c9-8324-d2efafa07bea" x="161" y="60" width="282" height="47"/>
+				<reportElement uuid="7c96a0ff-7097-45c9-8324-d2efafa07bea" x="161" y="92" width="282" height="26"/>
 				<textElement>
 					<font fontName="Comic Sans MS" size="14"/>
 				</textElement>
@@ -130,13 +129,6 @@ and p.codigo_pasteurizacion like $P{codigo};]]>
 				</textElement>
 				<text><![CDATA[MINISTERIO DE SALUD]]></text>
 			</staticText>
-			<staticText>
-				<reportElement uuid="aea345aa-2e0e-4c8c-8958-2e76f16bf1b0" x="186" y="36" width="223" height="24"/>
-				<textElement>
-					<font fontName="Comic Sans MS" size="14"/>
-				</textElement>
-				<text><![CDATA[HOSPITAL DE MATERNIDAD]]></text>
-			</staticText>
 			<image>
 				<reportElement uuid="2536c72a-fa3d-45ee-b227-23bc5eebd98a" x="13" y="12" width="141" height="106"/>
 				<imageExpression><![CDATA["/home/jeni/NetBeansProjects/siblh/src/siblh/mantenimientoBundle/Resources/reportes/blh.jpg"]]></imageExpression>
@@ -145,60 +137,67 @@ and p.codigo_pasteurizacion like $P{codigo};]]>
 				<reportElement uuid="45f34dc4-b66c-4eb5-bc77-ec5b35602177" x="447" y="12" width="143" height="106"/>
 				<imageExpression><![CDATA["/home/jeni/NetBeansProjects/siblh/src/siblh/mantenimientoBundle/Resources/reportes/minsal2.jpg"]]></imageExpression>
 			</image>
+			<textField>
+				<reportElement uuid="03876611-c3da-4beb-a453-7f22becbfe01" x="162" y="40" width="281" height="52"/>
+				<textElement textAlignment="Center">
+					<font size="16" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{nombre}]]></textFieldExpression>
+			</textField>
 		</band>
 	</pageHeader>
 	<columnHeader>
 		<band height="240" splitType="Stretch">
 			<staticText>
-				<reportElement uuid="15527684-0d54-4738-87b7-f5788900c872" x="143" y="11" width="170" height="20"/>
+				<reportElement uuid="15527684-0d54-4738-87b7-f5788900c872" x="315" y="11" width="170" height="20"/>
 				<textElement>
 					<font size="12" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Fecha Pasteurizacion:]]></text>
 			</staticText>
 			<textField>
-				<reportElement uuid="b104bfbd-1cdb-41a1-aea4-2cead87d4509" x="313" y="11" width="100" height="20"/>
+				<reportElement uuid="b104bfbd-1cdb-41a1-aea4-2cead87d4509" x="485" y="11" width="100" height="20"/>
 				<textElement/>
 				<textFieldExpression><![CDATA[$F{fecha_pasteurizacion}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement uuid="7f75cdd4-ef07-459f-b130-8419fcfd44af" x="47" y="45" width="100" height="20"/>
+				<reportElement uuid="7f75cdd4-ef07-459f-b130-8419fcfd44af" x="81" y="45" width="100" height="20"/>
 				<textElement>
 					<font size="12" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Hora Inicio:]]></text>
 			</staticText>
 			<textField>
-				<reportElement uuid="dae619fe-b975-4785-bb78-f1bc3134401e" x="162" y="45" width="100" height="20"/>
+				<reportElement uuid="dae619fe-b975-4785-bb78-f1bc3134401e" x="196" y="45" width="100" height="20"/>
 				<textElement/>
 				<textFieldExpression><![CDATA[$F{hora_inicio_p}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement uuid="d65bfa9e-7594-471d-b628-947c5b8fb910" x="302" y="45" width="100" height="20"/>
+				<reportElement uuid="d65bfa9e-7594-471d-b628-947c5b8fb910" x="336" y="45" width="100" height="20"/>
 				<textElement>
 					<font size="12" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Hora Fin:]]></text>
 			</staticText>
 			<textField>
-				<reportElement uuid="78c510f2-6595-4919-bdf6-145e10db7d8f" x="402" y="45" width="100" height="20"/>
+				<reportElement uuid="78c510f2-6595-4919-bdf6-145e10db7d8f" x="436" y="45" width="100" height="20"/>
 				<textElement/>
 				<textFieldExpression><![CDATA[$F{hora_final_p}]]></textFieldExpression>
 			</textField>
 			<componentElement>
 				<reportElement uuid="ffdfff6c-1ed7-40da-83d2-0234360d36b3" key="table 3" style="table 3" x="180" y="94" width="197" height="131"/>
 				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
-					<datasetRun subDataset="New Dataset 1" uuid="4be8ac81-adcd-47c3-83d3-e21b125c9680">
-						<datasetParameter name="codigo">
-							<datasetParameterExpression><![CDATA[$P{codigo}]]></datasetParameterExpression>
+					<datasetRun subDataset="New Dataset 1" uuid="10059d59-1a15-4ea6-ac99-650ce6e89d62">
+						<datasetParameter name="id">
+							<datasetParameterExpression><![CDATA[$P{id}]]></datasetParameterExpression>
 						</datasetParameter>
 						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
 					</datasetRun>
 					<jr:column width="90" uuid="446ec4ba-7dc5-474e-b9d3-f01652aa58e9">
 						<jr:columnHeader style="table 3_CH" height="30" rowSpan="1">
 							<staticText>
-								<reportElement uuid="24f4c3e0-2529-4ed6-bb00-470d1973b4a9" x="13" y="8" width="67" height="14"/>
-								<textElement>
+								<reportElement uuid="24f4c3e0-2529-4ed6-bb00-470d1973b4a9" x="19" y="8" width="56" height="14"/>
+								<textElement textAlignment="Center">
 									<font size="12" isBold="true"/>
 								</textElement>
 								<text><![CDATA[Minuto]]></text>
@@ -206,7 +205,7 @@ and p.codigo_pasteurizacion like $P{codigo};]]>
 						</jr:columnHeader>
 						<jr:detailCell style="table 3_TD" height="20" rowSpan="1">
 							<textField>
-								<reportElement uuid="21f526f6-f132-4d2b-974c-90fe3d6202e6" x="17" y="0" width="66" height="20"/>
+								<reportElement uuid="21f526f6-f132-4d2b-974c-90fe3d6202e6" x="19" y="0" width="58" height="20"/>
 								<textElement textAlignment="Center"/>
 								<textFieldExpression><![CDATA[$F{minuto}]]></textFieldExpression>
 							</textField>
@@ -215,7 +214,7 @@ and p.codigo_pasteurizacion like $P{codigo};]]>
 					<jr:column width="105" uuid="3817b954-a441-435e-9558-d49f52d83670">
 						<jr:columnHeader style="table 3_CH" height="30" rowSpan="1">
 							<staticText>
-								<reportElement uuid="94d9fefe-2752-460c-9568-598160928a79" x="4" y="6" width="101" height="22"/>
+								<reportElement uuid="94d9fefe-2752-460c-9568-598160928a79" x="3" y="8" width="101" height="22"/>
 								<textElement>
 									<font size="12" isBold="true"/>
 								</textElement>
@@ -232,6 +231,18 @@ and p.codigo_pasteurizacion like $P{codigo};]]>
 					</jr:column>
 				</jr:table>
 			</componentElement>
+			<textField>
+				<reportElement uuid="a9c66f9b-a2c1-4d83-9056-3a8ab99c854c" x="202" y="11" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$P{id}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="b9c6799a-2822-428a-b16f-77aa7bc88d7a" x="29" y="11" width="166" height="20"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Codigo Pasteurizacion:]]></text>
+			</staticText>
 		</band>
 	</columnHeader>
 	<detail>

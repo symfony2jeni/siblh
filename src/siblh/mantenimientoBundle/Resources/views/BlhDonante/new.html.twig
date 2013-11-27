@@ -18,40 +18,39 @@
     {{ form_start(form) }}
     {{ form_errors(form) }}
  
-  <table align = "center" width = "97%" >
+  <table align = "center" width = "97%" border =1>
      
    <tr>  
    <td align = "right" > <font color="red">*</font>
-        {{ form_label(form.primerNombre) }}
-        {{ form_errors(form.primerNombre) }}
-        {{ form_widget(form.primerNombre,  { 'attr': {'size': '15'} }) }} </td> 
+        {{ form_label(form.primerNombre) }}</td>
+
+     <td align = "right" >   {{ form_widget(form.primerNombre,  { 'attr': {'size': '15'} }) }} </td> 
       
-   <td colspan = '2'  align = "center"> 
-        {{ form_label(form.segundoNombre) }}
-        {{ form_errors(form.segundoNombre) }}
-        {{ form_widget(form.segundoNombre,  { 'attr': {'size': '15'} }) }} </td></tr>
+   <td   align = "center"> 
+        {{ form_label(form.segundoNombre) }}</td>
+   <td align = "right" >  {{ form_widget(form.segundoNombre,  { 'attr': {'size': '15'} }) }} </td></tr>
+   <tr><td  ></td></tr>
  
     <tr>
     <td align = "right"><font color="red">*</font>
-        {{ form_label(form.primerApellido) }}
-        {{ form_errors(form.primerApellido) }}
-        {{ form_widget(form.primerApellido,  { 'attr': {'size': '15'} }) }} </td>
+        {{ form_label(form.primerApellido) }}</td>
+    <td align = "right">    {{ form_widget(form.primerApellido,  { 'attr': {'size': '15'} }) }} </td>
   
-    <td colspan = '2' align = "center"> 
-        {{ form_label(form.segundoApellido) }}
-        {{ form_errors(form.segundoApellido) }}
-        {{ form_widget(form.segundoApellido,  { 'attr': {'size': '15'} }) }} </td></tr>
+    <td  align = "center"> 
+        {{ form_label(form.segundoApellido) }} </td>
+
+   <td  align = "center">       {{ form_widget(form.segundoApellido,  { 'attr': {'size': '15'} }) }} </td></tr>
+    <tr><td  ></td></tr>
     <tr>
     <td WIDTH = "15" align = "left">
-        {{ form_label(form.procedencia) }} 
-        {{ form_errors(form.procedencia) }}
-        {{ form_widget(form.procedencia) }} </td>
+        {{ form_label(form.procedencia) }} </td>
+    <td  align = "center"> {{ form_widget(form.procedencia) }} </td>
         
     <td WIDTH = "13" align = "left"><font color="red">*</font>
-        {{ form_label(form.fechaNacimiento) }} 
-        {{ form_errors(form.fechaNacimiento) }}
-        {{ form_widget(form.fechaNacimiento, {'attr':{'readonly': 'true'} }) }} </td>
+        {{ form_label(form.fechaNacimiento) }} </td>
+    <td  align = "center">      {{ form_widget(form.fechaNacimiento, {'attr':{'readonly': 'true', 'title': 'Dar clic y seleccionar fecha de nacimiento'} }) }} </td>
         </tr>
+        <tr><td height=10  ></td></tr>
         
  <tr><td align = "left"><font color="red">*</font>
         {{ form_label(form.estadoCivil) }} 
@@ -68,24 +67,27 @@
         {{ form_errors(form.nacionalidad) }}
         {{ form_widget(form.nacionalidad) }}
        </td></tr>
+    <tr><td height=10  ></td></tr>
     
-   <tr><td colspan = "3" align = "center">
+   <tr>
+   <td align = "left"> 
+        {{ form_label(form.escolaridad) }} &nbsp; &nbsp;&nbsp;
+        {{ form_errors(form.escolaridad) }}
+        {{ form_widget(form.escolaridad) }} </td>
+       <td colspan = "2" align = "center">
         {{ form_label(form.direccion) }} 
         {{ form_errors(form.direccion) }}
-        {{ form_widget(form.direccion,  { 'attr': {'size': '100'} }) }} </td></tr>  
+        {{ form_widget(form.direccion,  { 'attr': {'size': '100'} }) }} </td></tr> 
+       <tr><td height=10  ></td></tr>
    
-    <tr><td colspan = "2" align = "left"><font color="red">*</font>
+    <tr><td colspan = "2" align = "left" style="visibility:hidden" height =10>
         {{ form_label(form.idBancoDeLeche, 'Banco de Leche') }} 
         {{ form_errors(form.idBancoDeLeche) }}
         {{ form_widget(form.idBancoDeLeche,  { 'attr': {'required': 'true'} }) }}</td>
   
   
-   
-   <td align = "left"> 
-        {{ form_label(form.escolaridad) }} &nbsp; &nbsp;&nbsp;
-        {{ form_errors(form.escolaridad) }}
-        {{ form_widget(form.escolaridad) }} </td></tr>
-   
+   </tr>
+   <tr><td height=10  ></td></tr>
    <tr>
    <td align = "left"><font color="red">*</font>
         {{ form_label(form.documentoIdentificacion) }} 
@@ -100,9 +102,8 @@
        <td align = "left" ><font color="red" >*</font>
         {{ form_label(form.tipoColecta) }}&nbsp;
         {{ form_errors(form.tipoColecta) }}
-        {{ form_widget(form.tipoColecta) }} </td>
-   
-  </tr>
+        {{ form_widget(form.tipoColecta) }} </td></tr>
+       <tr><td height=10  ></td></tr>
    
    <tr>
    <td align = "left"><font color="red" >*</font> 
@@ -120,9 +121,9 @@
   <td align = "left">
         {{ form_label(form.fechaRegistroDonanteBlh, 'Fecha registro') }} 
         {{ form_errors(form.fechaRegistroDonanteBlh) }}
-        {{ form_widget(form.fechaRegistroDonanteBlh, {'attr':{'readonly': 'true'} }) }} </td>
+        {{ form_widget(form.fechaRegistroDonanteBlh, {'attr':{'readonly': 'true', 'title': 'Dar clic y seleccionar fecha de registro'} }) }} </td>
       </tr>
-      
+      <tr><td height=10  ></td></tr>
       <tr>
        <td align = "left" > 
    
@@ -144,6 +145,7 @@
         {{ form_widget(form.observaciones,  { 'attr': {'size': '50'} }) }} </td>
       
       </tr>
+      <tr><td height=10  ></td></tr>
    
   <tr><td WIDTH = "10" align = "left"><font color="red" size = "2" face = "Comic Sans MS">* Campos requeridos</font>   </td>
       <td colspan = '2' align = 'left'>&nbsp; &nbsp;&nbsp; &nbsp;

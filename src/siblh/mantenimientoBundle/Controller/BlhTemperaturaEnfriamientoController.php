@@ -266,7 +266,8 @@ public function pasteurizacionAction()
         else{$idp = (string)$codigo;}
         
         //Obteniendo lista de pacientes"  
-        $query = $em->createQuery("SELECT r.id as identificador, r.codigoPasteurizacion, r.numCiclo, r.volumenPasteurizado, r.numFrascosPasteurizados, r.fechaPasteurizacion FROM siblhmantenimientoBundle:BlhPasteurizacion r
+        $query = $em->createQuery("SELECT r.id as identificador, r.codigoPasteurizacion, r.numCiclo, r.volumenPasteurizado, r.numFrascosPasteurizados, r.fechaPasteurizacion 
+            FROM siblhmantenimientoBundle:BlhPasteurizacion r
                                    where substring(r.codigoPasteurizacion,1,2) = '$idp'");
         
        //echo $hisclinico[idDonante];

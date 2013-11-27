@@ -45,7 +45,15 @@ $(document).ready(function() {
 //window.open("/app_dev.php/pacientes/");  
 
 
-$(function() {
+
+      
+     }
+
+ $y = $('#2').val();
+ //$x=0;
+ if($y>0)
+ {
+ $(function() {
     $( "#dialog-message2" ).dialog({
       modal: false,
    position: ['right', 405],
@@ -66,10 +74,7 @@ $(function() {
       }
     });
   });
-      
-     }
-
-
+ }
     
      $.noConflict();
 	

@@ -2,11 +2,11 @@ $(document).ready(function() {
         $('button').button();
      $.noConflict();
      $.datepicker.setDefaults($.datepicker.regional["es"]);
-   $('input[id$="_fechaNacimiento"]').datepicker({ dateFormat: 'yy-mm-dd',  
+   $('input[id$="_fechaNacimiento"]').datepicker({ dateFormat: 'dd-mm-yy',  
                            changeMonth: true,
                            changeYear: true,
                            clearStatus: 'Borra fecha actual',  
-                           defaultDate: '-35y-01-01',
+                           defaultDate: '01-01--35y',
                            //minDate: '-34y',
                            //maxDate: '-13y',
                           yearRange: '-35y:-13y',
@@ -15,11 +15,11 @@ $(document).ready(function() {
                                              "Jul", "Ago", "Sep", "Oct", "Nov", "Dic"]
                           });
                           
-     $('input[id$="_fechaRegistroDonanteBlh"]').datepicker({ dateFormat: 'yy-mm-dd',  
+     $('input[id$="_fechaRegistroDonanteBlh"]').datepicker({ dateFormat: 'dd-mm-yy',  
                            changeMonth: true,
                            changeYear: true,
                            clearStatus: 'Borra fecha actual',  
-                          defaultDate: '2012-01-01',
+                          defaultDate: '01-01-2012',
                             yearRange: '2012:y',
                            dayNamesMin: ["Do", "Lu", "Ma", "Mi", "Ju", "Vi", "Sa"],
                            monthNamesShort: ["Ene", "Feb", "Mar", "Abr", "May", "Jun",
