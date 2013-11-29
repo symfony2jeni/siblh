@@ -65,7 +65,7 @@ class BlhSeguimientoReceptorController extends Controller
             $em->persist($entity);
             $em->flush();
 
-            return $this->redirect($this->generateUrl('blhseguimientoreceptor', array('id' => $entity->getId())));
+            return $this->redirect($this->generateUrl('blhseguimientoreceptor_show', array('id' => $entity->getId())));
         }
 
         return array(
@@ -128,11 +128,19 @@ class BlhSeguimientoReceptorController extends Controller
             throw $this->createNotFoundException('Unable to find BlhSeguimientoReceptor entity.');
         }
 
-        $deleteForm = $this->createDeleteForm($id);
+       $deleteForm = $this->createDeleteForm($id);
+        
+          //Obtener banco de leche//
+        
+      $userEst = $this->container->get('security.context')->getToken()->getUser()->getIdEst();
+      $query1 = $em->createQuery("SELECT e.nombre, e.direccion, e.telefono FROM siblhmantenimientoBundle:CtlEstablecimiento e WHERE e.id = $userEst");
+      $establecimiento = $query1->getResult(); 
+        
 
         return array(
             'entity'      => $entity,
             'delete_form' => $deleteForm->createView(),
+            'hospital' => $establecimiento,
         );
     }
 
@@ -257,7 +265,7 @@ class BlhSeguimientoReceptorController extends Controller
         return $this->createFormBuilder()
             ->setAction($this->generateUrl('blhseguimientoreceptor_delete', array('id' => $id)))
             ->setMethod('DELETE')
-            ->add('submit', 'submit', array('label' => 'Delete'))
+            //->add('submit', 'submit', array('label' => 'Delete'))
             ->getForm()
         ;
     }

@@ -51,19 +51,19 @@ $(document).ready(function() {
             attr('data-bvalidator', 'required,between[20:40]');
     
  $('#siblh_mantenimientobundle_blhseguimientoreceptor_pesoSeguimiento').
-            attr('data-bvalidator', 'required,between[400:2500]');
+            attr('data-bvalidator', 'required,between[500:5000]');
   
     
  $('#siblh_mantenimientobundle_blhseguimientoreceptor_gananciaDiaPeso').
-            attr('data-bvalidator', 'required,between[0:100]');
+            attr('data-bvalidator', 'required,between[0:50]');
  
     
  $('#siblh_mantenimientobundle_blhseguimientoreceptor_tallaReceptor').
-            attr('data-bvalidator', 'required,between[30:60]');
+            attr('data-bvalidator', 'required,between[25:55]');
     
     
   $('#siblh_mantenimientobundle_blhseguimientoreceptor_gananciaDiaTalla').
-            attr('data-bvalidator', 'required,between[0:10]');
+            attr('data-bvalidator', 'required,between[0:5]');
     
 
       //Opciones del validador
@@ -77,6 +77,24 @@ $(document).ready(function() {
 
 
 });
+
+function soloNumerosEnteros(e)
+{
+var keynum = window.event ? window.event.keyCode : e.which;
+if (keynum === 8)
+return true;
+ 
+return /\d/.test(String.fromCharCode(keynum));
+}
+
+function soloNumeros(e)
+{
+var keynum = window.event ? window.event.keyCode : e.which;
+if ((keynum === 8) || (keynum === 46))
+return true;
+ 
+return /\d/.test(String.fromCharCode(keynum));
+}
 
 
 

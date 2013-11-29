@@ -24,9 +24,9 @@
    <table align = "center" width = "90%" >
         <tr><td colspan=2 align = "right" height=40></td></tr>
        <tr>
-       <td colspan = "2" align = "right"><b>Donante</b></td>
+       <td colspan = "2" align = "left"><b>Donante</b></td>
                 <td colspan = "4" align = "left">
-                <INPUT type=text STYLE="text-align:center" name="nombre" disabled="disabled" size=35 readonly="readonly" value= "{{ datos_frasco[0].nombre1}}&nbsp;{{ datos_frasco[0].nombre2  }}&nbsp;{{ datos_frasco[0].apellido1 }}&nbsp;{{ datos_frasco[0].apellido2 }}">
+                <INPUT type=text STYLE="text-align:center" name="nombre" disabled="disabled" size=50 readonly="readonly" value= "{{ datos_frasco[0].nombre1}}&nbsp;{{ datos_frasco[0].nombre2  }}&nbsp;{{ datos_frasco[0].apellido1 }}&nbsp;{{ datos_frasco[0].apellido2 }}">
                </td>
   
                <td colspan=4 align = "right" style="visibility:hidden"> 
@@ -35,23 +35,23 @@
                 {{ form_errors(form.idFrascoRecolectado) }}
                 {{ form_widget(form.idFrascoRecolectado) }} </td>
                 <td colspan = "4" align = "right"><b>Fecha analisis</b></td>
-                <td colspan = "2" align = "left">
+                <td colspan = "2" align = "right">
                 <INPUT type=text STYLE="text-align:center" name="nombre" disabled="disabled" size=20 readonly="readonly" value= "{{ datos_frasco[0].fecha|date('d-m-Y') }}"></td>
                 
        </tr>
     <tr>
-                <td colspan = "2" align = "right"><b>Frasco</b></td>
+                <td colspan = "2" align = "left"><b>Frasco</b></td>
                 <td colspan = "4" align = "left">
                 <INPUT type=text STYLE="text-align:center" name="nombre" disabled="disabled" size=20 readonly="readonly" value= "{{ datos_frasco[0].codigoFrascoRecolectado}}">
                </td>
                
-               <td colspan = "2" align = "right"><b>Volumen(ml)</b></td>
-                <td colspan = "4" align = "left">    
+               <td colspan = "2" align = "center" width=100><b>Volumen(ml)</b></td>
+                <td colspan = "4" align = "left"  width=300>    
                 <INPUT type=text STYLE="text-align:center" name="nombre" disabled="disabled" size=20 readonly="readonly" value= "{{ datos_frasco[0].volumenRecolectado|number_format(2, '.', ',')}}">
                </td>
                     
               <td colspan = "2" align = "right"><b>Volumen(onz)</b></td>
-                <td colspan = "4" align = "left">
+                <td colspan = "4" align = "right">
                 <INPUT type=text STYLE="text-align:center" name="nombre" disabled="disabled" size=20 readonly="readonly" value= "{{ datos_frasco[0].onzRecolectado|number_format(2, '.', ',')}}">
                </td>
                 
@@ -60,47 +60,47 @@
            
       </table>
    
-        <table align = "center" width = "90%">
+        <table align = "center" width = "90%" >
           
         <tr>
-        <td  align = "right" >{{ form_label(form.crema1, 'Crema 1(mm)') }}</td>
-        <td align = "left">{{ form_widget(form.crema1) }} </td>
-        <td align = "right">{{ form_label(form.crema2,'Crema 2(mm)') }}</td>
-        <td align = "left">{{ form_widget(form.crema2) }} </td>
-        <td align = "right" >{{ form_label(form.crema3,'Crema 3(mm)') }}</td>
-        <td align = "left">{{ form_widget(form.crema3) }} </td>
+        <td  align = "left" width=230>{{ form_label(form.crema1, 'Crema 1(mm)') }}</td>
+        <td align = "left" width=300>{{ form_widget(form.crema1, {'attr':{ 'onKeyPress':"return soloNumeros(event);",'title': 'Por favor ingrese la crema 1, entre 1 y 100 mm' } } ) }} </td>
+        <td align = "left" width=230>{{ form_label(form.crema2,'Crema 2(mm)') }}</td>
+        <td align = "left" width=300>{{ form_widget(form.crema2, {'attr':{ 'onKeyPress':"return soloNumeros(event);",'title': 'Por favor ingrese la crema 2, entre 1 y 100 mm' } } ) }} </td>
+        <td align = "left" width=230>{{ form_label(form.crema3,'Crema 3(mm)') }}</td>
+        <td align = "left" >{{ form_widget(form.crema3, {'attr':{ 'onKeyPress':"return soloNumeros(event);",'title': 'Por favor ingrese la crema 3, entre 1 y 100 mm' } } ) }} </td>
           </tr>
         <tr><td align = "right" height=10  ></td></tr>
       <tr>
-           <td align = "right" >{{ form_label(form.ct1, 'Coliformes  1(mm)') }}</td>
-           <td align = "left">{{ form_widget(form.ct1) }} </td>
+           <td align = "left" >{{ form_label(form.ct1, 'Caloría  1(mm)') }}</td>
+           <td align = "left">{{ form_widget(form.ct1, {'attr':{ 'onKeyPress':"return soloNumeros(event);",'title': 'Por favor ingrese la caloría 1, entre 1 y 100 mm' } } ) }} </td>
            
-           <td align = "right" >{{ form_label(form.ct2, 'Coliformes  2(mm)') }}</td>
-           <td align = "left">{{ form_widget(form.ct2) }} </td>
+           <td align = "left" >{{ form_label(form.ct2, 'Caloría  2(mm)') }}</td>
+           <td align = "left">{{ form_widget(form.ct2, {'attr':{ 'onKeyPress':"return soloNumeros(event);",'title': 'Por favor ingrese la caloría 2, entre 1 y 100 mm' } }  ) }} </td>
                
-           <td align = "right">{{ form_label(form.ct3, 'Coliformes 3(mm)') }}</td>
-           <td align = "left">{{ form_widget(form.ct3)}} </td>
+           <td align = "left">{{ form_label(form.ct3, 'Caloría 3(mm)') }}</td>
+           <td align = "left">{{ form_widget(form.ct3, {'attr':{ 'onKeyPress':"return soloNumeros(event);",'title': 'Por favor ingrese la caloría 3, entre 1 y 100 mm' } } )}} </td>
        
        
         </tr>
          <tr><td  align = "right" height=10  ></td></tr>
       <tr>
-           <td align = "right" >{{ form_label(form.mediaCrema, 'Media crema(mm)') }}</td>
-           <td align = "left">{{ form_widget(form.mediaCrema) }} </td>
+           <td align = "left" >{{ form_label(form.mediaCrema, 'Media crema(mm)') }}</td>
+           <td align = "left">{{ form_widget(form.mediaCrema, {'attr':{ 'readonly': 'true' } } ) }} </td>
            
-           <td align = "right" >{{ form_label(form.mediaCt, 'Media coliformes(mm)') }}</td>
-           <td align = "left">{{ form_widget(form.mediaCt) }} </td>
+           <td align = "left" >{{ form_label(form.mediaCt, 'Media calorías(mm)') }}</td>
+           <td align = "left">{{ form_widget(form.mediaCt, {'attr':{ 'readonly': 'true' } } ) }} </td>
       
           
-        <td align = "right" >{{ form_label(form.porcentajeCrema) }}</td>
-        <td align = "left">{{ form_widget(form.porcentajeCrema)}} </td>
+        <td align = "left" >{{ form_label(form.porcentajeCrema, 'Porcentaje crema(%)') }}</td>
+        <td align = "left">{{ form_widget(form.porcentajeCrema, {'attr':{ 'readonly': 'true' } } )}} </td>
        
        
         </tr>
            <tr><td align = "right" height=10  ></td></tr>
       <tr>
-           <td align = "right" >{{ form_label(form.kilocalorias) }}</td>
-           <td align = "left">{{ form_widget(form.kilocalorias) }} </td>
+           <td align = "left" >{{ form_label(form.kilocalorias) }}</td>
+           <td align = "left">{{ form_widget(form.kilocalorias, {'attr':{ 'readonly': 'true' } } ) }} </td>
         </tr>    
            
            

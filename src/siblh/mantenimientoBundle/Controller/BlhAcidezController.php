@@ -62,7 +62,7 @@ class BlhAcidezController extends Controller
             $em->persist($entity);
             $em->flush();
 
-            return $this->redirect($this->generateUrl('blhacidez', array('id' => $entity->getId())));
+            return $this->redirect($this->generateUrl('blhacidez_show', array('id' => $entity->getId())));
         }
 
         return array(
@@ -141,9 +141,15 @@ class BlhAcidezController extends Controller
 
         $deleteForm = $this->createDeleteForm($id);
 
+                 
+       $userEst = $this->container->get('security.context')->getToken()->getUser()->getIdEst();
+       $query1 = $em->createQuery("SELECT e.nombre, e.direccion, e.telefono FROM siblhmantenimientoBundle:CtlEstablecimiento e WHERE e.id = $userEst");
+        $establecimiento = $query1->getResult(); 
+        
         return array(
             'entity'      => $entity,
             'delete_form' => $deleteForm->createView(),
+             'hospital' => $establecimiento,
         );
     }
 

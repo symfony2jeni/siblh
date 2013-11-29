@@ -61,14 +61,16 @@ class BlhFrascoProcesadoController extends Controller
 
         if ($form->isValid()) {
             
-           //obteniendo los ids a combinar//
+     
             
          //obteniendo vector con  ids a combinar   
          $request = $this->getRequest();
          $ids_combinar = $request->get('idscombinar');
          //obteniendo vector con volumenes a combinar
          $vlcombinar = $request->get('vlcombinar');     
+         $vldisponible = $request->get('vldisponible');    
          
+         //echo ($vldisponible[1]);
         $acideztotal=0;
         $caloriastotal=0;
         $volumentotal=0;
@@ -110,7 +112,6 @@ class BlhFrascoProcesadoController extends Controller
             //Guardando los nuevos objetos frascrfrascop
             for($i=0; $i<$tamanio;$i++ ){
             $frascosr = $em->getRepository('siblhmantenimientoBundle:BlhFrascoRecolectado')->find($ids_combinar[$i]);
-           // $volumenfrascor=$frascor[0]['volumenRecolectado'];
                                  
             //Asociando el farsco procesado con los frascos recolectados
             $entity1 = new BlhFrascoRecolectadoFrascoP();
@@ -120,8 +121,8 @@ class BlhFrascoProcesadoController extends Controller
             $em->persist($entity1);
             $em->flush();
             
-            $volumenfrascosr=$frascosr->getVolumenRecolectado();
-            $voldisp=$volumenfrascosr-$vlcombinar[$i];
+           
+            $voldisp=$vldisponible[$i]-$vlcombinar[$i];
             
               //Cambiando estado a los frascos q no les queda volumen
             if($voldisp==0){
@@ -199,10 +200,7 @@ class BlhFrascoProcesadoController extends Controller
        $query3 = $em->createQuery("SELECT sum(frfp.volumenAgregado) as agregado, fr.id FROM siblhmantenimientoBundle:BlhFrascoRecolectadoFrascoP frfp  join frfp.idFrascoRecolectado fr  where fr.idEstado = 6 AND fr.idLoteAnalisis IS NOT NULL GROUP BY fr.id ORDER BY fr.id");      
        $volumen_agregado = $query3->getResult(); 
        $resultCount = count($volumen_agregado);
-      
-       //echo ( $resultCount);
-       //echo ( $Cantidad_frascos);
-       //echo ( $filas);
+
        if($Cantidad_frascos==0 || $filas==0){
        $vldisponible=0;}
        
@@ -217,13 +215,12 @@ class BlhFrascoProcesadoController extends Controller
            }
            else{
            if(($resultCount >0) && ($resultCount < $filas)){
-               $x=$filas-$resultCount;
+               $x=$filas-1;
                for ($i=$resultCount; $i<= $x; $i++){
                 $volumen_agregado[$i]['agregado']= 0;
                $volumen_agregado[$i]['id'] = $calorias[$i]['id'];                              
            }
-           echo($filas);
-           echo ($volumen_agregado[1]['agregado']);
+
            //$volumen_agregado=$filas;
            }
            }

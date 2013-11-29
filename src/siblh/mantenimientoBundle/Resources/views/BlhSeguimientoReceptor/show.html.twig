@@ -1,60 +1,62 @@
 {% extends 'siblhmantenimientoBundle::plantilla.html.twig' %}
 
-{% block body -%}
-    <h1>BlhSeguimientoReceptor</h1>
+{% block stylesheets %}
+    {{ parent() }}
+	<link href="{{ asset('bundles/siblhmantenimiento/css/form.css') }}" rel="stylesheet" type="text/css" />
+{% endblock %}
 
-    <table class="record_properties">
+{% block body -%}
+    <h1>Detalle de seguimiento registrado</h1>
+
+    <table class="record_properties" align="center">
         <tbody>
             <tr>
-                <th>Id</th>
-                <td>{{ entity.id }}</td>
+                <th>Talla(cm)</th>
+                <td>{{ entity.tallaReceptor|number_format(2, '.', ',') }}</td>
             </tr>
             <tr>
-                <th>Tallareceptor</th>
-                <td>{{ entity.tallaReceptor }}</td>
+                <th>Peso(g)</th>
+                <td>{{ entity.pesoSeguimiento|number_format(2, '.', ',') }}</td>
             </tr>
             <tr>
-                <th>Pesoseguimiento</th>
-                <td>{{ entity.pesoSeguimiento }}</td>
+                <th> Perímetro&nbsp;cefálico(cm)</th>
+                <td>{{ entity.pcSeguimiento|number_format(2, '.', ',') }}</td>
             </tr>
             <tr>
-                <th>Pcseguimiento</th>
-                <td>{{ entity.pcSeguimiento }}</td>
-            </tr>
-            <tr>
-                <th>Gananciadiapeso</th>
-                <td>{{ entity.gananciaDiaPeso }}</td>
+                <th>Ganancia&nbsp;de&nbsp;peso&nbsp;por&nbsp;día(g)</th>
+                <td>{{ entity.gananciaDiaPeso|number_format(2, '.', ',') }}</td>
             </tr>
             <tr>
                 <th>Semana</th>
                 <td>{{ entity.semana }}</td>
             </tr>
             <tr>
-                <th>Fechaseguimiento</th>
+                <th>Fecha</th>
                 <td>{{ entity.fechaSeguimiento|date('d-m-Y') }}</td>
             </tr>
             <tr>
-                <th>Gananciadiatalla</th>
-                <td>{{ entity.gananciaDiaTalla }}</td>
+                <th> Ganancia&nbsp;de&nbsp;talla&nbsp;por&nbsp;día(cm)</th>
+                <td>{{ entity.gananciaDiaTalla|number_format(2, '.', ',') }}</td>
             </tr>
             <tr>
                 <th>Complicaciones</th>
                 <td>{{ entity.complicaciones }}</td>
             </tr>
+        
+        <tr>
+        <td><a href="{{ path('blhreceptores_seguimiento') }}">
+            Registrar nuevo seguimiento
+        </a></td></tr>
+        <tr>
+        <td><a href="{{ path('blhseguimientoreceptor_edit', { 'id': entity.id }) }}">
+            Editar
+        </a></td></tr>
         </tbody>
     </table>
 
-        <ul class="record_actions">
-    <li>
-        <a href="{{ path('blhseguimientoreceptor') }}">
-            Back to the list
-        </a>
-    </li>
-    <li>
-        <a href="{{ path('blhseguimientoreceptor_edit', { 'id': entity.id }) }}">
-            Edit
-        </a>
-    </li>
-    <li>{{ form(delete_form) }}</li>
-</ul>
+ 
+
+        
+
+
 {% endblock %}

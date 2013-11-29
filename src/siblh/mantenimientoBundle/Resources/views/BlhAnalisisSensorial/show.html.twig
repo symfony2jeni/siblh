@@ -1,14 +1,10 @@
 {% extends  'siblhmantenimientoBundle::plantilla.html.twig'%}
 
 {% block body -%}
-    <h1>BlhAnalisisSensorial</h1>
+    <h1>Analisis sensorial registrado</h1>
 
-    <table class="record_properties">
+    <table class="record_properties" align='center'>
         <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ entity.id }}</td>
-            </tr>
             <tr>
                 <th>Embalaje</th>
                 <td>{{ entity.embalaje }}</td>
@@ -22,7 +18,7 @@
                 <td>{{ entity.color }}</td>
             </tr>
             <tr>
-                <th>Flavor</th>
+                <th>Olor</th>
                 <td>{{ entity.flavor }}</td>
             </tr>
             <tr>
@@ -31,18 +27,12 @@
             </tr>
         </tbody>
     </table>
-
-        <ul class="record_actions">
-    <li>
-        <a href="{{ path('blhanalisissensorial') }}">
-            Back to the list
-        </a>
-    </li>
-    <li>
+        
+    <p><a href="{{ path('blhanalisissensorial') }}">
+            Nuevo analisis sensorial
+        </a><p>
+    
         <a href="{{ path('blhanalisissensorial_edit', { 'id': entity.id }) }}">
-            Edit
+            Editar
         </a>
-    </li>
-    <li>{{ form(delete_form) }}</li>
-</ul>
 {% endblock %}

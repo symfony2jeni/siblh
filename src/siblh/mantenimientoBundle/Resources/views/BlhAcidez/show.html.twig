@@ -1,52 +1,45 @@
 {% extends  'siblhmantenimientoBundle::plantilla.html.twig'%}
 
 {% block body -%}
-    <h1>BlhAcidez</h1>
+    <h1>Acidez registrada</h1>
 
-    <table class="record_properties">
+    <table class="record_properties" align='center'>
         <tbody>
+   
             <tr>
-                <th>Id</th>
-                <td>{{ entity.id }}</td>
-            </tr>
-            <tr>
-                <th>Acidez1</th>
+                <th>Acidez 1(Grados dornic)</th>
                 <td>{{ entity.acidez1 }}</td>
             </tr>
             <tr>
-                <th>Acidez2</th>
+                <th>Acidez 2(Grados dornic)</th>
                 <td>{{ entity.acidez2 }}</td>
             </tr>
             <tr>
-                <th>Acidez3</th>
-                <td>{{ entity.acidez3 }}</td>
+                <th>Acidez 3(Grados dornic)</th>
+                <td>{{ entity.acidez3}}</td>
             </tr>
             <tr>
-                <th>Factor</th>
-                <td>{{ entity.factor }}</td>
+                <th>Factor(%)</th>
+                <td>{{ entity.factor|number_format(2, '.', ',') }}</td>
             </tr>
             <tr>
-                <th>Resultado</th>
-                <td>{{ entity.resultado }}</td>
+                <th>Resultado(Grados dornic)</th>
+                <td>{{ entity.resultado|number_format(2, '.', ',') }}</td>
             </tr>
             <tr>
-                <th>Mediaacidez</th>
-                <td>{{ entity.mediaAcidez }}</td>
+                <th>Media acidez(Grados dornic)</th>
+                <td>{{ entity.mediaAcidez|number_format(2, '.', ',') }}</td>
             </tr>
         </tbody>
     </table>
 
-        <ul class="record_actions">
-    <li>
-        <a href="{{ path('blhacidez') }}">
-            Back to the list
-        </a>
-    </li>
-    <li>
+  
+       <p><a href="{{ path('blhfrascosAnalisis_acidez') }}">
+            Registrar nueva acidez
+        </a><p>
+   
         <a href="{{ path('blhacidez_edit', { 'id': entity.id }) }}">
-            Edit
+            Editar
         </a>
-    </li>
-    <li>{{ form(delete_form) }}</li>
-</ul>
+ 
 {% endblock %}

@@ -17,35 +17,36 @@
 
      {{ form_start(edit_form) }}
     {{ form_errors(edit_form) }}   
-    <table align='center'>
+    <table align='center' width="27%">
 
 <tr>
-    <tr><td align='right'>{{ form_label(edit_form.acidez1,'Acidez 1(mm)') }}{{ form_widget(edit_form.acidez1) }}</td></tr>
+    <tr><td align='left'><font color="red" >*</font>{{ form_label(edit_form.acidez1,'Acidez 1(Grados dornic)') }}</td><td>{{ form_widget(edit_form.acidez1, {'attr':{ 'onKeyPress':"return soloNumerosEnteros(event);",'title': 'Por favor ingrese la acidez 1, entre 1 y 15 grasdos Dornic' } }) }}</td></tr>
     <tr><td colspan=2 align = "right" height=10  ></td></tr>
-    <tr><td align='right'>{{ form_label(edit_form.acidez2,'Acidez 2(mm)') }}{{ form_widget(edit_form.acidez2) }}</td></tr>
+    <tr><td align='left'><font color="red" >*</font>{{ form_label(edit_form.acidez2,'Acidez 2(Grados dornic)') }}</td><td>{{ form_widget(edit_form.acidez2, {'attr':{ 'onKeyPress':"return soloNumerosEnteros(event);",'title': 'Por favor ingrese la acidez 2, entre 1 y 15 grasdos Dornic' } }) }}</td></tr>
     <tr><td colspan=2 align = "right" height=10  ></td></tr>
-    <tr><td align='right'>{{ form_label(edit_form.acidez3,'Acidez 3(mm)') }}{{ form_widget(edit_form.acidez3) }}</td></tr>
+    <tr><td align='left'><font color="red" >*</font>{{ form_label(edit_form.acidez3,'Acidez 3(Grados dornic)') }}</td><td>{{ form_widget(edit_form.acidez3, {'attr':{ 'onKeyPress':"return soloNumerosEnteros(event);",'title': 'Por favor ingrese la acidez 3, entre 1 y 15 grasdos Dornic' } }) }}</td></tr>
     <tr><td colspan=2 align = "right" height=10  ></td></tr>
-    <tr><td align='right'>{{ form_label(edit_form.mediaAcidez,'Media acidez(mm)') }}{{ form_widget(edit_form.mediaAcidez, {'attr':{ 'readonly': 'true' } }) }}</td></tr>
+    <tr><td align='left'>{{ form_label(edit_form.mediaAcidez,'Media acidez(Grados dornic)') }}</td><td>{{ form_widget(edit_form.mediaAcidez, {'attr':{ 'readonly': 'true' } }) }}</td></tr>
     <tr><td colspan=2 align = "right" height=10  ></td></tr>
-    <tr><td align='right'>{{ form_label(edit_form.factor) }}{{ form_widget(edit_form.factor) }}</td></tr>
+    <tr><td align='left'><font color="red" >*</font>{{ form_label(edit_form.factor, 'Factor(%)') }}</td><td>{{ form_widget(edit_form.factor, {'attr':{ 'onKeyPress':"return soloNumeros(event);",'title': 'Por favor ingrese el factor para cálculo de acidez, entre 1 y 5 %' } }) }}</td></tr>
     <tr><td colspan=2 align = "right" height=10  ></td></tr>
-    <tr><td align='right'>{{ form_label(edit_form.resultado,'Resultado(mm)') }}{{ form_widget(edit_form.resultado, {'attr':{ 'readonly': 'true' } }) }}</td></tr>
+    <tr><td align='left'>{{ form_label(edit_form.resultado,'Resultado(Grados dornic)') }}</td><td>{{ form_widget(edit_form.resultado, {'attr':{ 'readonly': 'true' } }) }}</td></tr>
     <tr><td colspan=2 align = "right" height=10  ></td></tr>
-    <tr><td align='right' style="visibility:hidden">{{ form_label(edit_form.idFrascoRecolectado) }}{{ form_widget(edit_form.idFrascoRecolectado) }}</td></tr>
-    <tr><td colspan=2 align = "right" height=10  ></td></tr>
-
+    <tr><td align='left' style="visibility:hidden">{{ form_label(edit_form.idFrascoRecolectado) }}{{ form_widget(edit_form.idFrascoRecolectado) }}</td></tr>
 </table>
-    <table align = "center">
+    <table align = "center" width="27%">
+          <tr>
+            <td width=150 align = 'left'  ><font color="red" face = "Comic Sans MS">* Campos requeridos</font></td>           
+          </tr>
            <tr>
              <td align = 'center' > <input type='submit' id='boton' title="Actualizar Analisis de Acidez Dornic"  value="Actualizar"/></td>              
           </tr>
            </table>
-    {{ form_end(edit_form) }}
-  
-
-        <a href="{{ path('blhacidez') }}">
+    <a href="{{ path('blhacidez') }}">
             Regresar a listado de Analisis de Acidez 
         </a>
+    
+    {{ form_end(edit_form) }}
+  
 
 {% endblock %}

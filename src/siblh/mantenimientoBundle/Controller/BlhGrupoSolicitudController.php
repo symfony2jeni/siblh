@@ -10,8 +10,9 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use siblh\mantenimientoBundle\Entity\BlhGrupoSolicitud;
 use siblh\mantenimientoBundle\Form\BlhGrupoSolicitudType;
 
-use siblh\mantenimientoBundle\Entity\BlhReceptor;
-use siblh\mantenimientoBundle\Entity\BlhSolicitud;
+use siblh\mantenimientoBundle\Entity\BlhFrascoProcesadoSolicitud;
+
+
 /**
  * BlhGrupoSolicitud controller.
  *
@@ -360,5 +361,177 @@ class BlhGrupoSolicitudController extends Controller
 );
    
     }
+    
+ /**
+     * Lists all BlhGrupoSolicitud entities.
+     *
+     * @Route("/grupo/despachar", name="grupo_despachar")
+     * @Method("GET")
+     * @Template()
+     */
+    public function seleccionGrupoDespacharAction()
+    {
+        $em = $this->getDoctrine()->getManager();
+
+     //   $entities = $em->getRepository('siblhmantenimientoBundle:BlhGrupoSolicitud')->findAll();
+        $query = $em->createQuery("SELECT gs.id as id, gs.codigoGrupoSolicitud as codigo FROM siblhmantenimientoBundle:BlhSolicitud s JOIN s.idGrupoSolicitud gs WHERE s.estado = 'Agrupada'");
+        $entities = $query->getResult(); 
+              //Obtener banco de leche//  
+      $userEst = $this->container->get('security.context')->getToken()->getUser()->getIdEst();
+      $query1 = $em->createQuery("SELECT e.nombre, e.direccion, e.telefono FROM siblhmantenimientoBundle:CtlEstablecimiento e WHERE e.id = $userEst");
+      $establecimiento = $query1->getResult(); 
+
+        return array(
+            'entities' => $entities,
+            'hospital' => $establecimiento,
+        );
+    }    
+
+/**
+     * Displays a form to create a new BlhGrupoSolicitud entity.
+     *
+     * @Route("/despacho/grupos/{id}", name="despacho_grupos")
+     * @Method("GET")
+     * @Template()
+     */
+    public function despachoGruposAction($id)
+    {
+
+         $em = $this->getDoctrine()->getManager();
+         
+         $query4 = $em->createQuery("SELECT sum(s.volumenPorDia) as volumen FROM siblhmantenimientoBundle:BlhSolicitud s  join s.idGrupoSolicitud gs  where gs.id = $id");      
+         $total_volumen= $query4->getResult(); 
+       
+    
+        $grupo = $em->getRepository('siblhmantenimientoBundle:BlhGrupoSolicitud')->find($id);
+        
+         $query2 = $em->createQuery("SELECT fp.id, fp.codigoFrascoProcesado, fp.acidezTotal, fp.kcaloriasTotales, fp.observacionFrascoProcesado, fp.volumenFrascoPasteurizado  FROM siblhmantenimientoBundle:BlhFrascoProcesado fp  WHERE fp.idEstado = 2 GROUP BY fp.id ORDER BY fp.id");
+         $frascosp = $query2->getResult(); 
+         $cantidad_frascosp = count($frascosp);
+         
+         
+        //volumen despachado
+       $query3 = $em->createQuery("SELECT fps.volumenDespachado as despachado, fp.id FROM siblhmantenimientoBundle:BlhFrascoProcesadoSolicitud fps  join fps.idFrascoProcesado fp  where fp.idEstado = 2 AND GROUP BY fp.id ORDER BY fp.id");      
+       $volumenes_despachado = $query3->getResult(); 
+       $resultCount1 = count($volumenes_despachado);
+       
+       $volumen_despachado=0;
+       for($i=0; $i<$resultCount1; $i++){
+       if ($volumenes_despachado[$i]['despachado']=$volumenes_despachado[$i+1]['despachado']) 
+               $volumen_desp= $volumenes_despachado[$i]['despachado']+$volumenes_despachado[$i+1]['despachado'];
+               $volumen_despachado=$volumen_despachado+$volumen_desp;
+       }
+        
+       echo ($resultCount);
+       echo ($cantidad_frascosp);
+
+              //Obtener banco de leche//  
+      $userEst = $this->container->get('security.context')->getToken()->getUser()->getIdEst();
+      $query1 = $em->createQuery("SELECT e.nombre, e.direccion, e.telefono FROM siblhmantenimientoBundle:CtlEstablecimiento e WHERE e.id = $userEst");
+      $establecimiento = $query1->getResult(); 
+        
+       if($cantidad_frascosp==0 ){
+       $vldisponible=0;}
+       
+       else{
+       if($resultCount==0)                    
+           {
+           for ($i=0; $i<$cantidad_frascosp; $i++)
+           {
+              $volumen_despachado[$i]['despachado']= 0;
+               $volumen_despachado[$i]['id'] = $frascosp[$i]['id']; 
+           }
+           }
+           else{
+           if(($resultCount >0) && ($resultCount < $cantidad_frascosp)){
+               $x=$cantidad_frascosp-1;
+               for ($i=$resultCount; $i<= $x; $i++){
+                $volumen_despachado[$i]['despachado']= 0;
+               $volumen_despachado[$i]['id'] = $frascosp[$i]['id'];  
+           }
+          // echo ($volumen_despachado[9]['despachado']);
+          //echo($x);           
+//$volumen_agregado=$filas;
+           }
+           }
+           
+          for ($i=0; $i<$cantidad_frascosp; $i++)
+           {
+             $vldisponible[$i]= $frascosp[$i]['volumenFrascoPasteurizado'] -  $volumen_despachado[$i]['despachado'];
+           }
+       }//fin else principal
+        
+     
+        return array(
+            'frascosp' => $frascosp,
+            'grupo' => $grupo,
+            'hospital' => $establecimiento,
+            'volumen_despachado'=>$volumen_despachado,
+            'vldisponible'=>$vldisponible,
+            'total_volumen'=> $total_volumen,
+        );
+    }    
+    
+     /**
+     * Displays a form to create a new BlhGrupoSolicitud entity.
+     *
+     * @Route("/frascosp/solicitudes", name="frascosprocesados_solicitudes")
+     * @Method("POST")
+     * @Template()
+     */
+    public function frascosProcesadosSolicitudesAction()
+    {
+        $em = $this->getDoctrine()->getManager();
+       //obteniendo vector con  ids a despachar   
+         $request = $this->getRequest();
+         $ids_despachar = $request->get('idsdespachar');
+         //obteniendo vector con volumenes a combinar
+         $vldespachar = $request->get('vldespachar');     
+         $vldisponible = $request->get('vldisponible');    
+         $grupo_despachar = $request->get('grupo');   
+        //echo($grupo_despachar);
+        
+       // $solicitudes_despachar = $em->getRepository('siblhmantenimientoBundle:BlhSolicitud')->findOneBy(array('idGrupoSolicitud' => $grupo_despachar));
+         $query = $em->createQuery("SELECT s.id FROM siblhmantenimientoBundle:BlhSolicitud s  join s.idGrupoSolicitud gs  where gs.id = $grupo_despachar");      
+         $solicitudes_despachar = $query->getResult(); 
+
+        $cantidad_solicitudes = count($solicitudes_despachar);         
+        $cantidad_frascos = count($ids_despachar); 
+                    
+        for($i=0; $i< $cantidad_solicitudes;$i++ ){//for para solicitudes        
+         
+            $idsolicitud = $solicitudes_despachar[$i]['id'];
+           $solicitud=$grupo = $em->getRepository('siblhmantenimientoBundle:BlhSolicitud')->find($idsolicitud);
+            //Guardando los nuevos objetos frascrfrascop
+            for($j=0; $j< $cantidad_frascos;$j++ ){ // for para frascos procesados
+               
+            $frascop = $em->getRepository('siblhmantenimientoBundle:BlhFrascoProcesado')->find($ids_despachar[$j]);
+                                 
+            //Asociando las solicitudes con cada frasco procesado
+            $entity = new BlhFrascoProcesadoSolicitud();
+            $entity->setidFrascoProcesado($frascop);
+            $entity->setidSolicitud($solicitud);                            
+            $entity->setvolumenDespachado($vldespachar[$j]);
+            $em->persist($entity);
+            $em->flush();
+            
+           
+            $voldisp=$vldisponible[$j]-$vldespachar[$j];
+            
+              //Cambiando estado a los frascos q no les queda volumen
+            if($voldisp==0){
+            $nuevoestado = $em->getRepository('siblhmantenimientoBundle:BlhEstado')->find(16);
+            $frascop->setIdEstado($nuevoestado);
+            $em->persist($frascop);
+            $em->flush();
+           /* $idestado= $frascosr->getidEstado();
+            $estado = $em->getRepository('siblhmantenimientoBundle:BlhEstado')->find($idestado);
+            $frascosr->setIdEstado($estado);*/
+            }
+            }
+        }
+    return $this->redirect($this->generateUrl('grupo_despachar'));
+          //  return $this->redirect($this->generateUrl('blhfrascoprocesado_show', array('id' => $entity->getId())));
+    }    
     
 }

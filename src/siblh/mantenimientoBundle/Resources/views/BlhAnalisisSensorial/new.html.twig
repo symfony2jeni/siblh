@@ -21,38 +21,37 @@
      {{ form_start(form) }}
      {{ form_errors(form) }}
    
-   <table align = "center" width = "60%">
+   <table align = "center" width = "75%">
         <tr><td colspan=2 align = "right" height=40  ></td></tr>
        <tr>
-       <td colspan = "2" align = "right"><b>Donante</b></td>
-                <td colspan = "4" align = "left">
-                <INPUT type=text STYLE="text-align:center" name="nombre" disabled="disabled" size=35 readonly="readonly" value= "{{ datos_frasco[0].nombre1}}&nbsp;{{ datos_frasco[0].nombre2  }}&nbsp;{{ datos_frasco[0].apellido1 }}&nbsp;{{ datos_frasco[0].apellido2 }}">
+       <td colspan = "2" width=80 align = "left"><b>Donante</b></td>
+                <td colspan = "4" align = "left" width=200>
+                <INPUT type=text STYLE="text-align:center" name="nombre" disabled="disabled" size=50 readonly="readonly" value= "{{ datos_frasco[0].nombre1}}&nbsp;{{ datos_frasco[0].nombre2  }}&nbsp;{{ datos_frasco[0].apellido1 }}&nbsp;{{ datos_frasco[0].apellido2 }}">
                </td>
                
-               <td colspan=4 align = "right" style="visibility:hidden"> 
+               <td colspan=4 align = "right" width=300 style="visibility:hidden"> 
                 
                 {{ form_label(form.idFrascoRecolectado) }}
-                {{ form_errors(form.idFrascoRecolectado) }}
                 {{ form_widget(form.idFrascoRecolectado) }} </td>
-               <td colspan = "4" align = "right"><b>Fecha analisis</b></td>
-                <td colspan = "2" align = "left">
+               <td colspan = "4" align = "right" width=100><b>Fecha analisis</b></td>
+                <td colspan = "2" align = "right">
                 <INPUT type=text STYLE="text-align:center" name="nombre" disabled="disabled" size=20 readonly="readonly" value= "{{ datos_frasco[0].fecha|date('d-m-Y') }}"></td>
                
                 
        </tr>
     <tr>
-                <td colspan = "2" align = "right"><b>Frasco</b></td>
+                <td colspan = "2" align = "left"><b>Frasco</b></td>
                 <td colspan = "4" align = "left">
                 <INPUT type=text STYLE="text-align:center" name="nombre" disabled="disabled" size=20 readonly="readonly" value= "{{ datos_frasco[0].codigoFrascoRecolectado}}">
                </td>
                
-               <td colspan = "2" align = "right"><b>Volumen(ml)</b></td>
+               <td colspan = "2" align = "center"><b>Volumen(ml)</b></td>
                 <td colspan = "4" align = "left">    
                 <INPUT type=text STYLE="text-align:center" name="nombre" disabled="disabled" size=20 readonly="readonly" value= "{{ datos_frasco[0].volumenRecolectado|number_format(2, '.', ',')}}">
                </td>
                     
-              <td colspan = "2" align = "right"><b>Volumen(onz)</b></td>
-                <td colspan = "4" align = "left">
+              <td colspan = "2" align = "right" width=80><b>Volumen(onz)</b></td>
+                <td colspan = "4" align = "right">
                 <INPUT type=text STYLE="text-align:center" name="nombre" disabled="disabled" size=20 readonly="readonly" value= "{{ datos_frasco[0].onzRecolectado|number_format(2, '.', ',')}}">
                </td>
                 
@@ -61,30 +60,30 @@
            
       </table>
    
-        <table align = "center" width = "45%">
+        <table align = "center" width = "50%" >
           
         <tr>
-        <td width=100  align = "right" >{{ form_label(form.embalaje) }}</td>
+        <td width=100  align = "left" >{{ form_label(form.embalaje) }}</td>
         <td align = "left">{{ form_widget(form.embalaje) }} </td>
-        <td align = "right" >{{ form_label(form.suciedad) }}</td>
+        <td align = "left" >{{ form_label(form.suciedad) }}</td>
         <td align = "left">{{ form_widget(form.suciedad) }} </td>
           </tr>
         <tr><td align = "right" height=10  ></td></tr>
       <tr>
-           <td align = "right" >{{ form_label(form.color) }}</td>
+           <td align = "left" >{{ form_label(form.color) }}</td>
            <td align = "left"> {{ form_widget(form.color) }} </td>
-           <td width=100 align = "right" >{{ form_label(form.flavor,'Olor') }}</td>
+           <td width=100 align = "left" >{{ form_label(form.flavor,'Olor') }}</td>
            <td align = "left"> {{ form_widget(form.flavor) }} </td>
         </tr>
-        <tr><td align = "right" height=10  ></td></tr>
-        <tr><td  align = "right" >{{ form_label(form.observacion, 'Observaciones') }}</td>
-        <td align = "left">{{ form_widget(form.observacion) }} </td></tr>
+        <tr><td align = "left" height=10  ></td></tr>
+        <tr><td  align = "left" ><font color="red">*</font>{{ form_label(form.observacion, 'Observaciones') }}</td>
+        <td align = "left">{{ form_widget(form.observacion) }}</td></tr>
         
         <tr><td align = "right" height=30  ></td></tr>
         </table>
-        <table align = "center" width = "78%">
-        <tr>
-   
+        <table align = "center" width = "75%">
+            <tr><td width=172 align = 'left'  ><font color="red" face = "Comic Sans MS">* Campos requeridos</font></td></tr>
+        <tr>            
              <td width=900 align = 'center' > <input type='submit' id="boton" title="Guardar"  value="Guardar"/>{#<input type='reset' id="boton" title='Cancelar' value='Cancelar'/>#}</td>              
           </tr>
            </table>

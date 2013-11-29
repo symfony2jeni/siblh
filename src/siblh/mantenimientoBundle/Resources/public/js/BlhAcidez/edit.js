@@ -18,6 +18,21 @@ $(document).ready(function() {
         }
       }
     });  
+    
+    //spinner
+    $( "#spinner" ).spinner({
+      spin: function( event, ui ) {
+        if ( ui.value > 10 ) {
+          $( this ).spinner( "value", -10 );
+          return false;
+        } else if ( ui.value < -10 ) {
+          $( this ).spinner( "value", 10 );
+          return false;
+        }
+      }
+    });
+    
+
   
        
     //Boton   
@@ -42,16 +57,16 @@ $(document).ready(function() {
 
   
  $('#siblh_mantenimientobundle_blhacidez_acidez1').
-            attr('data-bvalidator', 'min[1],required');
+            attr('data-bvalidator', 'required,between[0:15]');
 
   $('#siblh_mantenimientobundle_blhacidez_acidez2').
-            attr('data-bvalidator', 'min[1],required');
+            attr('data-bvalidator', 'required,between[0:15]');
     
  $('#siblh_mantenimientobundle_blhacidez_acidez3').
-            attr('data-bvalidator', 'min[1],required');
+            attr('data-bvalidator', 'required,between[0:15]');
     
  $('#siblh_mantenimientobundle_blhacidez_factor').
-            attr('data-bvalidator', 'min[1],required');
+            attr('data-bvalidator', 'required,between[0:5]');
   
  
                           
@@ -111,7 +126,26 @@ $resultado = Math.round( $resultado* 100) / 100;
  
 this.value = $resultado; } ); 
 
+
 });
+
+function soloNumerosEnteros(e)
+{
+var keynum = window.event ? window.event.keyCode : e.which;
+if (keynum === 8)
+return true;
+ 
+return /\d/.test(String.fromCharCode(keynum));
+}
+
+function soloNumeros(e)
+{
+var keynum = window.event ? window.event.keyCode : e.which;
+if ((keynum === 8) || (keynum === 46))
+return true;
+ 
+return /\d/.test(String.fromCharCode(keynum));
+}
 
 
 

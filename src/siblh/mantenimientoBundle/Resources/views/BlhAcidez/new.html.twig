@@ -22,9 +22,9 @@
    <table align = "center" width = "90%" >
         <tr><td colspan=2 align = "right" height=40  ></td></tr>
        <tr>
-       <td colspan = "2" align = "right"><b>Donante</b></td>
+       <td colspan = "2" align = "left"><b>Donante</b></td>
                 <td colspan = "4" align = "left">
-                <INPUT type=text STYLE="text-align:center" name="nombre" disabled="disabled" size=35 readonly="readonly" value= "{{ datos_frasco[0].nombre1}}&nbsp;{{ datos_frasco[0].nombre2  }}&nbsp;{{ datos_frasco[0].apellido1 }}&nbsp;{{ datos_frasco[0].apellido2 }}">
+                <INPUT type=text STYLE="text-align:center" name="nombre" disabled="disabled" size=50 readonly="readonly" value= "{{ datos_frasco[0].nombre1}}&nbsp;{{ datos_frasco[0].nombre2  }}&nbsp;{{ datos_frasco[0].apellido1 }}&nbsp;{{ datos_frasco[0].apellido2 }}">
                </td>
                <td colspan=4 align = "right" style="visibility:hidden"> 
                 
@@ -32,24 +32,24 @@
                 {{ form_errors(form.idFrascoRecolectado) }}
                 {{ form_widget(form.idFrascoRecolectado) }} </td>
                <td colspan = "4" align = "right"><b>Fecha analisis</b></td>
-                <td colspan = "2" align = "left">
+                <td colspan = "2" align = "rigth">
                 <INPUT type=text STYLE="text-align:center" name="nombre" disabled="disabled" size=20 readonly="readonly" value= "{{ datos_frasco[0].fecha|date('d-m-Y') }}"></td>
                
                 
        </tr>
     <tr>
-                <td colspan = "2" align = "right"><b>Frasco</b></td>
+                <td colspan = "2" align = "left"><b>Frasco</b></td>
                 <td colspan = "4" align = "left">
                 <INPUT type=text STYLE="text-align:center" name="nombre" disabled="disabled" size=20 readonly="readonly" value= "{{ datos_frasco[0].codigoFrascoRecolectado}}">
                </td>
                
-               <td colspan = "2" align = "right"><b>Volumen(ml)</b></td>
+               <td colspan = "2" align = "center"><b>Volumen(ml)</b></td>
                 <td colspan = "4" align = "left">    
                 <INPUT type=text STYLE="text-align:center" name="nombre" disabled="disabled" size=20 readonly="readonly" value= "{{ datos_frasco[0].volumenRecolectado|number_format(2, '.', ',')}}">
                </td>
                     
               <td colspan = "2" align = "right"><b>Volumen(onz)</b></td>
-                <td colspan = "4" align = "left">
+                <td colspan = "4" align = "rigth">
                 <INPUT type=text STYLE="text-align:center" name="nombre" disabled="disabled" size=20 readonly="readonly" value= "{{ datos_frasco[0].onzRecolectado|number_format(2, '.', ',')}}">
                </td>
                 
@@ -58,28 +58,28 @@
            
       </table>
    
-        <table align = "center" width = "90%">
+        <table align = "center" width = "90%" >
           
         <tr>
-        <td width=35  align = "right" ><font color="red" >*</font>{{ form_label(form.acidez1, 'Acidez 1(mm)') }}</td>
-        <td width=2 align='left'> {{ form_widget(form.acidez1,{'attr':{ 'id': 'spinner','name':'value' } } ) }}</td>
+        <td width=220  align = "left" ><font color="red" >*</font>{{ form_label(form.acidez1, 'Acidez 1(Grados dornic)') }}</td>
+        <td width=175 align='left'> {{ form_widget(form.acidez1, {'attr':{ 'onKeyPress':"return soloNumerosEnteros(event);",'title': 'Por favor ingrese la acidez 1, entre 1 y 15 grasdos Dornic' } } ) }}</td>
                
-       <td width=35 align = "right" ><font color="red">*</font>{{ form_label(form.acidez2, 'Acidez 2(mm)') }}</td>
-       <td width=2 align='left'>{{ form_widget(form.acidez2) }} </td>
+       <td align = "left" width=200 ><font color="red">*</font>{{ form_label(form.acidez2, 'Acidez 2(Grados dornic)') }}</td>
+       <td width=175 align='left'>{{ form_widget(form.acidez2, {'attr':{ 'onKeyPress':"return soloNumerosEnteros(event);",'title': 'Por favor ingrese la acidez 2, entre 1 y 15 grasdos Dornic' } } ) }} </td>
 
-        <td width=35 align = "right"><font color="red">*</font>{{ form_label(form.acidez3, 'Acidez 3(mm)') }}</td>
-        <td width=2 align='left'>{{ form_widget(form.acidez3) }} </td>
+        <td width=200 align = "left"><font color="red">*</font>{{ form_label(form.acidez3, 'Acidez 3(Grados dornic)') }}</td>
+        <td width=2 align='left'>{{ form_widget(form.acidez3, {'attr':{ 'onKeyPress':"return soloNumerosEnteros(event);",'title': 'Por favor ingrese la acidez 3, entre 1 y 15 grasdos Dornic' } } ) }} </td>
         </tr>
           
         <tr><td width=35 align = "right" height=10  ></td></tr>
       <tr>
-	    <td width=35 align = "right" >{{ form_label(form.mediaAcidez,'Media acidez(mm)') }}</td>
-            <td width=2 align='left'>{{ form_widget(form.mediaAcidez, {'attr':{ 'readonly': 'true' } }) }} </td>
+	    <td width=35 align = "left" >{{ form_label(form.mediaAcidez,'Media acidez(Grados dornic)') }}</td>
+            <td width=20 align='left'>{{ form_widget(form.mediaAcidez, {'attr':{ 'readonly': 'true' } }) }} </td>
            
-            <td width=100  align = "right" ><font color="red">*</font>{{ form_label(form.factor, 'Factor') }}</td>
-            <td width=2 align='left'> {{ form_widget(form.factor) }} </td>
+            <td width=100  align = "left" ><font color="red">*</font>{{ form_label(form.factor, 'Factor(%)') }}</td>
+            <td width=2 align='left'> {{ form_widget(form.factor, {'attr':{ 'onKeyPress':"return soloNumeros(event);",'title': 'Por favor ingrese el factor para cálculo de acidez, entre 1 y 5 %' } }) }} </td>
       
-            <td width=35  align = "right" >{{ form_label(form.resultado,'Resultado(grados)') }}</td>
+            <td width=35  align = "left" >{{ form_label(form.resultado,'Resultado(Grados dornic)') }}</td>
             <td width=2 align='left'> {{ form_widget(form.resultado, {'attr':{ 'readonly': 'true' } }) }} </td>
         </tr>
         
@@ -87,7 +87,7 @@
         </table>
         <table align = "center" width = "90%" >
         <tr>
-            <td width=150 align = 'left'  ><font color="red">* Campos requeridos</font></td>           
+            <td width=150 align = 'left'  ><font color="red" face = "Comic Sans MS">* Campos requeridos</font></td>           
           </tr>
           <tr>
              <td width=500 align = 'center' > <input type='submit' id="boton" title="Guardar"  value="Guardar"/>{#<input type='reset' id="boton" title='Cancelar' value='Cancelar'/>#}</td>              

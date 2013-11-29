@@ -1,0 +1,124 @@
+{% extends 'siblhmantenimientoBundle::plantilla.html.twig' %}
+{% block stylesheets %}
+    {{ parent() }}
+        <link href="{{ asset('bundles/siblhmantenimiento/css/form.css') }}" rel="stylesheet" type="text/css" />
+ 
+{% endblock %}
+        
+ {% block javascripts %}   
+{{parent()}}
+<script type="text/javascript" src="{{ asset('bundles/siblhmantenimiento/js/BlhGrupoSolicitud/despachoGrupos.js') }}" ></script>
+
+{% endblock %}
+
+
+{% block body -%}
+    <h1>Despacho grupos de solicitudes</h1>
+<FORM method="POST" action="{{path("frascosprocesados_solicitudes")}}">
+ 
+ {%set total_volumen = total_volumen%}    
+ {%set tamanio1 = total_volumen | length%}     
+ {%set volumentotal = 0%}      
+    
+   {% for i in 0 ..(tamanio1-1)%}  
+    {% set volumentotal = volumentotal+total_volumen[i].volumen%}   
+     {% endfor %}
+    
+<table align = "center" width = "70%" border=1 >
+
+<tr>
+       <td width=10 align = "right"><b>Grupo</b></td>
+                <td width = "120" align = "left">
+                <INPUT type=text STYLE="text-align:center" name="nombre" disabled="disabled" size=25 readonly="readonly" value= "{{ grupo.codigoGrupoSolicitud}}">
+               </td>
+               
+        <td width=10 align = "right"><b>Volumen a despachar(ml)</b></td>
+                <td width = "120" align = "left">
+                <INPUT type=text STYLE="text-align:center" name="nombre" disabled="disabled" size=25 readonly="readonly" value= "{{ volumentotal}}">
+               </td>
+                                
+       </tr>
+      <tr><td  align = "right" height=40  ></td></tr>
+      </table>   
+ 
+   {%set frascosp = frascosp%}    
+   {%set tamanio = frascosp | length%}      
+ 
+{% if tamanio != 0 %}                       
+ <table align= 'center' border=1>
+     <thead>
+            <tr>
+                <th>box</th>
+                <th>id</th>
+                <th>Código&nbsp;frasco</th>
+                <th>Acidez</th>
+                <th>Calorias</th>
+                <th>Volumen&nbsp;total</th>
+                <th>Observacion</th>
+                <th>idDespachado</th>
+                <th>Despachado</th>
+                <th>Volumen&nbsp;Disponible</th>
+                <th>Volumen&nbsp;a&nbsp;despachar</th>                
+            </tr>
+            </thead>
+            <tbody>
+            
+        {% for i in 0 ..(tamanio-1)%}
+                <tr>
+              <td><input type="checkbox" name="idsdespachar[]" id="idsdespachar_{{ frascosp[i].id}}" value="{{ frascosp[i].id}}"/></td>
+               <td>{{ frascosp[i].id}}</td>
+                <td>{{ frascosp[i].codigoFrascoProcesado}}</td>
+                <td>{{ frascosp[i].acidezTotal }}</td>                      
+                <td>{{frascosp[i].kcaloriasTotales}}</td>
+                <td>{{ frascosp[i].volumenFrascoPasteurizado }}</td>  
+                <td>{{ frascosp[i].observacionFrascoProcesado }}</td>                  
+                <td>{{volumen_despachado[i].id}}</td>
+                <td><input type=text value = "{{ volumen_despachado[i].despachado }}"/> </td>  
+                 <td><input name='vldisponible[]' id= "vldisponible_{{ frascosp[i].id}}"  type=text value ="{{vldisponible[i]}}"  /> </td>  
+                <td><input name="vldespachar[]" id="vldespachar_{{volumen_despachado[i].id}}" type=text/></td>   
+                </tr>
+        {% endfor %}
+          
+        </tbody>
+        
+    </table>
+    
+    
+   <table align = "center" width = "70%" border=1> 
+        
+  <tr><td style="visibility:hidden"><INPUT  name="grupo" id="grupo" type=text value="{{grupo.id}}" size=10 ></td></tr>      
+ <td align= 'center'><INPUT  id='lote' name="Despachar" type=submit title="Despachar" value="Despachar"></td>
+
+</table>
+{%endif%}
+    
+{% if tamanio == 0   %} 
+     
+    <table border=1 align='center' width=1000>
+        <thead>
+            <tr>
+                <th>box</th>
+                <th>id</th>
+                <th>Código&nbsp;frasco</th>
+                <th>Acidez</th>
+                <th>Calorias</th>
+                <th>Volumen&nbsp;total</th>
+                <th>Observacion</th>
+                <th>Agregado</th>
+                <th>Volumen&nbsp;Disponible</th>
+                <th>Volumen&nbsp;a&nbsp;despachar</th>                
+            </tr>
+            </thead>
+                <tbody>
+                <tr>
+                 <td>No existen frascos para despacho</td>   
+                </tr>
+                </tbody>
+    </table>     
+                
+                        
+         
+     {%endif%}  
+           
+          </FORM> 
+{% endblock %}
