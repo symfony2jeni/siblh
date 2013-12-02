@@ -3,6 +3,9 @@
  * and open the template in the editor.
  */
 
+
+
 $(document).ready(function() { 
-   $('button').button();
+    $.noConflict();
+   $('#boton').button();
 });

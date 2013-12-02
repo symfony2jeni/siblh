@@ -1,16 +1,56 @@
- {% extends 'siblhmantenimientoBundle::plantilla.html.twig' %} 
+{% extends 'siblhmantenimientoBundle::plantilla.html.twig' %} 
+
+{% block stylesheets %}
+    {{ parent() }}
+        <link href="{{ asset('bundles/siblhmantenimiento/css/form.css') }}" rel="stylesheet" type="text/css" />
+ {% endblock %}
+        
+        
+        {% block javascripts %}
+    {{parent()}}
+    
+    <script type="text/javascript" src="{{ asset('bundles/siblhmantenimiento/js/BlhAnalisisMicrobiologico/new.js') }}" ></script>
+    
+{% endblock %}
 
 {% block body -%}
-    <h1>BlhAnalisisMicrobiologico edit</h1>
+        
+    <h1>Editar Analisis Microbiologico</h1>
+    
+    {{ form_start(edit_form) }}
+    {{ form_errors(edit_form) }}
+    
+<table align = "center" cellpadding="10">          
+ <tr><td colspan=2 align = "left" height=10  ></td></tr>
+ <tr><td align='left' >
+  {{ form_label(edit_form.coliformesTotales,'Coliformes Totales') }}
+ </td><td align='left'>{{ form_widget(edit_form.coliformesTotales) }}</td></tr>
+ <tr><td colspan=2 align = "left" height=10  ></td></tr>
+ <tr><td align='left' >
+  {{ form_label(edit_form.control,'Control') }}
+ </td><td align='left'>{{ form_widget(edit_form.control) }}</td></tr>
+ <tr><td colspan=2 align = "left" height=10  ></td></tr>
+ <tr><td align='left' >
+  {{ form_label(edit_form.situacion,'Situacion') }}
+ </td><td align='left'>{{ form_widget(edit_form.situacion) }}</td></tr>        
+ <tr><td colspan=2 align = "left" height=10  ></td></tr>
+ 
+ <tr style="visibility:hidden">
+  <td align='left' ><font color="red">*</font>        
+  {{ form_label(edit_form.idFrascoProcesado,'Frasco') }}
+ </td><td align='left'>{{ form_widget(edit_form.idFrascoProcesado) }}</td></tr> 
+ 
+ <tr><td align = 'center'>  <input type="submit" class= "ui-button" value="Actualizar"/></td>
+    <td align = 'center'><input id = "boton" type="button" value="Regresar" onClick=' window.location.href="{{ path('_NewAnalisisMicrobiologicoEdit') }}" '> </td>
+</tr>         
 
-    {{ form(edit_form) }}
+          </table>
+    {{ form_end(edit_form) }}
 
-        <ul class="record_actions">
-    <li>
-        <a href="{{ path('blhanalisismicrobiologico') }}">
-            Back to the list
-        </a>
-    </li>
-    <li>{{ form(delete_form) }}</li>
-</ul>
-{% endblock %}
+{% endblock %}       
+ 
+    
+    
+    
+    
+    

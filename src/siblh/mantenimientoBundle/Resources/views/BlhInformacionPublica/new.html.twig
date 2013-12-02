@@ -20,37 +20,46 @@
  {{ form_start(form) }}
     {{ form_errors(form) }}
     
- <table border=0 align="center" CellSpacing="25" >
+ <table border=0 align="center" CELLSPADDING="10" >
       <tr> 
-        <td align="left" style="visibility:hidden">{{ form_label(form.idBancoDeLeche, 'Banco de Leche') }}
-          {{ form_errors(form.idBancoDeLeche) }}
-        {{ form_widget(form.idBancoDeLeche) }}</td></tr> 
+        <td align="left"style="visibility:hidden">
+        <font color="red">*</font>
+        {{ form_label(form.idBancoDeLeche, 'Banco de Leche') }}
+        {{ form_errors(form.idBancoDeLeche) }}
+        {{ form_widget(form.idBancoDeLeche) }} 
+        <td>
              
                  
     <tr> 
-        <td align="left">{{ form_label(form.tipo, 'Tipo documento' )}}
-         {{ form_errors(form.tipo) }}
-        {{ form_widget(form.tipo) }}<td></tr> 
+<td align="left"><P><font color="red">* </font>{{ form_label(form.tipo, 'Tipo' )}}
+        <td> {{ form_errors(form.tipo) }}
+        {{ form_widget(form.tipo) }}
         
      <tr> 
-        <td align="left">{{ form_label(form.nombreDocumento, 'Titulo documento') }}
-         {{ form_errors(form.nombreDocumento) }}
-        {{ form_widget(form.nombreDocumento) }}</td></tr> 
+        <td align="left"><P><font color="red">* </font>{{ form_label(form.nombreDocumento, 'Titulo documento') }}
+         <td> {{ form_errors(form.nombreDocumento) }}
+        {{ form_widget(form.nombreDocumento) }}
         
      <tr> 
-        <td align="left">{{ form_label(form.fechaPublicacion, 'Fecha publicacion')}}
-         {{ form_errors(form.fechaPublicacion) }}
-        {{ form_widget(form.fechaPublicacion) }}</td></tr> 
+        <td align="left"><P><font color="red">* </font>{{ form_label(form.fechaPublicacion, 'Fecha actualizacion')}}
+         <td>{{ form_errors(form.fechaPublicacion) }}
+        {{ form_widget(form.fechaPublicacion, {'attr':{'readonly': 'true', 'title': 'Dar clic y seleccionar fecha de curva'} })}}
+             
+        
 
   {# Al escribir la plantilla, no olvidar fijar el atributo enctype.#}                          
   <tr> 
-        <td colspan = '2'><form action="#" method="post" {{ form_enctype(form.file) }}>
-        {{ form_widget(form.file) }}</td>
-                <tr><td colspan=2 align = "right" height=30  ></td></tr>
+        <td colspan = '2'><P><P><font color="red">* </font><form action="#" method="post" {{ form_enctype(form.file) }}>
+        {{ form_widget(form.file) }}
                         
-  <tr>                   
-     <td colspan = '2'> <input type="submit" id='boton' value="Subir Documento" /></td></tr>
-
+  </tr> 
+  
+   <tr> 
+     <td  align = 'left' WIDTH = "150"><P><font color="red">* Campos requeridos</font></td>  
+     <td colspan = '2' align = 'center'><P> <input type="submit" id= "boton" value="Subir Documento" />
+  </tr> 
+  
+</form>
  
 
 
@@ -63,3 +72,20 @@
     
 
 {% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

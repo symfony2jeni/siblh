@@ -84,7 +84,7 @@ class BlhAnalisisMicrobiologicoController extends Controller
 
 
 
-        $form->add('submit', 'submit', array('label' => 'Guardar'));
+     //   $form->add('submit', 'submit', array('label' => 'Guardar'));
    /**   $form->add('submit', 'submit', array('label' => 'Create')); */
        
 
@@ -98,7 +98,8 @@ class BlhAnalisisMicrobiologicoController extends Controller
      * @Method("GET")
      * @Template()
      */
-    public function newAction()
+   
+    /*public function newAction()
     {
         $entity = new BlhAnalisisMicrobiologico();
         $form   = $this->createCreateForm($entity);
@@ -107,7 +108,7 @@ class BlhAnalisisMicrobiologicoController extends Controller
       $userEst = $this->container->get('security.context')->getToken()->getUser()->getIdEst();
       /*  $query1 = $em->createQuery("SELECT b.id FROM siblhmantenimientoBundle:BlhBancoDeLeche b WHERE b.idEstablecimiento = $userEst");
         $id_blh = $query1->getResult(); 
-        $codigo=$id_blh[0]['id']; */
+        $codigo=$id_blh[0]['id']; 
        
        $query1 = $em->createQuery("SELECT e.nombre, e.direccion, e.telefono FROM siblhmantenimientoBundle:CtlEstablecimiento e WHERE e.id = $userEst");
         $establecimiento = $query1->getResult(); 
@@ -117,6 +118,7 @@ class BlhAnalisisMicrobiologicoController extends Controller
             'hospital' => $establecimiento,
         );
     }
+    */
 
     /**
      * Finds and displays a BlhAnalisisMicrobiologico entity.
@@ -194,7 +196,7 @@ class BlhAnalisisMicrobiologicoController extends Controller
             'method' => 'PUT',
         ));
 
-        $form->add('submit', 'submit', array('label' => 'Update'));
+      //  $form->add('submit', 'submit', array('label' => 'Update'));
 
         return $form;
     }
@@ -269,9 +271,86 @@ class BlhAnalisisMicrobiologicoController extends Controller
         return $this->createFormBuilder()
             ->setAction($this->generateUrl('blhanalisismicrobiologico_delete', array('id' => $id)))
             ->setMethod('DELETE')
-            ->add('submit', 'submit', array('label' => 'Delete'))
+         //   ->add('submit', 'submit', array('label' => 'Delete'))
             ->getForm()
         ;
     }
+    
+     /**
+     * Lists all BlhFrascoRecolectado entities.
+     *
+     * @Route("/frascospasteurizadosM", name="blhanalisismicro")
+     * @Method("GET")
+     * @Template()
+     */
+ 
+     public function frascospasteurizadosAction()
+    {
+        $em = $this->getDoctrine()->getManager();      
+        $userEst = $this->container->get('security.context')->getToken()->getUser()->getIdEst();
+        $query1 = $em->createQuery("SELECT e.nombre, e.direccion, e.telefono FROM siblhmantenimientoBundle:CtlEstablecimiento e WHERE e.id = $userEst");
+        $establecimiento = $query1->getResult(); 
+        $queryb = $em->createQuery("SELECT b.id FROM siblhmantenimientoBundle:BlhBancoDeLeche b WHERE b.idEstablecimiento = $userEst");
+        $id_blh = $queryb->getResult(); 
+        $codigo=$id_blh[0]['id']; 
+         if ($codigo<10){
+        $idp='0'.$codigo;
+        $idp = (string)$idp;
+         }
+        else{$idp = (string)$codigo;}
+      
+        
+        $query = $em->createQuery("SELECT p.id, p.codigoFrascoProcesado,p.observacionFrascoProcesado FROM siblhmantenimientoBundle:BlhFrascoProcesado p where p.idEstado=3
+                                    and substring(p.codigoFrascoProcesado,1,2) = '$idp'");
+        $frascos_pasteurizados= $query->getResult();
+        
+        return array(
+            'frascos_pasteurizados' =>  $frascos_pasteurizados,
+            'hospital' => $establecimiento,    
+        );
+        
+    }
+    
+     
+    /**
+     * Displays a form to create a new BlhFrascoRecolectado entity.
+     *
+     * @Route("/new/{id}", name="blhanalisismicrobiologico_new")
+     * @Method("GET")
+     * @Template()
+     */
+      public function newAction($id)
+    {
+         $em = $this->getDoctrine()->getManager();
+         $query = $em->createQuery("SELECT  p.id, p.codigoFrascoProcesado,p.observacionFrascoProcesado FROM siblhmantenimientoBundle:BlhFrascoProcesado p WHERE p.id = $id "); 
+         $frascos_pasteurizados  = $query->getResult(); 
+
+         $pasteurizados = $em->getRepository('siblhmantenimientoBundle:BlhFrascoProcesado')->find($id); 
+
+       
+        if (!$frascos_pasteurizados) {
+            throw $this->createNotFoundException('Unable to find entity');
+        }
+        
+       
+        $entity = new BlhAnalisisMicrobiologico(); 
+        $entity->setidFrascoProcesado($pasteurizados); 
+        $form   = $this->createCreateForm($entity);  
+         //Obtener banco de leche//
+        
+      $userEst = $this->container->get('security.context')->getToken()->getUser()->getIdEst();
+      $query1 = $em->createQuery("SELECT e.nombre, e.direccion, e.telefono FROM siblhmantenimientoBundle:CtlEstablecimiento e WHERE e.id = $userEst");
+      $establecimiento = $query1->getResult(); 
+
+        return array(   
+            'entity' => $entity,
+            'form'   => $form->createView(), 
+            'frascos_pasteurizados' =>  $frascos_pasteurizados,
+            'hospital' => $establecimiento,
+            
+        ); 
+    }
+
+    
   
 }

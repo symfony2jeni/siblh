@@ -19,7 +19,7 @@ $(document).ready(function() {
             {name:'Codigo&nbsp;Pasteurizacion',width:20,align:'center'},
             {name:'Fecha&nbsp;Pasteurizacion', width:40,align:'center'},
             {name:'Responsable&nbsp;Pasteurizacion', width:40,align:'center'},
-            {name:'Acción', width:30,align:'center'}
+            {name:'Acción', width:30,align:'center', search:false}
    
         ]
     
@@ -29,7 +29,8 @@ $(document).ready(function() {
         edit:false, 
         add:false, 
         del:false,
-        search:true,
-        reload:true
+        search:false,
+        reload:false
     });
+    jQuery("#listado_pasteurizaciones").jqGrid('filterToolbar',{stringResult: true,searchOnEnter : false});
 });

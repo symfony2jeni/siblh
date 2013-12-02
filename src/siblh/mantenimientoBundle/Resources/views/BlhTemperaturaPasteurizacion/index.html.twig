@@ -1,48 +1,65 @@
-{% extends 'siblhmantenimientoBundle::plantilla.html.twig' %}
-
-{#{% block javascripts %}
+{% extends 'siblhmantenimientoBundle::plantilla.html.twig'%}
+{% block javascripts %}
     {{parent()}}
-    <script type="text/javascript" src="{{ asset('bundles/siblhmantenimiento/js/BlhTempPasteurizacion/index.js') }}" ></script>
-{% endblock %}  #}
-
-
+    <script type="text/javascript" src="{{ asset('bundles/siblhmantenimiento/js/BlhTemperaturaPasteurizacion/index.js') }}" ></script> 
+{% endblock %}
+   
 {% block body -%}
-    <h1>BlhTemperaturaPasteurizacion list</h1>
+ <link href="{{asset('bundles/jquery/jquery.jqGrid-4.5.4/css/ui.jqgrid.css')}}" rel="stylesheet"  type="text/css" media="all"/>  
+ 
+ <script type="text/javascript" src="{{asset('bundles/jquery/jquery.jqGrid-4.5.4/js/i18n/grid.locale-es.js')}}"></script>
+      <script type="text/javascript" src="{{asset('bundles/jquery/jquery.jqGrid-4.5.4/js/jquery.jqGrid.min.js')}}" ></script> 
 
-    <table class="records_list">
+ 
+    <h1>Listado de temperaturas</h1>
+<table id = "listado_temperaturas">
         <thead>
             <tr>
-                <th>Id</th>
-                <th>Temperaturap</th>
-                <th>Actions</th>
+                <th>CodigoPasteurizacion</th>
+                <th>FechaPasteurizacion</th>                
+                <th>TemperaturaPasteurizacion</th>
+                <th>Acción</th>
             </tr>
         </thead>
         <tbody>
-        {% for entity in entities %}
+        {% for entity in pasteurizaciones_index %}
             <tr>
-                <td><a href="{{ path('blhtemperaturapasteurizacion_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
-                <td>{{ entity.temperaturaP }}</td>
-                <td>
-                <ul>
-                    <li>
-                        <a href="{{ path('blhtemperaturapasteurizacion_show', { 'id': entity.id }) }}">Detalle</a>
-                    </li>
-                    <li>
-                        <a href="{{ path('blhtemperaturapasteurizacion_edit', { 'id': entity.id }) }}">Actualizar</a>
-                    </li>
-                </ul>
-                </td>
+                <td>{{ entity.codigoPasteurizacion }}</td>
+                <td>{{ entity.fechaPasteurizacion|date('d-m-Y')}}</td>
+                <td>{{ entity.temperaturaP}}</td>
+                <td><a href="{{ path('blhtemperaturapasteurizacion_edit', { 'id': entity.id }) }}"><font color="blue"><u>Editar</u></font></a></td> 
             </tr>
         {% endfor %}
         </tbody>
     </table>
-
-   
-        <ul>
-        <li>
-            <a href="{{ path('blhtemppasteurizacion') }}">
-                Create a new entry
-            </a>
-        </li>
-    </ul>
+<div id='pagerTemperaturaP' ></div>
     {% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

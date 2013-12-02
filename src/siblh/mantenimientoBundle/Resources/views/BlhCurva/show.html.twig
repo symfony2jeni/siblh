@@ -1,60 +1,93 @@
 {% extends 'siblhmantenimientoBundle::plantilla.html.twig' %}
 
-{% block body -%}
-    <h1>BlhCurva</h1>
-
-    <table class="record_properties">
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ entity.id }}</td>
-            </tr>
-            <tr>
-                <th>Tiempo1</th>
-                <td>{{ entity.tiempo1 }}</td>
-            </tr>
-            <tr>
-                <th>Tiempo2</th>
-                <td>{{ entity.tiempo2 }}</td>
-            </tr>
-            <tr>
-                <th>Tiempo3</th>
-                <td>{{ entity.tiempo3 }}</td>
-            </tr>
-            <tr>
-                <th>Valorcurva</th>
-                <td>{{ entity.valorCurva }}</td>
-            </tr>
-            <tr>
-                <th>Fechacurva</th>
-                <td>{{ entity.fechaCurva|date('Y-m-d H:i:s') }}</td>
-            </tr>
-            <tr>
-                <th>Cantidadfrascos</th>
-                <td>{{ entity.cantidadFrascos }}</td>
-            </tr>
-            <tr>
-                <th>Volumenporfrasco</th>
-                <td>{{ entity.volumenPorFrasco }}</td>
-            </tr>
-            <tr>
-                <th>Horainiciocurva</th>
-                <td>{{ entity.horaInicioCurva|date('Y-m-d H:i:s') }}</td>
-            </tr>
-        </tbody>
-    </table>
-
-        <ul class="record_actions">
-    <li>
-        <a href="{{ path('blhcurva') }}">
-            Back to the list
-        </a>
-    </li>
-    <li>
-        <a href="{{ path('blhcurva_edit', { 'id': entity.id }) }}">
-            Edit
-        </a>
-    </li>
-    <li>{{ form(delete_form) }}</li>
-</ul>
+{% block stylesheets %}
+    {{ parent() }}
+        <link href="{{ asset('bundles/siblhmantenimiento/css/form.css') }}" rel="stylesheet" type="text/css" />
 {% endblock %}
+        {% block javascripts %}
+
+{{parent()}}
+
+<script type="text/javascript" src="{{ asset('bundles/siblhmantenimiento/js/BlhCurva/new.js') }}" ></script>
+       
+{% endblock %}
+
+{% block body -%}
+
+<style type="text/css">
+table#teft table {display: block; padding: 5px; border: 3px solid black; border-top: 1; -moz-border-radius: 10px 10px 10px 10px; color: Black}
+th {
+font-family: verdana,arial,helvetica,sans-serif;
+color: #000000;
+font-weight: bold;
+border-style: solid;
+border-width: 1px;
+size: 2px;
+background-color: #2b8dd6;
+}
+td {
+font-family: verdana,arial,helvetica,sans-serif;}
+    </style>
+    <h1>Curva de Penetracion</h1>
+
+      <table id = "left" border = "1"  align = "center" bordercolor="#2e6e9e" cellspacing=0 cellpadding=0 moz-border-radius= "15px">
+        <tbody>
+                <tr align = "left"> 
+                <th>Tiempo1</th>
+                <td>{{ entity.tiempo1 }}</td></tr>
+                <tr align = "left"> 
+                <th>Tiempo2</th>
+                <td>{{ entity.tiempo2 }}</td></tr>
+                <tr align = "left"> 
+                <th>Tiempo3</th>
+                <td>{{ entity.tiempo3 }}</td></tr>
+                <tr align = "left"> 
+                <th>Valorcurva</th>
+                <td>{{ entity.valorCurva }}</td></tr>
+                <tr align = "left"> 
+                <th>Fechacurva</th>
+                <td>{{ entity.fechaCurva|date('Y-m-d H:i:s') }}</td></tr>
+                <tr align = "left"> 
+                <th>Cantidadfrascos</th>
+                <td>{{ entity.cantidadFrascos }}</td></tr>
+                <tr align = "left"> 
+                <th>Volumenporfrasco</th>
+                <td>{{ entity.volumenPorFrasco }}</td></tr>
+                <tr align = "left"> 
+                <th>Horainiciocurva</th>
+                <td>{{ entity.horaInicioCurva|date('Y-m-d H:i:s') }}</td></tr>
+                
+                
+        </tbody>
+        </table>
+    
+      <table table  align = "center" >
+          <P>
+          <tr><input type="submit" id= "boton" type="boton" value="Registrar Nuevo" onClick=' window.location.href="{{ path('_NewCurva') }}" '></tr> 
+         </td></tr>
+
+               </table>
+    
+    {% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

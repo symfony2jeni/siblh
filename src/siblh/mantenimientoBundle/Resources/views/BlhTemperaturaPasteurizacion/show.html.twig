@@ -1,47 +1,50 @@
+
 {% extends 'siblhmantenimientoBundle::plantilla.html.twig' %}
 
-{% block stylesheets %}
-    {{ parent() }}
-        <link href="{{ asset('bundles/siblhmantenimiento/css/form.css') }}" rel="stylesheet" type="text/css" />
- {% endblock %}
+{% block javascripts %}
 
+{{parent()}}
+
+<script type="text/javascript" src="{{ asset('bundles/siblhmantenimiento/js/BlhTemperaturaPasteurizacion/New.js') }}" ></script>
+       
+{% endblock %}
 
 {% block body -%}
-    <h1> Tiempo Registrado</h1>
 
+<style type="text/css">
+table#teft table {display: block; padding: 5px; border: 3px solid black; border-top: 1; -moz-border-radius: 10px 10px 10px 10px; color: Black}
+th {
+font-family: verdana,arial,helvetica,sans-serif;
+color: #000000;
+font-weight: bold;
+border-style: solid;
+border-width: 1px;
+size: 2px;
+background-color: #2b8dd6;
+}
+td {
+font-family: verdana,arial,helvetica,sans-serif;}
+    </style>
+    <h1>Temperatura Pasteurizacion</h1>
+    
 
-    <table class="records_list" border= "1" bordercolor="silver" align = "center" >
-        
-        <tr>
-         <td colspan = '2' >Registro</td> 
-         <td>Accion</td>
-        </tr>
-            <tr>
-                <th align = "left">Codigo</th>
-                <td>{{ entity.id }}</td>
-                
-                <td>          
-            <a href="{{ path('blhtemperaturapasteurizacion') }}">
-             Regresar a la lista </a>
-         </td>
-                
-            </tr>
-            <tr>
+    
+
+    <table id = "left" border = "1"  align = "center" bordercolor="#2e6e9e" cellspacing=0 cellpadding=0 moz-border-radius= "15px">
+        <tbody>
+                <tr align = "left"> 
                 <th>Temperatura</th>
-                <td>{{ entity.temperaturaP }}</td>
-               
-                  <td>
-        <a  href="{{ path('blhtemperaturapasteurizacion_edit', { 'id': entity.id }) }}">
-            Actualizar
-        </a></td>
-             
-           
+                <td>{{ entity.temperaturaP }}</td></tr>
+        </tbody>
+        </table>
+    
+        <table align = "center" >
+          <p>
+          <tr align = "left">   
+          <td><input id = "boton" type="button" value="Registrar Nuevo" onClick=' window.location.href="{{ path('_NewTemperaturaP') }}" '>
+          </td>
           </tr>
-          </table>
- 
-  <ul>
-    {{ form(delete_form) }}
- </ul>
-        
-        
-{% endblock %}
+         </table>
+    
+    {% endblock %}
+
