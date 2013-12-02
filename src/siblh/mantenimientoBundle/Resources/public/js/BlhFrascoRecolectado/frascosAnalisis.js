@@ -6,6 +6,7 @@ $(document).ready(function() {
         pager : '#pagerFrascosAnalisis',
         rowNum:10, 
         gridview: true, 
+         height: '100%',
         caption: "Listado frascos para analisis",
        // height:'auto',
         //width:1000,

@@ -3,7 +3,9 @@ $(document).ready(function() {
 	tableToGrid("#listado_ha", {
         pager : '#pagerha',
         rowNum:10, 
+         height: '100%',
         gridview: true, 
+       // widht: 60,
        // caption: "Seleccione la donante",
          sortorder: "desc",
         
@@ -12,13 +14,12 @@ $(document).ready(function() {
         colModel :[
            // {name:'Id',width:80,editable:true,},
             {name:'Codigo',width:15,align:'center'},
-            {name:'Nombre',width:15,align:'center'},
+            {name:'Nombre',width:30,align:'center'},
             {name:'Peso',width:10,align:'center', search:false},
             {name:'Talla', width:10,align:'center', search:false},
             {name:'Medicamento', width:15,align:'center', search:false},
-            {name:'Habitotoxico', width:10,align:'center', search:false},
-            {name:'Motivodonacion', width:30,align:'center', search:false},
-            {name:'Patologiadonante', width:15,align:'center', search:false},
+            {name:'Habitotoxico', width:15,align:'center', search:false},
+            {name:'Patologia', width:15,align:'center', search:false},
             {name:'Imc', width:10,align:'center', search:false},
             {name:'Estado&nbsp;donante', width:40,align:'center', search:false},
             {name:'Accion', width:10,align:'center', search:false}

@@ -9,6 +9,7 @@ $(document).ready(function() {
  tableToGrid("#listado_donantes", {
         pager : '#pagerdonantes',
         rowNum:10, 
+        height: '100%',
         gridview: true, 
        // caption: "Seleccione la donante",
          
@@ -19,22 +20,19 @@ $(document).ready(function() {
            // {name:'Id',width:80,editable:true,},
             {name:'Codigo',width:15,align:'center'},
             {name:'Nombre', width:30,align:'center'},
-            {name:'Fecha&nbsp;Nacimiento',width:20,align:'center', search:false},
-            {name:'Fecha&nbsp;de&nbsp;registro', width:20,align:'center', search:false},
+            {name:'Fecha&nbsp;Nacimiento',width:17,align:'center', search:false},
+            {name:'Fecha&nbsp;de&nbsp;registro', width:17,align:'center', search:false},
             {name:'Telefono&nbsp;fijo', width:15,align:'center', search:false},
-            {name:'Celular', width:10,align:'center', search:false, search:false},
-            {name:'Direccion', width:15,align:'center', search:false, search:false},
             {name:'Procedencia', width:15,align:'center', search:false},
-            {name:'Registro', width:10,align:'center', search:false},
-            {name:'Documento&nbsp;de&nbsp;identificacion', width:40,align:'center', search:false},
-            {name:'Numero&nbsp;de&nbsp;documento',width:15,align:'center', search:false},
-            {name:'Edad', width:15,align:'center', search:false},
+            {name:'Registro', width:12,align:'center', search:false},
+            {name:'Documento', width:14,align:'center', search:false},
+            {name:'Numero&nbsp;de&nbsp;documento',width:25,align:'center', search:false},
+            {name:'Edad', width:5,align:'center', search:false},
             {name:'Ocupacion', width:15,align:'center', search:false},
             {name:'Estado&nbsp;civil', width:10,align:'center', search:false},
             {name:'Nacionalidad',width:15,align:'center', search:false},
             {name:'Escolaridad', width:15,align:'center', search:false},
             {name:'Tipo&nbsp;de&nbsp;colecta', width:15,align:'center', search:false},
-            {name:'Observaciones', width:40,align:'center', search:false},
             {name:'Accion', width:10,align:'center', search:false}
            
             

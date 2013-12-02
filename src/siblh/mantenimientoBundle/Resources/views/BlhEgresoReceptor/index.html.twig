@@ -18,13 +18,10 @@
             <tr>
                 <th>Codigo</th>
                 <th>Nombre</th>                
-                <th>Diagnostico&nbsp;de&nbsp;egreso</th>
                 <th>Madre&nbsp;canguro</th>
                 <th>Tipo&nbsp;de&nbsp;egreso</th>
-                <th>Comentario&nbsp;egreso</th>
                 <th>Traslado&nbsp;periferico</th>
                 <th>Permanencia&nbsp;ucin</th>
-                <th>Hospital&nbsp;de&nbsp;seguimiento</th>
                 <th>Fecha&nbsp;de&nbsp;egreso</th>
                 <th>Estancia&nbsp;hospitalaria</th>
                 <th>Accion</th>
@@ -35,14 +32,11 @@
             <tr>
                 <td>{{ entity.codigoReceptor }}</td>
                 <td>{{ entity.nombre1 }} {{ entity.nombre2 }} {{ entity.nombre3 }} {{ entity.apellido1 }} {{ entity.apellido2 }}</td>
-                <td>{{ entity.diagnosticoEgreso }}</td>
                 <td>{{ entity.madreCanguro }}</td>
                 <td>{{ entity.tipoEgreso }}</td>
-                <td>{{ entity.comentarioEgreso }}</td>
                 <td>{{ entity.trasladoPeriferico }}</td>
                 <td>{{ entity.permanenciaUcin }}</td>
-                <td>{{ entity.hospitalSeguimientoEgreso }}</td>
-                <td>{% if entity.fechaEgreso %}{{ entity.fechaEgreso|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{% if entity.fechaEgreso %}{{ entity.fechaEgreso|date('Y-m-d') }}{% endif %}</td>
                 <td>{{ entity.estanciaHospitalaria }}</td>
                 <td><a href="{{ path('blhegresoreceptor_edit', { 'id': entity.id }) }}"><font color="blue"><u>Editar</u></font></a></td>
                    

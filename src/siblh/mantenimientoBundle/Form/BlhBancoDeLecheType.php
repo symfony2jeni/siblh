@@ -16,7 +16,9 @@ class BlhBancoDeLecheType extends AbstractType
     {
         $builder
             ->add('codigoBancoDeLeche')
-            ->add('estadoBanco')
+            ->add('estadoBanco', 'choice',
+                    array('choices' => array ('' => 'Seleccione un valor', 
+                        'Activo' => 'Activo', 'Inactivo'=> 'Inactivo')))
             ->add('idEstablecimiento')
         ;
     }

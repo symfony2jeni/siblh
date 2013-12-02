@@ -1,43 +1,43 @@
-{% extends '::base.html.twig' %}
+{% extends 'siblhmantenimientoBundle::plantilla.html.twig' %}
 
+{% block javascripts %}
+    {{parent()}}
+   <script type="text/javascript" src="{{ asset('bundles/siblhmantenimiento/js/BlhBancoDeLeche/index.js') }}" ></script>
+{% endblock %}
+   
 {% block body -%}
-    <h1>BlhBancoDeLeche list</h1>
+ <link href="{{asset('bundles/jquery/jquery.jqGrid-4.5.4/css/ui.jqgrid.css')}}" rel="stylesheet"  type="text/css" media="all"/>  
+ 
+ <script type="text/javascript" src="{{asset('bundles/jquery/jquery.jqGrid-4.5.4/js/i18n/grid.locale-es.js')}}"></script>
+      <script type="text/javascript" src="{{asset('bundles/jquery/jquery.jqGrid-4.5.4/js/jquery.jqGrid.min.js')}}" ></script> 
+ <script type="text/javascript" src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
+      <script src="{{ path('fos_js_routing_js', {"callback": "fos.Router.setData"}) }}"></script>
+     
+     
 
-    <table class="records_list">
+
+    <h1>Banco de Leche</h1>
+    <div align = center>
+    <table id = "listado_bancos">
         <thead>
             <tr>
-                <th>Id</th>
-                <th>Codigobancodeleche</th>
-                <th>Estadobanco</th>
-                <th>Actions</th>
-            </tr>
+                <th>Codigo</th>
+                <th>Establecimiento</th> 
+                <th>Estado</th>
+                <th>Accion</th></tr>
         </thead>
         <tbody>
-        {% for entity in entities %}
+        {% for entity in banco %}
             <tr>
-                <td><a href="{{ path('blhbancodeleche_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
                 <td>{{ entity.codigoBancoDeLeche }}</td>
+                <td>{{ entity.nombre }}</td>
                 <td>{{ entity.estadoBanco }}</td>
-                <td>
-                <ul>
-                    <li>
-                        <a href="{{ path('blhbancodeleche_show', { 'id': entity.id }) }}">show</a>
-                    </li>
-                    <li>
-                        <a href="{{ path('blhbancodeleche_edit', { 'id': entity.id }) }}">edit</a>
-                    </li>
-                </ul>
-                </td>
-            </tr>
+              <td><a href="{{ path('blhbancodeleche_edit', { 'id': entity.id }) }}"><font color="blue"><u>Editar</u></font></a></td></tr>
+                      
         {% endfor %}
         </tbody>
     </table>
-
-        <ul>
-        <li>
-            <a href="{{ path('blhbancodeleche_new') }}">
-                Create a new entry
-            </a>
-        </li>
-    </ul>
+</div>
+      <div id='pagerbancos' ></div>
+    
     {% endblock %}

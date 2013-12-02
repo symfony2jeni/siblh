@@ -11,15 +11,47 @@
 
 {% block body -%}
     <h1>Actualizar Pasteurizacion</h1>
+    
+     {{ form_start(edit_form) }}
+    {{ form_errors(edit_form) }}
+    
+    <table  align = "center">
+    <tr><td  align = "left" height=10  ></td></tr>
+    <tr><td align='left'>{{ form_label(edit_form.codigoPasteurizacion) }}</td><td align='left'>{{ form_widget(edit_form.codigoPasteurizacion, {'attr':{'readonly': 'true'} }) }}</td></tr>
+    <tr><td  align = "left" height=10  ></td></tr>
+    <tr><td align='left'>{{ form_label(edit_form.numCiclo) }}</td><td align='left'>{{ form_widget(edit_form.numCiclo, {'attr':{'readonly': 'true'} }) }}</td></tr>
+    <tr><td  align = "left" height=10  ></td></tr>
+    <tr><td align='left'><font color="red">*</font>{{ form_label(edit_form.volumenPasteurizado) }}</td><td align='left'>{{ form_widget(edit_form.volumenPasteurizado) }}</td></tr>
+    <tr><td  align = "left" height=10  ></td></tr>
+    <tr><td align='left'><font color="red">*</font>{{ form_label(edit_form.numFrascosPasteurizados) }}</td><td align='left'>{{ form_widget(edit_form.numFrascosPasteurizados) }}</td></tr>
+    <tr><td  align = "left" height=10  ></td></tr>
+    <tr><td align='left'><font color="red">*</font>{{ form_label(edit_form.fechaPasteurizacion) }}</td><td align='left'>{{ form_widget(edit_form.fechaPasteurizacion) }}</td></tr>
+    <tr><td  align = "left" height=10  ></td></tr>
+    <tr><td align='left'>{{ form_label(edit_form.horaInicioP) }}</td><td align='left'>{{ form_widget(edit_form.horaInicioP) }}</td></tr>
+    <tr><td  align = "left" height=10  ></td></tr>
+    <tr><td align='left'>{{ form_label(edit_form.horaFinalP) }}</td><td align='left'>{{ form_widget(edit_form.horaFinalP) }}</td></tr>
+    <tr><td  align = "left" height=10  ></td></tr>
+    <tr><td align='left'>{{ form_label(edit_form.horaInicioE) }}</td><td align='left'>{{ form_widget(edit_form.horaInicioE) }}</td></tr>
+    <tr><td  align = "left" height=10  ></td></tr>
+     <tr><td align='left'>{{ form_label(edit_form.horaFinalE) }}</td><td align='left'>{{ form_widget(edit_form.horaFinalE) }}</td></tr>
+    <tr><td  align = "left" height=10  ></td></tr>
+    <tr><td align='left'><font color="red">*</font>{{ form_label(edit_form.responsablePasteurizacion) }}</td><td align='left'>{{ form_widget(edit_form.responsablePasteurizacion) }}</td></tr>
+    <tr><td  align = "left" height=10  ></td></tr>
+    <tr style="visibility:hidden"><td align='left'><font color="red">*</font>{{ form_label(edit_form.idCurva) }}</td><td align='left'>{{ form_widget(edit_form.idCurva) }}</td></tr>
+    <tr><td align = "left"><font color="red" size = "2" face = "Comic Sans MS">* Campos requeridos</font></td> </tr>     
+    <tr><td colspan = '2' align = 'center'>  <input id= "button" type="submit" value="Actualizar"/>
+    <input id = "boton" type="button" value="Regresar" onClick=' window.location.href="{{ path('blhpasteurizacion') }}" '></td></tr>
+    </table>
+ {{ form_end(edit_form) }}
+    
+    
 
-    {{ form(edit_form) }}
-
-        <ul class="record_actions">
+  {#      <ul class="record_actions">
     <li>
         <a href="{{ path('blhpasteurizacion') }}">
             Back to the list
         </a>
     </li>
     <li>{{ form(delete_form) }}</li>
-</ul>
+</ul> #}
 {% endblock %}

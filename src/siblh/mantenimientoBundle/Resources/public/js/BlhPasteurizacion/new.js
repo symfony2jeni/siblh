@@ -1,8 +1,5 @@
 $(document).ready(function() { 
-   $('button').button();
-   
- 
-   
+  
  
     //Opciones del validador
     var optionsRed = { 

@@ -44,7 +44,7 @@ class BlhBancoDeLeche
      *   @ORM\JoinColumn(name="id_establecimiento", referencedColumnName="id")
      * })
      */
-    private $idEstablecimiento;
+    public $idEstablecimiento;
 
 
 

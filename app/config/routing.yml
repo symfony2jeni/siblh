@@ -143,6 +143,13 @@ _NewCensoDonante:
   pattern:  /censodonante/
   defaults: { _controller: siblhmantenimientoBundle:GeneraReportes:CensoDonante}
   
+_NewBLH:
+    pattern:  /Banco/Nuevo
+    defaults: { _controller: siblhmantenimientoBundle:BlhBancoDeLeche:new}
+    
+_NewEditBLH:
+    pattern:  /Banco/listado
+    defaults: { _controller: siblhmantenimientoBundle:BlhBancoDeLeche:index} 
  
   #Mantenimiento
 #_NewAnalisisMicrobiologicoEdit:

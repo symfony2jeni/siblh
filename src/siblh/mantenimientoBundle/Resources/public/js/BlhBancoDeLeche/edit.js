@@ -1,5 +1,7 @@
 $(document).ready(function() { 
-
+ 
+    
+ 
     //Opciones del validador
     var optionsRed = { 
         classNamePrefix: 'bvalidator_red_', 
@@ -10,19 +12,7 @@ $(document).ready(function() {
          $.noConflict();
     $('form').bValidator(optionsRed);
     
-   
-
-$('#siblh_mantenimientobundle_blhtemperaturaenfriamiento_temperaturaE').
-        attr('data-bvalidator', 'between[0:30],required');
-    
-$('#siblh_mantenimientobundle_blhtemperaturaenfriamiento_temperaturaE').
-        attr('data-bvalidator-msg', "Ingrese valores para la temperatura entre 0 y 30");  
-
- $('#button').button();
- $('#boton1').button();
- 
- 
-  $(function() {
+    $(function() {
     $( document ).tooltip({
       position: {
         my: "center bottom-20",
@@ -39,4 +29,7 @@ $('#siblh_mantenimientobundle_blhtemperaturaenfriamiento_temperaturaE').
     });
         
            });
+   $('#button').button();
+   $('#boton').button();
 });
+

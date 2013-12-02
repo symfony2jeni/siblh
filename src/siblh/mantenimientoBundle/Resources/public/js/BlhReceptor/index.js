@@ -14,6 +14,7 @@ $(document).ready(function() {
 	tableToGrid("#listado_receptores", {
         pager : '#pagerreceptores',
         rowNum:10, 
+         height: '100%',
         gridview: true, 
        // caption: "Seleccione la donante",
          
@@ -22,8 +23,8 @@ $(document).ready(function() {
         
         colModel :[
            // {name:'Id',width:80,editable:true,},
-            {name:'Codigo',width:15,align:'center'},
-            {name:'Nombre',width:20,align:'center'},
+            {name:'Codigo',width:18,align:'center'},
+            {name:'Nombre',width:40,align:'center'},
             {name:'Fecha&nbsp;de&nbsp;registro', width:15,align:'center', search:false},
             {name:'Procedencia',width:20,align:'center', search:false},
             {name:'Estado&nbsp;de&nbsp;receptor', width:10,align:'center', search:false},

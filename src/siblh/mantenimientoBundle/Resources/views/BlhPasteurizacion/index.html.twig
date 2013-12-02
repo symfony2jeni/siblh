@@ -23,22 +23,22 @@
                 <th>VolumenPasteurizado</th>
                 <th>FrascosPasteurizados</th>
                 <th>Fecha&nbsp;Pasteurizacion</th>
-                <th>Hora&nbsp;Inicio&nbsp;Pasteurizacion</th>
-                <th>Hora&nbsp;Final&nbsp;Pasteurizacion</th>
-                <th>Hora&nbsp;Inicio&nbsp;Enfriamiento</th>
-                <th>Hora&nbsp;Final&nbsp;Enfriamiento</th>
+                <th>Inicio&nbsp;Pasteurizacion</th>
+                <th>Final&nbsp;Pasteurizacion</th>
+                <th>Inicio&nbsp;Enfriamiento</th>
+                <th>Final&nbsp;Enfriamiento</th>
                 <th>Responsable&nbsp;Pasteurizacion</th>
                 <th>Accion</th>
             </tr>
         </thead>
         <tbody>
-        {% for entity in entities %}
+        {% for entity in pasteurizacion %}
             <tr>
                 <td>{{ entity.codigoPasteurizacion }}</td>
                 <td>{{ entity.numCiclo }}</td>
-                <td>{{ entity.volumenPasteurizado }}</td>
+                <td>{{ entity.volumenPasteurizado|number_format(2, '.', ',') }}</td>
                 <td>{{ entity.numFrascosPasteurizados }}</td>
-                <td>{% if entity.fechaPasteurizacion %}{{ entity.fechaPasteurizacion|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{% if entity.fechaPasteurizacion %}{{ entity.fechaPasteurizacion|date('Y-m-d') }}{% endif %}</td>
                 <td>{{ entity.horaInicioP|date('H:i:s') }}</td>
                 <td>{{ entity.horaFinalP|date('H:i:s') }}</td>
                 <td>{{ entity.horaInicioE|date('H:i:s') }}</td>

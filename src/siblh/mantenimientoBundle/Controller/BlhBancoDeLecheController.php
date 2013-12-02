@@ -27,12 +27,21 @@ class BlhBancoDeLecheController extends Controller
      */
     public function indexAction()
     {
-        $em = $this->getDoctrine()->getManager();
+      $em = $this->getDoctrine()->getManager();
+      $userEst = $this->container->get('security.context')->getToken()->getUser()->getIdEst();       
+      $query1 = $em->createQuery("SELECT e.nombre, e.direccion, e.telefono FROM siblhmantenimientoBundle:CtlEstablecimiento e WHERE e.id = $userEst");
+      $establecimiento = $query1->getResult(); 
+      
+      $query2 = $em->createQuery("SELECT b.id, b.codigoBancoDeLeche, b.estadoBanco, 
+          e.nombre as nombre FROM siblhmantenimientoBundle:BlhBancoDeLeche b join b.idEstablecimiento e");
+      $banco = $query2->getResult(); 
 
         $entities = $em->getRepository('siblhmantenimientoBundle:BlhBancoDeLeche')->findAll();
 
         return array(
             'entities' => $entities,
+            'hospital' => $establecimiento,
+            'banco' => $banco,
         );
     }
     /**
@@ -76,7 +85,7 @@ class BlhBancoDeLecheController extends Controller
             'method' => 'POST',
         ));
 
-        $form->add('submit', 'submit', array('label' => 'Create'));
+      //  $form->add('submit', 'submit', array('label' => 'Create'));
 
         return $form;
     }
@@ -90,12 +99,38 @@ class BlhBancoDeLecheController extends Controller
      */
     public function newAction()
     {
+      $em = $this->getDoctrine()->getManager();          
+      $userEst = $this->container->get('security.context')->getToken()->getUser()->getIdEst();       
+      $query1 = $em->createQuery("SELECT e.nombre, e.direccion, e.telefono FROM siblhmantenimientoBundle:CtlEstablecimiento e WHERE e.id = $userEst");
+      $establecimiento = $query1->getResult(); 
+      $querycod = $em->createQuery("select max(substring (b.codigoBancoDeLeche, 5, 2)) as correlativo
+                                      from siblhmantenimientoBundle:BlhBancoDeLeche b");
+      $max = $querycod->getResult(); 
+     //   echo $max;
+        $maxi=$max[0]['correlativo']; 
+        $maxcorrel = (int)$maxi;
+        $maxcorrelativo = $maxcorrel+1;
+        if($maxcorrelativo <10)
+            {
+        $correlativo='0'.$maxcorrelativo;
+        $correlativo = (string)$correlativo;
+         }
+        else{
+            $correlativo = (string)$maxcorrelativo;
+            }
+      
+      $codigobanco= 'BLH-'.$correlativo;
+      echo $codigobanco;
+        
         $entity = new BlhBancoDeLeche();
+        $entity->setCodigoBancoDeLeche($codigobanco);
         $form   = $this->createCreateForm($entity);
+       
 
         return array(
             'entity' => $entity,
             'form'   => $form->createView(),
+            'hospital' => $establecimiento,
         );
     }
 
@@ -134,6 +169,9 @@ class BlhBancoDeLecheController extends Controller
     public function editAction($id)
     {
         $em = $this->getDoctrine()->getManager();
+        $userEst = $this->container->get('security.context')->getToken()->getUser()->getIdEst();       
+        $query1 = $em->createQuery("SELECT e.nombre, e.direccion, e.telefono FROM siblhmantenimientoBundle:CtlEstablecimiento e WHERE e.id = $userEst");
+        $establecimiento = $query1->getResult(); 
 
         $entity = $em->getRepository('siblhmantenimientoBundle:BlhBancoDeLeche')->find($id);
 
@@ -146,6 +184,7 @@ class BlhBancoDeLecheController extends Controller
 
         return array(
             'entity'      => $entity,
+            'hospital' => $establecimiento,
             'edit_form'   => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
         );
@@ -165,7 +204,7 @@ class BlhBancoDeLecheController extends Controller
             'method' => 'PUT',
         ));
 
-        $form->add('submit', 'submit', array('label' => 'Update'));
+    //    $form->add('submit', 'submit', array('label' => 'Update'));
 
         return $form;
     }

@@ -60,7 +60,7 @@ class BlhCurvaController extends Controller
             $em->persist($entity);
             $em->flush();
 
-            return $this->redirect($this->generateUrl('blhcurva_show', array('id' => $entity->getId())));
+            return $this->redirect($this->generateUrl('blhpasteurizacion_new', array('id' => $entity->getId())));
         }
 
         return array(

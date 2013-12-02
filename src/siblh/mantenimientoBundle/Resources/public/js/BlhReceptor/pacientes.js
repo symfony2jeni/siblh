@@ -2,8 +2,9 @@ $(document).ready(function() {
 
  tableToGrid("#listado_pacientes", {
         pager : '#pagerpacientes',
-        rowNum:20, 
-        height:300,
+        rowNum:10, 
+        width: 700,
+         height: '100%',
         gridview: true, 
         caption: "Seleccione el paciente",
         
@@ -11,7 +12,7 @@ $(document).ready(function() {
         colModel :[
            // {name:'Id',width:80,editable:true,},
             {name:'id',width:5,align:'center', search:false},
-            {name:'Nombre', width:40,align:'left'},
+            {name:'Nombre', width:40,align:'center'},
              {name:'Accion', width:10,align:'center', search:false},
            
             

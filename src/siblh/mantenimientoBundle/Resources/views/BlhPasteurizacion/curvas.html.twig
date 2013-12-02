@@ -12,6 +12,7 @@
       <script type="text/javascript" src="{{asset('bundles/jquery/jquery.jqGrid-4.5.4/js/jquery.jqGrid.min.js')}}" ></script> 
 
     <h1>Listado de Curvas de penetracion de calor</h1>
+    <div align = center>
     <table id = "listado_curvas">
        
             
@@ -38,7 +39,7 @@
                 <td>{{ curva.fechaCurva|date('d-m-Y') }}</td>
         
                 <td>{{ curva.cantidadFrascos }}</td>
-                <td>{{ curva.volumenPorFrasco }}</td>
+                <td>{{ curva.volumenPorFrasco|number_format(2, '.', ',') }}</td>
                 
                
                 <td><a href="{{ path('blhpasteurizacion_new', { 'id': curva.iden })}}"><font color="blue"><u>Pasteurizacion</u></font></a></td></tr>
@@ -46,5 +47,6 @@
             
         </tbody>
     </table>
+            </div>
 <div id='pagercurvas' ></div>
         {% endblock %}

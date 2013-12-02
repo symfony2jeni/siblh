@@ -24,7 +24,7 @@
     
     <table>
          <td align = "left">
-         <tr align = "left"><b> Temperatura de Enfriamiento&nbsp;&nbsp;&nbsp;&nbsp;</b></tr></td>
+         <tr align = "left"><b><font color="red" >*</font> Temperatura de Enfriamiento</b></tr></td>
     {% for temperaturas in temperaturas%}
         <td align = "left">        
         <tr align = "left"><INPUT type=text disabled="disabled" size=5 readonly="readonly" value= " {{ temperaturas.temperaturaE }} "> </tr> </td>
@@ -32,10 +32,18 @@
         <td align = "left"><tr align = left>
         {{ form_label(form.temperaturaE, ' ') }}
         {{ form_errors(form.temperaturaE) }}
-        {{ form_widget(form.temperaturaE,  { 'attr': {'size': '5'} }) }}  </tr></td>
+        {{ form_widget(form.temperaturaE,  { 'attr': {'size': '5', 'title': 'Temperatura entre 0 y 30'} }) }}  </tr></td>
     
-       <td><tr colspan = 3><br><br> <input type="submit" class= "ui-button" value="Guardar"/></tr></td>
-     </form>
+        <tr><td width = 400></td>
+            
+            <td align = "left"><font color="red" size = "2" face = "Comic Sans MS">* Campos requeridos</font>   </td></tr>
+        <tr><td width = 400></td>
+            <td align = 'right' td width = 300>
+          <input id = "button" type="submit" value="Guardar"/>
+          <input id = "boton1" type="button" value="Regresar" onClick=' window.location.href="{{ path('_NewTemperaturaE') }}" '>
+</td>
+  </tr>
+    </form>
      </table>
        
      <table>         
@@ -47,7 +55,5 @@
      </table>           
         {{ form_end(form) }}
      
-     <table align = 'center'>
-     <tr><td><a href="{{ path('blhtemperaturaenfriamiento') }}">Ver listado </a>
-     </td></tr></table>
+    
 {% endblock %}

@@ -10,6 +10,7 @@ $(document).ready(function() {
 	tableToGrid("#listado_receptores", {
         pager : '#pagerreceptores',
         rowNum:10, 
+         height: '100%',
         gridview: true, 
        // caption: "Seleccione la donante",
          

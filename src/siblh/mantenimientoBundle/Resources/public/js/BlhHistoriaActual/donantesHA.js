@@ -4,13 +4,15 @@ $(document).ready(function() {
         pager : '#pagerdonantes',
         rowNum:10, 
         gridview: true, 
+        width: 750,
+        height: '100%',
         caption: "Seleccione la donante",
         
         
         colModel :[
            // {name:'Id',width:80,editable:true,},
-            {name:'id',width:5,align:'center'},
-            {name:'Nombre', width:40,align:'center'},
+            {name:'id',width:5,align:'center', search:false},
+            {name:'Nombre', width:30,align:'center'},
              {name:'Accion', width:10,align:'center', search:false},
            
             

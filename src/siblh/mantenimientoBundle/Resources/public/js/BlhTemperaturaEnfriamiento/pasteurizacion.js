@@ -3,6 +3,8 @@ $(document).ready(function() {
  tableToGrid("#listado_pasteurizaciones", {
         pager : '#pagerpasteurizaciones',
         rowNum:10, 
+        width: 750,
+        height: '100%',
         gridview: true, 
        
         caption: "Seleccione la pasteurizacion",
@@ -10,13 +12,12 @@ $(document).ready(function() {
         
         colModel :[
            // {name:'Id',width:80,editable:true,},
-            {name:'id',width:5,align:'center'},
             {name:'Codigo',width:10,align:'center'},
-            {name:'Ciclo', width:2,align:'center'},
-            {name:'VolumenPasteurizado', width:5,align:'center'},
-            {name:'CantidadFrascos', width:5,align:'center'},
-            {name:'FechaPasteurizacion', width:15,align:'center'},
-            {name:'Accion', width:20,align:'center'}
+            {name:'Ciclo', width:4,align:'center', search:false},
+            {name:'VolumenPasteurizado', width:10,align:'center'},
+            {name:'CantidadFrascos', width:10,align:'center'},
+            {name:'FechaPasteurizacion', width:10,align:'center', search:false},
+            {name:'Accion', width:10,align:'center', search:false}
            
             
    
@@ -28,7 +29,8 @@ $(document).ready(function() {
         edit:false, 
         add:false, 
         del:false,
-        search:true,
-        reload:true
+        search:false,
+        reload:false
     });
+     jQuery("#listado_pasteurizaciones").jqGrid('filterToolbar',{stringResult: true,searchOnEnter : false}); 
      });

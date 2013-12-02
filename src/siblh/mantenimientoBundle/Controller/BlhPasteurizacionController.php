@@ -35,9 +35,25 @@ class BlhPasteurizacionController extends Controller
       $userEst = $this->container->get('security.context')->getToken()->getUser()->getIdEst();
       $query1 = $em->createQuery("SELECT e.nombre, e.direccion, e.telefono FROM siblhmantenimientoBundle:CtlEstablecimiento e WHERE e.id = $userEst");
       $establecimiento = $query1->getResult(); 
+      $queryb = $em->createQuery("SELECT b.id FROM siblhmantenimientoBundle:BlhBancoDeLeche b WHERE b.idEstablecimiento = $userEst");
+      $id_blh = $queryb->getResult(); 
+      $codigo=$id_blh[0]['id']; 
+      if ($codigo<10){
+      $idp='0'.$codigo;
+      $idp = (string)$idp;
+         }
+      else{$idp = (string)$codigo;}
+        
+       $query = $em->createQuery("SELECT p.id, p.codigoPasteurizacion, p.numCiclo,
+           p.volumenPasteurizado, p.numFrascosPasteurizados, p.fechaPasteurizacion, p.horaInicioP,
+           p.horaFinalP, p.horaInicioE, p.horaFinalE, p.responsablePasteurizacion
+       FROM siblhmantenimientoBundle:BlhPasteurizacion p where 
+       substring (p.codigoPasteurizacion, 1, 2) = '$idp' order by p.codigoPasteurizacion");
+       $pasteurizacion  = $query->getResult(); 
         return array(
             'entities' => $entities,
             'hospital' => $establecimiento,
+            'pasteurizacion' => $pasteurizacion,
         );
     }
     /**
@@ -165,7 +181,7 @@ class BlhPasteurizacionController extends Controller
             'method' => 'PUT',
         ));
 
-        $form->add('submit', 'submit', array('label' => 'Update'));
+     //   $form->add('submit', 'submit', array('label' => 'Update'));
 
         return $form;
     }
@@ -265,9 +281,12 @@ public function curvasAction()
         //Obteniendo lista de curvas"  
        $query = $em->createQuery("SELECT c.id as iden, c.valorCurva as valorCurva, 
                    c.fechaCurva, c.cantidadFrascos as cantidadFrascos, c.volumenPorFrasco as volumenPorFrasco 
-                   FROM siblhmantenimientoBundle:BlhPasteurizacion p join p.idCurva c group By c.id
+                   FROM siblhmantenimientoBundle:BlhPasteurizacion p join p.idCurva c 
+                   where c.id in (select cur.id from siblhmantenimientoBundle:BlhPasteurizacion pas 
+                   JOIN pas.idCurva cur) group By c.id
                    having (max(p.numCiclo) < 30) ");
-  //or (max(p.numCiclo) like )
+       
+     //or (max(p.numCiclo) like )
         
         
         // or (max(p.numCiclo) is null)

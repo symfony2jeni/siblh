@@ -1,9 +1,4 @@
 $(document).ready(function() { 
-   $('button').button();
-   
- 
-   
- 
     //Opciones del validador
     var optionsRed = { 
         classNamePrefix: 'bvalidator_red_', 
@@ -44,15 +39,7 @@ $('#siblh_mantenimientobundle_blhpasteurizacion_numFrascosPasteurizados').
 $('#siblh_mantenimientobundle_blhpasteurizacion_numFrascosPasteurizados').
       attr('data-bvalidator-msg', "Ingrese la cantidad de frascos mayor que 1");  
       
-$('#siblh_mantenimientobundle_blhpasteurizacion_numFrascosPasteurizados').on('click', function() {    
-    this.value=$('#cant').val();
-    
-    });
-    
-$('#siblh_mantenimientobundle_blhpasteurizacion_volumenPasteurizado').on('click', function() {    
-    this.value =$('#vol').val();
-    
-    });    
+
   
       
       
@@ -113,4 +100,6 @@ $('#siblh_mantenimientobundle_blhpasteurizacion_volumenPasteurizado').on('click'
           }
      
  });  
+   $('#button').button(); 
+   $('#boton').button(); 
 });

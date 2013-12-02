@@ -24,8 +24,7 @@
                 <th>Talla</th>
                 <th>Medicamento</th>
                 <th>Habitotoxico</th>
-                <th>Motivodonacion</th>
-                <th>Patologiadonante</th>
+                <th>Patologia</th>
                 <th>Imc</th>
                 <th>Estado&nbsp;donante</th>
                 <th>Accion</th>
@@ -36,13 +35,12 @@
             <tr>
                 <td>{{ entity.codigo_donante }}</td>
                 <td>{{ entity.nombre1 }} {{ entity.nombre2 }} {{ entity.apellido1 }} {{ entity.apellido2 }}</td>
-                <td>{{ entity.pesoDonante }}</td>
-                <td>{{ entity.tallaDonante }}</td>
+                <td>{{ entity.pesoDonante|number_format(2, '.', ',') }}</td>
+                <td>{{ entity.tallaDonante|number_format(2, '.', ',') }}</td>
                 <td>{{ entity.medicamento }}</td>
                 <td>{{ entity.habitoToxico }}</td>
-                <td>{{ entity.motivoDonacion }}</td>
                 <td>{{ entity.patologiaDonante }}</td>
-                <td>{{ entity.imc }}</td>
+                <td>{{ entity.imc|number_format(2, '.', ',') }}</td>
                 <td>{{ entity.estadoDonante }}</td>
                 <td><a href="{{ path('blhhistoriaactual_edit', { 'id': entity.id }) }}"><font color="blue"><u>Editar</u></font></a></td>
             </tr>

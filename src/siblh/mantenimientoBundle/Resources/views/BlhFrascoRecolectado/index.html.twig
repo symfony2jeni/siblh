@@ -22,7 +22,6 @@
                 <th>Volumen&nbsp;Recolectado</th>
                 <th>Onzas&nbsp;Recolectadas</th>
                 <th>Forma&nbsp;de&nbsp;Extraccion</th>
-                <th>Observaciones</th>
                 <th>Accion</th>
             </tr>
         </thead>
@@ -32,10 +31,9 @@
                 <td>{{ entity.codigo_donante }}</td>
                 <td>{{ entity.nombre1 }} {{ entity.nombre2 }} {{ entity.apellido1 }} {{ entity.apellido2 }}</td>
                 <td>{{ entity.codigoFrascoRecolectado }}</td>
-                <td>{{ entity.volumenRecolectado }}</td>
-                <td>{{ entity.onzRecolectado }}</td>
+                <td>{{ entity.volumenRecolectado|number_format(2, '.', ',') }}</td>
+                <td>{{ entity.onzRecolectado|number_format(2, '.', ',') }}</td>
                 <td>{{ entity.formaExtraccion }}</td>
-                <td>{{ entity.observacionFrascoRecolectado }}</td>
                 <td><a href="{{ path('blhfrascorecolectado_edit', { 'id': entity.id }) }}"><font color="blue"><u>Editar</u></font></a></td></tr>
         {% endfor %}
         </tbody>
