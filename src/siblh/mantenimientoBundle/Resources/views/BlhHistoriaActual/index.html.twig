@@ -18,7 +18,8 @@
    <table id = "listado_ha">
         <thead>
             <tr>
-   
+                <th>Codigo</th>
+                <th>Nombre</th>
                 <th>Peso</th>
                 <th>Talla</th>
                 <th>Medicamento</th>
@@ -31,8 +32,10 @@
             </tr>
         </thead>
         <tbody>
-        {% for entity in entities %}
+        {% for entity in donantes_registradas %}
             <tr>
+                <td>{{ entity.codigo_donante }}</td>
+                <td>{{ entity.nombre1 }} {{ entity.nombre2 }} {{ entity.apellido1 }} {{ entity.apellido2 }}</td>
                 <td>{{ entity.pesoDonante }}</td>
                 <td>{{ entity.tallaDonante }}</td>
                 <td>{{ entity.medicamento }}</td>

@@ -32,7 +32,7 @@ class ReporteController extends Controller {
         $jasper_url = JASPER_URL;
         $jasper_username = JASPER_USER;
         $jasper_password = JASPER_PASSWORD;
-        $report_unit = "/reports/" . $report_name;  //rutadejasperserverreports
+        $report_unit = "/reports/siblh/" . $report_name;  //rutadejasperserverreports
         $report_params = array();
 
         $client = new JasperClient($jasper_url, $jasper_username, $jasper_password);
@@ -65,7 +65,7 @@ class ReporteController extends Controller {
         $jasper_url = JASPER_URL;
         $jasper_username = JASPER_USER;
         $jasper_password = JASPER_PASSWORD;
-        $report_unit = "/reports/" . $report_name;  //rutadejasperserverreports
+        $report_unit = "/reports/siblh/" . $report_name;  //rutadejasperserverreports
         $report_params = array();
 
         $client = new JasperClient($jasper_url, $jasper_username, $jasper_password);
@@ -96,7 +96,7 @@ class ReporteController extends Controller {
         $jasper_url = JASPER_URL;
         $jasper_username = JASPER_USER;
         $jasper_password = JASPER_PASSWORD;
-        $report_unit = "/reports/" . $report_name;  //rutadejasperserverreports
+        $report_unit = "/reports/siblh/" . $report_name;  //rutadejasperserverreports
         $report_params = array();
 
         $client = new JasperClient($jasper_url, $jasper_username, $jasper_password);
@@ -128,7 +128,7 @@ class ReporteController extends Controller {
         $jasper_url = JASPER_URL;
         $jasper_username = JASPER_USER;
         $jasper_password = JASPER_PASSWORD;
-        $report_unit = "/reports/" . $report_name;  //rutadejasperserverreports
+        $report_unit = "/reports/siblh/" . $report_name;  //rutadejasperserverreports
         $report_params = array();
 
         $client = new JasperClient($jasper_url, $jasper_username, $jasper_password);
@@ -162,7 +162,7 @@ class ReporteController extends Controller {
         $jasper_url = JASPER_URL;
         $jasper_username = JASPER_USER;
         $jasper_password = JASPER_PASSWORD;
-        $report_unit = "/reports/" . $report_name;  //rutadejasperserverreports
+        $report_unit = "/reports/siblh/" . $report_name;  //rutadejasperserverreports
         $report_params = array();
 
         $client = new JasperClient($jasper_url, $jasper_username, $jasper_password);
@@ -195,7 +195,7 @@ class ReporteController extends Controller {
         $jasper_url = JASPER_URL;
         $jasper_username = JASPER_USER;
         $jasper_password = JASPER_PASSWORD;
-        $report_unit = "/reports/" . $report_name;  //rutadejasperserverreports
+        $report_unit = "/reports/siblh/" . $report_name;  //rutadejasperserverreports
         $report_params = array();
 
         $client = new JasperClient($jasper_url, $jasper_username, $jasper_password);
@@ -224,7 +224,7 @@ class ReporteController extends Controller {
        $jasper_url = JASPER_URL;
        $jasper_username = JASPER_USER;
        $jasper_password = JASPER_PASSWORD;
-       $report_unit = "/reports/" . $report_name;
+       $report_unit = "/reports/siblh/" . $report_name;
 
        $request = $this->getRequest();
        $fecha_inicio = $request->get('fechai');
@@ -259,7 +259,7 @@ class ReporteController extends Controller {
        $jasper_url = JASPER_URL;
        $jasper_username = JASPER_USER;
        $jasper_password = JASPER_PASSWORD;
-       $report_unit = "/reports/" . $report_name;
+       $report_unit = "/reports/siblh/" . $report_name;
 
        $request = $this->getRequest();
        $fecha_inicio = $request->get('fechai');
@@ -295,7 +295,7 @@ class ReporteController extends Controller {
        $jasper_url = JASPER_URL;
        $jasper_username = JASPER_USER;
        $jasper_password = JASPER_PASSWORD;
-       $report_unit = "/reports/" . $report_name;
+       $report_unit = "/reports/siblh/" . $report_name;
 
        $request = $this->getRequest();
        $fecha_inicio = $request->get('fechai');
@@ -330,7 +330,7 @@ class ReporteController extends Controller {
        $jasper_url = JASPER_URL;
        $jasper_username = JASPER_USER;
        $jasper_password = JASPER_PASSWORD;
-       $report_unit = "/reports/" . $report_name;
+       $report_unit = "/reports/siblh/" . $report_name;
 
        $request = $this->getRequest();
        $fecha_inicio = $request->get('fechai');
@@ -361,7 +361,7 @@ class ReporteController extends Controller {
       $jasper_url = JASPER_URL;
        $jasper_username = JASPER_USER;
        $jasper_password = JASPER_PASSWORD;
-       $report_unit = "/reports/" . $report_name;
+       $report_unit = "/reports/siblh/" . $report_name;
 
        $request = $this->getRequest();
     
@@ -401,7 +401,7 @@ class ReporteController extends Controller {
       $jasper_url = JASPER_URL;
        $jasper_username = JASPER_USER;
        $jasper_password = JASPER_PASSWORD;
-       $report_unit = "/reports/" . $report_name;
+       $report_unit = "/reports/siblh/" . $report_name;
 
        $request = $this->getRequest();
     
@@ -443,7 +443,7 @@ class ReporteController extends Controller {
        $jasper_url = JASPER_URL;
        $jasper_username = JASPER_USER;
        $jasper_password = JASPER_PASSWORD;
-       $report_unit = "/reports/" . $report_name;
+       $report_unit = "/reports/siblh/" . $report_name;
 
      //  $request = $this->getRequest();
      //  $identificador = $request->get('identificador');
@@ -477,7 +477,7 @@ class ReporteController extends Controller {
        $jasper_url = JASPER_URL;
        $jasper_username = JASPER_USER;
        $jasper_password = JASPER_PASSWORD;
-       $report_unit = "/reports/" . $report_name;
+       $report_unit = "/reports/siblh/" . $report_name;
 
      //  $request = $this->getRequest();
      //  $identificador = $request->get('identificador');
@@ -509,7 +509,7 @@ class ReporteController extends Controller {
        $jasper_url = JASPER_URL;
        $jasper_username = JASPER_USER;
        $jasper_password = JASPER_PASSWORD;
-       $report_unit = "/reports/" . $report_name;
+       $report_unit = "/reports/siblh/" . $report_name;
 
        $request = $this->getRequest();
        $fecha_inicio = $request->get('fechai');
@@ -541,7 +541,7 @@ class ReporteController extends Controller {
        $jasper_url = JASPER_URL;
        $jasper_username = JASPER_USER;
        $jasper_password = JASPER_PASSWORD;
-       $report_unit = "/reports/" . $report_name;
+       $report_unit = "/reports/siblh/" . $report_name;
 
        $request = $this->getRequest();
        $fecha_inicio = $request->get('fechai');
@@ -574,7 +574,7 @@ class ReporteController extends Controller {
        $jasper_url = JASPER_URL;
        $jasper_username = JASPER_USER;
        $jasper_password = JASPER_PASSWORD;
-       $report_unit = "/reports/" . $report_name;
+       $report_unit = "/reports/siblh/" . $report_name;
 
        $request = $this->getRequest();
        $fecha_inicio = $request->get('fechai');
@@ -608,7 +608,7 @@ class ReporteController extends Controller {
        $jasper_url = JASPER_URL;
        $jasper_username = JASPER_USER;
        $jasper_password = JASPER_PASSWORD;
-       $report_unit = "/reports/" . $report_name;
+       $report_unit = "/reports/siblh/" . $report_name;
 
        $request = $this->getRequest();
        $fecha_inicio = $request->get('fechai');
@@ -640,7 +640,7 @@ class ReporteController extends Controller {
        $jasper_url = JASPER_URL;
        $jasper_username = JASPER_USER;
        $jasper_password = JASPER_PASSWORD;
-       $report_unit = "/reports/" . $report_name;
+       $report_unit = "/reports/siblh/" . $report_name;
 
        $request = $this->getRequest();
        $fecha_inicio = $request->get('fechai');
@@ -672,7 +672,7 @@ class ReporteController extends Controller {
       $jasper_url = JASPER_URL;
        $jasper_username = JASPER_USER;
        $jasper_password = JASPER_PASSWORD;
-       $report_unit = "/reports/" . $report_name;
+       $report_unit = "/reports/siblh/" . $report_name;
 
        $request = $this->getRequest();
     
@@ -709,7 +709,7 @@ class ReporteController extends Controller {
       $jasper_url = JASPER_URL;
        $jasper_username = JASPER_USER;
        $jasper_password = JASPER_PASSWORD;
-       $report_unit = "/reports/" . $report_name;
+       $report_unit = "/reports/siblh/" . $report_name;
 
        $request = $this->getRequest();
     
@@ -746,7 +746,7 @@ class ReporteController extends Controller {
       $jasper_url = JASPER_URL;
        $jasper_username = JASPER_USER;
        $jasper_password = JASPER_PASSWORD;
-       $report_unit = "/reports/" . $report_name;
+       $report_unit = "/reports/siblh/" . $report_name;
 
        $request = $this->getRequest();
     
@@ -785,7 +785,7 @@ class ReporteController extends Controller {
        $jasper_url = JASPER_URL;
        $jasper_username = JASPER_USER;
        $jasper_password = JASPER_PASSWORD;
-       $report_unit = "/reports/" . $report_name;
+       $report_unit = "/reports/siblh/" . $report_name;
 
        $request = $this->getRequest();
        $fecha_inicio = $request->get('fechai');
@@ -819,7 +819,7 @@ class ReporteController extends Controller {
       $jasper_url = JASPER_URL;
        $jasper_username = JASPER_USER;
        $jasper_password = JASPER_PASSWORD;
-       $report_unit = "/reports/" . $report_name;
+       $report_unit = "/reports/siblh/" . $report_name;
 
        $request = $this->getRequest();
     

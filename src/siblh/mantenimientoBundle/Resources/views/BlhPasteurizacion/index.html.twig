@@ -1,29 +1,39 @@
-{% extends '::base.html.twig' %}
+{% extends 'siblhmantenimientoBundle::plantilla.html.twig' %}
 
-{% block body -%}
-    <h1>BlhPasteurizacion list</h1>
+{% block javascripts %}
+    {{parent()}}
+   <script type="text/javascript" src="{{ asset('bundles/siblhmantenimiento/js/BlhPasteurizacion/index.js') }}" ></script>
+{% endblock %}
+  {% block body -%} 
 
-    <table class="records_list">
+ <link href="{{asset('bundles/jquery/jquery.jqGrid-4.5.4/css/ui.jqgrid.css')}}" rel="stylesheet"  type="text/css" media="all"/>  
+ 
+ <script type="text/javascript" src="{{asset('bundles/jquery/jquery.jqGrid-4.5.4/js/i18n/grid.locale-es.js')}}"></script>
+      <script type="text/javascript" src="{{asset('bundles/jquery/jquery.jqGrid-4.5.4/js/jquery.jqGrid.min.js')}}" ></script> 
+
+
+
+    <h1>Pasteurizaciones</h1>
+
+   <table id = "listado_Pasteurizacion">
         <thead>
             <tr>
-                <th>Id</th>
-                <th>Codigopasteurizacion</th>
-                <th>Numciclo</th>
-                <th>Volumenpasteurizado</th>
-                <th>Numfrascospasteurizados</th>
-                <th>Fechapasteurizacion</th>
-                <th>Horainiciop</th>
-                <th>Horafinalp</th>
-                <th>Horainicioe</th>
-                <th>Horafinale</th>
-                <th>Responsablepasteurizacion</th>
-                <th>Actions</th>
+                <th>Codigo</th>
+                <th>Ciclo</th>
+                <th>VolumenPasteurizado</th>
+                <th>FrascosPasteurizados</th>
+                <th>Fecha&nbsp;Pasteurizacion</th>
+                <th>Hora&nbsp;Inicio&nbsp;Pasteurizacion</th>
+                <th>Hora&nbsp;Final&nbsp;Pasteurizacion</th>
+                <th>Hora&nbsp;Inicio&nbsp;Enfriamiento</th>
+                <th>Hora&nbsp;Final&nbsp;Enfriamiento</th>
+                <th>Responsable&nbsp;Pasteurizacion</th>
+                <th>Accion</th>
             </tr>
         </thead>
         <tbody>
         {% for entity in entities %}
             <tr>
-                <td><a href="{{ path('blhpasteurizacion_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
                 <td>{{ entity.codigoPasteurizacion }}</td>
                 <td>{{ entity.numCiclo }}</td>
                 <td>{{ entity.volumenPasteurizado }}</td>
@@ -34,26 +44,14 @@
                 <td>{{ entity.horaInicioE|date('H:i:s') }}</td>
                 <td>{{ entity.horaFinalE|date('H:i:s') }}</td>
                 <td>{{ entity.responsablePasteurizacion }}</td>
-                <td>
-                <ul>
-                    <li>
-                        <a href="{{ path('blhpasteurizacion_show', { 'id': entity.id }) }}">show</a>
-                    </li>
-                    <li>
-                        <a href="{{ path('blhpasteurizacion_edit', { 'id': entity.id }) }}">edit</a>
-                    </li>
-                </ul>
-                </td>
+                <td><a href="{{ path('blhpasteurizacion_edit', { 'id': entity.id }) }}"><font color="blue"><u>Editar</u></font></a></td>
+          
+                
+                   
             </tr>
         {% endfor %}
         </tbody>
     </table>
 
-        <ul>
-        <li>
-            <a href="{{ path('blhpasteurizacion_new') }}">
-                Create a new entry
-            </a>
-        </li>
-    </ul>
+      <div id='pagerPasteurizacion' ></div>
     {% endblock %}

@@ -13,7 +13,7 @@
 
 
 {% block body -%}
-    <h1>BlhPasteurizacion creation</h1>
+    <h1>Registro de Pasteurizacion</h1>
     
      <FORM> 
    <table align = "center" >
@@ -39,52 +39,43 @@
 
     {{ form_start(form) }}
     {{ form_errors(form) }}
-    <table align = "center" WIDTH = "80%" border = 1>
+    <table align = "center" WIDTH = "80%" >
         <tr>
     <td align = left colspan = 2 style="visibility:hidden">
         {{ form_label(form.idCurva) }}
         {{ form_errors(form.idCurva) }}
         {{ form_widget(form.idCurva) }} </td></tr>
      <tr><td align = left>
-        {{ form_label(form.codigoPasteurizacion) }}
-        {{ form_errors(form.codigoPasteurizacion) }}&nbsp;&nbsp;&nbsp;&nbsp;
-        {{ form_widget(form.codigoPasteurizacion) }} </td>
+        {{ form_label(form.codigoPasteurizacion) }}</td><td align = left>
+        {{ form_widget(form.codigoPasteurizacion, {'attr':{'readonly': 'true'} }) }} </td>
     <td align = left style="visibility:hidden"><font color="red">*</font>
         {{ form_label(form.numCiclo) }}
         {{ form_errors(form.numCiclo) }}
         {{ form_widget(form.numCiclo, {'attr':{'value': '0'} }) }} </td></tr>
      <tr>  <td align = left><font color="red">*</font>
-        {{ form_label(form.volumenPasteurizado) }}
-        {{ form_errors(form.volumenPasteurizado) }} &nbsp;
+        {{ form_label(form.volumenPasteurizado) }}</td><td align = left>
         {{ form_widget(form.volumenPasteurizado) }} </td>
    <td align = left><font color="red">*</font>
-        {{ form_label(form.numFrascosPasteurizados) }}
-        {{ form_errors(form.numFrascosPasteurizados) }}
+        {{ form_label(form.numFrascosPasteurizados) }}</td><td align = left>
         {{ form_widget(form.numFrascosPasteurizados) }} </td></tr>
       <tr>  <td align = left><font color="red">*</font>
-        {{ form_label(form.fechaPasteurizacion) }}
-        {{ form_errors(form.fechaPasteurizacion) }} &nbsp;&nbsp; &nbsp;
+        {{ form_label(form.fechaPasteurizacion) }}</td><td align = left>
         {{ form_widget(form.fechaPasteurizacion) }} </td>  
     <td align = left><font color="red">*</font>
-        {{ form_label(form.responsablePasteurizacion) }}
-        {{ form_errors(form.responsablePasteurizacion) }}
+        {{ form_label(form.responsablePasteurizacion) }}</td><td align = left>
         {{ form_widget(form.responsablePasteurizacion) }} </td></tr>           
                   
     <tr> <td align = left>
-        {{ form_label(form.horaInicioP) }}
-        {{ form_errors(form.horaInicioP) }}
+        {{ form_label(form.horaInicioP) }}</td><td align = left>
         {{ form_widget(form.horaInicioP) }} </td>
        <td align = left>
-        {{ form_label(form.horaFinalP) }}
-        {{ form_errors(form.horaFinalP) }}
+        {{ form_label(form.horaFinalP) }}</td><td align = left>
         {{ form_widget(form.horaFinalP) }} </td> </tr> 
   <tr> <td align = left>
-        {{ form_label(form.horaInicioE) }}
-        {{ form_errors(form.horaInicioE) }}
+        {{ form_label(form.horaInicioE) }}</td><td align = left>
         {{ form_widget(form.horaInicioE) }} </td> 
         <td align = left>
-        {{ form_label(form.horaFinalE) }}
-        {{ form_errors(form.horaFinalE) }}
+        {{ form_label(form.horaFinalE) }}</td><td align = left>
         {{ form_widget(form.horaFinalE) }} </td></tr> 
     
        
@@ -92,10 +83,13 @@
     
        
        
-       <tr><td colspan = 3 align = "left"><font color="red" size = "2" face = "Comic Sans MS">* Campos requeridos</font>   </td>
+       <tr><td align = "left"><font color="red" size = "2" face = "Comic Sans MS">* Campos requeridos</font>   </td><tr>
   
        
-     <tr><td colspan = 3> <input type="submit" class= "ui-button" value="Guardar"/></td></tr>
+   <tr><td colspan = 4 align = center> <input type="submit" id = "button"  value="Guardar"/>
+       <input id = "boton1" type="button" value="Regresar" onClick=' window.location.href="{{ path('_NewPasteurizacion') }}" '>
+
+       </td></tr>
    
        
        
@@ -106,6 +100,11 @@
     
       {{ form_end(form) }}
     
-
+{#<table align = 'center'>
+        <tr>
+            <td>
+        <a href="{{ path('blhpasteurizacion') }}">
+             Ver listado </a>
+        </td></tr></table> #}
      
 {% endblock %}

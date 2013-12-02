@@ -1,12 +1,12 @@
 $(document).ready(function() { 
-        $('button').button();
+       
      $.noConflict();
      $.datepicker.setDefaults($.datepicker.regional["es"]);
-   $('input[id$="_fechaNacimiento"]').datepicker({ dateFormat: 'dd-mm-yy',  
+   $('input[id$="_fechaNacimiento"]').datepicker({ dateFormat: 'yy-mm-dd',  
                            changeMonth: true,
                            changeYear: true,
                            clearStatus: 'Borra fecha actual',  
-                           defaultDate: '01-01--35y',
+                           defaultDate: '-35y-01-01',
                            //minDate: '-34y',
                            //maxDate: '-13y',
                           yearRange: '-35y:-13y',
@@ -15,16 +15,19 @@ $(document).ready(function() {
                                              "Jul", "Ago", "Sep", "Oct", "Nov", "Dic"]
                           });
                           
-     $('input[id$="_fechaRegistroDonanteBlh"]').datepicker({ dateFormat: 'dd-mm-yy',  
+     $('input[id$="_fechaRegistroDonanteBlh"]').datepicker({ dateFormat: 'yy-mm-dd',  
                            changeMonth: true,
                            changeYear: true,
                            clearStatus: 'Borra fecha actual',  
-                          defaultDate: '01-01-2012',
+                          defaultDate: '2012-01-01',
                             yearRange: '2012:y',
                            dayNamesMin: ["Do", "Lu", "Ma", "Mi", "Ju", "Vi", "Sa"],
                            monthNamesShort: ["Ene", "Feb", "Mar", "Abr", "May", "Jun",
                                              "Jul", "Ago", "Sep", "Oct", "Nov", "Dic"]
                           });  
+                          
+                           $('#boton').button();
+                          
                           
                         //  $('#siblh_mantenimientobundle_blhdonante_numeroDocumentoIdentificacion').
       //  attr('data-bvalidator', 'regex[a{3}],required');
@@ -86,6 +89,8 @@ $('#siblh_mantenimientobundle_blhdonante_registro').
  
 $('#siblh_mantenimientobundle_blhdonante_registro').
         attr('data-bvalidator-msg', "Ingrese el registro en el formato correcto 999999-9999"); 
+ $('#siblh_mantenimientobundle_blhdonante_fechaNacimiento').
+            attr('data-bvalidator', 'required'); 
 
 
 
@@ -107,10 +112,7 @@ $(function() {
         
            });
 
-
-
-
-  
+ 
 
 });
 

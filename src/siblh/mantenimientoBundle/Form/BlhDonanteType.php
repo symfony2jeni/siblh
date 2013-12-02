@@ -22,11 +22,11 @@ class BlhDonanteType extends AbstractType
             ->add('segundoApellido')
              ->add('fechaNacimiento', 'date', 
                     array(  'widget' => 'single_text',
-                            'format' => 'dd-MM-yy',
+                            'format' => 'yy-MM-dd',
                             'attr' => array('class' => 'date')))
             ->add('fechaRegistroDonanteBlh', 'date', 
                     array(  'widget' => 'single_text',
-                            'format' => 'dd-MM-yy',
+                            'format' => 'yy-MM-dd',
                             'attr' => array('class' => 'date')))
             ->add('telefonoFijo')
             ->add('telefonoMovil')
@@ -34,11 +34,10 @@ class BlhDonanteType extends AbstractType
             ->add('procedencia')
             ->add('registro')
             ->add('numeroDocumentoIdentificacion')
-    ->add('documentoIdentificacion', 'choice', 
+            ->add('documentoIdentificacion', 'choice', 
                     array('choices' => array('' => 'Seleccione un valor','DUI' => 'DUI',
                           'Pasaporte' => 'Pasaporte',
                           'Carnet de Minoridad' => 'Carnet de Minoridad')))
-
           //  ->add('edad')
             ->add('ocupacion')
             ->add('estadoCivil', 'choice', 

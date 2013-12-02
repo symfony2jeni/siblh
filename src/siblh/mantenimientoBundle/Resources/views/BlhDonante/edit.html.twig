@@ -18,8 +18,7 @@
     {{ form_start(edit_form) }}
     {{ form_errors(edit_form) }}
     
-<table    align = "center" >
-          
+<table align = "center">
        
         <tr><td colspan=2 align = "left" height=10  ></td></tr>
         <tr><td align='left' ><font color="red">*</font>{{ form_label(edit_form.primerNombre,'Primer Nombre') }}</td><td align='left'>{{ form_widget(edit_form.primerNombre) }}</td></tr>
@@ -30,20 +29,19 @@
         <tr><td colspan=2 align = "left" height=10  ></td></tr>
         <tr><td align='left' >{{ form_label(edit_form.segundoApellido,'Segundo Apellido') }}</td><td align='left'>{{ form_widget(edit_form.segundoApellido) }}</td></tr>
         <tr><td colspan=2 align = "left" height=10  ></td></tr>
-        <tr><td align='left' ><font color="red">*</font>{{ form_label(edit_form.fechaNacimiento,'Fecha Nacimiento') }} </td><td align='left'>{{ form_widget(edit_form.fechaNacimiento, {'attr':{'readonly': 'true'} }) }}</td></tr>
+        <tr><td align='left' ><font color="red">*</font>{{ form_label(edit_form.fechaNacimiento,'Fecha de Nacimiento') }} </td><td align='left'>{{ form_widget(edit_form.fechaNacimiento, {'attr':{'readonly': 'true'} }) }}</td></tr>
         <tr><td colspan=2 align = "left" height=10  ></td></tr>
         <tr><td align='left' >{{ form_label(edit_form.direccion,'Direccion') }}</td><td align='left'>{{ form_widget(edit_form.direccion) }}</td></tr>
-          
         <tr><td colspan=2 align = "left" height=10  ></td></tr>
         <tr><td align='left' >{{ form_label(edit_form.procedencia,'Procedencia') }}</td><td align='left'>{{ form_widget(edit_form.procedencia) }}</td></tr>
         <tr><td colspan=2 align = "left" height=10  ></td></tr>
         <tr><td align='left' >{{ form_label(edit_form.registro,'Registro') }}</td><td align='left'>{{ form_widget(edit_form.registro) }}</td></tr>
         <tr><td colspan=2 align = "left" height=10  ></td></tr>
-        <tr><td align='left' >{{ form_label(edit_form.fechaRegistroDonanteBlh,'Fecha Registro') }}</td><td align='left'>{{ form_widget(edit_form.fechaRegistroDonanteBlh, {'attr':{'readonly': 'true'} }) }}</td></tr>
+        <tr><td align='left' >{{ form_label(edit_form.fechaRegistroDonanteBlh,'Fecha de Registro') }}</td><td align='left'>{{ form_widget(edit_form.fechaRegistroDonanteBlh, {'attr':{'readonly': 'true'} }) }}</td></tr>
         <tr><td colspan=2 align = "left" height=10  ></td></tr>
-        <tr><td align='left' ><font color="red">*</font>{{ form_label(edit_form.documentoIdentificacion,'Documento Identificacion') }}</td><td align='left'>{{ form_widget(edit_form.documentoIdentificacion) }}</td></tr>
+        <tr><td align='left' ><font color="red">*</font>{{ form_label(edit_form.documentoIdentificacion,'Documento de Identificacion') }}</td><td align='left'>{{ form_widget(edit_form.documentoIdentificacion) }}</td></tr>
         <tr><td colspan=2 align = "left" height=10  ></td></tr>
-        <tr><td align='left' ><font color="red">*</font>{{ form_label(edit_form.numeroDocumentoIdentificacion,'Numero Documento') }}</td><td align='left'>{{ form_widget(edit_form.numeroDocumentoIdentificacion) }}</td></tr>
+        <tr><td align='left' ><font color="red">*</font>{{ form_label(edit_form.numeroDocumentoIdentificacion,'Numero de Documento') }}</td><td align='left'>{{ form_widget(edit_form.numeroDocumentoIdentificacion) }}</td></tr>
         <tr><td colspan=2 align = "left" height=10  ></td></tr>
         <tr><td align='left' >{{ form_label(edit_form.ocupacion,'Ocupacion') }}</td><td align='left'>{{ form_widget(edit_form.ocupacion) }}</td></tr>
         <tr><td colspan=2 align = "left" height=10  ></td></tr>
@@ -54,7 +52,7 @@
         <tr><td align='left' >{{ form_label(edit_form.escolaridad,'Escolaridad') }}</td><td align='left'>{{ form_widget(edit_form.escolaridad) }}</td></tr>
         <tr><td colspan=2 align = "left" height=10  ></td></tr>
         <tr><td align='left' ><font color="red">*</font>{{ form_label(edit_form.tipoColecta,'Tipo Colecta') }}</td><td align='left'>{{ form_widget(edit_form.tipoColecta) }}</td></tr>
-         <tr><td colspan=2 align = "left" height=10  ></td></tr>
+        <tr><td colspan=2 align = "left" height=10  ></td></tr>
         <tr><td align='left' >{{ form_label(edit_form.telefonoFijo,'Telefono') }}</td><td align='left'>{{ form_widget(edit_form.telefonoFijo) }}</td></tr>
         <tr><td colspan=2 align = "left" height=10  ></td></tr>
         <tr><td align='left' >{{ form_label(edit_form.telefonoMovil,'Celular') }}</td><td align='left'>{{ form_widget(edit_form.telefonoMovil) }}</td></tr>
@@ -63,22 +61,18 @@
         <tr><td colspan=2 align = "left" height=10  ></td></tr>
         <tr><td align='left' ><font color="red">*</font>{{ form_label(edit_form.idMunicipio,'Municipio') }}</td><td align='left'>{{ form_widget(edit_form.idMunicipio) }}</td></tr>
        <tr style="visibility:hidden"><td align='left' ><font color="red">*</font>{{ form_label(edit_form.idBancoDeLeche,'blh') }}</td><td align='left'>{{ form_widget(edit_form.idBancoDeLeche) }}</td></tr>
+       <tr><td align = "left"><font color="red" size = "2" face = "Comic Sans MS">* Campos requeridos</font></td> </tr>     
 
-
-      
-        <tr><td colspan = '3' align = 'center'>  <input type="submit" class= "ui-button" value="Actualizar"/></td></tr>
-
-         
-
-         
-          </table>
+      <tr><td colspan = '3' align = 'center'>  <input type="submit" id= "button" value="Actualizar"/>
+           <input id = "boton1" type="button" value="Regresar" onClick=' window.location.href="{{ path('blhdonante') }}" '></td></tr>
+      </table>
     {{ form_end(edit_form) }}
 
-    <table align = 'center'>
+{#   <table align = 'center'>
         <tr>
             <td>
         <a href="{{ path('blhdonante') }}">
             Ver listado </a>
-        </td></tr></table>
+        </td></tr></table> #}
 
 {% endblock %}

@@ -1,58 +1,67 @@
-{% extends '::base.html.twig' %}
+{% extends 'siblhmantenimientoBundle::plantilla.html.twig' %}
+{% block javascripts %}
+
+{{parent()}}
+
+<script type="text/javascript" src="{{ asset('bundles/siblhmantenimiento/js/BlhPasteurizacion/show.js') }}" ></script>
+       
+{% endblock %}
 
 {% block body -%}
-    <h1>BlhPasteurizacion</h1>
+<style type="text/css">
+table#teft table {display: block; padding: 5px; border: 3px solid black; border-top: 1; -moz-border-radius: 10px 10px 10px 10px; color:"#2e6e9e"}
+th {
+font-family: verdana,arial,helvetica,sans-serif;
+color: #000000;
+font-weight: bold;
+border-style: solid;
+border-width: 1px;
+size: 2px;
+background-color: #2b8dd6;
+}
+td {
+font-family: verdana,arial,helvetica,sans-serif;}
+    </style>
 
-    <table class="record_properties">
+    <h1>Pasteurizacion</h1>
+
+    <table  id = "left" border = "1"  align = "center" bordercolor="#2e6e9e">
         <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ entity.id }}</td>
-            </tr>
-            <tr>
-                <th>Codigopasteurizacion</th>
-                <td>{{ entity.codigoPasteurizacion }}</td>
-            </tr>
-            <tr>
-                <th>Numciclo</th>
-                <td>{{ entity.numCiclo }}</td>
-            </tr>
-            <tr>
-                <th>Volumenpasteurizado</th>
-                <td>{{ entity.volumenPasteurizado }}</td>
-            </tr>
-            <tr>
-                <th>Numfrascospasteurizados</th>
-                <td>{{ entity.numFrascosPasteurizados }}</td>
-            </tr>
-            <tr>
-                <th>Fechapasteurizacion</th>
-                <td>{{ entity.fechaPasteurizacion|date('Y-m-d H:i:s') }}</td>
-            </tr>
-            <tr>
-                <th>Horainiciop</th>
-                <td>{{ entity.horaInicioP }}</td>
-            </tr>
-            <tr>
-                <th>Horafinalp</th>
-                <td>{{ entity.horaFinalP }}</td>
-            </tr>
-            <tr>
-                <th>Horainicioe</th>
-                <td>{{ entity.horaInicioE }}</td>
-            </tr>
-            <tr>
-                <th>Horafinale</th>
-                <td>{{ entity.horaFinalE }}</td>
-            </tr>
-            <tr>
-                <th>Responsablepasteurizacion</th>
-                <td>{{ entity.responsablePasteurizacion }}</td>
-            </tr>
+            
+                <tr align = "left"> 
+                <th>Codigo de Pasteurizacion</th>
+                <td>{{ entity.codigoPasteurizacion }}</td></tr>
+                <tr align = "left"> 
+                <th>Numero de Ciclo</th>
+                <td>{{ entity.numCiclo }}</td></tr>
+                <tr align = "left"> 
+                <th>Volumen Pasteurizado</th>
+                <td>{{ entity.volumenPasteurizado }}</td></tr>
+                <tr align = "left"> 
+                <th>Cantidad de Frascos</th>
+                <td>{{ entity.numFrascosPasteurizados }}</td></tr>
+                <tr align = "left"> 
+                <th>Fecha Pasteurizacion</th>
+                <td>{{ entity.fechaPasteurizacion|date('Y-m-d') }}</td></tr>
+                <tr align = "left"> 
+                <th>Hora Inicio Pasteurizacion</th>
+                <td>{{ entity.horaInicioP|date('H:i:s') }}</td></tr>
+                <tr align = "left"> 
+                <th>Hora Final Pasteurizacion</th>
+                <td>{{ entity.horaFinalP|date('H:i:s') }}</td></tr>
+                <tr align = "left"> 
+                <th>Hora Inicio Enfriamiento</th>
+                <td>{{ entity.horaInicioE|date('H:i:s') }}</td></tr>
+                <tr align = "left"> 
+                <th>Hora Final Enfriamiento</th>
+                <td>{{ entity.horaFinalE|date('H:i:s') }}</td></tr>
+                <tr align = "left"> 
+                <th>Responsable</th>
+                <td>{{ entity.responsablePasteurizacion }}</td></tr>
         </tbody>
     </table>
 
-        <ul class="record_actions">
+  {#      <ul class="record_actions">
     <li>
         <a href="{{ path('blhpasteurizacion') }}">
             Back to the list
@@ -65,4 +74,12 @@
     </li>
     <li>{{ form(delete_form) }}</li>
 </ul>
+    #}
+     
+    <table  align = "center" >
+         <tr><td height=10  ></td></tr> 
+         <tr><td height=10  ></td></tr> 
+         <tr><td><input id = "boton1" type="button" value="Registrar Nuevo" onClick=' window.location.href="{{ path('_NewPasteurizacion') }}" '>
+         </td></tr>
+   </table>
 {% endblock %}

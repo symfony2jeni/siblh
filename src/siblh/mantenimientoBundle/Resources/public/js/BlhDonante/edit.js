@@ -1,5 +1,5 @@
 $(document).ready(function() { 
-        $('button').button();
+       
      $.noConflict();
      $.datepicker.setDefaults($.datepicker.regional["es"]);
    $('input[id$="_fechaNacimiento"]').datepicker({ dateFormat: 'yy-mm-dd',  
@@ -25,6 +25,9 @@ $(document).ready(function() {
                            monthNamesShort: ["Ene", "Feb", "Mar", "Abr", "May", "Jun",
                                              "Jul", "Ago", "Sep", "Oct", "Nov", "Dic"]
                           });  
+                          
+                           $('#button').button();
+                            $('#boton1').button();
                           
                         //  $('#siblh_mantenimientobundle_blhdonante_numeroDocumentoIdentificacion').
       //  attr('data-bvalidator', 'regex[a{3}],required');

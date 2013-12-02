@@ -16,7 +16,7 @@
             
              <thead>
             <tr>
-                <th>id</th>
+                <th>Codigo</th>
                 <th>Nombre</th>
                 <th>Accion</th>
                 
@@ -27,7 +27,7 @@
            
        {% for donante in donantes_registradas%}
             <tr>
-               <td><a href="{{ path('blhhistorialclinico_new', { 'id': donante.identificador }) }}">{{ donante.identificador }}</a></td>
+               <td>{{ donante.codigo_donante }}</td>
                 <td>{{ donante.nombre1 }} {{ donante.nombre2 }} {{ donante.apellido1 }} {{ donante.apellido2 }}</td>
                 <td><a href="{{ path('blhhistorialclinico_new', { 'id': donante.identificador })}}"><font color="blue"><u>Registrar Historial Clinico</u></font></a></td></tr>
         {% endfor %}

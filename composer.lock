@@ -783,16 +783,16 @@
         },
         {
             "name": "jdorn/sql-formatter",
-            "version": "v1.2.9",
+            "version": "v1.2.16",
             "source": {
                 "type": "git",
                 "url": "https://github.com/jdorn/sql-formatter.git",
-                "reference": "bd1f09133f6dbbe0713856910e58ea9480c2be58"
+                "reference": "8859d664737492d313c34796731b35eca851b362"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/jdorn/sql-formatter/zipball/bd1f09133f6dbbe0713856910e58ea9480c2be58",
-                "reference": "bd1f09133f6dbbe0713856910e58ea9480c2be58",
+                "url": "https://api.github.com/repos/jdorn/sql-formatter/zipball/8859d664737492d313c34796731b35eca851b362",
+                "reference": "8859d664737492d313c34796731b35eca851b362",
                 "shasum": ""
             },
             "require": {
@@ -829,7 +829,7 @@
                 "highlight",
                 "sql"
             ],
-            "time": "2013-04-26 18:42:52"
+            "time": "2013-11-27 22:51:13"
         },
         {
             "name": "jms/aop-bundle",
@@ -1327,16 +1327,16 @@
         },
         {
             "name": "monolog/monolog",
-            "version": "1.6.0",
+            "version": "1.7.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Seldaek/monolog.git",
-                "reference": "f72392d0e6eb855118f5a84e89ac2d257c704abd"
+                "reference": "6225b22de9dcf36546be3a0b2fa8e3d986153f57"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Seldaek/monolog/zipball/f72392d0e6eb855118f5a84e89ac2d257c704abd",
-                "reference": "f72392d0e6eb855118f5a84e89ac2d257c704abd",
+                "url": "https://api.github.com/repos/Seldaek/monolog/zipball/6225b22de9dcf36546be3a0b2fa8e3d986153f57",
+                "reference": "6225b22de9dcf36546be3a0b2fa8e3d986153f57",
                 "shasum": ""
             },
             "require": {
@@ -1344,21 +1344,26 @@
                 "psr/log": "~1.0"
             },
             "require-dev": {
+                "aws/aws-sdk-php": "~2.4.8",
                 "doctrine/couchdb": "dev-master",
                 "mlehner/gelf-php": "1.0.*",
-                "raven/raven": "0.5.*"
+                "phpunit/phpunit": "~3.7.0",
+                "raven/raven": "0.5.*",
+                "ruflin/elastica": "0.90.*"
             },
             "suggest": {
+                "aws/aws-sdk-php": "Allow sending log messages to AWS services like DynamoDB",
                 "doctrine/couchdb": "Allow sending log messages to a CouchDB server",
                 "ext-amqp": "Allow sending log messages to an AMQP server (1.0+ required)",
                 "ext-mongo": "Allow sending log messages to a MongoDB server",
                 "mlehner/gelf-php": "Allow sending log messages to a GrayLog2 server",
-                "raven/raven": "Allow sending log messages to a Sentry server"
+                "raven/raven": "Allow sending log messages to a Sentry server",
+                "ruflin/elastica": "Allow sending log messages to an Elastic Search server"
             },
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.6.x-dev"
+                    "dev-master": "1.7.x-dev"
                 }
             },
             "autoload": {
@@ -1385,7 +1390,7 @@
                 "logging",
                 "psr-3"
             ],
-            "time": "2013-07-28 22:38:30"
+            "time": "2013-11-14 19:48:31"
         },
         {
             "name": "phpoption/phpoption",
@@ -1622,12 +1627,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/sonata-project/SonataAdminBundle.git",
-                "reference": "d7402590f87334f5bff49f9ec268d304c7d410c0"
+                "reference": "d0b4ed46583771b0fa6e528ccd128d4943e53538"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sonata-project/SonataAdminBundle/zipball/d7402590f87334f5bff49f9ec268d304c7d410c0",
-                "reference": "d7402590f87334f5bff49f9ec268d304c7d410c0",
+                "url": "https://api.github.com/repos/sonata-project/SonataAdminBundle/zipball/d0b4ed46583771b0fa6e528ccd128d4943e53538",
+                "reference": "d0b4ed46583771b0fa6e528ccd128d4943e53538",
                 "shasum": ""
             },
             "require": {
@@ -1692,7 +1697,7 @@
                 "bootstrap",
                 "sonata"
             ],
-            "time": "2013-11-12 14:10:21"
+            "time": "2013-12-02 08:34:07"
         },
         {
             "name": "sonata-project/block-bundle",
@@ -1701,16 +1706,17 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/sonata-project/SonataBlockBundle.git",
-                "reference": "ff56bb0135fbfe0d270a47049a7d35f8610c4776"
+                "reference": "6d1fa2640a5d3c5fb4c345ebcca298940c01bab4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sonata-project/SonataBlockBundle/zipball/ff56bb0135fbfe0d270a47049a7d35f8610c4776",
-                "reference": "ff56bb0135fbfe0d270a47049a7d35f8610c4776",
+                "url": "https://api.github.com/repos/sonata-project/SonataBlockBundle/zipball/6d1fa2640a5d3c5fb4c345ebcca298940c01bab4",
+                "reference": "6d1fa2640a5d3c5fb4c345ebcca298940c01bab4",
                 "shasum": ""
             },
             "require": {
                 "doctrine/common": "~2.3",
+                "knplabs/knp-menu-bundle": "~1.1",
                 "symfony/form": "~2.2",
                 "symfony/http-foundation": "~2.2"
             },
@@ -1754,7 +1760,7 @@
                 "block",
                 "sonata"
             ],
-            "time": "2013-10-24 09:04:49"
+            "time": "2013-11-28 16:17:38"
         },
         {
             "name": "sonata-project/cache-bundle",
@@ -1876,12 +1882,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/sonata-project/SonataDoctrineORMAdminBundle.git",
-                "reference": "0663803ca2e95fe23a038134e2e30fc7357bee5f"
+                "reference": "228b47b990f781422a45f478d65c821bdcac45f8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sonata-project/SonataDoctrineORMAdminBundle/zipball/0663803ca2e95fe23a038134e2e30fc7357bee5f",
-                "reference": "0663803ca2e95fe23a038134e2e30fc7357bee5f",
+                "url": "https://api.github.com/repos/sonata-project/SonataDoctrineORMAdminBundle/zipball/228b47b990f781422a45f478d65c821bdcac45f8",
+                "reference": "228b47b990f781422a45f478d65c821bdcac45f8",
                 "shasum": ""
             },
             "require": {
@@ -1924,7 +1930,7 @@
                 "generator",
                 "sonata"
             ],
-            "time": "2013-11-12 15:41:10"
+            "time": "2013-11-28 16:27:11"
         },
         {
             "name": "sonata-project/easy-extends-bundle",
@@ -2093,12 +2099,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/sonata-project/SonataIntlBundle.git",
-                "reference": "7c1b5a75f8cd82f92ed77c76e9224936750f4a23"
+                "reference": "50ce023efe6e3e41bd906f27e55c8f2b8d139375"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sonata-project/SonataIntlBundle/zipball/7c1b5a75f8cd82f92ed77c76e9224936750f4a23",
-                "reference": "7c1b5a75f8cd82f92ed77c76e9224936750f4a23",
+                "url": "https://api.github.com/repos/sonata-project/SonataIntlBundle/zipball/50ce023efe6e3e41bd906f27e55c8f2b8d139375",
+                "reference": "50ce023efe6e3e41bd906f27e55c8f2b8d139375",
                 "shasum": ""
             },
             "require": {
@@ -2144,7 +2150,7 @@
                 "sonata",
                 "time"
             ],
-            "time": "2013-11-12 13:17:50"
+            "time": "2013-11-28 16:15:55"
         },
         {
             "name": "sonata-project/jquery-bundle",
@@ -2201,12 +2207,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/sonata-project/SonataUserBundle.git",
-                "reference": "778eeeca7e159a4c44a2a13a088778a1f180468a"
+                "reference": "f8dfcffd5d3f14382a539e77823dbe8287e4e650"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sonata-project/SonataUserBundle/zipball/778eeeca7e159a4c44a2a13a088778a1f180468a",
-                "reference": "778eeeca7e159a4c44a2a13a088778a1f180468a",
+                "url": "https://api.github.com/repos/sonata-project/SonataUserBundle/zipball/f8dfcffd5d3f14382a539e77823dbe8287e4e650",
+                "reference": "f8dfcffd5d3f14382a539e77823dbe8287e4e650",
                 "shasum": ""
             },
             "require": {
@@ -2256,7 +2262,7 @@
                 "sonata",
                 "user"
             ],
-            "time": "2013-11-13 07:40:22"
+            "time": "2013-11-30 15:05:42"
         },
         {
             "name": "swiftmailer/swiftmailer",
@@ -2533,16 +2539,16 @@
         },
         {
             "name": "symfony/symfony",
-            "version": "v2.3.6",
+            "version": "v2.3.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/symfony.git",
-                "reference": "d0597156c4c03ceca039f6b7770a47397ba295f0"
+                "reference": "2829b471871c2564228fe9f0832a0f928a8ffaa1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/symfony/zipball/d0597156c4c03ceca039f6b7770a47397ba295f0",
-                "reference": "d0597156c4c03ceca039f6b7770a47397ba295f0",
+                "url": "https://api.github.com/repos/symfony/symfony/zipball/2829b471871c2564228fe9f0832a0f928a8ffaa1",
+                "reference": "2829b471871c2564228fe9f0832a0f928a8ffaa1",
                 "shasum": ""
             },
             "require": {
@@ -2637,7 +2643,7 @@
             "keywords": [
                 "framework"
             ],
-            "time": "2013-10-10 13:24:22"
+            "time": "2013-11-14 07:58:51"
         },
         {
             "name": "twig/extensions",

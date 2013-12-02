@@ -12,11 +12,12 @@
       <script type="text/javascript" src="{{asset('bundles/jquery/jquery.jqGrid-4.5.4/js/jquery.jqGrid.min.js')}}" ></script> 
 
  
-    <h1>BlhEgresoReceptor list</h1>
+    <h1>Egreso Receptor</h1>
 <table id = "listado_Egresos">
         <thead>
             <tr>
-                
+                <th>Codigo</th>
+                <th>Nombre</th>                
                 <th>Diagnostico&nbsp;de&nbsp;egreso</th>
                 <th>Madre&nbsp;canguro</th>
                 <th>Tipo&nbsp;de&nbsp;egreso</th>
@@ -30,9 +31,10 @@
             </tr>
         </thead>
         <tbody>
-        {% for entity in entities %}
+        {% for entity in egreso_receptores %}
             <tr>
-               
+                <td>{{ entity.codigoReceptor }}</td>
+                <td>{{ entity.nombre1 }} {{ entity.nombre2 }} {{ entity.nombre3 }} {{ entity.apellido1 }} {{ entity.apellido2 }}</td>
                 <td>{{ entity.diagnosticoEgreso }}</td>
                 <td>{{ entity.madreCanguro }}</td>
                 <td>{{ entity.tipoEgreso }}</td>

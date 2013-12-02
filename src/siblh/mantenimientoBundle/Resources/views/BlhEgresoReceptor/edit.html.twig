@@ -36,19 +36,11 @@
        <tr><td colspan=2 align = "left" height=10  ></td></tr>   
        <tr><td align='left' >{{ form_label(edit_form.hospitalSeguimientoEgreso) }}</td><td align='left'>{{ form_widget(edit_form.hospitalSeguimientoEgreso)  }}</td></tr>
        <tr style="visibility:hidden"><td align='left' ><font color="red">*</font>{{ form_label(edit_form.idReceptor) }}</td><td align='left'>{{ form_widget(edit_form.idReceptor)  }}</td></tr>
-
-    
-    
-
-      <tr><td colspan = '2' align = 'center'>  <input type="submit" class= "ui-button" value="Actualizar"/></td></tr>
-
-        </table>
+       <tr><td align = "left"><font color="red" size = "2" face = "Comic Sans MS">* Campos requeridos</font></td> </tr>     
+       <tr><td colspan = '2' align = 'center'>  <input type="submit" id= "button" value="Actualizar"/>
+       <input id = "boton" type="button" value="Regresar" onClick=' window.location.href="{{ path('blhegresoreceptor') }}" '></td></tr>
+       </table>
 
        {{ form_end(edit_form) }}
 
-    <table align = 'center'>
-        <tr>
-            <td>
-        <a href="{{ path('blhegresoreceptor') }}">Ver listado </a>
-        </td></tr></table>
-{% endblock %}
+    {% endblock %}

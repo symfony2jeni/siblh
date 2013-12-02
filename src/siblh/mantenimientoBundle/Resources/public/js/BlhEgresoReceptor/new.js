@@ -2,7 +2,7 @@ $(document).ready(function() {
      $('button').button();
      $.noConflict();
      $.datepicker.setDefaults($.datepicker.regional["es"]);
-   $('input[id$="_fechaEgreso"]').datepicker({ dateFormat: 'yy-MM-dd',  
+   $('input[id$="_fechaEgreso"]').datepicker({ dateFormat: 'yy-mm-dd',  
                            changeMonth: true,
                            changeYear: true,
                            clearStatus: 'Borra fecha actual',  
@@ -32,5 +32,24 @@ $(document).ready(function() {
     
 $('#siblh_mantenimientobundle_blhegresoreceptor_permanenciaUcin').
         attr('data-bvalidator', "regex[\\d]");
-   
+
+$(function() {
+    $( document ).tooltip({
+      position: {
+        my: "center bottom-20",
+        at: "center top",
+        using: function( position, feedback ) {
+          $( this ).css( position );
+          $( "<div>" )
+            .addClass( "arrow" )
+            .addClass( feedback.vertical )
+            .addClass( feedback.horizontal )
+            .appendTo( this );
+        }
+      }
+    });
+        
+           });
+    $('#button').button();
+    $('#boton1').button();
 });

@@ -9,8 +9,6 @@
     <script type="text/javascript" src="{{ asset('bundles/siblhmantenimiento/js/BlhHistoriaActual/new.js') }}" ></script>
 {% endblock %}
 
-
-
 {% block body -%}
     <h1>Registro de Historia Actual</h1>
 
@@ -43,77 +41,77 @@ elemento.style.visibility = visible ? "visible" : "hidden";
     {{ form_start(form) }}
  {{ form_start(form) }}
     {{ form_errors(form) }}
-     <table align = "center">
-          <tr><td colspan = "3" style="visibility:hidden"> 
+     <table align = "center"  >
+          <tr><td colspan = "4" style="visibility:hidden"> 
         {{ form_label(form.idDonante) }}
         {{ form_errors(form.idDonante) }}
         {{ form_widget(form.idDonante) }} </td></tr>
-       <tr><td> 
-        {{ form_label(form.pesoDonante, 'Peso') }}
-        {{ form_errors(form.pesoDonante) }}
-        {{ form_widget(form.pesoDonante,  { 'attr': {'title': 'Peso en Kg'} }) }} </td>
-    <td> 
-        {{ form_label(form.tallaDonante) }}
-        {{ form_errors(form.tallaDonante) }}
-        {{ form_widget(form.tallaDonante,  { 'attr': {'title': 'Talla en cm'} }) }} </td>
+       <tr><td align = "left" ><font color="red" >*</font>
+        {{ form_label(form.pesoDonante, 'Peso') }}</td>
+    <td align = "left" >{{ form_widget(form.pesoDonante,  { 'attr': {'title': 'Peso entre 22 y 136 Kg  '} }) }} </td>
+    <td align = "left"> <font color="red" >*</font>
+        {{ form_label(form.tallaDonante) }} </td>
+   <td align = "left"> {{ form_widget(form.tallaDonante,  { 'attr': {'title': 'Talla entre 100 y 200 cm'} }) }} </td></tr>
+    <tr><td height=10  ></td></tr>
  
-   <td> {{ form_label(form.imc) }}
-        {{ form_errors(form.imc) }}
-        {{ form_widget(form.imc,  { 'attr': {'title': 'Peso Kg/Talla cm^2'} }) }} </td>  </tr>
+  <tr><td align = "left"><font color="red" >*</font> {{ form_label(form.imc) }}</td>
+      <td align = "left"> {{ form_widget(form.imc,  { 'attr': {'title': 'Peso Kg/Talla cm^2'} }) }} </td>  
                    
-                   
-   <tr><td > 
-        <label>Uso de medicamentos:</label>
+  <td align = "left"><label>Uso de medicamentos:</label></td>
 
-        <input type="radio" name="group2" value="si" onClick="prueba(true, 'medicamento');"> Si
-        <input type="radio" name="group2" value="no" onClick="prueba(false, 'medicamento');"> No<br></td>
- 
-  <td colspan = "2" id= "medicamento" style="visibility:hidden" > 
+   <td align = "left"><input type="radio" name="group2" value="si" onClick="prueba(true, 'medicamento');prueba(true, 'medicamento1');"> Si
+        <input type="radio" name="group2" value="no" onClick="prueba(false, 'medicamento'); prueba(false, 'medicamento1');"> No<br></td></tr>
+  <tr><td height=10  ></td></tr> 
+<tr>  <td  id= "medicamento" style="visibility:hidden" align = "left"> 
 
-        {{ form_label(form.medicamento) }}
-        {{ form_errors(form.medicamento) }}
-        {{ form_widget(form.medicamento,  { 'attr': {'size': '40'} }) }} </td>  </tr>
+        {{ form_label(form.medicamento) }}</td>
+    <td id= "medicamento1" style="visibility:hidden" align = "left">
+        {{ form_widget(form.medicamento,  { 'attr': {'size': '40'} }) }} </td>  
   
-  <tr><td > 
+ <td align = "left"><label>Habitos toxicos:</label></td>
+  <td align = "left">      <input type="radio" name="group" value="si" onClick="prueba(true, 'habitos'); prueba(true, 'habitos1');"> Si
+        <input type="radio" name="group" value="no" onClick="prueba(false, 'habitos'); prueba(false, 'habitos1');"> No<br></td></tr>
+    <tr><td height=10  ></td></tr> 
+  <tr><td id= "habitos" style="visibility:hidden" align = "left"> 
 
-       
-
-        <label>Habitos toxicos:</label>
-        <input type="radio" name="group" value="si" onClick="prueba(true, 'habitos');"> Si
-        <input type="radio" name="group" value="no" onClick="prueba(false, 'habitos');"> No<br></td>
- 
-  <td colspan = "2" id= "habitos" style="visibility:hidden"> 
-
-        {{ form_label(form.habitoToxico) }}
-        {{ form_errors(form.habitoToxico) }}
-        {{ form_widget(form.habitoToxico,  { 'attr': {'size': '40'} }) }} </td>  </tr>
-  <tr><td > 
+        {{ form_label(form.habitoToxico) }}</td>
+   <td id= "habitos1" style="visibility:hidden" align = "left"> 
+        {{ form_widget(form.habitoToxico,  { 'attr': {'size': '40'} }) }} </td>  
+<td align = "left"> 
 
      
-        <label>Patologias:</label>
-        <input type="radio" name="group1" value="si" onClick="prueba(true, 'patologiasd');"> Si
-        <input type="radio" name="group1" value="no" onClick="prueba(false, 'patologiasd');"> No<br></td>
- 
-  <td colspan = "2" id= "patologiasd" style="visibility:hidden"> 
+        <label>Patologias:</label></td>
+     <td align = "left">   <input type="radio" name="group1" value="si" onClick="prueba(true, 'patologiasd');prueba(true, 'patologiasd1');"> Si
+        <input type="radio" name="group1" value="no" onClick="prueba(false, 'patologiasd');prueba(false, 'patologiasd1');"> No<br></td></tr>
+   <tr><td height=10  ></td></tr> 
+ <tr> <td id= "patologiasd" style="visibility:hidden" align = "left"> 
 
-        {{ form_label(form.patologiaDonante) }}
-        {{ form_errors(form.patologiaDonante) }}
-        {{ form_widget(form.patologiaDonante,  { 'attr': {'size': '40'} }) }} </td>  </tr> 
-  <tr> <td ><font color="red" >*</font>
-        {{ form_label(form.motivoDonacion, "Motivo por el cual dona leche:") }}
-        {{ form_errors(form.motivoDonacion) }}
-        {{ form_widget(form.motivoDonacion,  { 'attr': {'size': '50'} }) }} </td>  
-          
-        <td align = "left"><font color="red" >*</font>
-        {{ form_label(form.estadoDonante) }} 
-        {{ form_errors(form.estadoDonante) }}
+        {{ form_label(form.patologiaDonante) }}</td>
+  <td id= "patologiasd1" style="visibility:hidden" align = "left"> 
+        {{ form_widget(form.patologiaDonante,  { 'attr': {'size': '40'} }) }} </td>   
+  <td align = "left"><font color="red" >*</font>
+        {{ form_label(form.motivoDonacion, "Motivo por el cual dona leche:") }}</td> 
+      <td align = "left">
+        {{ form_widget(form.motivoDonacion,  { 'attr': {'size': '50'} }) }} </td>  </tr>
+      <tr><td height=10  ></td></tr>          
+      <tr>  <td colspan = 2 align = "center">&nbsp;&nbsp; &nbsp; &nbsp;
+                                             &nbsp;&nbsp; &nbsp; &nbsp;
+     <font color="red" >*</font>
+        {{ form_label(form.estadoDonante) }} </td>
+  <td colspan = 2 align = "left">
         {{ form_widget(form.estadoDonante) }} </td> 
         </tr>   
           
-
+<tr><td height=10  ></td></tr>
           
-     <tr><td colspan = '3' align = 'center'>  <input type="submit"  class= "ui-button" value="Guardar"/></td></tr>
-   
+     <tr> <td align = "left"><font color="red" size = "2" face = "Comic Sans MS">* Campos requeridos</font>   </td></tr>
+     <tr>     <td colspan = '4' align = 'center'>
+          
+          <input id = "button" type="submit" value="Guardar"/>
+          <input id = "boton1" type="button" value="Regresar" onClick=' window.location.href="{{ path('_NewHistoriaActual') }}" '>
+</td>
+  </tr>
+
    </table>
    
     {{ form_end(form) }}

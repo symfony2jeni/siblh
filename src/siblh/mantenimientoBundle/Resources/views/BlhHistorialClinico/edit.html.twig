@@ -72,25 +72,22 @@
     <tr style="visibility:hidden"><td align='center' colspan = "6">{{ form_label(edit_form.idDonante, 'id') }}
                                {{ form_widget(edit_form.idDonante,  { 'attr': {'size': '2'} }) }}</td></tr>
     
-    
- 
-    
-   
- 
-        
-   
-         
-    
-        <tr><td colspan = '6' align = 'center'>  <input type="submit" class= "ui-button" value="Actualizar"/></td></tr>
+       <tr>
+            <td align = "left"><font color="red" size = "2" face = "Comic Sans MS">* Campos requeridos</font></td> </tr>     
+
+        <tr><td colspan = '6' align = 'center'>  <input type="submit" id= "button" value="Actualizar"/>
+                                                 <input id = "boton" type="button" value="Regresar" onClick=' window.location.href="{{ path('blhhistorialclinico') }}" '></td></tr>
 
     </table>
     
       {{ form_end(edit_form) }}
-       <table align = 'center'>
+     
+    {#
+    <table align = 'center'>
         <tr>
             <td>
         <a href="{{ path('blhhistorialclinico') }}">
             Ver Listado
       </a>
-        </td></tr></table>
+        </td></tr></table>  #}
 {% endblock %}

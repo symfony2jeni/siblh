@@ -1,4 +1,5 @@
 $(document).ready(function() { 
+    
    $('button').button();
    $('#siblh_mantenimientobundle_blhfrascorecolectado_volumenRecolectado').
         attr('data-bvalidator', 'between[1:300],required');
@@ -15,18 +16,22 @@ $(document).ready(function() {
          $.noConflict();
     $('form').bValidator(optionsRed);
     
-    
+  
     $('#siblh_mantenimientobundle_blhfrascorecolectado_volumenRecolectado').on('input', function() {
     
     $ml = this.value;
     $onz = $ml * 0.033814;
-    
+    $onz=$onz.toFixed(4);
+ 
    
 });
 
  $('#siblh_mantenimientobundle_blhfrascorecolectado_onzRecolectado').on ('click', function() {
  
 this.value = $onz; } ) 
-    
+   
+   
+      $('#button').button(); 
+      $('#boton').button(); 
 });
 

@@ -37,7 +37,7 @@ var elemento = document.getElementById(id);
 elemento.style.visibility = visible ? "visible" : "hidden";
  }
 </script>    
-    <h1>BlhReceptor creation</h1>
+    <h1>Registro de Receptor</h1>
     
     <FORM> 
    <table align = "center" >
@@ -73,88 +73,73 @@ elemento.style.visibility = visible ? "visible" : "hidden";
 
     {{ form_start(form) }}
     {{ form_errors(form) }}
-    <table align = "center" WIDTH = "90%" >
-        <tr>
-    <td align = left>
-        {{ form_label(form.fechaRegistroBlh) }}
-        {{ form_errors(form.fechaRegistroBlh) }}
-        {{ form_widget(form.fechaRegistroBlh) }} </td>
-        
-    <td align = left><font color="red">*</font>
-        {{ form_label(form.edadDias) }}
-        {{ form_errors(form.edadDias) }}
-        {{ form_widget(form.edadDias, {'attr':{'readonly': 'true'} }) }} </td>
-   
-    <td align = left>
-        {{ form_label(form.procedencia) }}
-        {{ form_errors(form.procedencia) }}
-        {{ form_widget(form.procedencia) }} </td></tr>
-    <tr>
-    <td colspan = 2 align = left><font color="red">*</font>
-        {{ form_label(form.idBancoDeLeche) }}
-        {{ form_errors(form.idBancoDeLeche) }}
-        {{ form_widget(form.idBancoDeLeche, {'attr':{'required': 'true'} }) }} </td>  
-    <td>{{ form_label(form.estadoReceptor) }}
-        {{ form_errors(form.estadoReceptor) }}
-        {{ form_widget(form.estadoReceptor) }} </td>  
-    </tr>
-    
-    <tr style="visibility:hidden">
+    <table align = "center"  WIDTH = "90%" >
+        <tr style="visibility:hidden">
         <td align = left>
         {{ form_label(form.idPaciente) }}
-        {{ form_errors(form.idPaciente) }}
         {{ form_widget(form.idPaciente) }} 
         </td>
+         <td colspan = 3 align = left><font color="red">*</font>
+        {{ form_label(form.idBancoDeLeche) }}
+        {{ form_widget(form.idBancoDeLeche, {'attr':{'required': 'true'} }) }} </td>  
     </tr>
+       
+  
+    
+    
     
     </table >
     
-  
-    
-      <table align = "center" >
+       <table align = "center"  WIDTH = "87%" >
+            <tr>
+    <td align = left><font color="red">*</font>
+        {{ form_label(form.fechaRegistroBlh) }} </td>
+        <td align = left>
+        {{ form_widget(form.fechaRegistroBlh, {'attr':{'title': 'Dar clic y seleccionar fecha de registro'} }) }} </td>
+        
+    <td align = left><font color="red">*</font>
+        {{ form_label(form.edadDias) }}</td>
+    <td align = left>
+        {{ form_widget(form.edadDias, {'attr':{'readonly': 'true'} }) }} </td>
+   
+    <td align = left>
+        {{ form_label(form.procedencia) }}</td>
+   <td align = left>
+        {{ form_widget(form.procedencia) }} </td></tr>
+   <tr><td height=10  ></td></tr>
         <tr><td align = left><font color="red">*</font>
-        {{ form_label(form.edadGestFur) }}
-        {{ form_errors(form.edadGestFur) }}
-        {{ form_widget(form.edadGestFur,  { 'attr': {'title': 'Semanas'} }) }} </td> 
+        {{ form_label(form.edadGestFur, 'Edad Gestacional Fur') }} </td><td align = left>
+        {{ form_widget(form.edadGestFur,  { 'attr': {'title': 'Entre 24 a 42 Semanas'} }) }} </td> 
                     
        <td align = left><font color="red">*</font>
-        {{ form_label(form.pesoReceptor, 'peso al nacer') }}
-        {{ form_errors(form.pesoReceptor) }}
-        {{ form_widget(form.pesoReceptor,  { 'attr': {'title': 'Peso en gramos'} }) }} </td> 
+        {{ form_label(form.pesoReceptor, 'peso al nacer') }}</td><td align = left>
+        {{ form_widget(form.pesoReceptor,  { 'attr': {'title': 'Peso entre 500 a 5000 gramos'} }) }} </td> 
            
-       <td align = left>
-        {{ form_label(form.tallaIngreso, 'Talla al nacer') }}
-        {{ form_errors(form.tallaIngreso) }}
-        {{ form_widget(form.tallaIngreso,  { 'attr': {'title': 'Talla en cm'} }) }} </td></tr>
-       
+       <td align = left><font color="red" >*</font>
+        {{ form_label(form.tallaIngreso, 'Talla al nacer') }} </td><td align = left>
+        {{ form_widget(form.tallaIngreso,  { 'attr': {'title': 'Talla entre 25 a 55 cm'} }) }} </td></tr>
+          <tr><td height=10  ></td></tr>
        <tr><td align = left><font color="red">*</font>
-        {{ form_label(form.pc) }}
-        {{ form_errors(form.pc) }} 
-          &nbsp; &nbsp;&nbsp; &nbsp;
-          &nbsp; &nbsp;&nbsp; &nbsp; 
-          &nbsp; &nbsp;&nbsp;
-        {{ form_widget(form.pc,  { 'attr': {'title': 'Perimetro cefalico'} }) }} </td> 
+        {{ form_label(form.pc, 'Perimetro Cefalico') }}</td><td align = left>
+   
+        {{ form_widget(form.pc,  { 'attr': {'title': 'entre 20 y 40 cm'} }) }} </td> 
                    
-       <td align = left>
-          &nbsp; &nbsp;&nbsp; &nbsp;
-          &nbsp;
-        {{ form_label(form.apgar) }}
-        {{ form_errors(form.apgar) }}
-          &nbsp; &nbsp;&nbsp; &nbsp;
-          &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; 
-          &nbsp; &nbsp;&nbsp; &nbsp;               
-        {{ form_widget(form.apgar) }} </td> 
+       <td align = left><font color="red">*</font>
+
+   
+        {{ form_label(form.apgar) }} </td><td align = left>
+                  
+        {{ form_widget(form.apgar,  { 'attr': {'title': 'Entre 0 a 10 minutos'} }) }} </td> 
            
        <td align = left><font color="red">*</font>
-        {{ form_label(form.edadGestBallard) }}
-        {{ form_errors(form.edadGestBallard) }}
-        {{ form_widget(form.edadGestBallard,  { 'attr': {'title': 'Semanas'} }) }} </td></tr>
-       
+        {{ form_label(form.edadGestBallard, 'Edad Gestacional Ballard') }} </td><td align = left>
+        {{ form_widget(form.edadGestBallard,  { 'attr': {'title': 'Entre 24 a 42 Semanas'} }) }} </td></tr>
+          <tr><td height=10  ></td></tr>
        <tr>
         
-           <td align = left><font color="red">*</font>
+           <td align = left colspan = 2><font color="red">*</font>
                <form>
-                Clasificacion Lubchenco   
+              <b>  Clasificacion Lubchenco  </b>
                <input type="radio" name="group1" id="2" value="PEG"> PEG
                <input type="radio" name="group1" id="3" value="AEG">AEG
                <input type="radio" name="group1" id="4" value="GEG">GEG
@@ -166,67 +151,73 @@ elemento.style.visibility = visible ? "visible" : "hidden";
       <td align = left> 
 
      
-        <label>Ventilacion mecanica:</label>
-        <input type="radio" name="group2" value="si" onClick="prueba(true, 'ventilacion');"> Si
-        <input type="radio" name="group2" value="no" onClick="prueba(false, 'ventilacion');"> No<br></td>
- <td align = left id= "ventilacion" style="visibility:hidden"> 
+        <label>Ventilacion mecanica:</label></td><td align = left>
+        <input type="radio" name="group2" value="si" onClick="prueba(true, 'ventilacion');prueba(true, 'ventilacion1');"> Si
+        <input type="radio" name="group2" value="no" onClick="prueba(false, 'ventilacion');prueba(false, 'ventilacion1');"> No<br></td>
+ <td align = center id= "ventilacion" style="visibility:hidden"> 
 
-        {{ form_label(form.duracionVentilacion) }}
-        {{ form_errors(form.duracionVentilacion) }}
-        {{ form_widget(form.duracionVentilacion,  { 'attr': {'size': '6'} }) }} </td> 
+        {{ form_label(form.duracionVentilacion) }}</td><td align = left id= "ventilacion1" style="visibility:hidden">  
+        {{ form_widget(form.duracionVentilacion,  { 'attr': {'value': 0, 'size': '6', 'title': 'Dias de ventilacion'} }) }} </td> 
     </tr>
        
-    
-    <tr><td align = left>
-        {{ form_label(form.diagnosticoIngreso) }}
-        {{ form_errors(form.diagnosticoIngreso) }}
+       <tr><td height=10  ></td></tr>
+    <tr><td align = left><font color="red" >*</font>
+        {{ form_label(form.diagnosticoIngreso) }}</td><td align = left>
         {{ form_widget(form.diagnosticoIngreso,  { 'attr': {'size': '50'} }) }}  </td>
                
         <td align = center>
         
-          <label>CPAP</label>
-        <input type="radio" name="group3" value="si" onClick="prueba(true, 'cpap');"> Si
-        <input type="radio" name="group3" value="no" onClick="prueba(false, 'cpap');"> No<br></td>
+          <label>CPAP</label> </td><td align = left>
+        <input type="radio" name="group3" value="si" onClick="prueba(true, 'cpap');prueba(true, 'cpap1');"> Si
+        <input type="radio" name="group3" value="no" onClick="prueba(false, 'cpap'); prueba(false, 'cpap1');"> No<br></td>
  <td  id= "cpap" style="visibility:hidden" align = left> 
 
-        {{ form_label(form.duracionCpap, 'Duracion de CPAP Nasal') }}
-        {{ form_errors(form.duracionCpap) }}
-        {{ form_widget(form.duracionCpap) }} </td>         
+        {{ form_label(form.duracionCpap, 'Duracion de CPAP Nasal') }}</td><td align = left id= "cpap1" style="visibility:hidden">
+        {{ form_widget(form.duracionCpap,  { 'attr': {'value': 0} }) }} </td>         
     
     </tr>
     
-    
+       <tr><td height=10  ></td></tr>
        <tr>
         <td align = left>
         
-          <label>Uso de nutricion parenteral</label>
-        <input type="radio" name="group4" value="si" onClick="prueba(true, 'npt');"> Si
-        <input type="radio" name="group4" value="no" onClick="prueba(false, 'npt');"> No<br></td>
+          <label>Uso de nutricion parenteral</label></td><td align = left>
+        <input type="radio" name="group4" value="si" onClick="prueba(true, 'npt');prueba(true, 'npt1');"> Si
+        <input type="radio" name="group4" value="no" onClick="prueba(false, 'npt');prueba(false, 'npt1');"> No<br></td>
  <td align = left id= "npt" style="visibility:hidden"> 
 
-        {{ form_label(form.duracionNpt) }}
-        {{ form_errors(form.duracionNpt) }}
-        {{ form_widget(form.duracionNpt) }} </td> 
+        {{ form_label(form.duracionNpt) }}</td><td align = left id= "npt1" style="visibility:hidden">
+
+        {{ form_widget(form.duracionNpt, { 'attr': {'value': 0} }) }} </td> 
+    <td><font color="red">*</font>
+        {{ form_label(form.estadoReceptor) }}</td><td align = left>
+        {{ form_widget(form.estadoReceptor) }} </td>  
         
-  <td style="visibility:hidden" align = left >
+
+    
+    </tr>
+       <tr><td height=10  ></td></tr>
+    <tr>
+          <td style="visibility:hidden" align = left colspan = 3>
         {{ form_label(form.clasificacionLubchengo, 'cl') }}
         {{ form_errors(form.clasificacionLubchengo) }}
         {{ form_widget(form.clasificacionLubchengo,  { 'attr': {'size': '3'} }) }}  </td>
-    
-    </tr>
-    <tr><td  align = "left"><font color="red" size = "2" face = "Comic Sans MS">* Campos requeridos</font>   </td>
-      <td colspan = '2' align = 'left' style="visibility:hidden">
+              <td colspan = '3' align = 'left' style="visibility:hidden">
         {{ form_label(form.codigoReceptor) }}
         {{ form_errors(form.codigoReceptor) }}
         {{ form_widget(form.codigoReceptor) }}
          </td>
-      
-  </tr>
-  
-  <tr><td colspan = 3> <input type="submit" class= "ui-button" value="Guardar"/></td></tr>
+    </tr>
+   <tr><td colspan =2 align = "left"><font color="red" size = "2" face = "Comic Sans MS">* Campos requeridos</font>   </td><tr>
+
+     <tr>  <td colspan = 6 align = center><input id = "button"  type="submit"  value="Guardar"/>
+          <input id = "boton1" type="button" value="Regresar" onClick=' window.location.href="{{ path('_NewReceptor') }}" '>
+
+         </td>
+     
+     </tr>
    
-       
-       
+              
        </table> 
     
     
@@ -235,10 +226,10 @@ elemento.style.visibility = visible ? "visible" : "hidden";
       {{ form_end(form) }}
     
      
-     <table align = "center">
+   {#  <table align = "center">
         <tr><td>
         <a href="{{ path('blhreceptor') }}">
            Ver listado</a>
-        </td></tr></table>
+        </td></tr></table> #}
      
 {% endblock %}

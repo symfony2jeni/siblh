@@ -11,17 +11,18 @@ $(document).ready(function() {
         
         colModel :[
            // {name:'Id',width:80,editable:true,},
-            {name:'Diagnostico&nbsp;de&nbsp;egreso',width:15,align:'center'},
-            {name:'Madre&nbsp;canguro', width:15,align:'center'},
-            {name:'Tipo&nbsp;de&nbsp;egreso', width:15,align:'center'},
-            {name:'Comentario&nbsp;egreso', width:10,align:'center'},
-            {name:'Traslado&nbsp;periferico', width:40,align:'center'},
-            {name:'Permanencia&nbsp;ucin',width:15,align:'center'},
-            {name:'Hospital&nbsp;de&nbsp;seguimiento', width:15,align:'center'},
-            {name:'Fecha&nbsp;de&nbsp;egreso', width:15,align:'center'},
-            {name:'Estancia&nbsp;hospitalaria', width:10,align:'center'},
-          
-            {name:'Accion', width:10,align:'center'}
+            {name:'Codigo',width:15,align:'center'},
+            {name:'Nombre',width:20,align:'center'},
+            {name:'Diagnostico&nbsp;de&nbsp;egreso',width:15,align:'center', search:false},
+            {name:'Madre&nbsp;canguro', width:15,align:'center', search:false},
+            {name:'Tipo&nbsp;de&nbsp;egreso', width:15,align:'center', search:false},
+            {name:'Comentario&nbsp;egreso', width:10,align:'center', search:false},
+            {name:'Traslado&nbsp;periferico', width:40,align:'center', search:false},
+            {name:'Permanencia&nbsp;ucin',width:15,align:'center', search:false},
+            {name:'Hospital&nbsp;de&nbsp;seguimiento', width:15,align:'center', search:false},
+            {name:'Fecha&nbsp;de&nbsp;egreso', width:15,align:'center', search:false},
+            {name:'Estancia&nbsp;hospitalaria', width:10,align:'center', search:false},          
+            {name:'Accion', width:10,align:'center', search:false}
            
             
    
@@ -33,7 +34,8 @@ $(document).ready(function() {
         edit:false, 
         add:false, 
         del:false,
-        search:true,
-        reload:true
+        search:false,
+        reload:false
     });
+     jQuery("#listado_Egresos").jqGrid('filterToolbar',{stringResult: true,searchOnEnter : false});
      });

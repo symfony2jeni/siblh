@@ -10,9 +10,9 @@ $(document).ready(function() {
         
         colModel :[
            // {name:'Id',width:80,editable:true,},
-            {name:'id',width:5,align:'center'},
+            {name:'id',width:5,align:'center', search:false},
             {name:'Nombre', width:40,align:'left'},
-             {name:'Accion', width:10,align:'center'},
+             {name:'Accion', width:10,align:'center', search:false},
            
             
    
@@ -24,7 +24,8 @@ $(document).ready(function() {
         edit:false, 
         add:false, 
         del:false,
-        search:true,
-        reload:true
+        search:false,
+        reload:false
     });
+     jQuery("#listado_pacientes").jqGrid('filterToolbar',{stringResult: true,searchOnEnter : false}); 
      });

@@ -100,6 +100,9 @@ class BlhPasteurizacionController extends Controller
     public function showAction($id)
     {
         $em = $this->getDoctrine()->getManager();
+        $userEst = $this->container->get('security.context')->getToken()->getUser()->getIdEst();
+        $query1 = $em->createQuery("SELECT e.nombre, e.direccion, e.telefono FROM siblhmantenimientoBundle:CtlEstablecimiento e WHERE e.id = $userEst");
+        $establecimiento = $query1->getResult(); 
 
         $entity = $em->getRepository('siblhmantenimientoBundle:BlhPasteurizacion')->find($id);
 
@@ -112,6 +115,7 @@ class BlhPasteurizacionController extends Controller
         return array(
             'entity'      => $entity,
             'delete_form' => $deleteForm->createView(),
+            'hospital' => $establecimiento,
         );
     }
 
@@ -303,17 +307,55 @@ public function curvasAction()
         if (!$datos_curva) {
             throw $this->createNotFoundException('Unable to find BlhCurva entity');
         }
-        $entity = new BlhPasteurizacion();
-        $entity->setIdCurva($curva);
-        $form   = $this->createCreateForm($entity);
+ 
            
      //Obtener banco de leche//
       
       $userEst = $this->container->get('security.context')->getToken()->getUser()->getIdEst();
       $query1 = $em->createQuery("SELECT e.nombre, e.direccion, e.telefono FROM siblhmantenimientoBundle:CtlEstablecimiento e WHERE e.id = $userEst");
       $establecimiento = $query1->getResult(); 
+      $queryb = $em->createQuery("SELECT b.id FROM siblhmantenimientoBundle:BlhBancoDeLeche b WHERE b.idEstablecimiento = $userEst");
+      $id_blh = $queryb->getResult(); 
+        $codigo=$id_blh[0]['id']; 
+         if ($codigo<10){
+        $idp='0'.$codigo;
+        $idp = (string)$idp;
+         }
+        else{$idp = (string)$codigo;}
         
+         $hoy= getdate();
+        $anio = $hoy['year'];
+          
+        $querycod = $em->createQuery("select max(substring (ps.codigoPasteurizacion, 4, 3)) as correlativo
+                                      from siblhmantenimientoBundle:BlhPasteurizacion ps where (substring (ps.codigoPasteurizacion, 1, 2) = '$idp')
+                and (substring (ps.codigoPasteurizacion, 8, 4) = '$anio')");
         
+        $max = $querycod->getResult(); 
+     //   echo $max;
+        $maxi=$max[0]['correlativo']; 
+        $maxcorrelativo = (int)$maxi;
+        $maxcorrelativo = $maxcorrelativo+1;
+        if($maxcorrelativo <10)
+            {
+        $correlativo='00'.$maxcorrelativo;
+        $correlativo = (string)$correlativo;
+         }
+        else{
+             if(($maxcorrelativo >= 10) and ($maxcorrelativo <100))
+            {
+        $correlativo='0'.$maxcorrelativo;
+        $correlativo = (string)$correlativo;
+         }
+            
+            else {$correlativo = (string)$maxcorrelativo;}
+            }
+            
+       
+        $codpasteurizacion = $idp.'-'.$correlativo.'-'.$anio;
+        $entity = new BlhPasteurizacion();
+        $entity->setIdCurva($curva);
+        $entity->setCodigoPasteurizacion($codpasteurizacion);
+        $form   = $this->createCreateForm($entity);
         
 
         return array(
@@ -321,6 +363,7 @@ public function curvasAction()
             'form'   => $form->createView(),
             'datos_curva' =>  $datos_curva,
             'hospital' => $establecimiento,
+        
          
         );
     }

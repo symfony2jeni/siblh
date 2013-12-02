@@ -1,60 +1,64 @@
-{% extends '::base.html.twig' %}
+{% extends 'siblhmantenimientoBundle::plantilla.html.twig' %}
+{% block javascripts %}
+
+{{parent()}}
+
+<script type="text/javascript" src="{{ asset('bundles/siblhmantenimiento/js/BlhHistorialClinico/show.js') }}" ></script>
+       
+{% endblock %}
 
 {% block body -%}
-    <h1>BlhHistoriaActual</h1>
+<style type="text/css">
+table#teft table {display: block; padding: 5px; border: 3px solid black; border-top: 1; -moz-border-radius: 10px 10px 10px 10px; color:"#2e6e9e"}
+th {
+font-family: verdana,arial,helvetica,sans-serif;
+color: #000000;
+font-weight: bold;
+border-style: solid;
+border-width: 1px;
+size: 2px;
+background-color: #2b8dd6;
+}
+td {
+font-family: verdana,arial,helvetica,sans-serif;}
+    </style>
+    <h1>Historia Actual</h1>
 
-    <table class="record_properties">
+    <table id = "left" border = "1"  align = "center" bordercolor="#2e6e9e">
         <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ entity.id }}</td>
-            </tr>
-            <tr>
-                <th>Pesodonante</th>
-                <td>{{ entity.pesoDonante }}</td>
-            </tr>
-            <tr>
-                <th>Talladonante</th>
-                <td>{{ entity.tallaDonante }}</td>
-            </tr>
-            <tr>
-                <th>Medicamento</th>
-                <td>{{ entity.medicamento }}</td>
-            </tr>
-            <tr>
-                <th>Habitotoxico</th>
-                <td>{{ entity.habitoToxico }}</td>
-            </tr>
-            <tr>
-                <th>Motivodonacion</th>
-                <td>{{ entity.motivoDonacion }}</td>
-            </tr>
-            <tr>
-                <th>Patologiadonante</th>
-                <td>{{ entity.patologiaDonante }}</td>
-            </tr>
-            <tr>
+                <tr align = "left"> 
+                <th>Pesode la donante</th>
+                <td>{{ entity.pesoDonante }}</td></tr>
+                <tr align = "left"> 
+                <th>Talla de la donante</th>
+                <td>{{ entity.tallaDonante }}</td></tr>
+                <tr align = "left"> 
+                <th>Medicamentos que consume</th>
+                <td>{{ entity.medicamento }}</td></tr>
+                <tr align = "left"> 
+                <th>Habitos Toxicos</th>
+                <td>{{ entity.habitoToxico }}</td></tr>
+                <tr align = "left"> 
+                <th>Motivo de la donacion</th>
+                <td>{{ entity.motivoDonacion }}</td>   </tr>
+                <tr align = "left"> 
+                <th>Patologias de la donante</th>
+                <td>{{ entity.patologiaDonante }}</td></tr>
+                <tr align = "left"> 
                 <th>Imc</th>
-                <td>{{ entity.imc }}</td>
-            </tr>
-            <tr>
-                <th>Estadodonante</th>
-                <td>{{ entity.estadoDonante }}</td>
-            </tr>
-        </tbody>
-    </table>
+                <td>{{ entity.imc }}</td></tr>
+                <tr align = "left"> 
+                <th>Estado de la donante</th>
+                <td>{{ entity.estadoDonante }}</td></tr>
+         </tbody>
+         </table>
 
-        <ul class="record_actions">
-    <li>
-        <a href="{{ path('blhhistoriaactual') }}">
-            Back to the list
-        </a>
-    </li>
-    <li>
-        <a href="{{ path('blhhistoriaactual_edit', { 'id': entity.id }) }}">
-            Edit
-        </a>
-    </li>
-    <li>{{ form(delete_form) }}</li>
-</ul>
+    
+    <table  align = "center" >
+         <tr><td height=10  ></td></tr> 
+         <tr><td height=10  ></td></tr> 
+         <tr><td><input id = "boton1" type="button" value="Registrar Nuevo" onClick=' window.location.href="{{ path('_NewHistoriaActual') }}" '>
+</td></tr>
+
+               </table>
 {% endblock %}

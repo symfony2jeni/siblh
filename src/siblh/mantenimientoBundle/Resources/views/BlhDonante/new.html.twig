@@ -1,15 +1,12 @@
 {% extends 'siblhmantenimientoBundle::plantilla.html.twig' %}
 {% block stylesheets %}
     {{ parent() }}
-        <link href="{{ asset('bundles/siblhmantenimiento/css/form.css') }}" rel="stylesheet" type="text/css" />
- 
+        <link href="{{ asset('bundles/siblhmantenimiento/css/form.css') }}" rel="stylesheet" type="text/css" /> 
 {% endblock %}
-{% block javascripts %}
-
-{{parent()}}
-
-<script type="text/javascript" src="{{ asset('bundles/siblhmantenimiento/js/BlhDonante/new.js') }}" ></script>
         
+{% block javascripts %}
+{{parent()}}
+<script type="text/javascript" src="{{ asset('bundles/siblhmantenimiento/js/BlhDonante/new.js') }}" ></script>        
 {% endblock %}
  
 {% block body -%}
@@ -18,150 +15,82 @@
     {{ form_start(form) }}
     {{ form_errors(form) }}
  
-  <table align = "center" width = "97%" border =1>
-     
-   <tr>  
-   <td align = "right" > <font color="red">*</font>
-        {{ form_label(form.primerNombre) }}</td>
-
-     <td align = "right" >   {{ form_widget(form.primerNombre,  { 'attr': {'size': '15'} }) }} </td> 
-      
-   <td   align = "center"> 
-        {{ form_label(form.segundoNombre) }}</td>
-   <td align = "right" >  {{ form_widget(form.segundoNombre,  { 'attr': {'size': '15'} }) }} </td></tr>
-   <tr><td  ></td></tr>
- 
-    <tr>
-    <td align = "right"><font color="red">*</font>
-        {{ form_label(form.primerApellido) }}</td>
-    <td align = "right">    {{ form_widget(form.primerApellido,  { 'attr': {'size': '15'} }) }} </td>
-  
-    <td  align = "center"> 
-        {{ form_label(form.segundoApellido) }} </td>
-
-   <td  align = "center">       {{ form_widget(form.segundoApellido,  { 'attr': {'size': '15'} }) }} </td></tr>
-    <tr><td  ></td></tr>
-    <tr>
-    <td WIDTH = "15" align = "left">
-        {{ form_label(form.procedencia) }} </td>
-    <td  align = "center"> {{ form_widget(form.procedencia) }} </td>
-        
-    <td WIDTH = "13" align = "left"><font color="red">*</font>
-        {{ form_label(form.fechaNacimiento) }} </td>
-    <td  align = "center">      {{ form_widget(form.fechaNacimiento, {'attr':{'readonly': 'true', 'title': 'Dar clic y seleccionar fecha de nacimiento'} }) }} </td>
-        </tr>
-        <tr><td height=10  ></td></tr>
-        
- <tr><td align = "left"><font color="red">*</font>
-        {{ form_label(form.estadoCivil) }} 
-        {{ form_errors(form.estadoCivil) }}
-        {{ form_widget(form.estadoCivil) }} </td>
-   <td align = "left"> 
-        {{ form_label(form.ocupacion) }} &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; 
-                                         &nbsp;&nbsp; &nbsp; &nbsp;
-        {{ form_errors(form.ocupacion) }}
-        {{ form_widget(form.ocupacion) }} </td>
-   
-   <td align = "left"><font color="red">*</font>
-        {{ form_label(form.nacionalidad) }}
-        {{ form_errors(form.nacionalidad) }}
-        {{ form_widget(form.nacionalidad) }}
-       </td></tr>
+  <table align = "center" width = "87%" >     
+  <tr><td align = "left" > <font color="red">*</font>
+        {{ form_label(form.primerNombre) }} {{ form_errors(form.primerNombre) }}</td><td align = "left" >   
+        {{ form_widget(form.primerNombre) }} </td><td   align = "left"> 
+        {{ form_label(form.segundoNombre) }} {{ form_errors(form.segundoNombre) }}</td><td align = "left" >  
+        {{ form_widget(form.segundoNombre) }} </td></tr>
+    <tr><td height=10  ></td></tr> 
+    <tr><td align = "left"><font color="red">*</font>
+        {{ form_label(form.primerApellido) }} {{ form_errors(form.primerApellido) }}</td><td align = "left">    
+        {{ form_widget(form.primerApellido) }} </td><td  align = "left"> 
+        {{ form_label(form.segundoApellido) }} {{ form_errors(form.segundoApellido) }}</td><td  align = "left">      
+        {{ form_widget(form.segundoApellido) }} </td></tr>
     <tr><td height=10  ></td></tr>
-    
-   <tr>
-   <td align = "left"> 
-        {{ form_label(form.escolaridad) }} &nbsp; &nbsp;&nbsp;
-        {{ form_errors(form.escolaridad) }}
-        {{ form_widget(form.escolaridad) }} </td>
-       <td colspan = "2" align = "center">
-        {{ form_label(form.direccion) }} 
-        {{ form_errors(form.direccion) }}
-        {{ form_widget(form.direccion,  { 'attr': {'size': '100'} }) }} </td></tr> 
-       <tr><td height=10  ></td></tr>
-   
-    <tr><td colspan = "2" align = "left" style="visibility:hidden" height =10>
-        {{ form_label(form.idBancoDeLeche, 'Banco de Leche') }} 
-        {{ form_errors(form.idBancoDeLeche) }}
-        {{ form_widget(form.idBancoDeLeche,  { 'attr': {'required': 'true'} }) }}</td>
-  
-  
-   </tr>
+    <tr><td  align = "left">
+        {{ form_label(form.procedencia) }} {{ form_errors(form.procedencia) }}</td><td  align = "left"> 
+        {{ form_widget(form.procedencia) }} </td>        
+    <td align = "left"><font color="red">*</font>
+        {{ form_label(form.fechaNacimiento) }} {{ form_errors(form.fechaNacimiento) }}</td><td  align = "left"> 
+        {{ form_widget(form.fechaNacimiento, {'attr':{'required': 'true', 'readonly': 'true', 'title': 'Dar clic y seleccionar fecha de nacimiento'} }) }} </td></tr>
+        <tr><td height=10  ></td></tr>        
+   <tr><td align = "left"><font color="red">*</font>
+        {{ form_label(form.estadoCivil) }} {{ form_errors(form.estadoCivil) }}</td><td align = "left">
+        {{ form_widget(form.estadoCivil) }} </td><td align = "left"> 
+        {{ form_label(form.ocupacion) }} {{ form_errors(form.ocupacion) }}</td><td align = "left"> 
+        {{ form_widget(form.ocupacion) }} </td></tr>
+    <tr><td height=10  ></td></tr>
+    <tr><td align = "left"><font color="red">*</font>
+        {{ form_label(form.nacionalidad) }} {{ form_errors(form.nacionalidad) }}</td><td align = "left">
+        {{ form_widget(form.nacionalidad) }}</td><td align = "left"> 
+        {{ form_label(form.escolaridad) }} {{ form_errors(form.escolaridad) }}</td><td align = "left">   
+        {{ form_widget(form.escolaridad) }} </td></tr><tr>   <td  align = "left">
+        {{ form_label(form.direccion) }} {{ form_errors(form.direccion) }}</td><td colspan = "3" align = "left">
+        {{ form_widget(form.direccion,  { 'attr': {'size': '100'} }) }} </td></tr>    
+    <tr><td  colspan = "2" align = "left" style="visibility:hidden" height =10>
+        {{ form_label(form.idBancoDeLeche, 'Banco de Leche') }} {{ form_errors(form.idBancoDeLeche) }}</td>      
+    <td  colspan = "2" align = "left" style="visibility:hidden" height =10> 
+        {{ form_widget(form.idBancoDeLeche,  { 'attr': {'required': 'true'} }) }}</td></tr>    
+   <tr><td align = "left"><font color="red">*</font>
+        {{ form_label(form.documentoIdentificacion) }} {{ form_errors(form.documentoIdentificacion) }}</td><td align = "left">
+        {{ form_widget(form.documentoIdentificacion) }}</td>  
+   <td align = "left"><font color="red">*</font>
+        {{ form_label(form.numeroDocumentoIdentificacion, 'Numero Documento') }} {{ form_errors(form.numeroDocumentoIdentificacion) }}</td><td align = "left">
+        {{ form_widget(form.numeroDocumentoIdentificacion) }}</td></tr>
    <tr><td height=10  ></td></tr>
-   <tr>
-   <td align = "left"><font color="red">*</font>
-        {{ form_label(form.documentoIdentificacion) }} 
-        {{ form_errors(form.documentoIdentificacion) }}
-        {{ form_widget(form.documentoIdentificacion) }}     </td>
-  
-   <td align = "left"><font color="red">*</font>
-        {{ form_label(form.numeroDocumentoIdentificacion, 'Numero Documento') }} 
-        {{ form_errors(form.numeroDocumentoIdentificacion) }}
-        {{ form_widget(form.numeroDocumentoIdentificacion) }} </td>
-       
-       <td align = "left" ><font color="red" >*</font>
-        {{ form_label(form.tipoColecta) }}&nbsp;
-        {{ form_errors(form.tipoColecta) }}
-        {{ form_widget(form.tipoColecta) }} </td></tr>
-       <tr><td height=10  ></td></tr>
-   
-   <tr>
+   <tr><td align = "left" ><font color="red" >*</font>
+        {{ form_label(form.tipoColecta) }} {{ form_errors(form.tipoColecta) }}</td><td align = "left" >
+        {{ form_widget(form.tipoColecta) }} </td>
    <td align = "left"><font color="red" >*</font> 
-        {{ form_label(form.idMunicipio) }}&nbsp;
-        {{ form_errors(form.idMunicipio) }}
-        {{ form_widget(form.idMunicipio,  { 'attr': {'required': 'true'} }) }} </td>
-       
-        <td align = "left">
-     
-        {{ form_label(form.registro) }}                                       
-        {{ form_errors(form.registro) }}
-        {{ form_widget(form.registro,  { 'attr': {'title': '999999-9999 correlativo-anio'} }) }} </td>
-  
-  
-  <td align = "left">
-        {{ form_label(form.fechaRegistroDonanteBlh, 'Fecha registro') }} 
-        {{ form_errors(form.fechaRegistroDonanteBlh) }}
-        {{ form_widget(form.fechaRegistroDonanteBlh, {'attr':{'readonly': 'true', 'title': 'Dar clic y seleccionar fecha de registro'} }) }} </td>
-      </tr>
+        {{ form_label(form.idMunicipio) }} {{ form_errors(form.idMunicipio) }}</td><td align = "left">
+        {{ form_widget(form.idMunicipio,  { 'attr': {'required': 'true'} }) }} </td></tr><tr><td height=10  ></td></tr>
+   <tr><td align = "left">     
+        {{ form_label(form.registro) }} {{ form_errors(form.registro) }}</td><td align = "left">     
+        {{ form_widget(form.registro,  { 'attr': {'title': '999999-9999 correlativo-anio'} }) }} </td><td align = "left">
+        {{ form_label(form.fechaRegistroDonanteBlh, 'Fecha registro') }} {{ form_errors(form.fechaRegistroDonanteBlh) }}</td><td align = "left">       
+        {{ form_widget(form.fechaRegistroDonanteBlh, {'attr':{'readonly': 'true', 'title': 'Dar clic y seleccionar fecha de registro'} }) }} </td></tr>
       <tr><td height=10  ></td></tr>
-      <tr>
-       <td align = "left" > 
-   
-
-  
-
-        {{ form_label(form.telefonoFijo) }}&nbsp;&nbsp;&nbsp;&nbsp;
-        {{ form_errors(form.telefonoFijo) }}
-        {{ form_widget(form.telefonoFijo,  { 'attr': {'title': '9999-9999'} }) }} </td>
-       <td align = "left" > 
-
-  
-        {{ form_label(form.telefonoMovil) }} &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;                                             
-        {{ form_errors(form.telefonoMovil) }}
-        {{ form_widget(form.telefonoMovil,  { 'attr': {'title': '9999-9999'} }) }} </td>
-       <td align = "left" WIDTH = "10"><font color="red">*</font> 
-        {{ form_label(form.observaciones) }} 
-        {{ form_errors(form.observaciones) }}
-        {{ form_widget(form.observaciones,  { 'attr': {'size': '50'} }) }} </td>
-      
-      </tr>
-      <tr><td height=10  ></td></tr>
-   
-  <tr><td WIDTH = "10" align = "left"><font color="red" size = "2" face = "Comic Sans MS">* Campos requeridos</font>   </td>
-      <td colspan = '2' align = 'left'>&nbsp; &nbsp;&nbsp; &nbsp;
-                                       &nbsp; &nbsp;&nbsp; &nbsp; 
-                                       &nbsp; &nbsp;&nbsp; &nbsp;
-                                       &nbsp; &nbsp;&nbsp; &nbsp;
-          <input type="submit" class= "ui-button" value="Guardar"/></td>
-      
-  </tr>
+      <tr><td align = "left" > 
+        {{ form_label(form.telefonoFijo) }} {{ form_errors(form.telefonoFijo) }}</td><td align = "left" > 
+        {{ form_widget(form.telefonoFijo,  { 'attr': {'title': '9999-9999'} }) }} </td><td align = "left" > 
+        {{ form_label(form.telefonoMovil) }} {{ form_errors(form.telefonoMovil) }}</td><td align = "left" >        
+        {{ form_widget(form.telefonoMovil,  { 'attr': {'title': '9999-9999'} }) }} </td></tr>
+    <tr><td align = "right" colspan = 2><font color="red">*</font> 
+        {{ form_label(form.observaciones) }} {{ form_errors(form.observaciones) }}</td><td align = "left" colspan = 2 > 
+        {{ form_widget(form.observaciones,  { 'attr': {'size': '50'} }) }} </td></tr>
+    <tr><td height=10  ></td></tr>   
+    <tr><td align = "left" colspan = '4'><font color="red" size = "2" face = "Comic Sans MS">* Campos requeridos</font></td><tr>
+    <tr><td colspan = '4' align = 'center'>
+    <input type="submit" id= "boton" value="Guardar"/></td></tr>
+    </tr>
     </table>
     
-{{ form_end(form) }}
-
-    <table align = "center">
+    {#<table align = "center">
         <tr><td>
         <a href="{{ path('blhdonante') }}">
             Ver listado</a>
-        </td></tr></table>
+        </td></tr></table> #}
+    
+{{ form_end(form) }}
 {% endblock %}

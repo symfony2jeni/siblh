@@ -11,72 +11,43 @@
        
 {% endblock %}
 {% block body -%}
-    <h1>BlhTemperaturaEnfriamiento creation</h1>
-    
-    
-    <FORM> 
+    <h1>Registro de temperatura de enfriamiento</h1>
+   <FORM> 
    <table align = "center" >
-       
-       <tr>
-       <td align = "center">Codigo Pasteurizacion</td>
-        <td align = "center">
-        <INPUT type=text disabled="disabled" readonly="readonly" value= " {{ datos_pasteurizacion[0].codigoPasteurizacion }} "></td></tr>
-      
-    </table>
-    </form> 
+   <tr><td align = "center"><b>Codigo Pasteurizacion</b></td>
+       <td align = "center"><INPUT type=text disabled="disabled" readonly="readonly" value= " {{ datos_pasteurizacion[0].codigoPasteurizacion }} "></td></tr>
+   </table>
+   </form> 
     
-    <form>
-     <table >
-         <td align = "left">
-         <tr align = "left"> Temperatura de Enfriamiento&nbsp;&nbsp;&nbsp;&nbsp;</tr></td>
-    {% for temperaturas in temperaturas%}
-   
-        
-        <td align = "left">
-        
-        <tr align = "left"><INPUT type=text disabled="disabled" size=5 readonly="readonly" value= " {{ temperaturas.temperaturaE }} "> </tr> </td>
-    
-   
-    
-    
-     {% endfor %}
-
-            </form>
-    
-    
-        {{ form_start(form) }}
+ {{ form_start(form) }}
     {{ form_errors(form) }}
-    <td align = "left"><tr align = left>
+    
+    <table>
+         <td align = "left">
+         <tr align = "left"><b> Temperatura de Enfriamiento&nbsp;&nbsp;&nbsp;&nbsp;</b></tr></td>
+    {% for temperaturas in temperaturas%}
+        <td align = "left">        
+        <tr align = "left"><INPUT type=text disabled="disabled" size=5 readonly="readonly" value= " {{ temperaturas.temperaturaE }} "> </tr> </td>
+    {% endfor %}
+        <td align = "left"><tr align = left>
         {{ form_label(form.temperaturaE, ' ') }}
         {{ form_errors(form.temperaturaE) }}
         {{ form_widget(form.temperaturaE,  { 'attr': {'size': '5'} }) }}  </tr></td>
     
-    
-    <td><tr colspan = 3><br><br> <input type="submit" class= "ui-button" value="Guardar"/></tr></td>
-    
-      
-    
+       <td><tr colspan = 3><br><br> <input type="submit" class= "ui-button" value="Guardar"/></tr></td>
+     </form>
      </table>
-            
-            
-            <table >
-            
-            <tr>
-        <td style="visibility:hidden"><br><br>
+       
+     <table>         
+     <tr><td style="visibility:hidden"><br><br>
         {{ form_label(form.idPasteurizacion) }}
         {{ form_errors(form.idPasteurizacion) }}
         {{ form_widget(form.idPasteurizacion) }} 
-        </td>
-    </tr>
-    
-            </table>
-              {{ form_end(form) }}
-
-        <ul class="record_actions">
-    <li>
-        <a href="{{ path('blhtemperaturaenfriamiento') }}">
-            Ver Listado
-        </a>
-    </li>
-</ul>
+     </td></tr>
+     </table>           
+        {{ form_end(form) }}
+     
+     <table align = 'center'>
+     <tr><td><a href="{{ path('blhtemperaturaenfriamiento') }}">Ver listado </a>
+     </td></tr></table>
 {% endblock %}

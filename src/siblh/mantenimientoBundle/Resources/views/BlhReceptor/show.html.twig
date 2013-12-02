@@ -1,82 +1,84 @@
-{% extends '::base.html.twig' %}
+{% extends 'siblhmantenimientoBundle::plantilla.html.twig' %}
+{% block javascripts %}
+
+{{parent()}}
+
+<script type="text/javascript" src="{{ asset('bundles/siblhmantenimiento/js/BlhReceptor/show.js') }}" ></script>
+       
+{% endblock %}
 
 {% block body -%}
+<style type="text/css">
+table#teft table {display: block; padding: 5px; border: 3px solid black; border-top: 1; -moz-border-radius: 10px 10px 10px 10px; color:"#2e6e9e"}
+th {
+font-family: verdana,arial,helvetica,sans-serif;
+color: #000000;
+font-weight: bold;
+border-style: solid;
+border-width: 1px;
+size: 2px;
+background-color: #2b8dd6;
+}
+td {
+font-family: verdana,arial,helvetica,sans-serif;}
+    </style>
     <h1>BlhReceptor</h1>
 
-    <table class="record_properties">
+    <table id = "left" border = "1"  align = "center" bordercolor="#2e6e9e">
         <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ entity.id }}</td>
-            </tr>
-            <tr>
+            
+                <tr align = "left"> 
                 <th>Codigoreceptor</th>
-                <td>{{ entity.codigoReceptor }}</td>
-            </tr>
-            <tr>
+                <td>{{ entity.codigoReceptor }}</td></tr>
+                <tr align = "left"> 
                 <th>Fecharegistroblh</th>
-                <td>{{ entity.fechaRegistroBlh|date('Y-m-d H:i:s') }}</td>
-            </tr>
-            <tr>
+                <td>{{ entity.fechaRegistroBlh|date('Y-m-d') }}</td></tr>
+                <tr align = "left"> 
                 <th>Procedencia</th>
-                <td>{{ entity.procedencia }}</td>
-            </tr>
-            <tr>
+                <td>{{ entity.procedencia }}</td></tr>
+                <tr align = "left"> 
                 <th>Estadoreceptor</th>
-                <td>{{ entity.estadoReceptor }}</td>
-            </tr>
-            <tr>
+                <td>{{ entity.estadoReceptor }}</td></tr>
+                <tr align = "left"> 
                 <th>Edaddias</th>
-                <td>{{ entity.edadDias }}</td>
-            </tr>
-            <tr>
+                <td>{{ entity.edadDias }}</td></tr>
+                <tr align = "left"> 
                 <th>Pesoreceptor</th>
-                <td>{{ entity.pesoReceptor }}</td>
-            </tr>
-            <tr>
+                <td>{{ entity.pesoReceptor }}</td></tr>
+                <tr align = "left"> 
                 <th>Duracioncpap</th>
-                <td>{{ entity.duracionCpap }}</td>
-            </tr>
-            <tr>
+                <td>{{ entity.duracionCpap }}</td></tr>
+                <tr align = "left"> 
                 <th>Clasificacionlubchengo</th>
-                <td>{{ entity.clasificacionLubchengo }}</td>
-            </tr>
-            <tr>
+                <td>{{ entity.clasificacionLubchengo }}</td></tr>
+                <tr align = "left"> 
                 <th>Diagnosticoingreso</th>
-                <td>{{ entity.diagnosticoIngreso }}</td>
-            </tr>
-            <tr>
+                <td>{{ entity.diagnosticoIngreso }}</td></tr>
+                <tr align = "left"> 
                 <th>Duracionnpt</th>
-                <td>{{ entity.duracionNpt }}</td>
-            </tr>
-            <tr>
+                <td>{{ entity.duracionNpt }}</td></tr>
+                <tr align = "left"> 
                 <th>Apgar</th>
-                <td>{{ entity.apgar }}</td>
-            </tr>
-            <tr>
+                <td>{{ entity.apgar }}</td></tr>
+                <tr align = "left"> 
                 <th>Edadgestfur</th>
-                <td>{{ entity.edadGestFur }}</td>
-            </tr>
-            <tr>
+                <td>{{ entity.edadGestFur }}</td></tr>
+                <tr align = "left"> 
                 <th>Duracionventilacion</th>
-                <td>{{ entity.duracionVentilacion }}</td>
-            </tr>
-            <tr>
+                <td>{{ entity.duracionVentilacion }}</td></tr>
+                <tr align = "left"> 
                 <th>Edadgestballard</th>
-                <td>{{ entity.edadGestBallard }}</td>
-            </tr>
-            <tr>
+                <td>{{ entity.edadGestBallard }}</td></tr>
+                <tr align = "left"> 
                 <th>Pc</th>
-                <td>{{ entity.pc }}</td>
-            </tr>
-            <tr>
+                <td>{{ entity.pc }}</td></tr>
+                <tr align = "left"> 
                 <th>Tallaingreso</th>
-                <td>{{ entity.tallaIngreso }}</td>
-            </tr>
+                <td>{{ entity.tallaIngreso }}</td></tr>
         </tbody>
-    </table>
+      </table>
 
-        <ul class="record_actions">
+   {#     <ul class="record_actions">
     <li>
         <a href="{{ path('blhreceptor') }}">
             Back to the list
@@ -88,5 +90,16 @@
         </a>
     </li>
     <li>{{ form(delete_form) }}</li>
-</ul>
+</ul> #}
+    
+  <table  align = "center" >
+         <tr><td height=10  ></td></tr> 
+         <tr><td height=10  ></td></tr> 
+         <tr><td><input id = "boton1" type="button" value="Registrar Nuevo" onClick=' window.location.href="{{ path('_NewReceptor') }}" '>
+</td></tr>
+
+               </table>   
+    
+    
+    
 {% endblock %}

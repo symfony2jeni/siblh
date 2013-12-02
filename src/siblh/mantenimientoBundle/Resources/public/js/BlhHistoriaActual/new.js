@@ -1,11 +1,11 @@
 $(document).ready(function() { 
-   $('button').button();
+ 
    $('#siblh_mantenimientobundle_blhhistoriaactual_tallaDonante').
         attr('data-bvalidator', 'between[100:200],required');
 $('#siblh_mantenimientobundle_blhhistoriaactual_pesoDonante').
         attr('data-bvalidator', 'between[22:136],required');
  
-   
+  
  
     //Opciones del validador
     var optionsRed = { 
@@ -34,6 +34,7 @@ $('#siblh_mantenimientobundle_blhhistoriaactual_pesoDonante').
     });
         
            });
-
+   $('#button').button();
+   $('#boton1').button();
 });
 

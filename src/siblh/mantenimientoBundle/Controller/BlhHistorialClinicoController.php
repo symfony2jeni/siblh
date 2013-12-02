@@ -28,20 +28,31 @@ class BlhHistorialClinicoController extends Controller
     public function indexAction()
     {
         $em = $this->getDoctrine()->getManager();
-
-        $entities = $em->getRepository('siblhmantenimientoBundle:BlhHistorialClinico')->findAll();
-         //Obtener banco de leche//
-              
+        
+      $entities = $em->getRepository('siblhmantenimientoBundle:BlhHistorialClinico')->findAll();
+         //Obtener banco de leche//              
        $userEst = $this->container->get('security.context')->getToken()->getUser()->getIdEst();
-      /*  $query1 = $em->createQuery("SELECT b.id FROM siblhmantenimientoBundle:BlhBancoDeLeche b WHERE b.idEstablecimiento = $userEst");
-        $id_blh = $query1->getResult(); 
-        $codigo=$id_blh[0]['id']; */
-       
        $query1 = $em->createQuery("SELECT e.nombre, e.direccion, e.telefono FROM siblhmantenimientoBundle:CtlEstablecimiento e WHERE e.id = $userEst");
-        $establecimiento = $query1->getResult(); 
+       $establecimiento = $query1->getResult(); 
+       $queryb = $em->createQuery("SELECT b.id FROM siblhmantenimientoBundle:BlhBancoDeLeche b WHERE b.idEstablecimiento = $userEst");
+       $id_blh = $queryb->getResult(); 
+       $codigo=$id_blh[0]['id']; 
+       $query = $em->createQuery("SELECT hc.id, d.codigoDonante as codigo_donante, d.primerNombre as nombre1, d.segundoNombre as nombre2, 
+            d.primerApellido as apellido1, d.segundoApellido as apellido2,
+            hc.amenorrea, hc.controlPrenatal, hc.lugarControl, hc.numeroControl,
+            hc.fechaUltimaRegla, hc.fechaParto, hc.lugarParto, hc.patologiaEmbarazo, hc.periodoIntergenesico, hc.fechaPartoAnterior,
+            hc.formulaObstetricaG, hc.formulaObstetricaP1, hc.formulaObstetricaP2, hc.formulaObstetricaA, hc.formulaObstetricaV,
+            hc.formulaObstetricaM
+       FROM siblhmantenimientoBundle:BlhHistorialClinico hc join hc.idDonante d where 
+       d.idBancoDeLeche = $codigo");
+       $donantes_registradas  = $query->getResult();
+       
+       
+       
         return array(
             'entities' => $entities,
             'hospital' => $establecimiento,
+            'donantes_registradas' =>  $donantes_registradas, 
         );
     }
     /**
@@ -62,7 +73,7 @@ class BlhHistorialClinicoController extends Controller
             $em->persist($entity);
             $em->flush();
 
-            return $this->redirect($this->generateUrl('blhhistorialclinico', array('id' => $entity->getId())));
+            return $this->redirect($this->generateUrl('blhhistorialclinico_show', array('id' => $entity->getId())));
         }
 
         return array(
@@ -101,6 +112,26 @@ class BlhHistorialClinicoController extends Controller
     public function showAction($id)
     {
         $em = $this->getDoctrine()->getManager();
+        $query = $em->createQuery("SELECT p.id as identificador, p.codigoDonante as codigo_donante, p.primerNombre as nombre1, p.segundoNombre as nombre2, p.primerApellido as apellido1, p.segundoApellido as apellido2 FROM siblhmantenimientoBundle:BlhHistorialClinico hc join hc.idDonante p  WHERE hc.id = $id "); 
+        $datos_donantes  = $query->getResult();
+        
+        
+       
+     //   $donante = $em->getRepository('siblhmantenimientoBundle:BlhDonante')->find($id);   
+       $donante = $em->getRepository('siblhmantenimientoBundle:BlhDonante')->find($datos_donantes[0]['identificador']);
+
+         //Obtener banco de leche//
+            
+      $userEst = $this->container->get('security.context')->getToken()->getUser()->getIdEst();
+      /*  $query1 = $em->createQuery("SELECT b.id FROM siblhmantenimientoBundle:BlhBancoDeLeche b WHERE b.idEstablecimiento = $userEst");
+        $id_blh = $query1->getResult(); 
+        $codigo=$id_blh[0]['id']; */
+       
+       $query1 = $em->createQuery("SELECT e.nombre, e.direccion, e.telefono FROM siblhmantenimientoBundle:CtlEstablecimiento e WHERE e.id = $userEst");
+        $establecimiento = $query1->getResult(); 
+         if (!$datos_donantes) {
+            throw $this->createNotFoundException('Unable to find BlhDonante entity');
+        }        
 
         $entity = $em->getRepository('siblhmantenimientoBundle:BlhHistorialClinico')->find($id);
 
@@ -109,10 +140,13 @@ class BlhHistorialClinicoController extends Controller
         }
 
         $deleteForm = $this->createDeleteForm($id);
+        $entity->setIdDonante($donante);
 
         return array(
             'entity'      => $entity,
             'delete_form' => $deleteForm->createView(),
+            'datos_donantes' =>  $datos_donantes, 
+            'hospital' => $establecimiento,
         );
     }
 
@@ -126,6 +160,11 @@ class BlhHistorialClinicoController extends Controller
     public function editAction($id)
     {
         $em = $this->getDoctrine()->getManager();
+        //Obtener banco de leche//
+            
+      $userEst = $this->container->get('security.context')->getToken()->getUser()->getIdEst();
+        $query1 = $em->createQuery("SELECT e.nombre, e.direccion, e.telefono FROM siblhmantenimientoBundle:CtlEstablecimiento e WHERE e.id = $userEst");
+        $establecimiento = $query1->getResult(); 
 
         $entity = $em->getRepository('siblhmantenimientoBundle:BlhHistorialClinico')->find($id);
 
@@ -140,6 +179,7 @@ class BlhHistorialClinicoController extends Controller
             'entity'      => $entity,
             'edit_form'   => $editForm->createView(),
            'delete_form' => $deleteForm->createView(),
+            'hospital' => $establecimiento,
         );
     }
 
@@ -260,7 +300,7 @@ class BlhHistorialClinicoController extends Controller
         $id_blh = $queryb->getResult(); 
         $codigo=$id_blh[0]['id']; 
         //Obteniendo lista de donantes" 
-        $query = $em->createQuery("SELECT p.id as identificador, p.primerNombre as nombre1, p.segundoNombre as nombre2, 
+        $query = $em->createQuery("SELECT p.id as identificador, p.codigoDonante as codigo_donante, p.primerNombre as nombre1, p.segundoNombre as nombre2, 
             p.primerApellido as apellido1, p.segundoApellido as apellido2 FROM siblhmantenimientoBundle:BlhDonante p  where p.id not in (select don.id from siblhmantenimientoBundle:BlhHistorialClinico hc 
 JOIN hc.idDonante don) and p.idBancoDeLeche = $codigo");
         

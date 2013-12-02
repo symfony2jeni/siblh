@@ -1,5 +1,5 @@
 $(document).ready(function() { 
-     $('button').button();
+  
      $.noConflict();
      $.datepicker.setDefaults($.datepicker.regional["es"]);
    $('input[id$="_fechaUltimaRegla"]').datepicker({ dateFormat: 'yy-mm-dd',  
@@ -36,7 +36,8 @@ $(document).ready(function() {
                            monthNamesShort: ["Ene", "Feb", "Mar", "Abr", "May", "Jun",
                                              "Jul", "Ago", "Sep", "Oct", "Nov", "Dic"]
                           });    
-                          
+     $('#boton').button();  
+     $('#boton1').button();  
                           
  //$('form').bValidator(optionsRed);
   $('#lugC').hide();
@@ -47,13 +48,13 @@ $('#siblh_mantenimientobundle_blhhistorialclinico_controlPrenatal').on('change',
     switch( this.value ) {
         case 'No':
            $('#lugC').hide();
-            $('#numC').hide();
+        //    $('#numC').hide();
  //  alert ("hola");
            
             break;
         case 'Si':
            $('#lugC').show();
-           $('#numC').show();
+        //   $('#numC').show();
             break;
         
     }   

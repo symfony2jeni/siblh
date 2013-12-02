@@ -11,7 +11,7 @@ $(document).ready(function() {
            // {name:'Id',width:80,editable:true,},
             {name:'id',width:5,align:'center'},
             {name:'Nombre', width:40,align:'center'},
-             {name:'Accion', width:10,align:'center'},
+             {name:'Accion', width:10,align:'center', search:false},
            
             
    
@@ -23,7 +23,8 @@ $(document).ready(function() {
         edit:false, 
         add:false, 
         del:false,
-        search:true,
-        reload:true
+        search:false,
+        reload:false
     });
+    jQuery("#listado_donantes").jqGrid('filterToolbar',{stringResult: true,searchOnEnter : false}); 
      });

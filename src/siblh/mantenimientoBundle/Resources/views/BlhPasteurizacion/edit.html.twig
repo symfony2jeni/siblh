@@ -1,7 +1,16 @@
-{% extends '::base.html.twig' %}
+{% extends 'siblhmantenimientoBundle::plantilla.html.twig' %}
+{% block stylesheets %}
+    {{ parent() }}
+        <link href="{{ asset('bundles/siblhmantenimiento/css/form.css') }}" rel="stylesheet" type="text/css" />
+{% endblock %}
+
+{% block javascripts %}
+    {{parent()}}
+    <script type="text/javascript" src="{{ asset('bundles/siblhmantenimiento/js/BlhPasteurizacion/edit.js') }}" ></script>
+{% endblock %}
 
 {% block body -%}
-    <h1>BlhPasteurizacion edit</h1>
+    <h1>Actualizar Pasteurizacion</h1>
 
     {{ form(edit_form) }}
 

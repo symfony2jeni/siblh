@@ -11,15 +11,17 @@ $(document).ready(function() {
         
         colModel :[
            // {name:'Id',width:80,editable:true,},
-            {name:'Peso',width:10,align:'center'},
-            {name:'Talla', width:10,align:'center'},
-            {name:'Medicamento', width:15,align:'center'},
-            {name:'Habitotoxico', width:10,align:'center'},
-            {name:'Motivodonacion', width:30,align:'center'},
-             {name:'Patologiadonante', width:15,align:'center'},
-            {name:'Imc', width:10,align:'center'},
-            {name:'Estado&nbsp;donante', width:40,align:'center'},
-            {name:'Accion', width:10,align:'center'}
+            {name:'Codigo',width:15,align:'center'},
+            {name:'Nombre',width:15,align:'center'},
+            {name:'Peso',width:10,align:'center', search:false},
+            {name:'Talla', width:10,align:'center', search:false},
+            {name:'Medicamento', width:15,align:'center', search:false},
+            {name:'Habitotoxico', width:10,align:'center', search:false},
+            {name:'Motivodonacion', width:30,align:'center', search:false},
+            {name:'Patologiadonante', width:15,align:'center', search:false},
+            {name:'Imc', width:10,align:'center', search:false},
+            {name:'Estado&nbsp;donante', width:40,align:'center', search:false},
+            {name:'Accion', width:10,align:'center', search:false}
            
             
    
@@ -31,9 +33,10 @@ $(document).ready(function() {
         edit:false, 
         add:false, 
         del:false,
-        search:true,
-        reload:true
+        search:false,
+        reload:false
     });
+      jQuery("#listado_ha").jqGrid('filterToolbar',{stringResult: true,searchOnEnter : false}); 
 });
 
 
@@ -49,5 +52,6 @@ $(document).ready(function() {
     $("h1").click(function(){
         $(this).css('color', 'red').fadeOut('slow').fadeIn('slow')    
     });
+   
  
 });

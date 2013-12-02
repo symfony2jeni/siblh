@@ -23,22 +23,14 @@ $(document).ready(function() {
         colModel :[
            // {name:'Id',width:80,editable:true,},
             {name:'Codigo',width:15,align:'center'},
-            {name:'Fecha&nbsp;de&nbsp;registro', width:15,align:'center'},
-            {name:'Procedencia',width:20,align:'center'},
-            {name:'Estado&nbsp;de&nbsp;receptor', width:10,align:'center'},
-            {name:'Edad&nbsp;en&nbsp;dias', width:15,align:'center'},
-            {name:'Pesoreceptor', width:10,align:'center'},
-             {name:'Duracioncpap', width:15,align:'center'},
-            {name:'Clasificacion&nbsp;lubchengo', width:15,align:'center'},
-            {name:'Diagnostico&nbsp;de&nbsp;ingreso', width:10,align:'center'},
-            {name:'Duracio&nbsp;nnpt', width:10,align:'center'},
-            {name:'Apgar',width:15,align:'center'},
-            {name:'Edadgest&nbsp;fur', width:15,align:'center'},
-            {name:'Duracionventilacion', width:15,align:'center'},
-            {name:'Edadgest&nbsp;ballard', width:10,align:'center'},
-            {name:'Pc',width:15,align:'center'},
-            {name:'Talla&nbsp;de&nbsp;ingreso', width:15,align:'center'},
-            {name:'Accion', width:10,align:'center'}
+            {name:'Nombre',width:20,align:'center'},
+            {name:'Fecha&nbsp;de&nbsp;registro', width:15,align:'center', search:false},
+            {name:'Procedencia',width:20,align:'center', search:false},
+            {name:'Estado&nbsp;de&nbsp;receptor', width:10,align:'center', search:false},
+            {name:'Edad&nbsp;en&nbsp;dias', width:15,align:'center', search:false},
+            {name:'Pesoreceptor', width:10,align:'center', search:false},
+            {name:'Talla&nbsp;de&nbsp;ingreso', width:15,align:'center', search:false},
+            {name:'Accion', width:10,align:'center', search:false}
            
             
    
@@ -50,7 +42,8 @@ $(document).ready(function() {
         edit:false, 
         add:false, 
         del:false,
-        search:true,
-        reload:true
+        search:false,
+        reload:false
     });
+     jQuery("#listado_receptores").jqGrid('filterToolbar',{stringResult: true,searchOnEnter : false}); 
      });

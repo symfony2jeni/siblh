@@ -1,9 +1,5 @@
 $(document).ready(function() { 
    $('button').button();
-   
- 
-   
- 
     //Opciones del validador
     var optionsRed = { 
         classNamePrefix: 'bvalidator_red_', 
@@ -158,5 +154,6 @@ $('#siblh_mantenimientobundle_blhreceptor_duracionNpt').
         
            });
 
-    
+       $('#button').button(); 
+      $('#boton').button();    
 });

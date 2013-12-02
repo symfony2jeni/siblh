@@ -1,5 +1,4 @@
 $(document).ready(function() { 
-     $('button').button();
      $.noConflict();
      $.datepicker.setDefaults($.datepicker.regional["es"]);
    $('input[id$="_fechaEgreso"]').datepicker({ dateFormat: 'yy-MM-dd',  
@@ -13,8 +12,6 @@ $(document).ready(function() {
                            monthNamesShort: ["Ene", "Feb", "Mar", "Abr", "May", "Jun",
                                              "Jul", "Ago", "Sep", "Oct", "Nov", "Dic"]
                           });
-                          
-     
                           
         var optionsRed = { 
         classNamePrefix: 'bvalidator_red_', 
@@ -32,5 +29,8 @@ $(document).ready(function() {
     
 $('#siblh_mantenimientobundle_blhegresoreceptor_permanenciaUcin').
         attr('data-bvalidator', "regex[\\d]");
+
+ $('#button').button(); 
+ $('#boton').button(); 
    
 });

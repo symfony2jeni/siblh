@@ -87,11 +87,11 @@ _NewHistoriaActual:
     
 _NewCurva:
     pattern:  /Curva/Nueva
-    defaults: { _controller: siblhmantenimientoBundle:BlhCurva:new} 
+    defaults: { _controller: siblhmantenimientoBundle:BlhCurva:new}  
     
 _NewAnalisisMicro:
     pattern:  /AnalisisMicro/Nuevo
-    defaults: { _controller: siblhmantenimientoBundle:BlhAnalisisMicrobiologico:new} 
+    defaults: { _controller: siblhmantenimientoBundle:BlhAnalisisMicrobiologico:new}  
  
 
 _NewFrascoRecolectado:
@@ -132,7 +132,7 @@ _NewTempPasteurizacion:
     
 _NewInformacionPublica:
   pattern:  /InfoPublica/
-  defaults: { _controller: siblhmantenimientoBundle:BlhInformacionPublica:new} 
+  defaults: { _controller: siblhmantenimientoBundle:BlhInformacionPublica:new}
   
 _NewPasteurizacion:
   pattern:  /curvas/
@@ -142,3 +142,21 @@ _NewPasteurizacion:
 _NewCensoDonante:
   pattern:  /censodonante/
   defaults: { _controller: siblhmantenimientoBundle:GeneraReportes:CensoDonante}
+  
+ 
+  #Mantenimiento
+#_NewAnalisisMicrobiologicoEdit:
+ # pattern:  /AnalisisMicroEdit
+  #defaults: { _controller: siblhmantenimientoBundle:BlhAnalisisMicrobiologico:index} 
+  
+#_NewTempPasteurizacionEdit:
+ #pattern:  /TemperaturaPEdit
+ #defaults: { _controller: siblhmantenimientoBundle:BlhTemperaturaPasteurizacion:index} 
+ 
+#_NewCurvaEdit: 
+# pattern:  /CurvaEdit
+# defaults: { _controller: siblhmantenimientoBundle:BlhCurva:index} 
+ 
+#_NewInfoPublicaEdit: 
+# pattern:  /InfoPublicaEdit
+# defaults: { _controller: siblhmantenimientoBundle:BlhInformacionPublica:index}    

@@ -35,17 +35,20 @@
    <tr><td align='left'><font color="red">*</font>{{ form_label(edit_form.estadoDonante) }}</td><td align='left'>{{ form_widget(edit_form.estadoDonante) }}</td></tr>
  <tr style="visibility:hidden"><td align='left'>{{ form_label(edit_form.idDonante) }}</td><td align='left'>{{ form_widget(edit_form.idDonante) }}</td></tr>
 
-         
+       <tr>
+            <td align = "left"><font color="red" size = "2" face = "Comic Sans MS">* Campos requeridos</font></td> </tr>     
+  
        
-        <tr><td colspan = '2' align = 'center'>  <input type="submit" class= "ui-button" value="Actualizar"/></td></tr>
+        <tr><td colspan = '2' align = 'center'>  <input id= "button" type="submit" value="Actualizar"/>
+             <input id = "boton" type="button" value="Regresar" onClick=' window.location.href="{{ path('blhhistoriaactual') }}" '></td></tr>
 
     
  </table>
  {{ form_end(edit_form) }}
-    <table align = "center">
+  {#  <table align = "center">
         <tr>
             <td>
         <a href="{{ path('blhhistoriaactual') }}">
             Ver listado </a>
-         </td></tr></table>
+         </td></tr></table> #}
 {% endblock %}
