@@ -1,4 +1,4 @@
-$(document).ready(function() { 
+$(document).ready(function($) { 
     
     $('#reporte').click(function(){
       var url="/app_dev.php/reportes/reporte/alertaprealmacenado/AlertaPrealmacenado/pdf";
@@ -18,7 +18,9 @@ $(document).ready(function() {
  //$x=0;
  if($x>0)
      {
+    //  $.noConflict();         
   $(function() {
+      
     $( "#dialog-message" ).dialog({
       modal: false,
       position: ['left', 405],
@@ -34,6 +36,7 @@ $(document).ready(function() {
       },     
       
       buttons: {
+          
         Ok: function() {
           $( this ).dialog( "close" );
         }
@@ -76,6 +79,18 @@ $(document).ready(function() {
   });
  }
     
-     $.noConflict();
+
+     
+     //prueba------------------------------------//
+     //  $.noConflict(); 
+   
+     	$('#slidorion').slidorion({
+		speed: 2000,
+		interval: 9000,
+		effect: 'slideLeft'
+	});
+     
+     
+     
 	
      });

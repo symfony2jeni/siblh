@@ -1,15 +1,63 @@
-{% extends '::base.html.twig' %}
+{% extends 'siblhmantenimientoBundle::plantilla.html.twig' %}
+{% block stylesheets %}
+    {{ parent() }}
+        <link href="{{ asset('bundles/siblhmantenimiento/css/form.css') }}" rel="stylesheet" type="text/css" />
+{% endblock %}
+        {% block javascripts %}
 
+{{parent()}}
+
+<script type="text/javascript" src="{{ asset('bundles/siblhmantenimiento/js/BlhDonacion/new.js') }}" ></script>
+       
+{% endblock %}
 {% block body -%}
     <h1>BlhDonacion creation</h1>
+<FORM> 
+   <table align = "center">
+       
+       <tr>
+       <td>Codigo de la Donante</td>
+        <td>
+        <INPUT type=text disabled="disabled" size=30 readonly="readonly" value= " {{ datos_donantes[0].codigo_donante }} "></td>
+        <td width= "70"></td>
+        <td width= "70"></td>
+        
+    </tr>        
+    </table>
+     
+</form>  
+     {{ form_start(form) }}
+ {{ form_start(form) }}
+    {{ form_errors(form) }}
+     <table align = "center"  >
+          <tr><td colspan = "4" style="visibility:hidden"> 
+        {{ form_label(form.idDonante) }}
+        {{ form_errors(form.idDonante) }}
+        {{ form_widget(form.idDonante) }} </td></tr>
+       <tr><td align = "left" ><font color="red" >*</font>
+        {{ form_label(form.fechaDonacion, 'Fecha Donacion') }}</td>
+    <td align = "left" >{{ form_widget(form.fechaDonacion,  { 'attr': {'title': 'Digite la fecha de la donacion ', 'required': 'true', 'readonly': 'true'} }) }} </td>
+    <td align = "left"> <font color="red" >*</font>
+         {{ form_label(form.responsableDonacion, 'Responsable') }}</td>
+    <td align = "left" >{{ form_widget(form.responsableDonacion) }} </td>
+      <tr><td colspan = "4" style="visibility:hidden"> 
+        {{ form_label(form.idBancoDeLeche) }}
+        {{ form_errors(form.idBancoDeLeche) }}
+        {{ form_widget(form.idBancoDeLeche) }} </td></tr>
+              
+      <tr> <td align = "left"><font color="red" size = "2" face = "Comic Sans MS">* Campos requeridos</font>   </td></tr>
+     <tr>     <td colspan = '4' align = 'center'>
+          
+          <input id = "button" type="submit" value="Guardar"/>
+          <input id = "boton1" type="button" value="Regresar" onClick=' window.location.href="{{ path('_NewDonacion') }}" '>
+</td>
+  </tr>
 
-    {{ form(form) }}
+   </table>
+   
+    {{ form_end(form) }}
 
-        <ul class="record_actions">
-    <li>
-        <a href="{{ path('blhdonacion') }}">
-            Back to the list
-        </a>
-    </li>
-</ul>
+
+
+     
 {% endblock %}

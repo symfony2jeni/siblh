@@ -1,43 +1,38 @@
-{% extends '::base.html.twig' %}
+{% extends 'siblhmantenimientoBundle::plantilla.html.twig' %}
 
+
+{% block javascripts %}
+    {{parent()}}
+   <script type="text/javascript" src="{{ asset('bundles/siblhmantenimiento/js/BlhDonacion/index.js') }}" ></script>
+{% endblock %}
+   
 {% block body -%}
-    <h1>BlhDonacion list</h1>
+ <link href="{{asset('bundles/jquery/jquery.jqGrid-4.5.4/css/ui.jqgrid.css')}}" rel="stylesheet"  type="text/css" media="all"/>  
+ 
+ <script type="text/javascript" src="{{asset('bundles/jquery/jquery.jqGrid-4.5.4/js/i18n/grid.locale-es.js')}}"></script>
+      <script type="text/javascript" src="{{asset('bundles/jquery/jquery.jqGrid-4.5.4/js/jquery.jqGrid.min.js')}}" ></script> 
 
-    <table class="records_list">
+    <h1>Donaciones</h1>
+
+    <table id = "listado_d">
         <thead>
             <tr>
-                <th>Id</th>
-                <th>Fechadonacion</th>
-                <th>Responsabledonacion</th>
-                <th>Actions</th>
+                <th>Codigo</th>
+                <th>Nombre</th>
+                <th>Fecha</th>
+                <th>Responsable</th>
+                <th>Accion</th>
             </tr>
         </thead>
         <tbody>
-        {% for entity in entities %}
-            <tr>
-                <td><a href="{{ path('blhdonacion_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
+        {% for entity in donaciones %}
+            <tr><td>{{ entity.codigo_donante }}</td>
+                <td>{{ entity.nombre1 }} {{ entity.nombre2 }} {{ entity.apellido1 }} {{ entity.apellido2 }}</td>
                 <td>{% if entity.fechaDonacion %}{{ entity.fechaDonacion|date('Y-m-d H:i:s') }}{% endif %}</td>
                 <td>{{ entity.responsableDonacion }}</td>
-                <td>
-                <ul>
-                    <li>
-                        <a href="{{ path('blhdonacion_show', { 'id': entity.id }) }}">show</a>
-                    </li>
-                    <li>
-                        <a href="{{ path('blhdonacion_edit', { 'id': entity.id }) }}">edit</a>
-                    </li>
-                </ul>
-                </td>
-            </tr>
+                <td><a href="{{ path('blhdonacion_edit', { 'id': entity.id }) }}"><font color="blue"><u>Editar</u></font></a></td></tr>
         {% endfor %}
         </tbody>
     </table>
-
-        <ul>
-        <li>
-            <a href="{{ path('blhdonacion_new') }}">
-                Create a new entry
-            </a>
-        </li>
-    </ul>
+<div id='pagerd' ></div>
     {% endblock %}

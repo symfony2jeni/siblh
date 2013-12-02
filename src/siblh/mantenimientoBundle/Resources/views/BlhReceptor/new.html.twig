@@ -109,7 +109,7 @@ elemento.style.visibility = visible ? "visible" : "hidden";
    <tr><td height=10  ></td></tr>
         <tr><td align = left><font color="red">*</font>
         {{ form_label(form.edadGestFur, 'Edad Gestacional Fur') }} </td><td align = left>
-        {{ form_widget(form.edadGestFur,  { 'attr': {'title': 'Entre 24 a 42 Semanas'} }) }} </td> 
+        {{ form_widget(form.edadGestFur,  { 'attr': {'title': 'Entre 24 a 42 Semanas', 'onKeyPress':"return soloNumerosEnteros(event);"} }) }} </td> 
                     
        <td align = left><font color="red">*</font>
         {{ form_label(form.pesoReceptor, 'peso al nacer') }}</td><td align = left>

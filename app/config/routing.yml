@@ -84,6 +84,11 @@ _NewHistorialClinico:
 _NewHistoriaActual:
     pattern:  /donantesHA/
     defaults: { _controller: siblhmantenimientoBundle:BlhHistoriaActual:donantesHA}  
+
+_NewDonacion:
+    pattern:  /donantesD/
+    defaults: { _controller: siblhmantenimientoBundle:BlhDonacion:donantesD}
+
     
 _NewCurva:
     pattern:  /Curva/Nueva
