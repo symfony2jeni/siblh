@@ -20,13 +20,16 @@ class BlhSolicitudType extends AbstractType
             ->add('acidezNecesaria','choice', 
                     array('choices' => array('' => 'Seleccione un valor','Baja' => 'Baja(0-4 grados)','Aceptable' => 'Aceptable(4-8 grados)')))
 
-            ->add('caloriasNecesarias')
+            ->add('caloriasNecesarias', 'choice', 
+                    array('choices' => array('' => 'Seleccione un valor','Hipocalorica' => 'Hipocalorica(<500)',
+                          'Normocalorica' => 'Normocalorica(500-700)',
+                          'Hipercalorica' => 'Hipercalorica(>700)')))
             ->add('pesoDia')
             ->add('volumenPorToma')
             ->add('tomaPorDia','text')
             ->add('fechaSolicitud' ,'date', 
                     array(  'widget' => 'single_text',
-                            'format' => 'dd-MM-yyyy',
+                            'format' => 'yy-MM-dd',
                             'attr' => array('class' => 'date')))
             ->add('cuna', 'text')
             ->add('estado','choice', 

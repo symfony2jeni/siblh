@@ -7,25 +7,25 @@ $(document).ready(function() {
         rowNum:10, 
         gridview: true, 
         caption: "Listado frascos para analisis",
-       // height:'auto',
-        //width:1000,
+        height:'100%',
+        width:1100,
         colModel :[
-            {name:'Código&nbsp;Frasco',width:17,align:'center'},
-            {name:'Volumen&nbsp;Recolectado(ml)', width:40,align:'center'},
-            {name:'Volumen&nbsp;Recolectado(onz)', width:40,align:'center'},
-            {name:'Forma&nbsp;Extracción', width:40,align:'center'},
-            {name:'Observaciones', width:20,align:'center'}, 
-            {name:'Acción', width:20,align:'center'}  
+            {name:'Código',width:15,align:'center'},
+            {name:'Volumen(ml)', width:20,align:'center'},
+            {name:'Volumen(onz)', width:20,align:'center'},
+            {name:'Forma&nbsp;Extracción', width:20,align:'center', search:false},
+            {name:'Acción', width:20,align:'center', search:false}  
         ]       
     });
-    jQuery("#listado_frascosAnalisis").jqGrid('sortGrid',"Código&nbsp;Frasco",true);
+    jQuery("#listado_frascosAnalisis").jqGrid('sortGrid',"Código",true);
     jQuery("#listado_frascosAnalisis").jqGrid('navGrid','#pagerFrascosAnalisis', {
         edit:false, 
         add:false, 
         del:false,
-        search:true,
+        search:false,
         reload:true
     });
+    jQuery("#listado_frascosAnalisis").jqGrid('filterToolbar',{stringResult: true,searchOnEnter : false});
 });
 
 

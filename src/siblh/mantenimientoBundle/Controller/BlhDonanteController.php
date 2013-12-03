@@ -62,7 +62,7 @@ class BlhDonanteController extends Controller
             $em->persist($entity);
             $em->flush();
 
-            return $this->redirect($this->generateUrl('blhdonante', array('id' => $entity->getId())));
+            return $this->redirect($this->generateUrl('blhdonante_show', array('id' => $entity->getId())));
         }
 
         return array(
@@ -111,7 +111,7 @@ class BlhDonanteController extends Controller
        
         $entity = new BlhDonante();
         $entity->setIdBancoDeLeche($blh);
-        $form   = $this->createCreateForm($entity);
+        $form = $this->createCreateForm($entity);
   
         return array(
             'entity' => $entity,
@@ -290,6 +290,33 @@ class BlhDonanteController extends Controller
      */
  
  public function listadoReportesDonantesAction()
+    {
+      
+     $em = $this->getDoctrine()->getManager();   
+      //Obtener banco de leche//
+        
+      $userEst = $this->container->get('security.context')->getToken()->getUser()->getIdEst();
+      $query1 = $em->createQuery("SELECT e.nombre, e.direccion, e.telefono FROM siblhmantenimientoBundle:CtlEstablecimiento e WHERE e.id = $userEst");
+      $establecimiento = $query1->getResult(); 
+           
+         return array(
+            'hospital' => $establecimiento,
+        );
+           
+     
+     
+        
+    }
+    
+      /**
+     * Lists all BlhReceptor entity.
+     *
+     * @Route("/listado/mantenimiento/donantes", name="mantenimiento_donantes")
+     * @Method("GET")
+     * @Template()
+     */
+ 
+ public function mantenimientoDonanteAction()
     {
       
      $em = $this->getDoctrine()->getManager();   

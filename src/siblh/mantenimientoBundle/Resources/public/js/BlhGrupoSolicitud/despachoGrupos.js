@@ -6,10 +6,12 @@ $(window).load(function() {
         
         });
 });
+
+
 $(document).ready(function() { 
-   
-    
-   
+   $.noConflict();
+        //boton       
+ $('#boton').button(); 
     
   $(":checkbox").click(function(e) {
           var aux= new Array();
@@ -41,13 +43,8 @@ $(document).ready(function() {
              }
         });
         
-       
 
-
-
- 
- //url = Routing.generate('blhfrascoprocesado_create');
-//GRID para listado de frascos a combinar//
+   
   
 
           

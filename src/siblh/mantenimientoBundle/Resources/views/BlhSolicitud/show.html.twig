@@ -1,73 +1,84 @@
+{% extends 'siblhmantenimientoBundle::plantilla.html.twig' %}
 
-{% extends ajax ? "siblhmantenimientoBundle::plantilla.html_ajax.twig" :
-                    "siblhmantenimientoBundle::plantilla.html.twig" %}
+{% block javascripts %}
+
+{{parent()}}
+
+<script type="text/javascript" src="{{ asset('bundles/siblhmantenimiento/js/BlhSolicitud/show.js') }}" ></script>
+       
+{% endblock %}
 {% block body -%}
+<style type="text/css">
+table#teft table {display: block; padding: 5px; border: 3px solid black; border-top: 1; -moz-border-radius: 10px 10px 10px 10px; color:"#2e6e9e"}
+th {
+font-family: verdana,arial,helvetica,sans-serif;
+color: #000000;
+font-weight: bold;
+border-style: solid;
+border-width: 1px;
+size: 2px;
+background-color: #2b8dd6;
+}
+td {
+font-family: verdana,arial,helvetica,sans-serif;}
+</style>
+
     <h1>Solicitud</h1>
 
-    <table class="record_properties">
+    <table id = "left" border = "1"  align = "center" bordercolor="#2e6e9e" width=30%>
         <tbody>
+     
             <tr>
-                <th>Id</th>
-                <td>{{ entity.id }}</td>
-            </tr>
-            <tr>
-                <th>Codigosolicitud</th>
+                <th align = "left">Codigo de solicitud</th>
                 <td>{{ entity.codigoSolicitud }}</td>
             </tr>
-            <tr>
-                <th>Volumenpordia</th>
-                <td>{{ entity.volumenPorDia }}</td>
-            </tr>
-            <tr>
-                <th>Acideznecesaria</th>
+            <tr align = "left">
+                <th>Acidez Dornic</th>
                 <td>{{ entity.acidezNecesaria }}</td>
             </tr>
-            <tr>
-                <th>Caloriasnecesarias</th>
+            <tr align = "left">
+                <th>Calorías necesarias</th>
                 <td>{{ entity.caloriasNecesarias }}</td>
             </tr>
-            <tr>
-                <th>Pesodia</th>
-                <td>{{ entity.pesoDia }}</td>
+            <tr align = "left">
+                <th>Peso del paciente(g)</th>
+                <td>{{ entity.pesoDia|number_format(2, '.', ',')  }}</td>
             </tr>
-            <tr>
-                <th>Volumenportoma</th>
-                <td>{{ entity.volumenPorToma }}</td>
+            <tr align = "left">
+                <th>Volumen por toma (ml)</th>
+                <td>{{ entity.volumenPorToma|number_format(2, '.', ',')  }}</td>
             </tr>
-            <tr>
-                <th>Tomapordia</th>
+            <tr align = "left">
+                <th>Tomas por día</th>
                 <td>{{ entity.tomaPorDia }}</td>
             </tr>
-            <tr>
-                <th>Fechasolicitud</th>
+            <tr align = "left">
+                <th>Fecha</th>
                 <td>{{ entity.fechaSolicitud|date('d-m-Y') }}</td>
             </tr>
-            <tr>
-                <th>Cuna</th>
+            <tr align = "left">
+                <th>No. de cuna</th>
                 <td>{{ entity.cuna }}</td>
             </tr>
-            <tr>
+            <tr align = "left">
                 <th>Estado</th>
                 <td>{{ entity.estado }}</td>
             </tr>
-            <tr>
+             <tr align = "left">
+                <th>Volumen total por día (ml)</th>
+                <td>{{ entity.volumenPorDia|number_format(2, '.', ',')  }}</td>
+            </tr>
+            <tr align = "left">
                 <th>Responsable</th>
                 <td>{{ entity.responsable }}</td>
             </tr>
         </tbody>
     </table>
 
-        <ul class="record_actions">
-    <li>
-        <a href="{{ path('blhsolicitud') }}">
-            Regresar a Lista de Solicitudes
-        </a>
-    </li>
-    <li>
-        <a href="{{ path('blhsolicitud_edit', { 'id': entity.id }) }}">
-            Editar
-        </a>
-    {#</li>
-    <li>{{ form(delete_form) }}</li>
-</ul>#}
+ <table  align = "center" >
+         <tr><td height=10  ></td></tr> 
+         <tr><td height=10  ></td></tr> 
+         <tr><td><input id = "boton" type="button" value="Registrar Nuevo" onClick=' window.location.href="{{ path('_NewSolicitudes') }}" '>
+         </td></tr>
+    </table>
 {% endblock %}

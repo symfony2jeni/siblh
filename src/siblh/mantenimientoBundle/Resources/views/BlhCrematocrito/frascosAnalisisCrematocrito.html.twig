@@ -11,15 +11,14 @@
       <script type="text/javascript" src="{{asset('bundles/jquery/jquery.jqGrid-4.5.4/js/jquery.jqGrid.min.js')}}" ></script>
     
     <h1>Listado de frascos para analisis de crematocrito</h1>
-
+    <div align=center>
     <table id="frascosAnalisisCrematocrito">
         <thead>
             <tr>          
-                <th>Código&nbsp;Frasco</th>
-                <th>Volumen&nbsp;Recolectado(ml)</th>
-                <th>Volumen&nbsp;Recolectado(onz)</th>
+                <th>Código</th>
+                <th>Volumen(ml)</th>
+                <th>Volumen(onz)</th>
                 <th>Forma&nbsp;Extracción</th>          
-                <th>Observaciones</th>
                 <th>Acción</th>
             </tr>
         </thead>
@@ -30,12 +29,12 @@
                 <td>{{ entity.volumenRecolectado }}</td>
                 <td>{{ entity.onzRecolectado }}</td>
                 <td>{{ entity.formaExtraccion }}</td>                
-                <td>{{ entity.observacionFrascoRecolectado }}</td>
                 <td><a href="{{ path('blhcrematocrito_new', { 'id': entity.id }) }}"><font color="blue"><u>Crematocrito</u></font></a></td>              
                 </tr>
         {% endfor %}
         </tbody>
     </table>
+    </div>
     <div id='pagerFrascosAnalisisCrematocrito' ></div>
 
   

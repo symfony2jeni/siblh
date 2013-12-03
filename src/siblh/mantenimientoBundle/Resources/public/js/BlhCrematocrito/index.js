@@ -5,21 +5,16 @@ $(document).ready(function() {
         pager : '#pagerCrematocrito',
         rowNum:10, 
         gridview: true, 
-       // height:'100%',
+        height:'100%',
         //width:1400,
         caption: "Litado resultados de crematocrito",
         colModel :[
-            {name:'Crema&nbsp;1(ml)',width:15,align:'center'},
-            {name:'Crema&nbsp;2(ml)', width:15,align:'center'},
-            {name:'Crema&nbsp;3(ml)', width:15,align:'center'},
-            {name:'Coliformes&nbsp;1(ml)', width:15,align:'center'}, 
-            {name:'Coliformes&nbsp;2(ml)', width:15,align:'center'}, 
-            {name:'Coliformes&nbsp;3(ml)', width:15,align:'center'},
-            {name:'Media&nbsp;crema(ml)', width:15,align:'center'},
-            {name:'Media&nbsp;coliformes(ml)', width:20,align:'center'},
-            {name:'Porcentaje&nbsp;crema', width:15,align:'center'},
+            {name:'Frasco',width:15,align:'center'},
+            {name:'Media&nbsp;crema(mm)', width:15,align:'center', search:false},
+            {name:'Media&nbsp;calorias(mm)', width:20,align:'center', search:false},
+            {name:'Porcentaje&nbsp;crema', width:15,align:'center', search:false},
             {name:'Kilocalorias', width:15,align:'center'},
-            {name:'Acción', width:15,align:'center'}, 
+            {name:'Acción', width:15,align:'center', search:false}, 
     
         ],
        
@@ -29,9 +24,10 @@ $(document).ready(function() {
         edit:false, 
         add:false, 
         del:false,
-        search:true,
+        search:false,
         reload:true
     });
+    jQuery("#listado_crematocrito").jqGrid('filterToolbar',{stringResult: true,searchOnEnter : false});
 });
 
 

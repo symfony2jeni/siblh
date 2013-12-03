@@ -27,43 +27,36 @@
     
     {#<td align='right'>{{ form_label(edit_form.codigoSolicitud, 'Código de solicitud') }}{{ form_widget(edit_form.codigoSolicitud, {'attr':{'readonly': 'true' } }) }}</td></tr>#}
     <tr><td colspan=2 align = "right" height=10  ></td></tr>
-    <tr><td align='right'><font color="red">*</font>{{ form_label(edit_form.fechaSolicitud,'Fecha') }}{{ form_widget(edit_form.fechaSolicitud) }}</td></tr>
+    <tr><td align='left'><font color="red">*</font>{{ form_label(edit_form.fechaSolicitud,'Fecha') }}</td><td>{{ form_widget(edit_form.fechaSolicitud) }}</td></tr>
     <tr><td colspan=2 align = "right" height=10  ></td></tr>
-    <tr><td align='right'><font color="red">*</font>{{ form_label(edit_form.cuna) }}{{ form_widget(edit_form.cuna) }}</td></tr>
+    <tr><td align='left'><font color="red">*</font>{{ form_label(edit_form.cuna) }}</td><td>{{ form_widget(edit_form.cuna) }}</td></tr>
     <tr><td colspan=2 align = "right" height=10  ></td></tr>
-    <tr><td align='right'><font color="red">*</font>{{ form_label(edit_form.pesoDia,'Peso del paciente(g)') }}{{ form_widget(edit_form.pesoDia) }}</td></tr>
+    <tr><td align='left'><font color="red">*</font>{{ form_label(edit_form.pesoDia,'Peso del paciente(g)') }}</td><td>{{ form_widget(edit_form.pesoDia) }}</td></tr>
     <tr><td colspan=2 align = "right" height=10  ></td></tr>
-    <tr><td align='right'><font color="red">*</font>{{ form_label(edit_form.volumenPorToma,'Volumen por toma(ml)') }}{{ form_widget(edit_form.volumenPorToma) }}</td></tr>
+    <tr><td align='left'><font color="red">*</font>{{ form_label(edit_form.volumenPorToma,'Volumen por toma(ml)') }}</td><td>{{ form_widget(edit_form.volumenPorToma) }}</td></tr>
     <tr><td colspan=2 align = "right" height=10  ></td></tr>
-    <tr><td align='right'><font color="red">*</font>{{ form_label(edit_form.tomaPorDia, 'Tomas por día') }}{{ form_widget(edit_form.tomaPorDia) }}</td></tr>
+    <tr><td align='left'><font color="red">*</font>{{ form_label(edit_form.tomaPorDia, 'Tomas por día') }}</td><td>{{ form_widget(edit_form.tomaPorDia) }}</td></tr>
     <tr><td colspan=2 align = "right" height=10  ></td></tr>
-    <tr><td align='right'><font color="red">*</font>{{ form_label(edit_form.caloriasNecesarias,'Calorías necesarias') }}{{ form_widget(edit_form.caloriasNecesarias) }}</td></tr>
+    <tr><td align='left'><font color="red">*</font>{{ form_label(edit_form.caloriasNecesarias,'Calorías necesarias') }}</td><td>{{ form_widget(edit_form.caloriasNecesarias) }}</td></tr>
     <tr><td colspan=2 align = "right" height=10  ></td></tr>
-    <tr><td align='right'><font color="red">*</font>{{form_label(edit_form.acidezNecesaria,'Acidez Dornic') }}{{form_widget(edit_form.acidezNecesaria) }}</td></tr>
+    <tr><td align='left'><font color="red">*</font>{{form_label(edit_form.acidezNecesaria,'Acidez Dornic') }}</td><td>{{form_widget(edit_form.acidezNecesaria) }}</td></tr>
     <tr><td colspan=2 align = "right" height=10  ></td></tr>
-    <tr><td align='right'>{{form_label(edit_form.volumenPorDia,'Volumen total por día (ml)') }}{{form_widget(edit_form.volumenPorDia, {'attr':{ 'readonly': 'true' } }) }}</td></tr>
+    <tr><td align='left'>{{form_label(edit_form.volumenPorDia,'Volumen total por día (ml)') }}</td><td>{{form_widget(edit_form.volumenPorDia, {'attr':{ 'readonly': 'true' } }) }}</td></tr>
     <tr><td colspan=2 align = "right" height=10  ></td></tr>
-    <tr><td align='right'>{{ form_label(edit_form.responsable) }}{{ form_widget(edit_form.responsable) }}</td></tr>
+    <tr><td align='left'>{{ form_label(edit_form.responsable) }}</td><td>{{ form_widget(edit_form.responsable) }}</td></tr>
     <tr><td colspan=2 align = "right" height=10  ></td></tr>
-    <tr><td align='right'><font color="red">*</font>{{ form_label(edit_form.estado) }}{{ form_widget(edit_form.estado) }}</td></tr>
+    <tr><td align='left'><font color="red">*</font>{{ form_label(edit_form.estado) }}</td><td>{{ form_widget(edit_form.estado) }}</td></tr>
     <tr><td colspan=2 align = "right" height=10  ></td></tr>
-    <tr><td align='right' style="visibility:hidden">{{ form_label(edit_form.idReceptor) }}{{ form_widget(edit_form.idReceptor) }}</td></tr>
-    <tr><td align = 'left'  ><font color="red">* Campos Requeridos</font></td></tr>
+    <tr><td align='left' style="visibility:hidden">{{ form_label(edit_form.idReceptor) }}</td><td style="visibility:hidden">{{ form_widget(edit_form.idReceptor) }}</td></tr>
     <tr><td colspan=2 align = "right" height=10  ></td></tr>
 
 </table>
-    <table align = "center">
+    <table align = "center" width=50%>
+            <tr><td align = 'left'  ><font color="red">* Campos Requeridos</font></td></tr>
            <tr>
-             <td align = 'center' > <input type='submit' id='boton' title="Actualizar Solicitud"  value="Actualizar"/></td>              
+             <td align = 'center' ><input type='submit' id='boton'  value="Actualizar"/><input id = "boton1" type="button" value="Regresar" onClick=' window.location.href="{{ path('blhsolicitud' )}}"'></td>              
           </tr>
            </table>
     {{ form_end(edit_form) }}
-       {# <ul class="record_actions">#}
     
-        <a href="{{ path('blhsolicitud') }}">
-            Regresar a listado de solicitudes
-        </a>
-    
-    {#<li>{{ form(delete_form) }}</li>
-</ul>#}
 {% endblock %}

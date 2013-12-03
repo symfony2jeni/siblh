@@ -15,14 +15,9 @@
     <table id="listado_crematocrito">
         <thead>
             <tr>
-                <th>Crema&nbsp;1(ml)</th>
-                <th>Crema&nbsp;2(ml)</th>
-                <th>Crema&nbsp;3(ml)</th>
-                <th>Coliformes&nbsp;1(ml)</th>
-                <th>Coliformes&nbsp;2(ml)</th>
-                <th>Coliformes&nbsp;3(ml)</th>
-                <th>Media&nbsp;crema(ml)</th>
-                <th>Media&nbsp;coliformes(ml)</th>
+                <th>Frasco</th>
+                <th>Media&nbsp;crema(mm)</th>
+                <th>Media&nbsp;calorias(mm)</th>
                 <th>Porcentaje&nbsp;crema</th>
                 <th>Kilocalorias</th>
                 <th>Acción</th>
@@ -31,12 +26,7 @@
         <tbody>
         {% for entity in entities %}
             <tr>
-                <td>{{ entity.crema1|number_format(2, '.', ',') }}</td>
-                <td>{{ entity.crema2|number_format(2, '.', ',') }}</td>
-                <td>{{ entity.crema3|number_format(2, '.', ',') }}</td>
-                <td>{{ entity.ct1|number_format(2, '.', ',') }}</td>
-                <td>{{ entity.ct2|number_format(2, '.', ',') }}</td>
-                <td>{{ entity.ct3|number_format(2, '.', ',') }}</td>
+                <td>{{ entity.codigo }}</td>
                 <td>{{ entity.mediaCrema|number_format(2, '.', ',') }}</td>
                 <td>{{ entity.mediaCt|number_format(2, '.', ',') }}</td>
                 <td>{{ entity.porcentajeCrema|number_format(2, '.', ',') }}</td>

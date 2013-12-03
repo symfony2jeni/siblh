@@ -17,46 +17,42 @@
     <h1>Registro de lotes a analizar</h1>
        {{ form_start(form) }}
        {{ form_errors(form) }}
-<table align = "center" width = "70%" >
+<table align = "center" width = "90%">
         <tr><td colspan=2 align = "right" height=40  ></td></tr>
          <tr>
            
              
-                <td width =100 align = "right" > 
-                {{ form_label(form.codigoLoteAnalisis, 'Código de lote') }}
-                {{ form_errors(form.codigoLoteAnalisis) }}
-                {{ form_widget(form.codigoLoteAnalisis) }} </td>                 
+                <td width =150 align = "center" > 
+                {{ form_label(form.codigoLoteAnalisis, 'Código de lote') }}</td>
+                <td align='left'>{{ form_widget(form.codigoLoteAnalisis, {'attr':{ 'readonly': 'true','STYLE':"text-align:center"} }) }} </td>                 
            
             
 
-                <td width =100 align = "right"  ><font color="red">*</font>  
-                {{ form_label(form.fechaAnalisisFisicoQuimico, 'Fecha análisis' ) }}
-                {{ form_errors(form.fechaAnalisisFisicoQuimico) }}
-                {{ form_widget(form.fechaAnalisisFisicoQuimico, {'attr':{ 'readonly': 'true', 'title': 'Dar clic y seleccionar la fecha de registro' } }) }} </td>
+                <td width =200 align = "center"  ><font color="red">*</font>  
+                {{ form_label(form.fechaAnalisisFisicoQuimico, 'Fecha análisis' ) }}</td>
+                <td align='left'>{{ form_widget(form.fechaAnalisisFisicoQuimico, {'attr':{ 'readonly': 'true', 'title': 'Dar clic y seleccionar la fecha de registro' } }) }} </td>
                        
      
      
              
-                <td width =100 align = "right" ><font color="red">*</font>  
-                {{ form_label(form.responsableAnalisis, 'Responsable') }}
-                {{ form_errors(form.responsableAnalisis) }}
-                {{ form_widget(form.responsableAnalisis,  { 'attr': {'size': '30' } }) }} </td></tr>
+                <td width =150 align = "center" ><font color="red">*</font>  
+                {{ form_label(form.responsableAnalisis, 'Responsable') }}</td>
+                <td align='left'>{{ form_widget(form.responsableAnalisis,  { 'attr': {'size': '30' } }) }} </td></tr>
                 
                 <tr><td colspan=2 align = "right" height=40  ></td></tr>
             </table>
     
         
           
-
+<div align=center>
 <table id="frascosLote">
         <thead>
             <tr>
                 <th>id</th>
-                <th>Código&nbsp;Frasco</th>
-                <th>Volumen&nbsp;Recolectado(ml)</th>
-                <th>Volumen&nbsp;Recolectado(onz)</th>
-                <th>Forma&nbsp;Extracción</th>          
-                <th>Observaciones</th>
+                <th>Código</th>
+                <th>Volumen(ml)</th>
+                <th>Volumen(onz)</th>
+                <th>Fecha&nbsp;Extracción</th>          
             </tr>
         </thead>
         <tbody>
@@ -66,18 +62,18 @@
                 <td>{{ frasco.codigoFrascoRecolectado }}</td>
                 <td>{{ frasco.volumenRecolectado }}</td>
                 <td>{{ frasco.onzRecolectado }}</td>
-                <td>{{ frasco.formaExtraccion }}</td>                
-                <td>{{ frasco.observacionFrascoRecolectado }}</td>
+                <td>{{ frasco.fecha|date('Y-m-d')  }}</td>                
             </tr>
         {% endfor %}
         </tbody>
     </table>
-    <div id='pagerfrascosLote' ></div>   
+        </div>
+    {#<div id='pagerfrascosLote' ></div>   #}
       
- <table align = "center" width = "70%"  >
- <tr><td colspan=2 align = "left" height=40  ><font color="red">* Campos Requeridos</font></td>
+ <table align = "center" width = "90%"  >
+ <tr><td colspan=2 align = "left" height=40  ><font color="red" face = "Comic Sans MS">* Campos Requeridos</font></td>
  </tr>   
- <tr><td align= 'center'><INPUT  id='lote' name="agrupar" type=submit title="Guardar lote" value="Guardar"></td></tr>
+ <tr><td align= 'center'><INPUT  id='lote' name="agrupar" type=submit  value="Guardar"></td></tr>
  <td style="visibility:hidden"><INPUT  name="var" id="var" type=text size=10 ></td></td>
 </table>  
  {{ form_end(form) }}

@@ -6,20 +6,20 @@ $(document).ready(function() {
         pager : '#pagerSeguimiento',
         rowNum:10, 
         gridview: true, 
-       // height:'100%',
+        height:'100%',
         width:1400,
         caption: "Listado de seguimientos a receptores",
         colModel :[
-            {name:'Nombre&nbsp;receptor',width:50,align:'center'},
+            {name:'Nombre',width:50,align:'center'},
             {name:'Fecha', width:15,align:'center'},
-            {name:'Semana', width:15,align:'center'},
-            {name:'Talla(cm)', width:15,align:'center'}, 
-            {name:'Ganancia&nbsp;talla&nbsp;por&nbsp;día(cm)', width:35,align:'center'}, 
-            {name:'Peso(g)', width:20,align:'center'}, 
-            {name:'Ganancia&nbsp;peso&nbsp;por&nbsp;día(g)', width:35,align:'center'}, 
-            {name:'Perímetro&nbsp;cefálico(cm)', width:30,align:'center'}, 
-            {name:'Complicaciones', width:40,align:'center'}, 
-            {name:'Acción', width:15,align:'center'}, 
+            {name:'Semana', width:15,align:'center', search:false},
+            {name:'Talla(cm)', width:15,align:'center', search:false}, 
+            {name:'Ganancia&nbsp;talla&nbsp;día(cm)', width:25,align:'center', search:false}, 
+            {name:'Peso(g)', width:20,align:'center', search:false}, 
+            {name:'Ganancia&nbsp;peso&nbsp;día(g)', width:25,align:'center', search:false}, 
+            {name:'Perímetro&nbsp;cefálico(cm)', width:30,align:'center', search:false}, 
+            {name:'Complicaciones', width:40,align:'center', search:false}, 
+            {name:'Acción', width:15,align:'center', search:false}, 
     
         ],
        
@@ -29,7 +29,8 @@ $(document).ready(function() {
         edit:false, 
         add:false, 
         del:false,
-        search:true,
+        search:false,
         reload:true
     });
+        jQuery("#listado_Seguimiento").jqGrid('filterToolbar',{stringResult: true,searchOnEnter : false});
 });

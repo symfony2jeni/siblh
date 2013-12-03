@@ -5,18 +5,18 @@ $(document).ready(function() {
         pager : '#pagerSensorial',
         rowNum:10, 
         gridview: true, 
-       // height:'100%',
-        //width:1400,
+        height:'100%',
+       // width:'100%',
         caption: "Litado resultados de analisis sensorial",
         colModel :[
-            {name:'Embalaje',width:15,align:'center'},
-            {name:'Suciedad', width:15,align:'center'},
-            {name:'Color', width:15,align:'center'},
-            {name:'Olor', width:15,align:'center'}, 
-            {name:'Observación', width:35,align:'center'}, 
-            {name:'Acción', width:15,align:'center'}, 
-    
-        ],
+            {name:'Frasco',width:7,align:'center'},
+            {name:'Embalaje',width:7,align:'center'},
+            {name:'Suciedad', width:7,align:'center'},
+            {name:'Color', width:7,align:'center'},
+            {name:'Olor', width:7,align:'center'}, 
+            {name:'Observación', width:30,align:'center', search:false}, 
+            {name:'Acción', width:7,align:'center', search:false}
+        ]
        
     });
     jQuery("#listado_Sensorial").jqGrid('sortGrid',"Embalaje",true);
@@ -24,9 +24,10 @@ $(document).ready(function() {
         edit:false, 
         add:false, 
         del:false,
-        search:true,
+        search:false,
         reload:true
     });
+       jQuery("#listado_Sensorial").jqGrid('filterToolbar',{stringResult: true,searchOnEnter : false});
 });
 
 

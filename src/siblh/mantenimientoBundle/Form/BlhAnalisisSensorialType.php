@@ -16,10 +16,10 @@ class BlhAnalisisSensorialType extends AbstractType
     {
         $builder
             ->add('embalaje', 'choice',array('choices' => array('' => 'Seleccione un valor','Aprobado' => 'Aprobado','Reprobado' => 'Reprobado')))
-            ->add('suciedad', 'choice',array('choices' => array('' => 'Seleccione un valor','Aprobado' => 'Aprobado','Reprobado' => 'Reprobado')))
-            ->add('color', 'choice',array('choices' => array('' => 'Seleccione un valor','Aprobado' => 'Aprobado','Reprobado' => 'Reprobado')))
-            ->add('flavor', 'choice',array('choices' => array('' => 'Seleccione un valor','Aprobado' => 'Aprobado','Reprobado' => 'Reprobado')))
-            ->add('observacion','textarea')
+            ->add('suciedad', 'choice',array('choices' => array('' => 'Seleccione un valor','Aprobado' => 'Aprobado','Reprobado' => 'Reprobado','NR' => 'No realizado')))
+            ->add('color', 'choice',array('choices' => array('' => 'Seleccione un valor','Aprobado' => 'Aprobado','Reprobado' => 'Reprobado','NR' => 'No realizado')))
+            ->add('flavor', 'choice',array('choices' => array('' => 'Seleccione un valor','Aprobado' => 'Aprobado','Reprobado' => 'Reprobado','NR' => 'No realizado')))
+            ->add('observacion','textarea',array('max_length'=>'150'))
             ->add('idFrascoRecolectado')
         ;
     }

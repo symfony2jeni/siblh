@@ -29,12 +29,30 @@ class BlhAnalisisSensorialController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entities = $em->getRepository('siblhmantenimientoBundle:BlhAnalisisSensorial')->findAll();
+  
+       
          //Obtener banco de leche//
               
        $userEst = $this->container->get('security.context')->getToken()->getUser()->getIdEst();
        $query1 = $em->createQuery("SELECT e.nombre, e.direccion, e.telefono FROM siblhmantenimientoBundle:CtlEstablecimiento e WHERE e.id = $userEst");
         $establecimiento = $query1->getResult();  
+         
+         //codigo
+        $queryb = $em->createQuery("SELECT b.id FROM siblhmantenimientoBundle:BlhBancoDeLeche b WHERE b.idEstablecimiento = $userEst");
+        $id_blh = $queryb->getResult(); 
+        $codigo=$id_blh[0]['id'];
+        
+          if ($codigo<10){
+        $idp='0'.$codigo;
+        $idp = (string)$idp;
+         }
+        else{$idp = (string)$codigo;}
+        
+        
+         // $entities = $em->getRepository('siblhmantenimientoBundle:BlhAnalisisSensorial')->findAll();
+        $query2 = $em->createQuery("SELECT s.id, s.color, s.flavor, s.suciedad, s.embalaje, s.observacion, fr.codigoFrascoRecolectado as codigo FROM siblhmantenimientoBundle:BlhAnalisisSensorial s join s.idFrascoRecolectado fr WHERE (substring (fr.codigoFrascoRecolectado, 1, 2) = '$idp')");
+        $entities = $query2 ->getResult(); 
+        
         return array(
             'entities' => $entities,
             'hospital' => $establecimiento,
@@ -49,6 +67,19 @@ class BlhAnalisisSensorialController extends Controller
      */
     public function createAction(Request $request)
     {
+          //Actualizando el volumen del frasco recolectado
+         //$request = $this->getRequest();
+         //$idrecibido = $request->get('idfrasco');//obteniendo id de frasco a modificar volumen
+        // $id = (int)$idrecibido;
+         //$id= explode("",$idrecibido );//transformando string recibido en un array
+         /* $frasco = $em->getRepository('siblhmantenimientoBundle:BlhFrascoRecolectado')->find($id);
+          $volumen = $frasco[0]['volumenRecolectado'];
+          echo $idrecibido;
+          $nuevovolumen=volumen-3;
+          $frasco->setVolumenRecolectado($nuevovolumen);
+          $em->persist($frasco);
+          $em->flush();*/
+        
         $entity = new BlhAnalisisSensorial();
         $form = $this->createCreateForm($entity);
         $form->handleRequest($request);
@@ -102,6 +133,7 @@ class BlhAnalisisSensorialController extends Controller
         $datos_frasco  = $query->getResult();
         
         $frasco = $em->getRepository('siblhmantenimientoBundle:BlhFrascoRecolectado')->find($id);
+   
         
         $entity = new BlhAnalisisSensorial();
         $entity->setidFrascoRecolectado($frasco);
@@ -117,6 +149,7 @@ class BlhAnalisisSensorialController extends Controller
             'entity' => $entity,
             'form'   => $form->createView(),
             'hospital' => $establecimiento,
+            //'id'=>$id,
         );
     }
 
@@ -294,8 +327,19 @@ class BlhAnalisisSensorialController extends Controller
       $userEst = $this->container->get('security.context')->getToken()->getUser()->getIdEst();
       $query1 = $em->createQuery("SELECT e.nombre, e.direccion, e.telefono FROM siblhmantenimientoBundle:CtlEstablecimiento e WHERE e.id = $userEst");
       $establecimiento = $query1->getResult(); 
-
-      $query = $em->createQuery("SELECT f.id, f.codigoFrascoRecolectado,f.volumenRecolectado, f.onzRecolectado, f.formaExtraccion, f.observacionFrascoRecolectado FROM siblhmantenimientoBundle:BlhFrascoRecolectado f  WHERE f.idEstado = 1 AND f.idLoteAnalisis IS NOT NULL");
+      
+      //codigo
+        $queryb = $em->createQuery("SELECT b.id FROM siblhmantenimientoBundle:BlhBancoDeLeche b WHERE b.idEstablecimiento = $userEst");
+        $id_blh = $queryb->getResult(); 
+        $codigo=$id_blh[0]['id'];
+        
+          if ($codigo<10){
+        $idp='0'.$codigo;
+        $idp = (string)$idp;
+         }
+        else{$idp = (string)$codigo;}
+        
+      $query = $em->createQuery("SELECT f.id, f.codigoFrascoRecolectado,f.volumenRecolectado, f.onzRecolectado, f.formaExtraccion, f.observacionFrascoRecolectado FROM siblhmantenimientoBundle:BlhFrascoRecolectado f  WHERE f.idEstado = 1 AND f.idLoteAnalisis IS NOT NULL and (substring (f.codigoFrascoRecolectado, 1, 2) = '$idp')");
       $entities = $query->getResult(); 
        
 

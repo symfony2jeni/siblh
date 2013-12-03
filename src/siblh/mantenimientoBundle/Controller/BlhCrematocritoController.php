@@ -29,13 +29,29 @@ class BlhCrematocritoController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entities = $em->getRepository('siblhmantenimientoBundle:BlhCrematocrito')->findAll();
+    
         
         //Obtener banco de leche//
               
         $userEst = $this->container->get('security.context')->getToken()->getUser()->getIdEst();
         $query1 = $em->createQuery("SELECT e.nombre, e.direccion, e.telefono FROM siblhmantenimientoBundle:CtlEstablecimiento e WHERE e.id = $userEst");
         $establecimiento = $query1->getResult();  
+        
+        //codigo
+        $queryb = $em->createQuery("SELECT b.id FROM siblhmantenimientoBundle:BlhBancoDeLeche b WHERE b.idEstablecimiento = $userEst");
+        $id_blh = $queryb->getResult(); 
+        $codigo=$id_blh[0]['id'];
+        
+          if ($codigo<10){
+        $idp='0'.$codigo;
+        $idp = (string)$idp;
+         }
+        else{$idp = (string)$codigo;}
+        
+    
+     
+        $query2 = $em->createQuery("SELECT c.id, c.mediaCrema, c.mediaCt, c.porcentajeCrema,c.kilocalorias,  fr.codigoFrascoRecolectado as codigo FROM siblhmantenimientoBundle:BlhCrematocrito c join c.idFrascoRecolectado fr WHERE (substring (fr.codigoFrascoRecolectado, 1, 2) = '$idp')");
+        $entities = $query2 ->getResult(); 
         return array(
             'entities' => $entities,
             'hospital' => $establecimiento,
@@ -59,7 +75,7 @@ class BlhCrematocritoController extends Controller
             $em->persist($entity);
             $em->flush();
 
-            return $this->redirect($this->generateUrl('blhcrematocrito', array('id' => $entity->getId())));
+            return $this->redirect($this->generateUrl('blhcrematocrito_show', array('id' => $entity->getId())));
         }
 
         return array(
@@ -139,10 +155,18 @@ class BlhCrematocritoController extends Controller
         }
 
         $deleteForm = $this->createDeleteForm($id);
+        $userEst = $this->container->get('security.context')->getToken()->getUser()->getIdEst();
+      /*  $query1 = $em->createQuery("SELECT b.id FROM siblhmantenimientoBundle:BlhBancoDeLeche b WHERE b.idEstablecimiento = $userEst");
+        $id_blh = $query1->getResult(); 
+        $codigo=$id_blh[0]['id']; */
+       
+       $query1 = $em->createQuery("SELECT e.nombre, e.direccion, e.telefono FROM siblhmantenimientoBundle:CtlEstablecimiento e WHERE e.id = $userEst");
+        $establecimiento = $query1->getResult(); 
 
         return array(
             'entity'      => $entity,
             'delete_form' => $deleteForm->createView(),
+            'hospital' => $establecimiento,
         );
     }
 
@@ -292,8 +316,20 @@ class BlhCrematocritoController extends Controller
       $userEst = $this->container->get('security.context')->getToken()->getUser()->getIdEst();
       $query1 = $em->createQuery("SELECT e.nombre, e.direccion, e.telefono FROM siblhmantenimientoBundle:CtlEstablecimiento e WHERE e.id = $userEst");
       $establecimiento = $query1->getResult(); 
+      
+      //codigo
+        $queryb = $em->createQuery("SELECT b.id FROM siblhmantenimientoBundle:BlhBancoDeLeche b WHERE b.idEstablecimiento = $userEst");
+        $id_blh = $queryb->getResult(); 
+        $codigo=$id_blh[0]['id'];
+        
+          if ($codigo<10){
+        $idp='0'.$codigo;
+        $idp = (string)$idp;
+         }
+        else{$idp = (string)$codigo;}
+        
 
-      $query = $em->createQuery("SELECT f.id, f.codigoFrascoRecolectado,f.volumenRecolectado, f.onzRecolectado, f.formaExtraccion, f.observacionFrascoRecolectado FROM siblhmantenimientoBundle:BlhFrascoRecolectado f  WHERE f.idEstado = 5 AND f.idLoteAnalisis IS NOT NULL");
+      $query = $em->createQuery("SELECT f.id, f.codigoFrascoRecolectado,f.volumenRecolectado, f.onzRecolectado, f.formaExtraccion, f.observacionFrascoRecolectado FROM siblhmantenimientoBundle:BlhFrascoRecolectado f  WHERE f.idEstado = 5 AND f.idLoteAnalisis IS NOT NULL and (substring (f.codigoFrascoRecolectado, 1, 2) = '$idp')");
       $entities = $query->getResult(); 
 
         return array(

@@ -11,8 +11,6 @@ use siblh\mantenimientoBundle\Entity\BlhSolicitud;
 use siblh\mantenimientoBundle\Form\BlhSolicitudType;
 
 
-use siblh\mantenimientoBundle\Entity\BlhReceptor;
-
 /**
  * BlhSolicitud controller.
  *
@@ -32,13 +30,29 @@ class BlhSolicitudController extends Controller
     public function indexAction()
     {
         $em = $this->getDoctrine()->getManager();
-        $entities = $em->getRepository('siblhmantenimientoBundle:BlhSolicitud')->findAll();
+    
         
       //Obtener banco de leche//
         
       $userEst = $this->container->get('security.context')->getToken()->getUser()->getIdEst();
       $query1 = $em->createQuery("SELECT e.nombre, e.direccion, e.telefono FROM siblhmantenimientoBundle:CtlEstablecimiento e WHERE e.id = $userEst");
       $establecimiento = $query1->getResult(); 
+      
+      //codigo
+        $queryb = $em->createQuery("SELECT b.id FROM siblhmantenimientoBundle:BlhBancoDeLeche b WHERE b.idEstablecimiento = $userEst");
+        $id_blh = $queryb->getResult(); 
+        $codigo=$id_blh[0]['id'];
+        
+          if ($codigo<10){
+        $idp='0'.$codigo;
+        $idp = (string)$idp;
+         }
+        else{$idp = (string)$codigo;}
+        
+           //Obteniendo lista de pacientes que son receptores y que estan en estado "Activo"  
+        $query = $em->createQuery("SELECT s.id, s.codigoSolicitud,s.volumenPorDia,s.acidezNecesaria,s.caloriasNecesarias,s.pesoDia,s.volumenPorToma,s.tomaPorDia,s.fechaSolicitud,s.cuna,s.responsable  FROM siblhmantenimientoBundle:BlhSolicitud s WHERE  (substring (s.codigoSolicitud, 1, 2) = '$idp')");
+        
+        $entities  = $query->getResult();
         return array(
             'entities' => $entities,
             'hospital' => $establecimiento,
@@ -65,7 +79,7 @@ class BlhSolicitudController extends Controller
             $em->persist($entity);
             $em->flush();
 
-            return $this->redirect($this->generateUrl('blhsolicitud', array('id' => $entity->getId())));
+            return $this->redirect($this->generateUrl('blhsolicitud_show', array('id' => $entity->getId())));
         }
         
          return array(
@@ -155,6 +169,11 @@ class BlhSolicitudController extends Controller
         $deleteForm = $this->createDeleteForm($id);
         
         $ajax = $this->getRequest()->isXmlHttpRequest(); //agregando ajax a show
+          //Obtener banco de leche//
+        
+      $userEst = $this->container->get('security.context')->getToken()->getUser()->getIdEst();
+      $query1 = $em->createQuery("SELECT e.nombre, e.direccion, e.telefono FROM siblhmantenimientoBundle:CtlEstablecimiento e WHERE e.id = $userEst");
+      $establecimiento = $query1->getResult(); 
        
         
 
@@ -162,6 +181,8 @@ class BlhSolicitudController extends Controller
             'entity'  => $entity,
             'delete_form' => $deleteForm->createView(),
             'ajax' => $ajax,
+            'hospital' => $establecimiento,
+            
         );
     }
 
@@ -308,15 +329,30 @@ class BlhSolicitudController extends Controller
         
         $entities = $em->getRepository('siblhmantenimientoBundle:BlhReceptor')->findAll();
         
-        //Obteniendo lista de pacientes que son receptores y que estan en estado "Activo"  
-        $query = $em->createQuery("SELECT r.id, r.codigoReceptor, p.id as identificador, p.primerNombre as nombre1, p.segundoNombre as nombre2, p.tercerNombre as nombre3, p.primerApellido as apellido1, p.segundoApellido as apellido2, s.nombre as sexo FROM siblhmantenimientoBundle:BlhReceptor r JOIN r.idPaciente p JOIN p.idSexo s WHERE r.estadoReceptor = 'Activo'");
-        
-        $pacientes_receptores  = $query->getResult();
+     
          //Obtener banco de leche//
         
       $userEst = $this->container->get('security.context')->getToken()->getUser()->getIdEst();
       $query1 = $em->createQuery("SELECT e.nombre, e.direccion, e.telefono FROM siblhmantenimientoBundle:CtlEstablecimiento e WHERE e.id = $userEst");
       $establecimiento = $query1->getResult(); 
+      
+      //codigo
+        $queryb = $em->createQuery("SELECT b.id FROM siblhmantenimientoBundle:BlhBancoDeLeche b WHERE b.idEstablecimiento = $userEst");
+        $id_blh = $queryb->getResult(); 
+        $codigo=$id_blh[0]['id'];
+        
+          if ($codigo<10){
+        $idp='0'.$codigo;
+        $idp = (string)$idp;
+         }
+        else{$idp = (string)$codigo;}
+        
+       
+        
+           //Obteniendo lista de pacientes que son receptores y que estan en estado "Activo"  
+        $query = $em->createQuery("SELECT r.id, r.codigoReceptor, p.id as identificador, p.primerNombre as nombre1, p.segundoNombre as nombre2, p.tercerNombre as nombre3, p.primerApellido as apellido1, p.segundoApellido as apellido2, s.nombre as sexo FROM siblhmantenimientoBundle:BlhReceptor r JOIN r.idPaciente p JOIN p.idSexo s WHERE r.estadoReceptor = 'Activo' and (substring (r.codigoReceptor, 1, 2) = '$idp')");
+        
+        $pacientes_receptores  = $query->getResult();
         return array(
             'pacientes_receptores' => $pacientes_receptores,         
             'entities' => $entities,

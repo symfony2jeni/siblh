@@ -13,12 +13,12 @@
      <script type="text/javascript" src="{{asset('bundles/jquery/jquery.jqGrid-4.5.4/js/i18n/grid.locale-es.js')}}"></script>
       <script type="text/javascript" src="{{asset('bundles/jquery/jquery.jqGrid-4.5.4/js/jquery.jqGrid.min.js')}}" ></script> 
     <h1>Listado de Receptores</h1>
+    <div align='center'>
     <table id="listado_receptores">
         <thead>
             <tr>
-                <th>Código&nbsp;Receptor</th>
-                <th>Nombres</th>
-                <th>Apellidos</th>
+                <th>Código</th>
+                <th>Nombre</th>
                 <th>Sexo</th>    
                 <th>Acción</th>
             </tr>
@@ -29,8 +29,7 @@
        {% for receptor in pacientes_receptores%}
             <tr>   
                 <td>{{ receptor.codigoReceptor }}</td>
-                <td>{{ receptor.nombre1 }}&nbsp;{{ receptor.nombre2 }}&nbsp;{{ receptor.nombre3 }}</td>
-                <td>{{ receptor.apellido1 }}&nbsp;{{ receptor.apellido2 }}</td>      
+                <td>{{ receptor.nombre1 }}&nbsp;{{ receptor.nombre2 }}&nbsp;{{ receptor.nombre3 }}&nbsp;{{ receptor.apellido1 }}&nbsp;{{ receptor.apellido2 }}</td>    
                 <td>{{ receptor.sexo }}</td>
                 <td><a href="{{ path('blhsolicitud_new', { 'id': receptor.id })}}"><font color="blue"><u>Nueva Solicitud</u></font></a></td>
                </tr>
@@ -38,6 +37,7 @@
                  {% endfor %}
                   </tbody>
                   </table>
+            </div>
                <div id='pagerReceptores' ></div>
     
               

@@ -408,7 +408,34 @@ class BlhFrascoRecolectadoController extends Controller
             'entities' => $entities,
             'hospital' => $establecimiento,
         );
-    }   
+    } 
+    
+    
+        /** Lists all BlhReceptor entity.
+     *
+     * @Route("/listado/mantenimiento/laboratorio", name="mantenimiento_laboratorio")
+     * @Method("GET")
+     * @Template()
+     */
+ 
+ public function mantenimientoLaboratorioAction()
+    {
+      
+     $em = $this->getDoctrine()->getManager();   
+      //Obtener banco de leche//
+        
+      $userEst = $this->container->get('security.context')->getToken()->getUser()->getIdEst();
+      $query1 = $em->createQuery("SELECT e.nombre, e.direccion, e.telefono FROM siblhmantenimientoBundle:CtlEstablecimiento e WHERE e.id = $userEst");
+      $establecimiento = $query1->getResult(); 
+           
+         return array(
+            'hospital' => $establecimiento,
+        );
+           
+     
+     
+        
+    }
     
 
     

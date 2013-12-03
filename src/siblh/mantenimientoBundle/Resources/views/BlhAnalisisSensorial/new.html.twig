@@ -63,16 +63,16 @@
         <table align = "center" width = "50%" >
           
         <tr>
-        <td width=100  align = "left" >{{ form_label(form.embalaje) }}</td>
+        <td width=100  align = "left" ><font color="red">*</font>{{ form_label(form.embalaje) }}</td>
         <td align = "left">{{ form_widget(form.embalaje) }} </td>
-        <td align = "left" >{{ form_label(form.suciedad) }}</td>
+        <td align = "left" ><font color="red">*</font>{{ form_label(form.suciedad) }}</td>
         <td align = "left">{{ form_widget(form.suciedad) }} </td>
           </tr>
         <tr><td align = "right" height=10  ></td></tr>
       <tr>
-           <td align = "left" >{{ form_label(form.color) }}</td>
+           <td align = "left" ><font color="red">*</font>{{ form_label(form.color) }}</td>
            <td align = "left"> {{ form_widget(form.color) }} </td>
-           <td width=100 align = "left" >{{ form_label(form.flavor,'Olor') }}</td>
+           <td width=100 align = "left" ><font color="red">*</font>{{ form_label(form.flavor,'Olor') }}</td>
            <td align = "left"> {{ form_widget(form.flavor) }} </td>
         </tr>
         <tr><td align = "left" height=10  ></td></tr>
@@ -82,9 +82,9 @@
         <tr><td align = "right" height=30  ></td></tr>
         </table>
         <table align = "center" width = "75%">
-            <tr><td width=172 align = 'left'  ><font color="red" face = "Comic Sans MS">* Campos requeridos</font></td></tr>
+            <tr><td width=172 align = 'left'  ><font color="red" face = "Comic Sans MS">* Campos requeridos</font>{#<INPUT type=text STYLE="text-align:center" name="idfrasco[]" disabled="disabled" size=5 readonly="readonly" value= "{{ id }}"></td>#}</tr>
         <tr>            
-             <td width=900 align = 'center' > <input type='submit' id="boton" title="Guardar"  value="Guardar"/>{#<input type='reset' id="boton" title='Cancelar' value='Cancelar'/>#}</td>              
+             <td width=900 align = 'center' ><input type='submit' id="boton" title="Guardar"  value="Guardar"/><input id = "boton1" type="button" value="Regresar" onClick=' window.location.href="{{ path('blhfrascosAnalisis_sensorial' )}}"'></td>              
           </tr>
            </table>
            {{ form_end(form) }}

@@ -6,26 +6,26 @@ $(document).ready(function() {
         pager : '#pagerReceptores',
         rowNum:10, 
         gridview: true, 
-        //height:'100%',
+        width:'1000',
+        height:'100%',
         caption: "Listado de receptores",
         
         
         colModel :[
-            {name:'Código&nbsp;Receptor',width:25,align:'center'},
-            {name:'Nombres', width:40,align:'center'},
-            {name:'Apellidos', width:40,align:'center'},
-            {name:'Sexo', width:20,align:'center'}, 
-            {name:'Acción', width:20,align:'center'}, 
-   
-        ],
+            {name:'Código',width:15,align:'center'},
+            {name:'Nombre', width:60,align:'center'},
+            {name:'Sexo', width:20,align:'center', search:false}, 
+            {name:'Acción', width:20,align:'center', search:false} 
+        ]
     
     });
-    jQuery("#listado_receptores").jqGrid('sortGrid',"Código&nbsp;Receptor",true);
+    jQuery("#listado_receptores").jqGrid('sortGrid',"Código",true);
     jQuery("#listado_receptores").jqGrid('navGrid','#pagerReceptores', {
         edit:false, 
         add:false, 
         del:false,
-        search:true,
-        reload:true
+        search:false,
+        reload:false
     });
+     jQuery("#listado_receptores").jqGrid('filterToolbar',{stringResult: true,searchOnEnter : false});
 });

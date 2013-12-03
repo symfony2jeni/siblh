@@ -4,11 +4,13 @@ $(document).ready(function() {
      $.datepicker.setDefaults($.datepicker.regional["es"]);
      
        //Calendario  
-     $('input[id$="_fechaSeguimiento"]').datepicker({ dateFormat: 'dd-mm-yy',  
+     $('input[id$="_fechaSeguimiento"]').datepicker({ dateFormat: 'yy-mm-dd',  
                            changeMonth: true,
                            changeYear: true,
                            clearStatus: 'Borra fecha actual',  
-                          defaultDate: '01-01-2012',
+                           defaultDate: 'today',
+                           minDate: '2012-10-08',
+                           maxDate: 'today',
                             yearRange: '2012:y',
                            dayNamesMin: ["Do", "Lu", "Ma", "Mi", "Ju", "Vi", "Sa"],
                            monthNamesShort: ["Ene", "Feb", "Mar", "Abr", "May", "Jun",
@@ -36,6 +38,8 @@ $(document).ready(function() {
     //Boton   
     
     $('#boton')
+      .button();
+      $('#boton1')
       .button();
      
   

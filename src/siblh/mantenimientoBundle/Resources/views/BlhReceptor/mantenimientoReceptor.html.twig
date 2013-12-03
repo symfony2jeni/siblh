@@ -2,7 +2,7 @@
 
 {% block javascripts %}
     {{parent()}}
-    <script type="text/javascript" src="{{ asset('bundles/siblhmantenimiento/js/BlhBancoDeLeche/listadoEstadisticas.js') }}" ></script>
+    <script type="text/javascript" src="{{ asset('bundles/siblhmantenimiento/js/BlhReceptor/mantenimientoReceptor.js') }}" ></script>
 {% endblock %}
 
 {% block body -%}
@@ -11,36 +11,34 @@
      <script type="text/javascript" src="{{asset('bundles/jquery/jquery.jqGrid-4.5.4/js/i18n/grid.locale-es.js')}}"></script>
       <script type="text/javascript" src="{{asset('bundles/jquery/jquery.jqGrid-4.5.4/js/jquery.jqGrid.min.js')}}" ></script>
       
-<h1>Listado de estadisticas</h1>
+<h1>Listado de mantenimientos de donante</h1>
     <div align='center'>
-    <table id="listadoEstadisticas">
+    <table id="mantenimientoReceptor">
         <thead>
             <tr>
-                <th>Reporte</th>
+                <th>Nombre</th>
                 <th>Acción</th>
             </tr>
              <tr>
-                <th>Reporte</th>
+                <th>Nombre</th>
                 <th>Acción</th>
             </tr>
              <tr>
-                <th>Reporte</th>
+                <th>Nombre</th>
                 <th>Acción</th>
             </tr>
         </thead>
         <tbody>
      
        <tr> 
-          <td>Estadisticas de leche humana </td> 
-          <td><a href="{{ path('EstadisticaLeche') }}"><font color="blue"><u>Generar estadística</u></font></a></td>
+          <td>Ingreso de receptores</td> 
+         <td><a href="{{ path('blhreceptor')}}"><font color="blue"><u>Mantenimiento</u></font></a></td></tr>
        <tr> 
-          <td>Estadisticas de donantes en un periodo determinado</td> 
-          <td><a href="{{ path('EstadisticaDonante') }}"><font color="blue"><u>Generar estadística</u></font></a></td>
+          <td>Seguimiento de receptores</td> 
+         <td><a href="{{ path('blhseguimientoreceptor')}}"><font color="blue"><u>Mantenimiento</u></font></a></td></tr>
         <tr> 
-          <td>Estadisticas de receptores en un periodo determinado </td> 
-          <td><a href="{{ path('EstadisticaReceptor') }}"><font color="blue"><u>Generar estadística</u></font></a></td>
-
-        
+          <td>Egreso de receptore</td> 
+          <td><a href="{{ path('blhegresoreceptor')}}"><font color="blue"><u>Mantenimiento</u></font></a></td></tr>
         </tbody>
     </table>
      </div>

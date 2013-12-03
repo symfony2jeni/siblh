@@ -45,12 +45,9 @@
 </table>
     <table align = "center">
            <tr>
-             <td align = 'center' > <input type='submit' id='boton' title="Actualizar seguimiento"  value="Actualizar"/></td>              
+             <td align = 'center' > <input type='submit' id='boton' title="Actualizar seguimiento"  value="Actualizar"/><input id = "boton1" type="button" value="Regresar" onClick=' window.location.href="{{ path('blhseguimientoreceptor' )}}"'></td></td>              
           </tr>
            </table>
-    <a href="{{ path('blhseguimientoreceptor') }}">
-            Regresar a listado de seguimientos
-        </a>
     {{ form_end(edit_form) }}
   
 

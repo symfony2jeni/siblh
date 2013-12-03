@@ -1,5 +1,4 @@
 $(document).ready(function() { 
-     /*$('button').button();*/
      $.noConflict();
    
     //Tooltip                      
@@ -23,8 +22,8 @@ $(document).ready(function() {
        
     //Boton   
     
-    $('#boton')
-      .button();
+  $('#boton').button();
+  $('#boton1').button(); 
      
 
   
@@ -41,23 +40,23 @@ $(document).ready(function() {
 
   
  $('#siblh_mantenimientobundle_blhcrematocrito_crema1').
-            attr('data-bvalidator', 'required,between[1:100]');
+            attr('data-bvalidator', 'required,between[1:99]');
 
   $('#siblh_mantenimientobundle_blhcrematocrito_crema2').
-            attr('data-bvalidator', 'required,between[1:100]');
+            attr('data-bvalidator', 'required,between[1:99]');
     
  $('#siblh_mantenimientobundle_blhcrematocrito_crema3').
-            attr('data-bvalidator', 'required,between[1:100]');
+            attr('data-bvalidator', 'required,between[1:99]');
     
  $('#siblh_mantenimientobundle_blhcrematocrito_ct1').
-            attr('data-bvalidator', 'required,between[1:100]');
+            attr('data-bvalidator', 'required,between[1:99]');
   
  
   $('#siblh_mantenimientobundle_blhcrematocrito_ct2').
-            attr('data-bvalidator', 'required,between[1:100]');                         
+            attr('data-bvalidator', 'required,between[1:99]');                         
 
  $('#siblh_mantenimientobundle_blhcrematocrito_ct3').
-            attr('data-bvalidator', 'required,between[1:100]');
+            attr('data-bvalidator', 'required,between[1:99]');
     
     
     //Calculando campos                        
@@ -137,6 +136,7 @@ $('#siblh_mantenimientobundle_blhcrematocrito_porcentajeCrema').on('click', func
     
 $porcentajeCrema=$mediaCrema/($mediaCt*100);
 //$porcentajeCrema= Math.round( $porcentajeCrema* 100) / 100;
+ $porcentajeCrema=Math.round($porcentajeCrema*Math.pow(10,4))/Math.pow(10,4);
 this.value = $porcentajeCrema;
 
 });

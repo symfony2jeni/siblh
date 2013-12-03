@@ -12,13 +12,13 @@
     <table id="listado_Seguimiento">
         <thead>
             <tr>
-                <th>Nombre&nbsp;receptor</th> 
+                <th>Nombre</th> 
                 <th>Fecha</th>
                 <th>Semana</th>
                 <th>Talla(cm)</th>
-                <th>Ganancia&nbsp;talla&nbsp;por&nbsp;día(cm)</th>
+                <th>Ganancia&nbsp;talla&nbsp;día(cm)</th>
                 <th>Peso(g)</th>
-                <th>Ganancia&nbsp;peso&nbsp;por&nbsp;día(g)</th>
+                <th>Ganancia&nbsp;peso&nbsp;día(g)</th>
                 <th>Perímetro&nbsp;cefálico(cm)</th>            
                 <th>Complicaciones</th>
                 <th>Acción</th>
@@ -28,7 +28,7 @@
         {% for entity in entities %}
             <tr>
                 <td>{{ entity.nombre1 }}&nbsp;{{entity.nombre2 }}&nbsp;{{ entity.nombre3 }}&nbsp;{{ entity.nombre3 }}&nbsp;{{ entity.apellido1 }}&nbsp;{{ entity.apellido2 }}</td>
-                <td>{% if entity.fechaSeguimiento %}{{ entity.fechaSeguimiento|date('d-m-Y') }}{% endif %}</td>
+                <td>{% if entity.fechaSeguimiento %}{{ entity.fechaSeguimiento|date('Y-m-d') }}{% endif %}</td>
                 <td>{{ entity.semana }}</td>
                 <td>{{ entity.tallaReceptor|number_format(2, '.', ',') }}</td>
                 <td>{{ entity.gananciaDiaTalla|number_format(2, '.', ',') }}</td>

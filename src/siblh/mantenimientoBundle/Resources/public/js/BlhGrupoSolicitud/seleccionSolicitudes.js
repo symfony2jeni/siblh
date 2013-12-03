@@ -1,4 +1,5 @@
 $(document).ready(function() {
+         $.noConflict();
         $("#agrupar").button();
         tableToGrid("#Multiselect",{
    	colModel:[
@@ -13,8 +14,8 @@ $(document).ready(function() {
                 {name:'Tomas&nbsp;por&nbsp;dia',index:'Tomas&nbsp;por&nbsp;dia', width:25, align:'Center'}
    	],
    	rowNum:10,
-        gridview: true, 
-   	pager: '#pagerMultiselect',
+        gridview: false, 
+   	//pager: '#pagerMultiselect',
    	sortname: 'id',
         viewrecords: false,
         sortorder: "desc",
@@ -24,7 +25,7 @@ $(document).ready(function() {
 
 
 //jQuery("#Multiselect").jqGrid('sortGrid',"Nombres",true);
-jQuery("#Multiselect").jqGrid('navGrid','#pagerMultiselect',{add:false,del:false,edit:false,search:true, reload: true});
+//jQuery("#Multiselect").jqGrid('navGrid','#pagerMultiselect',{add:false,del:false,edit:false,search:false, reload: false});
 jQuery("#agrupar").on ('click', function() {
         
         var corr_seleccionados = jQuery("#Multiselect").jqGrid('getGridParam','selarrrow');
@@ -35,14 +36,14 @@ jQuery("#agrupar").on ('click', function() {
     
         if (corr_seleccionados.length > 4 || corr_seleccionados.length === 0){
             if (corr_seleccionados.length === 0){
-                alert('No se ha selelcionado ninguna solicitud para agrupar');
-               
-                 $('#var').val(0);
+                alert('No se han seleccionado solicitudes para agrupar');
+                 //$('#var').val(0);
+                 return false;
             }
             else{
              alert("Solo puede elegir como maximo 4 solicitudes por grupo"); }//fin else interno  
-             
-             $('#var').val(0);
+             //$('#var').val(0);
+             return false;
             }//final if interno
             else{
            for(i= 0 ; i < corr_seleccionados.length ; i++){

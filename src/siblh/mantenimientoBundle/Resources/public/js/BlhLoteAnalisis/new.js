@@ -4,12 +4,14 @@ $(document).ready(function() {
      $.datepicker.setDefaults($.datepicker.regional["es"]);
      
        //Calendario  
-     $('input[id$="_fechaAnalisisFisicoQuimico"]').datepicker({ dateFormat: 'dd-mm-yy',  
+     $('input[id$="_fechaAnalisisFisicoQuimico"]').datepicker({ dateFormat: 'yy-mm-dd',  
                            changeMonth: true,
                            changeYear: true,
                            clearStatus: 'Borra fecha actual',  
-                          defaultDate: '01-01-2012',
-                            yearRange: '2012:y',
+                           defaultDate: 'today',
+                           minDate: '2012-10-08',
+                           maxDate: 'today',
+                           yearRange: '2012:y',
                            dayNamesMin: ["Do", "Lu", "Ma", "Mi", "Ju", "Vi", "Sa"],
                            monthNamesShort: ["Ene", "Feb", "Mar", "Abr", "May", "Jun",
                                              "Jul", "Ago", "Sep", "Oct", "Nov", "Dic"]
@@ -70,32 +72,33 @@ $(document).ready(function() {
 //GRID para listado de frascos//
   tableToGrid("#frascosLote", {
         pager : '#pagerfrascosLote',
-        rowNum:10, 
-        gridview: true,
+        //rowNum:10, 
+        gridview: false,
         multiselect:true,
-        sortname: 'Código&nbsp;Frasco',
+        sortname: 'Código',
         sortOrder: 'desc',
-       // height:'100%',
-        //width:1400,
+        height:'100%',
+        width:900,
         caption: "Seleccione los frascos a analizar en lote",
         colModel :[
-            {name:'id',width:15,align:'center'},
-            {name:'Código&nbsp;Frasco',width:15,align:'center'},
-            {name:'Volumen&nbsp;Recolectado(ml)', width:15,align:'center'},
-            {name:'Volumen&nbsp;Recolectado(onz)', width:15,align:'center'},
-            {name:'Forma&nbsp;Extracción', width:15,align:'center'}, 
-            {name:'Observaciones', width:35,align:'center', editable:true}                
+            {name:'id',width:10,align:'center', hidden:true, search:false},
+            {name:'Código',width:15,align:'center'},
+            {name:'Volumen(ml)', width:15,align:'center'},
+            {name:'Volumen(onz)', width:15,align:'center'},
+            {name:'Fecha&nbsp;Extracción', width:15,align:'center', search:false}            
         ]
        
     });
   //  jQuery("#frascosLote").jqGrid('sortGrid',"Código&nbsp;Frasco",true);
-    jQuery("#frascosLote").jqGrid('navGrid','#pagerfrascosLote', {
+   /* jQuery("#frascosLote").jqGrid('navGrid','#pagerfrascosLote', {
         edit:false, 
         add:false, 
         del:false,
-        search:true,
+        search:false,
         reload:true      
-    });
+    });*/
+    
+//jQuery("#frascosLote").jqGrid('filterToolbar',{stringResult: true,searchOnEnter : false});
                           
 jQuery("#lote").on ('click', function() {
         
@@ -108,8 +111,8 @@ jQuery("#lote").on ('click', function() {
         if (corr_seleccionados.length === 0){
             
                 alert('No se han seleccionado frascos para agregar al lote');
-               
-                 $('#var').val(0);
+                return false;
+                 //$('#var').val(0);
         }
             else{
            for(i= 0 ; i < corr_seleccionados.length ; i++){
@@ -119,13 +122,13 @@ jQuery("#lote").on ('click', function() {
             }//final if interno 
         }//final for externo
         }//fin de for externo
-        
         $('#var').val(s);
         
        }//fin de else
 
 	
 });
+
 
 });
 

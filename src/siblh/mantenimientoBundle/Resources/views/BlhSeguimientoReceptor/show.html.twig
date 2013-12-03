@@ -1,62 +1,72 @@
 {% extends 'siblhmantenimientoBundle::plantilla.html.twig' %}
 
-{% block stylesheets %}
-    {{ parent() }}
-	<link href="{{ asset('bundles/siblhmantenimiento/css/form.css') }}" rel="stylesheet" type="text/css" />
+{% block javascripts %}
+
+{{parent()}}
+
+<script type="text/javascript" src="{{ asset('bundles/siblhmantenimiento/js/BlhSeguimientoReceptor/show.js') }}" ></script>
+       
 {% endblock %}
 
 {% block body -%}
-    <h1>Detalle de seguimiento registrado</h1>
 
-    <table class="record_properties" align="center">
+<style type="text/css">
+table#teft table {display: block; padding: 5px; border: 3px solid black; border-top: 1; -moz-border-radius: 10px 10px 10px 10px; color:"#2e6e9e"}
+th {
+font-family: verdana,arial,helvetica,sans-serif;
+color: #000000;
+font-weight: bold;
+border-style: solid;
+border-width: 1px;
+size: 2px;
+background-color: #2b8dd6;
+}
+td {
+font-family: verdana,arial,helvetica,sans-serif;}
+</style>
+    <h1>Seguimiento de receptor</h1>
+
+    <table id = "left" border = "1"  align = "center" bordercolor="#2e6e9e" width=30%>
         <tbody>
-            <tr>
+            <tr align = "left">
                 <th>Talla(cm)</th>
                 <td>{{ entity.tallaReceptor|number_format(2, '.', ',') }}</td>
             </tr>
-            <tr>
+            <tr align = "left">
                 <th>Peso(g)</th>
                 <td>{{ entity.pesoSeguimiento|number_format(2, '.', ',') }}</td>
             </tr>
-            <tr>
+            <tr align = "left">
                 <th> Perímetro&nbsp;cefálico(cm)</th>
                 <td>{{ entity.pcSeguimiento|number_format(2, '.', ',') }}</td>
             </tr>
-            <tr>
+            <tr align = "left">
                 <th>Ganancia&nbsp;de&nbsp;peso&nbsp;por&nbsp;día(g)</th>
                 <td>{{ entity.gananciaDiaPeso|number_format(2, '.', ',') }}</td>
             </tr>
-            <tr>
+            <tr align = "left">
                 <th>Semana</th>
                 <td>{{ entity.semana }}</td>
             </tr>
-            <tr>
+            <tr align = "left">
                 <th>Fecha</th>
-                <td>{{ entity.fechaSeguimiento|date('d-m-Y') }}</td>
+                <td>{{ entity.fechaSeguimiento|date('Y-m-d') }}</td>
             </tr>
-            <tr>
+            <tr align = "left">
                 <th> Ganancia&nbsp;de&nbsp;talla&nbsp;por&nbsp;día(cm)</th>
                 <td>{{ entity.gananciaDiaTalla|number_format(2, '.', ',') }}</td>
             </tr>
-            <tr>
+            <tr align = "left">
                 <th>Complicaciones</th>
                 <td>{{ entity.complicaciones }}</td>
             </tr>
-        
-        <tr>
-        <td><a href="{{ path('blhreceptores_seguimiento') }}">
-            Registrar nuevo seguimiento
-        </a></td></tr>
-        <tr>
-        <td><a href="{{ path('blhseguimientoreceptor_edit', { 'id': entity.id }) }}">
-            Editar
-        </a></td></tr>
-        </tbody>
     </table>
-
- 
-
-        
-
+    
+     <table  align = "center" >
+         <tr><td height=10  ></td></tr> 
+         <tr><td height=10  ></td></tr> 
+         <tr><td><input id = "boton" type="button" value="Registrar Nuevo" onClick=' window.location.href="{{ path('blhreceptores_seguimiento') }}" '>
+         </td></tr>
+    </table>
 
 {% endblock %}

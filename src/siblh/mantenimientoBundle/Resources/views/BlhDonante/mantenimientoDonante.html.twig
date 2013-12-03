@@ -1,0 +1,64 @@
+{% extends  'siblhmantenimientoBundle::plantilla.html.twig'%}
+
+{% block javascripts %}
+    {{parent()}}
+    <script type="text/javascript" src="{{ asset('bundles/siblhmantenimiento/js/BlhDonante/mantenimientoDonante.js') }}" ></script>
+{% endblock %}
+
+{% block body -%}
+    
+    <link href="{{asset('bundles/jquery/jquery.jqGrid-4.5.4/css/ui.jqgrid.css')}}" rel="stylesheet"  type="text/css" media="all"/> 
+     <script type="text/javascript" src="{{asset('bundles/jquery/jquery.jqGrid-4.5.4/js/i18n/grid.locale-es.js')}}"></script>
+      <script type="text/javascript" src="{{asset('bundles/jquery/jquery.jqGrid-4.5.4/js/jquery.jqGrid.min.js')}}" ></script>
+      
+<h1>Listado de mantenimientos de donante</h1>
+    <div align='center'>
+    <table id="mantenimientoDonantes">
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Acción</th>
+            </tr>
+             <tr>
+                <th>Nombre</th>
+                <th>Acción</th>
+            </tr>
+             <tr>
+                <th>Nombre</th>
+                <th>Acción</th>
+            </tr>
+            <tr>
+                <th>Nombre</th>
+                <th>Acción</th>
+            </tr>
+            <tr>
+                <th>Nombre</th>
+                <th>Acción</th>
+            </tr>
+        </thead>
+        <tbody>
+     
+       <tr> 
+          <td>Ingreso de donantes</td> 
+         <td><a href="{{ path('blhdonante')}}"><font color="blue"><u>Mantenimiento</u></font></a></td></tr>
+       <tr> 
+          <td>Historial clinico</td> 
+         <td><a href="{{ path('blhhistorialclinico')}}"><font color="blue"><u>Mantenimiento</u></font></a></td></tr>
+        <tr> 
+          <td>Historia actual</td> 
+          <td><a href="{{ path('blhhistoriaactual')}}"><font color="blue"><u>Mantenimiento</u></font></a></td></tr>
+        <tr> 
+          <td>Leche donanda</td> 
+          <td><a href="{{ path('blhfrascorecolectado')}}"><font color="blue"><u>Mantenimiento</u></font></a></td></tr>
+        <tr>
+        <td>Donaciones</td> 
+          <td><a href="{{ path('blhdonacion')}}"><font color="blue"><u>Mantenimiento</u></font></a></td></tr>
+        
+        </tbody>
+    </table>
+     </div>
+
+      
+    {% endblock %}
+
+

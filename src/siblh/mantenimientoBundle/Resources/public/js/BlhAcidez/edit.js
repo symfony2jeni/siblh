@@ -39,6 +39,8 @@ $(document).ready(function() {
     
     $('#boton')
       .button();
+       $('#boton1')
+      .button();
       
    
 
@@ -126,6 +128,15 @@ $resultado = Math.round( $resultado* 100) / 100;
  
 this.value = $resultado; } ); 
 
+$('#boton').on ('click', function() {
+
+$acidez=$('#siblh_mantenimientobundle_blhacidez_resultado').val();
+
+if($acidez>8){
+    alert('Frasco descartado, acidez dornic mayor a 8');
+}
+
+});
 
 });
 
@@ -147,9 +158,8 @@ return true;
 return /\d/.test(String.fromCharCode(keynum));
 }
 
-
-
       
+
 
 
 

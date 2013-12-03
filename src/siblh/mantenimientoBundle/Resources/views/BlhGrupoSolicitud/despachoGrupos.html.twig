@@ -16,13 +16,13 @@
     <h1>Despacho grupos de solicitudes</h1>
 <FORM method="POST" action="{{path("frascosprocesados_solicitudes")}}">
  
- {%set total_volumen = total_volumen%}    
- {%set tamanio1 = total_volumen | length%}     
+ {%set volumentotal = volumentotal%}    
+ {#{%set tamanio1 = total_volumen | length%}     
  {%set volumentotal = 0%}      
     
    {% for i in 0 ..(tamanio1-1)%}  
     {% set volumentotal = volumentotal+total_volumen[i].volumen%}   
-     {% endfor %}
+     {% endfor %}#}
     
 <table align = "center" width = "70%" border=1 >
 
@@ -32,33 +32,62 @@
                 <INPUT type=text STYLE="text-align:center" name="nombre" disabled="disabled" size=25 readonly="readonly" value= "{{ grupo.codigoGrupoSolicitud}}">
                </td>
                
-        <td width=10 align = "right"><b>Volumen a despachar(ml)</b></td>
+        <td width=10 align = "right"><b>Total Volumen a despachar(ml)</b></td>
                 <td width = "120" align = "left">
-                <INPUT type=text STYLE="text-align:center" name="nombre" disabled="disabled" size=25 readonly="readonly" value= "{{ volumentotal}}">
+                <INPUT type=text STYLE="text-align:center" name="nombre" disabled="disabled" size=25 readonly="readonly" value= "{{ volumentotal[0].total}}">
                </td>
                                 
        </tr>
       <tr><td  align = "right" height=40  ></td></tr>
+      
       </table>   
- 
+    {%set solicitudes_grupo = solicitudes_grupo%}  
+     {% set cantidad_solicitudes = solicitudes_grupo | length%}
+     
+    <table align = "center" bordercolor='gray' border=1>
+         <thead>
+            <tr>
+                <th>Solicitud</th>
+                <th>Acides Necesaria</th>
+                <th>Calorias Necesarias</th>           
+            </tr>
+            </thead>
+     {% for i in 0 ..(cantidad_solicitudes-1)%}
+    <tr>
+                <td width = "120" align = "left">
+                <INPUT type=text STYLE="text-align:center" name="nombre" disabled="disabled" size=25 readonly="readonly" value= "{{ solicitudes_grupo[i].codigoSolicitud}}">
+               </td>
+                <td width = "120" align = "left">
+                <INPUT type=text STYLE="text-align:center" name="nombre" disabled="disabled" size=25 readonly="readonly" value= "{{ solicitudes_grupo[i].acidezNecesaria}}">
+               </td>
+               <td width = "120" align = "left">
+                <INPUT type=text STYLE="text-align:center" name="nombre" disabled="disabled" size=25 readonly="readonly" value= "{{ solicitudes_grupo[i].caloriasNecesarias}}">
+               </td>
+      </tr>
+    {%endfor%}
+      
+ </table>
+    <p>
+    <p>
    {%set frascosp = frascosp%}    
    {%set tamanio = frascosp | length%}      
+    {%set volumen_despachado = volumen_despachado%}    
  
 {% if tamanio != 0 %}                       
- <table align= 'center' border=1>
+ <table border=1 align = "center" bordercolor="#2e6e9e"  >
      <thead>
-            <tr>
-                <th>box</th>
+            <tr bgcolor="#2b8dd6">
+                <th>Select</th>
                 <th>id</th>
-                <th>Código&nbsp;frasco</th>
+                <th>Código frasco</th>
                 <th>Acidez</th>
                 <th>Calorias</th>
-                <th>Volumen&nbsp;total</th>
+                <th>Volumen total</th>
                 <th>Observacion</th>
                 <th>idDespachado</th>
                 <th>Despachado</th>
-                <th>Volumen&nbsp;Disponible</th>
-                <th>Volumen&nbsp;a&nbsp;despachar</th>                
+                <th>Volumen disponible</th>
+                <th>Volumen a despachar</th>                
             </tr>
             </thead>
             <tbody>
@@ -72,10 +101,10 @@
                 <td>{{frascosp[i].kcaloriasTotales}}</td>
                 <td>{{ frascosp[i].volumenFrascoPasteurizado }}</td>  
                 <td>{{ frascosp[i].observacionFrascoProcesado }}</td>                  
-                <td>{{volumen_despachado[i].id}}</td>
+                <td>{{volumen_despachado[i].idp}}</td>
                 <td><input type=text value = "{{ volumen_despachado[i].despachado }}"/> </td>  
                  <td><input name='vldisponible[]' id= "vldisponible_{{ frascosp[i].id}}"  type=text value ="{{vldisponible[i]}}"  /> </td>  
-                <td><input name="vldespachar[]" id="vldespachar_{{volumen_despachado[i].id}}" type=text/></td>   
+                <td><input name="vldespachar[]" id="vldespachar_{{volumen_despachado[i].idp}}"  type=text/></td>   
                 </tr>
         {% endfor %}
           
@@ -94,9 +123,9 @@
     
 {% if tamanio == 0   %} 
      
-    <table border=1 align='center' width=1000>
+    <table table border=1 align = "center" bordercolor="#2e6e9e"   >
         <thead>
-            <tr>
+            <tr bgcolor="#2b8dd6">
                 <th>box</th>
                 <th>id</th>
                 <th>Código&nbsp;frasco</th>

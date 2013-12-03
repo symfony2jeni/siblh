@@ -22,10 +22,10 @@ class BlhSeguimientoReceptorType extends AbstractType
             ->add('semana','text')
             ->add('fechaSeguimiento','date', 
                     array(  'widget' => 'single_text',
-                            'format' => 'dd-MM-yy',
+                            'format' => 'yy-MM-dd',
                             'attr' => array('class' => 'date')))
             ->add('gananciaDiaTalla')
-            ->add('complicaciones', 'textarea')
+            ->add('complicaciones', 'textarea',array('max_length'=>'50'))
             ->add('idReceptor')
         ;
     }

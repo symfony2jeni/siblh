@@ -1,0 +1,54 @@
+{% extends  'siblhmantenimientoBundle::plantilla.html.twig'%}
+
+{% block javascripts %}
+    {{parent()}}
+    <script type="text/javascript" src="{{ asset('bundles/siblhmantenimiento/js/BlhFrascoRecolectado/mantenimientoLaboratorio.js') }}" ></script>
+{% endblock %}
+
+{% block body -%}
+    
+    <link href="{{asset('bundles/jquery/jquery.jqGrid-4.5.4/css/ui.jqgrid.css')}}" rel="stylesheet"  type="text/css" media="all"/> 
+     <script type="text/javascript" src="{{asset('bundles/jquery/jquery.jqGrid-4.5.4/js/i18n/grid.locale-es.js')}}"></script>
+      <script type="text/javascript" src="{{asset('bundles/jquery/jquery.jqGrid-4.5.4/js/jquery.jqGrid.min.js')}}" ></script>
+      
+<h1>Listado de mantenimientos de donante</h1>
+    <div align='center'>
+    <table id="mantenimientoLaboratorio">
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Acción</th>
+            </tr>
+             <tr>
+                <th>Nombre</th>
+                <th>Acción</th>
+            </tr>
+             <tr>
+                <th>Nombre</th>
+                <th>Acción</th>
+            </tr>
+            <tr>
+                <th>Nombre</th>
+                <th>Acción</th>
+            </tr>
+        </thead>
+        <tbody>
+     
+       <tr> 
+          <td>Analisis sensorial</td> 
+         <td><a href="{{ path('blhanalisissensorial')}}"><font color="blue"><u>Mantenimiento</u></font></a></td></tr>
+       <tr> 
+          <td>Analisis de acidez dornic</td> 
+         <td><a href="{{ path('blhacidez')}}"><font color="blue"><u>Mantenimiento</u></font></a></td></tr>
+        <tr> 
+          <td>Analisis de crematocrito</td> 
+          <td><a href="{{ path('blhcrematocrito')}}"><font color="blue"><u>Mantenimiento</u></font></a></td></tr>
+        <tr> 
+          <td>Analisis microbiologico</td> 
+          <td><a href="{{ path('blhanalisismicrobiologico')}}"><font color="blue"><u>Mantenimiento</u></font></a></td></tr>
+        </tbody>
+    </table>
+     </div>
+
+      
+    {% endblock %}

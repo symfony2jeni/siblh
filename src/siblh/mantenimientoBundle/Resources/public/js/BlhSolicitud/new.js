@@ -1,18 +1,17 @@
 $(document).ready(function() { 
-    // $('#button').button();
-     
-      
     
     $.noConflict();
     $.datepicker.setDefaults($.datepicker.regional["es"]);
      
        //Calendario  
-     $('input[id$="_fechaSolicitud"]').datepicker({ dateFormat: 'dd-mm-yy',  
+     $('input[id$="_fechaSolicitud"]').datepicker({ dateFormat: 'yy-mm-dd',  
                            changeMonth: true,
                            changeYear: true,
                            clearStatus: 'Borra fecha actual',  
-                          defaultDate: '2012-01-01',
-                            yearRange: '2012:y',
+                           defaultDate: 'today',
+                           minDate: '2012-10-08',
+                           maxDate: 'today',
+                           yearRange: '2012:y',
                            dayNamesMin: ["Do", "Lu", "Ma", "Mi", "Ju", "Vi", "Sa"],
                            monthNamesShort: ["Ene", "Feb", "Mar", "Abr", "May", "Jun",
                                              "Jul", "Ago", "Sep", "Oct", "Nov", "Dic"]
@@ -52,7 +51,7 @@ $( "#dialog-message" ).dialog({
     //Boton   
    
     $( "#boton" ).button();
-
+    $( "#boton1" ).button();
 
        
  
@@ -65,19 +64,15 @@ $('#siblh_mantenimientobundle_blhsolicitud_cuna').
             attr('data-bvalidator', 'required');
 
  $('#siblh_mantenimientobundle_blhsolicitud_volumenPorToma').
-            attr('data-bvalidator', 'required,between[0:25]');
+            attr('data-bvalidator', 'required,between[1:25]');
 
     
-     
- $('#siblh_mantenimientobundle_blhsolicitud_caloriasNecesarias').
-            attr('data-bvalidator', 'required,min[1]');
-    
  $('#siblh_mantenimientobundle_blhsolicitud_pesoDia').
-            attr('data-bvalidator', 'required,between[400:2500]');
+            attr('data-bvalidator', 'required,between[500:5000]');
   
     
  $('#siblh_mantenimientobundle_blhsolicitud_tomaPorDia').
-            attr('data-bvalidator', 'required,between[0:24]');
+            attr('data-bvalidator', 'required,between[1:5]');
  
     
 
@@ -123,6 +118,52 @@ this.value = $VolumenDia; } );
 
 });
 
+function soloNumerosEnteros(e)
+{
+var keynum = window.event ? window.event.keyCode : e.which;
+if (keynum === 8)
+return true;
+ 
+return /\d/.test(String.fromCharCode(keynum));
+}
 
+function soloNumeros(e)
+{
+var keynum = window.event ? window.event.keyCode : e.which;
+if ((keynum === 8) || (keynum === 46))
+return true;
+ 
+return /\d/.test(String.fromCharCode(keynum));
+}
+
+
+function validarVacios()
+{
+    var allFieldsEmpty = true;
+
+$(':input').each( function( input ) {  
+    if( input.val() != null ) {
+        
+        allFieldsEmpty = false; 
+    }
+});
+
+$(':select').each( function( input ) {  
+    if( input.val() != null ) {
+        allFieldsEmpty = false; 
+    }
+});
+
+return allFieldsEmpty;
+}
+
+$( document ).unload(function() {
+  if( validarVacios()==false ) {
+  event.preventDefault();
+  alert('prueba');
+}
+
+
+});
 
       

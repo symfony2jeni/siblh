@@ -12,32 +12,28 @@
       <script type="text/javascript" src="{{asset('bundles/jquery/jquery.jqGrid-4.5.4/js/jquery.jqGrid.min.js')}}" ></script>
       
 <h1>Litado resultados de acidez dornic</h1>
+<div align=center>
     <table id="listado_Acidez">
         <thead>
             <tr>
-                <th>Acidez&nbsp;1</th>
-                <th>Acidez&nbsp;2</th>
-                <th>Acidez&nbsp;3</th>
-                <th>Factor</th>
+                <th>Frasco</th>
+                <th>Factor(%)</th>
                 <th>Resultado</th>
-                <th>Media&nbsp;Acidez</th>
                 <th>Acción</th>
             </tr>
         </thead>
         <tbody>
         {% for entity in entities %}
             <tr>
-                <td>{{ entity.acidez1 }}</td>
-                <td>{{ entity.acidez2 }}</td>
-                <td>{{ entity.acidez3 }}</td>
+                <td>{{ entity.codigo }}</td>
                 <td>{{ entity.factor|number_format(2, '.', ',') }}</td>
                 <td>{{ entity.resultado|number_format(2, '.', ',') }}</td>
-                <td>{{ entity.mediaAcidez|number_format(2, '.', ',') }}</td>
                 <td><a href="{{ path('blhacidez_edit', { 'id': entity.id }) }}"><font color="blue"><u>Editar</u></font></a></td>
                   
         {% endfor %}
         </tbody>
     </table>
+        </div>
  <div id='pagerAcidez'></div>
       
     {% endblock %}

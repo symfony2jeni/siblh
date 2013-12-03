@@ -1,68 +1,80 @@
-{% extends '::base.html.twig' %}
+{% extends  'siblhmantenimientoBundle::plantilla.html.twig'%}
+
+{% block javascripts %}
+
+{{parent()}}
+
+<script type="text/javascript" src="{{ asset('bundles/siblhmantenimiento/js/BlhCrematocrito/show.js') }}" ></script>
+       
+{% endblock %}
+
 
 {% block body -%}
-    <h1>BlhCrematocrito</h1>
+<style type="text/css">
+table#teft table {display: block; padding: 5px; border: 3px solid black; border-top: 1; -moz-border-radius: 10px 10px 10px 10px; color:"#2e6e9e"}
+th {
+font-family: verdana,arial,helvetica,sans-serif;
+color: #000000;
+font-weight: bold;
+border-style: solid;
+border-width: 1px;
+size: 2px;
+background-color: #2b8dd6;
+}
+td {
+font-family: verdana,arial,helvetica,sans-serif;}
+</style>
+    <h1>Analisis de Crematocrito</h1>
 
-    <table class="record_properties">
+    <table  id = "left" border = "1"  align = "center" bordercolor="#2e6e9e" width=30%>
         <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ entity.id }}</td>
+            <tr align = "left">
+                <th>Crema 1(mm)</th>
+                <td>{{ entity.crema1|number_format(2, '.', ',')  }}</td>
             </tr>
-            <tr>
-                <th>Crema1</th>
-                <td>{{ entity.crema1 }}</td>
+            <tr align = "left">
+                <th>Crema 2(mm)</th>
+                <td>{{ entity.crema2|number_format(2, '.', ',')  }}</td>
             </tr>
-            <tr>
-                <th>Crema2</th>
-                <td>{{ entity.crema2 }}</td>
+            <tr align = "left">
+                <th>Crema 3(mm)</th>
+                <td>{{ entity.crema3|number_format(2, '.', ',')  }}</td>
             </tr>
-            <tr>
-                <th>Crema3</th>
-                <td>{{ entity.crema3 }}</td>
+            <tr align = "left">
+                <th>Caloría 1(mm)</th>
+                <td>{{ entity.ct1|number_format(2, '.', ',')  }}</td>
             </tr>
-            <tr>
-                <th>Ct1</th>
-                <td>{{ entity.ct1 }}</td>
+            <tr align = "left">
+                <th>Caloría 2(mm)</th>
+                <td>{{ entity.ct2|number_format(2, '.', ',')  }}</td>
             </tr>
-            <tr>
-                <th>Ct2</th>
-                <td>{{ entity.ct2 }}</td>
+            <tr align = "left">
+                <th>Caloría 3(mm)</th>
+                <td>{{ entity.ct3|number_format(2, '.', ',')  }}</td>
             </tr>
-            <tr>
-                <th>Ct3</th>
-                <td>{{ entity.ct3 }}</td>
+            <tr align = "left">
+                <th>Media crema(mm)</th>
+                <td>{{ entity.mediaCrema|number_format(2, '.', ',')  }}</td>
             </tr>
-            <tr>
-                <th>Mediacrema</th>
-                <td>{{ entity.mediaCrema }}</td>
+            <tr align = "left">
+                <th>Media calorías(mm)</th>
+                <td>{{ entity.mediaCt|number_format(2, '.', ',')  }}</td>
             </tr>
-            <tr>
-                <th>Mediact</th>
-                <td>{{ entity.mediaCt }}</td>
-            </tr>
-            <tr>
-                <th>Porcentajecrema</th>
+            <tr align = "left">
+                <th>Porcentaje crema(%)</th>
                 <td>{{ entity.porcentajeCrema }}</td>
             </tr>
-            <tr>
+            <tr align = "left">
                 <th>Kilocalorias</th>
-                <td>{{ entity.kilocalorias }}</td>
+                <td>{{ entity.kilocalorias|number_format(2, '.', ',')  }}</td>
             </tr>
         </tbody>
     </table>
+     <table  align = "center" >
+         <tr><td height=10  ></td></tr> 
+         <tr><td height=10  ></td></tr> 
+         <tr><td><input id = "boton" type="button" value="Registrar Nuevo" onClick=' window.location.href="{{ path('blhfrascosAnalisis_crematocrito') }}" '>
+         </td></tr>
+    </table>
 
-        <ul class="record_actions">
-    <li>
-        <a href="{{ path('blhcrematocrito') }}">
-            Back to the list
-        </a>
-    </li>
-    <li>
-        <a href="{{ path('blhcrematocrito_edit', { 'id': entity.id }) }}">
-            Edit
-        </a>
-    </li>
-    <li>{{ form(delete_form) }}</li>
-</ul>
 {% endblock %}

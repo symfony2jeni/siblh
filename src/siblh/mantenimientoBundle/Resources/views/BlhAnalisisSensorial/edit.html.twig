@@ -21,28 +21,24 @@
     
     <table align='center'  >
 <tr>
-    <tr><td align='left' width=120>{{ form_label(edit_form.embalaje) }}</td><td align='left'>{{ form_widget(edit_form.embalaje) }}</td></tr>
+    <tr><td align='left' width=120><font color="red">*</font>{{ form_label(edit_form.embalaje) }}</td><td align='left'>{{ form_widget(edit_form.embalaje) }}</td></tr>
     <tr><td align = "right" height=10  ></td></tr>
-    <tr><td align='left'>{{ form_label(edit_form.suciedad) }}</td><td align='left'>{{ form_widget(edit_form.suciedad) }}</td></tr>
+    <tr><td align='left'><font color="red">*</font>{{ form_label(edit_form.suciedad) }}</td><td align='left'>{{ form_widget(edit_form.suciedad) }}</td></tr>
     <tr><td align = "right" height=10  ></td></tr>
-    <tr><td align='left'>{{ form_label(edit_form.color) }}</td><td align='left'>{{ form_widget(edit_form.color) }}</td></tr>
+    <tr><td align='left'><font color="red">*</font>{{ form_label(edit_form.color) }}</td><td align='left'>{{ form_widget(edit_form.color) }}</td></tr>
     <tr><td align = "right" height=10  ></td></tr>
-    <tr><td align='left'>{{ form_label(edit_form.flavor,'Olor') }}</td><td align='left'>{{ form_widget(edit_form.flavor) }}</td></tr>
+    <tr><td align='left'><font color="red">*</font>{{ form_label(edit_form.flavor,'Olor') }}</td><td align='left'>{{ form_widget(edit_form.flavor) }}</td></tr>
     <tr><td align = "right" height=10  ></td></tr>
     <tr><td align='left'><font color="red">*</font>{{ form_label(edit_form.observacion,'Observaciones') }}</td><td align='left'>{{ form_widget(edit_form.observacion) }}</td></tr>
     <tr><td align='left' style="visibility:hidden">{{ form_label(edit_form.idFrascoRecolectado) }}</td><td align='left' style="visibility:hidden">{{ form_widget(edit_form.idFrascoRecolectado) }}</td></tr>
-</table>
-    <table align = "center" width="30%"  >
-         <tr><td width=172 align = 'left'  ><font color="red" face = "Comic Sans MS">* Campos requeridos</font></td></tr>
-    </table>     
-    <table align = "center"  >
+</table>             
+    <table align = "center" width=45% >
+        <tr><td width=172 align = 'left'  ><font color="red" face = "Comic Sans MS">* Campos requeridos</font></td></tr>
+  
            <tr>
-             <td align = 'center' > <input type='submit' id='boton' title="Actualizar Analisis Sensorial"  value="Actualizar"/></td>              
+             <td align = 'center' > <input type='submit' id='boton'   value="Actualizar"/><input id = "boton1" type="button" value="Regresar" onClick=' window.location.href="{{ path('blhanalisissensorial' )}}"'></td>              
           </tr>
            </table>
-     <a href="{{ path('blhanalisissensorial') }}">
-            Regresar a listado de Analisis Sensorial 
-        </a>
     {{ form_end(edit_form) }}
   
 

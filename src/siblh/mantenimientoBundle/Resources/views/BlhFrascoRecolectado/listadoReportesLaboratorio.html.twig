@@ -70,32 +70,28 @@
           <td><a href="{{ path('mostrar_frascosp',{'report_name':'reportesEstudiantes','report_format':'pdf'})}}" target=”_blank”> <font color="blue"><u>Generar Reporte</u></font></a></td></tr>
         <tr> 
           <td>Leche despachada segun solicitudes agrupadas</td> 
-          <td>Generar reporte</td></tr>
+          <td><a href="{{ path('LecheDespachadaSolicitudes',{'report_name':'reportesEstudiantes','report_format':'pdf'})}}" target=”_blank”> <font color="blue"><u>Generar Reporte</u></font></a></td></tr>
         <tr> 
           <td>Resultados de analisis de laboratorio</td> 
           <td><a href="{{ path('AnalisisLaboratorio') }}"><font color="blue"><u>Generar Reporte</u></font></a></td></tr>
          <tr> 
           <td>Frascos de leche combinados y pasteurizados</td> 
-          <td>Generar reporte</td></tr>
+          <td><a href="{{ path('CombinadosPasteurizados',{'report_name':'reportesEstudiantes','report_format':'pdf'})}}" target=”_blank”> <font color="blue"><u>Generar Reporte</u></font></a></td></tr>
           <tr> 
           <td>Temperatura de pasteurizacion</td> 
-          <td>Generar reporte</td></tr>
+          <td><a href="{{ path('Temperatura_Pasteurizacion',{'report_name':'reportesEstudiantes','report_format':'pdf'})}}" target=”_blank”> <font color="blue"><u>Generar Reporte</u></font></a></td></tr>
            <tr> 
           <td>Temperatura de enfriamiento</td> 
-          <td>Generar reporte</td></tr>
+          <td><a href="{{ path('TemperaturaEnfriamiento',{'report_name':'reportesEstudiantes','report_format':'pdf'})}}" target=”_blank”> <font color="blue"><u>Generar Reporte</u></font></a></td></tr>
             <tr> 
           <td>Resultados de control de calidad microbiologico</td> 
           <td><a href="{{ path('ControlMicrobiologico') }}"><font color="blue"><u>Generar Reporte</u></font></a></td></tr>
              <tr> 
           <td>Leche descartada durante el proceso</td> 
-          <td>Generar reporte</td></tr>
+          <td><a href="{{ path('LecheDescartada',{'report_name':'reportesEstudiantes','report_format':'pdf'})}}" target=”_blank”> <font color="blue"><u>Generar Reporte</u></font></a></td></tr>
               <tr> 
-          <td>frascos prealmacenados aprobados y r eprobados</td> 
-          <td>Generar reporte</td></tr>
-               <tr> 
-          <td>frascos pasteurizados aprobados y reprobados</td> 
-          <td>Generar reporte</td></tr>
-        
+          <td>frascos prealmacenados y pasteurizados aprobados/reprobados</td> 
+          <td><a href="{{ path('AprobadosReprobados',{'report_name':'reportesEstudiantes','report_format':'pdf'})}}" target=”_blank”> <font color="blue"><u>Generar Reporte</u></font></a></td></tr>
         </tbody>
     </table>
      </div>
