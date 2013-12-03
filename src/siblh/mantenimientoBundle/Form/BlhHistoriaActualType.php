@@ -19,7 +19,7 @@ class BlhHistoriaActualType extends AbstractType
             ->add('tallaDonante', 'number', array ( 'invalid_message'=>'Debe ser entre 1.5 y 2'))
             ->add('medicamento')
             ->add('habitoToxico')
-            ->add('motivoDonacion')
+            ->add('motivoDonacion','textarea',array('max_length'=>'50'))
             ->add('patologiaDonante')
             ->add('imc')
             ->add('estadoDonante', 'choice', 

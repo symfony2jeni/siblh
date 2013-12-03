@@ -58,24 +58,24 @@ elemento.style.visibility = visible ? "visible" : "hidden";
    <tr><td align = "left"><b> Formula Obstetrica</b> </td>
         <td align = "left"> 
         {{ form_label(form.formulaObstetricaG, 'G') }}
-        {{ form_widget(form.formulaObstetricaG,  { 'attr': {'size': '2', 'title':'Embarazos'} }) }}  
+        {{ form_widget(form.formulaObstetricaG,  { 'attr': {'size': '2', 'title':'Embarazos', 'onKeyPress':"return soloNumerosEnteros(event);"} }) }}  
         {{ form_label(form.formulaObstetricaP1, 'P') }}
-        {{ form_widget(form.formulaObstetricaP1,  { 'attr': {'size': '2', 'title':'Partos'} }) }}
+        {{ form_widget(form.formulaObstetricaP1,  { 'attr': {'size': '2', 'title':'Partos', 'onKeyPress':"return soloNumerosEnteros(event);"} }) }}
         {{ form_label(form.formulaObstetricaP2, 'P') }}
-        {{ form_widget(form.formulaObstetricaP2,  { 'attr': {'size': '2', 'title':'Prematuros'} }) }}
+        {{ form_widget(form.formulaObstetricaP2,  { 'attr': {'size': '2', 'title':'Prematuros', 'onKeyPress':"return soloNumerosEnteros(event);"} }) }}
         {{ form_label(form.formulaObstetricaA, 'A') }}
-        {{ form_widget(form.formulaObstetricaA,  { 'attr': {'size': '2', 'title':'Abortos'} }) }}
+        {{ form_widget(form.formulaObstetricaA,  { 'attr': {'size': '2', 'title':'Abortos', 'onKeyPress':"return soloNumerosEnteros(event);"} }) }}
         {{ form_label(form.formulaObstetricaV, 'V') }}
-        {{ form_widget(form.formulaObstetricaV,  { 'attr': {'size': '2', 'title':'Vivos'} }) }}
+        {{ form_widget(form.formulaObstetricaV,  { 'attr': {'size': '2', 'title':'Vivos', 'onKeyPress':"return soloNumerosEnteros(event);"} }) }}
         {{ form_label(form.formulaObstetricaM, 'M') }}
-        {{ form_widget(form.formulaObstetricaM,  { 'attr': {'size': '2', 'title':'Muertos'} }) }}</td>  
+        {{ form_widget(form.formulaObstetricaM,  { 'attr': {'size': '2', 'title':'Muertos', 'onKeyPress':"return soloNumerosEnteros(event);"} }) }}</td>  
  
    <td align = "left"><font color="red" >*</font> 
         {{ form_label(form.periodoIntergenesico) }} </td><td align = "left">
-        {{ form_widget(form.periodoIntergenesico,  { 'attr': {'size': '4', 'title': 'Digite el periodo entre 1 y 20'} }) }} </td> </tr>
+        {{ form_widget(form.periodoIntergenesico,  { 'attr': {'size': '4', 'title': 'Digite el periodo entre 1 y 20', 'onKeyPress':"return soloNumerosEnteros(event);"} }) }} </td> </tr>
    <tr><td height=10  ></td></tr>
    <tr> <td align = "left"> 
-        {{ form_label(form.fechaUltimaRegla) }}</td>
+        {{ form_label(form.fechaUltimaRegla, 'Ultima Regla') }}</td>
   <td align = "left"> 
         {{ form_widget(form.fechaUltimaRegla, {'attr':{'readonly': 'true', 'title': 'Dar clic y seleccionar fecha de ultima regla' } } ) }}</td>
   <td align = "left"><font color="red" >*</font> 
@@ -87,7 +87,7 @@ elemento.style.visibility = visible ? "visible" : "hidden";
         {{ form_widget(form.lugarControl, {'attr': {'value' : 'N/A'} }) }} </td>
   <td  align = "left">
         {{ form_label(form.numeroControl) }} &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </td> <td  align = "left"> 
-        {{ form_widget(form.numeroControl, {'attr': { 'required' : 'false', 'value' : 0} }) }} </td></tr>
+        {{ form_widget(form.numeroControl, {'attr': { 'required' : 'false', 'value' : 0, 'onKeyPress':"return soloNumerosEnteros(event);"} }) }} </td></tr>
   <tr><td height=10  ></td></tr>
   <tr>      
   <td align = "left" ><label>Partos anteriores</label></td>
@@ -101,7 +101,7 @@ elemento.style.visibility = visible ? "visible" : "hidden";
         {{ form_widget(form.fechaParto, {'attr':{'readonly': 'true', 'title': 'Dar clic y seleccionar fecha de parto' } }) }}</td>
  <td align = "left"> <font color="red" >*</font> 
         {{ form_label(form.amenorrea) }} &nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><td align = "left">        
-        {{ form_widget(form.amenorrea,  { 'attr': {'size': '4', 'title': 'Digite valor entre 1 y 38 Semanas'} }) }}</td></tr>
+        {{ form_widget(form.amenorrea,  { 'attr': {'size': '4', 'title': 'Digite valor entre 1 y 38 Semanas', 'onKeyPress':"return soloNumerosEnteros(event);"} }) }}</td></tr>
  <tr><td height=10  ></td></tr>
   
   <tr><td align = "left"> 

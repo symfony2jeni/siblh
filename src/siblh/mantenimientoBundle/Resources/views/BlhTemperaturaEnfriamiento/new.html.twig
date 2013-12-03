@@ -32,7 +32,7 @@
         <td align = "left"><tr align = left>
         {{ form_label(form.temperaturaE, ' ') }}
         {{ form_errors(form.temperaturaE) }}
-        {{ form_widget(form.temperaturaE,  { 'attr': {'size': '5', 'title': 'Temperatura entre 0 y 30'} }) }}  </tr></td>
+        {{ form_widget(form.temperaturaE,  { 'attr': {'size': '5', 'title': 'Temperatura entre 0 y 30', 'onKeyPress':"return soloNumerosEnteros(event);"} }) }}  </tr></td>
     
         <tr><td width = 400></td>
             

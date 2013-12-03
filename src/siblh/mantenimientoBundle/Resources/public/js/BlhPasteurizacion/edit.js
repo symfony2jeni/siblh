@@ -103,3 +103,22 @@ $('#siblh_mantenimientobundle_blhpasteurizacion_numFrascosPasteurizados').
    $('#button').button(); 
    $('#boton').button(); 
 });
+
+
+function soloNumerosEnteros(e)
+{
+var keynum = window.event ? window.event.keyCode : e.which;
+if (keynum === 8)
+return true;
+ 
+return /\d/.test(String.fromCharCode(keynum));
+}
+
+function soloNumeros(e)
+{
+var keynum = window.event ? window.event.keyCode : e.which;
+if ((keynum === 8) || (keynum === 46))
+return true;
+ 
+return /\d/.test(String.fromCharCode(keynum));
+}

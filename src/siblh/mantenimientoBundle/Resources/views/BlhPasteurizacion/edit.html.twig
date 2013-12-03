@@ -21,21 +21,21 @@
     <tr><td  align = "left" height=10  ></td></tr>
     <tr><td align='left'>{{ form_label(edit_form.numCiclo) }}</td><td align='left'>{{ form_widget(edit_form.numCiclo, {'attr':{'readonly': 'true'} }) }}</td></tr>
     <tr><td  align = "left" height=10  ></td></tr>
-    <tr><td align='left'><font color="red">*</font>{{ form_label(edit_form.volumenPasteurizado) }}</td><td align='left'>{{ form_widget(edit_form.volumenPasteurizado) }}</td></tr>
+    <tr><td align='left'><font color="red">*</font>{{ form_label(edit_form.volumenPasteurizado) }}</td><td align='left'>{{ form_widget(edit_form.volumenPasteurizado,  { 'attr': {'onKeyPress':"return soloNumeros(event);"} }) }}</td></tr>
     <tr><td  align = "left" height=10  ></td></tr>
-    <tr><td align='left'><font color="red">*</font>{{ form_label(edit_form.numFrascosPasteurizados) }}</td><td align='left'>{{ form_widget(edit_form.numFrascosPasteurizados) }}</td></tr>
+    <tr><td align='left'><font color="red">*</font>{{ form_label(edit_form.numFrascosPasteurizados) }}</td><td align='left'>{{ form_widget(edit_form.numFrascosPasteurizados,  { 'attr': {'onKeyPress':"return soloNumerosEnteros(event);"} }) }}</td></tr>
     <tr><td  align = "left" height=10  ></td></tr>
-    <tr><td align='left'><font color="red">*</font>{{ form_label(edit_form.fechaPasteurizacion) }}</td><td align='left'>{{ form_widget(edit_form.fechaPasteurizacion) }}</td></tr>
+    <tr><td align='left'><font color="red">*</font>{{ form_label(edit_form.fechaPasteurizacion) }}</td><td align='left'>{{ form_widget(edit_form.fechaPasteurizacion, {'attr':{'title': 'Dar clic y seleccionar fecha de pasteurizacion'} }) }}</td></tr>
     <tr><td  align = "left" height=10  ></td></tr>
-    <tr><td align='left'>{{ form_label(edit_form.horaInicioP) }}</td><td align='left'>{{ form_widget(edit_form.horaInicioP) }}</td></tr>
+    <tr><td align='left'>{{ form_label(edit_form.horaInicioP, 'Hora Inicio Pasteurizacion') }}</td><td align='left'>{{ form_widget(edit_form.horaInicioP) }}</td></tr>
     <tr><td  align = "left" height=10  ></td></tr>
-    <tr><td align='left'>{{ form_label(edit_form.horaFinalP) }}</td><td align='left'>{{ form_widget(edit_form.horaFinalP) }}</td></tr>
+    <tr><td align='left'>{{ form_label(edit_form.horaFinalP, 'Hora Final Pasteurizacion') }}</td><td align='left'>{{ form_widget(edit_form.horaFinalP) }}</td></tr>
     <tr><td  align = "left" height=10  ></td></tr>
-    <tr><td align='left'>{{ form_label(edit_form.horaInicioE) }}</td><td align='left'>{{ form_widget(edit_form.horaInicioE) }}</td></tr>
+    <tr><td align='left'>{{ form_label(edit_form.horaInicioE, 'Hora Inicio Enfriamiento') }}</td><td align='left'>{{ form_widget(edit_form.horaInicioE) }}</td></tr>
     <tr><td  align = "left" height=10  ></td></tr>
-     <tr><td align='left'>{{ form_label(edit_form.horaFinalE) }}</td><td align='left'>{{ form_widget(edit_form.horaFinalE) }}</td></tr>
+     <tr><td align='left'>{{ form_label(edit_form.horaFinalE, 'Hora Final Enfriamiento') }}</td><td align='left'>{{ form_widget(edit_form.horaFinalE) }}</td></tr>
     <tr><td  align = "left" height=10  ></td></tr>
-    <tr><td align='left'><font color="red">*</font>{{ form_label(edit_form.responsablePasteurizacion) }}</td><td align='left'>{{ form_widget(edit_form.responsablePasteurizacion) }}</td></tr>
+    <tr><td align='left'><font color="red">*</font>{{ form_label(edit_form.responsablePasteurizacion, 'Responsable') }}</td><td align='left'>{{ form_widget(edit_form.responsablePasteurizacion) }}</td></tr>
     <tr><td  align = "left" height=10  ></td></tr>
     <tr style="visibility:hidden"><td align='left'><font color="red">*</font>{{ form_label(edit_form.idCurva) }}</td><td align='left'>{{ form_widget(edit_form.idCurva) }}</td></tr>
     <tr><td align = "left"><font color="red" size = "2" face = "Comic Sans MS">* Campos requeridos</font></td> </tr>     

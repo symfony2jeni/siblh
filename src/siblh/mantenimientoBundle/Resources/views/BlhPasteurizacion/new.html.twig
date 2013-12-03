@@ -54,28 +54,28 @@
         {{ form_widget(form.numCiclo, {'attr':{'value': '0'} }) }} </td></tr>
      <tr>  <td align = left><font color="red">*</font>
         {{ form_label(form.volumenPasteurizado) }}</td><td align = left>
-        {{ form_widget(form.volumenPasteurizado) }} </td>
+        {{ form_widget(form.volumenPasteurizado,  { 'attr': {'onKeyPress':"return soloNumeros(event);"} }) }} </td>
    <td align = left><font color="red">*</font>
         {{ form_label(form.numFrascosPasteurizados) }}</td><td align = left>
-        {{ form_widget(form.numFrascosPasteurizados) }} </td></tr>
+        {{ form_widget(form.numFrascosPasteurizados,  { 'attr': {'onKeyPress':"return soloNumerosEnteros(event);"} }) }} </td></tr>
       <tr>  <td align = left><font color="red">*</font>
         {{ form_label(form.fechaPasteurizacion) }}</td><td align = left>
-        {{ form_widget(form.fechaPasteurizacion) }} </td>  
+        {{ form_widget(form.fechaPasteurizacion, {'attr':{'title': 'Dar clic y seleccionar fecha de pasteurizacion'} }) }} </td>  
     <td align = left><font color="red">*</font>
-        {{ form_label(form.responsablePasteurizacion) }}</td><td align = left>
+        {{ form_label(form.responsablePasteurizacion, 'Responsable') }}</td><td align = left>
         {{ form_widget(form.responsablePasteurizacion) }} </td></tr>           
                   
     <tr> <td align = left>
-        {{ form_label(form.horaInicioP) }}</td><td align = left>
+        {{ form_label(form.horaInicioP, 'Hora Inicio Pasteurizacion') }}</td><td align = left>
         {{ form_widget(form.horaInicioP) }} </td>
        <td align = left>
-        {{ form_label(form.horaFinalP) }}</td><td align = left>
+        {{ form_label(form.horaFinalP, 'Hora Final Pasteurizacion') }}</td><td align = left>
         {{ form_widget(form.horaFinalP) }} </td> </tr> 
   <tr> <td align = left>
-        {{ form_label(form.horaInicioE) }}</td><td align = left>
+        {{ form_label(form.horaInicioE, 'Hora Inicio Enfriamiento') }}</td><td align = left>
         {{ form_widget(form.horaInicioE) }} </td> 
         <td align = left>
-        {{ form_label(form.horaFinalE) }}</td><td align = left>
+        {{ form_label(form.horaFinalE, 'Hora Final Enfriamiento') }}</td><td align = left>
         {{ form_widget(form.horaFinalE) }} </td></tr> 
     
        

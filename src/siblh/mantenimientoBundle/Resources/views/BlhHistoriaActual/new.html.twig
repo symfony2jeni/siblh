@@ -48,10 +48,10 @@ elemento.style.visibility = visible ? "visible" : "hidden";
         {{ form_widget(form.idDonante) }} </td></tr>
        <tr><td align = "left" ><font color="red" >*</font>
         {{ form_label(form.pesoDonante, 'Peso') }}</td>
-    <td align = "left" >{{ form_widget(form.pesoDonante,  { 'attr': {'title': 'Peso entre 22 y 136 Kg  '} }) }} </td>
+    <td align = "left" >{{ form_widget(form.pesoDonante,  { 'attr': {'title': 'Peso entre 22 y 136 Kg  ', 'onKeyPress':"return soloNumeros(event);"} }) }} </td>
     <td align = "left"> <font color="red" >*</font>
-        {{ form_label(form.tallaDonante) }} </td>
-   <td align = "left"> {{ form_widget(form.tallaDonante,  { 'attr': {'title': 'Talla entre 100 y 200 cm'} }) }} </td></tr>
+        {{ form_label(form.tallaDonante, 'Talla') }} </td>
+   <td align = "left"> {{ form_widget(form.tallaDonante,  { 'attr': {'title': 'Talla entre 100 y 200 cm', 'onKeyPress':"return soloNumeros(event);"} }) }} </td></tr>
     <tr><td height=10  ></td></tr>
  
   <tr><td align = "left"><font color="red" >*</font> {{ form_label(form.imc) }}</td>

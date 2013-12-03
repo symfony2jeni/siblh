@@ -46,13 +46,13 @@
         
      <td align = center colspan = "3"><font color="red" >*</font> 
         {{ form_label(form.estanciaHospitalaria, 'Dias de estancia hospitalaria') }}</td><td align = left>
-        {{ form_widget(form.estanciaHospitalaria,  { 'attr': {'size': '3'} }) }} </td>   
+        {{ form_widget(form.estanciaHospitalaria,  { 'attr': {'size': '3', 'title': 'Dias mayor que cero', 'onKeyPress':"return soloNumerosEnteros(event);"} }) }} </td>   
         
       </tr><tr><td height=10  ></td></tr>      
     <tr>
     <td align = left><font color="red" >*</font> 
         {{ form_label(form.permanenciaUcin, 'Permanencia en UCIN') }}</td><td align = left>
-        {{ form_widget(form.permanenciaUcin,  { 'attr': {'size': '3'} }) }} </td>
+        {{ form_widget(form.permanenciaUcin,  { 'attr': {'size': '3','title': 'Dias mayor que cero', 'onKeyPress':"return soloNumerosEnteros(event);"} }) }} </td>
         
      <td align = left><font color="red" >*</font> 
         {{ form_label(form.madreCanguro) }}</td><td align = left>

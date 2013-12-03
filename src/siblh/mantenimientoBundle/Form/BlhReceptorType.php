@@ -29,7 +29,7 @@ class BlhReceptorType extends AbstractType
             ->add('pesoReceptor')
              ->add('duracionCpap', 'text')
             ->add('clasificacionLubchengo')
-             ->add('diagnosticoIngreso', 'textarea')
+             ->add('diagnosticoIngreso','textarea',array('max_length'=>'50'))
             ->add('duracionNpt', 'text')
             ->add('apgar', 'text')
             ->add('edadGestFur')

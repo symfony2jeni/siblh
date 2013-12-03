@@ -214,6 +214,9 @@ class BlhDonacionController extends Controller
     public function editAction($id)
     {
         $em = $this->getDoctrine()->getManager();
+         $userEst = $this->container->get('security.context')->getToken()->getUser()->getIdEst();
+       $query1 = $em->createQuery("SELECT e.nombre, e.direccion, e.telefono FROM siblhmantenimientoBundle:CtlEstablecimiento e WHERE e.id = $userEst");
+       $establecimiento = $query1->getResult(); 
 
         $entity = $em->getRepository('siblhmantenimientoBundle:BlhDonacion')->find($id);
 
@@ -228,6 +231,7 @@ class BlhDonacionController extends Controller
             'entity'      => $entity,
             'edit_form'   => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
+             'hospital' => $establecimiento,
         );
     }
 
@@ -245,7 +249,7 @@ class BlhDonacionController extends Controller
             'method' => 'PUT',
         ));
 
-        $form->add('submit', 'submit', array('label' => 'Update'));
+//        $form->add('submit', 'submit', array('label' => 'Update'));
 
         return $form;
     }

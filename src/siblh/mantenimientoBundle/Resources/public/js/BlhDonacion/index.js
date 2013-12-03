@@ -3,6 +3,7 @@ $(document).ready(function() {
 	tableToGrid("#listado_d", {
         pager : '#pagerd',
         rowNum:10, 
+        width: 850,
          height: '100%',
         gridview: true, 
        // widht: 60,
@@ -16,7 +17,7 @@ $(document).ready(function() {
             {name:'Codigo',width:15,align:'center'},
             {name:'Nombre',width:30,align:'center'},
             {name:'Fecha',width:10,align:'center', search:false},
-            {name:'Responsable', width:10,align:'center', search:false},
+            {name:'Responsable', width:15,align:'center', search:false},
             {name:'Accion', width:10,align:'center', search:false}
            
             

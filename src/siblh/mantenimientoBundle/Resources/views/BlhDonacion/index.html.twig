@@ -13,7 +13,7 @@
       <script type="text/javascript" src="{{asset('bundles/jquery/jquery.jqGrid-4.5.4/js/jquery.jqGrid.min.js')}}" ></script> 
 
     <h1>Donaciones</h1>
-
+    <div align = center>
     <table id = "listado_d">
         <thead>
             <tr>
@@ -28,11 +28,12 @@
         {% for entity in donaciones %}
             <tr><td>{{ entity.codigo_donante }}</td>
                 <td>{{ entity.nombre1 }} {{ entity.nombre2 }} {{ entity.apellido1 }} {{ entity.apellido2 }}</td>
-                <td>{% if entity.fechaDonacion %}{{ entity.fechaDonacion|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{% if entity.fechaDonacion %}{{ entity.fechaDonacion|date('Y-m-d') }}{% endif %}</td>
                 <td>{{ entity.responsableDonacion }}</td>
                 <td><a href="{{ path('blhdonacion_edit', { 'id': entity.id }) }}"><font color="blue"><u>Editar</u></font></a></td></tr>
         {% endfor %}
         </tbody>
     </table>
+            </div>
 <div id='pagerd' ></div>
     {% endblock %}

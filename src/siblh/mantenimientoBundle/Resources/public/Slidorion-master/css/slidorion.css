@@ -4,7 +4,7 @@
 	width: 95%;			/* Set to slidorion width. Is equal to .slider + .accordion width */
 	height: 400px;			/* Set to slidorion height. Is equal to .slider and .accordion height */
 	left: 41%;
-	background: #CBCBCB; 
+	background: black; /*#CBCBCB*/ 
 	padding: 10px;
       
 	border: 1px solid #BBB;

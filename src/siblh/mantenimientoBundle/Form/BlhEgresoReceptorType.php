@@ -15,14 +15,14 @@ class BlhEgresoReceptorType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('diagnosticoEgreso', 'textarea')
+            ->add('diagnosticoEgreso','textarea',array('max_length'=>'50'))
             ->add('madreCanguro', 'choice', 
                     array('choices' => array('' => ' ','Si' => 'Si',
                           'No' => 'No')))
             ->add('tipoEgreso', 'choice', 
                     array('choices' => array('' => 'Seleccione un valor','Alta' => 'Alta',
                           'Muerte' => 'Muerte')))
-            ->add('comentarioEgreso', 'textarea')
+            ->add('comentarioEgreso','textarea',array('max_length'=>'150'))
             ->add('trasladoPeriferico', 'choice', 
                     array('choices' => array('' => ' ','Si' => 'Si',
                           'No' => 'No')))

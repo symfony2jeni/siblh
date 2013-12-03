@@ -100,10 +100,10 @@ $('#siblh_mantenimientobundle_blhhistorialclinico_formulaObstetricaM').
   
 
 $('#siblh_mantenimientobundle_blhhistorialclinico_numeroControl').
-            attr('data-bvalidator', 'between[1:9]'); 
+            attr('data-bvalidator', 'between[0:9]'); 
     
 $('#siblh_mantenimientobundle_blhhistorialclinico_numeroControl').  
-        attr('data-bvalidator-msg', "El valor debe estar entre 1 y 9"); 
+        attr('data-bvalidator-msg', "El valor debe estar entre 0 y 9"); 
 
   $('#siblh_mantenimientobundle_blhhistorialclinico_periodoIntergenesico').
             attr('data-bvalidator', 'between[1:20],required');    
@@ -148,3 +148,21 @@ $('#siblh_mantenimientobundle_blhhistorialclinico_amenorrea').
            });
 
 });
+
+function soloNumerosEnteros(e)
+{
+var keynum = window.event ? window.event.keyCode : e.which;
+if (keynum === 8)
+return true;
+ 
+return /\d/.test(String.fromCharCode(keynum));
+}
+
+function soloNumeros(e)
+{
+var keynum = window.event ? window.event.keyCode : e.which;
+if ((keynum === 8) || (keynum === 46))
+return true;
+ 
+return /\d/.test(String.fromCharCode(keynum));
+}

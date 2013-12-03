@@ -50,7 +50,7 @@ class BlhDonanteType extends AbstractType
             ->add('tipoColecta', 'choice',
                     array('choices' => array ('' => 'Seleccione un valor', 
                         'Domiciliar' => 'Domiciliar', 'BLH'=> 'BLH')))
-            ->add('observaciones', 'textarea')
+            ->add('observaciones','textarea',array('max_length'=>'150'))
             ->add('idBancoDeLeche')
             ->add('idMunicipio')
                 
