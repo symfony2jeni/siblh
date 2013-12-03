@@ -9,7 +9,7 @@ $(window).load(function() {
 $(document).ready(function() { 
    
     
-   
+      $.noConflict();
     
   $(":checkbox").click(function(e) {
           var aux= new Array();
@@ -43,7 +43,12 @@ $(document).ready(function() {
         
        
 
-
+    //Boton   
+    
+    $('#lote')
+      .button();
+       $('#boton1')
+      .button();
 
  
  //url = Routing.generate('blhfrascoprocesado_create');

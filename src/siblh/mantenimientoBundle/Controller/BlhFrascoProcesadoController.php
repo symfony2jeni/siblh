@@ -184,20 +184,32 @@ class BlhFrascoProcesadoController extends Controller
        
         $query1 = $em->createQuery("SELECT e.nombre, e.direccion, e.telefono FROM siblhmantenimientoBundle:CtlEstablecimiento e WHERE e.id = $userEst");
         $establecimiento = $query1->getResult(); 
+        //codigo
+        $queryb = $em->createQuery("SELECT b.id FROM siblhmantenimientoBundle:BlhBancoDeLeche b WHERE b.idEstablecimiento = $userEst");
+        $id_blh = $queryb->getResult(); 
+        $codigo=$id_blh[0]['id'];
+        
+          if ($codigo<10){
+        $idp='0'.$codigo;
+        $idp = (string)$idp;
+         }
+        else{$idp = (string)$codigo;}
         
         //Obtener los frascos a combinar
         
         //Acides->frasco
-       $query = $em->createQuery("select fr.id, fr.codigoFrascoRecolectado, a.resultado  from siblhmantenimientoBundle:BlhAcidez a join a.idFrascoRecolectado fr  where fr.idEstado = 6 AND fr.idLoteAnalisis IS NOT NULL ORDER BY fr.id");
+       $query = $em->createQuery("select fr.id, fr.codigoFrascoRecolectado, a.resultado  from siblhmantenimientoBundle:BlhAcidez a join a.idFrascoRecolectado fr  where fr.idEstado = 6 AND fr.idLoteAnalisis IS NOT NULL and (substring (fr.codigoFrascoRecolectado, 1, 2) = '$idp') ORDER BY fr.id ");
        $frascos_combinar = $query->getResult(); 
        $Cantidad_frascos = count($frascos_combinar);
        //Crematocrito->frasco
-       $query2 = $em->createQuery("SELECT fr.id, fr.codigoFrascoRecolectado, fr.volumenRecolectado vl, c.kilocalorias FROM siblhmantenimientoBundle:BlhCrematocrito c join c.idFrascoRecolectado fr  where fr.idEstado = 6 AND fr.idLoteAnalisis IS NOT NULL ORDER BY fr.id");      
+       $query2 = $em->createQuery("SELECT fr.id, fr.codigoFrascoRecolectado, fr.volumenRecolectado vl, c.kilocalorias FROM siblhmantenimientoBundle:BlhCrematocrito c join c.idFrascoRecolectado fr  where fr.idEstado = 6 AND fr.idLoteAnalisis IS NOT NULL and (substring (fr.codigoFrascoRecolectado, 1, 2) = '$idp') ORDER BY fr.id ");      
        $calorias = $query2->getResult(); 
        $filas = count($calorias );
+       
+
         
         //volumen agregado
-       $query3 = $em->createQuery("SELECT sum(frfp.volumenAgregado) as agregado, fr.id FROM siblhmantenimientoBundle:BlhFrascoRecolectadoFrascoP frfp  join frfp.idFrascoRecolectado fr  where fr.idEstado = 6 AND fr.idLoteAnalisis IS NOT NULL GROUP BY fr.id ORDER BY fr.id");      
+       $query3 = $em->createQuery("SELECT sum(frfp.volumenAgregado) as agregado, fr.id FROM siblhmantenimientoBundle:BlhFrascoRecolectadoFrascoP frfp  join frfp.idFrascoRecolectado fr  where fr.idEstado = 6 AND fr.idLoteAnalisis IS NOT NULL and (substring (fr.codigoFrascoRecolectado, 1, 2) = '$idp') GROUP BY fr.id  ORDER BY fr.id ");      
        $volumen_agregado = $query3->getResult(); 
        $resultCount = count($volumen_agregado);
 
@@ -423,10 +435,20 @@ class BlhFrascoProcesadoController extends Controller
       $userEst = $this->container->get('security.context')->getToken()->getUser()->getIdEst();
       $query1 = $em->createQuery("SELECT e.nombre, e.direccion, e.telefono FROM siblhmantenimientoBundle:CtlEstablecimiento e WHERE e.id = $userEst");
       $establecimiento = $query1->getResult(); 
+      //codigo
+        $queryb = $em->createQuery("SELECT b.id FROM siblhmantenimientoBundle:BlhBancoDeLeche b WHERE b.idEstablecimiento = $userEst");
+        $id_blh = $queryb->getResult(); 
+        $codigo=$id_blh[0]['id'];
+        
+          if ($codigo<10){
+        $idp='0'.$codigo;
+        $idp = (string)$idp;
+         }
+        else{$idp = (string)$codigo;}
         
        //Obteniendo las pasteurizaciones a las que aun no se les ha combinado frascos procesados
        
-       $query = $em->createQuery("SELECT p.id, p.codigoPasteurizacion, p.numCiclo, p.volumenPasteurizado,p.numFrascosPasteurizados, p.fechaPasteurizacion, p.responsablePasteurizacion FROM siblhmantenimientoBundle:BlhPasteurizacion p where p.id not in (select f.id  from siblhmantenimientoBundle:BlhFrascoProcesado f JOIN f.idPasteurizacion pas)");
+       $query = $em->createQuery("SELECT p.id, p.codigoPasteurizacion, p.numCiclo, p.volumenPasteurizado,p.numFrascosPasteurizados, p.fechaPasteurizacion, p.responsablePasteurizacion FROM siblhmantenimientoBundle:BlhPasteurizacion p where p.id not in (select f.id  from siblhmantenimientoBundle:BlhFrascoProcesado f JOIN f.idPasteurizacion pas) and (substring (p.codigoPasteurizacion, 1, 2) = '$idp')");
         
          $pasteurizaciones = $query->getResult();
      

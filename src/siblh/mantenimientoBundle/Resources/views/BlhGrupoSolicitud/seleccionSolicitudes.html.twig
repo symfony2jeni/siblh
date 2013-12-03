@@ -13,6 +13,7 @@
     
 <h1>Listado de Solicitudes para agrupar</h1>
 <FORM method="POST" action="{{path("blhagruparsolicitudes")}}" >
+    <div align=center>
 <table id="Multiselect">
 
 <thead>
@@ -20,8 +21,7 @@
                 <th>id</th>
                 <th>Codigo</th>
                 <th>Fecha</th>
-                <th>Nombres</th>
-                <th>Apellidos</th>
+                <th>Receptor</th>
                 <th>Acidez</th>
                 <th>Calorias</th>
                 <th>Volumen&nbsp;por&nbsp;toma</th>
@@ -36,8 +36,7 @@
                 <td>{{ solicitud.id }}</td>
                 <td>{{ solicitud.codigoSolicitud }}</td>
                 <td>{{ solicitud.fechaSolicitud|date('d-m-Y') }}</td>
-                <td>{{ solicitud.nombre1 }}&nbsp;{{ solicitud.nombre2 }}&nbsp;{{ solicitud.nombre3 }}</td>
-                <td>{{ solicitud.apellido1 }}&nbsp;{{ solicitud.apellido2 }}</td>      
+                <td>{{ solicitud.nombre1 }}&nbsp;{{ solicitud.nombre2 }}&nbsp;{{ solicitud.nombre3 }}&nbsp;{{ solicitud.apellido1 }}&nbsp;{{ solicitud.apellido2 }}</td>  
                 <td>{{ solicitud.acidezNecesaria }}</td>
                 <td>{{ solicitud.caloriasNecesarias }}</td>
                 <td>{{ solicitud.volumenPorToma }}</td>
@@ -45,6 +44,7 @@
                 {% endfor %}
                   </tbody>
                   </table>
+            </div>
 <div id="pagerMultiselect"></div>
 {#<a href="javascript:void(0)" id="agrupar" >Get Selected id's</a>#}
 

@@ -35,7 +35,7 @@
                 {{ form_widget(form.idFrascoRecolectado) }} </td>
                <td colspan = "4" align = "right" width=100><b>Fecha analisis</b></td>
                 <td colspan = "2" align = "right">
-                <INPUT type=text STYLE="text-align:center" name="nombre" disabled="disabled" size=20 readonly="readonly" value= "{{ datos_frasco[0].fecha|date('d-m-Y') }}"></td>
+                <INPUT type=text STYLE="text-align:center" name="nombre" disabled="disabled" size=20 readonly="readonly" value= "{{ datos_frasco[0].fecha|date('Y-m-d') }}"></td>
                
                 
        </tr>

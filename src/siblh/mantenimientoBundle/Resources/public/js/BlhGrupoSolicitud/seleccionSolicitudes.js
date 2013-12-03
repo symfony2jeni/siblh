@@ -6,8 +6,7 @@ $(document).ready(function() {
    		{name:'id',index:'id', width:10, align:'Center', hidden:true},
    		{name:'Codigo',index:'Codigo', width:25, align:'Center'},
    		{name:'Fecha',index:'Fecha', width:25, align:'Center'},
-   		{name:'Nombres',index:'Nombres', width:80, align:'Center'},
-   		{name:'Apellidos',index:'Apellidos', width:80, align:'Center'},		
+   		{name:'Receptor',index:'Receptor', width:80, align:'Center'},		
    		{name:'Acidez',index:'Acidez', width:15, align:'Center'},		
    		{name:'Calorias',index:'Calorias', width:15, align:'Center'},	
                 {name:'Volumen&nbsp;por&nbsp;toma',index:'Volumen&nbsp;por&nbsp;toma', width:25, align:'Center'},
@@ -20,7 +19,9 @@ $(document).ready(function() {
         viewrecords: false,
         sortorder: "desc",
 	multiselect: true,
-	caption: "Seleccione las solicitudes a agrupar"
+	caption: "Seleccione las solicitudes a agrupar",
+        height:'100%',
+        width:1100
 });
 
 
