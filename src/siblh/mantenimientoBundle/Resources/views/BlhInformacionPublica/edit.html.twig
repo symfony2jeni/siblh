@@ -1,16 +1,59 @@
+
 {% extends 'siblhmantenimientoBundle::plantilla.html.twig'%}
 
+
+{% block stylesheets %}
+    {{ parent() }}
+        <link href="{{ asset('bundles/siblhmantenimiento/css/form.css') }}" rel="stylesheet" type="text/css" />
+ {% endblock %}
+        
+ {% block javascripts %}
+    {{parent()}}
+    
+    <script type="text/javascript" src="{{ asset('bundles/siblhmantenimiento/js/BlhInformacionPublica/new.js') }}" ></script>
+    
+ {% endblock %}
+
+
 {% block body -%}
-    <h1>BlhInformacionPublica edit</h1>
+    <h1>Editar Informacion Publica</h1>
+    
+    {{ form_start(edit_form) }}
+    {{ form_errors(edit_form) }}
+    
+ <table align = "center" >
+          
+ <tr><td align='left' ><P>
+  {{ form_label(edit_form.tipo,'Tipo') }}
+ </td><td align='left'>{{ form_widget(edit_form.tipo) }}</td></tr>
+ 
+ <tr><td align='left' ><P>
+  {{ form_label(edit_form.nombreDocumento,'Documento') }}
+ </td><td align='left'>{{ form_widget(edit_form.nombreDocumento) }}</td></tr>
+ 
 
-    {{ form(edit_form) }}
+ <tr><td align='left' ><P>
+  {{ form_label(edit_form.fechaPublicacion,'Fecha') }}
+ </td><td align='left'>{{ form_widget(edit_form.fechaPublicacion, {'attr':{'readonly': 'true', 'title': 'Dar clic y seleccionar fecha de curva'} }) }}</td></tr>
+  
+     
 
-        <ul class="record_actions">
-    <li>
-        <a href="{{ path('blhinformacionpublica') }}">
-            Back to the list
-        </a>
-    </li>
-    <li>{{ form(delete_form) }}</li>
-</ul>
-{% endblock %}
+ <tr><td align='left' ><P>
+ {{ form_label(edit_form.file,'Archivo') }}        
+ </td><td align='center'>{{ form_widget(edit_form.file) }}</td></tr>
+ 
+
+ <td style="visibility:hidden" align='left' ><font color="red">*</font>
+  {{ form_label(edit_form.idBancoDeLeche,'Banco de Leche') }}
+  {{ form_widget(edit_form.idBancoDeLeche) }}</td></tr>
+     
+  <tr> 
+    <td><input type="submit" class= "ui-button" value="Actualizar"/></td>
+    <td><input id = "boton" type="button" value="Regresar" onClick=' window.location.href="{{ path('_NewInfoPublicaEdit') }}" '> </td>
+</tr>   
+
+ </table>   
+   {{ form_end(edit_form) }} </tr>
+
+{% endblock %}       
+        

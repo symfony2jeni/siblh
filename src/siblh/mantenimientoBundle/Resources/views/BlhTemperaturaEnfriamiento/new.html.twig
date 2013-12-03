@@ -18,34 +18,26 @@
    <table align = "center" >
        
        <tr>
-       <td align = "center">Codigo Pasteurizacion</td>
+        <td align = "center">Codigo Pasteurizacion</td>
         <td align = "center">
         <INPUT type=text disabled="disabled" readonly="readonly" value= " {{ datos_pasteurizacion[0].codigoPasteurizacion }} "></td></tr>
       
     </table>
     </form> 
     
-    <form>
-     <table >
+     <form>
+    {{ form_start(form) }}
+    {{ form_errors(form) }}
+    <table>
          <td align = "left">
          <tr align = "left"> Temperatura de Enfriamiento&nbsp;&nbsp;&nbsp;&nbsp;</tr></td>
     {% for temperaturas in temperaturas%}
-   
-        
-        <td align = "left">
+     <td align = "left">
         
         <tr align = "left"><INPUT type=text disabled="disabled" size=5 readonly="readonly" value= " {{ temperaturas.temperaturaE }} "> </tr> </td>
-    
-   
-    
-    
-     {% endfor %}
 
-            </form>
-    
-    
-        {{ form_start(form) }}
-    {{ form_errors(form) }}
+     {% endfor %}
+        
     <td align = "left"><tr align = left>
         {{ form_label(form.temperaturaE, ' ') }}
         {{ form_errors(form.temperaturaE) }}
@@ -53,15 +45,13 @@
     
     
     <td><tr colspan = 3><br><br> <input type="submit" class= "ui-button" value="Guardar"/></tr></td>
-    
-      
-    
-     </table>
+    </form>
+    </table>
             
             
-            <table >
+   <table>
             
-            <tr>
+     <tr>
         <td style="visibility:hidden"><br><br>
         {{ form_label(form.idPasteurizacion) }}
         {{ form_errors(form.idPasteurizacion) }}
@@ -69,14 +59,12 @@
         </td>
     </tr>
     
-            </table>
-              {{ form_end(form) }}
-
-        <ul class="record_actions">
-    <li>
-        <a href="{{ path('blhtemperaturaenfriamiento') }}">
-            Ver Listado
-        </a>
-    </li>
-</ul>
+   </table>
+         
+   {{ form_end(form) }}
+         
+          <table align = 'center'>
+     <tr><td><a href="{{ path('blhtemperaturaenfriamiento') }}">Ver listado </a>
+     </td></tr></table>
+         
 {% endblock %}

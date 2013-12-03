@@ -4,8 +4,8 @@ $(document).ready(function() {
     tableToGrid("#seleccionPasteurizacion", {
         rowNum:5, 
         gridview: true, 
-        height:100,
-        width:1400,
+        height:'100%',
+        width:1100,
         caption: "Listado de pasteurizaciones disponibles",
         colModel :[
             {name:'Código',width:5,align:'center'},

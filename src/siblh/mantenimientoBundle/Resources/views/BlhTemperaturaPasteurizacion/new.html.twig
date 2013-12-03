@@ -16,11 +16,12 @@
 {% block body -%}
     <h1>Registro Temperatura  de Pasteurizacion</h1>
 
+  
 
 <FORM> 
    <table align = "center">
-       
        <tr>
+        <p>    
         <td  align = "left">Codigo Pasteurizacion</td>
         <td>
          <INPUT type=text STYLE="text-align:center" disabled="disabled" size=20 readonly="readonly" value= " {{ pasteurizaciones_frascos[0].codigoPasteurizacion}} "></td>
@@ -30,23 +31,46 @@
        </tr>  
        
     <tr>
-    <tr></tr> <tr></tr> <tr></tr><tr></tr> <tr></tr> <tr></tr>
+       <p> 
         <td> Hora de Inicio</td>
         <td>
-        <INPUT type=text STYLE="text-align:center" disabled="disabled" size=30 readonly="readonly" value= "{{ pasteurizaciones_frascos[0].horaInicioP|date('Y-m-d H:i:s') }}"></td>
+        <INPUT type=text STYLE="text-align:center" disabled="disabled" size=30 readonly="readonly" value= "{{ pasteurizaciones_frascos[0].horaInicioP|date('H:i:s') }}"></td>
          </td>
         <td>Hora Fin</td>
          <td>
-        <INPUT type=text STYLE="text-align:center" disabled="disabled" size=30 readonly="readonly" value= "{{ pasteurizaciones_frascos[0].horaFinalP|date('Y-m-d H:i:s') }}"></td>
-      </td> 
-    </tr>        
-    </table>
-          
-    </FORM>      
+        <INPUT type=text STYLE="text-align:center" disabled="disabled" size=30 readonly="readonly" value= "{{ pasteurizaciones_frascos[0].horaFinalP|date('H:i:s') }}"></td>
+      </td>
+       </tr>
+    </table> 
+    </FORM> 
+    
+    
     
     {{ form_start(form) }}
     {{ form_errors(form) }}
     
+      <table align = "center" >
+         <p>
+         <td align = "left"> 
+         <tr align = "left"> Temperatura de Pasteurizacion&nbsp;&nbsp;&nbsp;&nbsp;</tr></td>
+    {% for temperaturas in temperaturas%}
+  
+        <td align = "left">  
+        <tr align = "left"><INPUT type=text disabled="disabled" size=5 readonly="readonly" value= " {{ temperaturas.temperaturaP}} "> </tr> </td>
+    
+     {% endfor %}
+
+    <td align = "left"><tr align = left>
+        {{ form_label(form.temperaturaP, ' ') }}
+        {{ form_errors(form.temperaturaP) }}
+        {{ form_widget(form.temperaturaP,{ 'attr': {'title': '99.99','size': '5','onKeyPress':"return soloNumerosEnteros(event);"} }) }}  </tr></td>
+    
+    
+    <td><tr colspan = 3><br><br> <input type="submit" id= "boton" value="Guardar"/></tr></td>
+
+     </form>
+    </table>
+         
     <table align = "center">
         
       <tr style="visibility:hidden">
@@ -54,22 +78,8 @@
         {{ form_errors(form.idPasteurizacion) }}
         {{ form_widget(form.idPasteurizacion) }}</td>  
         </tr>
-
-   <tr>
-    <td>{{ form_label(form.temperaturaP, 'Temperatura') }}
-        {{ form_errors(form.temperaturaP) }}
-        {{ form_widget(form.temperaturaP) }}</td>      
-   </tr>
-     <td colspan = '3' align = 'center'>  <input type="submit" class= "ui-button" value="Guardar"/></td></tr> 
-       </table> 
+        </table>
 
      {{ form_end(form) }}
 
-        <ul class="record_actions">
-    <li>
-        <a href="{{ path('blhtemperaturapasteurizacion') }}">
-            Regresar a la lista
-        </a>
-    </li>
-</ul>
 {% endblock %}

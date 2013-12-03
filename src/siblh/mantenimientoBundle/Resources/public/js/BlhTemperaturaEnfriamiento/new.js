@@ -17,7 +17,7 @@ $(document).ready(function() {
    
 
 $('#siblh_mantenimientobundle_blhtemperaturaenfriamiento_temperaturaE').
-        attr('data-bvalidator', 'between[0:30],required');
+        attr('data-bvalidator', 'between[5:30],required');
     
 $('#siblh_mantenimientobundle_blhtemperaturaenfriamiento_temperaturaE').
         attr('data-bvalidator-msg', "Ingrese valores para la temperatura entre 0 y 30");  

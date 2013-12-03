@@ -1,58 +1,38 @@
-{% extends 'siblhmantenimientoBundle::plantilla.html.twig' %}
+{% extends 'siblhmantenimientoBundle::plantilla.html.twig'%}
+{% block javascripts %}
+    {{parent()}}
+    <script type="text/javascript" src="{{ asset('bundles/siblhmantenimiento/js/BlhCurva/index.js') }}" ></script> 
+{% endblock %}
 
+    
 {% block body -%}
-    <h1>BlhCurva list</h1>
-
-    <table class="records_list">
+     <link href="{{asset('bundles/jquery/jquery.jqGrid-4.5.4/css/ui.jqgrid.css')}}" rel="stylesheet"  type="text/css" media="all"/>  
+     <script type="text/javascript" src="{{asset('bundles/jquery/jquery.jqGrid-4.5.4/js/i18n/grid.locale-es.js')}}"></script>
+     <script type="text/javascript" src="{{asset('bundles/jquery/jquery.jqGrid-4.5.4/js/jquery.jqGrid.min.js')}}" ></script> 
+  
+      <h1>Listado de Curvas Registradas</h1>
+    
+    <table id="listado_curvas">
         <thead>
             <tr>
-                <th>Id</th>
-                <th>Tiempo1</th>
-                <th>Tiempo2</th>
-                <th>Tiempo3</th>
-                <th>Valorcurva</th>
-                <th>Fechacurva</th>
-                <th>Cantidadfrascos</th>
-                <th>Volumenporfrasco</th>
-                <th>Horainiciocurva</th>
-                <th>Actions</th>
-            </tr>
+                <th>Valor&nbsp;Curva</th>  
+                <th>Fecha&nbsp;Curva</th>  
+                <th>Cantidad&nbsp;Frascos</th>  
+                <th>Volumen&nbsp;Frascos</th>  
+                <th>Acción</th>
+            </tr>  
         </thead>
         <tbody>
-        {% for entity in entities %}
+     {% for entity in entities %}
             <tr>
-                <td><a href="{{ path('blhcurva_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
-                <td>{{ entity.tiempo1 }}</td>
-                <td>{{ entity.tiempo2 }}</td>
-                <td>{{ entity.tiempo3 }}</td>
                 <td>{{ entity.valorCurva }}</td>
-                <td>{% if entity.fechaCurva %}{{ entity.fechaCurva|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{% if entity.fechaCurva %}{{ entity.fechaCurva|date('Y-m-d') }}{% endif %}</td>
                 <td>{{ entity.cantidadFrascos }}</td>
                 <td>{{ entity.volumenPorFrasco }}</td>
-                <td>{{ entity.horaInicioCurva }}</td>
-                <td>
-                <ul>
-                    <li>
-                        <a href="{{ path('blhcurva_show', { 'id': entity.id }) }}">show</a>
-                    </li>
-                    <li>
-                        <a href="{{ path('blhcurva_edit', { 'id': entity.id }) }}">edit</a>
-                    </li>
-                    li>
-                        <a href="{{ path('blhcurva_edit', { 'id': entity.id }) }}">Agrupar Frascos</a>
-                    </li>
-                </ul>
-                </td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
-
-        <ul>
-        <li>
-            <a href="{{ path('blhcurva_new') }}">
-                Create a new entry
-            </a>
-        </li>
-    </ul>
-    {% endblock %}
+                <td><a href="{{ path('blhcurva_edit', { 'id': entity.id }) }}"><font color="blue"><u>Editar</u></font></a>  </td>
+                 </tr>
+            {% endfor %}
+                  </tbody>
+                </table>
+               <div id='pagerCurvas' ></div>
+    {% endblock %}  

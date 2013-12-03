@@ -191,7 +191,7 @@ class BlhInformacionPublicaController extends Controller
             'method' => 'PUT',
         ));
 
-        $form->add('submit', 'submit', array('label' => 'Update'));
+     //   $form->add('submit', 'submit', array('label' => 'Update'));
 
         return $form;
     }
@@ -266,7 +266,7 @@ class BlhInformacionPublicaController extends Controller
         return $this->createFormBuilder()
             ->setAction($this->generateUrl('blhinformacionpublica_delete', array('id' => $id)))
             ->setMethod('DELETE')
-            ->add('submit', 'submit', array('label' => 'Delete'))
+           // ->add('submit', 'submit', array('label' => 'Delete'))
             ->getForm()
         ;
     }

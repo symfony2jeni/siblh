@@ -16,56 +16,82 @@
 {% block body -%}
     <h1> Registro Analisis Microbiologico</h1>
 
-   {# {{ form(form) }} #}
 
-{{ form_start(form) }}
+<FORM> 
+   <table align = "center" cellspacing="20">
+       
+       <tr>
+       <td  align = "left">Frasco Pasteurizado</td>
+        <td>
+         <INPUT type=text STYLE="text-align:center" disabled="disabled" size=20 readonly="readonly" value= " {{ frascos_pasteurizados[0].codigoFrascoProcesado}} "></td>
+        <td  align = "right">Observacion</td>
+        <td>   
+         <INPUT type=text STYLE="text-align:center" disabled="disabled" size=30 readonly="readonly" value=" {{ frascos_pasteurizados[0].observacionFrascoProcesado }}"></td> 
+       </tr>  
+             
+    </table>
+    </FORM> 
+
+    
+  {{ form_start(form) }}
     {{ form_errors(form) }}
     
        
- <table border=0 align="center">
-     
-<tr>
-    <td>{{ form_label(form.idFrascoProcesado, 'Frasco pasteurizado' )}}</td>
-    <td>{{ form_label(form.coliformesTotales, 'Coliformes totales') }}</td>
-    <td>{{ form_label(form.control, 'Control')}} </td>
-    <td>{{ form_label(form.situacion, 'Situacion') }}</td>
-   
+<table border=0 align="center" CELLPADDING="20" >
+<TR> 
+<TD align="left" ROWSPAN=3>
     
-    
- </tr>
- <tr> 
-    <td>
-        {{ form_errors(form.idFrascoProcesado) }}
-        {{ form_widget(form.idFrascoProcesado) }} </td>
-     
-    
-    <td>   
-        {{ form_errors(form.coliformesTotales) }}
+    <td align="left"> 
+        {{ form_label(form.coliformesTotales, 'Coliformes totales') }}</td>
+    <td>{{ form_errors(form.coliformesTotales) }}
         {{ form_widget(form.coliformesTotales) }} </td>
-    
-     
-    <td> 
-        {{ form_errors(form.control) }}
-        {{ form_widget(form.control) }} </td>
-    
-    
-    <td>
-         {{ form_errors(form.situacion) }}
+ </tr>
+ 
+
+ <TR>
+    <td align="left">
+          {{ form_label(form.situacion, 'Situacion') }}</td>
+   <td>  {{ form_errors(form.situacion) }}
          {{ form_widget(form.situacion) }}   
     </td> 
      
-    
- </tr>
- 
- <tr>
-<td colspan = '7' align = 'center'>  <input type="submit" class= "ui-button" value="Guardar"/></td></tr>
-</table> 
-   
-   {# <input type="submit" /> #}
+  </TR>  
   
-{{ form_end(form) }}
+  
+   <TR style="visibility:hidden">
+       <td align="left" > 
+        {{ form_label(form.control, 'Control')}}     </td>
+    <td>{{ form_errors(form.control) }}
+        {{ form_widget(form.control) }} </td>
+    
+    
+    
+ </TR>
+ 
+ <td colspan = '7' align = 'center'>  <input type="submit" id= "boton" value="Guardar"/></td></tr>
+
+     </table>
+            
+    
+    
+    <table align = "center">
+        
+      <tr style="visibility:hidden">
+    <td> {{ form_label(form.idFrascoProcesado) }}
+        {{ form_errors(form.idFrascoProcesado) }}
+        {{ form_widget(form.idFrascoProcesado) }}</td>  
+        </tr>
+
+     {{ form_end(form) }}
+
+     
+{% endblock %}
+
+
+  
+
 
     
    
-{% endblock %}
+
 

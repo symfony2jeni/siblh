@@ -1,47 +1,37 @@
 {% extends 'siblhmantenimientoBundle::plantilla.html.twig'%}
+{% block javascripts %}
+    {{parent()}}
+    <script type="text/javascript" src="{{ asset('bundles/siblhmantenimiento/js/BlhInformacionPublica/index.js') }}" ></script> 
+{% endblock %}
 
+    
 {% block body -%}
-    <h1>BlhInformacionPublica list</h1>
-
-    <table class="records_list">
+     <link href="{{asset('bundles/jquery/jquery.jqGrid-4.5.4/css/ui.jqgrid.css')}}" rel="stylesheet"  type="text/css" media="all"/>  
+     <script type="text/javascript" src="{{asset('bundles/jquery/jquery.jqGrid-4.5.4/js/i18n/grid.locale-es.js')}}"></script>
+     <script type="text/javascript" src="{{asset('bundles/jquery/jquery.jqGrid-4.5.4/js/jquery.jqGrid.min.js')}}" ></script> 
+  
+      <h1>Listado de Archivos</h1>
+    
+    <table id="listado_archivos">
         <thead>
             <tr>
-                <th>Id</th>
-                <th>Documento</th>
-                <th>Tipo</th>
-                <th>Nombredocumento</th>
-                <th>Fechapublicacion</th>
-                <th>Actions</th>
-            </tr>
+               <th>TipoDocumento</th>  
+                <th>NombreDocumento</th>  
+                <th>FechaPublicacion</th>  
+                <th>Acción</th>
+            </tr> 
         </thead>
-        <tbody>
-        {% for entity in entities %}
-            <tr>
-                <td><a href="{{ path('blhinformacionpublica_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
-                <td>{{ entity.path }}</td>
-                <td>{{ entity.tipo }}</td>
-                <td>{{ entity.nombreDocumento }}</td>
-                <td>{% if entity.fechaPublicacion %}{{ entity.fechaPublicacion|date('Y-m-d H:i:s') }}{% endif %}</td>
-                <td>
-                <ul>
-                    <li>
-                        <a href="{{ path('blhinformacionpublica_show', { 'id': entity.id }) }}">show</a>
-                    </li>
-                    <li>
-                        <a href="{{ path('blhinformacionpublica_edit', { 'id': entity.id }) }}">edit</a>
-                    </li>
-                </ul>
-                </td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+        <tbody>    
+     {% for entity in entities %}
+            <tr> 
+               <td>{{ entity.tipo }}</td>
+               <td>{{ entity.nombreDocumento }}</td>
+               <td>{{ entity.fechaPublicacion|date('Y-m-d')}}</td>   
+               <td><a href="{{ path('blhinformacionpublica_edit', { 'id': entity.id }) }}"><font color="blue"><u>Editar</u></font></a></td>
+             </tr>
+    {% endfor %}
+                  </tbody>
+                  </table>
+               <div id='pagerArchivos' ></div>
 
-      {#   <ul>
-        <li>
-            <a href="{{ path('blhinformacionpublica_new') }}">
-                Create a new entry
-            </a>
-        </li>
-    </ul> #}
-    {% endblock %}
+    {% endblock %}  

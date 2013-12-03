@@ -36,9 +36,24 @@ class BlhTemperaturaPasteurizacionController extends Controller
       $userEst = $this->container->get('security.context')->getToken()->getUser()->getIdEst();
       $query1 = $em->createQuery("SELECT e.nombre, e.direccion, e.telefono FROM siblhmantenimientoBundle:CtlEstablecimiento e WHERE e.id = $userEst");
       $establecimiento = $query1->getResult(); 
+      $queryb = $em->createQuery("SELECT b.id FROM siblhmantenimientoBundle:BlhBancoDeLeche b WHERE b.idEstablecimiento = $userEst");
+      $id_blh = $queryb->getResult(); 
+      $codigo=$id_blh[0]['id']; 
+         if ($codigo<10){
+        $idp='0'.$codigo;
+        $idp = (string)$idp; //convirtiendo a string para compararlo con un string
+         }
+        else{$idp = (string)$codigo;}
+      
+       $query = $em->createQuery("SELECT p.id, p.codigoPasteurizacion,p.fechaPasteurizacion, p.responsablePasteurizacion,
+                                  t.temperaturaP FROM siblhmantenimientoBundle:BlhTemperaturaPasteurizacion t join t.idPasteurizacion p
+                                   where substring(p.codigoPasteurizacion,1,2) =  '$idp'");
+               
+       $pasteurizaciones_index = $query->getResult(); 
         return array(
             'entities' => $entities,
             'hospital' => $establecimiento,
+            'pasteurizaciones_index'=> $pasteurizaciones_index
         );
     }
     /**
@@ -177,7 +192,7 @@ class BlhTemperaturaPasteurizacionController extends Controller
             'method' => 'PUT',
         ));
 
-        $form->add('submit', 'submit', array('label' => 'Update'));
+       // $form->add('submit', 'submit', array('label' => 'Update'));
 
         return $form;
     }
@@ -254,7 +269,7 @@ class BlhTemperaturaPasteurizacionController extends Controller
         return $this->createFormBuilder()
             ->setAction($this->generateUrl('blhtemperaturapasteurizacion_delete', array('id' => $id)))
             ->setMethod('DELETE')
-            ->add('submit', 'submit', array('label' => 'Delete'))
+            //->add('submit', 'submit', array('label' => 'Delete'))
             ->getForm()
         ;
     }
@@ -268,7 +283,7 @@ class BlhTemperaturaPasteurizacionController extends Controller
     /**
      * Lists all BlhFrascoRecolectado entities.
      *
-     * @Route("/", name="blhtemppasteurizacion")
+     * @Route("/pasteurizacionP", name="blhtemppasteurizacion")
      * @Method("GET")
      * @Template()
      */
@@ -279,7 +294,7 @@ class BlhTemperaturaPasteurizacionController extends Controller
         $userEst = $this->container->get('security.context')->getToken()->getUser()->getIdEst();
         $query1 = $em->createQuery("SELECT e.nombre, e.direccion, e.telefono FROM siblhmantenimientoBundle:CtlEstablecimiento e WHERE e.id = $userEst");
         $establecimiento = $query1->getResult(); 
-         $queryb = $em->createQuery("SELECT b.id FROM siblhmantenimientoBundle:BlhBancoDeLeche b WHERE b.idEstablecimiento = $userEst");
+        $queryb = $em->createQuery("SELECT b.id FROM siblhmantenimientoBundle:BlhBancoDeLeche b WHERE b.idEstablecimiento = $userEst");
         $id_blh = $queryb->getResult(); 
         $codigo=$id_blh[0]['id']; 
          if ($codigo<10){
@@ -316,6 +331,9 @@ class BlhTemperaturaPasteurizacionController extends Controller
          $pasteurizaciones_frascos  = $query->getResult(); 
  //Obteniendo los datos que necesito presentar en mi entrada donde el id de pasteurizacion que seleccione de listado 
  //sea igual al id del regitro de la tabla a mostrar
+         $query2 = $em->createQuery("SELECT r.temperaturaP FROM siblhmantenimientoBundle:BlhTemperaturaPasteurizacion r  join r.idPasteurizacion p WHERE p.id = $id "); 
+         $temperaturas  = $query2->getResult();
+         
          $pasteurizacion = $em->getRepository('siblhmantenimientoBundle:BlhPasteurizacion')->find($id); 
  //Capturando id    
        
@@ -337,10 +355,11 @@ class BlhTemperaturaPasteurizacionController extends Controller
       $query1 = $em->createQuery("SELECT e.nombre, e.direccion, e.telefono FROM siblhmantenimientoBundle:CtlEstablecimiento e WHERE e.id = $userEst");
       $establecimiento = $query1->getResult(); 
 
-        return array(
-            'pasteurizaciones_frascos' =>  $pasteurizaciones_frascos,  
+        return array(   
             'entity' => $entity,
             'form'   => $form->createView(),
+            'temperaturas' =>  $temperaturas, 
+            'pasteurizaciones_frascos' =>  $pasteurizaciones_frascos,
             'hospital' => $establecimiento,
             
         ); 

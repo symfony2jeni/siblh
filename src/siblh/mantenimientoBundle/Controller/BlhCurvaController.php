@@ -59,8 +59,8 @@ class BlhCurvaController extends Controller
             $em = $this->getDoctrine()->getManager();
             $em->persist($entity);
             $em->flush();
-
-            return $this->redirect($this->generateUrl('blhcurva_show', array('id' => $entity->getId())));
+  //redirigir para el nuevo lote de pasteurizacion, mostrando los datos consultados en newaction de pasteurizacion. 
+            return $this->redirect($this->generateUrl('blhpasteurizacion_new', array('id' => $entity->getId())));
         }
 
         return array(
@@ -183,7 +183,7 @@ class BlhCurvaController extends Controller
             'method' => 'PUT',
         ));
 
-        $form->add('submit', 'submit', array('label' => 'Update'));
+      //  $form->add('submit', 'submit', array('label' => 'Update'));
 
         return $form;
     }
@@ -258,7 +258,7 @@ class BlhCurvaController extends Controller
         return $this->createFormBuilder()
             ->setAction($this->generateUrl('blhcurva_delete', array('id' => $id)))
             ->setMethod('DELETE')
-            ->add('submit', 'submit', array('label' => 'Delete'))
+           // ->add('submit', 'submit', array('label' => 'Delete'))
             ->getForm()
         ;
     }

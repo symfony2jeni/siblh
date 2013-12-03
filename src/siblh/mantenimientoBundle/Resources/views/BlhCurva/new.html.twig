@@ -29,60 +29,75 @@
  <table border=0 align="center">
      
    <tr>
-       <td colspan="4" align="right">
+       <td colspan="6" align="right">
 
  <P align="right"><font color="red">*</font> {{ form_label(form.fechaCurva, 'Fecha de Analisis' )}} </P>
        {{ form_errors(form.fechaCurva) }}
-       {{ form_widget(form.fechaCurva) }} <br><br><br></td>
+       {{ form_widget(form.fechaCurva, {'attr':{'readonly': 'true', 'title': 'Dar clic y seleccionar fecha de curva'} }) }} <P></td>
+
    </tr>
-   
-   <tr>
-      <td colspan="2" align="left"><center><font color="red">*</font>{{ form_label(form.cantidadFrascos, 'Cantidad de Frascos' )}}
-       {{ form_errors(form.cantidadFrascos) }}
-       {{ form_widget(form.cantidadFrascos) }} </center><br></td>
-   
-      <td colspan="2" align="right"><center><font color="red">*</font>{{ form_label(form.volumenPorFrasco, 'Volumen ML de Frascos' )}}
-       {{ form_errors(form.volumenPorFrasco) }}
-       {{ form_widget(form.volumenPorFrasco) }} </center><br></td>
-       
-         <tr>  
-    <td colspan="4" align="center">
+    
+    <tr>  
+        <td colspan="3" align="center"> <P> <P></P> <font color="red">*</font>  {{ form_label(form.cantidadFrascos,'Cantidad de Frascos')}}</td>   
+ <td colspan="3" align="center"> <P><P></P>  <font color="red">*</font>   {{ form_label(form.volumenPorFrasco, 'Volumen ML')}}</td>
+   </tr>
+ 
+ <tr> 
+     
+    <td colspan="3"> 
+        {{ form_errors(form.cantidadFrascos) }}
+        {{ form_widget(form.cantidadFrascos,{ 'attr': {'title': '99','onKeyPress':"return soloNumerosEnteros(event);"} }) }} <P></td>
+    
+    <td colspan="3">   
+        {{ form_errors(form.volumenPorFrasco) }}
+        {{ form_widget(form.volumenPorFrasco,{ 'attr': {'title': '99.9999 ML','onKeyPress':"return soloNumeros(event);"} }) }} <P></td>
+  
+    
+ </tr> 
+          
+  
+          
+          
+       <tr>          
+             
+    <td colspan="6" align="center">
         {{ form_label(form.horaInicioCurva, 'Hora inicio')}}
         {{ form_errors(form.horaInicioCurva)}}
-        {{ form_widget(form.horaInicioCurva) }} <br></td>
-         </tr>
+        {{ form_widget(form.horaInicioCurva) }} <br><P></td>
+        </tr>
    
 
    
     
     <tr>          
-      <td>
- <P align="center"><font color="red">*</font>  {{ form_label(form.tiempo1, 'Tiempo1 ' )}}</P></td>
-      <td>
-<P align="center"><font color="red">*</font>  {{ form_label(form.tiempo2, 'Tiempo2 ') }}</P></td>
-      <td>
-<P align="center"><font color="red">*</font>  {{ form_label(form.tiempo3, 'Tiempo3 ')}}</P></td>
+      
+ <td colspan="2" align="center"><font color="red">*</font>  {{ form_label(form.tiempo1, 'Tiempo1 ' )}}</td>
+      
+<td  colspan="2" align="center"><font color="red">*</font>  {{ form_label(form.tiempo2, 'Tiempo2 ') }}</td>
+      
+<td   colspan="2" align="center"><font color="red">*</font>  {{ form_label(form.tiempo3, 'Tiempo3 ')}}</td>
    </tr>
  
- <tr> 
+ <tr>
      
-    <td> 
+    <td colspan="2"> 
         {{ form_errors(form.tiempo1) }}
-        {{ form_widget(form.tiempo1) }} </td>
+        {{ form_widget(form.tiempo1,{ 'attr': {'title': '99.99','onKeyPress':"return soloNumeros(event);"} }) }} </td>
     
-    <td>   
+    <td colspan="2">   
         {{ form_errors(form.tiempo2) }}
-        {{ form_widget(form.tiempo2) }} </td>
+        {{ form_widget(form.tiempo2,{ 'attr': {'title': '99.99','onKeyPress':"return soloNumeros(event);"} }) }} </td>
   
-    <td>  
+    <td colspan="2">  
         {{ form_errors(form.tiempo3) }}
-        {{ form_widget(form.tiempo3) }} </td>  
+        {{ form_widget(form.tiempo3,{ 'attr': {'title': '99.99','onKeyPress':"return soloNumeros(event);"} }) }} </td>  
     
  </tr> 
  
- <tr>
-<td colspan = '3' align = 'center'>  <input type="submit" class= "ui-button" value="Guardar"/></td></tr>
-<td  WIDTH = "10"><font color="red">* Campos requeridos</font>   </td>
+<tr>
+ <P>   
+<td align = 'left' WIDTH = "150"> <P><font color="red">* Campos requeridos</font></td>   
+<td colspan = '6' align = 'center'> <P><input type="submit" id= "boton" value="Guardar"/></td></tr> 
 </table> 
     {{ form_end(form) }}
 
