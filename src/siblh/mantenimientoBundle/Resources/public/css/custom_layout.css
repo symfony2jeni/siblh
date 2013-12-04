@@ -8,6 +8,27 @@
     
     
 }
+.sonata-bc div.connection2 {
+    position: absolute;
+    left: 27%;
+    top: 35%;
+    width: 460px;
+    margin: -130px 0 0 -250px;
+    box-shadow: 2px 2px 10px #ccc;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+}
+
+.sonata-bc div.connection3 {
+    position: absolute;
+    left: 77%;
+    top: 35%;
+    width: 460px;
+    margin: -130px 0 0 -250px;
+    box-shadow: 2px 2px 10px #ccc;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+}
 
 #banner{
     text-align: center;
@@ -165,8 +186,8 @@ text-align: center;
    margin-top: 0em;
    background-color:white;
    position:relative;
-   height:auto;
-   overflow:scroll;height:500px;width:98%;
+   height:100%;
+   overflow:scroll;height:540px;width:98%;
    }
  
    

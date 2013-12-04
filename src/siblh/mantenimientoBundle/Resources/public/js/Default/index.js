@@ -23,7 +23,7 @@ $(document).ready(function($) {
       
     $( "#dialog-message" ).dialog({
       modal: false,
-      position: ['left', 170],
+      position: ['left', 330],
 
  autoOpen: true,
       show: {
@@ -59,7 +59,7 @@ $(document).ready(function($) {
  $(function() {
     $( "#dialog-message2" ).dialog({
       modal: false,
-   position: ['right', 170],
+   position: ['left', 570],
    autoOpen: true,
       show: {
         effect: "blind",

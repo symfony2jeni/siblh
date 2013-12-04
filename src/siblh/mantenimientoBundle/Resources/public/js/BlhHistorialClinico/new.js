@@ -145,6 +145,33 @@ $('#siblh_mantenimientobundle_blhhistorialclinico_amenorrea').
         
 });
 
+//validacion de formula obstetrica
+$('#boton').on('click',function()
+{
+
+
+$g=$('#siblh_mantenimientobundle_blhhistorialclinico_formulaObstetricaG').val();
+$p1=$('#siblh_mantenimientobundle_blhhistorialclinico_formulaObstetricaP1').val();
+$p2=$('#siblh_mantenimientobundle_blhhistorialclinico_formulaObstetricaP2').val();
+$a=$('#siblh_mantenimientobundle_blhhistorialclinico_formulaObstetricaA').val();
+$v=$('#siblh_mantenimientobundle_blhhistorialclinico_formulaObstetricaV').val();
+$m=$('#siblh_mantenimientobundle_blhhistorialclinico_formulaObstetricaM').val();
+
+$ng=parseInt($g); 
+$np1=parseInt($p1); 
+$np2=parseInt($p2); 
+$na=parseInt($a); 
+$nv=parseInt($v); 
+$nm=parseInt($m); 
+
+$total = $np1 + $np2 + $na + $nv + $nm;
+if($total != $g) 
+{
+alert ('Error en formula obstetrica: El numero de embarazos debe ser igual a la sumatoria de los demas datos');
+return false;
+}    
+});
+
 });
 
 

@@ -162,23 +162,44 @@ _NewLoteAnalisis:
   pattern:  /new
   defaults: { _controller: siblhmantenimientoBundle:BlhLoteAnalisis:new} 
 
+_NewCombinacion:
+  pattern: Nueva/Combinacion
+  defaults: { _controller: siblhmantenimientoBundle:BlhFrascoProcesado:seleccionPasteurizacion} 
+  
+
+  
+
   
  #Mantenimiento
-_NewAnalisisMicrobiologicoEdit:
-  pattern:  /AnalisisMicroEdit
-  defaults: { _controller: siblhmantenimientoBundle:BlhAnalisisMicrobiologico:index} 
-  
-_NewTempPasteurizacionEdit:
- pattern:  /TemperaturaPEdit
- defaults: { _controller: siblhmantenimientoBundle:BlhTemperaturaPasteurizacion:index} 
- 
-_NewCurvaEdit: 
- pattern:  /CurvaEdit
- defaults: { _controller: siblhmantenimientoBundle:BlhCurva:index} 
+
  
 _NewInfoPublicaEdit: 
  pattern:  /InfoPublicaEdit
- defaults: { _controller: siblhmantenimientoBundle:BlhInformacionPublica:index}    
+ defaults: { _controller: siblhmantenimientoBundle:BlhInformacionPublica:index}   
+ 
+_NewSolicitudEdit: 
+ pattern:  /Solicitud/editar
+ defaults: { _controller: siblhmantenimientoBundle:BlhSolicitud:index}   
+
+_NewDonanteEdit: 
+ pattern:  /Donante/editar
+ defaults: { _controller: siblhmantenimientoBundle:BlhDonante:mantenimientoDonante}   
+ 
+_NewReceptorEdit: 
+ pattern:  /Receptor/editar
+ defaults: { _controller: siblhmantenimientoBundle:BlhReceptor:mantenimientoReceptor}
+ 
+_NewLaboratorioEdit: 
+ pattern:  /Laboratorio/editar
+ defaults: { _controller: siblhmantenimientoBundle:BlhFrascoRecolectado:mantenimientoLaboratorio}   
+
+_NewPasteurizacionEdit: 
+ pattern:  /Pasteurizacion/editar
+ defaults: { _controller: siblhmantenimientoBundle:BlhPasteurizacion:mantenimientoPasteurizacion}   
+ 
+ 
+
+
 
   
 #Reportes  
@@ -211,20 +232,5 @@ _NewEditBLH:
     pattern:  /Banco/listado
     defaults: { _controller: siblhmantenimientoBundle:BlhBancoDeLeche:index} 
  
-  #Mantenimiento
-#_NewAnalisisMicrobiologicoEdit:
- # pattern:  /AnalisisMicroEdit
-  #defaults: { _controller: siblhmantenimientoBundle:BlhAnalisisMicrobiologico:index} 
-  
-#_NewTempPasteurizacionEdit:
- #pattern:  /TemperaturaPEdit
- #defaults: { _controller: siblhmantenimientoBundle:BlhTemperaturaPasteurizacion:index} 
- 
-#_NewCurvaEdit: 
-# pattern:  /CurvaEdit
-# defaults: { _controller: siblhmantenimientoBundle:BlhCurva:index} 
- 
-#_NewInfoPublicaEdit: 
-# pattern:  /InfoPublicaEdit
-# defaults: { _controller: siblhmantenimientoBundle:BlhInformacionPublica:index}    
+   
 

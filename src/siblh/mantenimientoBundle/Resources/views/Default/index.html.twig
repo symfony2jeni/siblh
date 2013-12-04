@@ -40,35 +40,12 @@
 
 
 {% block body %}
-<div > <br>
+<div height = 100%> <br>
     <font color="#2b8dd6" SIZE=6 face="MS Sans Serif"><b>Sistema Inform&#225;tico de Bancos de Leche Humana</b></font><br><br>
     <font color="#2b8dd6" SIZE=6 face="MS Sans Serif"><b>Bienvenido</b></font>
-<FORM> 
-      <table align = "center" >       
-       <tr style="visibility:hidden">
-       <td>Numero</td>
-       <td><INPUT id = "1" type=text disabled="disabled" size=10 readonly="readonly" value= " {{ resultado }} "></td><td>
-        <INPUT id = "2" type=text disabled="disabled" size=10 readonly="readonly" value= " {{ resultado2 }} "></td></tr> 
-      </table>     
-</form>
-
-<table>
-    <tr style="visibility:hidden"> <td>
-<div id="dialog-message" title="Alerta de vencimiento">
-<p><span class="ui-icon ui-icon-alert" style="float: left; margin: 0 7px 50px 0;"></span>Frascos de leche prealmacenada proximos a vencerse.</p>
-   <a href="{{ path('mostrar_alerta',{'report_name':'AlertaPrealmacenado','report_format':'pdf'})}}" id="reporte"><font color="blue" size = "2" face = "Comic Sans MS"> Ver reporte de frascos prealmacenados</font></a>
-</div></td></tr>
- </table>
-
-<table><tr style="visibility:hidden"> <td>
-<div id="dialog-message2" title="Alerta de vencimiento">
-<p><span class="ui-icon ui-icon-alert" style="float: left; margin: 0 7px 50px 0;"></span>Frascos de leche pasteurizados proximos a vencerse.</p>
-   <a href="{{ path('mostrar_alerta2',{'report_name':'AlertaPasteurizado','report_format':'pdf'})}}" id="reporte2"><font color="blue" size = "2" face = "Comic Sans MS"> Ver reporte de frascos pasteurizados</font></a>
-</div></td></tr>
- </table>
 
 
-{#prueba----------------------------#}
+{#-----------Inicio-----------------#}
 <div id="slidorion" class="slidorion">
     <div class="slider">
         
@@ -125,8 +102,30 @@
 </div>
 			
 
-{#prueba------------#}
-    </div>
-     
+{#------------------------------#}
+    {#-----------------------alertas---------------#}
+    <FORM> 
+      <table align = "center" >       
+       <tr style="visibility:hidden">
+       <td>Numero</td>
+       <td><INPUT id = "1" type=text disabled="disabled" size=10 readonly="readonly" value= " {{ resultado }} "></td><td>
+        <INPUT id = "2" type=text disabled="disabled" size=10 readonly="readonly" value= " {{ resultado2 }} "></td></tr> 
+      </table>     
+</form>
 
+<table>
+    <tr style="visibility:hidden"> <td>
+<div id="dialog-message" title="Alerta de vencimiento">
+<p><span class="ui-icon ui-icon-alert" style="float: left; margin: 0 7px 50px 0;"></span>Frascos de leche prealmacenada proximos a vencerse.</p>
+   <a href="{{ path('mostrar_alerta',{'report_name':'AlertaPrealmacenado','report_format':'pdf'})}}" id="reporte"><font color="blue" size = "2" face = "Comic Sans MS"> Ver reporte de frascos prealmacenados</font></a>
+</div></td></tr>
+ </table>
+
+<table><tr style="visibility:hidden"> <td>
+<div id="dialog-message2" title="Alerta de vencimiento">
+<p><span class="ui-icon ui-icon-alert" style="float: left; margin: 0 7px 50px 0;"></span>Frascos de leche pasteurizados proximos a vencerse.</p>
+   <a href="{{ path('mostrar_alerta2',{'report_name':'AlertaPasteurizado','report_format':'pdf'})}}" id="reporte2"><font color="blue" size = "2" face = "Comic Sans MS"> Ver reporte de frascos pasteurizados</font></a>
+</div></td></tr>
+ </table>
+    </div>
 {% endblock %}

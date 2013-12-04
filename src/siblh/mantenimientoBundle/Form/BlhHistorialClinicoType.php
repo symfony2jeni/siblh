@@ -37,12 +37,12 @@ class BlhHistorialClinicoType extends AbstractType
                     array(  'widget' => 'single_text',
                             'format' => 'yy-MM-dd',
                             'attr' => array('class' => 'date')))
-            ->add('formulaObstetricaG')
-            ->add('formulaObstetricaP1')
-            ->add('formulaObstetricaP2')
-            ->add('formulaObstetricaA')
-            ->add('formulaObstetricaV')
-            ->add('formulaObstetricaM')
+             ->add('formulaObstetricaG','text',array('max_length'=>'2'))
+            ->add('formulaObstetricaP1','text',array('max_length'=>'2'))
+            ->add('formulaObstetricaP2','text',array('max_length'=>'2'))
+            ->add('formulaObstetricaA','text',array('max_length'=>'2'))
+            ->add('formulaObstetricaV','text',array('max_length'=>'2'))
+            ->add('formulaObstetricaM','text',array('max_length'=>'2'))
             ->add('idDonante')
         ;
     }
