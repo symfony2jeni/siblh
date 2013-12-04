@@ -15,7 +15,7 @@ class BlhAnalisisMicrobiologicoType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-           
+
              ->add('coliformesTotales', 'choice', array(
              'choices' => array(
               'Negativo' => 'Ausencia',
@@ -44,7 +44,6 @@ class BlhAnalisisMicrobiologicoType extends AbstractType
             ->add('idFrascoProcesado',null,array(
                 'required' => true));
      
-          //  ->add('codigoAnalisisMicrobiologico');
     }
     
     /**

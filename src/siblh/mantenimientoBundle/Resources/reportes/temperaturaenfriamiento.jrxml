@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="temperaturapasteurizacion" language="groovy" printOrder="Horizontal" pageWidth="648" pageHeight="842" columnWidth="608" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="41abadda-2d4f-4afc-bf46-b91f9f7253f9">
 	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="103"/>
+	<property name="ireport.y" value="107"/>
 	<style name="table">
 		<box>
 			<pen lineWidth="1.0" lineColor="#000000"/>
@@ -84,23 +84,28 @@
 		</box>
 	</style>
 	<subDataset name="New Dataset 1" uuid="1b7a3c45-79c8-4110-baa2-b3efe0578d47">
-		<parameter name="codigo" class="java.lang.String"/>
+		<parameter name="id" class="java.lang.String">
+			<defaultValueExpression><![CDATA[$P{id}]]></defaultValueExpression>
+		</parameter>
 		<queryString>
 			<![CDATA[select row_number() OVER (ORDER BY p.codigo_pasteurizacion) * 5 as minuto,
 te.temperatura_e
 from blh_pasteurizacion p join blh_temperatura_enfriamiento te
 on te.id_pasteurizacion = p.id
-and p.codigo_pasteurizacion = $P{codigo};]]>
+and p.codigo_pasteurizacion = $P{id};]]>
 		</queryString>
 		<field name="minuto" class="java.lang.Long"/>
 		<field name="temperatura_e" class="java.lang.Integer"/>
 	</subDataset>
-	<parameter name="codigo" class="java.lang.String"/>
+	<parameter name="id" class="java.lang.String">
+		<defaultValueExpression><![CDATA[$P{id}]]></defaultValueExpression>
+	</parameter>
+	<parameter name="nombre" class="java.lang.String"/>
 	<queryString>
 		<![CDATA[select p.fecha_pasteurizacion, p.hora_inicio_e, te.temperatura_e, p.hora_final_e
 from blh_pasteurizacion p join blh_temperatura_enfriamiento te
 on te.id_pasteurizacion = p.id
-and p.codigo_pasteurizacion = $P{codigo};]]>
+and p.codigo_pasteurizacion = $P{id};]]>
 	</queryString>
 	<field name="fecha_pasteurizacion" class="java.sql.Date"/>
 	<field name="hora_inicio_e" class="java.sql.Time"/>
@@ -115,7 +120,7 @@ and p.codigo_pasteurizacion = $P{codigo};]]>
 	<pageHeader>
 		<band height="156" splitType="Stretch">
 			<staticText>
-				<reportElement uuid="7c96a0ff-7097-45c9-8324-d2efafa07bea" x="161" y="60" width="282" height="47"/>
+				<reportElement uuid="7c96a0ff-7097-45c9-8324-d2efafa07bea" x="161" y="105" width="282" height="22"/>
 				<textElement>
 					<font fontName="Comic Sans MS" size="14"/>
 				</textElement>
@@ -128,67 +133,73 @@ and p.codigo_pasteurizacion = $P{codigo};]]>
 				</textElement>
 				<text><![CDATA[MINISTERIO DE SALUD]]></text>
 			</staticText>
-			<staticText>
-				<reportElement uuid="aea345aa-2e0e-4c8c-8958-2e76f16bf1b0" x="186" y="36" width="223" height="24"/>
-				<textElement>
-					<font fontName="Comic Sans MS" size="14"/>
-				</textElement>
-				<text><![CDATA[HOSPITAL DE MATERNIDAD]]></text>
-			</staticText>
 			<image>
-				<reportElement uuid="2536c72a-fa3d-45ee-b227-23bc5eebd98a" x="13" y="12" width="141" height="106"/>
+				<reportElement uuid="2536c72a-fa3d-45ee-b227-23bc5eebd98a" x="10" y="12" width="141" height="106"/>
 				<imageExpression><![CDATA["/home/jeni/NetBeansProjects/siblh/src/siblh/mantenimientoBundle/Resources/reportes/blh.jpg"]]></imageExpression>
 			</image>
 			<image>
-				<reportElement uuid="45f34dc4-b66c-4eb5-bc77-ec5b35602177" x="447" y="12" width="143" height="106"/>
+				<reportElement uuid="45f34dc4-b66c-4eb5-bc77-ec5b35602177" x="456" y="12" width="143" height="106"/>
 				<imageExpression><![CDATA["/home/jeni/NetBeansProjects/siblh/src/siblh/mantenimientoBundle/Resources/reportes/minsal2.jpg"]]></imageExpression>
 			</image>
+			<textField>
+				<reportElement uuid="8e7ec9d2-1917-49c4-a39b-1e62d5e06755" x="161" y="36" width="282" height="69"/>
+				<textElement textAlignment="Center">
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{nombre}]]></textFieldExpression>
+			</textField>
 		</band>
 	</pageHeader>
 	<columnHeader>
 		<band height="240" splitType="Stretch">
 			<staticText>
-				<reportElement uuid="15527684-0d54-4738-87b7-f5788900c872" x="143" y="11" width="170" height="20"/>
+				<reportElement uuid="15527684-0d54-4738-87b7-f5788900c872" x="302" y="11" width="170" height="20"/>
 				<textElement>
 					<font size="12" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Fecha Pasteurizacion:]]></text>
 			</staticText>
 			<textField>
-				<reportElement uuid="b104bfbd-1cdb-41a1-aea4-2cead87d4509" x="313" y="11" width="100" height="20"/>
-				<textElement/>
+				<reportElement uuid="b104bfbd-1cdb-41a1-aea4-2cead87d4509" x="475" y="11" width="114" height="20"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
 				<textFieldExpression><![CDATA[$F{fecha_pasteurizacion}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement uuid="7f75cdd4-ef07-459f-b130-8419fcfd44af" x="47" y="45" width="100" height="20"/>
+				<reportElement uuid="7f75cdd4-ef07-459f-b130-8419fcfd44af" x="67" y="45" width="100" height="20"/>
 				<textElement>
 					<font size="12" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Hora Inicio:]]></text>
 			</staticText>
 			<textField>
-				<reportElement uuid="dae619fe-b975-4785-bb78-f1bc3134401e" x="162" y="45" width="100" height="20"/>
-				<textElement/>
+				<reportElement uuid="dae619fe-b975-4785-bb78-f1bc3134401e" x="180" y="45" width="100" height="20"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
 				<textFieldExpression><![CDATA[$F{hora_inicio_e}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement uuid="d65bfa9e-7594-471d-b628-947c5b8fb910" x="302" y="45" width="100" height="20"/>
+				<reportElement uuid="d65bfa9e-7594-471d-b628-947c5b8fb910" x="313" y="45" width="100" height="20"/>
 				<textElement>
 					<font size="12" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Hora Fin:]]></text>
 			</staticText>
 			<textField>
-				<reportElement uuid="78c510f2-6595-4919-bdf6-145e10db7d8f" x="402" y="45" width="100" height="20"/>
-				<textElement/>
+				<reportElement uuid="78c510f2-6595-4919-bdf6-145e10db7d8f" x="413" y="45" width="100" height="20"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
 				<textFieldExpression><![CDATA[$F{hora_final_e}]]></textFieldExpression>
 			</textField>
 			<componentElement>
 				<reportElement uuid="ffdfff6c-1ed7-40da-83d2-0234360d36b3" key="table 3" style="table 3" x="180" y="94" width="197" height="131"/>
 				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
-					<datasetRun subDataset="New Dataset 1" uuid="013928fc-70ed-4bd6-95cf-1bcbc77c1dba">
-						<datasetParameter name="codigo">
-							<datasetParameterExpression><![CDATA[$P{codigo}]]></datasetParameterExpression>
+					<datasetRun subDataset="New Dataset 1" uuid="e5f161de-1239-47e1-9da9-b29f74355746">
+						<datasetParameter name="id">
+							<datasetParameterExpression><![CDATA[$P{id}]]></datasetParameterExpression>
 						</datasetParameter>
 						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
 					</datasetRun>
@@ -204,7 +215,7 @@ and p.codigo_pasteurizacion = $P{codigo};]]>
 						</jr:columnHeader>
 						<jr:detailCell style="table 3_TD" height="20" rowSpan="1">
 							<textField>
-								<reportElement uuid="21f526f6-f132-4d2b-974c-90fe3d6202e6" x="17" y="0" width="66" height="20"/>
+								<reportElement uuid="21f526f6-f132-4d2b-974c-90fe3d6202e6" x="21" y="0" width="45" height="20"/>
 								<textElement textAlignment="Center"/>
 								<textFieldExpression><![CDATA[$F{minuto}]]></textFieldExpression>
 							</textField>
@@ -230,6 +241,20 @@ and p.codigo_pasteurizacion = $P{codigo};]]>
 					</jr:column>
 				</jr:table>
 			</componentElement>
+			<staticText>
+				<reportElement uuid="db2fbe8f-115d-48f9-be7c-5eac6b66c956" x="22" y="10" width="171" height="20"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Codigo Pasteurizacion:]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="cddc7711-8153-4e27-9a37-12cbf44dd8ca" x="194" y="10" width="100" height="20"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{id}]]></textFieldExpression>
+			</textField>
 		</band>
 	</columnHeader>
 	<detail>

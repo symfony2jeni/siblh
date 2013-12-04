@@ -1,112 +1,102 @@
-{% extends '::base.html.twig' %}
+{% extends 'siblhmantenimientoBundle::plantilla.html.twig' %}
+{% block javascripts %}
+
+{{parent()}}
+
+<script type="text/javascript" src="{{ asset('bundles/siblhmantenimiento/js/BlhDonante/show.js') }}" ></script>
+       
+{% endblock %}
 
 {% block body -%}
-    <h1>BlhDonante</h1>
-
-    <table class="record_properties">
+<style type="text/css">
+table#teft table {display: block; padding: 5px; border: 3px solid black; border-top: 1; -moz-border-radius: 10px 10px 10px 10px; color:"#2e6e9e"}
+th {
+font-family: verdana,arial,helvetica,sans-serif;
+color: #000000;
+font-weight: bold;
+border-style: solid;
+border-width: 1px;
+size: 2px;
+background-color: #2b8dd6;
+}
+td {
+font-family: verdana,arial,helvetica,sans-serif;}
+    </style>
+    <h1>Donante</h1>
+    
+    <table id = "left" border = "1"  align = "center" bordercolor="#2e6e9e" >
         <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ entity.id }}</td>
-            </tr>
-            <tr>
-                <th>Codigodonante</th>
-                <td>{{ entity.codigoDonante }}</td>
-            </tr>
-            <tr>
-                <th>Primernombre</th>
-                <td>{{ entity.primerNombre }}</td>
-            </tr>
-            <tr>
-                <th>Segundonombre</th>
-                <td>{{ entity.segundoNombre }}</td>
-            </tr>
-            <tr>
-                <th>Primerapellido</th>
-                <td>{{ entity.primerApellido }}</td>
-            </tr>
-            <tr>
-                <th>Segundoapellido</th>
-                <td>{{ entity.segundoApellido }}</td>
-            </tr>
-            <tr>
-                <th>Fechanacimiento</th>
-                <td>{{ entity.fechaNacimiento|date('Y-m-d H:i:s') }}</td>
-            </tr>
-            <tr>
-                <th>Fecharegistrodonanteblh</th>
-                <td>{{ entity.fechaRegistroDonanteBlh|date('Y-m-d H:i:s') }}</td>
-            </tr>
-            <tr>
-                <th>Telefonofijo</th>
-                <td>{{ entity.telefonoFijo }}</td>
-            </tr>
-            <tr>
-                <th>Telefonomovil</th>
-                <td>{{ entity.telefonoMovil }}</td>
-            </tr>
-            <tr>
+                <tr align = "left">
+                <th>Codigo Donante</th>
+                <td>{{ entity.codigoDonante }}</td></tr>
+                <tr align = "left">
+                <th>Primer Nombre</th>
+                <td>{{ entity.primerNombre }}</td></tr>
+                <tr align = "left">
+                <th>Segundo Nombre</th>
+                <td>{{ entity.segundoNombre }}</td></tr>
+                <tr align = "left">
+                <th>Primer Apellido</th>
+                <td>{{ entity.primerApellido }}</td></tr>
+                <tr align = "left">
+                <th>Segundo Apellido</th>
+                <td>{{ entity.segundoApellido }}</td></tr>
+                <tr align = "left">
+                <th>Fecha de Nacimiento</th>
+                <td>{{ entity.fechaNacimiento|date('Y-m-d') }}</td></tr>
+                <tr align = "left">
+                <th>Fecha de Registrodonanteblh</th>
+                <td>{{ entity.fechaRegistroDonanteBlh|date('Y-m-d') }}</td></tr>
+                <tr align = "left">
+                <th>Telefono Fijo</th>
+                <td>{{ entity.telefonoFijo }}</td></tr>
+                <tr align = "left">
+                <th>Telefono Movil</th>
+                <td>{{ entity.telefonoMovil }}</td></tr>
+                <tr align = "left">
                 <th>Direccion</th>
-                <td>{{ entity.direccion }}</td>
-            </tr>
-            <tr>
+                <td>{{ entity.direccion }}</td></tr>
+                <tr align = "left">
                 <th>Procedencia</th>
-                <td>{{ entity.procedencia }}</td>
-            </tr>
-            <tr>
+                <td>{{ entity.procedencia }}</td></tr>
+                <tr align = "left">
                 <th>Registro</th>
-                <td>{{ entity.registro }}</td>
-            </tr>
-            <tr>
-                <th>Numerodocumentoidentificacion</th>
-                <td>{{ entity.numeroDocumentoIdentificacion }}</td>
-            </tr>
-            <tr>
-                <th>Documentoidentificacion</th>
-                <td>{{ entity.documentoIdentificacion }}</td>
-            </tr>
-            <tr>
+                <td>{{ entity.registro }}</td></tr>
+                <tr align = "left">
+                <th>Documento de Identificacion</th>
+                <td>{{ entity.documentoIdentificacion }}</td></tr>
+                <tr align = "left">
+                <th>Numero de Documento de Identificacion</th>
+                <td>{{ entity.numeroDocumentoIdentificacion }}</td></tr>
+                <tr align = "left">
                 <th>Edad</th>
-                <td>{{ entity.edad }}</td>
-            </tr>
-            <tr>
+                <td>{{ entity.edad }}</td></tr>
+                <tr align = "left">
                 <th>Ocupacion</th>
-                <td>{{ entity.ocupacion }}</td>
-            </tr>
-            <tr>
-                <th>Estadocivil</th>
-                <td>{{ entity.estadoCivil }}</td>
-            </tr>
-            <tr>
+                <td>{{ entity.ocupacion }}</td></tr>
+                <tr align = "left">
+                <th>Estado Civil</th>
+                <td>{{ entity.estadoCivil }}</td></tr>
+                <tr align = "left">
                 <th>Nacionalidad</th>
-                <td>{{ entity.nacionalidad }}</td>
-            </tr>
-            <tr>
+                <td>{{ entity.nacionalidad }}</td></tr>
+                <tr align = "left">
                 <th>Escolaridad</th>
-                <td>{{ entity.escolaridad }}</td>
-            </tr>
-            <tr>
-                <th>Tipocolecta</th>
-                <td>{{ entity.tipoColecta }}</td>
-            </tr>
-            <tr>
+                <td>{{ entity.escolaridad }}</td></tr>
+                <tr align = "left">
+                <th>Tipo de Colecta</th>
+                <td>{{ entity.tipoColecta }}</td></tr>
+                <tr align = "left">
                 <th>Observaciones</th>
-                <td>{{ entity.observaciones }}</td>
-            </tr>
+                <td>{{ entity.observaciones }}</td></tr>
         </tbody>
     </table>
 
-        <ul class="record_actions">
-    <li>
-        <a href="{{ path('blhdonante') }}">
-            Back to the list
-        </a>
-    </li>
-    <li>
-        <a href="{{ path('blhdonante_edit', { 'id': entity.id }) }}">
-            Edit
-        </a>
-    </li>
-    <li>{{ form(delete_form) }}</li>
-</ul>
+     <table  align = "center" >
+         <tr><td height=10  ></td></tr> 
+         <tr><td height=10  ></td></tr> 
+         <tr><td> {#<input id = "boton" type="button" value="Editar" onClick=' window.location.href="{{ path('blhdonante_edit', { 'id': entity.id }) }}" '>#}
+                 <input id = "boton1" type="button" value="Registrar Nuevo" onClick=' window.location.href="{{ path('_NewDonante') }}" '>
+         </td></tr>
+     </table>
 {% endblock %}

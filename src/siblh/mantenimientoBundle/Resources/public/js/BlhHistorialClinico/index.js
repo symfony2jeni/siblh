@@ -3,6 +3,8 @@ $(document).ready(function() {
  tableToGrid("#listado_hc", {
         pager : '#pagerhc',
         rowNum:10, 
+      //  width: 800,
+       height: '100%',
         gridview: true, 
        // caption: "Seleccione la donante",
          sortorder: "desc",
@@ -11,17 +13,16 @@ $(document).ready(function() {
         
         colModel :[
            // {name:'Id',width:80,editable:true,},
-            {name:'Amenorrea',width:15,align:'center'},
-            {name:'Control&nbsp;prenatal', width:20,align:'center'},
-            {name:'Lugar&nbsp;de&nbsp;control', width:15,align:'center'},
-            {name:'Numero&nbsp;de&nbsp;controles', width:20,align:'center'},
-            {name:'Fecha&nbsp;ultima&nbsp;regla', width:15,align:'center'},
-            {name:'Fecha&nbsp;de&nbsp;parto',width:15,align:'center'},
-            {name:'Lugar&nbsp;de&nbsp;parto', width:15,align:'center'},
-            {name:'Patologia', width:15,align:'center'},
-            {name:'Periodo&nbsp;intergenesico', width:20,align:'center'},
-            {name:'Parto&nbsp;anterior', width:15,align:'center'},
-            {name:'Formula&nbsp;obstetrica', width:20,align:'center'},
+            {name:'Codigo',width:20,align:'center'},
+            {name:'Nombre',width:30,align:'center'},
+            {name:'Amenorrea',width:13,align:'center', search:false},
+            {name:'Ultima&nbsp;Regla', width:15,align:'center', search:false},
+            {name:'Fecha&nbsp;de&nbsp;parto',width:20,align:'center', search:false},
+            {name:'Lugar&nbsp;de&nbsp;parto', width:20,align:'center', search:false},
+            {name:'Patologia', width:15,align:'center', search:false},
+            {name:'Periodo&nbsp;intergenesico', width:25,align:'center', search:false},
+            {name:'Parto&nbsp;anterior', width:17,align:'center', search:false},
+            {name:'Formula&nbsp;obstetrica', width:25,align:'center', search:false},
             {name:'Accion', width:10,align:'center'}
            
             
@@ -34,7 +35,8 @@ $(document).ready(function() {
         edit:false, 
         add:false, 
         del:false,
-        search:true,
-        reload:true
+        search:false,
+        reload:false
     });
+    jQuery("#listado_hc").jqGrid('filterToolbar',{stringResult: true,searchOnEnter : false}); 
      });

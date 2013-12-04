@@ -10,6 +10,7 @@ $(document).ready(function() {
  tableToGrid("#listado_frascos", {
         pager : '#pagerfrascos',
         rowNum:10, 
+         height: '100%',
         gridview: true, 
        // caption: "Seleccione la donante",
          sortorder: "desc",
@@ -18,12 +19,13 @@ $(document).ready(function() {
         
         colModel :[
            // {name:'Id',width:80,editable:true,},
-            {name:'Codigo',width:15,align:'center'},
-            {name:'Volumen&nbsp;Recolectado', width:15,align:'center'},
-            {name:'Onzas&nbsp;Recolectadas', width:15,align:'center'},
-            {name:'Forma&nbsp;de&nbsp;Extraccion', width:10,align:'center'},
-            {name:'Observaciones', width:40,align:'center'},
-            {name:'Accion', width:10,align:'center'}
+            {name:'Donante',width:15,align:'center'},
+            {name:'Nombre',width:30,align:'center'},
+            {name:'Frasco',width:15,align:'center'},
+            {name:'Volumen&nbsp;Recolectado', width:18,align:'center', search:false},
+            {name:'Onzas&nbsp;Recolectadas', width:18,align:'center', search:false},
+            {name:'Forma&nbsp;de&nbsp;Extraccion', width:18,align:'center', search:false},
+            {name:'Accion', width:10,align:'center', search:false}
            
             
    
@@ -35,7 +37,8 @@ $(document).ready(function() {
         edit:false, 
         add:false, 
         del:false,
-        search:true,
-        reload:true
+        search:false,
+        reload:false
     });
+     jQuery("#listado_frascos").jqGrid('filterToolbar',{stringResult: true,searchOnEnter : false}); 
      });

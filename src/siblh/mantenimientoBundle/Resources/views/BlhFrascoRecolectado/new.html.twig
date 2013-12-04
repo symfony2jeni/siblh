@@ -44,44 +44,50 @@
     {{ form_errors(form) }}
     <table align = "center">
         <tr style="visibility:hidden">
-    <td> {{ form_label(form.idDonacion) }}
-        {{ form_errors(form.idDonacion) }}
-        {{ form_widget(form.idDonacion) }}</td>
-    <td>{{ form_label(form.idDonante) }}
-        {{ form_errors(form.idDonante) }}
-        {{ form_widget(form.idDonante) }}</td>    
+    <td> {{ form_label(form.idDonacion) }}</td>
+    <td> {{ form_widget(form.idDonacion) }}</td>
+    <td> {{ form_label(form.idDonante) }}</td>
+       
+    <td> {{ form_widget(form.idDonante) }}</td>    
         </tr>
+        <tr><td height=10  ></td></tr>     
     <tr>
-    <td>{{ form_label(form.volumenRecolectado, 'Volumen en ml') }}
-        {{ form_errors(form.volumenRecolectado) }}
-        {{ form_widget(form.volumenRecolectado) }}</td>
-    <td>{{ form_label(form.onzRecolectado, 'Volumen en onz') }}
-        {{ form_errors(form.onzRecolectado) }}
-        {{ form_widget(form.onzRecolectado, {'attr':{'readonly': 'true' } }) }}</td>    
+    <td><font color="red" >*</font>
+        {{ form_label(form.volumenRecolectado, 'Volumen en ml') }}</td>
+    <td>{{ form_widget(form.volumenRecolectado,  { 'attr': {'title': 'Digite el volumen en ml de', 'onKeyPress':"return soloNumeros(event);"} }) }}</td>
+    <td>{{ form_label(form.onzRecolectado, 'Volumen en onz') }}</td>
+    <td>{{ form_widget(form.onzRecolectado, {'attr':{'readonly': 'true' } }) }}</td>    
         </tr>
+        <tr><td height=10  ></td></tr>     
       <tr>
-    <td>{{ form_label(form.formaExtraccion, 'Forma de extraccion') }}
-        {{ form_errors(form.formaExtraccion) }}
-        {{ form_widget(form.formaExtraccion) }}</td>
-    <td align = "center">{{ form_label(form.observacionFrascoRecolectado, 'Observaciones') }}
-        {{ form_errors(form.observacionFrascoRecolectado) }}
-        {{ form_widget(form.observacionFrascoRecolectado) }}</td>    
+    <td><font color="red" >*</font>
+        {{ form_label(form.formaExtraccion, 'Forma de extraccion') }}</td>
+    <td>{{ form_widget(form.formaExtraccion) }}</td>
+    <td align = "center">{{ form_label(form.observacionFrascoRecolectado, 'Observaciones') }}</td>
+    <td>{{ form_widget(form.observacionFrascoRecolectado,  { 'attr': {'size': '50'} }) }}</td>    
         </tr>   
+        <tr><td height=10  ></td></tr>     
         <tr>
     <td style="visibility:hidden">
-        {{ form_label(form.idEstado) }}
-        {{ form_errors(form.idEstado) }}
+        {{ form_label(form.idEstado) }}</td>
+        <td style="visibility:hidden">
         {{ form_widget(form.idEstado) }}</td>
       
         </tr>   
-        <tr><td colspan = '3' align = 'center'>  <input type="submit" class= "ui-button" value="Guardar"/></td></tr>
+        <tr>
+            <td align = "left"><font color="red" size = "2" face = "Comic Sans MS">* Campos requeridos</font></td> </tr>     
+            
+        <tr><td align = "center" colspan = 4><input id = "button"  type="submit"  value="Guardar"/>
+            <input id = "boton1" type="button" value="Regresar" onClick=' window.location.href="{{ path('_NewFrascoRecolectado') }}" '></td></tr>
+
     </table> 
 {{ form_end(form) }}
-       <table align = "center">
+    {#   <table align = "center">
     <tr><td>
         
         <a href="{{ path('blhfrascorecolectado') }}">
             Ver listado
         </a>
-  </td></tr></table>
+  </td></tr></table> $ #}
+    
 {% endblock %}

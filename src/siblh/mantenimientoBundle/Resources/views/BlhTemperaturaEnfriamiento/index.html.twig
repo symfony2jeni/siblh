@@ -12,19 +12,23 @@
 
 
     <h1>BlhTemperaturaEnfriamiento list</h1>
-
+    <div align = center>
     <table id = "listado_temperaturas">
         <thead>
-            <tr><th>Temperatura</th>
+            <tr><th>Codigo</th>
+                <th>Temperatura</th>
                 <th>Accion</th></tr>
         </thead>
         <tbody>
-        {% for entity in entities %}
-            <tr><td>{{ entity.temperaturaE }}</td>
-                <td><a href="{{ path('blhtemperaturaenfriamiento_edit', { 'id': entity.id }) }}">Editar</a></td></tr>
+        {% for entity in pastemperatura %}
+            <tr>
+                <td>{{ entity.codigo }}</td>
+                <td>{{ entity.temperaturaE }}</td>
+                <td><a href="{{ path('blhtemperaturaenfriamiento_edit', { 'id': entity.id }) }}"><font color="blue"><u>Editar</u></font></a></td></tr>
         {% endfor %}
         </tbody>
     </table>
+            </div>
 <div id='pagertemperaturas' ></div>
         {#<ul>
         <li>

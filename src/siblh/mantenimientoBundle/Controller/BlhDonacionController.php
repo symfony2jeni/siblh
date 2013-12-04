@@ -30,9 +30,23 @@ class BlhDonacionController extends Controller
         $em = $this->getDoctrine()->getManager();
 
         $entities = $em->getRepository('siblhmantenimientoBundle:BlhDonacion')->findAll();
-
+   //Obtener banco de leche//              
+       $userEst = $this->container->get('security.context')->getToken()->getUser()->getIdEst();
+       $query1 = $em->createQuery("SELECT e.nombre, e.direccion, e.telefono FROM siblhmantenimientoBundle:CtlEstablecimiento e WHERE e.id = $userEst");
+       $establecimiento = $query1->getResult(); 
+       $queryb = $em->createQuery("SELECT b.id FROM siblhmantenimientoBundle:BlhBancoDeLeche b WHERE b.idEstablecimiento = $userEst");
+       $id_blh = $queryb->getResult(); 
+       $codigo=$id_blh[0]['id']; 
+       $query = $em->createQuery("SELECT do.id, d.codigoDonante as codigo_donante, d.primerNombre as nombre1, d.segundoNombre as nombre2, 
+            d.primerApellido as apellido1, d.segundoApellido as apellido2,
+            do.fechaDonacion, do.responsableDonacion
+       FROM siblhmantenimientoBundle:BlhDonacion do join do.idDonante d where 
+       d.idBancoDeLeche = $codigo");
+       $donaciones  = $query->getResult(); 
         return array(
             'entities' => $entities,
+             'donaciones' =>  $donaciones, 
+             'hospital' => $establecimiento,
         );
     }
     /**
@@ -76,27 +90,88 @@ class BlhDonacionController extends Controller
             'method' => 'POST',
         ));
 
-        $form->add('submit', 'submit', array('label' => 'Create'));
+   //     $form->add('submit', 'submit', array('label' => 'Create'));
 
         return $form;
     }
+    
+    
+     /**
+     * Lists all BlhHistorialClinico entity.
+     *
+     * @Route("/donantesD", name="blhDonacion_donantesD")
+     * @Method("GET")
+     * @Template()
+     */
+    
+     public function donantesDAction()
+    {
+        $em = $this->getDoctrine()->getManager(); 
+                   
+       $userEst = $this->container->get('security.context')->getToken()->getUser()->getIdEst();
+       $query1 = $em->createQuery("SELECT e.nombre, e.direccion, e.telefono FROM siblhmantenimientoBundle:CtlEstablecimiento e WHERE e.id = $userEst");
+       $establecimiento = $query1->getResult(); 
+       $queryb = $em->createQuery("SELECT b.id FROM siblhmantenimientoBundle:BlhBancoDeLeche b WHERE b.idEstablecimiento = $userEst");
+       $id_blh = $queryb->getResult(); 
+       $codigo=$id_blh[0]['id']; 
+        
+        //Obteniendo lista de donantes"  
+            $query = $em->createQuery("SELECT p.id as identificador, p.primerNombre as nombre1, p.segundoNombre as nombre2,
+            p.primerApellido as apellido1, p.segundoApellido as apellido2 FROM siblhmantenimientoBundle:BlhDonante p 
+            where p.idBancoDeLeche = $codigo");
+        
+       //echo $hisclinico[idDonante];
+                
+        $donantes_registradas  = $query->getResult();
+        //Obtener banco de leche//
+   
+        return array(
+            'donantes_registradas' =>  $donantes_registradas, 
+            'hospital' => $establecimiento,
+           
+        );
+        
+    }
+    
 
     /**
      * Displays a form to create a new BlhDonacion entity.
      *
-     * @Route("/new", name="blhdonacion_new")
+     * @Route("/new/{id}", name="blhdonacion_new")
      * @Method("GET")
      * @Template()
      */
-    public function newAction()
+    public function newAction($id)
     {
-        $entity = new BlhDonacion();
-        $form   = $this->createCreateForm($entity);
+        $em = $this->getDoctrine()->getManager();
+         $query = $em->createQuery("SELECT p.id as identificador, p.codigoDonante as codigo_donante, p.primerNombre as nombre1, p.segundoNombre as nombre2, p.primerApellido as apellido1, p.segundoApellido as apellido2 FROM siblhmantenimientoBundle:BlhDonante p  WHERE p.id = $id "); 
+        $datos_donantes  = $query->getResult();
+        //   $donante = $em->getRepository('siblhmantenimientoBundle:BlhDonante')->find($id);   
+       $donante = $em->getRepository('siblhmantenimientoBundle:BlhDonante')->find($datos_donantes[0]['identificador']);
+     
+        if (!$datos_donantes) {
+            throw $this->createNotFoundException('Unable to find BlhDonante entity');
+        }
+
+          //Obtener banco de leche//              
+       $userEst = $this->container->get('security.context')->getToken()->getUser()->getIdEst();
+       $query1 = $em->createQuery("SELECT e.nombre, e.direccion, e.telefono FROM siblhmantenimientoBundle:CtlEstablecimiento e WHERE e.id = $userEst");
+       $establecimiento = $query1->getResult(); 
+       $queryb = $em->createQuery("SELECT b.id FROM siblhmantenimientoBundle:BlhBancoDeLeche b WHERE b.idEstablecimiento = $userEst");
+       $id_blh = $queryb->getResult(); 
+       $codigo=$id_blh[0]['id']; 
+       $blh = $em->getRepository('siblhmantenimientoBundle:BlhBancoDeLeche')->find($codigo);
+       $entity = new BlhDonacion();
+       $entity->setIdBancoDeLeche($blh);
+        $entity->setIdDonante($donante);
+       $form   = $this->createCreateForm($entity);
 
         return array(
             'entity' => $entity,
             'form'   => $form->createView(),
-        );
+            'hospital' => $establecimiento,
+            'datos_donantes' => $datos_donantes,
+            );
     }
 
     /**
@@ -109,6 +184,10 @@ class BlhDonacionController extends Controller
     public function showAction($id)
     {
         $em = $this->getDoctrine()->getManager();
+          //Obtener banco de leche//              
+       $userEst = $this->container->get('security.context')->getToken()->getUser()->getIdEst();
+       $query1 = $em->createQuery("SELECT e.nombre, e.direccion, e.telefono FROM siblhmantenimientoBundle:CtlEstablecimiento e WHERE e.id = $userEst");
+       $establecimiento = $query1->getResult(); 
 
         $entity = $em->getRepository('siblhmantenimientoBundle:BlhDonacion')->find($id);
 
@@ -121,6 +200,7 @@ class BlhDonacionController extends Controller
         return array(
             'entity'      => $entity,
             'delete_form' => $deleteForm->createView(),
+                'hospital' => $establecimiento,
         );
     }
 
@@ -134,6 +214,9 @@ class BlhDonacionController extends Controller
     public function editAction($id)
     {
         $em = $this->getDoctrine()->getManager();
+         $userEst = $this->container->get('security.context')->getToken()->getUser()->getIdEst();
+       $query1 = $em->createQuery("SELECT e.nombre, e.direccion, e.telefono FROM siblhmantenimientoBundle:CtlEstablecimiento e WHERE e.id = $userEst");
+       $establecimiento = $query1->getResult(); 
 
         $entity = $em->getRepository('siblhmantenimientoBundle:BlhDonacion')->find($id);
 
@@ -148,6 +231,7 @@ class BlhDonacionController extends Controller
             'entity'      => $entity,
             'edit_form'   => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
+             'hospital' => $establecimiento,
         );
     }
 
@@ -165,7 +249,7 @@ class BlhDonacionController extends Controller
             'method' => 'PUT',
         ));
 
-        $form->add('submit', 'submit', array('label' => 'Update'));
+//        $form->add('submit', 'submit', array('label' => 'Update'));
 
         return $form;
     }

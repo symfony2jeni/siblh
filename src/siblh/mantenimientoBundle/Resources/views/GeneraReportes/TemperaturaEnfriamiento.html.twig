@@ -21,16 +21,14 @@
         
        <form> 
         <table   align = "center">
-            <tr><td colspan = 2 align = "center"><b>Fecha de Registro de Donante</b><p></td></tr>
-            <tr><td><font color="blue"><b>Fecha Inicio</b></font></td>
-                <td><INPUT id="codigo" name = "codigo" type=text  ></td></tr>
-               <tr><td colspan = 2 align = "center">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <input id = "exportar_pdf6" type="submit" value="Guardar" /></td></tr>
-         
-       
-        
-        
-        
-        </table>   </form> </div>
+            <tr><td colspan = 2 align = "center"><b>Verificar Temperaturas</b><p></td></tr>
+            <tr><td><font color="blue"><b>Codigo Pasteurizacion</b></font></td>
+                 <td> <INPUT id="id" name = "id" type=text  value = ""></td></tr>
+            <tr style="visibility:hidden"><td colspan =2> <INPUT id="identificador" size=2 name = "blh" type=text readonly="readonly" value= " {{ identificador }} "></td></tr>
+        <tr style="visibility:hidden"><td colspan =2> <INPUT id="nombre"  name = "blh" type=text readonly="readonly" value= " {{ hospital[0].nombre }} "></td></tr>
+ 
+             <tr><td colspan = 2 align = "center">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <button id = "exportar_pdf6" type="submit" value="Guardar" ><img src={{ asset('bundles/siblhmantenimiento/imagenes/pdf.png') }}></button></td></tr>
+  </table>   </form> </div>
      
  
  

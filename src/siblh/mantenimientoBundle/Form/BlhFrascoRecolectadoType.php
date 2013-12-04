@@ -21,7 +21,7 @@ class BlhFrascoRecolectadoType extends AbstractType
                     array('choices' => array('' => 'Seleccione un valor','Manual' => 'Manual',
                           'Mecanica' => 'Mecanica')))
             ->add('onzRecolectado')
-            ->add('observacionFrascoRecolectado')
+            ->add('observacionFrascoRecolectado','textarea',array('max_length'=>'150'))
             ->add('idEstado')
             ->add('idDonacion')
             ->add('idDonante')

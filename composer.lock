@@ -790,16 +790,16 @@
         },
         {
             "name": "jdorn/sql-formatter",
-            "version": "v1.2.9",
+            "version": "v1.2.16",
             "source": {
                 "type": "git",
                 "url": "https://github.com/jdorn/sql-formatter.git",
-                "reference": "bd1f09133f6dbbe0713856910e58ea9480c2be58"
+                "reference": "8859d664737492d313c34796731b35eca851b362"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/jdorn/sql-formatter/zipball/bd1f09133f6dbbe0713856910e58ea9480c2be58",
-                "reference": "bd1f09133f6dbbe0713856910e58ea9480c2be58",
+                "url": "https://api.github.com/repos/jdorn/sql-formatter/zipball/8859d664737492d313c34796731b35eca851b362",
+                "reference": "8859d664737492d313c34796731b35eca851b362",
                 "shasum": ""
             },
             "require": {
@@ -836,7 +836,7 @@
                 "highlight",
                 "sql"
             ],
-            "time": "2013-04-26 18:42:52"
+            "time": "2013-11-27 22:51:13"
         },
         {
             "name": "jms/aop-bundle",
@@ -1705,6 +1705,7 @@
                 "sonata"
             ],
             "time": "2013-11-25 11:47:35"
+
         },
         {
             "name": "sonata-project/block-bundle",
@@ -1723,6 +1724,7 @@
             },
             "require": {
                 "doctrine/common": "~2.3",
+                "knplabs/knp-menu-bundle": "~1.1",
                 "symfony/form": "~2.2",
                 "symfony/http-foundation": "~2.2"
             },
@@ -1894,6 +1896,7 @@
                 "type": "zip",
                 "url": "https://api.github.com/repos/sonata-project/SonataDoctrineORMAdminBundle/zipball/15ed873424fb30af43569014a48f6d216fdefe78",
                 "reference": "15ed873424fb30af43569014a48f6d216fdefe78",
+
                 "shasum": ""
             },
             "require": {

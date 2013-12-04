@@ -28,20 +28,28 @@ class BlhHistoriaActualController extends Controller
     public function indexAction()
     {
         $em = $this->getDoctrine()->getManager();
-
-        $entities = $em->getRepository('siblhmantenimientoBundle:BlhHistoriaActual')->findAll();
-        //Obtener banco de leche//
-              
-      $userEst = $this->container->get('security.context')->getToken()->getUser()->getIdEst();
-      /*  $query1 = $em->createQuery("SELECT b.id FROM siblhmantenimientoBundle:BlhBancoDeLeche b WHERE b.idEstablecimiento = $userEst");
-        $id_blh = $query1->getResult(); 
-        $codigo=$id_blh[0]['id']; */
-       
+        
+        
+ $entities = $em->getRepository('siblhmantenimientoBundle:BlhHistoriaActual')->findAll();
+         //Obtener banco de leche//              
+       $userEst = $this->container->get('security.context')->getToken()->getUser()->getIdEst();
        $query1 = $em->createQuery("SELECT e.nombre, e.direccion, e.telefono FROM siblhmantenimientoBundle:CtlEstablecimiento e WHERE e.id = $userEst");
-        $establecimiento = $query1->getResult(); 
+       $establecimiento = $query1->getResult(); 
+       $queryb = $em->createQuery("SELECT b.id FROM siblhmantenimientoBundle:BlhBancoDeLeche b WHERE b.idEstablecimiento = $userEst");
+       $id_blh = $queryb->getResult(); 
+       $codigo=$id_blh[0]['id']; 
+        
+      $query = $em->createQuery("SELECT ha.id, d.codigoDonante as codigo_donante, d.primerNombre as nombre1, d.segundoNombre as nombre2, 
+            d.primerApellido as apellido1, d.segundoApellido as apellido2,
+            ha.pesoDonante, ha.tallaDonante, ha.medicamento , ha.habitoToxico,
+            ha.motivoDonacion, ha.patologiaDonante, ha.imc, ha.estadoDonante
+       FROM siblhmantenimientoBundle:BlhHistoriaActual ha join ha.idDonante d where 
+       d.idBancoDeLeche = $codigo");
+       $donantes_registradas  = $query->getResult(); 
         return array(
             'entities' => $entities,
             'hospital' => $establecimiento,
+            'donantes_registradas' =>  $donantes_registradas, 
         );
     }
     /**
@@ -62,7 +70,7 @@ class BlhHistoriaActualController extends Controller
             $em->persist($entity);
             $em->flush();
 
-            return $this->redirect($this->generateUrl('blhhistoriaactual', array('id' => $entity->getId())));
+            return $this->redirect($this->generateUrl('blhhistoriaactual_show', array('id' => $entity->getId())));
         }
 
         return array(
@@ -101,6 +109,9 @@ class BlhHistoriaActualController extends Controller
     public function showAction($id)
     {
         $em = $this->getDoctrine()->getManager();
+        $userEst = $this->container->get('security.context')->getToken()->getUser()->getIdEst();
+        $query1 = $em->createQuery("SELECT e.nombre, e.direccion, e.telefono FROM siblhmantenimientoBundle:CtlEstablecimiento e WHERE e.id = $userEst");
+        $establecimiento = $query1->getResult(); 
 
         $entity = $em->getRepository('siblhmantenimientoBundle:BlhHistoriaActual')->find($id);
 
@@ -113,6 +124,7 @@ class BlhHistoriaActualController extends Controller
         return array(
             'entity'      => $entity,
             'delete_form' => $deleteForm->createView(),
+            'hospital' => $establecimiento,
         );
     }
 
@@ -126,6 +138,11 @@ class BlhHistoriaActualController extends Controller
     public function editAction($id)
     {
         $em = $this->getDoctrine()->getManager();
+         //Obtener banco de leche//
+            
+        $userEst = $this->container->get('security.context')->getToken()->getUser()->getIdEst();
+        $query1 = $em->createQuery("SELECT e.nombre, e.direccion, e.telefono FROM siblhmantenimientoBundle:CtlEstablecimiento e WHERE e.id = $userEst");
+        $establecimiento = $query1->getResult(); 
 
         $entity = $em->getRepository('siblhmantenimientoBundle:BlhHistoriaActual')->find($id);
 
@@ -140,6 +157,7 @@ class BlhHistoriaActualController extends Controller
             'entity'      => $entity,
             'edit_form'   => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
+            'hospital' => $establecimiento,
         );
     }
 

@@ -1,4 +1,4 @@
-$(document).ready(function() { 
+$(document).ready(function($) { 
     
     $('#reporte').click(function(){
       var url="/app_dev.php/reportes/reporte/alertaprealmacenado/AlertaPrealmacenado/pdf";
@@ -18,10 +18,12 @@ $(document).ready(function() {
  //$x=0;
  if($x>0)
      {
+    //  $.noConflict();         
   $(function() {
+      
     $( "#dialog-message" ).dialog({
       modal: false,
-      position: ['left', 405],
+      position: ['left', 170],
 
  autoOpen: true,
       show: {
@@ -34,6 +36,7 @@ $(document).ready(function() {
       },     
       
       buttons: {
+          
         Ok: function() {
           $( this ).dialog( "close" );
         }
@@ -45,10 +48,18 @@ $(document).ready(function() {
 //window.open("/app_dev.php/pacientes/");  
 
 
-$(function() {
+
+      
+     }
+
+ $y = $('#2').val();
+ //$x=0;
+ if($y>0)
+ {
+ $(function() {
     $( "#dialog-message2" ).dialog({
       modal: false,
-   position: ['right', 405],
+   position: ['right', 170],
    autoOpen: true,
       show: {
         effect: "blind",
@@ -66,11 +77,20 @@ $(function() {
       }
     });
   });
-      
-     }
-
-
+ }
     
-     $.noConflict();
+
+     
+     //prueba------------------------------------//
+     //  $.noConflict(); 
+   
+     	$('#slidorion').slidorion({
+		speed: 2000,
+		interval: 9000,
+		effect: 'slideLeft'
+	});
+     
+     
+     
 	
      });

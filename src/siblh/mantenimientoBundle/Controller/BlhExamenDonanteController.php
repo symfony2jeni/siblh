@@ -109,6 +109,8 @@ class BlhExamenDonanteController extends Controller
     public function showAction($id)
     {
         $em = $this->getDoctrine()->getManager();
+        
+
 
         $entity = $em->getRepository('siblhmantenimientoBundle:BlhExamenDonante')->find($id);
 
@@ -117,11 +119,13 @@ class BlhExamenDonanteController extends Controller
         }
 
         $deleteForm = $this->createDeleteForm($id);
+        
 
         return array(
             'entity'      => $entity,
             'delete_form' => $deleteForm->createView(),
-        );
+    
+                  );
     }
 
     /**

@@ -11,55 +11,34 @@
  <script type="text/javascript" src="{{asset('bundles/jquery/jquery.jqGrid-4.5.4/js/i18n/grid.locale-es.js')}}"></script>
       <script type="text/javascript" src="{{asset('bundles/jquery/jquery.jqGrid-4.5.4/js/jquery.jqGrid.min.js')}}" ></script> 
 
- <a href="{{ path('mostrar_receptores',{'report_name':'Receptores','report_format':'pdf'})}}" id="reporte"> Reporte </a>
   
-    <h1>BlhReceptor list</h1>
+    <h1>Receptores</h1>
 
 <table id = "listado_receptores">
         <thead>
             <tr>
-                
                 <th>Codigo</th>
+                <th>Nombre</th>
                 <th>Fecha&nbsp;de&nbsp;registro</th>
                 <th>Procedencia</th>
                 <th>Estado&nbsp;de&nbsp;receptor</th>
                 <th>Edad&nbsp;en&nbsp;dias</th>
                 <th>Pesoreceptor</th>
-                <th>Duracioncpap</th>
-                <th>Clasificacion&nbsp;lubchengo</th>
-                <th>Diagnostico&nbsp;de&nbsp;ingreso</th>
-                <th>Duracio&nbsp;nnpt</th>
-                <th>Apgar</th>
-                <th>Edadgest&nbsp;fur</th>
-                <th>Duracionventilacion</th>
-                <th>Edadgest&nbsp;ballard</th>
-                <th>Pc</th>
                 <th>Talla&nbsp;de&nbsp;ingreso</th>
-                <th>Accion</th>
-            </tr>
+                <th>Accion</th></tr>
         </thead>
         <tbody>
-        {% for entity in entities %}
+        {% for entity in receptores_registrados %}
             <tr>
                 <td>{{ entity.codigoReceptor }}</td>
-                <td>{% if entity.fechaRegistroBlh %}{{ entity.fechaRegistroBlh|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{{ entity.nombre1 }} {{ entity.nombre2 }} {{ entity.nombre3 }} {{ entity.apellido1 }} {{ entity.apellido2 }}</td>
+                <td>{% if entity.fechaRegistroBlh %}{{ entity.fechaRegistroBlh|date('Y-m-d') }}{% endif %}</td>
                 <td>{{ entity.procedencia }}</td>
                 <td>{{ entity.estadoReceptor }}</td>
                 <td>{{ entity.edadDias }}</td>
-                <td>{{ entity.pesoReceptor }}</td>
-                <td>{{ entity.duracionCpap }}</td>
-                <td>{{ entity.clasificacionLubchengo }}</td>
-                <td>{{ entity.diagnosticoIngreso }}</td>
-                <td>{{ entity.duracionNpt }}</td>
-                <td>{{ entity.apgar }}</td>
-                <td>{{ entity.edadGestFur }}</td>
-                <td>{{ entity.duracionVentilacion }}</td>
-                <td>{{ entity.edadGestBallard }}</td>
-                <td>{{ entity.pc }}</td>
-                <td>{{ entity.tallaIngreso }}</td>
-                    <td><a href="{{ path('blhreceptor_edit', { 'id': entity.id }) }}"><font color="blue"><u>Editar</u></font></a>
-                </td>
-            </tr>
+                <td>{{ entity.pesoReceptor|number_format(2, '.', ',') }}</td>
+                <td>{{ entity.tallaIngreso|number_format(2, '.', ',') }}</td>
+                <td><a href="{{ path('blhreceptor_edit', { 'id': entity.id }) }}"><font color="blue"><u>Editar</u></font></a></td></tr>
         {% endfor %}
         </tbody>
     </table>

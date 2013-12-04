@@ -30,18 +30,26 @@ class BlhFrascoRecolectadoController extends Controller
         $em = $this->getDoctrine()->getManager();
 
         $entities = $em->getRepository('siblhmantenimientoBundle:BlhFrascoRecolectado')->findAll();
-         //Obtener banco de leche//
-              
-      $userEst = $this->container->get('security.context')->getToken()->getUser()->getIdEst();
-      /*  $query1 = $em->createQuery("SELECT b.id FROM siblhmantenimientoBundle:BlhBancoDeLeche b WHERE b.idEstablecimiento = $userEst");
-        $id_blh = $query1->getResult(); 
-        $codigo=$id_blh[0]['id']; */
-       
+           //Obtener banco de leche//              
+       $userEst = $this->container->get('security.context')->getToken()->getUser()->getIdEst();
        $query1 = $em->createQuery("SELECT e.nombre, e.direccion, e.telefono FROM siblhmantenimientoBundle:CtlEstablecimiento e WHERE e.id = $userEst");
-        $establecimiento = $query1->getResult(); 
+       $establecimiento = $query1->getResult(); 
+       $queryb = $em->createQuery("SELECT b.id FROM siblhmantenimientoBundle:BlhBancoDeLeche b WHERE b.idEstablecimiento = $userEst");
+       $id_blh = $queryb->getResult(); 
+       $codigo=$id_blh[0]['id'];        
+        
+
+       $query = $em->createQuery("SELECT fr.id, d.codigoDonante as codigo_donante, d.primerNombre as nombre1, d.segundoNombre as nombre2, 
+            d.primerApellido as apellido1, d.segundoApellido as apellido2,
+            fr.codigoFrascoRecolectado, fr.volumenRecolectado, fr.onzRecolectado , fr.formaExtraccion,
+            fr.observacionFrascoRecolectado
+       FROM siblhmantenimientoBundle:BlhFrascoRecolectado fr join fr.idDonante d where 
+       d.idBancoDeLeche = $codigo");
+       $frascos  = $query->getResult();
         return array(
             'entities' => $entities,
             'hospital' => $establecimiento,
+            'frascos' =>  $frascos, 
         );
     }
     /**
@@ -62,7 +70,7 @@ class BlhFrascoRecolectadoController extends Controller
             $em->persist($entity);
             $em->flush();
 
-            return $this->redirect($this->generateUrl('blhfrascorecolectado', array('id' => $entity->getId())));
+            return $this->redirect($this->generateUrl('blhfrascorecolectado_show', array('id' => $entity->getId())));
         }
 
         return array(
@@ -121,6 +129,9 @@ class BlhFrascoRecolectadoController extends Controller
    public function showAction($id)
     {
         $em = $this->getDoctrine()->getManager();
+         $userEst = $this->container->get('security.context')->getToken()->getUser()->getIdEst();
+        $query1 = $em->createQuery("SELECT e.nombre, e.direccion, e.telefono FROM siblhmantenimientoBundle:CtlEstablecimiento e WHERE e.id = $userEst");
+        $establecimiento = $query1->getResult(); 
 
         $entity = $em->getRepository('siblhmantenimientoBundle:BlhFrascoRecolectado')->find($id);
 
@@ -133,6 +144,7 @@ class BlhFrascoRecolectadoController extends Controller
         return array(
             'entity'      => $entity,
             'delete_form' => $deleteForm->createView(),
+            'hospital' => $establecimiento,
         );
     }
 
@@ -289,7 +301,7 @@ class BlhFrascoRecolectadoController extends Controller
         $id_blh = $queryb->getResult(); 
         $codigo=$id_blh[0]['id']; 
         //Obteniendo lista de pacientes que son receptores y que estan en estado "Activo"  
-        $query = $em->createQuery("SELECT r.id, r.fechaDonacion, r.responsableDonacion, p.id as identificador, p.primerNombre as nombre1, p.segundoNombre as nombre2, p.primerApellido as apellido1, p.segundoApellido as apellido2 FROM siblhmantenimientoBundle:BlhDonacion r JOIN r.idDonante p
+        $query = $em->createQuery("SELECT r.id, r.fechaDonacion, r.responsableDonacion, p.id as identificador, p.primerNombre as nombre1, p.segundoNombre as nombre2, p.primerApellido as apellido1, p.segundoApellido as apellido2, p.codigoDonante as codigo FROM siblhmantenimientoBundle:BlhDonacion r JOIN r.idDonante p
             where p.idBancoDeLeche = $codigo");
         
         $donaciones_donantes  = $query->getResult();

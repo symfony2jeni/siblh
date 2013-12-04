@@ -373,10 +373,6 @@ class GeneraReportesController extends Controller
       $query2 = $em->createQuery("SELECT b.id as id2 FROM siblhmantenimientoBundle:BlhBancoDeLeche b WHERE b.idEstablecimiento = $userEst");
       $id_blh = $query2->getResult(); 
       $id2=$id_blh[0]['id2']; 
-       
-  /*  if ($codigo<10){
-        $id2='0'.$codigo;}
-        else{$id2 = strval($codigo);} */
         
         return array('hospital' => $establecimiento,
                      'id2' => $id2,
@@ -424,15 +420,6 @@ class GeneraReportesController extends Controller
       $query2 = $em->createQuery("SELECT b.id as id FROM siblhmantenimientoBundle:BlhBancoDeLeche b WHERE b.idEstablecimiento = $userEst");
       $id_blh = $query2->getResult(); 
       $id=$id_blh[0]['id']; 
-        /*  if ($codi<10){
-      $identificador='0'.$codi;
-             }
-          
-      
-        else{
-            $identificador = strval($codi);         
-            } */
-
         
         return array('hospital' => $establecimiento,
                      'id' => $id,

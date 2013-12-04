@@ -1,16 +1,31 @@
 {% extends 'siblhmantenimientoBundle::plantilla.html.twig' %}
+{% block stylesheets %}
+    {{ parent() }}
+        <link href="{{ asset('bundles/siblhmantenimiento/css/form.css') }}" rel="stylesheet" type="text/css" />
+{% endblock %}
+
+{% block javascripts %}
+    {{parent()}}
+    <script type="text/javascript" src="{{ asset('bundles/siblhmantenimiento/js/BlhTemperaturaEnfriamiento/edit.js') }}" ></script>
+{% endblock %}
 
 {% block body -%}
-    <h1>BlhTemperaturaEnfriamiento edit</h1>
+    <h1>Editar Temperatura Enfriamiento</h1>
 
-    {{ form(edit_form) }}
-
-        <ul class="record_actions">
-    <li>
-        <a href="{{ path('blhtemperaturaenfriamiento') }}">
-            Back to the list
-        </a>
-    </li>
-    <li>{{ form(delete_form) }}</li>
-</ul>
+    
+      {{ form_start(edit_form) }}
+    {{ form_errors(edit_form) }}
+    
+    <table  align = "center">
+    <tr><td  align = "left" height=10  ></td></tr>
+    <tr><td align='left'><font color="red">*</font>{{ form_label(edit_form.temperaturaE, 'Temperatura Enfriamiento') }}</td><td align='left'>{{ form_widget(edit_form.temperaturaE, {'attr':{'Title': 'Temperatura entre 0 y 30', 'onKeyPress':"return soloNumerosEnteros(event);"} }) }}</td></tr>
+    <tr><td  align = "left" height=10  ></td></tr>
+    <tr><td  align = "left" height=10  ></td></tr>
+    <tr style="visibility:hidden"><td align='left'>{{ form_label(edit_form.idPasteurizacion) }}</td><td align='left'>{{ form_widget(edit_form.idPasteurizacion) }}</td></tr>
+    <tr><td  align = "left" height=10  ></td></tr>
+     <tr><td align = "left"><font color="red" size = "2" face = "Comic Sans MS">* Campos requeridos</font></td> </tr>     
+    <tr><td colspan = '2' align = 'center'>  <input id= "button" type="submit" value="Actualizar"/>
+    <input id = "boton" type="button" value="Regresar" onClick=' window.location.href="{{ path('blhtemperaturaenfriamiento') }}" '></td></tr>
+    </table>
+    {{ form_end(edit_form) }}
 {% endblock %}

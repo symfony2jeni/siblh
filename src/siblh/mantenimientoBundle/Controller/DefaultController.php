@@ -43,6 +43,14 @@ from siblhmantenimientoBundle:BlhFrascoRecolectado  fr JOIN fr.idDonacion don wh
         $results  = $query->getResult();
         $resultCount = count($results);
         
+         $query2 = $em->createQuery("select date_diff(date_add(pas.fechaPasteurizacion,6,'month'),current_date()) as dias
+from siblhmantenimientoBundle:BlhFrascoProcesado  fp JOIN fp.idPasteurizacion pas where (date_diff(date_add(pas.fechaPasteurizacion,6,'month'),current_date())) <= 2"); 
+    
+                
+        $results2  = $query2->getResult();
+        $resultCount2 = count($results2);
+
+        
             /*  $query1 = $em->createQuery("SELECT b.id FROM siblhmantenimientoBundle:BlhBancoDeLeche b WHERE b.idEstablecimiento = $userEst");
         $id_blh = $query1->getResult(); 
         $codigo=$id_blh[0]['id']; */ 
@@ -56,6 +64,7 @@ from siblhmantenimientoBundle:BlhFrascoRecolectado  fr JOIN fr.idDonacion don wh
            
          return array(
             'resultado' =>  $resultCount,  
+             'resultado2' => $resultCount2,
             'hospital' => $establecimiento,
          
         );

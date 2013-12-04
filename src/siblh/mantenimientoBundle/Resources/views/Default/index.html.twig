@@ -1,60 +1,132 @@
 
 {% extends 'siblhmantenimientoBundle::plantilla.html.twig'%}
-{% block javascripts %}
-    {{parent()}}
-   <script type="text/javascript" src="{{ asset('bundles/siblhmantenimiento/js/Default/index.js') }}" ></script>
+
+
+ {% block stylesheets %}
+ <link href="{{ asset('bundles/siblhmantenimiento/css/custom_layout.css') }}" type="text/css" rel="stylesheet" />
+        <link href="{{ asset('bundles/siblhmantenimiento/css/normalize.css') }}" type="text/css" rel="stylesheet" />
+        {# <link href="{{ asset('bundles/siblhmantenimiento/css/estilos.css') }}" type="text/css" rel="stylesheet" />#}
+        {#  <link href="{{ asset('bundles/siblhmantenimiento/css/custom_bootstrap.min.css') }}" type="text/css" rel="stylesheet" /> #}
+        <link href="{{ asset('bundles/siblhmantenimiento/imagenes/escudo.png') }}" type="image/png" rel="Shortcut Icon" />   
+{#ya #} <link href="{{ asset('bundles/jquery/jquery-ui-1.10.3.custom/css/custom-theme/jquery-ui-1.10.3.custom.css') }}" rel="stylesheet" type="text/css" />
+        {#<link href="{{asset('bundles/jquery/jquery.jqGrid-4.5.4/css/ui.jqgrid.css')}}" rel="stylesheet"  type="text/css" media="all"/>  #}
+{#ya #} <link href="{{ asset('bundles/jquery/bValidator-0.71/themes/bvalidator.theme.red.css') }}" rel="stylesheet" type="text/css" /> 
+
+{#--------------------------------#}
+<link href="{{ asset('bundles/siblhmantenimiento/Slidorion-master/css/slidorion.css') }}" type="text/css" rel="stylesheet" />
 {% endblock %}
 
+
+
+{% block javascripts %}
+    {{parent()}}
+<script type="text/javascript" src="{{ asset('bundles/siblhmantenimiento/Slidorion-master/js/jquery.slidorion.js') }}" ></script>
+<script type="text/javascript" src="{{ asset('bundles/siblhmantenimiento/Slidorion-master/js/jquery.min.js') }}" ></script>
+<script type="text/javascript" src="{{ asset('bundles/siblhmantenimiento/Slidorion-master/js/jquery.easing.js') }}" ></script>
+{#ya<script type="text/javascript" src="{{ asset('bundles/jquery/jquery-ui-1.10.3.custom/development-bundle/ui/jquery.ui.dialog.js') }}" ></script>#}
+
+
+<script type="text/javascript" src="{{ asset('bundles/siblhmantenimiento/js/Default/index.js') }}" ></script>
+
+
+{#prueba ----------------------------#}
+
+
+
+{% endblock %}
+
+
+
+
+
 {% block body %}
-
-
-<h1>¡¡¡¡¡ Bienvenido !!!!!</h1>
-
-
-
-
+<div > <br>
+    <font color="#2b8dd6" SIZE=6 face="MS Sans Serif"><b>Sistema Inform&#225;tico de Bancos de Leche Humana</b></font><br><br>
+    <font color="#2b8dd6" SIZE=6 face="MS Sans Serif"><b>Bienvenido</b></font>
 <FORM> 
-   <table align = "center" >
-       
+      <table align = "center" >       
        <tr style="visibility:hidden">
        <td>Numero</td>
-        <td>
-        <INPUT id = "1" type=text disabled="disabled" size=10 readonly="readonly" value= " {{ resultado }} "></td></tr> 
-   
-   </table>
-     
+       <td><INPUT id = "1" type=text disabled="disabled" size=10 readonly="readonly" value= " {{ resultado }} "></td><td>
+        <INPUT id = "2" type=text disabled="disabled" size=10 readonly="readonly" value= " {{ resultado2 }} "></td></tr> 
+      </table>     
 </form>
 
 <table>
     <tr style="visibility:hidden"> <td>
 <div id="dialog-message" title="Alerta de vencimiento">
-  <p>
-    <span class="ui-icon ui-icon-alert" style="float: left; margin: 0 7px 50px 0;"></span>
-    Frascos de leche prealmacenada proximos a vencerse.
-  </p>
+<p><span class="ui-icon ui-icon-alert" style="float: left; margin: 0 7px 50px 0;"></span>Frascos de leche prealmacenada proximos a vencerse.</p>
    <a href="{{ path('mostrar_alerta',{'report_name':'AlertaPrealmacenado','report_format':'pdf'})}}" id="reporte"><font color="blue" size = "2" face = "Comic Sans MS"> Ver reporte de frascos prealmacenados</font></a>
-
-  
-</div>
-                    </td>
- </tr>
+</div></td></tr>
  </table>
 
-
-<table>
-    <tr style="visibility:hidden"> <td>
+<table><tr style="visibility:hidden"> <td>
 <div id="dialog-message2" title="Alerta de vencimiento">
-  <p>
-    <span class="ui-icon ui-icon-alert" style="float: left; margin: 0 7px 50px 0;"></span>
-    Frascos de leche pasteurizados proximos a vencerse.
-  </p>
+<p><span class="ui-icon ui-icon-alert" style="float: left; margin: 0 7px 50px 0;"></span>Frascos de leche pasteurizados proximos a vencerse.</p>
    <a href="{{ path('mostrar_alerta2',{'report_name':'AlertaPasteurizado','report_format':'pdf'})}}" id="reporte2"><font color="blue" size = "2" face = "Comic Sans MS"> Ver reporte de frascos pasteurizados</font></a>
-
-  
-</div>
-                    </td>
- </tr>
+</div></td></tr>
  </table>
+
+
+{#prueba----------------------------#}
+<div id="slidorion" class="slidorion">
+    <div class="slider">
+        
+        <div class="slide"><img src={{ asset('bundles/siblhmantenimiento/Slidorion-master/img/imagen1.jpg') }} /></div>
+        <div class="slide"><img src={{ asset('bundles/siblhmantenimiento/Slidorion-master/img/imagen2.jpg') }} /></div>
+    
+        <div class="slide"><img src={{ asset('bundles/siblhmantenimiento/Slidorion-master/img/imagen3.jpg') }} /></div>
+        <div class="slide"><img src={{ asset('bundles/siblhmantenimiento/Slidorion-master/img/imagen4.jpg') }} /></div>
+        <div class="slide"><img src={{ asset('bundles/siblhmantenimiento/Slidorion-master/img/imagen5.jpg') }} /></div>
+
+    </div>
+
+    <div class="accordion">
+        <div class="header">Inicio</div>
+        <div class="content"><font size= 2 face="font-family: verdana" ><p align="justify">
+           El Banco de leche humana, es un servicio especializado responsable de promover, proteger y apoyar la lactancia materna, recolectar y procesar leche humana ordeñada, con el fin de brindar a los recién nacidos prematuros y de bajo peso al nacer, leche humana pasteurizada con calidad certificada, promoviendo así, su desarrollo nutricional e inmunológico, disminuyendo la morbimortalidad neonatal y por ende, la mortalidad infantil.    
+        </p></font></div>
+        <div class="header">Mision y Vision</div>
+        <div class="content">
+            <b> MISION:<br></b>
+        <font size= 2 face="font-family: verdana" ><p align="justify"> Promover, proteger y apoyar la lactancia materna; a traves de la recolección, procesamiento y distribución de Leche Humana extraída, con calidad certificada; con el fin de disminuir la morbi-mortalidad neonatal de recién nacidos prematuros y de bajo peso al nacer.</p></font>
+        <br>
+         <b> VISION:<br></b>
+        <font size= 2 face="font-family: verdana" ><p align="justify"> Ser el banco de leche humana certificado de referencia nacional, que sirva para entrenar, orientar y capacitar recursos humanos con el fin de crear nuevos centros de recolección y procesamiento en otros hospitales dentro del país.</p></font></div>
+
+        <div class="header">Funciones</div>
+        <div class="content">
+        <font size= 2 face="font-family: verdana" ><p align="left">
+        <ul>                 
+        <li align="left">Promover, proteger y apoyar la lactancia materna.</li>
+        <li align="left">Recolectar y procesar leche humana  ordeñada.</li>
+        <li align="left">Brindar alimentacion a prematuros y recien nacidos de bajo peso.</li>
+        <li align="left">Promover el desarrollo nutricional e inmunologico.</li>
+        <li align="left">Disminuir la morbimortalidad neonatal y la mortalidad infantil.</li></ul>
+        </p></font></div>
+        <div class="header">Procedimientos</div>
+        <div class="content">
+        <font size= 2 face="font-family: verdana" ><p align="left">
+        <ul><li align="left">Entrevista de donantes.</li>
+        <li align="left">Recolección de leche humana.</li>
+        <li align="left">Pre almacenaje de leche humana.</li>
+        <li align="left">Análisis físico-quimico de leche.</li>
+        <li align="left">Pasteurización.</li>
+        <li align="left">Control microbiológico.</li>
+        <li align="left">Liberación de leche humana pasteurizada.</li>
+        <li align="left">Despacho de leche humana.</li></ul>        
+        </p></font></div>
+        <div class="header">¿Quienes se benefician?</div>
+        <div class="content">
+        <font size= 2 face="font-family: verdana" ><p align="justify">
+        Los beneficiados son todos los recien nacidos con una necesidad médica, prematuros,  y de bajo peso al nacer.    
+        </div>
+    </div>
+</div>
+			
+
+{#prueba------------#}
+    </div>
      
 
 {% endblock %}

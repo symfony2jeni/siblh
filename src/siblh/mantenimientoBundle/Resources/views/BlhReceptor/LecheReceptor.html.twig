@@ -1,0 +1,45 @@
+{% extends 'siblhmantenimientoBundle::plantilla.html.twig' %}
+
+{% block javascripts %}
+    {{parent()}}
+   <script type="text/javascript" src="{{ asset('bundles/siblhmantenimiento/js/BlhReceptor/LecheReceptor.js') }}" ></script>
+{% endblock %}
+   
+{% block body -%}
+ <link href="{{asset('bundles/jquery/jquery.jqGrid-4.5.4/css/ui.jqgrid.css')}}" rel="stylesheet"  type="text/css" media="all"/>  
+ 
+ <script type="text/javascript" src="{{asset('bundles/jquery/jquery.jqGrid-4.5.4/js/i18n/grid.locale-es.js')}}"></script>
+      <script type="text/javascript" src="{{asset('bundles/jquery/jquery.jqGrid-4.5.4/js/jquery.jqGrid.min.js')}}" ></script> 
+
+   
+    <h1>Receptores</h1>
+
+<table id = "listado_receptores">
+        <thead>
+            <tr>
+                 <th>Codigo</th>
+                 <th>Nombre</th>
+                 <th>Accion</th>
+                
+            </tr>
+          
+        </thead>
+      
+        <tbody>
+         <tbody>
+            <tr>
+       {% for receptor in receptores_registrados%}
+                <td>{{ receptor.codigoReceptor }}</td> 
+                <td>{{ receptor.nombre1 }} {{ receptor.nombre2 }} {{ receptor.apellido1 }} {{ receptor.apellido2 }}</td>
+                <td><a href="{{ path('_exportar_reporte_lecher',{'report_name':'LecheReceptor','report_format':'pdf', 'id': receptor.identificador, 'codigo': codigo,'nombre': nombre })}}"  target="_blank"  id="reporte"> <font color="blue"><u>Leche Despachada</u></font> </a></td></tr>
+
+
+
+    {% endfor %}
+            
+        </tbody>
+   
+    </table>
+
+        <div id='pagerreceptores' ></div>
+    {% endblock %}

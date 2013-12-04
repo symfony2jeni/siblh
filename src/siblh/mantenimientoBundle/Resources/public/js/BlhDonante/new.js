@@ -1,5 +1,5 @@
 $(document).ready(function() { 
-        $('button').button();
+       
      $.noConflict();
      $.datepicker.setDefaults($.datepicker.regional["es"]);
    $('input[id$="_fechaNacimiento"]').datepicker({ dateFormat: 'yy-mm-dd',  
@@ -19,12 +19,17 @@ $(document).ready(function() {
                            changeMonth: true,
                            changeYear: true,
                            clearStatus: 'Borra fecha actual',  
-                          defaultDate: '2012-01-01',
-                            yearRange: '2012:y',
+                           defaultDate: 'today',
+                           minDate: '2012-10-08',
+                           maxDate: 'today',
+                           yearRange: '2012:y',  
                            dayNamesMin: ["Do", "Lu", "Ma", "Mi", "Ju", "Vi", "Sa"],
                            monthNamesShort: ["Ene", "Feb", "Mar", "Abr", "May", "Jun",
                                              "Jul", "Ago", "Sep", "Oct", "Nov", "Dic"]
                           });  
+                          
+                           $('#boton').button();
+                          
                           
                         //  $('#siblh_mantenimientobundle_blhdonante_numeroDocumentoIdentificacion').
       //  attr('data-bvalidator', 'regex[a{3}],required');
@@ -86,6 +91,8 @@ $('#siblh_mantenimientobundle_blhdonante_registro').
  
 $('#siblh_mantenimientobundle_blhdonante_registro').
         attr('data-bvalidator-msg', "Ingrese el registro en el formato correcto 999999-9999"); 
+ $('#siblh_mantenimientobundle_blhdonante_fechaNacimiento').
+            attr('data-bvalidator', 'required'); 
 
 
 
@@ -107,10 +114,7 @@ $(function() {
         
            });
 
-
-
-
-  
+ 
 
 });
 

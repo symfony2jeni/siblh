@@ -1,15 +1,38 @@
-{% extends '::base.html.twig' %}
-
+{% extends 'siblhmantenimientoBundle::plantilla.html.twig' %}
+{% block stylesheets %}
+    {{ parent() }}
+        <link href="{{ asset('bundles/siblhmantenimiento/css/form.css') }}" rel="stylesheet" type="text/css" /> 
+{% endblock %}
+        
+{% block javascripts %}
+{{parent()}}
+<script type="text/javascript" src="{{ asset('bundles/siblhmantenimiento/js/BlhDonante/new.js') }}" ></script>        
+{% endblock %}
+ 
 {% block body -%}
     <h1>BlhBancoDeLeche creation</h1>
 
-    {{ form(form) }}
 
-        <ul class="record_actions">
-    <li>
-        <a href="{{ path('blhbancodeleche') }}">
-            Back to the list
-        </a>
-    </li>
-</ul>
+    {{ form_start(form) }}
+    {{ form_errors(form) }}
+ 
+  <table align = "center" width = "87%" >     
+  <tr><td align = "left" > <font color="red">*</font>
+        {{ form_label(form.codigoBancoDeLeche) }} {{ form_errors(form.codigoBancoDeLeche) }}</td><td align = "left" >   
+        {{ form_widget(form.codigoBancoDeLeche, {'attr':{'readonly': 'true'} }) }} </td><td   align = "left"> 
+  <tr><td align = "left" > <font color="red">*</font>
+        {{ form_label(form.estadoBanco) }} {{ form_errors(form.estadoBanco) }}</td><td align = "left" >   
+        {{ form_widget(form.estadoBanco, {'attr':{'required': 'true'} }) }} </td><td   align = "left"> 
+   <tr><td align = "left" > <font color="red">*</font>
+        {{ form_label(form.idEstablecimiento) }} {{ form_errors(form.idEstablecimiento) }}</td><td align = "left" >   
+        {{ form_widget(form.idEstablecimiento, {'attr':{'required': 'true'} }) }} </td><td   align = "left"> 
+  <tr><td height=10  ></td></tr>   
+    <tr><td align = "left" colspan = '4'><font color="red" size = "2" face = "Comic Sans MS">* Campos requeridos</font></td><tr>
+    <tr><td colspan = '4' align = 'center'>
+    <input type="submit" id= "boton" value="Guardar"/></td></tr>
+    </tr>
+    </table>
+    
+   {{ form_end(form) }} 
+    
 {% endblock %}

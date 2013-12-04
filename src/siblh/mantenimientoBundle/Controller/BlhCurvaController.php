@@ -59,7 +59,9 @@ class BlhCurvaController extends Controller
             $em = $this->getDoctrine()->getManager();
             $em->persist($entity);
             $em->flush();
+
   //redirigir para el nuevo lote de pasteurizacion, mostrando los datos consultados en newaction de pasteurizacion. 
+
             return $this->redirect($this->generateUrl('blhpasteurizacion_new', array('id' => $entity->getId())));
         }
 

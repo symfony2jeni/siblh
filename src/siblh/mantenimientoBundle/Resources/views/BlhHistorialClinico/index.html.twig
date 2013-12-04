@@ -17,12 +17,10 @@
     <table id = "listado_hc">
         <thead>
             <tr>
-                
+                <th>Codigo</th>
+                <th>Nombre</th>
                 <th>Amenorrea</th>
-                <th>Control&nbsp;prenatal</th>
-                <th>Lugar&nbsp;de&nbsp;control</th>
-                <th>Numero&nbsp;de&nbsp;controles</th>
-                <th>Fecha&nbsp;ultima&nbsp;regla</th>
+                <th>Ultima&nbsp;Regla</th>
                 <th>Fecha&nbsp;de&nbsp;parto</th>
                 <th>Lugar&nbsp;de&nbsp;parto</th>
                 <th>Patologia</th>
@@ -34,24 +32,19 @@
             </tr>
         </thead>
         <tbody>
-        {% for entity in entities %}
+        {% for entity in donantes_registradas %}
             <tr>
+                <td>{{ entity.codigo_donante }}</td>
+                <td>{{ entity.nombre1 }} {{ entity.nombre2 }} {{ entity.apellido1 }} {{ entity.apellido2 }}</td>
                 <td>{{ entity.amenorrea }}</td>
-                <td>{{ entity.controlPrenatal }}</td>
-                <td>{{ entity.lugarControl }}</td>
-                <td>{{ entity.numeroControl }}</td>
-                <td>{% if entity.fechaUltimaRegla %}{{ entity.fechaUltimaRegla|date('Y-m-d H:i:s') }}{% endif %}</td>
-                <td>{% if entity.fechaParto %}{{ entity.fechaParto|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{% if entity.fechaUltimaRegla %}{{ entity.fechaUltimaRegla|date('Y-m-d') }}{% endif %}</td>
+                <td>{% if entity.fechaParto %}{{ entity.fechaParto|date('Y-m-d') }}{% endif %}</td>
                 <td>{{ entity.lugarParto }}</td>
                 <td>{{ entity.patologiaEmbarazo }}</td>
                 <td>{{ entity.periodoIntergenesico }}</td>
-                <td>{% if entity.fechaPartoAnterior %}{{ entity.fechaPartoAnterior|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{% if entity.fechaPartoAnterior %}{{ entity.fechaPartoAnterior|date('Y-m-d') }}{% endif %}</td>
                 <td colspan = "6">G{{ entity.formulaObstetricaG }}P{{ entity.formulaObstetricaP1 }}P{{ entity.formulaObstetricaP2 }}A{{ entity.formulaObstetricaA }}V{{ entity.formulaObstetricaV }}M{{ entity.formulaObstetricaM }}</td>
-               
-                <td><a href="{{ path('blhhistorialclinico_edit', { 'id': entity.id }) }}"><font color="blue"><u>Editar</u></font></a>
-                    
-                </td>
-            </tr>
+                <td><a href="{{ path('blhhistorialclinico_edit', { 'id': entity.id }) }}"><font color="blue"><u>Editar</u></font></a></td></tr>
         {% endfor %}
         </tbody>
     </table>

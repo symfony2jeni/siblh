@@ -26,11 +26,9 @@
                 <th>Fecha&nbsp;Nacimiento</th>
                 <th>Fecha&nbsp;de&nbsp;registro</th>
                 <th>Telefono&nbsp;fijo</th>
-                <th>Celular</th>
-                <th>Direccion</th>
                 <th>Procedencia</th>
                 <th>Registro</th>
-                 <th>Documento&nbsp;de&nbsp;identificacion</th>
+                <th>Documento</th>
                 <th>Numero&nbsp;de&nbsp;documento</th>               
                 <th>Edad</th>
                 <th>Ocupacion</th>
@@ -38,31 +36,27 @@
                 <th>Nacionalidad</th>
                 <th>Escolaridad</th>
                <th>Tipo&nbsp;de&nbsp;colecta</th>
-                <th>Observaciones</th>
-                <th>Accion</th>
+               <th>Accion</th>
             </tr>
         </thead>
         <tbody>
-        {% for entity in entities %}
+        {% for entity in donante %}
             <tr>
                 <td>{{ entity.codigoDonante }}</td>
                 <td>{{ entity.primerNombre }} {{ entity.segundoNombre }} {{ entity.primerApellido }} {{ entity.segundoApellido }}</td>
-                <td>{% if entity.fechaNacimiento %}{{ entity.fechaNacimiento|date('Y-m-d H:i:s') }}{% endif %}</td>
-                <td>{% if entity.fechaRegistroDonanteBlh %}{{ entity.fechaRegistroDonanteBlh|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{% if entity.fechaNacimiento %}{{ entity.fechaNacimiento|date('Y-m-d') }}{% endif %}</td>
+                <td>{% if entity.fechaRegistroDonanteBlh %}{{ entity.fechaRegistroDonanteBlh|date('Y-m-d') }}{% endif %}</td>
                 <td>{{ entity.telefonoFijo }}</td>
-                <td>{{ entity.telefonoMovil }}</td>
-                <td>{{ entity.direccion }}</td>
                 <td>{{ entity.procedencia }}</td>
                 <td>{{ entity.registro }}</td>
-                <td>{{ entity.numeroDocumentoIdentificacion }}</td>
                 <td>{{ entity.documentoIdentificacion }}</td>
+                <td>{{ entity.numeroDocumentoIdentificacion }}</td>              
                 <td>{{ entity.edad }}</td>
                 <td>{{ entity.ocupacion }}</td>
                 <td>{{ entity.estadoCivil }}</td>
                 <td>{{ entity.nacionalidad }}</td>
                 <td>{{ entity.escolaridad }}</td>
                 <td>{{ entity.tipoColecta }}</td>
-                <td>{{ entity.observaciones }}</td>
                 <td><a href="{{ path('blhdonante_edit', { 'id': entity.id }) }}"><font color="blue"><u>Editar</u></font></a></td>
             </tr>
         {% endfor %}

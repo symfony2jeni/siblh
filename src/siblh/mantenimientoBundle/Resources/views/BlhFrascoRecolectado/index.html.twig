@@ -10,34 +10,31 @@
  
  <script type="text/javascript" src="{{asset('bundles/jquery/jquery.jqGrid-4.5.4/js/i18n/grid.locale-es.js')}}"></script>
       <script type="text/javascript" src="{{asset('bundles/jquery/jquery.jqGrid-4.5.4/js/jquery.jqGrid.min.js')}}" ></script> 
- <a href="{{ path('mostrar_frascos',{'report_name':'LecheDonada','report_format':'pdf'})}}" id="reporte"> Reporte </a>
-
-    <h1>BlhFrascoRecolectado list</h1>
+ 
+    <h1>Frascos Recolectados</h1>
 
    <table id = "listado_frascos">
         <thead>
             <tr>
-               
-                <th>Codigo</th>
+                <th>Donante</th>
+                <th>Nombre</th>
+                <th>Frasco</th>
                 <th>Volumen&nbsp;Recolectado</th>
                 <th>Onzas&nbsp;Recolectadas</th>
                 <th>Forma&nbsp;de&nbsp;Extraccion</th>
-                <th>Observaciones</th>
                 <th>Accion</th>
             </tr>
         </thead>
         <tbody>
-        {% for entity in entities %}
+        {% for entity in frascos %}
             <tr>
-                 <td>{{ entity.codigoFrascoRecolectado }}</td>
-                <td>{{ entity.volumenRecolectado }}</td>
-                <td>{{ entity.onzRecolectado }}</td>
+                <td>{{ entity.codigo_donante }}</td>
+                <td>{{ entity.nombre1 }} {{ entity.nombre2 }} {{ entity.apellido1 }} {{ entity.apellido2 }}</td>
+                <td>{{ entity.codigoFrascoRecolectado }}</td>
+                <td>{{ entity.volumenRecolectado|number_format(2, '.', ',') }}</td>
+                <td>{{ entity.onzRecolectado|number_format(2, '.', ',') }}</td>
                 <td>{{ entity.formaExtraccion }}</td>
-                <td>{{ entity.observacionFrascoRecolectado }}</td>
-                <td><a href="{{ path('blhfrascorecolectado_edit', { 'id': entity.id }) }}"><font color="blue"><u>Editar</u></font></a>
-                   
-                </td>
-            </tr>
+                <td><a href="{{ path('blhfrascorecolectado_edit', { 'id': entity.id }) }}"><font color="blue"><u>Editar</u></font></a></td></tr>
         {% endfor %}
         </tbody>
     </table>

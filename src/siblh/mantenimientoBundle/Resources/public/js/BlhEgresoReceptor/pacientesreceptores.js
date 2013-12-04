@@ -2,17 +2,19 @@ $(document).ready(function() {
 
  tableToGrid("#listado_pacientes", {
         pager : '#pagerpacientes',
-        rowNum:20, 
-        gridview: true, 
+        rowNum:10, 
+        gridview: true,
+        width: 700,
+         height: '100%',
         caption: "Seleccione la donante",
         
         
         colModel :[
            // {name:'Id',width:80,editable:true,},
-            {name:'id',width:5,align:'center'},
+            {name:'id',width:5,align:'center', search:false},
             {name:'Codigo', width:10,align:'center'},
-            {name:'Nombre', width:40,align:'left'},
-             {name:'Accion', width:10,align:'center'},
+            {name:'Nombre', width:40,align:'center'},
+             {name:'Accion', width:10,align:'center', search:false},
            
             
    
@@ -27,4 +29,5 @@ $(document).ready(function() {
         search:true,
         reload:true
     });
+     jQuery("#listado_pacientes").jqGrid('filterToolbar',{stringResult: true,searchOnEnter : false});
      });

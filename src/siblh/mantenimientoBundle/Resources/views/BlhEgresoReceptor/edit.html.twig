@@ -18,37 +18,29 @@
     
   <table    align = "center" >
        <tr><td colspan=2 align = "left" height=10  ></td></tr>   
-       <tr><td align='left' ><font color="red">*</font>{{ form_label(edit_form.fechaEgreso) }}</td><td align='left'>{{ form_widget(edit_form.fechaEgreso)  }}</td></tr>
+       <tr><td align='left' ><font color="red">*</font>{{ form_label(edit_form.fechaEgreso, 'Fecha de egreso') }}</td><td align='left'>{{ form_widget(edit_form.fechaEgreso,  { 'attr': {'title': 'Dar clic y seleccionar fecha de egreso'} })  }}</td></tr>
        <tr><td colspan=2 align = "left" height=10  ></td></tr>   
-       <tr><td align='left' >{{ form_label(edit_form.estanciaHospitalaria) }}</td><td align='left'>{{ form_widget(edit_form.estanciaHospitalaria)  }}</td></tr>
+       <tr><td align='left' >{{ form_label(edit_form.estanciaHospitalaria, 'Dias de estancia hospitalaria') }}</td><td align='left'>{{ form_widget(edit_form.estanciaHospitalaria,  { 'attr': {'size': '3', 'title': 'Dias mayor que cero', 'onKeyPress':"return soloNumerosEnteros(event);"} })  }}</td></tr>
        <tr><td colspan=2 align = "left" height=10  ></td></tr>   
-       <tr><td align='left' >{{ form_label(edit_form.permanenciaUcin) }}</td><td align='left'>{{ form_widget(edit_form.permanenciaUcin)  }}</td></tr>
+       <tr><td align='left' >{{ form_label(edit_form.permanenciaUcin, 'Permanencia en UCIN') }}</td><td align='left'>{{ form_widget(edit_form.permanenciaUcin,  { 'attr': {'size': '3','title': 'Dias mayor que cero', 'onKeyPress':"return soloNumerosEnteros(event);"} })  }}</td></tr>
        <tr><td colspan=2 align = "left" height=10  ></td></tr>   
        <tr><td align='left' ><font color="red">*</font>{{ form_label(edit_form.madreCanguro) }}</td><td align='left'>{{ form_widget(edit_form.madreCanguro)  }}</td></tr>
        <tr><td colspan=2 align = "left" height=10  ></td></tr>   
-       <tr><td align='left' ><font color="red">*</font>{{ form_label(edit_form.trasladoPeriferico) }}</td><td align='left'>{{ form_widget(edit_form.trasladoPeriferico)  }}</td></tr>
+       <tr><td align='left' ><font color="red">*</font>{{ form_label(edit_form.trasladoPeriferico, 'Traslado a periferico') }}</td><td align='left'>{{ form_widget(edit_form.trasladoPeriferico)  }}</td></tr>
        <tr><td colspan=2 align = "left" height=10  ></td></tr>   
-       <tr><td align='left' ><font color="red">*</font>{{ form_label(edit_form.tipoEgreso) }}</td><td align='left'>{{ form_widget(edit_form.tipoEgreso)  }}</td></tr>
+       <tr><td align='left' ><font color="red">*</font>{{ form_label(edit_form.tipoEgreso, 'Tipo de egreso') }}</td><td align='left'>{{ form_widget(edit_form.tipoEgreso)  }}</td></tr>
        <tr><td colspan=2 align = "left" height=10  ></td></tr>   
-       <tr><td align='left' >{{ form_label(edit_form.comentarioEgreso) }}</td><td align='left'>{{ form_widget(edit_form.comentarioEgreso)  }}</td></tr>
+       <tr><td align='left' >{{ form_label(edit_form.comentarioEgreso, 'Descripcion Egreso') }}</td><td align='left'>{{ form_widget(edit_form.comentarioEgreso,  { 'attr': {'width': '370', 'resize' : 'none'} })  }}</td></tr>
        <tr><td colspan=2 align = "left" height=10  ></td></tr>   
        <tr><td align='left' ><font color="red">*</font>{{ form_label(edit_form.diagnosticoEgreso) }}</td><td align='left'>{{ form_widget(edit_form.diagnosticoEgreso)  }}</td></tr>
        <tr><td colspan=2 align = "left" height=10  ></td></tr>   
-       <tr><td align='left' >{{ form_label(edit_form.hospitalSeguimientoEgreso) }}</td><td align='left'>{{ form_widget(edit_form.hospitalSeguimientoEgreso)  }}</td></tr>
+       <tr><td align='left' >{{ form_label(edit_form.hospitalSeguimientoEgreso) }}</td><td align='left'>{{ form_widget(edit_form.hospitalSeguimientoEgreso,  { 'attr': {'size': '60'} })  }}</td></tr>
        <tr style="visibility:hidden"><td align='left' ><font color="red">*</font>{{ form_label(edit_form.idReceptor) }}</td><td align='left'>{{ form_widget(edit_form.idReceptor)  }}</td></tr>
-
-    
-    
-
-      <tr><td colspan = '2' align = 'center'>  <input type="submit" class= "ui-button" value="Actualizar"/></td></tr>
-
-        </table>
+       <tr><td align = "left"><font color="red" size = "2" face = "Comic Sans MS">* Campos requeridos</font></td> </tr>     
+       <tr><td colspan = '2' align = 'center'>  <input type="submit" id= "button" value="Actualizar"/>
+       <input id = "boton" type="button" value="Regresar" onClick=' window.location.href="{{ path('blhegresoreceptor') }}" '></td></tr>
+       </table>
 
        {{ form_end(edit_form) }}
 
-    <table align = 'center'>
-        <tr>
-            <td>
-        <a href="{{ path('blhegresoreceptor') }}">Ver listado </a>
-        </td></tr></table>
-{% endblock %}
+    {% endblock %}

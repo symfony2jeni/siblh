@@ -1,0 +1,465 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="DonacionesPorDonante" language="groovy" pageWidth="684" pageHeight="792" columnWidth="644" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="00be7527-2e25-476b-9cf3-cd0e52ea2a30">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="199"/>
+	<style name="table">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 2">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 2_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 2_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 2_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 3">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 3_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 3_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 3_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 4">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 4_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 4_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 4_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 5">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 5_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 5_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 5_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 6">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 6_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 6_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 6_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<subDataset name="New Dataset 1" uuid="c6310386-19ea-4eb0-8691-96a7c3db9656">
+		<parameter name="id" class="java.lang.String">
+			<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+		</parameter>
+		<queryString>
+			<![CDATA[select * from
+(select d.fecha_donacion, de.codigo_donante, r.volumen_recolectado, r.onz_recolectado,
+r.forma_extraccion, replace (substring(e.nombre_estado from 1 for 9), 'Analizado', 'Aprobado') as nombre_estado,
+d.responsable_donacion, de.primer_nombre, de.segundo_nombre, de.primer_apellido, de.segundo_apellido
+from blh_donante de
+inner join blh_donacion d on de.id= d.id_donante
+inner join blh_frasco_recolectado r on d.id_donante=r.id_donante and r.id_donacion=d.id
+inner join blh_estado e on e.id=r.id_estado
+where de.codigo_donante=$P{id}
+and (e.nombre_estado like '%Reprobado%' or e.nombre_estado like '%Analizado%')) a
+union
+(select d.fecha_donacion, de.codigo_donante, r.volumen_recolectado, r.onz_recolectado,
+r.forma_extraccion, e.nombre_estado,
+d.responsable_donacion, de.primer_nombre, de.segundo_nombre, de.primer_apellido, de.segundo_apellido
+from blh_donante de
+inner join blh_donacion d on de.id= d.id_donante
+inner join blh_frasco_recolectado r on d.id_donante=r.id_donante and r.id_donacion=d.id
+inner join blh_estado e on e.id=r.id_estado
+where de.codigo_donante=$P{id}
+and (e.nombre_estado not like '%Reprobado%' and e.nombre_estado not like '%Analizado%'));]]>
+		</queryString>
+		<field name="fecha_donacion" class="java.sql.Date"/>
+		<field name="codigo_donante" class="java.lang.String"/>
+		<field name="volumen_recolectado" class="java.math.BigDecimal"/>
+		<field name="onz_recolectado" class="java.math.BigDecimal"/>
+		<field name="forma_extraccion" class="java.lang.String"/>
+		<field name="nombre_estado" class="java.lang.String"/>
+		<field name="responsable_donacion" class="java.lang.String"/>
+		<field name="primer_nombre" class="java.lang.String"/>
+		<field name="segundo_nombre" class="java.lang.String"/>
+		<field name="primer_apellido" class="java.lang.String"/>
+		<field name="segundo_apellido" class="java.lang.String"/>
+	</subDataset>
+	<parameter name="id" class="java.lang.String"/>
+	<parameter name="nombre" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[select * from
+(select d.fecha_donacion, de.codigo_donante, r.volumen_recolectado, r.onz_recolectado,
+r.forma_extraccion, replace (substring(e.nombre_estado from 1 for 9), 'Analizado', 'Aprobado') as nombre_estado,
+d.responsable_donacion, de.primer_nombre, de.segundo_nombre, de.primer_apellido, de.segundo_apellido
+from blh_donante de
+inner join blh_donacion d on de.id= d.id_donante
+inner join blh_frasco_recolectado r on d.id_donante=r.id_donante and r.id_donacion=d.id
+inner join blh_estado e on e.id=r.id_estado
+where de.codigo_donante=$P{id}
+and (e.nombre_estado like '%Reprobado%' or e.nombre_estado like '%Analizado%')) a
+union
+(select d.fecha_donacion, de.codigo_donante, r.volumen_recolectado, r.onz_recolectado,
+r.forma_extraccion, e.nombre_estado,
+d.responsable_donacion, de.primer_nombre, de.segundo_nombre, de.primer_apellido, de.segundo_apellido
+from blh_donante de
+inner join blh_donacion d on de.id= d.id_donante
+inner join blh_frasco_recolectado r on d.id_donante=r.id_donante and r.id_donacion=d.id
+inner join blh_estado e on e.id=r.id_estado
+where de.codigo_donante=$P{id}
+and (e.nombre_estado not like '%Reprobado%' and e.nombre_estado not like '%Analizado%'));]]>
+	</queryString>
+	<field name="fecha_donacion" class="java.sql.Date"/>
+	<field name="codigo_donante" class="java.lang.String"/>
+	<field name="volumen_recolectado" class="java.math.BigDecimal"/>
+	<field name="onz_recolectado" class="java.math.BigDecimal"/>
+	<field name="forma_extraccion" class="java.lang.String"/>
+	<field name="nombre_estado" class="java.lang.String"/>
+	<field name="responsable_donacion" class="java.lang.String"/>
+	<field name="primer_nombre" class="java.lang.String"/>
+	<field name="segundo_nombre" class="java.lang.String"/>
+	<field name="primer_apellido" class="java.lang.String"/>
+	<field name="segundo_apellido" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="154" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="87f23700-790f-449a-be67-d445803347ea" x="224" y="22" width="182" height="20"/>
+				<textElement textAlignment="Center">
+					<font fontName="Comic Sans MS" size="14"/>
+				</textElement>
+				<text><![CDATA[MINISTERIO DE SALUD PUBLICA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="3464ea59-2bae-464e-8552-930448301d11" x="201" y="99" width="229" height="20"/>
+				<textElement textAlignment="Center">
+					<font fontName="Comic Sans MS" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[DONACIONES POR DONANTE]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="47c61fb7-f013-4d96-8284-bbc18d271596" x="167" y="42" width="296" height="46"/>
+				<textElement textAlignment="Center">
+					<font fontName="Comic Sans MS" size="13" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{nombre}]]></textFieldExpression>
+			</textField>
+			<image>
+				<reportElement uuid="618d82e3-e1ff-4f4e-9817-28d3317e80e0" x="10" y="7" width="140" height="112"/>
+				<imageExpression><![CDATA["/home/jeni/NetBeansProjects/siblh/src/siblh/mantenimientoBundle/Resources/reportes/blh.jpg"]]></imageExpression>
+			</image>
+			<image>
+				<reportElement uuid="e44d7a85-8b5f-4495-98e8-46652df3e109" x="474" y="9" width="160" height="119"/>
+				<imageExpression><![CDATA["/home/jeni/NetBeansProjects/siblh/src/siblh/mantenimientoBundle/Resources/reportes/minsal2.jpg"]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="84" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="7ec9ad80-2ea3-464d-9d69-ed74673adfb0" x="23" y="13" width="88" height="20"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Codigo Donante:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="fe76ef2c-7e17-441a-834a-fd4cdca2580e" x="23" y="44" width="100" height="20"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Nombre Donante:]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="73d56eb7-237a-4c71-bdf5-94bba72a598e" x="123" y="44" width="50" height="15"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{primer_nombre}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="f6f8c529-8de2-486d-89a2-ee11a3cc0a25" x="173" y="44" width="50" height="15"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{segundo_nombre}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="66009ba4-db3c-4479-9531-a023156e31f1" x="223" y="44" width="50" height="15"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{primer_apellido}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="faf62140-52da-48d9-a84b-4e4b654f650f" x="273" y="44" width="50" height="15"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{segundo_apellido}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement uuid="f02c9357-92b4-4821-bd52-01909283d3e6" x="123" y="58" width="200" height="1"/>
+			</line>
+			<line>
+				<reportElement uuid="9850cdfc-22ba-411c-96ec-c4ab95f712c2" x="111" y="32" width="100" height="1"/>
+			</line>
+			<textField>
+				<reportElement uuid="09dadb05-95e1-4a88-9c07-dad0320e84db" x="119" y="12" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$P{id}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="135" splitType="Stretch">
+			<componentElement>
+				<reportElement uuid="f7505369-711b-4cf3-988b-b959eb263e3f" key="table 6" style="table 6" x="22" y="0" width="572" height="119"/>
+				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
+					<datasetRun subDataset="New Dataset 1" uuid="46e6cf8e-6ac2-4af0-8757-2186a1ff7b31">
+						<datasetParameter name="id">
+							<datasetParameterExpression><![CDATA[$P{id}]]></datasetParameterExpression>
+						</datasetParameter>
+						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+					</datasetRun>
+					<jr:column width="71" uuid="f6ded7a8-b8b3-4fed-b0cd-467e8c82393c">
+						<jr:columnHeader style="table 6_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement uuid="50421d0b-448c-4d44-ae98-387acdbe0c04" x="4" y="0" width="67" height="30"/>
+								<textElement>
+									<font isBold="true"/>
+								</textElement>
+								<text><![CDATA[Fecha Donacion]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="table 6_TD" height="20" rowSpan="1">
+							<textField>
+								<reportElement uuid="f57986aa-0744-45c4-a960-84ecb521a631" x="4" y="0" width="52" height="20"/>
+								<textElement/>
+								<textFieldExpression><![CDATA[$F{fecha_donacion}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="100" uuid="12b8f621-ebec-4ae5-9951-d9f11e4d089f">
+						<jr:columnHeader style="table 6_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement uuid="b1c00b9a-6561-4913-b2ce-04a9f9587c32" x="19" y="0" width="70" height="30"/>
+								<textElement>
+									<font isBold="true"/>
+								</textElement>
+								<text><![CDATA[Codigo Donante]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="table 6_TD" height="20" rowSpan="1">
+							<textField>
+								<reportElement uuid="3b8c3e1c-8c92-4895-8b13-e8c04770a7ef" x="4" y="0" width="96" height="20"/>
+								<textElement/>
+								<textFieldExpression><![CDATA[$F{codigo_donante}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="57" uuid="5fb9b1ab-d3f3-44b7-a44b-883e2a5e78ff">
+						<jr:columnHeader style="table 6_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement uuid="c89effe4-4ddf-4067-8f41-f0e49a35e00e" x="0" y="0" width="56" height="30"/>
+								<textElement>
+									<font isBold="true"/>
+								</textElement>
+								<text><![CDATA[Volumen ML]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="table 6_TD" height="20" rowSpan="1">
+							<textField pattern="###0.00">
+								<reportElement uuid="cbda220b-4fae-4607-97e3-013ee72d52b2" x="1" y="0" width="55" height="20"/>
+								<textElement/>
+								<textFieldExpression><![CDATA[$F{volumen_recolectado}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="86" uuid="3db0832a-99bc-4319-9a69-cf07721dfeed">
+						<jr:columnHeader style="table 6_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement uuid="61b39384-e6a2-4679-94d7-d907fc5bde21" x="3" y="0" width="80" height="30"/>
+								<textElement>
+									<font isBold="true"/>
+								</textElement>
+								<text><![CDATA[Onz Recolectado]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="table 6_TD" height="20" rowSpan="1">
+							<textField pattern="###0.00">
+								<reportElement uuid="8f411803-f514-4571-96ed-1babb20c5989" x="3" y="0" width="65" height="20"/>
+								<textElement/>
+								<textFieldExpression><![CDATA[$F{onz_recolectado}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="92" uuid="c9e4fbdc-7a51-4a57-b7c7-dcad31c8e9ba">
+						<jr:columnHeader style="table 6_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement uuid="150be9df-7191-4db3-b35f-5e098c667e96" x="15" y="0" width="70" height="30"/>
+								<textElement>
+									<font isBold="true"/>
+								</textElement>
+								<text><![CDATA[Forma Extraccion]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="table 6_TD" height="20" rowSpan="1">
+							<textField>
+								<reportElement uuid="64b86c51-367e-41a7-9b9e-87a917c8dcf6" x="6" y="0" width="85" height="20"/>
+								<textElement/>
+								<textFieldExpression><![CDATA[$F{forma_extraccion}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="96" uuid="c827a15e-97c4-40b4-b9c7-d941ac4f07d4">
+						<jr:columnHeader style="table 6_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement uuid="258c9b85-fa23-48bb-b7b7-70d9fa199571" x="10" y="0" width="52" height="30"/>
+								<textElement>
+									<font isBold="true"/>
+								</textElement>
+								<text><![CDATA[Estado]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="table 6_TD" height="20" rowSpan="1">
+							<textField>
+								<reportElement uuid="62f8b09d-47d4-4040-bca3-d54a0795dc1e" x="6" y="0" width="84" height="20"/>
+								<textElement/>
+								<textFieldExpression><![CDATA[$F{nombre_estado}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="116" uuid="1cab9e70-b8d0-4c59-95b0-5f2f45affda9">
+						<jr:columnHeader style="table 6_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement uuid="4ce5f021-d91f-45f8-b086-171353f8e7eb" x="11" y="0" width="79" height="30"/>
+								<textElement>
+									<font isBold="true"/>
+								</textElement>
+								<text><![CDATA[Responsable]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="table 6_TD" height="20" rowSpan="1">
+							<textField>
+								<reportElement uuid="46333fd1-390b-490f-a16c-1b7461ffdaf8" x="9" y="0" width="107" height="20"/>
+								<textElement/>
+								<textFieldExpression><![CDATA[$F{responsable_donacion}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+				</jr:table>
+			</componentElement>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="12" splitType="Stretch">
+			<elementGroup/>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="8" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="31" splitType="Stretch">
+			<textField evaluationTime="Report">
+				<reportElement uuid="c096b049-cf8f-468e-8fd0-48707b5228c4" x="593" y="7" width="42" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="10" splitType="Stretch"/>
+	</summary>
+</jasperReport>

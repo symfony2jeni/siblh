@@ -12,10 +12,11 @@
       <script type="text/javascript" src="{{asset('bundles/jquery/jquery.jqGrid-4.5.4/js/jquery.jqGrid.min.js')}}" ></script> 
 
     <h1>Listado de Donaciones</h1>
+    <div align = center>
     <table id = "listado_donantes">
        <thead>
             <tr>
-                <th>id</th>
+                <th>Codigo</th>
                 <th>FechaDonacion</th>
                  <th>Nombre</th>
                 <th>Accion</th>
@@ -27,8 +28,8 @@
             
        {% for donacion in donaciones_donantes%}
             <tr>
-               <td><a href="{{ path('blhfrascorecolectado_new', { 'id': donacion.id }) }}">{{ donacion.id }}</a></td>
-                <td>{{ donacion.fechaDonacion|date('d-m-Y')}}</td>
+               <td>{{ donacion.codigo}}</td>
+               <td>{{ donacion.fechaDonacion|date('d-m-Y')}}</td>
                  <td>{{ donacion.nombre1 }} {{ donacion.nombre2 }} {{ donacion.apellido1 }} {{ donacion.apellido2 }}</td>
                <td><a href="{{ path('blhfrascorecolectado_new', { 'id': donacion.id })}}"><font color="blue"><u>Registrar Donacion</u></font></a></td></tr>
         {% endfor %}
@@ -39,7 +40,7 @@
            
         </tbody>
     </table>
-
+</div>
       <div id='pagerdonantes' ></div>
   
     {% endblock %}

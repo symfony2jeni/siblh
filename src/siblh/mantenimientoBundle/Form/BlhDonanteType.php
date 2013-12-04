@@ -34,11 +34,10 @@ class BlhDonanteType extends AbstractType
             ->add('procedencia')
             ->add('registro')
             ->add('numeroDocumentoIdentificacion')
-    ->add('documentoIdentificacion', 'choice', 
+            ->add('documentoIdentificacion', 'choice', 
                     array('choices' => array('' => 'Seleccione un valor','DUI' => 'DUI',
                           'Pasaporte' => 'Pasaporte',
                           'Carnet de Minoridad' => 'Carnet de Minoridad')))
-
           //  ->add('edad')
             ->add('ocupacion')
             ->add('estadoCivil', 'choice', 
@@ -51,7 +50,7 @@ class BlhDonanteType extends AbstractType
             ->add('tipoColecta', 'choice',
                     array('choices' => array ('' => 'Seleccione un valor', 
                         'Domiciliar' => 'Domiciliar', 'BLH'=> 'BLH')))
-            ->add('observaciones', 'textarea')
+            ->add('observaciones','textarea',array('max_length'=>'150'))
             ->add('idBancoDeLeche')
             ->add('idMunicipio')
                 

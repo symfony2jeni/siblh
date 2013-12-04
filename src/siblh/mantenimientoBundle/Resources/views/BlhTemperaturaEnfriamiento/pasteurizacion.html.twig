@@ -11,21 +11,19 @@
  <script type="text/javascript" src="{{asset('bundles/jquery/jquery.jqGrid-4.5.4/js/i18n/grid.locale-es.js')}}"></script>
       <script type="text/javascript" src="{{asset('bundles/jquery/jquery.jqGrid-4.5.4/js/jquery.jqGrid.min.js')}}" ></script> 
 
-    <h1>Listado de Donantes</h1>
+    <h1>Pasteurizaciones</h1>
+    <div align = center>
     <table id = "listado_pasteurizaciones">
        
             
              <thead>
-            <tr>
-                <th>id</th>
+            <tr>             
                 <th>Codigo</th>
                 <th>Ciclo</th>
                 <th>VolumenPasteurizado</th>
                 <th>CantidadFrascos</th>
                 <th>FechaPasteurizacion</th>
-                <th>Accion</th>
-                
-            </tr>
+                <th>Accion</th></tr>
           
         </thead>
       
@@ -34,18 +32,16 @@
             <tr>
        {% for pasteurizacion in pasteurizaciones%}
             
-               <td><a href="{{ path('blhtemperaturaenfriamiento_new', { 'id': pasteurizacion.identificador }) }}">{{ pasteurizacion.identificador }}</a></td>
                 <td>{{ pasteurizacion.codigoPasteurizacion }}</td>
-                <td>{{ pasteurizacion.numCiclo }}</td>
-        
-                <td>{{ pasteurizacion.volumenPasteurizado }}</td>
+                <td>{{ pasteurizacion.numCiclo }}</td>        
+                <td>{{ pasteurizacion.volumenPasteurizado|number_format(2, '.', ',') }}</td>
                 <td>{{ pasteurizacion.numFrascosPasteurizados }}</td>
-                <td>{{ pasteurizacion.fechaPasteurizacion|date('d-m-Y') }}</td>
-               
+                <td>{{ pasteurizacion.fechaPasteurizacion|date('d-m-Y') }}</td>               
                 <td><a href="{{ path('blhtemperaturaenfriamiento_new', { 'id': pasteurizacion.identificador })}}"><font color="blue"><u>Temperatura Enfriamiento</u></font></a></td></tr>
         {% endfor %}
             
         </tbody>
     </table>
+            </div>
 <div id='pagerpasteurizaciones' ></div>
         {% endblock %}

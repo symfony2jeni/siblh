@@ -1,0 +1,1030 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="lecherechazada" language="groovy" pageWidth="864" pageHeight="792" columnWidth="824" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="44fec83f-4ece-43fd-9cbf-08bc28057770">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="213"/>
+	<style name="table">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 2">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 2_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 2_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 2_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 3">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 3_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 3_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 3_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 4">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 4_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 4_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 4_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 5">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 5_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 5_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 5_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 6">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 6_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 6_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 6_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 7">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 7_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 7_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 7_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 8">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 8_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 8_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 8_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 9">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 9_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 9_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 9_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 10">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 10_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 10_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 10_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<subDataset name="embalaje" uuid="99280101-6199-4326-9c3b-67a57eea9212">
+		<parameter name="fechai" class="java.lang.String">
+			<defaultValueExpression><![CDATA[$P{fechai}]]></defaultValueExpression>
+		</parameter>
+		<parameter name="fechaf" class="java.lang.String">
+			<defaultValueExpression><![CDATA[$P{fechaf}]]></defaultValueExpression>
+		</parameter>
+		<parameter name="id" class="java.lang.String">
+			<defaultValueExpression><![CDATA[$P{id}]]></defaultValueExpression>
+		</parameter>
+		<queryString>
+			<![CDATA[select count (fr.id) as rechazados, e.nombre_estado
+from blh_frasco_recolectado fr join blh_estado e
+on fr.id_estado = e.id join blh_lote_analisis an
+on fr.id_lote_analisis = an.id
+where e.nombre_estado like '%ReprobadoEm%'
+and (an.fecha_analisis_fisico_quimico between to_date($P{fechai},'YYYY-MM-DD') and to_date($P{fechaf},'YYYY-MM-DD'))
+and (substring(fr.codigo_frasco_recolectado from 1 for 2) = $P{id})
+group by e.nombre_estado;]]>
+		</queryString>
+		<field name="rechazados" class="java.lang.Long"/>
+		<field name="nombre_estado" class="java.lang.String"/>
+	</subDataset>
+	<subDataset name="volumenrechazado" uuid="3fe52125-ace5-4570-b20b-580196eec953">
+		<parameter name="fechai" class="java.lang.String">
+			<defaultValueExpression><![CDATA[$P{fechai}]]></defaultValueExpression>
+		</parameter>
+		<parameter name="fechaf" class="java.lang.String">
+			<defaultValueExpression><![CDATA[$P{fechaf}]]></defaultValueExpression>
+		</parameter>
+		<parameter name="id" class="java.lang.String">
+			<defaultValueExpression><![CDATA[$P{id}]]></defaultValueExpression>
+		</parameter>
+		<queryString>
+			<![CDATA[select (a.volr + b.volp) as volrech from
+(select sum (fr.volumen_recolectado) as volr
+from blh_frasco_recolectado fr left join blh_estado e
+on fr.id_estado = e.id
+join blh_lote_analisis an
+on fr.id_lote_analisis = an.id
+where e.nombre_estado like '%Reprobado%'
+and (an.fecha_analisis_fisico_quimico between to_date($P{fechai},'YYYY-MM-DD') and to_date($P{fechaf},'YYYY-MM-DD'))
+and (substring(fr.codigo_frasco_recolectado from 1 for 2) = $P{id})) a,
+
+(select sum (fp.volumen_frasco_pasteurizado) as volp
+from blh_frasco_procesado fp left join blh_estado e
+on fp.id_estado = e.id
+join blh_pasteurizacion pz
+on fp.id_pasteurizacion = pz.id
+where e.nombre_estado like '%Reprobado%'
+and (pz.fecha_pasteurizacion between to_date($P{fechai},'YYYY-MM-DD') and to_date($P{fechaf},'YYYY-MM-DD'))
+and (substring(fp.codigo_frasco_procesado from 1 for 2) = $P{id}))  b]]>
+		</queryString>
+		<field name="volrech" class="java.math.BigDecimal"/>
+	</subDataset>
+	<subDataset name="suciedad" uuid="6232c257-92cc-4e61-b6d8-b4df80468b90">
+		<parameter name="fechai" class="java.lang.String">
+			<defaultValueExpression><![CDATA[$P{fechai}]]></defaultValueExpression>
+		</parameter>
+		<parameter name="fechaf" class="java.lang.String">
+			<defaultValueExpression><![CDATA[$P{fechaf}]]></defaultValueExpression>
+		</parameter>
+		<parameter name="id" class="java.lang.String">
+			<defaultValueExpression><![CDATA[$P{id}]]></defaultValueExpression>
+		</parameter>
+		<queryString>
+			<![CDATA[select count (fr.id) as rechazados, e.nombre_estado
+from blh_frasco_recolectado fr join blh_estado e
+on fr.id_estado = e.id join blh_lote_analisis an
+on fr.id_lote_analisis = an.id
+where e.nombre_estado like '%ReprobadoSu%'
+and (an.fecha_analisis_fisico_quimico between to_date($P{fechai},'YYYY-MM-DD') and to_date($P{fechaf},'YYYY-MM-DD'))
+and (substring(fr.codigo_frasco_recolectado from 1 for 2) = $P{id})
+group by e.nombre_estado;]]>
+		</queryString>
+		<field name="rechazados" class="java.lang.Long"/>
+		<field name="nombre_estado" class="java.lang.String"/>
+	</subDataset>
+	<subDataset name="color" uuid="6b49c619-0654-4822-b745-cf87d7bb6675">
+		<parameter name="fechai" class="java.lang.String">
+			<defaultValueExpression><![CDATA[$P{fechai}]]></defaultValueExpression>
+		</parameter>
+		<parameter name="fechaf" class="java.lang.String">
+			<defaultValueExpression><![CDATA[$P{fechaf}]]></defaultValueExpression>
+		</parameter>
+		<parameter name="id" class="java.lang.String">
+			<defaultValueExpression><![CDATA[$P{id}]]></defaultValueExpression>
+		</parameter>
+		<queryString>
+			<![CDATA[select count (fr.id) as rechazados, e.nombre_estado
+from blh_frasco_recolectado fr join blh_estado e
+on fr.id_estado = e.id
+join blh_lote_analisis an
+on fr.id_lote_analisis = an.id
+where e.nombre_estado like '%ReprobadoCo%'
+and (an.fecha_analisis_fisico_quimico between to_date($P{fechai},'YYYY-MM-DD') and to_date($P{fechaf},'YYYY-MM-DD'))
+and (substring(fr.codigo_frasco_recolectado from 1 for 2) = $P{id})
+group by e.nombre_estado;]]>
+		</queryString>
+		<field name="rechazados" class="java.lang.Long"/>
+		<field name="nombre_estado" class="java.lang.String"/>
+	</subDataset>
+	<subDataset name="olor" uuid="c283173c-de80-49fd-b981-dc70da571895">
+		<parameter name="fechai" class="java.lang.String">
+			<defaultValueExpression><![CDATA[$P{fechai}]]></defaultValueExpression>
+		</parameter>
+		<parameter name="fechaf" class="java.lang.String">
+			<defaultValueExpression><![CDATA[$P{fechaf}]]></defaultValueExpression>
+		</parameter>
+		<parameter name="id" class="java.lang.String">
+			<defaultValueExpression><![CDATA[$P{id}]]></defaultValueExpression>
+		</parameter>
+		<queryString>
+			<![CDATA[select count (fr.id) as rechazados, e.nombre_estado
+from blh_frasco_recolectado fr join blh_estado e
+on fr.id_estado = e.id join blh_lote_analisis an
+on fr.id_lote_analisis = an.id
+where e.nombre_estado like '%ReprobadoOl%'
+and (an.fecha_analisis_fisico_quimico between to_date($P{fechai},'YYYY-MM-DD') and to_date($P{fechaf},'YYYY-MM-DD'))
+and (substring(fr.codigo_frasco_recolectado from 1 for 2) = $P{id})
+group by e.nombre_estado;]]>
+		</queryString>
+		<field name="rechazados" class="java.lang.Long"/>
+		<field name="nombre_estado" class="java.lang.String"/>
+	</subDataset>
+	<subDataset name="acidez" uuid="9418cbc8-a6dd-47da-bff3-d2b83d1a3046">
+		<parameter name="fechai" class="java.lang.String">
+			<defaultValueExpression><![CDATA[$P{fechai}]]></defaultValueExpression>
+		</parameter>
+		<parameter name="fechaf" class="java.lang.String">
+			<defaultValueExpression><![CDATA[$P{fechaf}]]></defaultValueExpression>
+		</parameter>
+		<parameter name="id" class="java.lang.String">
+			<defaultValueExpression><![CDATA[$P{id}]]></defaultValueExpression>
+		</parameter>
+		<queryString>
+			<![CDATA[select count (fr.id) as acidez, e.nombre_estado
+from blh_frasco_recolectado fr join blh_estado e
+on fr.id_estado = e.id
+join blh_lote_analisis an
+on fr.id_lote_analisis = an.id
+where e.nombre_estado like '%ReprobadoA%'
+and (an.fecha_analisis_fisico_quimico between to_date($P{fechai},'YYYY-MM-DD') and to_date($P{fechaf},'YYYY-MM-DD'))
+and (substring(fr.codigo_frasco_recolectado from 1 for 2) = $P{id})
+group by e.nombre_estado;]]>
+		</queryString>
+		<field name="acidez" class="java.lang.Long"/>
+		<field name="nombre_estado" class="java.lang.String"/>
+	</subDataset>
+	<subDataset name="microbiologico" uuid="11646096-a9ac-464d-a18b-6288057122e6">
+		<parameter name="fechai" class="java.lang.String">
+			<defaultValueExpression><![CDATA[$P{fechai}]]></defaultValueExpression>
+		</parameter>
+		<parameter name="fechaf" class="java.lang.String">
+			<defaultValueExpression><![CDATA[$P{fechaf}]]></defaultValueExpression>
+		</parameter>
+		<parameter name="id" class="java.lang.String">
+			<defaultValueExpression><![CDATA[$P{id}]]></defaultValueExpression>
+		</parameter>
+		<queryString>
+			<![CDATA[select count (fp.id) as rechazados, e.nombre_estado
+from blh_frasco_procesado fp join blh_estado e
+on fp.id_estado = e.id join blh_pasteurizacion pz
+on fp.id_pasteurizacion = pz.id
+where e.nombre_estado like '%ReprobadoM%'
+and (pz.fecha_pasteurizacion between to_date($P{fechai},'YYYY-MM-DD') and to_date($P{fechaf},'YYYY-MM-DD'))
+and (substring(fp.codigo_frasco_procesado from 1 for 2) = $P{id})
+group by e.nombre_estado;]]>
+		</queryString>
+		<field name="rechazados" class="java.lang.Long"/>
+		<field name="nombre_estado" class="java.lang.String"/>
+	</subDataset>
+	<subDataset name="resiembra" uuid="b0fb82de-c717-4263-83cb-f0b245603d79">
+		<parameter name="fechai" class="java.lang.String">
+			<defaultValueExpression><![CDATA[$P{fechai}]]></defaultValueExpression>
+		</parameter>
+		<parameter name="fechaf" class="java.lang.String">
+			<defaultValueExpression><![CDATA[$P{fechaf}]]></defaultValueExpression>
+		</parameter>
+		<parameter name="id" class="java.lang.String">
+			<defaultValueExpression><![CDATA[$P{id}]]></defaultValueExpression>
+		</parameter>
+		<queryString>
+			<![CDATA[select count (fp.id) as rechazados, e.nombre_estado
+from blh_frasco_procesado fp join blh_estado e
+on fp.id_estado = e.id join blh_pasteurizacion pz
+on fp.id_pasteurizacion = pz.id
+where e.nombre_estado like '%ReprobadoR%'
+and (pz.fecha_pasteurizacion between to_date($P{fechai},'YYYY-MM-DD') and to_date($P{fechaf},'YYYY-MM-DD'))
+and (substring(fp.codigo_frasco_procesado from 1 for 2) = $P{id})
+group by e.nombre_estado;]]>
+		</queryString>
+		<field name="rechazados" class="java.lang.Long"/>
+		<field name="nombre_estado" class="java.lang.String"/>
+	</subDataset>
+	<subDataset name="cantidadrechazo" uuid="2af0df64-e46b-484f-ba07-0b289a19b2be">
+		<parameter name="fechai" class="java.lang.String">
+			<defaultValueExpression><![CDATA[$P{fechai}]]></defaultValueExpression>
+		</parameter>
+		<parameter name="fechaf" class="java.lang.String">
+			<defaultValueExpression><![CDATA[$P{fechaf}]]></defaultValueExpression>
+		</parameter>
+		<parameter name="id" class="java.lang.String">
+			<defaultValueExpression><![CDATA[$P{id}]]></defaultValueExpression>
+		</parameter>
+		<queryString>
+			<![CDATA[select a.cantr + b.cantp  as cantrechazado from
+(select count (fr.id) as cantr
+from blh_frasco_recolectado fr left join blh_estado e
+on fr.id_estado = e.id
+join blh_lote_analisis an
+on fr.id_lote_analisis = an.id
+where e.nombre_estado like '%Reprobado%'
+and (an.fecha_analisis_fisico_quimico between to_date($P{fechai},'YYYY-MM-DD') and to_date($P{fechaf},'YYYY-MM-DD'))
+and (substring(fr.codigo_frasco_recolectado from 1 for 2) = $P{id})) a,
+
+(select count (fp.id) as cantp
+from blh_frasco_procesado fp left join blh_estado e
+on fp.id_estado = e.id
+join blh_pasteurizacion pz
+on fp.id_pasteurizacion = pz.id
+where e.nombre_estado like '%Reprobado%'
+and (pz.fecha_pasteurizacion between to_date($P{fechai},'YYYY-MM-DD') and to_date($P{fechaf},'YYYY-MM-DD'))
+and (substring(fp.codigo_frasco_procesado from 1 for 2) = $P{id}))  b]]>
+		</queryString>
+		<field name="cantrechazado" class="java.lang.Long"/>
+	</subDataset>
+	<subDataset name="volumenaceptado" uuid="dcb9a321-693d-49e7-80e1-97c3b31063fd">
+		<parameter name="fechai" class="java.lang.String">
+			<defaultValueExpression><![CDATA[$P{fechai}]]></defaultValueExpression>
+		</parameter>
+		<parameter name="fechaf" class="java.lang.String">
+			<defaultValueExpression><![CDATA[$P{fechaf}]]></defaultValueExpression>
+		</parameter>
+		<parameter name="id" class="java.lang.String">
+			<defaultValueExpression><![CDATA[$P{id}]]></defaultValueExpression>
+		</parameter>
+		<queryString>
+			<![CDATA[select sum (fp.volumen_frasco_pasteurizado) as volacep
+from blh_frasco_procesado fp left join blh_estado e
+on fp.id_estado = e.id
+join blh_pasteurizacion pz
+on fp.id_pasteurizacion = pz.id
+where (e.nombre_estado like '%Liberado%' or e.nombre_estado like '%Despachado%')
+and (pz.fecha_pasteurizacion between to_date($P{fechai},'YYYY-MM-DD') and to_date($P{fechaf},'YYYY-MM-DD'))
+and (substring(fp.codigo_frasco_procesado from 1 for 2) = $P{id})]]>
+		</queryString>
+		<field name="volacep" class="java.math.BigDecimal"/>
+	</subDataset>
+	<subDataset name="muestrasaceptadas" uuid="9a80482d-6eed-427d-ab9d-f6892c07592b">
+		<parameter name="fechai" class="java.lang.String">
+			<defaultValueExpression><![CDATA[$P{fechai}]]></defaultValueExpression>
+		</parameter>
+		<parameter name="fechaf" class="java.lang.String">
+			<defaultValueExpression><![CDATA[$P{fechaf}]]></defaultValueExpression>
+		</parameter>
+		<parameter name="id" class="java.lang.String">
+			<defaultValueExpression><![CDATA[$P{id}]]></defaultValueExpression>
+		</parameter>
+		<queryString>
+			<![CDATA[select count (fp.id) as cantaceptada
+from blh_frasco_procesado fp left join blh_estado e
+on fp.id_estado = e.id
+join blh_pasteurizacion pz
+on fp.id_pasteurizacion = pz.id
+where (e.nombre_estado like '%Liberado%' or
+e.nombre_estado like '%Despachado%')
+and (pz.fecha_pasteurizacion between to_date($P{fechai},'YYYY-MM-DD') and to_date($P{fechaf},'YYYY-MM-DD'))
+and (substring(fp.codigo_frasco_procesado from 1 for 2) = $P{id})]]>
+		</queryString>
+		<field name="cantaceptada" class="java.lang.Long"/>
+	</subDataset>
+	<parameter name="fechai" class="java.lang.String">
+		<defaultValueExpression><![CDATA[$P{fechai}]]></defaultValueExpression>
+	</parameter>
+	<parameter name="fechaf" class="java.lang.String">
+		<defaultValueExpression><![CDATA[$P{fechaf}]]></defaultValueExpression>
+	</parameter>
+	<parameter name="id" class="java.lang.String">
+		<defaultValueExpression><![CDATA[$P{id}]]></defaultValueExpression>
+	</parameter>
+	<parameter name="nombre" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[select count (fr.id) as rechazados, e.nombre_estado
+from blh_frasco_recolectado fr join blh_estado e
+on fr.id_estado = e.id join blh_lote_analisis an
+on fr.id_lote_analisis = an.id
+where e.nombre_estado like '%Reprobado%'
+and (an.fecha_analisis_fisico_quimico between to_date($P{fechai},'YYYY-MM-DD') and to_date($P{fechaf},'YYYY-MM-DD'))
+and (substring(fr.codigo_frasco_recolectado from 1 for 2) = $P{id})
+group by e.nombre_estado;]]>
+	</queryString>
+	<field name="rechazados" class="java.lang.Long"/>
+	<field name="nombre_estado" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="143" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="615d1917-57e7-4f44-9536-e78f48d0b09b" x="323" y="13" width="182" height="24"/>
+				<textElement>
+					<font fontName="Comic Sans MS" size="14"/>
+				</textElement>
+				<text><![CDATA[MINISTERIO DE SALUD]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="d5f001e2-8a0b-44e2-bffb-03161be3fcb2" x="229" y="41" width="393" height="46"/>
+				<textElement textAlignment="Center">
+					<font size="16" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{nombre}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="b958aeca-7d9c-4a74-9517-c1b9b5ebe0bf" x="239" y="87" width="360" height="35"/>
+				<textElement>
+					<font fontName="Comic Sans MS" size="14"/>
+				</textElement>
+				<text><![CDATA[LECHE DESCARTADA DURANTE EL PROCESO]]></text>
+			</staticText>
+			<image>
+				<reportElement uuid="f901feab-7a01-4396-94cc-3a6d5045ef49" x="6" y="8" width="160" height="125"/>
+				<imageExpression><![CDATA["/home/jeni/NetBeansProjects/siblh/src/siblh/mantenimientoBundle/Resources/reportes/blh.jpg"]]></imageExpression>
+			</image>
+			<image>
+				<reportElement uuid="352df5bb-07d5-40e8-8d20-915bfbfbbb5a" x="657" y="13" width="162" height="125"/>
+				<imageExpression><![CDATA["/home/jeni/NetBeansProjects/siblh/src/siblh/mantenimientoBundle/Resources/reportes/minsal2.jpg"]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="52" splitType="Stretch">
+			<textField>
+				<reportElement uuid="b8b7bbfe-dd53-4cb9-9c5a-8812feb8f073" x="594" y="6" width="100" height="20"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{fechaf}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="53c9b16d-e441-41e3-9143-38aa9a8c66f2" x="479" y="6" width="108" height="20"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Fecha final:]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="292ccb4b-3e1a-4107-99f1-b9e9d516a565" x="244" y="6" width="100" height="20"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{fechai}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="714812d0-2cc8-4542-aaba-ed3eda230f6f" x="106" y="6" width="108" height="20"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Fecha inicio:]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="208" splitType="Stretch">
+			<frame>
+				<reportElement uuid="14379191-76cb-4243-9c43-4b6750c4b26b" style="table 1" x="226" y="132" width="99" height="50"/>
+			</frame>
+			<frame>
+				<reportElement uuid="4385fb5a-21aa-4723-942a-c2fa27103f58" style="table 1" x="60" y="8" width="107" height="50" backcolor="#1F0C0C"/>
+			</frame>
+			<componentElement>
+				<reportElement uuid="26d10eb7-cfb7-4331-a11a-cb31314314ca" key="table" style="table" x="61" y="9" width="68" height="39"/>
+				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" whenNoDataType="AllSectionsNoDetail">
+					<datasetRun subDataset="embalaje" uuid="f0c6e7fb-9e9f-4534-9785-58c625cc75c9">
+						<datasetParameter name="fechai">
+							<datasetParameterExpression><![CDATA[$P{fechai}]]></datasetParameterExpression>
+						</datasetParameter>
+						<datasetParameter name="fechaf">
+							<datasetParameterExpression><![CDATA[$P{fechaf}]]></datasetParameterExpression>
+						</datasetParameter>
+						<datasetParameter name="id">
+							<datasetParameterExpression><![CDATA[$P{id}]]></datasetParameterExpression>
+						</datasetParameter>
+						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+					</datasetRun>
+					<jr:column width="106" uuid="dbe11a47-8df5-427e-b281-be95328b3222">
+						<jr:columnHeader style="table_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement uuid="2904fa90-340e-4f46-84c5-8089fdb61309" x="0" y="0" width="106" height="30"/>
+								<textElement textAlignment="Center">
+									<font size="12" isBold="true"/>
+								</textElement>
+								<text><![CDATA[Rechazo por Embalaje]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="table_TD" height="20" rowSpan="1">
+							<textField>
+								<reportElement uuid="6ca8a2c4-3e5a-4666-a0de-314dfed96af1" x="9" y="0" width="90" height="20"/>
+								<textElement/>
+								<textFieldExpression><![CDATA[$F{rechazados}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+				</jr:table>
+			</componentElement>
+			<componentElement>
+				<reportElement uuid="2174dbdd-3d93-499f-b23e-5ce9f0466936" key="table 1" style="table 1" x="226" y="132" width="55" height="50"/>
+				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
+					<datasetRun subDataset="volumenrechazado" uuid="28eb3293-0701-43ce-af03-c5b47a378e3d">
+						<datasetParameter name="fechai">
+							<datasetParameterExpression><![CDATA[$P{fechai}]]></datasetParameterExpression>
+						</datasetParameter>
+						<datasetParameter name="fechaf">
+							<datasetParameterExpression><![CDATA[$P{fechaf}]]></datasetParameterExpression>
+						</datasetParameter>
+						<datasetParameter name="id">
+							<datasetParameterExpression><![CDATA[$P{id}]]></datasetParameterExpression>
+						</datasetParameter>
+						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+					</datasetRun>
+					<jr:column width="98" uuid="2a7c33a9-04d4-4773-80b8-08e11b7a4a9b">
+						<jr:columnHeader style="table 1_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement uuid="e0b41e9b-b9b5-40e8-85a9-44c88fa56ce4" x="0" y="0" width="98" height="30"/>
+								<textElement textAlignment="Center">
+									<font size="12" isBold="true"/>
+								</textElement>
+								<text><![CDATA[Cantidad ml Rechazados]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="table 1_TD" height="20" rowSpan="1">
+							<textField>
+								<reportElement uuid="cb2dff41-f9ee-43fd-95ab-7e894d6a5a6d" x="20" y="0" width="67" height="20"/>
+								<textElement/>
+								<textFieldExpression><![CDATA[$F{volrech}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+				</jr:table>
+			</componentElement>
+			<frame>
+				<reportElement uuid="b9e43d3a-2393-42dc-9f0d-bb14eefb1fb2" style="table 1" x="168" y="8" width="90" height="50" backcolor="#1F0C0C"/>
+				<componentElement>
+					<reportElement uuid="fc93f22a-ab23-438f-98c6-8f4d8cf84ff7" key="table 2" style="table 2" x="0" y="1" width="76" height="39"/>
+					<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" whenNoDataType="AllSectionsNoDetail">
+						<datasetRun subDataset="suciedad" uuid="c74d7266-447f-46a3-aa08-bcb73c4722c2">
+							<datasetParameter name="fechai">
+								<datasetParameterExpression><![CDATA[$P{fechai}]]></datasetParameterExpression>
+							</datasetParameter>
+							<datasetParameter name="fechaf">
+								<datasetParameterExpression><![CDATA[$P{fechaf}]]></datasetParameterExpression>
+							</datasetParameter>
+							<datasetParameter name="id">
+								<datasetParameterExpression><![CDATA[$P{id}]]></datasetParameterExpression>
+							</datasetParameter>
+							<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+						</datasetRun>
+						<jr:column width="90" uuid="57d25ef5-b095-446b-81a5-272e5ed9b1cf">
+							<jr:columnHeader style="table 2_CH" height="30" rowSpan="1">
+								<staticText>
+									<reportElement uuid="9573881c-d67b-4760-916f-3bea83e42be8" x="0" y="0" width="90" height="30"/>
+									<textElement textAlignment="Center">
+										<font size="12" isBold="true"/>
+									</textElement>
+									<text><![CDATA[Rechazo por Suciedad]]></text>
+								</staticText>
+							</jr:columnHeader>
+							<jr:detailCell style="table 2_TD" height="20" rowSpan="1">
+								<textField>
+									<reportElement uuid="69abcdbb-c3d3-4474-b2eb-33a2234de281" x="8" y="0" width="77" height="20"/>
+									<textElement textAlignment="Center"/>
+									<textFieldExpression><![CDATA[$F{rechazados}]]></textFieldExpression>
+								</textField>
+							</jr:detailCell>
+						</jr:column>
+					</jr:table>
+				</componentElement>
+			</frame>
+			<frame>
+				<reportElement uuid="712d221d-9d95-44ba-b794-c59a010844e9" style="table 1" x="258" y="8" width="90" height="49" backcolor="#FFFFFF"/>
+				<componentElement>
+					<reportElement uuid="d41b3515-2b8d-4447-9f91-32b248b2ff52" key="table 3" style="table 3" x="0" y="0" width="48" height="49"/>
+					<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" whenNoDataType="AllSectionsNoDetail">
+						<datasetRun subDataset="color" uuid="041a0c5c-e4ae-4cb6-9f77-7654e748bf96">
+							<datasetParameter name="fechai">
+								<datasetParameterExpression><![CDATA[$P{fechai}]]></datasetParameterExpression>
+							</datasetParameter>
+							<datasetParameter name="fechaf">
+								<datasetParameterExpression><![CDATA[$P{fechaf}]]></datasetParameterExpression>
+							</datasetParameter>
+							<datasetParameter name="id">
+								<datasetParameterExpression><![CDATA[$P{id}]]></datasetParameterExpression>
+							</datasetParameter>
+							<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+						</datasetRun>
+						<jr:column width="90" uuid="b05a8b1b-cca3-420c-8bdb-b5d3620223d1">
+							<jr:columnHeader style="table 3_CH" height="30" rowSpan="1">
+								<staticText>
+									<reportElement uuid="011f1932-b27f-4944-81a0-656153d29a3a" x="0" y="0" width="90" height="30"/>
+									<textElement textAlignment="Center">
+										<font size="12" isBold="true"/>
+									</textElement>
+									<text><![CDATA[Rechazo por Color]]></text>
+								</staticText>
+							</jr:columnHeader>
+							<jr:detailCell style="table 3_TD" height="20" rowSpan="1">
+								<textField>
+									<reportElement uuid="988d0fa5-2511-4280-90c5-598135a4a907" x="0" y="0" width="90" height="20"/>
+									<textElement textAlignment="Center"/>
+									<textFieldExpression><![CDATA[$F{rechazados}]]></textFieldExpression>
+								</textField>
+							</jr:detailCell>
+						</jr:column>
+					</jr:table>
+				</componentElement>
+			</frame>
+			<frame>
+				<reportElement uuid="34b4cd4b-a6b8-4996-9470-cd469d701dfc" style="table 1" x="348" y="8" width="90" height="50" backcolor="#1F0C0C"/>
+				<componentElement>
+					<reportElement uuid="518d1615-204f-48ed-8ae7-1b81894c2a83" key="table 4" style="table 4" x="0" y="0" width="51" height="49"/>
+					<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" whenNoDataType="AllSectionsNoDetail">
+						<datasetRun subDataset="olor" uuid="5a04a4fd-fc16-436c-870c-c19f4db2f114">
+							<datasetParameter name="fechai">
+								<datasetParameterExpression><![CDATA[$P{fechai}]]></datasetParameterExpression>
+							</datasetParameter>
+							<datasetParameter name="fechaf">
+								<datasetParameterExpression><![CDATA[$P{fechaf}]]></datasetParameterExpression>
+							</datasetParameter>
+							<datasetParameter name="id">
+								<datasetParameterExpression><![CDATA[$P{id}]]></datasetParameterExpression>
+							</datasetParameter>
+							<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+						</datasetRun>
+						<jr:column width="90" uuid="3d334377-e516-4110-bbe8-28020864b63d">
+							<jr:columnHeader style="table 4_CH" height="30" rowSpan="1">
+								<staticText>
+									<reportElement uuid="c91432db-c401-4da2-9fcc-e0106104fc66" x="0" y="0" width="90" height="30"/>
+									<textElement textAlignment="Center">
+										<font size="12" isBold="true"/>
+									</textElement>
+									<text><![CDATA[Rechazo por Olor]]></text>
+								</staticText>
+							</jr:columnHeader>
+							<jr:detailCell style="table 4_TD" height="20" rowSpan="1">
+								<textField>
+									<reportElement uuid="450d024f-c959-4297-ae7d-c0f0d49cd203" x="0" y="0" width="90" height="20"/>
+									<textElement textAlignment="Center"/>
+									<textFieldExpression><![CDATA[$F{rechazados}]]></textFieldExpression>
+								</textField>
+							</jr:detailCell>
+						</jr:column>
+					</jr:table>
+				</componentElement>
+			</frame>
+			<frame>
+				<reportElement uuid="d55a03b1-0ac2-4d95-a7e6-91853e0971c7" style="table 1" x="438" y="8" width="90" height="50" backcolor="#1F0C0C"/>
+			</frame>
+			<componentElement>
+				<reportElement uuid="db7dd7cb-1d23-4190-a2bf-52c1e3493736" key="table 5" style="table 5" x="438" y="8" width="56" height="49"/>
+				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" whenNoDataType="AllSectionsNoDetail">
+					<datasetRun subDataset="acidez" uuid="d7f1d7d6-22a4-4636-a8e9-b03d54cb12c0">
+						<datasetParameter name="fechai">
+							<datasetParameterExpression><![CDATA[$P{fechai}]]></datasetParameterExpression>
+						</datasetParameter>
+						<datasetParameter name="fechaf">
+							<datasetParameterExpression><![CDATA[$P{fechaf}]]></datasetParameterExpression>
+						</datasetParameter>
+						<datasetParameter name="id">
+							<datasetParameterExpression><![CDATA[$P{id}]]></datasetParameterExpression>
+						</datasetParameter>
+						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+					</datasetRun>
+					<jr:column width="90" uuid="642462f5-48d8-46ed-b095-bbad31c7a7c8">
+						<jr:columnHeader style="table 5_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement uuid="7e253c4d-e2a3-43dc-8f42-dd218add90c3" x="0" y="0" width="90" height="30"/>
+								<textElement textAlignment="Center">
+									<font size="12" isBold="true"/>
+								</textElement>
+								<text><![CDATA[Rechazo por Acidez]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="table 5_TD" height="20" rowSpan="1">
+							<textField>
+								<reportElement uuid="9830f1c3-edf3-4d8d-8290-7f17477a0370" x="0" y="0" width="90" height="20"/>
+								<textElement textAlignment="Center"/>
+								<textFieldExpression><![CDATA[$F{acidez}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+				</jr:table>
+			</componentElement>
+			<frame>
+				<reportElement uuid="12422027-6820-462a-8d48-e3ec7836f1e2" style="table 1" x="528" y="8" width="112" height="50" backcolor="#1F0C0C"/>
+				<componentElement>
+					<reportElement uuid="797d2f37-9cbd-4af3-af9f-a67b29be0f69" key="table 6" style="table 6" x="0" y="1" width="50" height="49"/>
+					<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" whenNoDataType="AllSectionsNoDetail">
+						<datasetRun subDataset="microbiologico" uuid="450bb2ed-0b1c-430f-8f07-6b0f550311b9">
+							<datasetParameter name="fechai">
+								<datasetParameterExpression><![CDATA[$P{fechai}]]></datasetParameterExpression>
+							</datasetParameter>
+							<datasetParameter name="fechaf">
+								<datasetParameterExpression><![CDATA[$P{fechaf}]]></datasetParameterExpression>
+							</datasetParameter>
+							<datasetParameter name="id">
+								<datasetParameterExpression><![CDATA[$P{id}]]></datasetParameterExpression>
+							</datasetParameter>
+							<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+						</datasetRun>
+						<jr:column width="112" uuid="cf469ede-5611-42f0-9501-67eaa86d1522">
+							<jr:columnHeader style="table 6_CH" height="30" rowSpan="1">
+								<staticText>
+									<reportElement uuid="ab04c0d5-20ea-4f9e-8038-a8c2b5e2076a" x="0" y="0" width="112" height="30"/>
+									<textElement textAlignment="Center">
+										<font size="12" isBold="true"/>
+									</textElement>
+									<text><![CDATA[Rechazo por A. Microbiologico]]></text>
+								</staticText>
+							</jr:columnHeader>
+							<jr:detailCell style="table 6_TD" height="20" rowSpan="1">
+								<textField>
+									<reportElement uuid="734adf0c-cab4-49fb-8caf-1f8eff1bd559" x="10" y="0" width="90" height="20"/>
+									<textElement textAlignment="Center"/>
+									<textFieldExpression><![CDATA[$F{rechazados}]]></textFieldExpression>
+								</textField>
+							</jr:detailCell>
+						</jr:column>
+					</jr:table>
+				</componentElement>
+			</frame>
+			<frame>
+				<reportElement uuid="90dad5c5-9622-4bc0-8724-52a9153f60ec" style="table 1" x="641" y="8" width="90" height="50" backcolor="#1F0C0C"/>
+			</frame>
+			<componentElement>
+				<reportElement uuid="e22edb5e-8682-4514-b012-da2fdb2d57de" key="table 7" style="table 7" x="641" y="8" width="63" height="53"/>
+				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" whenNoDataType="AllSectionsNoDetail">
+					<datasetRun subDataset="resiembra" uuid="e4c25352-480f-4acb-8535-394c44b22643">
+						<datasetParameter name="fechai">
+							<datasetParameterExpression><![CDATA[$P{fechai}]]></datasetParameterExpression>
+						</datasetParameter>
+						<datasetParameter name="fechaf">
+							<datasetParameterExpression><![CDATA[$P{fechaf}]]></datasetParameterExpression>
+						</datasetParameter>
+						<datasetParameter name="id">
+							<datasetParameterExpression><![CDATA[$P{id}]]></datasetParameterExpression>
+						</datasetParameter>
+						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+					</datasetRun>
+					<jr:column width="90" uuid="5211abee-0107-40db-84f9-52b23844b063">
+						<jr:columnHeader style="table 7_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement uuid="a7b592f2-9e2c-41e8-9686-e7e3bf584a49" x="0" y="0" width="90" height="30"/>
+								<textElement textAlignment="Center">
+									<font size="12" isBold="true"/>
+								</textElement>
+								<text><![CDATA[Rechazo por Resiembra]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="table 7_TD" height="20" rowSpan="1">
+							<textField>
+								<reportElement uuid="b7ae6d67-77f0-424b-b707-49232ea8a241" x="0" y="0" width="90" height="20"/>
+								<textElement textAlignment="Center"/>
+								<textFieldExpression><![CDATA[$F{rechazados}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+				</jr:table>
+			</componentElement>
+			<frame>
+				<reportElement uuid="6451e874-0148-40a1-9aae-3ab1cf520ca1" style="table 1" x="325" y="132" width="89" height="49"/>
+			</frame>
+			<componentElement>
+				<reportElement uuid="82cbfb06-4c18-4278-9995-30d7758d9baf" key="table 8" style="table 8" x="325" y="132" width="57" height="48"/>
+				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" whenNoDataType="AllSectionsNoDetail">
+					<datasetRun subDataset="cantidadrechazo" uuid="40531d6f-ec79-47a3-bfaf-dd09020dcaf6">
+						<datasetParameter name="fechai">
+							<datasetParameterExpression><![CDATA[$P{fechai}]]></datasetParameterExpression>
+						</datasetParameter>
+						<datasetParameter name="fechaf">
+							<datasetParameterExpression><![CDATA[$P{fechaf}]]></datasetParameterExpression>
+						</datasetParameter>
+						<datasetParameter name="id">
+							<datasetParameterExpression><![CDATA[$P{id}]]></datasetParameterExpression>
+						</datasetParameter>
+						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+					</datasetRun>
+					<jr:column width="90" uuid="c5771fbd-9033-46af-9cc1-485c3fd821b6">
+						<jr:columnHeader style="table 8_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement uuid="cba24a3e-04d1-48dc-be8d-285906be6c68" x="0" y="0" width="90" height="30"/>
+								<textElement textAlignment="Center">
+									<font size="12" isBold="true"/>
+								</textElement>
+								<text><![CDATA[Muestras Rechazadas]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="table 8_TD" height="20" rowSpan="1">
+							<textField pattern="###0.00">
+								<reportElement uuid="ef50cdb7-c782-4695-92a0-d686b739976e" x="0" y="0" width="90" height="20"/>
+								<textElement textAlignment="Center"/>
+								<textFieldExpression><![CDATA[$F{cantrechazado}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+				</jr:table>
+			</componentElement>
+			<frame>
+				<reportElement uuid="27e90d56-c291-4542-89c7-562f2960b011" style="table 1" x="415" y="132" width="90" height="49"/>
+			</frame>
+			<componentElement>
+				<reportElement uuid="efe818b1-265c-4ee1-9694-6d34c01cbad7" key="table 9" style="table 9" x="416" y="132" width="58" height="51"/>
+				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" whenNoDataType="AllSectionsNoDetail">
+					<datasetRun subDataset="volumenaceptado" uuid="9c0a6de7-9bd5-4381-86da-11f8b64f099a">
+						<datasetParameter name="fechai">
+							<datasetParameterExpression><![CDATA[$P{fechai}]]></datasetParameterExpression>
+						</datasetParameter>
+						<datasetParameter name="fechaf">
+							<datasetParameterExpression><![CDATA[$P{fechaf}]]></datasetParameterExpression>
+						</datasetParameter>
+						<datasetParameter name="id">
+							<datasetParameterExpression><![CDATA[$P{id}]]></datasetParameterExpression>
+						</datasetParameter>
+						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+					</datasetRun>
+					<jr:column width="90" uuid="1aaabeeb-7b08-4a16-a1c3-4daf786c2805">
+						<jr:columnHeader style="table 9_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement uuid="35faaec2-58df-41b2-bc0f-fc222f3085f2" x="0" y="0" width="90" height="30"/>
+								<textElement textAlignment="Center">
+									<font size="12" isBold="true"/>
+								</textElement>
+								<text><![CDATA[Cantidad ml Aceptada]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="table 9_TD" height="20" rowSpan="1">
+							<textField pattern="###0.000" isBlankWhenNull="true">
+								<reportElement uuid="3d15f152-4714-4b76-84c4-31315c96cd41" x="0" y="0" width="90" height="20"/>
+								<textElement textAlignment="Center"/>
+								<textFieldExpression><![CDATA[$F{volacep}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+				</jr:table>
+			</componentElement>
+			<frame>
+				<reportElement uuid="d30df9f5-b381-4167-8fa9-580f4565e2c4" style="table 1" x="506" y="132" width="83" height="49"/>
+			</frame>
+			<componentElement>
+				<reportElement uuid="b6a09979-715e-4200-9448-665da28999b2" key="table 10" style="table 10" x="506" y="132" width="60" height="50"/>
+				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" whenNoDataType="AllSectionsNoDetail">
+					<datasetRun subDataset="muestrasaceptadas" uuid="d5176aa6-f864-483c-8f95-c409d34507bd">
+						<datasetParameter name="fechai">
+							<datasetParameterExpression><![CDATA[$P{fechai}]]></datasetParameterExpression>
+						</datasetParameter>
+						<datasetParameter name="fechaf">
+							<datasetParameterExpression><![CDATA[$P{fechaf}]]></datasetParameterExpression>
+						</datasetParameter>
+						<datasetParameter name="id">
+							<datasetParameterExpression><![CDATA[$P{id}]]></datasetParameterExpression>
+						</datasetParameter>
+						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+					</datasetRun>
+					<jr:column width="90" uuid="31835238-2710-498c-8a5a-ca38c9a07434">
+						<jr:tableHeader style="table 10_TH" height="0" rowSpan="1"/>
+						<jr:columnHeader style="table 10_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement uuid="f3f08090-82ae-453d-b1ba-88cc73c49270" x="0" y="0" width="90" height="30"/>
+								<textElement textAlignment="Center">
+									<font size="12" isBold="true"/>
+								</textElement>
+								<text><![CDATA[Muestras Aceptadas]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="table 10_TD" height="20" rowSpan="1">
+							<textField>
+								<reportElement uuid="8e89c4ff-ce92-4382-97ac-56f13188cae0" x="0" y="0" width="90" height="20"/>
+								<textElement textAlignment="Center"/>
+								<textFieldExpression><![CDATA[$F{cantaceptada}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+				</jr:table>
+			</componentElement>
+			<staticText>
+				<reportElement uuid="c82ee034-5bb2-4e60-a91d-b4f145b687b3" x="267" y="95" width="265" height="20"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Muestras Aprobadas y Reprobadas]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="161" splitType="Stretch"/>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

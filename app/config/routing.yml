@@ -86,6 +86,11 @@ _NewHistorialClinico:
 _NewHistoriaActual:
     pattern:  /donantesHA/
     defaults: { _controller: siblhmantenimientoBundle:BlhHistoriaActual:donantesHA}  
+
+_NewDonacion:
+    pattern:  /donantesD/
+    defaults: { _controller: siblhmantenimientoBundle:BlhDonacion:donantesD}
+
     
 _NewCurva:
    pattern:  /Curva/Nueva
@@ -94,6 +99,7 @@ _NewCurva:
 _NewAnalisisMicrobiologico:
    pattern:  /AnalisisMicro/
    defaults: { _controller: siblhmantenimientoBundle:BlhAnalisisMicrobiologico:frascospasteurizados} 
+
  
 
 _NewFrascoRecolectado:
@@ -188,6 +194,37 @@ _NewReportesLaboratorio:
   pattern:  /listado/reportes/laboratorio
   defaults: { _controller: siblhmantenimientoBundle:BlhFrascoRecolectado:listadoReportesLaboratorio}
   
+
 _NewEstadisticas:
   pattern:  /listado/estadisticas
   defaults: { _controller: siblhmantenimientoBundle:BlhBancoDeLeche:listadoEstadisticas}
+
+_NewCensoDonante:
+  pattern:  /censodonante/
+  defaults: { _controller: siblhmantenimientoBundle:GeneraReportes:CensoDonante}
+  
+_NewBLH:
+    pattern:  /Banco/Nuevo
+    defaults: { _controller: siblhmantenimientoBundle:BlhBancoDeLeche:new}
+    
+_NewEditBLH:
+    pattern:  /Banco/listado
+    defaults: { _controller: siblhmantenimientoBundle:BlhBancoDeLeche:index} 
+ 
+  #Mantenimiento
+#_NewAnalisisMicrobiologicoEdit:
+ # pattern:  /AnalisisMicroEdit
+  #defaults: { _controller: siblhmantenimientoBundle:BlhAnalisisMicrobiologico:index} 
+  
+#_NewTempPasteurizacionEdit:
+ #pattern:  /TemperaturaPEdit
+ #defaults: { _controller: siblhmantenimientoBundle:BlhTemperaturaPasteurizacion:index} 
+ 
+#_NewCurvaEdit: 
+# pattern:  /CurvaEdit
+# defaults: { _controller: siblhmantenimientoBundle:BlhCurva:index} 
+ 
+#_NewInfoPublicaEdit: 
+# pattern:  /InfoPublicaEdit
+# defaults: { _controller: siblhmantenimientoBundle:BlhInformacionPublica:index}    
+

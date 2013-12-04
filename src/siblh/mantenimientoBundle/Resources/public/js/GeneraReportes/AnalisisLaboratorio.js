@@ -39,19 +39,21 @@ $(document).ready(function() {
    $( "#exportar_pdf3" ).button();  
       
     $('#exportar_pdf3').click(function() {
-      //  $x=$('#fechai').val();
-   // alert ($x);
-         // if ($('.ui-paging-info').text() != 'Sin registros que mostrar') {
-                  //  $.noConflict();
+     $fi= $('#fechai').val();
+     $ff= $('#fechaf').val();          
+    
+      if (($fi == " ") || ($ff == " "))
+            
+           { alert("Debe seleccionar un rango de fecha"); }
+        
+        else
+            {
+
           url = Routing.generate('_exportar_reporte_laboratorio') + '/AnalisisLaboratorio/pdf?fechai=' + $('#fechai').val() + '&fechaf=' + $('#fechaf').val()+ '&id=' + $('#id').val()+ '&nombre=' + $('#nombre').val();
-         // url = Routing.generate('_exportar_reporte') + '/Prueba/pdf?fechai=' + $('#fechai').val();  
-        window.open(url, '_blank');
+          window.open(url, '_blank');
            return false;
-           //  }
-//      else {
-  //         return false;
-    //   }
-       
+             }
+
       
        
    });

@@ -17,19 +17,18 @@
     {{ form_errors(edit_form) }}
     
 <table    align = "center" >
-       <tr><td colspan=2 align = "left" height=10  ></td></tr>   
-       <tr><td align='left' ><font color="red">*</font>{{ form_label(edit_form.codigoReceptor) }}</td><td align='left'>{{ form_widget(edit_form.codigoReceptor, {'attr':{'readonly': 'true' } })  }}</td></tr>
-         
+        <tr><td colspan=2 align = "left" height=10  ></td></tr>   
+        <tr><td align='left' ><font color="red">*</font>{{ form_label(edit_form.codigoReceptor) }}</td><td align='left'>{{ form_widget(edit_form.codigoReceptor, {'attr':{'readonly': 'true' } })  }}</td></tr>         
         <tr><td colspan=2 align = "left" height=10  ></td></tr>
-        <tr><td align='left' ><font color="red">*</font>{{ form_label(edit_form.fechaRegistroBlh,'Fecha de registro') }}</td><td align='left'>{{ form_widget(edit_form.fechaRegistroBlh) }}</td></tr>
+        <tr><td align='left' ><font color="red">*</font>{{ form_label(edit_form.fechaRegistroBlh,'Fecha de registro') }}</td><td align='left'>{{ form_widget(edit_form.fechaRegistroBlh, {'attr':{'title': 'Dar clic y seleccionar fecha de registro'} }) }}</td></tr>
         <tr><td colspan=2 align = "left" height=10  ></td></tr>
         <tr><td align='left' ><font color="red">*</font>{{ form_label(edit_form.procedencia,'Procedencia') }}</td><td align='left'>{{ form_widget(edit_form.procedencia) }}</td></tr>
         <tr><td colspan=2 align = "left" height=10  ></td></tr>
         <tr><td align='left' ><font color="red">*</font>{{ form_label(edit_form.estadoReceptor,'Estado') }}</td><td align='left'>{{ form_widget(edit_form.estadoReceptor) }}</td></tr>
         <tr><td colspan=2 align = "left" height=10  ></td></tr>
-        <tr><td align='left' ><font color="red">*</font>{{ form_label(edit_form.edadDias,'Edad') }}</td><td align='left'>{{ form_widget(edit_form.edadDias) }}</td></tr>
+        <tr><td align='left' ><font color="red">*</font>{{ form_label(edit_form.edadDias,'Edad') }}</td><td align='left'>{{ form_widget(edit_form.edadDias, {'attr':{'readonly': 'true'} }) }}</td></tr>
         <tr><td colspan=2 align = "left" height=10  ></td></tr>
-        <tr><td align='left' ><font color="red">*</font>{{ form_label(edit_form.pesoReceptor,'Peso') }}</td><td align='left'>{{ form_widget(edit_form.pesoReceptor) }}</td></tr>
+        <tr><td align='left' ><font color="red">*</font>{{ form_label(edit_form.pesoReceptor, 'peso al nacer') }}</td><td align='left'>{{ form_widget(edit_form.pesoReceptor,  { 'attr': {'title': 'Peso entre 500 a 5000 gramos', 'onKeyPress':"return soloNumeros(event);"} }) }}</td></tr>
         <tr><td colspan=2 align = "left" height=10  ></td></tr>
         <tr><td align='left' ><font color="red">*</font>{{ form_label(edit_form.duracionCpap,'Duracion de CPAP Nasal') }}</td><td align='left'>{{ form_widget(edit_form.duracionCpap) }}</td></tr>
         <tr><td colspan=2 align = "left" height=10  ></td></tr>
@@ -41,33 +40,25 @@
         <tr><td colspan=2 align = "left" height=10  ></td></tr>
         <tr><td align='left' ><font color="red">*</font>{{ form_label(edit_form.apgar,'Nutricion parenteral') }}</td><td align='left'>{{ form_widget(edit_form.duracionNpt) }}</td></tr>
         <tr><td colspan=2 align = "left" height=10  ></td></tr>
-        <tr><td align='left' ><font color="red">*</font>{{ form_label(edit_form.edadGestFur,'Edad Gestacion FUR') }}</td><td align='left'>{{ form_widget(edit_form.edadGestFur) }}</td></tr>
+        <tr><td align='left' ><font color="red">*</font>{{ form_label(edit_form.edadGestFur,'Edad Gestacion FUR') }}</td><td align='left'>{{ form_widget(edit_form.edadGestFur,  { 'attr': {'title': 'Entre 24 a 42 Semanas', 'onKeyPress':"return soloNumerosEnteros(event);"} }) }}</td></tr>
         <tr><td colspan=2 align = "left" height=10  ></td></tr>
         <tr><td align='left' ><font color="red">*</font>{{ form_label(edit_form.duracionVentilacion,'Duracion ventilacion mecanica') }}</td><td align='left'>{{ form_widget(edit_form.duracionVentilacion) }}</td></tr>
         <tr><td colspan=2 align = "left" height=10  ></td></tr>
-        <tr><td align='left' ><font color="red">*</font>{{ form_label(edit_form.edadGestBallard) }}</td><td align='left'>{{ form_widget(edit_form.edadGestBallard) }}</td></tr>
+        <tr><td align='left' ><font color="red">*</font>{{ form_label(edit_form.edadGestBallard) }}</td><td align='left'>{{ form_widget(edit_form.edadGestBallard,  { 'attr': {'title': 'Entre 24 a 42 Semanas', 'onKeyPress':"return soloNumerosEnteros(event);"} }) }}</td></tr>
         <tr><td colspan=2 align = "left" height=10  ></td></tr>
-        <tr><td align='left' ><font color="red">*</font>{{ form_label(edit_form.pc, 'Perimetro Cefalico') }}</td><td align='left'>{{ form_widget(edit_form.pc) }}</td></tr>
+        <tr><td align='left' ><font color="red">*</font>{{ form_label(edit_form.pc, 'Perimetro Cefalico') }}</td><td align='left'>{{ form_widget(edit_form.pc,  { 'attr': {'title': 'entre 20 y 40 cm', 'onKeyPress':"return soloNumerosEnteros(event);"} }) }}</td></tr>
         <tr><td colspan=2 align = "left" height=10  ></td></tr>
-        <tr><td align='left' ><font color="red">*</font>{{ form_label(edit_form.tallaIngreso) }}</td><td align='left'>{{ form_widget(edit_form.tallaIngreso) }}</td></tr>
+        <tr><td align='left' ><font color="red">*</font>{{ form_label(edit_form.tallaIngreso) }}</td><td align='left'>{{ form_widget(edit_form.tallaIngreso,  { 'attr': {'title': 'Talla entre 25 a 55 cm', 'onKeyPress':"return soloNumeros(event);"} }) }}</td></tr>
         <tr><td colspan=2 align = "left" height=10  ></td></tr>
-        <tr><td align='left' ><font color="red">*</font>{{ form_label(edit_form.apgar) }}</td><td align='left'>{{ form_widget(edit_form.apgar) }}</td></tr>
+        <tr><td align='left' ><font color="red">*</font>{{ form_label(edit_form.apgar) }}</td><td align='left'>{{ form_widget(edit_form.apgar,  { 'attr': {'title': 'Entre 0 a 10 minutos', 'onKeyPress':"return soloNumerosEnteros(event);"} }) }}</td></tr>
         <tr style="visibility:hidden"><td align='left' ><font color="red">*</font>{{ form_label(edit_form.idPaciente) }}</td><td align='left'>{{ form_widget(edit_form.idPaciente, {'attr':{'readonly': 'true' } })  }}</td></tr>
          
-       <tr style="visibility:hidden"><td align='left' ><font color="red">*</font>{{ form_label(edit_form.idBancoDeLeche) }}</td><td align='left'>{{ form_widget(edit_form.idBancoDeLeche, {'attr':{'readonly': 'true' } })  }}</td></tr>
+        <tr style="visibility:hidden"><td align='left' ><font color="red">*</font>{{ form_label(edit_form.idBancoDeLeche) }}</td><td align='left'>{{ form_widget(edit_form.idBancoDeLeche, {'attr':{'readonly': 'true' } })  }}</td></tr>
 
-        
-         <tr><td colspan = '2' align = 'center'>  <input type="submit" class= "ui-button" value="Actualizar"/></td></tr>
-
+         <tr><td colspan =2 align = "left"><font color="red" size = "2" face = "Comic Sans MS">* Campos requeridos</font>   </td><tr>
+         <tr><td colspan = '2' align = 'center'>  <input id= "button" type="submit" value="Actualizar"/>
+              <input id = "boton" type="button" value="Regresar" onClick=' window.location.href="{{ path('blhreceptor') }}" '></td></tr>
         </table>
 
        {{ form_end(edit_form) }}
-
-    <table align = 'center'>
-        <tr>
-            <td>
-        <a href="{{ path('blhreceptor') }}">
-       
-   Ver listado </a>
-        </td></tr></table>
-{% endblock %}
+   {% endblock %}

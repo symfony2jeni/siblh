@@ -1,106 +1,115 @@
 {% extends 'siblhmantenimientoBundle::plantilla.html.twig' %}
+{% block javascripts %}
+
+{{parent()}}
+
+<script type="text/javascript" src="{{ asset('bundles/siblhmantenimiento/js/BlhHistorialClinico/show.js') }}" ></script>
+       
+{% endblock %}
+
+       
 
 {% block body -%}
+
+<style type="text/css">
+table#teft table {display: block; padding: 5px; border: 3px solid black; border-top: 1; -moz-border-radius: 10px 10px 10px 10px; color:"#2e6e9e"}
+th {
+font-family: verdana,arial,helvetica,sans-serif;
+color: #000000;
+font-weight: bold;
+border-style: solid;
+border-width: 1px;
+size: 2px;
+background-color: #2b8dd6;
+}
+td {
+font-family: verdana,arial,helvetica,sans-serif;}
+    </style>
     <h1>Historial Clinico</h1>
-    <table  align = "center" >
-        <tr>
-        
-            <td><a href="{{ path('blhhistorialclinico_edit', { 'id': entity.id }) }}">
-                    <font color="#2E9AFE" size = "2" face = "Comic Sans MS"><b>Editar</b></font> 
-            
-            </td></tr>
-            
+  {#  <FORM> 
+   <table align = "center">
+       
+       <tr>
+           <td><b>Codigo de la Donante</b></td>
+        <td>
+        <INPUT type=text disabled="disabled" size=30 readonly="readonly" value= " {{ datos_donantes[0].codigo_donante }} "></td>
+        <td width= "70" ></td>
+        <td width= "70"></td></tr>  
+       <tr height = 10><td></tr></td>
+         <tr>
+             <td><b>Nombre de la Donante</b></td>
+        <td>
+       <INPUT name = "label2" type=text disabled="disabled" size=30 readonly="readonly" value= "{{ datos_donantes[0].nombre1}}&nbsp;{{ datos_donantes[0].nombre2  }}&nbsp;{{ datos_donantes[0].apellido1  }} "></td>
+        <td width= "70" height = 10></td>
+        <td width= "70" height = 10></td></tr> 
+         <tr height = 10><td></tr></td>
+   <tr height = 10><td></tr></td>
+       
+       
+       
+    </table>     
+</form> #}
     
-    </table>
-
-    <table class="record_properties" border = "1"  align = "center" bordercolor="#A4A4A4">
+    <table id = "left" border = "1"  align = "center" bordercolor="#2e6e9e">
         <tbody>
-            <tr>
-                <th bgcolor="#2E9AFE">Id</th>
-                <td>{{ entity.id }}</td>
-            </tr>
-            <tr>
-                <th bgcolor="#2E9AFE">Amenorrea</th>
-                <td>{{ entity.amenorrea }}</td>
-            </tr>
-            <tr>
-                <th bgcolor="#2E9AFE">Controlprenatal</th>
-                <td>{{ entity.controlPrenatal }}</td>
-            </tr>
-            <tr>
-                <th bgcolor="#2E9AFE">Lugarcontrol</th>
-                <td>{{ entity.lugarControl }}</td>
-            </tr>
-            <tr>
-                <th bgcolor="#2E9AFE">Numerocontrol</th>
-                <td>{{ entity.numeroControl }}</td>
-            </tr>
-            <tr>
-                <th bgcolor="#2E9AFE">Fechaultimaregla</th>
-                <td>{{ entity.fechaUltimaRegla|date('Y-m-d H:i:s') }}</td>
-            </tr>
-            <tr>
-                <th bgcolor="#2E9AFE">Fechaparto</th>
-                <td>{{ entity.fechaParto|date('Y-m-d H:i:s') }}</td>
-            </tr>
-            <tr>
-                <th bgcolor="#2E9AFE">Lugarparto</th>
-                <td>{{ entity.lugarParto }}</td>
-            </tr>
-            <tr>
-                <th bgcolor="#2E9AFE">Patologiaembarazo</th>
-                <td>{{ entity.patologiaEmbarazo }}</td>
-            </tr>
-            <tr>
-                <th bgcolor="#2E9AFE">Periodointergenesico</th>
-                <td>{{ entity.periodoIntergenesico }}</td>
-            </tr>
-            <tr>
-                <th bgcolor="#2E9AFE">Fechapartoanterior</th>
-                <td>{{ entity.fechaPartoAnterior|date('Y-m-d H:i:s') }}</td>
-            </tr>
-            <tr>
-                <th bgcolor="#2E9AFE">Formulaobstetricag</th>
-                <td>{{ entity.formulaObstetricaG }}</td>
-            </tr>
-            <tr>
-                <th bgcolor="#2E9AFE">Formulaobstetricap1</th>
-                <td>{{ entity.formulaObstetricaP1 }}</td>
-            </tr>
-            <tr>
-                <th bgcolor="#2E9AFE">Formulaobstetricap2</th>
-                <td>{{ entity.formulaObstetricaP2 }}</td>
-            </tr>
-            <tr>
-                <th bgcolor="#2E9AFE">Formulaobstetricaa</th>
-                <td>{{ entity.formulaObstetricaA }}</td>
-            </tr>
-            <tr>
-                <th bgcolor="#2E9AFE">Formulaobstetricav</th>
-                <td>{{ entity.formulaObstetricaV }}</td>
-            </tr>
-            <tr>
-                <th bgcolor="#2E9AFE">Formulaobstetricam</th>
-                <td>{{ entity.formulaObstetricaM }}</td>
-            </tr>
+                <tr align = "left"> 
+                <th>Amenorrea</th>
+                <td>{{ entity.amenorrea }}</td></tr>
+                <tr align = "left">
+                <th>Controlprenatal</th>
+                <td>{{ entity.controlPrenatal }}</td></tr>
+                <tr align = "left">
+                <th>Lugar de Control</th>
+                <td>{{ entity.lugarControl }}</td></tr>
+                <tr align = "left">
+                <th>Numero de Controles</th>
+                <td>{{ entity.numeroControl }}</td></tr>
+                <tr align = "left">
+                <th>Fecha de ultima regla</th>
+                <td>{{ entity.fechaUltimaRegla|date('Y-m-d') }}</td></tr>
+                <tr align = "left">
+                <th>Fecha de parto</th>
+                <td>{{ entity.fechaParto|date('Y-m-d') }}</td></tr>
+                <tr align = "left">
+                <th>Lugar de Parto</th>
+                <td>{{ entity.lugarParto }}</td></tr>
+                <tr align = "left">
+                <th>Patologias</th>
+                <td>{{ entity.patologiaEmbarazo }}</td></tr>
+                <tr align = "left">
+                <th>Periodo intergenesico</th>
+                <td>{{ entity.periodoIntergenesico }}</td></tr>
+                <tr align = "left">
+                <th>Fecha de parto anterior</th>
+                <td>{{ entity.fechaPartoAnterior|date('Y-m-d') }}</td></tr>
+                <tr><b><th colspan = 2>Forluma Obstetrica</th></b></tr>
+                <tr align = "left">
+                <th>Embarazos (G)</th>
+                <td>{{ entity.formulaObstetricaG }}</td></tr>
+                <tr align = "left">
+                <th>Partos (P)</th>
+                <td>{{ entity.formulaObstetricaP1 }}</td></tr>
+                <tr align = "left">
+                <th>Prematuros (P)</th>
+                <td>{{ entity.formulaObstetricaP2 }}</td></tr>
+                <tr align = "left">
+                <th>Abortos (A)</th>
+                <td>{{ entity.formulaObstetricaA }}</td></tr>
+                <tr align = "left">
+                <th>Vivos (V)</th>
+                <td>{{ entity.formulaObstetricaV }}</td></tr>
+                <tr align = "left">
+                <th>Muertos (M)</th>
+                <td>{{ entity.formulaObstetricaM }}</td></tr>
         </tbody>
-    </table>
+        </table>
 
+       <table  align = "center" >
+         <tr><td height=10  ></td></tr> 
+         <tr><td height=10  ></td></tr> 
+         <tr><td><input id = "boton1" type="button" value="Registrar Nuevo" onClick=' window.location.href="{{ path('_NewHistorialClinico') }}" '>
+</td></tr>
+
+               </table>
     
-    
-      
-    {#
-      <ul class="record_actions">
-    <li>
-        <a href="{{ path('blhhistorialclinico') }}">
-            Back to the list
-        </a>
-    </li>
-    <li>
-        <a href="{{ path('blhhistorialclinico_edit', { 'id': entity.id }) }}">
-            Edit
-        </a>
-    </li>
-    <li>{{ form(delete_form) }}</li>
-</ul> #}
-{% endblock %}
+    {% endblock %}

@@ -1,37 +1,49 @@
-{% extends '::base.html.twig' %}
+{% extends 'siblhmantenimientoBundle::plantilla.html.twig' %}
+{% block javascripts %}
+
+{{parent()}}
+
+<script type="text/javascript" src="{{ asset('bundles/siblhmantenimiento/js/BlhFrascoRecolectado/show.js') }}" ></script>
+       
+{% endblock %}
 
 {% block body -%}
+<style type="text/css">
+table#teft table {display: block; padding: 5px; border: 3px solid black; border-top: 1; -moz-border-radius: 10px 10px 10px 10px; color:"#2e6e9e"}
+th {
+font-family: verdana,arial,helvetica,sans-serif;
+color: #000000;
+font-weight: bold;
+border-style: solid;
+border-width: 1px;
+size: 2px;
+background-color: #2b8dd6;
+}
+td {
+font-family: verdana,arial,helvetica,sans-serif;}
+    </style>
     <h1>BlhFrascoRecolectado</h1>
 
-    <table class="record_properties">
+    <table id = "left" border = "1"  align = "center" bordercolor="#2e6e9e">
         <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ entity.id }}</td>
-            </tr>
-            <tr>
+                <tr align = "left"> 
                 <th>Codigofrascorecolectado</th>
-                <td>{{ entity.codigoFrascoRecolectado }}</td>
-            </tr>
-            <tr>
+                <td>{{ entity.codigoFrascoRecolectado }}</td></tr>
+                <tr align = "left"> 
                 <th>Volumenrecolectado</th>
-                <td>{{ entity.volumenRecolectado }}</td>
-            </tr>
-            <tr>
+                <td>{{ entity.volumenRecolectado }}</td></tr>
+                <tr align = "left"> 
                 <th>Formaextraccion</th>
-                <td>{{ entity.formaExtraccion }}</td>
-            </tr>
-            <tr>
+                <td>{{ entity.formaExtraccion }}</td></tr>
+                <tr align = "left"> 
                 <th>Onzrecolectado</th>
-                <td>{{ entity.onzRecolectado }}</td>
-            </tr>
-            <tr>
+                <td>{{ entity.onzRecolectado }}</td></tr>
+                <tr align = "left"> 
                 <th>Observacionfrascorecolectado</th>
-                <td>{{ entity.observacionFrascoRecolectado }}</td>
-            </tr>
+                <td>{{ entity.observacionFrascoRecolectado }}</td></tr>
         </tbody>
     </table>
-
+{#
         <ul class="record_actions">
     <li>
         <a href="{{ path('blhfrascorecolectado') }}">
@@ -44,5 +56,14 @@
         </a>
     </li>
     <li>{{ form(delete_form) }}</li>
-</ul>
+</ul> #}
+    
+    
+     <table  align = "center" >
+         <tr><td height=10  ></td></tr> 
+         <tr><td height=10  ></td></tr> 
+         <tr><td><input id = "boton1" type="button" value="Registrar Nuevo" onClick=' window.location.href="{{ path('_NewFrascoRecolectado') }}" '>
+</td></tr>
+
+               </table>
 {% endblock %}

@@ -15,7 +15,10 @@ class BlhDonacionType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('fechaDonacion')
+            ->add('fechaDonacion', 'date', 
+                    array(  'widget' => 'single_text',
+                            'format' => 'yy-MM-dd',
+                            'attr' => array('class' => 'date')))
             ->add('responsableDonacion')
             ->add('idBancoDeLeche')
             ->add('idDonante')

@@ -14,38 +14,39 @@
      {{ form_start(edit_form) }}
     {{ form_errors(edit_form) }}
     
- <table  align = "center">
-     
-     
+ <table  align = "center">     
    <tr><td  align = "left" height=10  ></td></tr>
-   <tr><td align='left'><font color="red">*</font>{{ form_label(edit_form.pesoDonante) }}</td><td align='left'>{{ form_widget(edit_form.pesoDonante) }}</td></tr>
+   <tr><td align='left'><font color="red">*</font>{{ form_label(edit_form.pesoDonante, 'Peso') }}</td><td align='left'>{{ form_widget(edit_form.pesoDonante,  { 'attr': {'title': 'Peso entre 22 y 136 Kg  ', 'onKeyPress':"return soloNumeros(event);"} }) }}</td></tr>
    <tr><td  align = "left" height=10  ></td></tr>
-   <tr><td align='left'><font color="red">*</font>{{ form_label(edit_form.tallaDonante) }}</td><td align='left'>{{ form_widget(edit_form.tallaDonante) }}</td></tr>
+   <tr><td align='left'><font color="red">*</font>{{ form_label(edit_form.tallaDonante, 'Talla') }}</td><td align='left'>{{ form_widget(edit_form.tallaDonante,  { 'attr': {'title': 'Talla entre 100 y 200 cm', 'onKeyPress':"return soloNumeros(event);"} }) }}</td></tr>
    <tr><td  align = "left" height=10  ></td></tr>
-   <tr><td align='left'>{{ form_label(edit_form.medicamento) }}</td><td align='left'>{{ form_widget(edit_form.medicamento) }}</td></tr>
+   <tr><td align='left'>{{ form_label(edit_form.medicamento) }}</td><td align='left'>{{ form_widget(edit_form.medicamento,  { 'attr': {'size': '40'} }) }}</td></tr>
    <tr><td  align = "left" height=10  ></td></tr>
-   <tr><td align='left'>{{ form_label(edit_form.habitoToxico) }}</td><td align='left'>{{ form_widget(edit_form.habitoToxico) }}</td></tr>
+   <tr><td align='left'>{{ form_label(edit_form.habitoToxico) }}</td><td align='left'>{{ form_widget(edit_form.habitoToxico,  { 'attr': {'size': '40'} }) }}</td></tr>
    <tr><td  align = "left" height=10  ></td></tr>
-   <tr><td align='left'><font color="red">*</font>{{ form_label(edit_form.motivoDonacion) }}</td><td align='left'>{{ form_widget(edit_form.motivoDonacion) }}</td></tr>
+   <tr><td align='left'><font color="red">*</font>{{ form_label(edit_form.motivoDonacion, "Motivo por el cual dona leche:") }}</td><td align='left'>{{ form_widget(edit_form.motivoDonacion,  { 'attr': {'size': '50'} }) }}</td></tr>
    <tr><td  align = "left" height=10  ></td></tr>
-   <tr><td align='left'>{{ form_label(edit_form.patologiaDonante) }}</td><td align='left'>{{ form_widget(edit_form.patologiaDonante) }}</td></tr>
+   <tr><td align='left'>{{ form_label(edit_form.patologiaDonante) }}</td><td align='left'>{{ form_widget(edit_form.patologiaDonante,  { 'attr': {'size': '40'} }) }}</td></tr>
    <tr><td  align = "left" height=10  ></td></tr>
    <tr><td align='left'><font color="red">*</font>{{ form_label(edit_form.imc) }}</td><td align='left'>{{ form_widget(edit_form.imc) }}</td></tr>
    <tr><td  align = "left" height=10  ></td></tr>
    <tr><td align='left'><font color="red">*</font>{{ form_label(edit_form.estadoDonante) }}</td><td align='left'>{{ form_widget(edit_form.estadoDonante) }}</td></tr>
  <tr style="visibility:hidden"><td align='left'>{{ form_label(edit_form.idDonante) }}</td><td align='left'>{{ form_widget(edit_form.idDonante) }}</td></tr>
 
-         
+       <tr>
+            <td align = "left"><font color="red" size = "2" face = "Comic Sans MS">* Campos requeridos</font></td> </tr>     
+  
        
-        <tr><td colspan = '2' align = 'center'>  <input type="submit" class= "ui-button" value="Actualizar"/></td></tr>
+        <tr><td colspan = '2' align = 'center'>  <input id= "button" type="submit" value="Actualizar"/>
+             <input id = "boton" type="button" value="Regresar" onClick=' window.location.href="{{ path('blhhistoriaactual') }}" '></td></tr>
 
     
  </table>
  {{ form_end(edit_form) }}
-    <table align = "center">
+  {#  <table align = "center">
         <tr>
             <td>
         <a href="{{ path('blhhistoriaactual') }}">
             Ver listado </a>
-         </td></tr></table>
+         </td></tr></table> #}
 {% endblock %}

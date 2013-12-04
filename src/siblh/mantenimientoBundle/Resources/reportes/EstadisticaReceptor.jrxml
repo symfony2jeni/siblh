@@ -1,0 +1,237 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="EstadisticaReceptor" language="groovy" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="caeea828-8057-4ad7-a236-c55fa427c38f">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="Title" fontName="Arial" fontSize="26" isBold="true" pdfFontName="Helvetica-Bold"/>
+	<style name="SubTitle" forecolor="#666666" fontName="Arial" fontSize="18"/>
+	<style name="Column header" forecolor="#666666" fontName="Arial" fontSize="12" isBold="true"/>
+	<style name="Detail" fontName="Arial" fontSize="12"/>
+	<style name="table">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<subDataset name="New Dataset 1" uuid="b3008428-ca7e-46d7-9249-a498bc4dd43f">
+		<parameter name="fechai" class="java.lang.String"/>
+		<parameter name="fechaf" class="java.lang.String"/>
+		<parameter name="id" class="java.lang.Integer"/>
+		<queryString>
+			<![CDATA[select count(d.codigo_receptor) as cantidad, d.fecha_registro_blh as fecha
+from blh_receptor d
+where
+d.fecha_registro_blh between to_date($P{fechai},'YYYY-MM-DD') and to_date($P{fechaf},'YYYY-MM-DD')
+and d.id_banco_de_leche=$P{id}
+group by fecha_registro_blh;]]>
+		</queryString>
+		<field name="cantidad" class="java.lang.Long"/>
+		<field name="fecha" class="java.sql.Date"/>
+	</subDataset>
+	<parameter name="fechai" class="java.lang.String"/>
+	<parameter name="fechaf" class="java.lang.String"/>
+	<parameter name="nombre" class="java.lang.String"/>
+	<parameter name="id" class="java.lang.Integer"/>
+	<queryString>
+		<![CDATA[select count(d.codigo_receptor) as cantidad, d.fecha_registro_blh as fecha
+from blh_receptor d
+where
+d.fecha_registro_blh between to_date($P{fechai},'YYYY-MM-DD') and to_date($P{fechaf},'YYYY-MM-DD')
+and d.id_banco_de_leche=$P{id}
+group by fecha_registro_blh;]]>
+	</queryString>
+	<field name="cantidad" class="java.lang.Long"/>
+	<field name="fecha" class="java.sql.Date"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="151" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="27701edc-9d47-4916-8289-7592796ec832" x="195" y="15" width="189" height="20"/>
+				<textElement textAlignment="Center">
+					<font fontName="Comic Sans MS" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[MINISTERIO DE SALUD]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="fc5bfe80-0721-4445-b0e6-b0fe91c5e755" x="177" y="91" width="222" height="20"/>
+				<textElement textAlignment="Center">
+					<font fontName="Comic Sans MS" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ESTADISTICA DE RECEPTOR]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="01d80338-dd7f-49d3-b461-689428d8924f" x="175" y="136" width="100" height="15"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{fechai}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="7796b1c1-79c0-4a21-a19f-e97a18c37c44" x="393" y="136" width="88" height="15"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{fechaf}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="0033a50d-3b15-4e0f-bb5e-c5cf0e309496" x="75" y="136" width="100" height="15"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Fecha Inicio:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="02390ce0-06a3-4bb0-a685-62a2068d93bb" x="286" y="136" width="96" height="15"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Fecha Final:]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="4194ac23-a3ef-4d54-83cd-62cb953d4369" x="158" y="37" width="252" height="48"/>
+				<textElement textAlignment="Center">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{nombre}]]></textFieldExpression>
+			</textField>
+			<image>
+				<reportElement uuid="e49e29d2-e6ba-4f1d-a4ed-971132aa99b1" x="14" y="8" width="133" height="102"/>
+				<imageExpression><![CDATA["/home/jeni/NetBeansProjects/siblh/src/siblh/mantenimientoBundle/Resources/reportes/blh.jpg"]]></imageExpression>
+			</image>
+			<image>
+				<reportElement uuid="980d82a4-1c21-4cef-99b4-07bd812d6181" x="422" y="12" width="139" height="98"/>
+				<imageExpression><![CDATA["/home/jeni/NetBeansProjects/siblh/src/siblh/mantenimientoBundle/Resources/reportes/minsal2.jpg"]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="170" splitType="Stretch">
+			<componentElement>
+				<reportElement uuid="85506a67-0e92-473b-94c7-4bc66cd7b463" key="table 1" style="table 1" x="173" y="30" width="180" height="140"/>
+				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
+					<datasetRun subDataset="New Dataset 1" uuid="4b0df53d-79eb-4138-b48b-44c401784e25">
+						<datasetParameter name="fechai">
+							<datasetParameterExpression><![CDATA[$P{fechai}]]></datasetParameterExpression>
+						</datasetParameter>
+						<datasetParameter name="fechaf">
+							<datasetParameterExpression><![CDATA[$P{fechaf}]]></datasetParameterExpression>
+						</datasetParameter>
+						<datasetParameter name="id">
+							<datasetParameterExpression><![CDATA[$P{id}]]></datasetParameterExpression>
+						</datasetParameter>
+						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+					</datasetRun>
+					<jr:column width="114" uuid="0cf308ae-8537-4e0b-bb1a-d58abf545a97">
+						<jr:columnHeader style="table 1_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement uuid="af8a34f0-71de-4970-bbf2-a211e562659e" x="2" y="6" width="112" height="18"/>
+								<textElement>
+									<font size="12" isBold="true"/>
+								</textElement>
+								<text><![CDATA[Fecha Registro]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="table 1_TD" height="20" rowSpan="1">
+							<textField>
+								<reportElement uuid="8ebd7a22-8029-4b66-b0fa-8ecf6e990dc6" x="14" y="0" width="88" height="20"/>
+								<textElement/>
+								<textFieldExpression><![CDATA[$F{fecha}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="90" uuid="7eb14482-3bcf-4e9c-8b78-79ab9ae52640">
+						<jr:columnHeader style="table 1_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement uuid="8271fcd2-3eb3-4c8c-8c6f-48ace3263fc5" x="15" y="6" width="75" height="18"/>
+								<textElement>
+									<font size="12" isBold="true"/>
+								</textElement>
+								<text><![CDATA[Cantidad]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="table 1_TD" height="20" rowSpan="1">
+							<textField>
+								<reportElement uuid="d9ce647d-23e4-44e4-be4b-2bbc9e2a2f93" x="23" y="0" width="45" height="20"/>
+								<textElement textAlignment="Center"/>
+								<textFieldExpression><![CDATA[$F{cantidad}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+				</jr:table>
+			</componentElement>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="10" splitType="Stretch"/>
+	</detail>
+	<columnFooter>
+		<band height="10" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="20" splitType="Stretch">
+			<textField>
+				<reportElement uuid="b984ca86-b476-4f67-a044-7cab2ac5c4ee" style="Column header" x="433" y="0" width="80" height="20"/>
+				<textElement textAlignment="Right">
+					<font size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement uuid="785a24a5-58e5-4842-9ffd-235336978363" style="Column header" x="513" y="0" width="40" height="20"/>
+				<textElement>
+					<font size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement uuid="12cc9db4-7a7f-49b5-a90c-d60195b8ab66" style="Column header" x="0" y="0" width="197" height="20"/>
+				<textElement>
+					<font size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="374" splitType="Stretch"/>
+	</summary>
+</jasperReport>

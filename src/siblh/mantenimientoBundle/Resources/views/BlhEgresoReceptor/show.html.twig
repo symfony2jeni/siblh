@@ -1,64 +1,66 @@
-{% extends '::base.html.twig' %}
+{% extends 'siblhmantenimientoBundle::plantilla.html.twig' %}
+{% block javascripts %}
+
+{{parent()}}
+
+<script type="text/javascript" src="{{ asset('bundles/siblhmantenimiento/js/BlhHistorialClinico/show.js') }}" ></script>
+       
+{% endblock %}
 
 {% block body -%}
-    <h1>BlhEgresoReceptor</h1>
+<style type="text/css">
+table#teft table {display: block; padding: 5px; border: 3px solid black; border-top: 1; -moz-border-radius: 10px 10px 10px 10px; color:"#2e6e9e"}
+th {
+font-family: verdana,arial,helvetica,sans-serif;
+color: #000000;
+font-weight: bold;
+border-style: solid;
+border-width: 1px;
+size: 2px;
+background-color: #2b8dd6;
+}
+td {
+font-family: verdana,arial,helvetica,sans-serif;}
+    </style>
+    <h1> Egreso Receptor</h1>
 
-    <table class="record_properties">
+    <table id = "left" border = "1"  align = "center" bordercolor="#2e6e9e">
         <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ entity.id }}</td>
-            </tr>
-            <tr>
+            
+                <tr align = "left"> 
                 <th>Diagnosticoegreso</th>
-                <td>{{ entity.diagnosticoEgreso }}</td>
-            </tr>
-            <tr>
+                <td>{{ entity.diagnosticoEgreso }}</td></tr>
+                <tr align = "left"> 
                 <th>Madrecanguro</th>
-                <td>{{ entity.madreCanguro }}</td>
-            </tr>
-            <tr>
+                <td>{{ entity.madreCanguro }}</td></tr>
+                <tr align = "left"> 
                 <th>Tipoegreso</th>
-                <td>{{ entity.tipoEgreso }}</td>
-            </tr>
-            <tr>
+                <td>{{ entity.tipoEgreso }}</td></tr>
+                <tr align = "left"> 
                 <th>Comentarioegreso</th>
-                <td>{{ entity.comentarioEgreso }}</td>
-            </tr>
-            <tr>
+                <td>{{ entity.comentarioEgreso }}</td></tr>
+                <tr align = "left"> 
                 <th>Trasladoperiferico</th>
-                <td>{{ entity.trasladoPeriferico }}</td>
-            </tr>
-            <tr>
+                <td>{{ entity.trasladoPeriferico }}</td></tr>
+                <tr align = "left"> 
                 <th>Permanenciaucin</th>
-                <td>{{ entity.permanenciaUcin }}</td>
-            </tr>
-            <tr>
+                <td>{{ entity.permanenciaUcin }}</td></tr>
+                <tr align = "left"> 
                 <th>Hospitalseguimientoegreso</th>
-                <td>{{ entity.hospitalSeguimientoEgreso }}</td>
-            </tr>
-            <tr>
+                <td>{{ entity.hospitalSeguimientoEgreso }}</td></tr>
+                <tr align = "left"> 
                 <th>Fechaegreso</th>
-                <td>{{ entity.fechaEgreso|date('Y-m-d H:i:s') }}</td>
-            </tr>
-            <tr>
+                <td>{{ entity.fechaEgreso|date('Y-m-d') }}</td></tr>
+                <tr align = "left"> 
                 <th>Estanciahospitalaria</th>
-                <td>{{ entity.estanciaHospitalaria }}</td>
-            </tr>
+                <td>{{ entity.estanciaHospitalaria }}</td></tr>
         </tbody>
     </table>
 
-        <ul class="record_actions">
-    <li>
-        <a href="{{ path('blhegresoreceptor') }}">
-            Back to the list
-        </a>
-    </li>
-    <li>
-        <a href="{{ path('blhegresoreceptor_edit', { 'id': entity.id }) }}">
-            Edit
-        </a>
-    </li>
-    <li>{{ form(delete_form) }}</li>
-</ul>
+     <table  align = "center" >
+         <tr><td height=10  ></td></tr> 
+         <tr><td height=10  ></td></tr> 
+         <tr><td><input id = "boton1" type="button" value="Registrar Nuevo" onClick=' window.location.href="{{ path('_NewEgreso') }}" '>
+         </td></tr>
+      </table>
 {% endblock %}

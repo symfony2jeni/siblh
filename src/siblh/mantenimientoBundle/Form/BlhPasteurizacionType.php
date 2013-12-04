@@ -16,7 +16,7 @@ class BlhPasteurizacionType extends AbstractType
     {
         $builder
             ->add('codigoPasteurizacion')
-            ->add('numCiclo')
+            ->add('numCiclo', 'text')
             ->add('volumenPasteurizado')
             ->add('numFrascosPasteurizados', 'text')
             ->add('fechaPasteurizacion', 'date', 

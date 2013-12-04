@@ -47,23 +47,21 @@ $ff= $('#fechaf').val();
       
     $('#exportar_pdf4').click(function() {
        
-     
-     /* if (($fi == 0) || ($ff == 0))
+    $fi= $('#fechai').val();
+     $ff= $('#fechaf').val();          
+    
+      if (($fi == " ") || ($ff == " "))
             
            { alert("Debe seleccionar un rango de fecha"); }
         
         else
             {
-*/
+
           url = Routing.generate('_exportar_reporte_cmicrobiologico') + '/ControlMicrobiologico/pdf?fechai=' + $('#fechai').val() + '&fechaf=' + $('#fechaf').val()+ '&id=' + $('#id').val()+ '&nombre=' + $('#nombre').val();
-         // url = Routing.generate('_exportar_reporte') + '/Prueba/pdf?fechai=' + $('#fechai').val();  
-        window.open(url, '_blank');
+          window.open(url, '_blank');
            return false;
-           //  }
-//      else {
-  //         return false;
-     //  }
-       
+             }
+
       
        
    });

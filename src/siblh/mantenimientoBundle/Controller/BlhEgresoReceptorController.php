@@ -32,12 +32,27 @@ class BlhEgresoReceptorController extends Controller
         $entities = $em->getRepository('siblhmantenimientoBundle:BlhEgresoReceptor')->findAll();
         //Obtener banco de leche//
               
-       $userEst = $this->container->get('security.context')->getToken()->getUser()->getIdEst();
+        $userEst = $this->container->get('security.context')->getToken()->getUser()->getIdEst();
         $query1 = $em->createQuery("SELECT e.nombre, e.direccion, e.telefono FROM siblhmantenimientoBundle:CtlEstablecimiento e WHERE e.id = $userEst");
         $establecimiento = $query1->getResult(); 
+        $queryb = $em->createQuery("SELECT b.id FROM siblhmantenimientoBundle:BlhBancoDeLeche b WHERE b.idEstablecimiento = $userEst");
+        $id_blh = $queryb->getResult(); 
+        $codigo=$id_blh[0]['id']; 
+        
+         $query = $em->createQuery("SELECT er.id, p.primerNombre as nombre1, p.segundoNombre as nombre2, p.tercerNombre as nombre3, 
+            p.primerApellido as apellido1, p.segundoApellido as apellido2,
+            r.codigoReceptor, er.diagnosticoEgreso, er.madreCanguro, er.tipoEgreso, er.comentarioEgreso,
+            er.trasladoPeriferico, er.permanenciaUcin, er.hospitalSeguimientoEgreso, er.fechaEgreso,
+            er.estanciaHospitalaria
+       FROM siblhmantenimientoBundle:BlhEgresoReceptor er join er.idReceptor r join r.idPaciente p where 
+       r.idBancoDeLeche = $codigo");
+       $egreso_receptores  = $query->getResult(); 
+        
+        
         return array(
             'entities' => $entities,
             'hospital' => $establecimiento,
+            'egreso_receptores' => $egreso_receptores
         );
     }
     /**
@@ -58,7 +73,7 @@ class BlhEgresoReceptorController extends Controller
             $em->persist($entity);
             $em->flush();
 
-            return $this->redirect($this->generateUrl('blhegresoreceptor', array('id' => $entity->getId())));
+            return $this->redirect($this->generateUrl('blhegresoreceptor_show', array('id' => $entity->getId())));
         }
 
         return array(
@@ -98,6 +113,10 @@ class BlhEgresoReceptorController extends Controller
     public function showAction($id)
     {
         $em = $this->getDoctrine()->getManager();
+         $userEst = $this->container->get('security.context')->getToken()->getUser()->getIdEst();
+     
+       $query1 = $em->createQuery("SELECT e.nombre, e.direccion, e.telefono FROM siblhmantenimientoBundle:CtlEstablecimiento e WHERE e.id = $userEst");
+        $establecimiento = $query1->getResult(); 
 
         $entity = $em->getRepository('siblhmantenimientoBundle:BlhEgresoReceptor')->find($id);
 
@@ -110,6 +129,7 @@ class BlhEgresoReceptorController extends Controller
         return array(
             'entity'      => $entity,
             'delete_form' => $deleteForm->createView(),
+             'hospital' => $establecimiento,
         );
     }
 

@@ -3,6 +3,8 @@ $(document).ready(function() {
  tableToGrid("#listado_donantes", {
         pager : '#pagerdonantes',
         rowNum:10, 
+        width: 700,
+         height: '100%',
         gridview: true, 
         caption: "Seleccione la donante",
         sortorder: "desc",
@@ -10,10 +12,10 @@ $(document).ready(function() {
         
         colModel :[
            // {name:'Id',width:80,editable:true,},
-            {name:'id',width:5,align:'center'},
-            {name:'FechaDonacion', width:10,align:'center'},
-            {name:'Nombre', width:40,align:'center'},
-            {name:'Accion', width:20,align:'center'}
+            {name:'Codigo',width:15,align:'center'},
+            {name:'FechaDonacion', width:10,align:'center', search:false},
+            {name:'Nombre', width:30,align:'center'},
+            {name:'Accion', width:20,align:'center', search:false}
            
             
    
@@ -25,7 +27,8 @@ $(document).ready(function() {
         edit:false, 
         add:false, 
         del:false,
-        search:true,
-        reload:true
+        search:false,
+        reload:false
     });
+     jQuery("#listado_donantes").jqGrid('filterToolbar',{stringResult: true,searchOnEnter : false});
      });

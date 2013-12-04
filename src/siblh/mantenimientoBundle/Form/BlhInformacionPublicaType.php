@@ -15,7 +15,7 @@ class BlhInformacionPublicaType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('tipo', 'choice', array(
+          ->add('tipo', 'choice', array(
              'choices' => array(
               'Estadistica' => 'Estadistica',
               'Informacion Tecnica' => 'Tecnica',

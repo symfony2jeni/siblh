@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="seguimientoreceptor" language="groovy" pageWidth="864" pageHeight="792" columnWidth="824" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="3adbbb88-01ad-43ca-b1a6-a831e79e5c51">
 	<property name="ireport.zoom" value="1.0"/>
-	<property name="ireport.x" value="157"/>
-	<property name="ireport.y" value="157"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
 	<style name="table">
 		<box>
 			<pen lineWidth="1.0" lineColor="#000000"/>
@@ -61,7 +61,6 @@ and (r.id_banco_de_leche = $P{codigo});]]>
 p.tercer_nombre || ' ' || p.primer_apellido || ' ' || p.segundo_apellido as nombre,
 sr.talla_receptor, sr.peso_seguimiento, sr.pc_seguimiento, sr.ganancia_dia_peso,
 sr.ganancia_dia_talla, sr.semana, sr.fecha_seguimiento, sr.complicaciones
-
 from blh_seguimiento_receptor sr join blh_receptor r
 on r.id = sr.id_receptor join mnt_paciente p
 on p.id = r.id_paciente

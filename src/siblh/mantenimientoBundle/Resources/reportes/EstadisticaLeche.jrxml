@@ -1,0 +1,650 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="EstadisticaLeche" language="groovy" pageWidth="612" pageHeight="792" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="5dc26d7e-1a0f-466c-bfd7-3ad5e13bdde9">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="421"/>
+	<style name="Crosstab Data Text" hAlign="Center"/>
+	<style name="table">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 2">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 2_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 2_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 2_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 3">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 3_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 3_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 3_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 4">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 4_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 4_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 4_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 5">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 5_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 5_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 5_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 6">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 6_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 6_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 6_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 7">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 7_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 7_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 7_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<subDataset name="New Dataset 3" uuid="d4ab1018-b924-4bb4-8af2-1a43b393fc4c">
+		<parameter name="fechai" class="java.lang.String"/>
+		<parameter name="fechaf" class="java.lang.String"/>
+		<parameter name="id" class="java.lang.Integer">
+			<defaultValueExpression><![CDATA[$P{id}]]></defaultValueExpression>
+		</parameter>
+		<queryString>
+			<![CDATA[select sum(r.volumen_recolectado) as volumenRp,  d.fecha_donacion as fechaRp
+from blh_donacion d
+inner join blh_frasco_recolectado r on r.id_donacion=d.id
+inner join blh_estado e on r.id_estado=e.id
+where id_estado=1 and d.fecha_donacion between to_date($P{fechai},'YYYY-MM-DD') and to_date($P{fechaf},'YYYY-MM-DD')
+and d.id_banco_de_leche= $P{id}
+group by d.fecha_donacion]]>
+		</queryString>
+		<field name="volumenrp" class="java.math.BigDecimal"/>
+		<field name="fecharp" class="java.sql.Date"/>
+	</subDataset>
+	<subDataset name="New Dataset 1" uuid="50123631-e7a7-4f3c-95fe-11200148dc50">
+		<parameter name="fechai" class="java.lang.String"/>
+		<parameter name="fechaf" class="java.lang.String"/>
+		<parameter name="id" class="java.lang.Integer">
+			<defaultValueExpression><![CDATA[$P{id}]]></defaultValueExpression>
+		</parameter>
+		<queryString>
+			<![CDATA[select sum(r.volumen_recolectado) as volumenRr,  d.fecha_donacion as fechaRr
+from blh_donacion d
+inner join blh_frasco_recolectado r on r.id_donacion=d.id
+inner join blh_estado e on r.id_estado=e.id
+where id_estado=4 and d.fecha_donacion between to_date($P{fechai},'YYYY-MM-DD') and to_date($P{fechaf},'YYYY-MM-DD')
+and d.id_banco_de_leche= $P{id}
+group by d.fecha_donacion]]>
+		</queryString>
+		<field name="volumenrr" class="java.math.BigDecimal"/>
+		<field name="fecharr" class="java.sql.Date"/>
+	</subDataset>
+	<subDataset name="New Dataset 2" uuid="f8cbe6ff-38c7-4d0d-abdd-0cc7f9ee9d5c">
+		<parameter name="fechai" class="java.lang.String"/>
+		<parameter name="fechaf" class="java.lang.String"/>
+		<parameter name="id" class="java.lang.Integer">
+			<defaultValueExpression><![CDATA[$P{id}]]></defaultValueExpression>
+		</parameter>
+		<queryString>
+			<![CDATA[select sum(fp.volumen_frasco_pasteurizado) as VolumenPr, bp.fecha_pasteurizacion
+from blh_frasco_procesado fp
+inner join blh_pasteurizacion bp on bp.id=fp.id_pasteurizacion
+inner join blh_estado e on fp.id_estado=e.id
+where fp.id_estado in ('10','11','12','13','14')
+and bp.fecha_pasteurizacion between to_date($P{fechai},'YYYY-MM-DD') and to_date($P{fechaf},'YYYY-MM-DD')
+and cast(substring(fp.codigo_frasco_procesado from 1 for 2) as integer)= $P{id}
+group by bp.fecha_pasteurizacion;]]>
+		</queryString>
+		<field name="volumenpr" class="java.math.BigDecimal"/>
+		<field name="fecha_pasteurizacion" class="java.sql.Date"/>
+	</subDataset>
+	<subDataset name="New Dataset 4" uuid="b2cc2d11-caa4-4121-b1cc-c128b21362b4">
+		<parameter name="fechai" class="java.lang.String"/>
+		<parameter name="fechaf" class="java.lang.String"/>
+		<parameter name="id" class="java.lang.Integer">
+			<defaultValueExpression><![CDATA[$P{id}]]></defaultValueExpression>
+		</parameter>
+		<queryString>
+			<![CDATA[select sum(fp.volumen_frasco_pasteurizado) as VolumenPr, bp.fecha_pasteurizacion
+from blh_frasco_procesado fp
+inner join blh_pasteurizacion bp on bp.id=fp.id_pasteurizacion
+inner join blh_estado e on fp.id_estado=e.id
+where fp.id_estado=2
+and bp.fecha_pasteurizacion between to_date($P{fechai},'YYYY-MM-DD') and to_date($P{fechaf},'YYYY-MM-DD')
+and cast(substring(fp.codigo_frasco_procesado from 1 for 2) as integer)=$P{id}
+group by bp.fecha_pasteurizacion;]]>
+		</queryString>
+		<field name="volumenpr" class="java.math.BigDecimal"/>
+		<field name="fecha_pasteurizacion" class="java.sql.Date"/>
+	</subDataset>
+	<subDataset name="New Dataset 5" uuid="f540bd64-2af1-4efc-87a9-17929ebaea1a">
+		<parameter name="fechai" class="java.lang.String"/>
+		<parameter name="fechaf" class="java.lang.String"/>
+		<parameter name="id" class="java.lang.Integer">
+			<defaultValueExpression><![CDATA[$P{id}]]></defaultValueExpression>
+		</parameter>
+		<queryString>
+			<![CDATA[select sum(fp.volumen_frasco_pasteurizado) as VolumenPr, bp.fecha_pasteurizacion
+from blh_frasco_procesado fp
+inner join blh_pasteurizacion bp on bp.id=fp.id_pasteurizacion
+inner join blh_estado e on fp.id_estado=e.id
+where fp.id_estado=3
+and bp.fecha_pasteurizacion between to_date($P{fechai},'YYYY-MM-DD') and to_date($P{fechaf},'YYYY-MM-DD')
+and cast(substring(fp.codigo_frasco_procesado from 1 for 2) as integer)=$P{id}
+group by bp.fecha_pasteurizacion;]]>
+		</queryString>
+		<field name="volumenpr" class="java.math.BigDecimal"/>
+		<field name="fecha_pasteurizacion" class="java.sql.Date"/>
+	</subDataset>
+	<parameter name="fechai" class="java.lang.String"/>
+	<parameter name="fechaf" class="java.lang.String"/>
+	<parameter name="nombre" class="java.lang.String"/>
+	<parameter name="id" class="java.lang.Integer"/>
+	<queryString>
+		<![CDATA[select sum(r.volumen_recolectado) as volumenRp,  d.fecha_donacion as fechaRp
+from blh_donacion d
+inner join blh_frasco_recolectado r on r.id_donacion=d.id
+inner join blh_estado e on r.id_estado=e.id
+where id_estado=1 and d.fecha_donacion between to_date($P{fechai},'YYYY-MM-DD') and to_date($P{fechaf},'YYYY-MM-DD')
+and d.id_banco_de_leche= $P{id}
+group by d.fecha_donacion]]>
+	</queryString>
+	<field name="volumenrp" class="java.math.BigDecimal"/>
+	<field name="fecharp" class="java.sql.Date"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="134" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="1237c4b4-9af4-4aef-8fac-ec043a0cd10b" x="205" y="10" width="184" height="20"/>
+				<textElement>
+					<font fontName="Comic Sans MS" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[MINISTERIO DE SALUD]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="837195ec-a745-4873-87d6-b5994e5c5ed3" x="162" y="80" width="274" height="20"/>
+				<textElement textAlignment="Center">
+					<font fontName="Comic Sans MS" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ESTADISTICA DE LECHE DONADA]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="b222d138-c869-4996-8676-34501392c6f1" x="162" y="30" width="274" height="45"/>
+				<textElement textAlignment="Center">
+					<font size="16" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{nombre}]]></textFieldExpression>
+			</textField>
+			<image>
+				<reportElement uuid="118bfde3-3a5a-48c9-b7d3-15a585350098" x="9" y="9" width="141" height="125"/>
+				<imageExpression><![CDATA["/home/jeni/NetBeansProjects/siblh/src/siblh/mantenimientoBundle/Resources/reportes/blh.jpg"]]></imageExpression>
+			</image>
+			<image>
+				<reportElement uuid="2d3c825c-d74d-4122-ad89-494d95c52e92" x="439" y="12" width="133" height="102"/>
+				<imageExpression><![CDATA["/home/jeni/NetBeansProjects/siblh/src/siblh/mantenimientoBundle/Resources/reportes/minsal2.jpg"]]></imageExpression>
+			</image>
+			<textField>
+				<reportElement uuid="04a243de-0258-4361-89be-80cf977cb4fe" x="312" y="106" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$P{id}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="69" splitType="Stretch">
+			<textField>
+				<reportElement uuid="9e5a2f24-0ef4-4b81-b22c-59ec082c55a9" x="162" y="10" width="113" height="20"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{fechai}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="f38e84bf-5336-4bd7-8589-1566683716f2" x="413" y="10" width="97" height="20"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{fechaf}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="3d67bb2c-5a81-4aac-ad95-d20922176174" x="48" y="10" width="111" height="20"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Fecha Inicio:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="82f826f0-7340-4d4e-bfd4-19e04d7298e5" x="301" y="10" width="88" height="20"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Fecha final: ]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="482" splitType="Stretch">
+			<frame>
+				<reportElement uuid="d189fd8c-1177-4057-b37c-b23cb5ac076b" style="table" x="165" y="1" width="208" height="48"/>
+			</frame>
+			<componentElement>
+				<reportElement uuid="1f59cd75-3ffa-49c7-b340-4facd8ce99e9" key="table 3" style="table 3" x="165" y="93" width="197" height="92"/>
+				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" whenNoDataType="AllSectionsNoDetail">
+					<datasetRun subDataset="New Dataset 3" uuid="1f3adf82-c59d-4b6a-9da7-2953798cab0f">
+						<datasetParameter name="fechai">
+							<datasetParameterExpression><![CDATA[$P{fechai}]]></datasetParameterExpression>
+						</datasetParameter>
+						<datasetParameter name="fechaf">
+							<datasetParameterExpression><![CDATA[$P{fechaf}]]></datasetParameterExpression>
+						</datasetParameter>
+						<datasetParameter name="id">
+							<datasetParameterExpression><![CDATA[$P{id}]]></datasetParameterExpression>
+						</datasetParameter>
+						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+					</datasetRun>
+					<jr:column width="62" uuid="c1657832-1eaf-49a7-848e-31144147bc04">
+						<jr:columnHeader style="table 3_CH" height="27" rowSpan="1">
+							<staticText>
+								<reportElement uuid="90c02df3-f83d-4731-b76f-e7719cae90db" x="0" y="0" width="60" height="17"/>
+								<textElement>
+									<font size="10" isBold="true"/>
+								</textElement>
+								<text><![CDATA[  Fecha        ]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="table 3_TD" height="18" rowSpan="1">
+							<textField>
+								<reportElement uuid="bcff38b9-81fe-425e-98ff-ff69512ee1ee" x="0" y="0" width="60" height="18"/>
+								<textElement/>
+								<textFieldExpression><![CDATA[$F{fecharp}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="147" uuid="dffb68de-6588-400a-87d8-901bbbd62c87">
+						<jr:columnHeader style="table 3_CH" height="27" rowSpan="1">
+							<staticText>
+								<reportElement uuid="1eac6eb1-0ee7-48b7-b0ee-21f7da441ed6" x="20" y="0" width="97" height="27"/>
+								<textElement>
+									<font size="10" isBold="true"/>
+								</textElement>
+								<text><![CDATA[Total Volumen Prealmacenado]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="table 3_TD" height="18" rowSpan="1">
+							<textField pattern="###0.00">
+								<reportElement uuid="f1c7a1d9-9495-48d5-89d5-a3c08ffc6203" x="20" y="0" width="90" height="18"/>
+								<textElement/>
+								<textFieldExpression><![CDATA[$F{volumenrp}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+				</jr:table>
+			</componentElement>
+			<componentElement>
+				<reportElement uuid="bf7aa7e5-aa70-472a-8c73-3d21a9196c7c" key="table 4" style="table 4" x="165" y="1" width="197" height="92"/>
+				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" whenNoDataType="AllSectionsNoDetail">
+					<datasetRun subDataset="New Dataset 1" uuid="e9ca5ad3-c1c4-43b9-9e59-c98d6090490b">
+						<datasetParameter name="fechai">
+							<datasetParameterExpression><![CDATA[$P{fechai}]]></datasetParameterExpression>
+						</datasetParameter>
+						<datasetParameter name="fechaf">
+							<datasetParameterExpression><![CDATA[$P{fechaf}]]></datasetParameterExpression>
+						</datasetParameter>
+						<datasetParameter name="id">
+							<datasetParameterExpression><![CDATA[$P{id}]]></datasetParameterExpression>
+						</datasetParameter>
+						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+					</datasetRun>
+					<jr:column width="62" uuid="5b1d3cc4-1c11-45ac-9f92-f8f13a2acdc6">
+						<jr:columnHeader style="table 4_CH" height="27" rowSpan="1">
+							<staticText>
+								<reportElement uuid="e6f37b9b-e914-4cea-865f-2d4bc008000f" x="13" y="0" width="47" height="27"/>
+								<textElement>
+									<font size="10" isBold="true"/>
+								</textElement>
+								<text><![CDATA[Fecha]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="table 4_TD" height="20" rowSpan="1">
+							<textField>
+								<reportElement uuid="4f92bae1-e948-4083-81c3-bc50c11dde61" x="0" y="0" width="60" height="20"/>
+								<textElement/>
+								<textFieldExpression><![CDATA[$F{fecharr}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="146" uuid="a602d700-4efa-4033-8c2c-b19a6160a5a5">
+						<jr:columnHeader style="table 4_CH" height="27" rowSpan="1">
+							<staticText>
+								<reportElement uuid="f3fc69eb-6b7f-437b-9d5a-81b5bbf0f725" x="0" y="0" width="143" height="27"/>
+								<textElement>
+									<font size="10" isBold="true"/>
+								</textElement>
+								<text><![CDATA[         Total Volumen     Recolectado Rechazado]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="table 4_TD" height="20" rowSpan="1">
+							<textField pattern="###0.00" isBlankWhenNull="true">
+								<reportElement uuid="a3bad170-2437-49dc-9c0b-d665298bae27" x="23" y="0" width="77" height="20"/>
+								<textElement/>
+								<textFieldExpression><![CDATA[$F{volumenrr}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+				</jr:table>
+			</componentElement>
+			<componentElement>
+				<reportElement uuid="f1d39328-95cd-485c-bce2-009f0a6d4a8b" key="table 5" style="table 5" x="165" y="277" width="197" height="92"/>
+				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" whenNoDataType="AllSectionsNoDetail">
+					<datasetRun subDataset="New Dataset 2" uuid="edf8a170-8438-4311-bec0-c6beb5b7766a">
+						<datasetParameter name="fechai">
+							<datasetParameterExpression><![CDATA[$P{fechai}]]></datasetParameterExpression>
+						</datasetParameter>
+						<datasetParameter name="fechaf">
+							<datasetParameterExpression><![CDATA[$P{fechaf}]]></datasetParameterExpression>
+						</datasetParameter>
+						<datasetParameter name="id">
+							<datasetParameterExpression><![CDATA[$P{id}]]></datasetParameterExpression>
+						</datasetParameter>
+						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+					</datasetRun>
+					<jr:column width="64" uuid="3852f8e6-b988-434f-8045-465556e95bcc">
+						<jr:columnHeader style="table 5_CH" height="28" rowSpan="1">
+							<staticText>
+								<reportElement uuid="86bc140c-bf89-4170-8d54-c12114856c36" x="4" y="0" width="60" height="20"/>
+								<textElement>
+									<font size="10" isBold="true"/>
+								</textElement>
+								<text><![CDATA[Fecha]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="table 5_TD" height="21" rowSpan="1">
+							<textField>
+								<reportElement uuid="eabe8a75-8cce-44f9-bacf-53f9f846a0e6" x="0" y="0" width="60" height="19"/>
+								<textElement/>
+								<textFieldExpression><![CDATA[$F{fecha_pasteurizacion}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="144" uuid="5670de7e-09d8-4300-9710-88311bceaec5">
+						<jr:columnHeader style="table 5_CH" height="28" rowSpan="1">
+							<staticText>
+								<reportElement uuid="c3f6422c-4b46-469c-bd15-bc2665b2c6e4" x="2" y="0" width="142" height="28"/>
+								<textElement>
+									<font size="10" isBold="true"/>
+								</textElement>
+								<text><![CDATA[         Total Volumen Pasteurizado Descartado]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="table 5_TD" height="21" rowSpan="1">
+							<textField pattern="###0.00">
+								<reportElement uuid="9d37eb26-8af4-4436-9a6f-5a21c3f5a9e9" x="14" y="0" width="90" height="19"/>
+								<textElement/>
+								<textFieldExpression><![CDATA[$F{volumenpr}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+				</jr:table>
+			</componentElement>
+			<componentElement>
+				<reportElement uuid="74031fb9-2c08-4c9f-8cb9-98f69bd8b5e2" key="table 6" style="table 6" x="165" y="369" width="197" height="92"/>
+				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" whenNoDataType="AllSectionsNoDetail">
+					<datasetRun subDataset="New Dataset 4" uuid="04178f08-ef59-4e22-ae46-c8051fc3c7cb">
+						<datasetParameter name="fechai">
+							<datasetParameterExpression><![CDATA[$P{fechai}]]></datasetParameterExpression>
+						</datasetParameter>
+						<datasetParameter name="fechaf">
+							<datasetParameterExpression><![CDATA[$P{fechaf}]]></datasetParameterExpression>
+						</datasetParameter>
+						<datasetParameter name="id">
+							<datasetParameterExpression><![CDATA[$P{id}]]></datasetParameterExpression>
+						</datasetParameter>
+						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+					</datasetRun>
+					<jr:column width="63" uuid="30a0d8fa-aa05-459e-bffc-9f2c77b27398">
+						<jr:columnHeader style="table 6_CH" height="27" rowSpan="1">
+							<staticText>
+								<reportElement uuid="c3c831b3-da82-4210-b1c9-535f25e2f226" x="0" y="0" width="60" height="16"/>
+								<textElement>
+									<font size="10" isBold="true"/>
+								</textElement>
+								<text><![CDATA[Fecha]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="table 6_TD" height="22" rowSpan="1">
+							<textField>
+								<reportElement uuid="15854b61-d40a-4e44-a992-a0241808de08" x="0" y="0" width="60" height="20"/>
+								<textElement/>
+								<textFieldExpression><![CDATA[$F{fecha_pasteurizacion}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="146" uuid="87467008-32c0-451d-afa6-1c889a7cab4c">
+						<jr:columnHeader style="table 6_CH" height="27" rowSpan="1">
+							<staticText>
+								<reportElement uuid="485c24c6-a875-4106-8fde-2421099c6fff" x="0" y="0" width="142" height="27"/>
+								<textElement>
+									<font size="10" isBold="true"/>
+								</textElement>
+								<text><![CDATA[ Total Volumen Liberado]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="table 6_TD" height="22" rowSpan="1">
+							<textField pattern="###0.00">
+								<reportElement uuid="98f9a6b7-4894-477b-912a-7a837e42d9c5" x="13" y="0" width="90" height="20"/>
+								<textElement/>
+								<textFieldExpression><![CDATA[$F{volumenpr}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+				</jr:table>
+			</componentElement>
+			<componentElement>
+				<reportElement uuid="412c69f9-8dce-479f-9c13-48a1cc06b869" key="table 7" style="table 7" x="165" y="185" width="197" height="92"/>
+				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" whenNoDataType="AllSectionsNoDetail">
+					<datasetRun subDataset="New Dataset 5" uuid="19732821-dfb2-4396-ade4-6e5b539c31eb">
+						<datasetParameter name="fechai">
+							<datasetParameterExpression><![CDATA[$P{fechai}]]></datasetParameterExpression>
+						</datasetParameter>
+						<datasetParameter name="fechaf">
+							<datasetParameterExpression><![CDATA[$P{fechaf}]]></datasetParameterExpression>
+						</datasetParameter>
+						<datasetParameter name="id">
+							<datasetParameterExpression><![CDATA[$P{id}]]></datasetParameterExpression>
+						</datasetParameter>
+						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+					</datasetRun>
+					<jr:column width="64" uuid="3b8ee2cb-37fd-439b-9367-55a5d80822a8">
+						<jr:columnHeader style="table 7_CH" height="28" rowSpan="1">
+							<staticText>
+								<reportElement uuid="20360444-f8d6-4809-b0ef-d2c83609d224" x="4" y="0" width="60" height="18"/>
+								<textElement>
+									<font size="10" isBold="true"/>
+								</textElement>
+								<text><![CDATA[Fecha]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="table 7_TD" height="20" rowSpan="1">
+							<textField>
+								<reportElement uuid="037a4028-5327-4107-b048-6a7c6835cca2" x="0" y="0" width="60" height="20"/>
+								<textElement/>
+								<textFieldExpression><![CDATA[$F{fecha_pasteurizacion}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="145" uuid="624233c1-16c5-427b-9e23-34cde00cb4de">
+						<jr:columnHeader style="table 7_CH" height="28" rowSpan="1">
+							<staticText>
+								<reportElement uuid="ac7e0f4e-e02f-4c8b-b71d-35f82eaed67c" x="29" y="0" width="89" height="28"/>
+								<textElement>
+									<font size="10" isBold="true"/>
+								</textElement>
+								<text><![CDATA[Total Volumen Pasteurizado]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="table 7_TD" height="20" rowSpan="1">
+							<textField pattern="###0.00">
+								<reportElement uuid="3afcc4b5-1b6b-44cd-b36b-16a0db7a1d70" x="29" y="0" width="90" height="20"/>
+								<textElement/>
+								<textFieldExpression><![CDATA[$F{volumenpr}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+				</jr:table>
+			</componentElement>
+			<frame>
+				<reportElement uuid="34fde8fc-101f-4be2-803b-66e6a9f24ff0" style="table" x="165" y="93" width="208" height="46"/>
+			</frame>
+			<frame>
+				<reportElement uuid="47c903b2-1bbb-4f27-ac05-a4f9a805dd2f" style="table" x="165" y="185" width="208" height="48"/>
+			</frame>
+			<frame>
+				<reportElement uuid="cfc3afe2-4754-487a-8738-817fa9e4ed93" style="table" x="165" y="277" width="208" height="49"/>
+			</frame>
+			<frame>
+				<reportElement uuid="63309e5c-4890-45fc-8370-da03e97547a6" style="table" x="165" y="369" width="208" height="49"/>
+			</frame>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="13" splitType="Stretch"/>
+	</detail>
+	<columnFooter>
+		<band height="8" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="39" splitType="Stretch">
+			<textField evaluationTime="Report">
+				<reportElement uuid="b580993c-9534-4b65-b250-f717e6bbb10c" x="472" y="19" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="11" splitType="Stretch"/>
+	</summary>
+</jasperReport>
