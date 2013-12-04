@@ -12,14 +12,16 @@ $(document).ready(function() {
         rowNum:10, 
         gridview: true, 
         caption: "Pasteurizaciones Activas",
+        height:'100%',
+        width:800,
         
         
         colModel :[
            // {name:'id',width:10,editable:true},
-            {name:'Codigo&nbsp;Pasteurizacion',width:20,align:'center'},
-            {name:'Fecha&nbsp;Pasteurizacion', width:40,align:'center'},
-            {name:'Responsable&nbsp;Pasteurizacion', width:40,align:'center'},
-            {name:'Acción', width:30,align:'center', search:false}
+            {name:'Codigo',width:15,align:'center'},
+            {name:'Fecha', width:20,align:'center'},
+            {name:'Responsable&nbsp;Pasteurizacion', width:40,align:'center', search:false},
+            {name:'Acción', width:15,align:'center', search:false}
    
         ]
     

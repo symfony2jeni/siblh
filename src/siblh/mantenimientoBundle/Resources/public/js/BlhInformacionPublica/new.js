@@ -26,6 +26,9 @@
  
    $('#siblh_mantenimientobundle_blhinformacionpublica_fechaPublicacion').
         attr('data-bvalidator', "regex['/^\d{4}[\/\-](0?[1-9]|1[012])[\/\-](0?[1-9]|[12][0-9]|3[01])$/']");
+
+$('#siblh_mantenimientobundle_blhinformacionpublica_file').
+            attr('data-bvalidator', 'required');
                           
  
     $('#boton').button(); 

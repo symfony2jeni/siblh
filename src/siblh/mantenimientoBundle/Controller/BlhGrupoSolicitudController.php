@@ -326,14 +326,70 @@ class BlhGrupoSolicitudController extends Controller
         }
         else{
        $em = $this->getDoctrine()->getManager();
+       
        //Creando el grupo para la agrupacion//     
        
-        $Grupo_solicitud = new BlhGrupoSolicitud();
+        //Obtener banco de leche//
+        $userEst = $this->container->get('security.context')->getToken()->getUser()->getIdEst();
+        $query2 = $em->createQuery("SELECT e.nombre, e.direccion, e.telefono FROM siblhmantenimientoBundle:CtlEstablecimiento e WHERE e.id = $userEst");
+        $establecimiento = $query2->getResult(); 
+        //codigo
+        $queryb = $em->createQuery("SELECT b.id FROM siblhmantenimientoBundle:BlhBancoDeLeche b WHERE b.idEstablecimiento = $userEst");
+        $id_blh = $queryb->getResult(); 
+        $codigo=$id_blh[0]['id'];
+        
+        if ($codigo<10){
+        $idp='0'.$codigo;
+        $idp = (string)$idp;
+         }
+        else{$idp = (string)$codigo;}
+        
+        
+        $hoy= getdate();
+        $anio = $hoy['year'];
+          
+        $querycod = $em->createQuery("select max(substring (ps.codigoGrupoSolicitud, 5, 4)) as correlativo
+                                      from siblhmantenimientoBundle:BlhGrupoSolicitud ps where (substring (ps.codigoGrupoSolicitud, 1, 2) = '$idp')
+                                        and (substring (ps.codigoGrupoSolicitud, 10, 4) = '$anio')");
+        
+        
+        $max = $querycod->getResult(); 
+     //   echo $max;
+        $maxi=$max[0]['correlativo']; 
+        $maxcorrelativo = (int)$maxi;
+        $maxcorrelativo = $maxcorrelativo+1;
+        if($maxcorrelativo <10)
+            {
+        $correlativo='000'.$maxcorrelativo;
+        $correlativo = (string)$correlativo;
+         }
+        else{
+             if(($maxcorrelativo >= 10) and ($maxcorrelativo <100))
+            {
+        $correlativo='00'.$maxcorrelativo;
+        $correlativo = (string)$correlativo;
+         }
+            
+            else {
+            if(($maxcorrelativo >= 100) and ($maxcorrelativo <1000))
+            {
+             $correlativo='0'.$maxcorrelativo;
+             $correlativo = (string)$correlativo;
+            }
+            else{$correlativo = (string)$maxcorrelativo;}
+            }
+            }
+            
+        
+        $codgrupo = $idp.'-'.'G'.$correlativo.'-'.$anio;
+       
+       ///////////////////////////////////////////
+        $Grupo_solicitud = new BlhGrupoSolicitud(); 
+        $Grupo_solicitud->setcodigoGrupoSolicitud($codgrupo);//seteando el codigo de grupo
         $em->persist($Grupo_solicitud);
         $em->flush();
-        
         $id_Grupo= $Grupo_solicitud->getId();
-        $Grupo_solicitud->setcodigoGrupoSolicitud($id_Grupo);//seteando el codigo de grupo
+        
         
         //Obteniendo el id grupo creado//
         $Grupo = $em->getRepository('siblhmantenimientoBundle:BlhGrupoSolicitud')->find($id_Grupo);

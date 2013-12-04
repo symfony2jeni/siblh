@@ -12,13 +12,15 @@ $(document).ready(function() {
         rowNum:10, 
         gridview: true, 
         caption: "Pasteurizaciones Activas",
+        height:'100%',
+        width:1000,
         
         
         colModel :[
            // {name:'id',width:10,editable:true},
-            {name:'Codigo&nbsp;Frasco',width:20,align:'center'},
+            {name:'Frasco',width:15,align:'center'},
             {name:'Observacion', width:40,align:'center', search:false},
-            {name:'Acción', width:30,align:'center', search:false}
+            {name:'Acción', width:15,align:'center', search:false}
    
         ]
     
