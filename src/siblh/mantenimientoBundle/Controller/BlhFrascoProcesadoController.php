@@ -136,7 +136,7 @@ class BlhFrascoProcesadoController extends Controller
             }
             }
            
-            return $this->redirect($this->generateUrl('blhfrascoprocesado_show', array('id' => $entity->getId())));
+            return $this->redirect($this->generateUrl('blhfrascoprocesado_new', array('id' => $entity->getId())));
         }
 
         return array(

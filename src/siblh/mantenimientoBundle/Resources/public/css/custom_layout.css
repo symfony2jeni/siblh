@@ -288,3 +288,4 @@ label{
 .record_actions li a:visited {text-decoration:none; color:#205B96} /*Link visitado*/
 .record_actions li a:active {text-decoration:none; color: #003399; background: #993333; } /*Link activo*/
 .record_actions li a:hover {text-decoration:underline; color:#000000; background-color: #6ac2c2;} /*Mause sobre el link*/ 
+
