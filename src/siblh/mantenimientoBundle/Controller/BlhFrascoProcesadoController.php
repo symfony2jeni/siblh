@@ -104,6 +104,8 @@ class BlhFrascoProcesadoController extends Controller
             
             $em->persist($entity);
             $em->flush();
+	    $pasteurizacion = $entity->getidPasteurizacion();
+            $idpast= $pasteurizacion->getId();
             
             $id_frascop= $entity->getId();
             $frascop = $em->getRepository('siblhmantenimientoBundle:BlhFrascoProcesado')->find($id_frascop);
@@ -136,7 +138,7 @@ class BlhFrascoProcesadoController extends Controller
             }
             }
            
-            return $this->redirect($this->generateUrl('blhfrascoprocesado_new', array('id' => $entity->getId())));
+            return $this->redirect($this->generateUrl('blhfrascoprocesado_new', array('id'=> $idpast)));
         }
 
         return array(

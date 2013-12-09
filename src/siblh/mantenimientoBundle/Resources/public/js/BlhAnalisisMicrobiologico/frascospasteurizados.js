@@ -25,7 +25,7 @@ $(document).ready(function() {
         ]
     
     });
-    jQuery("#listado_pasteurizados").jqGrid('sortGrid',"Codigo&nbsp;Frasco",true);
+    jQuery("#listado_pasteurizados").jqGrid('sortGrid',"Frasco",true);
     jQuery("#listado_pasteurizados").jqGrid('navGrid','#pagerPasteurizados', {
         edit:false, 
         add:false, 

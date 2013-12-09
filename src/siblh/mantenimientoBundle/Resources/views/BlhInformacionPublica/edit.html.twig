@@ -46,14 +46,18 @@
  <td style="visibility:hidden" align='left' ><font color="red">*</font>
   {{ form_label(edit_form.idBancoDeLeche,'Banco de Leche') }}
   {{ form_widget(edit_form.idBancoDeLeche) }}</td></tr>
-     
+</table>
+<table align='center' width='35%'>     
   <tr> 
-    <td><input type="submit" class= "ui-button" value="Actualizar"/></td>
-    <td><input id = "boton" type="button" value="Regresar" onClick=' window.location.href="{{ path('_NewInfoPublicaEdit') }}" '> </td>
-</tr>   
-
+    <td align='right' width='50%'><input type="submit" class= "ui-button" value="Actualizar"/></td>
+    <td align='left' width='50%'><input id = "boton" type="button" value="Regresar" onClick=' window.location.href="{{ path('_NewInfoPublicaEdit') }}" '> </td>
+</tr>
+   
  </table>   
    {{ form_end(edit_form) }} </tr>
+{{ form_start(delete_form) }}
+<td align = 'center'> <input type="submit" class= "ui-button" value="Eliminar"/></td>
+{{ form_end(delete_form) }}
 
 {% endblock %}       
         

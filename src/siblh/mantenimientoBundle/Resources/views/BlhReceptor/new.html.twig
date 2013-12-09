@@ -98,7 +98,7 @@ elemento.style.visibility = visible ? "visible" : "hidden";
         {{ form_widget(form.fechaRegistroBlh, {'attr':{'title': 'Dar clic y seleccionar fecha de registro'} }) }} </td>
         
     <td align = left><font color="red">*</font>
-        {{ form_label(form.edadDias,'Edad') }}</td>
+        {{ form_label(form.edadDias,'Edad en Dias') }}</td>
     <td align = left>
         {{ form_widget(form.edadDias, {'attr':{'readonly': 'true'} }) }} </td>
    
@@ -189,9 +189,9 @@ elemento.style.visibility = visible ? "visible" : "hidden";
         {{ form_label(form.duracionNpt) }}</td><td align = left id= "npt1" style="visibility:hidden">
 
         {{ form_widget(form.duracionNpt, { 'attr': {'value': 0, 'title': 'Dias mayor o igual que cero', 'onKeyPress':"return soloNumerosEnteros(event);"} }) }} </td> 
-    <td><font color="red">*</font>
-        {{ form_label(form.estadoReceptor,'Estado') }}</td><td align = left>
-        {{ form_widget(form.estadoReceptor) }} </td>  
+    <td style="visibility:hidden"><font color="red">*</font>
+        {{ form_label(form.estadoReceptor,'Estado') }}</td><td style="visibility:hidden" align = left>
+        {{ form_widget(form.estadoReceptor,  { 'attr': {'value': 'Activo'} }) }} </td>  
         
 
     

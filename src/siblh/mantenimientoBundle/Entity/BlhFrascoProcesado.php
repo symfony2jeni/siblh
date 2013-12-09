@@ -252,6 +252,6 @@ class BlhFrascoProcesado
     
      public function __toString()
     {
-       return $this->codigoFrascoProcesado;
+       return $this->volumenFrascoPasteurizado;
     }
 }

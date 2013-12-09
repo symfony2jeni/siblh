@@ -1,0 +1,144 @@
+{% extends 'siblhmantenimientoBundle::plantilla.html.twig' %}
+{% block stylesheets %}
+    {{ parent() }}
+        <link href="{{ asset('bundles/siblhmantenimiento/css/form.css') }}" rel="stylesheet" type="text/css" />
+ 
+{% endblock %}
+        
+ {% block javascripts %}   
+{{parent()}}
+<script type="text/javascript" src="{{ asset('bundles/siblhmantenimiento/js/BlhFrascoProcesado/new.js') }}" ></script>
+
+{% endblock %}
+
+
+{% block body -%}
+    <h1>Combinacion de frascos</h1>
+       {{ form_start(form) }}
+       {{ form_errors(form) }}
+<table align = "center" width = "70%"  >
+
+<tr>
+       <td width=100 align = "left"><b>Pasteurizacion</b></td>
+                <td width = "100" align = "left">
+                <INPUT type=text STYLE="text-align:center" name="nombre" disabled="disabled" size=20 readonly="readonly" value= "{{ pasteurizacion.codigoPasteurizacion}}">
+               </td>
+               <td  width = "100" align = "left"><b>No.frascos pasteurizacion</b></td>
+               <td width = "100" align = "left">
+                <INPUT type=text STYLE="text-align:center" name="nombre" disabled="disabled" size=20 readonly="readonly" value= "{{ pasteurizacion.numFrascosPasteurizados}}">
+               </td>
+               <td  width = "100" align = "left"><b>Volumen pasteurizacion</b></td>
+               <td width = "100" align = "left">
+                <INPUT type=text STYLE="text-align:center" name="nombre" disabled="disabled" size=20 readonly="readonly" value= "{{ pasteurizacion.volumenPasteurizado|number_format(2, '.', ',')}}">
+               </td>                        
+       </tr>
+       
+       <tr><td colspan=2 align = "right" height=40  style="visibility:hidden"> {{ form_label(form.idPasteurizacion) }} {{ form_widget(form.idPasteurizacion) }}</td>
+           <td colspan=2 align = "right" height=40  style="visibility:hidden"> {{ form_label(form.idEstado) }} {{ form_widget(form.idEstado) }}</td></tr>
+       
+             </table>   
+    {#<input type="checkbox" name="option1" value="{{ frasco.id}}">#}
+                 {# <td>Volumen&nbsp;disponible</td> #}
+   {%set frasco = frascos_combinar%}
+   {%set caloria = calorias%}
+   {%set volumen_agregado=volumen_agregado%}
+   {%set vldisponible = vldisponible%}    
+   {%set tamanio = frasco | length%}      
+   {%set tamanio1 = caloria | length %}
+{% if tamanio != 0 or tamanio1 != 0 %}                       
+ <table  border=1 align = "center" bordercolor="#2e6e9e">
+     <thead>
+            <tr bgcolor="#2b8dd6">
+                <th style="visibility:hidden">id</th>
+                <th style="visibility:hidden">idCalorias</th>
+                <th>Select</th>
+                <th>Frasco</th>
+                <th>Acidez</th>                
+                <th>Calorias</th>
+                <th>Volumen frasco</th>     
+                <th>Volumen disponible</th>
+                <th>Volumen&nbsp;a&nbsp;combinar</th>  
+                <th style="visibility:hidden">idAgregado</th>
+                <th style="visibility:hidden">Agregado</th>
+            </tr>
+            </thead>
+            <tbody>
+            
+        {% for i in 0 ..(tamanio-1)%}
+                <tr>              
+               <td style="visibility:hidden">{{ frasco[i].id}}</td>
+               <td style="visibility:hidden">{{caloria[i].id}}</td>
+               <td align=center><input type="checkbox" name="idscombinar[]" id="idscombinar_{{ frasco[i].id}}" value="{{ frasco[i].id}}"/></td>
+                <td align=center>{{ frasco[i].codigoFrascoRecolectado }}</td>
+                <td align=center>{{ frasco[i].resultado|number_format(2, '.', ',') }}</td>                                    
+                <td align=center>{{ caloria[i].kilocalorias|number_format(2, '.', ',') }}</td>  
+                <td><input id = "vl"  type=text value = "{{ caloria[i].vl|number_format(2, '.', ',')}}" readonly=true STYLE="text-align:center"/> </td>                           
+                 <td><input name='vldisponible[]' id= "vldisponible_{{ frasco[i].id}}"  type=text value ="{{vldisponible[i]|number_format(2, '.', ',')}}" readonly=true STYLE="text-align:center"/> </td>  
+                <td><input name="vlcombinar[]" id="vlcombinar_{{volumen_agregado[i].id}}" type=text/></td>  
+                 <td style="visibility:hidden">{{volumen_agregado[i].id}}</td>
+                <td style="visibility:hidden"><input type=text value = "{{ volumen_agregado[i].agregado }}"/> </td>  
+                </tr>
+        {% endfor %}
+          
+        </tbody>
+        
+    </table>
+    <div id='pagerfrascosCombinar' ></div>    
+    
+    
+   <table align = "center"  width=35%>                
+               <tr>
+               <td align=left><font color="red" >*</font>{{ form_label(form.observacionFrascoProcesado, 'Observaciones del frasco') }}</td>
+                <td align=left width=300>{{ form_widget(form.observacionFrascoProcesado) }} </td> 
+       </tr>
+	
+   </table >    
+  <table align = "center"  width=15% >           
+  <tr><td style="visibility:hidden"><INPUT  name="var" id="var" type=text size=10 ></td></tr>      
+ <td align= left><INPUT  id='lote' name="agrupar" type=submit value="Combinar"></td>
+
+</table>
+{%endif%}
+    
+{% if tamanio == 0 or tamanio1 == 0   %} 
+     
+    <table  border=1 align = "center" bordercolor="#2e6e9e"  >
+         <thead>
+            <tr bgcolor="#2b8dd6">
+                <th style="visibility:hidden">id</th>
+                <th style="visibility:hidden">idCalorias</th>
+                <th>select</th>
+                <th>Código&nbsp;Frasco</th>
+                <th>Acidez</th>                
+                <th>Calorias</th>
+                <th>Volumen Recolectado</th>     
+                <th>VolumenDisponible</th>
+                <th>Volumen&nbsp;a&nbsp;combinar</th>  
+                <th style="visibility:hidden">idAgregado</th>
+                <th style="visibility:hidden">Agregado</th>               
+            </tr>
+     </thead>
+                <tbody>
+                {#<tr>
+                 <td colspan=6>No existen frascos para combinar</td>   
+                </tr>#}
+                <tr style="visibility:hidden"><td align = "right" height=40  ></td></tr>
+                </tbody>
+    </table>     
+    <table  align='center'>
+              <tr><td align = "right" height=40  ></td></tr>
+           <tr style="visibility:hidden">
+                <td><font color="red">*</font>{{ form_label(form.observacionFrascoProcesado, 'Observaciones del frasco') }}</td>
+                <td>{{ form_widget(form.observacionFrascoProcesado) }} </td> 
+       </tr>
+    <tr>
+    <input id = "boton" type="button" value="Regresar" onClick=' window.location.href="{{ path('seleccion_pasteurizacion' )}}"'></td>              
+          </tr>
+    </table>                
+                        
+         
+     {%endif%}  
+    
+ {{ form_end(form) }}                    
+           
+{% endblock %}

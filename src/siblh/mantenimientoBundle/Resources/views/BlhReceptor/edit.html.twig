@@ -24,9 +24,9 @@
         <tr><td colspan=2 align = "left" height=10  ></td></tr>
         <tr><td align='left' ><font color="red">*</font>{{ form_label(edit_form.procedencia,'Procedencia') }}</td><td align='left'>{{ form_widget(edit_form.procedencia) }}</td></tr>
         <tr><td colspan=2 align = "left" height=10  ></td></tr>
-        <tr><td align='left' ><font color="red">*</font>{{ form_label(edit_form.estadoReceptor,'Estado') }}</td><td align='left'>{{ form_widget(edit_form.estadoReceptor) }}</td></tr>
+        <tr><td align='left' ><font color="red">*</font>{{ form_label(edit_form.estadoReceptor,'Estado') }}</td><td align='left'>{{ form_widget(edit_form.estadoReceptor,  { 'attr': {'readonly': 'true'} }) }}</td></tr>
         <tr><td colspan=2 align = "left" height=10  ></td></tr>
-        <tr><td align='left' ><font color="red">*</font>{{ form_label(edit_form.edadDias,'Edad') }}</td><td align='left'>{{ form_widget(edit_form.edadDias, {'attr':{'readonly': 'true'} }) }}</td></tr>
+        <tr><td align='left' ><font color="red">*</font>{{ form_label(edit_form.edadDias,'Edad en Dias') }}</td><td align='left'>{{ form_widget(edit_form.edadDias, {'attr':{'readonly': 'true'} }) }}</td></tr>
         <tr><td colspan=2 align = "left" height=10  ></td></tr>
         <tr><td align='left' ><font color="red">*</font>{{ form_label(edit_form.pesoReceptor, 'peso al nacer') }}</td><td align='left'>{{ form_widget(edit_form.pesoReceptor,  { 'attr': {'title': 'Peso entre 500 a 5000 gramos', 'onKeyPress':"return soloNumeros(event);"} }) }}</td></tr>
         <tr><td colspan=2 align = "left" height=10  ></td></tr>
@@ -37,8 +37,6 @@
         <tr><td align='left' ><font color="red">*</font>{{ form_label(edit_form.diagnosticoIngreso,'Diagnostico') }}</td><td align='left'>{{ form_widget(edit_form.diagnosticoIngreso) }}</td></tr>
         <tr><td colspan=2 align = "left" height=10  ></td></tr>
         <tr><td align='left' ><font color="red">*</font>{{ form_label(edit_form.duracionNpt,'Nutricion parenteral') }}</td><td align='left'>{{ form_widget(edit_form.duracionNpt) }}</td></tr>
-        <tr><td colspan=2 align = "left" height=10  ></td></tr>
-        <tr><td align='left' ><font color="red">*</font>{{ form_label(edit_form.apgar,'Nutricion parenteral') }}</td><td align='left'>{{ form_widget(edit_form.duracionNpt) }}</td></tr>
         <tr><td colspan=2 align = "left" height=10  ></td></tr>
         <tr><td align='left' ><font color="red">*</font>{{ form_label(edit_form.edadGestFur,'Edad Gestacion FUR') }}</td><td align='left'>{{ form_widget(edit_form.edadGestFur,  { 'attr': {'title': 'Entre 24 a 42 Semanas', 'onKeyPress':"return soloNumerosEnteros(event);"} }) }}</td></tr>
         <tr><td colspan=2 align = "left" height=10  ></td></tr>

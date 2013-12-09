@@ -30,10 +30,10 @@ $('#siblh_mantenimientobundle_blhcurva_tiempo3').
         attr('data-bvalidator', 'between[5:10],required');
 
 $('#siblh_mantenimientobundle_blhcurva_cantidadFrascos').
-        attr('data-bvalidator', 'between[5:25],required');
+        attr('data-bvalidator', 'between[5:100],required');
 
 $('#siblh_mantenimientobundle_blhcurva_volumenPorFrasco').
-        attr('data-bvalidator', 'between[25:75],required');
+        attr('data-bvalidator', 'between[30:130],required');
     
 $('#siblh_mantenimientobundle_blhcurva_fechaCurva').
         attr('data-bvalidator',  "regex['/^\d{4}[\/\-](0?[1-9]|1[012])[\/\-](0?[1-9]|[12][0-9]|3[01])$/']");   

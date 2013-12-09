@@ -22,9 +22,7 @@ class BlhReceptorType extends AbstractType
                             'attr' => array('class' => 'date')))
             ->add('procedencia')
 
-            ->add('estadoReceptor', 'choice', 
-                    array('choices' => array('' => 'Seleccione un valor','Activo' => 'Activo',
-                          'Egreso' => 'Egreso')))
+            ->add('estadoReceptor')
             ->add('edadDias', 'text')
             ->add('pesoReceptor')
              ->add('duracionCpap', 'text')
