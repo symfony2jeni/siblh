@@ -2,11 +2,12 @@
 $(document).ready(function() { 
 	tableToGrid("#listado_ha", {
         pager : '#pagerha',
-        rowNum:10, 
+        rowNum:10,
+	rownumbers: true, 
          height: '100%',
         gridview: true, 
        // widht: 60,
-       // caption: "Seleccione la donante",
+         caption: "Listado de historia actual",
          sortorder: "desc",
         
         
@@ -29,7 +30,7 @@ $(document).ready(function() {
         ],
     
     });
-    jQuery("#listado_ha").jqGrid('sortGrid',"id",true);
+    jQuery("#listado_ha").jqGrid('sortGrid',"Codigo",true);
     jQuery("#listado_ha").jqGrid('navGrid','#pagerha', {
         edit:false, 
         add:false, 

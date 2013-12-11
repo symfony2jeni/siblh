@@ -9,7 +9,10 @@ $(document).ready(function() {
     
     tableToGrid("#listado_archivos", {
         pager : '#pagerArchivos',
-        rowNum:10, 
+        rowNum:10,
+	rownumbers: true,
+	height:'100%',
+	width:700, 
         gridview: true, 
         caption: "Documentos Subidos",
 
@@ -21,7 +24,7 @@ $(document).ready(function() {
             {name:'Acción', width:20,align:'center',search:false}
         ]
     });
-    jQuery("#listado_archivos").jqGrid('sortGrid',"Id",true);
+    jQuery("#listado_archivos").jqGrid('sortGrid',"TipoDocumento",true);
     jQuery("#listado_archivos").jqGrid('navGrid','#pagerArchivos', {
         edit:false, 
         add:false, 

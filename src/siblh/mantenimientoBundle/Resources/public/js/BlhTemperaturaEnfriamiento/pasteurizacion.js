@@ -2,7 +2,8 @@ $(document).ready(function() {
 
  tableToGrid("#listado_pasteurizaciones", {
         pager : '#pagerpasteurizaciones',
-        rowNum:10, 
+        rowNum:10,
+	rownumbers: true, 
         width: 750,
         height: '100%',
         gridview: true, 
@@ -24,7 +25,7 @@ $(document).ready(function() {
         ],
     
     });
-    jQuery("#listado_pasteurizaciones").jqGrid('sortGrid',"id",true);
+    jQuery("#listado_pasteurizaciones").jqGrid('sortGrid',"Codigo",true);
     jQuery("#listado_pasteurizaciones").jqGrid('navGrid','#pagerpasteurizaciones', {
         edit:false, 
         add:false, 

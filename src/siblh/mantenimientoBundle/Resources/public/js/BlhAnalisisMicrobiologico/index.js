@@ -8,20 +8,22 @@ $(document).ready(function() {
     
     tableToGrid("#listado_AnalisisMicro", {
         pager : '#pagerAnalisisMicro',
-        rowNum:10, 
+        rowNum:10,
+	rownumbers: true,
+	height:'100%', 
         gridview: true, 
         caption: "Analisis Microbiologicos",
         
         
         colModel :[
-            {name:'CodigoAnalisis', width:20,align:'center'},
+            {name:'Codigo', width:20,align:'center'},
             {name:'ColiformesTotales', width:20,align:'center',search:false},
             {name:'Control', width:20,align:'center',search:false},
             {name:'Situacion', width:20,align:'center'},
             {name:'Acción', width:20,align:'center',search:false}
         ] 
     });
-    jQuery("#listado_AnalisisMicro").jqGrid('sortGrid',"Id",true);
+    jQuery("#listado_AnalisisMicro").jqGrid('sortGrid',"Codigo",true);
     jQuery("#listado_AnalisisMicro").jqGrid('navGrid','#pagerAnalisisMicro', {
         edit:false, 
         add:false, 

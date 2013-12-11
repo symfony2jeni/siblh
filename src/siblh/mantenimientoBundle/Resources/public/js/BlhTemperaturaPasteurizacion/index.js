@@ -12,18 +12,21 @@ $(document).ready(function() {
     
     tableToGrid("#listado_temperaturas", {
         pager : '#pagerTemperaturaP',
-        rowNum:10, 
+        rowNum:10,
+	rownumbers: true,
+	height:'100%', 
+	width:700,
         gridview: true, 
         caption: "Temperaturas",
         colModel :[
            // {name:'id',width:10,editable:true},
-            {name:'CodigoPasteurizacion',width:20,align:'center'},
-            {name:'FechaPasteurizacion', width:20,align:'center'},
-            {name:'TemperaturaPasteurizacion', width:20,align:'center',search:false},
-            {name:'Acción', width:20,align:'center',search:false}
+            {name:'CodigoPasteurizacion',width:130,align:'center'},
+            {name:'FechaPasteurizacion', width:130,align:'center'},
+            {name:'TemperaturaPasteurizacion', width:130,align:'center',search:false},
+            {name:'Acción', wdth:15,align:'center',search:false}
         ]
     });
-    jQuery("#listado_temperaturas").jqGrid('sortGrid',"Id",true);
+    jQuery("#listado_temperaturas").jqGrid('sortGrid',"CodigoPasteurizacion",true);
     jQuery("#listado_temperaturas").jqGrid('navGrid','#pagerTemperaturaP', {
         edit:false, 
         add:false, 

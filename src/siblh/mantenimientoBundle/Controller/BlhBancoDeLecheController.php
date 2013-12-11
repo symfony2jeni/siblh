@@ -143,19 +143,23 @@ class BlhBancoDeLecheController extends Controller
      */
     public function showAction($id)
     {
-        $em = $this->getDoctrine()->getManager();
+       $em = $this->getDoctrine()->getManager();
+         
+       $userEst = $this->container->get('security.context')->getToken()->getUser()->getIdEst();       
+       $query1 = $em->createQuery("SELECT e.nombre, e.direccion, e.telefono FROM siblhmantenimientoBundle:CtlEstablecimiento e WHERE e.id = $userEst");
+       $establecimiento = $query1->getResult(); 
+       $entity = $em->getRepository('siblhmantenimientoBundle:BlhBancoDeLeche')->find($id);
 
-        $entity = $em->getRepository('siblhmantenimientoBundle:BlhBancoDeLeche')->find($id);
+       if (!$entity) {
+           throw $this->createNotFoundException('Unable to find BlhBancoDeLeche entity.');
+       }
 
-        if (!$entity) {
-            throw $this->createNotFoundException('Unable to find BlhBancoDeLeche entity.');
-        }
+       $deleteForm = $this->createDeleteForm($id);
 
-        $deleteForm = $this->createDeleteForm($id);
-
-        return array(
-            'entity'      => $entity,
-            'delete_form' => $deleteForm->createView(),
+       return array(
+           'entity'      => $entity,
+           'delete_form' => $deleteForm->createView(),
+           'hospital' => $establecimiento,
         );
     }
 

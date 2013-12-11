@@ -11,14 +11,14 @@
      <script type="text/javascript" src="{{asset('bundles/jquery/jquery.jqGrid-4.5.4/js/jquery.jqGrid.min.js')}}" ></script> 
   
       <h1>Listado de Curvas Registradas</h1>
-    
+    <div align=center>
     <table id="listado_curvas">
         <thead>
             <tr>
                 <th>Valor&nbsp;Curva</th>  
-                <th>Fecha&nbsp;Curva</th>  
-                <th>Cantidad&nbsp;Frascos</th>  
-                <th>Volumen&nbsp;Frascos</th>  
+                <th>Fecha</th>  
+                <th>Frascos</th>  
+                <th>VolumenFrascos</th>  
                 <th>Acción</th>
             </tr>  
         </thead>
@@ -34,5 +34,6 @@
             {% endfor %}
                   </tbody>
                 </table>
+</div>
                <div id='pagerCurvas' ></div>
     {% endblock %}  

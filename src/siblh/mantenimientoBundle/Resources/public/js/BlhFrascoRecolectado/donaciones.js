@@ -2,7 +2,8 @@ $(document).ready(function() {
 
  tableToGrid("#listado_donantes", {
         pager : '#pagerdonantes',
-        rowNum:10, 
+        rowNum:10,
+	rownumbers: true, 
         width: 700,
          height: '100%',
         gridview: true, 

@@ -3,7 +3,8 @@ $(document).ready(function() {
    
     tableToGrid("#listado_Acidez", {
         pager : '#pagerAcidez',
-        rowNum:10, 
+        rowNum:10,
+	rownumbers: true, 
         gridview: true, 
         height:'100%',
         width:800,

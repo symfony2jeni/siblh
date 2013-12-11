@@ -9,10 +9,11 @@ $(document).ready(function() {
 
  tableToGrid("#listado_frascos", {
         pager : '#pagerfrascos',
-        rowNum:10, 
-         height: '100%',
+        rowNum:10,
+	rownumbers: true, 
+        height: '100%',
         gridview: true, 
-       // caption: "Seleccione la donante",
+        caption: "Listado de frascos recolectados",
          sortorder: "desc",
         
         
@@ -32,7 +33,7 @@ $(document).ready(function() {
         ],
     
     });
-    jQuery("#listado_frascos").jqGrid('sortGrid',"id",true);
+    jQuery("#listado_frascos").jqGrid('sortGrid',"Donante",true);
     jQuery("#listado_frascos").jqGrid('navGrid','#pagerfrascos', {
         edit:false, 
         add:false, 

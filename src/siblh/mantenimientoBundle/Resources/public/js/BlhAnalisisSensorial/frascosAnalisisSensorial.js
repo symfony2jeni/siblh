@@ -4,7 +4,8 @@ $(document).ready(function() {
     
     tableToGrid("#listado_frascosAnalisis", {
         pager : '#pagerFrascosAnalisis',
-        rowNum:10, 
+        rowNum:10,
+	rownumbers: true, 
         gridview: true, 
         caption: "Listado frascos para analisis",
         height:'100%',

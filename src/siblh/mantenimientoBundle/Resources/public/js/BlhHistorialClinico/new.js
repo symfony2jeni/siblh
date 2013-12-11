@@ -146,7 +146,7 @@ $('#siblh_mantenimientobundle_blhhistorialclinico_amenorrea').
 });
 
 //validacion de formula obstetrica
-$('#boton').on('click',function()
+/*$('#boton').on('click',function()
 {
 
 
@@ -164,13 +164,24 @@ $na=parseInt($a);
 $nv=parseInt($v); 
 $nm=parseInt($m); 
 
-$total = $np1 + $np2 + $na + $nv + $nm;
-if($total != $g) 
+
+if($nv != $np1) 
 {
-alert ('Error en formula obstetrica: El numero de embarazos debe ser igual a la sumatoria de los demas datos');
+alert ('Error en formula obstetrica: El numero de vivos debe ser igual al numero de partos');
 return false;
 }    
-});
+if($nm != $na){
+alert('Error en formula obstetrica: El numero de muertos debe ser igual al numero de abortos');
+return false;
+}
+
+$abortos=$ng-$np1;
+
+if($na != $abortos){
+alert('Error en formula obstetrica: El numero de abortos debe ser igual a la diferencia de Embarazos y Partos');
+return false;
+}
+});*/
 
 });
 

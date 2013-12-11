@@ -3,12 +3,12 @@ $(document).ready(function() {
    
  tableToGrid("#listado_temperaturas", {
         pager : '#pagertemperaturas',
-        rowNum:10, 
+        rowNum:10,
+	rownumbers: true, 
         height: '100%',
         gridview: true, 
         width: 300,
-       
-       // caption: "Seleccione la donante",
+        caption: "Temperaturas",
          
         
         
@@ -24,7 +24,7 @@ $(document).ready(function() {
         ],
     
     });
-    jQuery("#listado_temperaturas").jqGrid('sortGrid',"id",true);
+    jQuery("#listado_temperaturas").jqGrid('sortGrid',"Codigo",true);
     jQuery("#listado_temperaturas").jqGrid('navGrid','#pagertemperaturas', {
         edit:false, 
         add:false, 

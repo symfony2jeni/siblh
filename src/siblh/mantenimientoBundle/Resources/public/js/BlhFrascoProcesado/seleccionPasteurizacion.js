@@ -2,7 +2,8 @@ $(document).ready(function() {
    
    
     tableToGrid("#seleccionPasteurizacion", {
-        rowNum:5, 
+        rowNum:5,
+	rownumbers: true, 
         gridview: true, 
         height:'100%',
         width:1100,

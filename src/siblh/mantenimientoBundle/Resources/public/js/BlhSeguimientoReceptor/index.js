@@ -4,7 +4,8 @@ $(document).ready(function() {
     
     tableToGrid("#listado_Seguimiento", {
         pager : '#pagerSeguimiento',
-        rowNum:10, 
+        rowNum:10,
+	rownumbers: true, 
         gridview: true, 
         height:'100%',
         width:1400,
@@ -24,7 +25,7 @@ $(document).ready(function() {
         ],
        
     });
-    jQuery("#listado_Seguimiento").jqGrid('sortGrid',"Nombre&nbsp;receptor",true);
+    jQuery("#listado_Seguimiento").jqGrid('sortGrid',"Nombre",true);
     jQuery("#listado_Seguimiento").jqGrid('navGrid','#pagerSeguimiento', {
         edit:false, 
         add:false, 

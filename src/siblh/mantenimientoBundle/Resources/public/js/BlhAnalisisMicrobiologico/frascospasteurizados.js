@@ -9,7 +9,8 @@ $(document).ready(function() {
     
     tableToGrid("#listado_pasteurizados", {
         pager : '#pagerPasteurizados',
-        rowNum:10, 
+        rowNum:10,
+	rownumbers: true, 
         gridview: true, 
         caption: "Pasteurizaciones Activas",
         height:'100%',

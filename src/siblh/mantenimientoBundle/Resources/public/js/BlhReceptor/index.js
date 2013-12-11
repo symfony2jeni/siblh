@@ -13,10 +13,11 @@ $(document).ready(function() {
      $.noConflict();
 	tableToGrid("#listado_receptores", {
         pager : '#pagerreceptores',
-        rowNum:10, 
+        rowNum:10,
+	rownumbers: true, 
          height: '100%',
         gridview: true, 
-       // caption: "Seleccione la donante",
+       caption: "Listado de receptores ingresados",
          
         
         
@@ -38,7 +39,7 @@ $(document).ready(function() {
         ],
     
     });
-    jQuery("#listado_receptores").jqGrid('sortGrid',"id",true);
+    jQuery("#listado_receptores").jqGrid('sortGrid',"Codigo",true);
     jQuery("#listado_receptores").jqGrid('navGrid','#pagerreceptores', {
         edit:false, 
         add:false, 

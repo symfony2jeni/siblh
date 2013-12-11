@@ -2,7 +2,8 @@ $(document).ready(function() {
 
  tableToGrid("#listado_curvas", {
         pager : '#pagercurvas',
-        rowNum:10, 
+        rowNum:10,
+	rownumbers: true, 
         width: 900,
          height: '100%',
         gridview: true, 
@@ -12,7 +13,7 @@ $(document).ready(function() {
         
         colModel :[
            // {name:'Id',width:80,editable:true,},
-            {name:'id',width:5,align:'center', search:false},
+            {name:'id',width:5,align:'center', search:false, hidden:true},
             {name:'ValorCurva',width:7,align:'center'},
             {name:'Fecha', width:10,align:'center', search:false},
             {name:'CantidadFrascos', width:5,align:'center'},

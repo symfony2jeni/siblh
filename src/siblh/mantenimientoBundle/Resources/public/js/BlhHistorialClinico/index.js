@@ -2,11 +2,12 @@ $(document).ready(function() {
 
  tableToGrid("#listado_hc", {
         pager : '#pagerhc',
-        rowNum:10, 
+        rowNum:10,
+	rownumbers: true, 
       //  width: 800,
        height: '100%',
         gridview: true, 
-       // caption: "Seleccione la donante",
+       caption: "Listado de histrial clinico",
          sortorder: "desc",
         
         
@@ -23,14 +24,14 @@ $(document).ready(function() {
             {name:'Periodo&nbsp;intergenesico', width:25,align:'center', search:false},
             {name:'Parto&nbsp;anterior', width:17,align:'center', search:false},
             {name:'Formula&nbsp;obstetrica', width:25,align:'center', search:false},
-            {name:'Accion', width:10,align:'center'}
+            {name:'Accion', width:10,align:'center', search:false}
            
             
    
         ],
     
     });
-    jQuery("#listado_hc").jqGrid('sortGrid',"id",true);
+    jQuery("#listado_hc").jqGrid('sortGrid',"Codigo",true);
     jQuery("#listado_hc").jqGrid('navGrid','#pagerhc', {
         edit:false, 
         add:false, 

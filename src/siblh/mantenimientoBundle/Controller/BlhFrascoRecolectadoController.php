@@ -302,7 +302,7 @@ class BlhFrascoRecolectadoController extends Controller
         $codigo=$id_blh[0]['id']; 
         //Obteniendo lista de pacientes que son receptores y que estan en estado "Activo"  
         $query = $em->createQuery("SELECT r.id, r.fechaDonacion, r.responsableDonacion, p.id as identificador, p.primerNombre as nombre1, p.segundoNombre as nombre2, p.primerApellido as apellido1, p.segundoApellido as apellido2, p.codigoDonante as codigo FROM siblhmantenimientoBundle:BlhDonacion r JOIN r.idDonante p
-            where p.idBancoDeLeche = $codigo");
+            where p.idBancoDeLeche = $codigo and r.fechaDonacion=current_date()");
         
         $donaciones_donantes  = $query->getResult();
         //Obtener banco de leche//

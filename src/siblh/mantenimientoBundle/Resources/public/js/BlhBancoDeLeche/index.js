@@ -9,9 +9,11 @@ $(document).ready(function() {
  tableToGrid("#listado_bancos", {
         pager : '#pagerbancos',
         rowNum:10, 
+	rownumbers: true,
+	height:'100%',
         width: 700,
         gridview: true, 
-       // caption: "Seleccione la donante",
+        caption: "Listado de bancos de leche",
          
         
         
@@ -28,7 +30,7 @@ $(document).ready(function() {
         ],
     
     });
-    jQuery("#listado_bancos").jqGrid('sortGrid',"id",true);
+    jQuery("#listado_bancos").jqGrid('sortGrid',"Codigo",true);
     jQuery("#listado_bancos").jqGrid('navGrid','#pagerbancos', {
         edit:false, 
         add:false, 
