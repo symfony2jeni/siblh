@@ -10,7 +10,7 @@
     <link href="{{asset('bundles/jquery/jquery.jqGrid-4.5.4/css/ui.jqgrid.css')}}" rel="stylesheet"  type="text/css" media="all"/> 
      <script type="text/javascript" src="{{asset('bundles/jquery/jquery.jqGrid-4.5.4/js/i18n/grid.locale-es.js')}}"></script>
       <script type="text/javascript" src="{{asset('bundles/jquery/jquery.jqGrid-4.5.4/js/jquery.jqGrid.min.js')}}" ></script>
-      
+{%set hospital = hospital%}       
 <h1>Listado de reportes de laboratorio</h1>
     <div align='center'>
     <table id="reportesLaboratorio">
@@ -64,10 +64,10 @@
      
        <tr> 
           <td>Vencimiento de leche prealmacenada </td> 
-          <td><a href="{{ path('mostrar_frascos',{'report_name':'LecheDonada','report_format':'pdf'})}}" target=”_blank”> <font color="blue"><u>Generar Reporte</u></font></a></td></tr>
+          <td><a href="{{ path('mostrar_frascos',{'report_name':'LecheDonada','report_format':'pdf','nombre': hospital[0].nombre})}}" target=”_blank”> <font color="blue"><u>Generar Reporte</u></font></a></td></tr>
        <tr> 
           <td>Vencimiento de leche pasteurizada</td> 
-          <td><a href="{{ path('mostrar_frascosp',{'report_name':'VencimientoPasteurizada','report_format':'pdf'})}}" target=”_blank”> <font color="blue"><u>Generar Reporte</u></font></a></td></tr>
+          <td><a href="{{ path('mostrar_frascosp',{'report_name':'VencimientoPasteurizada','report_format':'pdf','nombre': hospital[0].nombre})}}" target=”_blank”> <font color="blue"><u>Generar Reporte</u></font></a></td></tr>
         <tr> 
           <td>Leche despachada segun solicitudes agrupadas</td> 
           <td><a href="{{ path('LecheDespachadaSolicitudes',{'report_name':'reportesEstudiantes','report_format':'pdf'})}}" target=”_blank”> <font color="blue"><u>Generar Reporte</u></font></a></td></tr>
@@ -96,7 +96,7 @@
     </table>
      </div>
 
-      
+     
     {% endblock %}
 
 

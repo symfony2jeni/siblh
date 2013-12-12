@@ -234,3 +234,6 @@ _NewEditBLH:
  
    
 
+_NewDespacho:
+    pattern:  /grupo/despachar
+    defaults: { _controller: siblhmantenimientoBundle:BlhGrupoSolicitud:seleccionGrupoDespachar} 

@@ -60,17 +60,15 @@ class BlhFrascoProcesadoController extends Controller
    
 
         if ($form->isValid()) {
-            
-     
-            
-         //obteniendo vector con  ids a combinar   
+        //obteniendo vector con  ids a combinar   
          $request = $this->getRequest();
          $ids_combinar = $request->get('idscombinar');
          //obteniendo vector con volumenes a combinar
          $vlcombinar = $request->get('vlcombinar');     
          $vldisponible = $request->get('vldisponible');    
          
-         //echo ($vldisponible[1]);
+         
+         
         $acideztotal=0;
         $caloriastotal=0;
         $volumentotal=0;
@@ -104,7 +102,8 @@ class BlhFrascoProcesadoController extends Controller
             
             $em->persist($entity);
             $em->flush();
-	    $pasteurizacion = $entity->getidPasteurizacion();
+            
+            $pasteurizacion = $entity->getidPasteurizacion();
             $idpast= $pasteurizacion->getId();
             
             $id_frascop= $entity->getId();
@@ -124,7 +123,7 @@ class BlhFrascoProcesadoController extends Controller
             $em->flush();
             
            
-            $voldisp=$vldisponible[$i]-$vlcombinar[$i];
+            $voldisp=(int)$vldisponible[$i]-(int)$vlcombinar[$i];
             
               //Cambiando estado a los frascos q no les queda volumen
             if($voldisp==0){
@@ -137,9 +136,11 @@ class BlhFrascoProcesadoController extends Controller
             $frascosr->setIdEstado($estado);*/
             }
             }
+          
            
-            return $this->redirect($this->generateUrl('blhfrascoprocesado_new', array('id'=> $idpast)));
-        }
+            return $this->redirect($this->generateUrl('blhfrascoprocesado_new', array('id'=> $idpast)));   
+         
+       }
 
         return array(
             'entity' => $entity,

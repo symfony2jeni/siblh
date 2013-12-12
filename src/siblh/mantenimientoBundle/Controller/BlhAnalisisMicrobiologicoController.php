@@ -130,6 +130,12 @@ class BlhAnalisisMicrobiologicoController extends Controller
     public function showAction($id)
     {
         $em = $this->getDoctrine()->getManager();
+        
+
+                  //Obtener banco de leche//  
+      $userEst = $this->container->get('security.context')->getToken()->getUser()->getIdEst();
+      $query1 = $em->createQuery("SELECT e.nombre, e.direccion, e.telefono FROM siblhmantenimientoBundle:CtlEstablecimiento e WHERE e.id = $userEst");
+      $establecimiento = $query1->getResult(); 
 
         $entity = $em->getRepository('siblhmantenimientoBundle:BlhAnalisisMicrobiologico')->find($id);
 
@@ -142,6 +148,7 @@ class BlhAnalisisMicrobiologicoController extends Controller
         return array(
             'entity'      => $entity,
             'delete_form' => $deleteForm->createView(),
+            'hospital' => $establecimiento,
         );
     }
 

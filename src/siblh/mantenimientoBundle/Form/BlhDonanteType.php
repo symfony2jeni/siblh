@@ -37,13 +37,13 @@ class BlhDonanteType extends AbstractType
             ->add('documentoIdentificacion', 'choice', 
                     array('choices' => array('' => 'Seleccione un valor','DUI' => 'DUI',
                           'Pasaporte' => 'Pasaporte',
-                          'Carnet de Minoridad' => 'Carnet de Minoridad')))
+                          'Minoridad' => 'Carnet de Minoridad')))
           //  ->add('edad')
             ->add('ocupacion')
             ->add('estadoCivil', 'choice', 
                     array('choices' => array('' => 'Seleccione un valor','Soltera' => 'Soltera',
                           'Casada' => 'Casada',
-                          'Acompañada' => 'Acompañada',
+                          'Acompanada' => 'Acompañada',
                           'Viuda' => 'Viuda')))
             ->add('nacionalidad', 'text',array('data' => 'Salvadorena'))
             ->add('escolaridad')

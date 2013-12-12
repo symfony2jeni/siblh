@@ -10,9 +10,9 @@ $(document).ready(function() {
                            changeYear: true,
                            clearStatus: 'Borra fecha actual',  
                            defaultDate: 'today',
-                           minDate: '2012-10-08',
+                           minDate: 'today',
                            maxDate: 'today',
-                           yearRange: '2012:y',  
+                          // yearRange: '2012:y',  
                            dayNamesMin: ["Do", "Lu", "Ma", "Mi", "Ju", "Vi", "Sa"],
                            monthNamesShort: ["Ene", "Feb", "Mar", "Abr", "May", "Jun",
                                              "Jul", "Ago", "Sep", "Oct", "Nov", "Dic"]

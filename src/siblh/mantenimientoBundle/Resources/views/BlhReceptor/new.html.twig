@@ -157,7 +157,7 @@ elemento.style.visibility = visible ? "visible" : "hidden";
  <td align = center id= "ventilacion" style="visibility:hidden"> 
 
         {{ form_label(form.duracionVentilacion) }}</td><td align = left id= "ventilacion1" style="visibility:hidden">  
-        {{ form_widget(form.duracionVentilacion,  { 'attr': {'value': 0, 'size': '6', 'title': 'Dias de ventilacion mayor o igual que cero', 'onKeyPress':"return soloNumerosEnteros(event);"} }) }} </td> 
+        {{ form_widget(form.duracionVentilacion,  { 'attr': {'value': 0, 'size': '6', 'title': 'Dias de ventilacion mayor que cero', 'onKeyPress':"return soloNumerosEnteros(event);"} }) }} </td> 
     </tr>
        
        <tr><td height=10  ></td></tr>
@@ -173,7 +173,7 @@ elemento.style.visibility = visible ? "visible" : "hidden";
  <td  id= "cpap" style="visibility:hidden" align = left> 
 
         {{ form_label(form.duracionCpap, 'Duracion de CPAP Nasal') }}</td><td align = left id= "cpap1" style="visibility:hidden">
-        {{ form_widget(form.duracionCpap,  { 'attr': {'value': 0, 'title': 'Dias mayor o igual que cero', 'onKeyPress':"return soloNumerosEnteros(event);"} }) }} </td>         
+        {{ form_widget(form.duracionCpap,  { 'attr': {'value': 0, 'title': 'Dias mayor que cero', 'onKeyPress':"return soloNumerosEnteros(event);"} }) }} </td>         
     
     </tr>
     
@@ -188,7 +188,7 @@ elemento.style.visibility = visible ? "visible" : "hidden";
 
         {{ form_label(form.duracionNpt) }}</td><td align = left id= "npt1" style="visibility:hidden">
 
-        {{ form_widget(form.duracionNpt, { 'attr': {'value': 0, 'title': 'Dias mayor o igual que cero', 'onKeyPress':"return soloNumerosEnteros(event);"} }) }} </td> 
+        {{ form_widget(form.duracionNpt, { 'attr': {'value': 0, 'title': 'Dias mayor que cero', 'onKeyPress':"return soloNumerosEnteros(event);"} }) }} </td> 
     <td style="visibility:hidden"><font color="red">*</font>
         {{ form_label(form.estadoReceptor,'Estado') }}</td><td style="visibility:hidden" align = left>
         {{ form_widget(form.estadoReceptor,  { 'attr': {'value': 'Activo'} }) }} </td>  

@@ -88,7 +88,7 @@ class ReporteController extends Controller {
     
       /**
      *
-     * @Route("/reporte/lechedonada/{report_name}/{report_format}", name="mostrar_frascos")
+     * @Route("/reporte/lechedonada/{report_name}/{report_format}/{nombre}", name="mostrar_frascos")
      * @Template()
      */
     public function ReporteLecheDonadaAction($report_name, $report_format) {
@@ -120,7 +120,7 @@ class ReporteController extends Controller {
     
       /**
      *
-     * @Route("/reporte/lechepasteurizada/{report_name}/{report_format}", name="mostrar_frascosp")
+     * @Route("/reporte/lechepasteurizada/{report_name}/{report_format}/{nombre}", name="mostrar_frascosp")
      * @Template()
      */
     public function ReporteLechePasteurizadaAction($report_name, $report_format) {
