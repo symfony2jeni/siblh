@@ -95,9 +95,9 @@ class BlhReceptor
     /**
      * @var float
      *
-     * @ORM\Column(name="apgar", type="decimal", nullable=true)
+     * @ORM\Column(name="apgar_primer_minuto", type="decimal", nullable=true)
      */
-    private $apgar;
+    private $apgarPrimerMinuto;
 
     /**
      * @var float
@@ -133,6 +133,20 @@ class BlhReceptor
      * @ORM\Column(name="talla_ingreso", type="decimal", nullable=true)
      */
     private $tallaIngreso;
+
+    /**
+     * @var float
+     *
+     * @ORM\Column(name="apgar_quinto_minuto", type="decimal", nullable=true)
+     */
+    private $apgarQuintoMinuto;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="usuario", type="integer", nullable=true)
+     */
+    private $usuario;
 
     /**
      * @var \BlhBancoDeLeche
@@ -397,26 +411,26 @@ class BlhReceptor
     }
 
     /**
-     * Set apgar
+     * Set apgarPrimerMinuto
      *
-     * @param float $apgar
+     * @param float $apgarPrimerMinuto
      * @return BlhReceptor
      */
-    public function setApgar($apgar)
+    public function setApgarPrimerMinuto($apgarPrimerMinuto)
     {
-        $this->apgar = $apgar;
+        $this->apgarPrimerMinuto = $apgarPrimerMinuto;
     
         return $this;
     }
 
     /**
-     * Get apgar
+     * Get apgarPrimerMinuto
      *
      * @return float 
      */
-    public function getApgar()
+    public function getApgarPrimerMinuto()
     {
-        return $this->apgar;
+        return $this->apgarPrimerMinuto;
     }
 
     /**
@@ -535,6 +549,52 @@ class BlhReceptor
     }
 
     /**
+     * Set apgarQuintoMinuto
+     *
+     * @param float $apgarQuintoMinuto
+     * @return BlhReceptor
+     */
+    public function setApgarQuintoMinuto($apgarQuintoMinuto)
+    {
+        $this->apgarQuintoMinuto = $apgarQuintoMinuto;
+    
+        return $this;
+    }
+
+    /**
+     * Get apgarQuintoMinuto
+     *
+     * @return float 
+     */
+    public function getApgarQuintoMinuto()
+    {
+        return $this->apgarQuintoMinuto;
+    }
+
+    /**
+     * Set usuario
+     *
+     * @param integer $usuario
+     * @return BlhReceptor
+     */
+    public function setUsuario($usuario)
+    {
+        $this->usuario = $usuario;
+    
+        return $this;
+    }
+
+    /**
+     * Get usuario
+     *
+     * @return integer 
+     */
+    public function getUsuario()
+    {
+        return $this->usuario;
+    }
+
+    /**
      * Set idBancoDeLeche
      *
      * @param \siblh\mantenimientoBundle\Entity\BlhBancoDeLeche $idBancoDeLeche
@@ -579,9 +639,9 @@ class BlhReceptor
     {
         return $this->idPaciente;
     }
-public function __toString()
+    
+    public function __toString()
     {
        return $this->codigoReceptor;
     }    
-    
 }

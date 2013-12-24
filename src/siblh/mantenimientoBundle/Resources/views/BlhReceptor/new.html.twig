@@ -127,9 +127,9 @@ elemento.style.visibility = visible ? "visible" : "hidden";
        <td align = left><font color="red">*</font>
 
    
-        {{ form_label(form.apgar) }} </td><td align = left>
+        {{ form_label(form.apgarPrimerMinuto) }} </td><td align = left>
                   
-        {{ form_widget(form.apgar,  { 'attr': {'title': 'Entre 0 a 10 minutos', 'onKeyPress':"return soloNumerosEnteros(event);"} }) }} </td> 
+        {{ form_widget(form.apgarPrimerMinuto,  { 'attr': {'title': 'Entre 0 a 10 minutos', 'onKeyPress':"return soloNumerosEnteros(event);"} }) }} </td> 
            
        <td align = left><font color="red">*</font>
         {{ form_label(form.edadGestBallard, 'Edad Gestacional Ballard') }} </td><td align = left>

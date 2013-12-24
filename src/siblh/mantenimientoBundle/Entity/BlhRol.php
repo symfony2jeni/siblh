@@ -20,7 +20,7 @@ class BlhRol
      * @ORM\GeneratedValue(strategy="SEQUENCE")
      * @ORM\SequenceGenerator(sequenceName="blh_rol_id_seq", allocationSize=1, initialValue=1)
      */
-    public $id;
+   public $id;
 
     /**
      * @var string
@@ -35,6 +35,13 @@ class BlhRol
      * @ORM\Column(name="descripcion_rol", type="string", length=50, nullable=true)
      */
     private $descripcionRol;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="usuario", type="integer", nullable=true)
+     */
+    private $usuario;
 
 
 
@@ -93,7 +100,31 @@ class BlhRol
     {
         return $this->descripcionRol;
     }
-       public function __toString() {
+
+    /**
+     * Set usuario
+     *
+     * @param integer $usuario
+     * @return BlhRol
+     */
+    public function setUsuario($usuario)
+    {
+        $this->usuario = $usuario;
+    
+        return $this;
+    }
+
+    /**
+     * Get usuario
+     *
+     * @return integer 
+     */
+    public function getUsuario()
+    {
+        return $this->usuario;
+    }
+    
+     public function __toString() {
             return $this->nombreRol;
         }
 }

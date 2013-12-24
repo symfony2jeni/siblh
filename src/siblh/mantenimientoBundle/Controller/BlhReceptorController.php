@@ -44,7 +44,7 @@ class BlhReceptorController extends Controller
             p.primerApellido as apellido1, p.segundoApellido as apellido2,
             r.codigoReceptor, r.fechaRegistroBlh, r.procedencia, r.estadoReceptor,
             r.edadDias, r.pesoReceptor, r.duracionCpap, r.clasificacionLubchengo,
-            r.diagnosticoIngreso, r.duracionNpt, r.apgar, r.edadGestFur, r.duracionVentilacion,
+            r.diagnosticoIngreso, r.duracionNpt, r.apgarPrimerMinuto, r.edadGestFur, r.duracionVentilacion,
             r.edadGestBallard, r.pc, r.tallaIngreso
        FROM siblhmantenimientoBundle:BlhReceptor r join r.idPaciente p where 
        r.idBancoDeLeche = $codigo");

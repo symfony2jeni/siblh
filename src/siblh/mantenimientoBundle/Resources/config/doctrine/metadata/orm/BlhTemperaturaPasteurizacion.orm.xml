@@ -5,6 +5,7 @@
       <generator strategy="SEQUENCE"/>
     </id>
     <field name="temperaturaP" type="integer" column="temperatura_p" nullable="false"/>
+    <field name="usuario" type="integer" column="usuario" nullable="true"/>
     <many-to-one field="idPasteurizacion" target-entity="BlhPasteurizacion">
       <join-columns>
         <join-column name="id_pasteurizacion" referenced-column-name="id"/>

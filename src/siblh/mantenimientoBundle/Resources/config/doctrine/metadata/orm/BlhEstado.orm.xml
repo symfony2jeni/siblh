@@ -5,5 +5,6 @@
       <generator strategy="SEQUENCE"/>
     </id>
     <field name="nombreEstado" type="string" column="nombre_estado" length="13" nullable="false"/>
+    <field name="usuario" type="integer" column="usuario" nullable="true"/>
   </entity>
 </doctrine-mapping>

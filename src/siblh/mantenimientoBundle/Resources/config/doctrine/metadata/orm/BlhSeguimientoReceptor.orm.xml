@@ -12,6 +12,10 @@
     <field name="fechaSeguimiento" type="date" column="fecha_seguimiento" nullable="false"/>
     <field name="gananciaDiaTalla" type="decimal" column="ganancia_dia_talla" nullable="false"/>
     <field name="complicaciones" type="string" column="complicaciones" length="50" nullable="false"/>
+    <field name="observacion" type="string" column="observacion" length="150" nullable="true"/>
+    <field name="periodoEvaluacion" type="integer" column="periodo_evaluacion" nullable="true"/>
+    <field name="gananciaDiaPc" type="decimal" column="ganancia_dia_pc" nullable="true"/>
+    <field name="usuario" type="integer" column="usuario" nullable="true"/>
     <many-to-one field="idReceptor" target-entity="BlhReceptor">
       <join-columns>
         <join-column name="id_receptor" referenced-column-name="id"/>

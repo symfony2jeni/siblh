@@ -10,16 +10,17 @@
     <field name="numeroControl" type="integer" column="numero_control" nullable="true"/>
     <field name="fechaUltimaRegla" type="date" column="fecha_ultima_regla" nullable="true"/>
     <field name="fechaParto" type="date" column="fecha_parto" nullable="false"/>
-    <field name="lugarParto" type="string" column="lugar_parto" length="30" nullable="false"/>
+    <field name="lugarParto" type="string" column="lugar_parto" length="150" nullable="false"/>
     <field name="patologiaEmbarazo" type="string" column="patologia_embarazo" length="20" nullable="true"/>
     <field name="periodoIntergenesico" type="integer" column="periodo_intergenesico" nullable="false"/>
     <field name="fechaPartoAnterior" type="date" column="fecha_parto_anterior" nullable="true"/>
-    <field name="formulaObstetricaG" type="string" column="formula_obstetrica_g" length="1" nullable="true"/>
-    <field name="formulaObstetricaP1" type="string" column="formula_obstetrica_p1" length="1" nullable="true"/>
-    <field name="formulaObstetricaP2" type="string" column="formula_obstetrica_p2" length="1" nullable="true"/>
-    <field name="formulaObstetricaA" type="string" column="formula_obstetrica_a" length="1" nullable="true"/>
-    <field name="formulaObstetricaV" type="string" column="formula_obstetrica_v" length="1" nullable="true"/>
-    <field name="formulaObstetricaM" type="string" column="formula_obstetrica_m" length="1" nullable="true"/>
+    <field name="formulaObstetricaG" type="string" column="formula_obstetrica_g" length="2" nullable="true"/>
+    <field name="formulaObstetricaP1" type="string" column="formula_obstetrica_p1" length="2" nullable="true"/>
+    <field name="formulaObstetricaP2" type="string" column="formula_obstetrica_p2" length="2" nullable="true"/>
+    <field name="formulaObstetricaA" type="string" column="formula_obstetrica_a" length="2" nullable="true"/>
+    <field name="formulaObstetricaV" type="string" column="formula_obstetrica_v" length="2" nullable="true"/>
+    <field name="formulaObstetricaM" type="string" column="formula_obstetrica_m" length="2" nullable="true"/>
+    <field name="usuario" type="integer" column="usuario" nullable="true"/>
     <many-to-one field="idDonante" target-entity="BlhDonante">
       <join-columns>
         <join-column name="id_donante" referenced-column-name="id"/>

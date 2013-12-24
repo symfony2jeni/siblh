@@ -37,6 +37,13 @@ class BlhBancoDeLeche
     private $estadoBanco;
 
     /**
+     * @var integer
+     *
+     * @ORM\Column(name="usuario", type="integer", nullable=true)
+     */
+    private $usuario;
+
+    /**
      * @var \CtlEstablecimiento
      *
      * @ORM\ManyToOne(targetEntity="CtlEstablecimiento")
@@ -104,6 +111,28 @@ class BlhBancoDeLeche
         return $this->estadoBanco;
     }
 
+     /**
+     * Set usuario
+     *
+     * @param integer $usuario
+     * @return BlhBancoDeLeche
+     */
+    public function setUsuario($usuario)
+    {
+        $this->usuario = $usuario;
+    
+        return $this;
+    }
+
+    /**
+     * Get usuario
+     *
+     * @return integer 
+     */
+    public function getUsuario()
+    {
+        return $this->usuario;
+    }
     /**
      * Set idEstablecimiento
      *

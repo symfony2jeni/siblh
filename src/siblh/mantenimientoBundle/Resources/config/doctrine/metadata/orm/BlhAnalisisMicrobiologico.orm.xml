@@ -8,6 +8,7 @@
     <field name="coliformesTotales" type="string" column="coliformes_totales" length="8" nullable="true"/>
     <field name="control" type="string" column="control" length="8" nullable="true"/>
     <field name="situacion" type="string" column="situacion" length="9" nullable="true"/>
+    <field name="usuario" type="integer" column="usuario" nullable="true"/>
     <many-to-one field="idFrascoProcesado" target-entity="BlhFrascoProcesado">
       <join-columns>
         <join-column name="id_frasco_procesado" referenced-column-name="id"/>

@@ -58,6 +58,20 @@ class BlhFrascoRecolectado
     private $observacionFrascoRecolectado;
 
     /**
+     * @var float
+     *
+     * @ORM\Column(name="volumen_disponible_fr", type="decimal", nullable=true)
+     */
+    private $volumenDisponibleFr;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="usuario", type="integer", nullable=true)
+     */
+    private $usuario;
+
+    /**
      * @var \BlhEstado
      *
      * @ORM\ManyToOne(targetEntity="BlhEstado")
@@ -225,6 +239,52 @@ class BlhFrascoRecolectado
     }
 
     /**
+     * Set volumenDisponibleFr
+     *
+     * @param float $volumenDisponibleFr
+     * @return BlhFrascoRecolectado
+     */
+    public function setVolumenDisponibleFr($volumenDisponibleFr)
+    {
+        $this->volumenDisponibleFr = $volumenDisponibleFr;
+    
+        return $this;
+    }
+
+    /**
+     * Get volumenDisponibleFr
+     *
+     * @return float 
+     */
+    public function getVolumenDisponibleFr()
+    {
+        return $this->volumenDisponibleFr;
+    }
+
+    /**
+     * Set usuario
+     *
+     * @param integer $usuario
+     * @return BlhFrascoRecolectado
+     */
+    public function setUsuario($usuario)
+    {
+        $this->usuario = $usuario;
+    
+        return $this;
+    }
+
+    /**
+     * Get usuario
+     *
+     * @return integer 
+     */
+    public function getUsuario()
+    {
+        return $this->usuario;
+    }
+
+    /**
      * Set idEstado
      *
      * @param \siblh\mantenimientoBundle\Entity\BlhEstado $idEstado
@@ -315,9 +375,8 @@ class BlhFrascoRecolectado
     {
         return $this->idLoteAnalisis;
     }
-
     
-     public function __toString()
+      public function __toString()
     {
        return $this->codigoFrascoRecolectado;
     }

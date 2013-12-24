@@ -86,6 +86,12 @@ class BlhEgresoReceptor
     private $estanciaHospitalaria;
 
     /**
+     * @var integer
+     *
+     * @ORM\Column(name="usuario", type="integer", nullable=true)
+     */
+    private $usuario;
+ /**
      * @var \BlhReceptor
      *
      * @ORM\ManyToOne(targetEntity="BlhReceptor")
@@ -297,6 +303,31 @@ class BlhEgresoReceptor
      * @param integer $estanciaHospitalaria
      * @return BlhEgresoReceptor
      */
+
+
+    /**
+     * Set usuario
+     *
+     * @param integer $usuario
+     * @return BlhEgresoReceptor
+     */
+    public function setUsuario($usuario)
+    {
+        $this->usuario = $usuario;
+    
+        return $this;
+    }
+
+    /**
+     * Get usuario
+     *
+     * @return integer 
+     */
+    public function getUsuario()
+    {
+        return $this->usuario;
+    }
+
     public function setEstanciaHospitalaria($estanciaHospitalaria)
     {
         $this->estanciaHospitalaria = $estanciaHospitalaria;

@@ -6,5 +6,6 @@
     </id>
     <field name="nombreMenu" type="string" column="nombre_menu" length="50" nullable="false"/>
     <field name="descripcionMenu" type="string" column="descripcion_menu" length="50" nullable="true"/>
+    <field name="usuario" type="integer" column="usuario" nullable="true"/>
   </entity>
 </doctrine-mapping>

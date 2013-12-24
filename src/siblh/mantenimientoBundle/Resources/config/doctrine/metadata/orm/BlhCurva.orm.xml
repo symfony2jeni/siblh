@@ -12,5 +12,6 @@
     <field name="cantidadFrascos" type="integer" column="cantidad_frascos" nullable="false"/>
     <field name="volumenPorFrasco" type="decimal" column="volumen_por_frasco" nullable="false"/>
     <field name="horaInicioCurva" type="time" column="hora_inicio_curva" nullable="false"/>
+    <field name="usuario" type="integer" column="usuario" nullable="true"/>
   </entity>
 </doctrine-mapping>

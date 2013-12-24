@@ -26,7 +26,11 @@ class BlhSeguimientoReceptorType extends AbstractType
                             'attr' => array('class' => 'date')))
             ->add('gananciaDiaTalla')
             ->add('complicaciones', 'textarea',array('max_length'=>'50'))
-            ->add('idReceptor')
+            ->add('observacion')
+            ->add('periodoEvaluacion')
+            ->add('gananciaDiaPc')
+            ->add('usuario')
+       ->add('idReceptor')
         ;
     }
     

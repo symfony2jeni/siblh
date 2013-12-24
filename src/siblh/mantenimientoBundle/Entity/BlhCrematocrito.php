@@ -93,6 +93,13 @@ class BlhCrematocrito
     private $kilocalorias;
 
     /**
+     * @var integer
+     *
+     * @ORM\Column(name="usuario", type="integer", nullable=true)
+     */
+    private $usuario;
+
+    /**
      * @var \BlhFrascoRecolectado
      *
      * @ORM\ManyToOne(targetEntity="BlhFrascoRecolectado")
@@ -344,6 +351,29 @@ class BlhCrematocrito
         return $this->kilocalorias;
     }
 
+    /**
+     * Set usuario
+     *
+     * @param integer $usuario
+     * @return BlhCrematocrito
+     */
+    public function setUsuario($usuario)
+    {
+        $this->usuario = $usuario;
+    
+        return $this;
+    }
+
+    /**
+     * Get usuario
+     *
+     * @return integer 
+     */
+    public function getUsuario()
+    {
+        return $this->usuario;
+    }
+    
     /**
      * Set idFrascoRecolectado
      *

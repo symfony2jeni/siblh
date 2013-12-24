@@ -79,6 +79,13 @@ class BlhHistoriaActual
     private $estadoDonante;
 
     /**
+     * @var integer
+     *
+     * @ORM\Column(name="usuario", type="integer", nullable=true)
+     */
+    private $usuario;
+
+    /**
      * @var \BlhDonante
      *
      * @ORM\ManyToOne(targetEntity="BlhDonante")
@@ -282,6 +289,29 @@ class BlhHistoriaActual
     public function getEstadoDonante()
     {
         return $this->estadoDonante;
+    }
+
+    /**
+     * Set usuario
+     *
+     * @param integer $usuario
+     * @return BlhHistoriaActual
+     */
+    public function setUsuario($usuario)
+    {
+        $this->usuario = $usuario;
+    
+        return $this;
+    }
+
+    /**
+     * Get usuario
+     *
+     * @return integer 
+     */
+    public function getUsuario()
+    {
+        return $this->usuario;
     }
 
     /**

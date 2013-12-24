@@ -14,12 +14,14 @@
     <field name="clasificacionLubchengo" type="string" column="clasificacion_lubchengo" length="3" nullable="false"/>
     <field name="diagnosticoIngreso" type="string" column="diagnostico_ingreso" length="50" nullable="true"/>
     <field name="duracionNpt" type="integer" column="duracion_npt" nullable="true"/>
-    <field name="apgar" type="decimal" column="apgar" nullable="true"/>
+    <field name="apgarPrimerMinuto" type="decimal" column="apgar_primer_minuto" nullable="true"/>
     <field name="edadGestFur" type="decimal" column="edad_gest_fur" nullable="false"/>
     <field name="duracionVentilacion" type="integer" column="duracion_ventilacion" nullable="true"/>
     <field name="edadGestBallard" type="decimal" column="edad_gest_ballard" nullable="false"/>
     <field name="pc" type="decimal" column="pc" nullable="false"/>
     <field name="tallaIngreso" type="decimal" column="talla_ingreso" nullable="true"/>
+    <field name="apgarQuintoMinuto" type="decimal" column="apgar_quinto_minuto" nullable="true"/>
+    <field name="usuario" type="integer" column="usuario" nullable="true"/>
     <many-to-one field="idPaciente" target-entity="MntPaciente">
       <join-columns>
         <join-column name="id_paciente" referenced-column-name="id"/>

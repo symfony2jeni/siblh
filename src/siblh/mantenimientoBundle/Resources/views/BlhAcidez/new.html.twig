@@ -3,7 +3,7 @@
 
 {% block stylesheets %}
     {{ parent() }}
-	<link href="{{ asset('bundles/siblhmantenimiento/css/form.css') }}" rel="stylesheet" type="text/css" />
+        <link href="{{ asset('bundles/siblhmantenimiento/css/form.css') }}" rel="stylesheet" type="text/css" />
 {% endblock %}
         
 {% block javascripts %}
@@ -73,7 +73,7 @@
           
         <tr><td width=35 align = "right" height=10  ></td></tr>
       <tr>
-	    <td width=35 align = "left" >{{ form_label(form.mediaAcidez,'Media acidez(Grados dornic)') }}</td>
+            <td width=35 align = "left" >{{ form_label(form.mediaAcidez,'Media acidez(Grados dornic)') }}</td>
             <td width=20 align='left'>{{ form_widget(form.mediaAcidez, {'attr':{ 'readonly': 'true' } }) }} </td>
            
             <td width=100  align = "left" ><font color="red">*</font>{{ form_label(form.factor, 'Factor(%)') }}</td>

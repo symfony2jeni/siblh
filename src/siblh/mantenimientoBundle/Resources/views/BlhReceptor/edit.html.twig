@@ -48,7 +48,7 @@
         <tr><td colspan=2 align = "left" height=10  ></td></tr>
         <tr><td align='left' ><font color="red">*</font>{{ form_label(edit_form.tallaIngreso) }}</td><td align='left'>{{ form_widget(edit_form.tallaIngreso,  { 'attr': {'title': 'Talla entre 25 a 55 cm', 'onKeyPress':"return soloNumeros(event);"} }) }}</td></tr>
         <tr><td colspan=2 align = "left" height=10  ></td></tr>
-        <tr><td align='left' ><font color="red">*</font>{{ form_label(edit_form.apgar) }}</td><td align='left'>{{ form_widget(edit_form.apgar,  { 'attr': {'title': 'Entre 0 a 10 minutos', 'onKeyPress':"return soloNumerosEnteros(event);"} }) }}</td></tr>
+        <tr><td align='left' ><font color="red">*</font>{{ form_label(edit_form.apgarPrimerMinuto) }}</td><td align='left'>{{ form_widget(edit_form.apgarPrimerMinuto,  { 'attr': {'title': 'Entre 0 a 10 minutos', 'onKeyPress':"return soloNumerosEnteros(event);"} }) }}</td></tr>
         <tr style="visibility:hidden"><td align='left' ><font color="red">*</font>{{ form_label(edit_form.idPaciente) }}</td><td align='left'>{{ form_widget(edit_form.idPaciente, {'attr':{'readonly': 'true' } })  }}</td></tr>
          
         <tr style="visibility:hidden"><td align='left' ><font color="red">*</font>{{ form_label(edit_form.idBancoDeLeche) }}</td><td align='left'>{{ form_widget(edit_form.idBancoDeLeche, {'attr':{'readonly': 'true' } })  }}</td></tr>

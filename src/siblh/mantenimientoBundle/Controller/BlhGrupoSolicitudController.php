@@ -594,4 +594,3 @@ class BlhGrupoSolicitudController extends Controller
     }    
     
 }
-

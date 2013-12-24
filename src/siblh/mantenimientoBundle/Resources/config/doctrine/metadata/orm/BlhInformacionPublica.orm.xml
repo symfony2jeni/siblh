@@ -4,10 +4,11 @@
     <id name="id" type="integer" column="id">
       <generator strategy="SEQUENCE"/>
     </id>
-    <field name="path" type="string" column="path" nullable="false"/>
+    <field name="path" type="string" column="path" length="255" nullable="false"/>
     <field name="tipo" type="string" column="tipo" length="15" nullable="false"/>
     <field name="nombreDocumento" type="string" column="nombre_documento" length="30" nullable="false"/>
     <field name="fechaPublicacion" type="date" column="fecha_publicacion" nullable="false"/>
+    <field name="usuario" type="integer" column="usuario" nullable="true"/>
     <many-to-one field="idBancoDeLeche" target-entity="BlhBancoDeLeche">
       <join-columns>
         <join-column name="id_banco_de_leche" referenced-column-name="id"/>

@@ -23,14 +23,11 @@ class BlhRolMenu
     private $id;
 
     /**
-     * @var \BlhMenu
+     * @var integer
      *
-     * @ORM\ManyToOne(targetEntity="BlhMenu")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="id_menu", referencedColumnName="id")
-     * })
+     * @ORM\Column(name="usuario", type="integer", nullable=true)
      */
-    public $idMenu;
+    private $usuario;
 
     /**
      * @var \BlhRol
@@ -41,6 +38,16 @@ class BlhRolMenu
      * })
      */
     public $idRol;
+
+    /**
+     * @var \BlhMenu
+     *
+     * @ORM\ManyToOne(targetEntity="BlhMenu")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_menu", referencedColumnName="id")
+     * })
+     */
+    public $idMenu;
 
 
 
@@ -55,26 +62,26 @@ class BlhRolMenu
     }
 
     /**
-     * Set idMenu
+     * Set usuario
      *
-     * @param \siblh\mantenimientoBundle\Entity\BlhMenu $idMenu
+     * @param integer $usuario
      * @return BlhRolMenu
      */
-    public function setIdMenu(\siblh\mantenimientoBundle\Entity\BlhMenu $idMenu = null)
+    public function setUsuario($usuario)
     {
-        $this->idMenu = $idMenu;
+        $this->usuario = $usuario;
     
         return $this;
     }
 
     /**
-     * Get idMenu
+     * Get usuario
      *
-     * @return \siblh\mantenimientoBundle\Entity\BlhMenu 
+     * @return integer 
      */
-    public function getIdMenu()
+    public function getUsuario()
     {
-        return $this->idMenu;
+        return $this->usuario;
     }
 
     /**
@@ -98,5 +105,28 @@ class BlhRolMenu
     public function getIdRol()
     {
         return $this->idRol;
+    }
+
+    /**
+     * Set idMenu
+     *
+     * @param \siblh\mantenimientoBundle\Entity\BlhMenu $idMenu
+     * @return BlhRolMenu
+     */
+    public function setIdMenu(\siblh\mantenimientoBundle\Entity\BlhMenu $idMenu = null)
+    {
+        $this->idMenu = $idMenu;
+    
+        return $this;
+    }
+
+    /**
+     * Get idMenu
+     *
+     * @return \siblh\mantenimientoBundle\Entity\BlhMenu 
+     */
+    public function getIdMenu()
+    {
+        return $this->idMenu;
     }
 }

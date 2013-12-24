@@ -5,6 +5,7 @@
       <generator strategy="SEQUENCE"/>
     </id>
     <field name="resultadoExamen" type="string" column="resultado_examen" length="8" nullable="false"/>
+    <field name="usuario" type="integer" column="usuario" nullable="true"/>
     <many-to-one field="idExamen" target-entity="BlhExamen">
       <join-columns>
         <join-column name="id_examen" referenced-column-name="id"/>

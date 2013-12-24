@@ -25,7 +25,7 @@ class BlhSolicitud
     /**
      * @var string
      *
-     * @ORM\Column(name="codigo_solicitud", type="string", length=16, nullable=false)
+     * @ORM\Column(name="codigo_solicitud", type="string", length=14, nullable=true)
      */
     private $codigoSolicitud;
 
@@ -98,6 +98,13 @@ class BlhSolicitud
      * @ORM\Column(name="responsable", type="string", length=60, nullable=true)
      */
     private $responsable;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="usuario", type="integer", nullable=true)
+     */
+    private $usuario;
 
     /**
      * @var \BlhGrupoSolicitud
@@ -382,6 +389,29 @@ class BlhSolicitud
     public function getResponsable()
     {
         return $this->responsable;
+    }
+
+    /**
+     * Set usuario
+     *
+     * @param integer $usuario
+     * @return BlhSolicitud
+     */
+    public function setUsuario($usuario)
+    {
+        $this->usuario = $usuario;
+    
+        return $this;
+    }
+
+    /**
+     * Get usuario
+     *
+     * @return integer 
+     */
+    public function getUsuario()
+    {
+        return $this->usuario;
     }
 
     /**

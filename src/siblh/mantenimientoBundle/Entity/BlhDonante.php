@@ -169,6 +169,21 @@ class BlhDonante
      */
     private $observaciones;
 
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="estado", type="string", length=8, nullable=true)
+     */
+    private $estado;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="usuario", type="integer", nullable=true)
+     */
+    private $usuario;
+
     /**
      * @var \BlhBancoDeLeche
      *
@@ -685,6 +700,52 @@ class BlhDonante
     }
 
     /**
+     * Set estado
+     *
+     * @param string $estado
+     * @return BlhDonante
+     */
+    public function setEstado($estado)
+    {
+        $this->estado = $estado;
+    
+        return $this;
+    }
+
+    /**
+     * Get estado
+     *
+     * @return string 
+     */
+    public function getEstado()
+    {
+        return $this->estado;
+    }
+
+    /**
+     * Set usuario
+     *
+     * @param integer $usuario
+     * @return BlhDonante
+     */
+    public function setUsuario($usuario)
+    {
+        $this->usuario = $usuario;
+    
+        return $this;
+    }
+
+    /**
+     * Get usuario
+     *
+     * @return integer 
+     */
+    public function getUsuario()
+    {
+        return $this->usuario;
+    }
+
+     /**
      * Set idBancoDeLeche
      *
      * @param \siblh\mantenimientoBundle\Entity\BlhBancoDeLeche $idBancoDeLeche

@@ -4,7 +4,7 @@
     <id name="id" type="integer" column="id">
       <generator strategy="SEQUENCE"/>
     </id>
-    <field name="codigoSolicitud" type="string" column="codigo_solicitud" length="16" nullable="false"/>
+    <field name="codigoSolicitud" type="string" column="codigo_solicitud" length="14" nullable="true"/>
     <field name="volumenPorDia" type="decimal" column="volumen_por_dia" nullable="false"/>
     <field name="acidezNecesaria" type="string" column="acidez_necesaria" length="9" nullable="false"/>
     <field name="caloriasNecesarias" type="string" column="calorias_necesarias" length="15" nullable="false"/>
@@ -15,6 +15,7 @@
     <field name="cuna" type="integer" column="cuna" nullable="false"/>
     <field name="estado" type="string" column="estado" length="10" nullable="false"/>
     <field name="responsable" type="string" column="responsable" length="60" nullable="true"/>
+    <field name="usuario" type="integer" column="usuario" nullable="true"/>
     <many-to-one field="idReceptor" target-entity="BlhReceptor">
       <join-columns>
         <join-column name="id_receptor" referenced-column-name="id"/>

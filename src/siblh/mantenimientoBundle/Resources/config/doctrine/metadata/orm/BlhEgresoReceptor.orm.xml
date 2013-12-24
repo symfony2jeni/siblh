@@ -13,6 +13,7 @@
     <field name="hospitalSeguimientoEgreso" type="string" column="hospital_seguimiento_egreso" length="30" nullable="true"/>
     <field name="fechaEgreso" type="date" column="fecha_egreso" nullable="false"/>
     <field name="estanciaHospitalaria" type="integer" column="estancia_hospitalaria" nullable="true"/>
+    <field name="usuario" type="integer" column="usuario" nullable="true"/>
     <many-to-one field="idReceptor" target-entity="BlhReceptor">
       <join-columns>
         <join-column name="id_receptor" referenced-column-name="id"/>

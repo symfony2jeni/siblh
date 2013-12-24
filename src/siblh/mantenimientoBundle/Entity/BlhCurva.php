@@ -78,6 +78,13 @@ class BlhCurva
      */
     private $horaInicioCurva;
 
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="usuario", type="integer", nullable=true)
+     */
+    private $usuario;
+
 
 
     /**
@@ -272,6 +279,29 @@ class BlhCurva
     public function getHoraInicioCurva()
     {
         return $this->horaInicioCurva;
+    }
+    
+     /**
+     * Set usuario
+     *
+     * @param integer $usuario
+     * @return BlhCurva
+     */
+    public function setUsuario($usuario)
+    {
+        $this->usuario = $usuario;
+    
+        return $this;
+    }
+
+    /**
+     * Get usuario
+     *
+     * @return integer 
+     */
+    public function getUsuario()
+    {
+        return $this->usuario;
     }
     
      public function __toString()

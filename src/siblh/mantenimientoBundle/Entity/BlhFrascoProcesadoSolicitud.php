@@ -30,6 +30,13 @@ class BlhFrascoProcesadoSolicitud
     private $volumenDespachado;
 
     /**
+     * @var integer
+     *
+     * @ORM\Column(name="usuario", type="integer", nullable=true)
+     */
+    private $usuario;
+
+    /**
      * @var \BlhFrascoProcesado
      *
      * @ORM\ManyToOne(targetEntity="BlhFrascoProcesado")
@@ -82,6 +89,29 @@ class BlhFrascoProcesadoSolicitud
     public function getVolumenDespachado()
     {
         return $this->volumenDespachado;
+    }
+
+    /**
+     * Set usuario
+     *
+     * @param integer $usuario
+     * @return BlhFrascoProcesadoSolicitud
+     */
+    public function setUsuario($usuario)
+    {
+        $this->usuario = $usuario;
+    
+        return $this;
+    }
+
+    /**
+     * Get usuario
+     *
+     * @return integer 
+     */
+    public function getUsuario()
+    {
+        return $this->usuario;
     }
 
     /**

@@ -8,6 +8,7 @@
             <tr>
                 <th>Id</th>
                 <th>Resultadoexamen</th>
+                <th>Usuario</th>
                 <th>Actions</th>
             </tr>
         </thead>
@@ -16,6 +17,7 @@
             <tr>
                 <td><a href="{{ path('blhexamendonante_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
                 <td>{{ entity.resultadoExamen }}</td>
+                <td>{{ entity.usuario }}</td>
                 <td>
                 <ul>
                     <li>

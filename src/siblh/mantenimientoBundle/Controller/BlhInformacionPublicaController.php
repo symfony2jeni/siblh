@@ -137,14 +137,14 @@ class BlhInformacionPublicaController extends Controller
         }
 
         $deleteForm = $this->createDeleteForm($id);
-	 //Obtener banco de leche//
+         //Obtener banco de leche//
         
       $userEst = $this->container->get('security.context')->getToken()->getUser()->getIdEst();
       $query1 = $em->createQuery("SELECT e.nombre, e.direccion, e.telefono FROM siblhmantenimientoBundle:CtlEstablecimiento e WHERE e.id = $userEst");
       $establecimiento = $query1->getResult(); 
 
         return array(
-	    'hospital' => $establecimiento,
+            'hospital' => $establecimiento,
             'entity'      => $entity,
             'delete_form' => $deleteForm->createView(),
         );

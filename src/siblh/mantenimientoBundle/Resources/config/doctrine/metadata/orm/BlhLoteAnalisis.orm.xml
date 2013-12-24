@@ -7,5 +7,6 @@
     <field name="codigoLoteAnalisis" type="string" column="codigo_lote_analisis" length="11" nullable="false"/>
     <field name="fechaAnalisisFisicoQuimico" type="date" column="fecha_analisis_fisico_quimico" nullable="false"/>
     <field name="responsableAnalisis" type="string" column="responsable_analisis" length="60" nullable="false"/>
+    <field name="usuario" type="integer" column="usuario" nullable="true"/>
   </entity>
 </doctrine-mapping>

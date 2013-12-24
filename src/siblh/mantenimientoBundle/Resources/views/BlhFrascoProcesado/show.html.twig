@@ -29,6 +29,14 @@
                 <th>Observacionfrascoprocesado</th>
                 <td>{{ entity.observacionFrascoProcesado }}</td>
             </tr>
+            <tr>
+                <th>Volumendisponiblefp</th>
+                <td>{{ entity.volumenDisponibleFp }}</td>
+            </tr>
+            <tr>
+                <th>Usuario</th>
+                <td>{{ entity.usuario }}</td>
+            </tr>
         </tbody>
     </table>
 
@@ -43,6 +51,6 @@
             Edit
         </a>
     </li>
-   {# <li>{{ form(delete_form) }}</li>#}
+    <li>{{ form(delete_form) }}</li>
 </ul>
 {% endblock %}

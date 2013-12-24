@@ -45,7 +45,7 @@ class BlhTemperaturaPasteurizacionController extends Controller
          }
         else{$idp = (string)$codigo;}
       
-       $query = $em->createQuery("SELECT p.id, p.codigoPasteurizacion,p.fechaPasteurizacion, p.responsablePasteurizacion,
+       $query = $em->createQuery("SELECT t.id, p.codigoPasteurizacion,p.fechaPasteurizacion, p.responsablePasteurizacion,
                                   t.temperaturaP FROM siblhmantenimientoBundle:BlhTemperaturaPasteurizacion t join t.idPasteurizacion p
                                    where substring(p.codigoPasteurizacion,1,2) =  '$idp'");
                
@@ -140,14 +140,14 @@ class BlhTemperaturaPasteurizacionController extends Controller
 
         $deleteForm = $this->createDeleteForm($id);
 
-	 //Obtener banco de leche//
+         //Obtener banco de leche//
         
       $userEst = $this->container->get('security.context')->getToken()->getUser()->getIdEst();
       $query1 = $em->createQuery("SELECT e.nombre, e.direccion, e.telefono FROM siblhmantenimientoBundle:CtlEstablecimiento e WHERE e.id = $userEst");
       $establecimiento = $query1->getResult(); 
 
         return array(
-	   'hospital' => $establecimiento,
+           'hospital' => $establecimiento,
             'entity'      => $entity,
             'delete_form' => $deleteForm->createView(),
         );

@@ -10,6 +10,7 @@
     <field name="factor" type="decimal" column="factor" nullable="false"/>
     <field name="resultado" type="decimal" column="resultado" nullable="false"/>
     <field name="mediaAcidez" type="decimal" column="media_acidez" nullable="false"/>
+    <field name="usuario" type="integer" column="usuario" nullable="true"/>
     <many-to-one field="idFrascoRecolectado" target-entity="BlhFrascoRecolectado">
       <join-columns>
         <join-column name="id_frasco_recolectado" referenced-column-name="id"/>

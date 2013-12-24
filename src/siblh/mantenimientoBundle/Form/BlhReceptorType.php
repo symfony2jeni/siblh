@@ -29,13 +29,15 @@ class BlhReceptorType extends AbstractType
             ->add('clasificacionLubchengo')
              ->add('diagnosticoIngreso','textarea',array('max_length'=>'50'))
             ->add('duracionNpt', 'text')
-            ->add('apgar', 'text')
+            ->add('apgarPrimerMinuto', 'text')
             ->add('edadGestFur')
             ->add('duracionVentilacion', 'text')
             ->add('edadGestBallard')
             ->add('pc')
             ->add('tallaIngreso')
-            ->add('idBancoDeLeche')
+            ->add('apgarQuintoMinuto', 'text')
+            ->add('usuario')
+                     ->add('idBancoDeLeche')
             ->add('idPaciente')
         ;
     }

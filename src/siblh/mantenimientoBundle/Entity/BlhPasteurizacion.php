@@ -93,6 +93,13 @@ class BlhPasteurizacion
     private $responsablePasteurizacion;
 
     /**
+     * @var integer
+     *
+     * @ORM\Column(name="usuario", type="integer", nullable=true)
+     */
+    private $usuario;
+
+   /**
      * @var \BlhCurva
      *
      * @ORM\ManyToOne(targetEntity="BlhCurva")
@@ -344,7 +351,31 @@ class BlhPasteurizacion
         return $this->responsablePasteurizacion;
     }
 
+
     /**
+     * Set usuario
+     *
+     * @param integer $usuario
+     * @return BlhPasteurizacion
+     */
+    public function setUsuario($usuario)
+    {
+        $this->usuario = $usuario;
+    
+        return $this;
+    }
+
+    /**
+     * Get usuario
+     *
+     * @return integer 
+     */
+    public function getUsuario()
+    {
+        return $this->usuario;
+    }
+
+     /**
      * Set idCurva
      *
      * @param \siblh\mantenimientoBundle\Entity\BlhCurva $idCurva

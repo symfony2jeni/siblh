@@ -4,14 +4,15 @@
     <id name="id" type="integer" column="id">
       <generator strategy="SEQUENCE"/>
     </id>
-    <many-to-one field="idRol" target-entity="BlhRol">
-      <join-columns>
-        <join-column name="id_rol" referenced-column-name="id"/>
-      </join-columns>
-    </many-to-one>
+    <field name="usuario" type="integer" column="usuario" nullable="true"/>
     <many-to-one field="idMenu" target-entity="BlhMenu">
       <join-columns>
         <join-column name="id_menu" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="idRol" target-entity="BlhRol">
+      <join-columns>
+        <join-column name="id_rol" referenced-column-name="id"/>
       </join-columns>
     </many-to-one>
   </entity>

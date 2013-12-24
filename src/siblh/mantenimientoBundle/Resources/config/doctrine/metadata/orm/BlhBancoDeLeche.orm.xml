@@ -6,6 +6,7 @@
     </id>
     <field name="codigoBancoDeLeche" type="string" column="codigo_banco_de_leche" length="6" nullable="false"/>
     <field name="estadoBanco" type="string" column="estado_banco" length="8" nullable="false"/>
+    <field name="usuario" type="integer" column="usuario" nullable="true"/>
     <many-to-one field="idEstablecimiento" target-entity="CtlEstablecimiento">
       <join-columns>
         <join-column name="id_establecimiento" referenced-column-name="id"/>
