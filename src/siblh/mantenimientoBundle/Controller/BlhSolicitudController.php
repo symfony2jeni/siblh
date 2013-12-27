@@ -210,11 +210,14 @@ class BlhSolicitudController extends Controller
       $userEst = $this->container->get('security.context')->getToken()->getUser()->getIdEst();
       $query1 = $em->createQuery("SELECT e.nombre, e.direccion, e.telefono FROM siblhmantenimientoBundle:CtlEstablecimiento e WHERE e.id = $userEst");
       $establecimiento = $query1->getResult(); 
+      $queryresponsable = $em->createQuery("SELECT r.nombre FROM siblhmantenimientoBundle:BlhPersonal r WHERE r.idEstablecimiento = $userEst");
+      $responsable = $queryresponsable->getResult();
         return array(
             'entity'      => $entity,
             'edit_form'   => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
             'hospital' => $establecimiento,
+            'responsable' => $responsable,
         );
     }
 
@@ -399,7 +402,9 @@ class BlhSolicitudController extends Controller
       $userEst = $this->container->get('security.context')->getToken()->getUser()->getIdEst();
       $query1 = $em->createQuery("SELECT e.nombre, e.direccion, e.telefono FROM siblhmantenimientoBundle:CtlEstablecimiento e WHERE e.id = $userEst");
       $establecimiento = $query1->getResult(); 
-       
+      
+      $queryresponsable = $em->createQuery("SELECT r.nombre FROM siblhmantenimientoBundle:BlhPersonal r WHERE r.idEstablecimiento = $userEst");
+      $responsable = $queryresponsable->getResult(); 
      
        
         
@@ -409,6 +414,7 @@ class BlhSolicitudController extends Controller
             'entity' => $entity,
             'form'   => $form->createView(),
             'hospital' => $establecimiento,
+            'responsable' => $responsable,
            
             
            

@@ -237,3 +237,11 @@ _NewEditBLH:
 _NewDespacho:
     pattern:  /grupo/despachar
     defaults: { _controller: siblhmantenimientoBundle:BlhGrupoSolicitud:seleccionGrupoDespachar} 
+
+_NewPersonal:
+    pattern:  /Personal/Nuevo
+    defaults: { _controller: siblhmantenimientoBundle:BlhPersonal:new}
+    
+_NewEditPersonal:
+    pattern:  /Personal/listado
+    defaults: { _controller: siblhmantenimientoBundle:BlhPersonal:index} 

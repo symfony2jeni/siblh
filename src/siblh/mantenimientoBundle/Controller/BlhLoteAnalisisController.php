@@ -185,6 +185,9 @@ class BlhLoteAnalisisController extends Controller
          //$frascos = $em->getRepository('siblhmantenimientoBundle:BlhFrascoRecolectado')->findBy(array('idEstado' => 1,  'idLoteAnalisis'=>NULL));
          $queryfrascos = $em->createQuery("SELECT fr.id, fr.codigoFrascoRecolectado, fr.volumenRecolectado, fr.onzRecolectado, d.fechaDonacion as fecha FROM siblhmantenimientoBundle:BlhFrascoRecolectado fr join fr.idDonacion d WHERE fr.idEstado=1 and fr.idLoteAnalisis IS NULL" );
          $frascos = $queryfrascos->getResult(); 
+         
+         $queryresponsable = $em->createQuery("SELECT r.nombre FROM siblhmantenimientoBundle:BlhPersonal r WHERE r.idEstablecimiento = $userEst");
+         $responsable = $queryresponsable->getResult();
         
            //INICIO NEW ORIGINAL//
         $entity = new BlhLoteAnalisis();
@@ -197,6 +200,7 @@ class BlhLoteAnalisisController extends Controller
             'form'   => $form->createView(),
             'frascos'=>$frascos,
             'hospital' => $establecimiento,
+            'responsable' => $responsable,
         );
      }
     

@@ -30,9 +30,13 @@ class BlhPersonalController extends Controller
         $em = $this->getDoctrine()->getManager();
 
         $entities = $em->getRepository('siblhmantenimientoBundle:BlhPersonal')->findAll();
+        $userEst = $this->container->get('security.context')->getToken()->getUser()->getIdEst();
+        $query1 = $em->createQuery("SELECT e.nombre, e.direccion, e.telefono FROM siblhmantenimientoBundle:CtlEstablecimiento e WHERE e.id = $userEst");
+        $establecimiento = $query1->getResult(); 
 
         return array(
             'entities' => $entities,
+            'hospital' => $establecimiento,
         );
     }
     /**
@@ -76,7 +80,7 @@ class BlhPersonalController extends Controller
             'method' => 'POST',
         ));
 
-        $form->add('submit', 'submit', array('label' => 'Create'));
+      //  $form->add('submit', 'submit', array('label' => 'Create'));
 
         return $form;
     }
@@ -90,12 +94,24 @@ class BlhPersonalController extends Controller
      */
     public function newAction()
     {
-        $entity = new BlhPersonal();
-        $form   = $this->createCreateForm($entity);
-
+     
+        
+        $em = $this->getDoctrine()->getManager();
+        $userEst = $this->container->get('security.context')->getToken()->getUser()->getIdEst();
+        $query1 = $em->createQuery("SELECT e.id, e.nombre, e.direccion, e.telefono FROM siblhmantenimientoBundle:CtlEstablecimiento e WHERE e.id = $userEst");
+        $establecimiento = $query1->getResult(); 
+        
+        $est = $em->getRepository('siblhmantenimientoBundle:CtlEstablecimiento')->find($userEst);
+        
+           
+           $entity = new BlhPersonal();
+           $entity->setIdEstablecimiento($est);
+           $form   = $this->createCreateForm($entity);
         return array(
             'entity' => $entity,
+            'hospital' => $establecimiento,
             'form'   => $form->createView(),
+            
         );
     }
 
@@ -111,6 +127,9 @@ class BlhPersonalController extends Controller
         $em = $this->getDoctrine()->getManager();
 
         $entity = $em->getRepository('siblhmantenimientoBundle:BlhPersonal')->find($id);
+        $userEst = $this->container->get('security.context')->getToken()->getUser()->getIdEst();
+        $query1 = $em->createQuery("SELECT e.id, e.nombre, e.direccion, e.telefono FROM siblhmantenimientoBundle:CtlEstablecimiento e WHERE e.id = $userEst");
+        $establecimiento = $query1->getResult(); 
 
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find BlhPersonal entity.');
@@ -120,6 +139,7 @@ class BlhPersonalController extends Controller
 
         return array(
             'entity'      => $entity,
+            'hospital' => $establecimiento,
             'delete_form' => $deleteForm->createView(),
         );
     }
@@ -143,11 +163,15 @@ class BlhPersonalController extends Controller
 
         $editForm = $this->createEditForm($entity);
         $deleteForm = $this->createDeleteForm($id);
+        $userEst = $this->container->get('security.context')->getToken()->getUser()->getIdEst();
+        $query1 = $em->createQuery("SELECT e.nombre, e.direccion, e.telefono FROM siblhmantenimientoBundle:CtlEstablecimiento e WHERE e.id = $userEst");
+        $establecimiento = $query1->getResult(); 
 
         return array(
             'entity'      => $entity,
             'edit_form'   => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
+             'hospital' => $establecimiento,
         );
     }
 
@@ -165,7 +189,7 @@ class BlhPersonalController extends Controller
             'method' => 'PUT',
         ));
 
-        $form->add('submit', 'submit', array('label' => 'Update'));
+      //  $form->add('submit', 'submit', array('label' => 'Update'));
 
         return $form;
     }

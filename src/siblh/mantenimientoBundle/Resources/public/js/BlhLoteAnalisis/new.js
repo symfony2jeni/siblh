@@ -129,6 +129,10 @@ jQuery("#lote").on ('click', function() {
 	
 });
 
+ $('#responsable').on ('click', function() {
+    $('#siblh_mantenimientobundle_blhloteanalisis_responsableAnalisis').val (this.value); 
+    ;
+    });
 
 });
 

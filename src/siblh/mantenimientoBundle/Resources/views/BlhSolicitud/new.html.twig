@@ -116,12 +116,18 @@
         
         <td align = "left">{{ form_label(form.volumenPorDia,'Volumen total por día (ml)') }}</td>
         <td align = "left">{{ form_widget(form.volumenPorDia, {'attr':{ 'readonly': 'true' } }) }} </td>
-        
+        <td align = "left"><font color="red" >*</font><b><font face="Verdana,Arial,Helvetica,sans-serif" ><i>Responsable</i></font></b></td>
+        <td align = "left"> 
+            <select name="responsable" id = "responsable" > 
+        <option value= ""></option>
+        {% for responsable in responsable%}        
+        <option value= "{{ responsable.nombre }}">{{ responsable.nombre }} </option>
+          {% endfor %}</select> </td>       </tr>
+         
+        <tr style="visibility:hidden">
         <td align = "left">{{ form_label(form.responsable) }}</td>
         <td align = "left">{{ form_widget(form.responsable,  { 'attr': {'size': '25'} }) }} </td>                         
-        </tr>
-         
-        <tr>
+
         <td align = "right" style="visibility:hidden">{{ form_label(form.estado) }}</td>
         <td style="visibility:hidden">{{ form_widget(form.estado, {'attr':{ 'value' : 'Pendiente' }}) }} </td>
         

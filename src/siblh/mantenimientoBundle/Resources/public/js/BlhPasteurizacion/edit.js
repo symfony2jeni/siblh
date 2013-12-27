@@ -102,6 +102,11 @@ $('#siblh_mantenimientobundle_blhpasteurizacion_numFrascosPasteurizados').
  });  
    $('#button').button(); 
    $('#boton').button(); 
+   
+    $('#responsable').on ('click', function() {
+    $('#siblh_mantenimientobundle_blhpasteurizacion_responsablePasteurizacion').val (this.value); 
+    ;
+    });
 });
 
 

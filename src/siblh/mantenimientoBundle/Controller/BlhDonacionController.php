@@ -161,6 +161,10 @@ class BlhDonacionController extends Controller
        $id_blh = $queryb->getResult(); 
        $codigo=$id_blh[0]['id']; 
        $blh = $em->getRepository('siblhmantenimientoBundle:BlhBancoDeLeche')->find($codigo);
+       
+       $queryresponsable = $em->createQuery("SELECT r.nombre FROM siblhmantenimientoBundle:BlhPersonal r WHERE r.idEstablecimiento = $userEst");
+       $responsable = $queryresponsable->getResult(); 
+       
        $entity = new BlhDonacion();
        $entity->setIdBancoDeLeche($blh);
         $entity->setIdDonante($donante);
@@ -171,6 +175,7 @@ class BlhDonacionController extends Controller
             'form'   => $form->createView(),
             'hospital' => $establecimiento,
             'datos_donantes' => $datos_donantes,
+            'responsable' => $responsable,
             );
     }
 
@@ -218,8 +223,10 @@ class BlhDonacionController extends Controller
        $query1 = $em->createQuery("SELECT e.nombre, e.direccion, e.telefono FROM siblhmantenimientoBundle:CtlEstablecimiento e WHERE e.id = $userEst");
        $establecimiento = $query1->getResult(); 
 
-        $entity = $em->getRepository('siblhmantenimientoBundle:BlhDonacion')->find($id);
-
+       $entity = $em->getRepository('siblhmantenimientoBundle:BlhDonacion')->find($id);
+ 
+       $queryresponsable = $em->createQuery("SELECT r.nombre FROM siblhmantenimientoBundle:BlhPersonal r WHERE r.idEstablecimiento = $userEst");
+       $responsable = $queryresponsable->getResult(); 
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find BlhDonacion entity.');
         }
@@ -231,7 +238,8 @@ class BlhDonacionController extends Controller
             'entity'      => $entity,
             'edit_form'   => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
-             'hospital' => $establecimiento,
+            'hospital' => $establecimiento,
+            'responsable' => $responsable,
         );
     }
 

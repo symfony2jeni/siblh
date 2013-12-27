@@ -351,6 +351,7 @@ class BlhReceptorController extends Controller
     public function newAction($id)
     {
         $em = $this->getDoctrine()->getManager();
+        
         $query = $em->createQuery("SELECT p.id as identificador, p.primerNombre as nombre1, p.segundoNombre as nombre2, p.tercerNombre as nombre3, p.primerApellido as apellido1, p.segundoApellido as apellido2, p.direccion, p.fechaNacimiento FROM siblhmantenimientoBundle:MntPaciente p  WHERE p.id = $id "); 
         $datos_pacientes  = $query->getResult();
      //   $donante = $em->getRepository('siblhmantenimientoBundle:BlhDonante')->find($id);   

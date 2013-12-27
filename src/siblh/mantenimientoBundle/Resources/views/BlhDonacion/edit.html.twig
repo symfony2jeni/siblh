@@ -27,7 +27,13 @@
         <tr><td colspan=2 align = "left" height=10  ></td></tr>
         <tr><td align='left' ><font color="red">*</font>{{ form_label(edit_form.fechaDonacion, 'Fecha Donacion') }}</td><td align='left'>{{ form_widget(edit_form.fechaDonacion,  { 'attr': {'title': 'Digite la fecha de la donacion ', 'required': 'true', 'readonly': 'true'} }) }}</td></tr>
         <tr><td colspan=2 align = "left" height=10  ></td></tr>
-        <tr><td align='left' ><font color="red">*</font>{{ form_label(edit_form.responsableDonacion, 'Responsable') }}</td><td align='left'>{{ form_widget(edit_form.responsableDonacion) }}</td></tr>
+        <tr><td align = "left"><font color="red" >*</font><b><font face="Verdana,Arial,Helvetica,sans-serif" ><i>Responsable</i></font></b></td>      
+        <td align = "left"> <select name="responsable" id = "responsable" > 
+        <option value= ""></option>
+        {% for responsable in responsable%}        
+        <option value= "{{ responsable.nombre }}">{{ responsable.nombre }} </option>
+          {% endfor %}</select> </td> </tr>
+        <tr style="visibility:hidden"><td align='left' ><font color="red">*</font>{{ form_label(edit_form.responsableDonacion, 'Responsable') }}</td><td align='left'>{{ form_widget(edit_form.responsableDonacion) }}</td></tr>
         <tr><td colspan=2 align = "left" height=10  ></td></tr>
         <tr style="visibility:hidden"><td align='left' ><font color="red">*</font>{{ form_label(edit_form.idBancoDeLeche) }}</td><td align='left'>{{ form_widget(edit_form.idBancoDeLeche) }}</td></tr>
         <tr><td colspan=2 align = "left" height=10  ></td></tr>

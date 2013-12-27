@@ -116,6 +116,12 @@ $('#siblh_mantenimientobundle_blhsolicitud_volumenPorDia').on ('click', function
  
 this.value = $VolumenDia; } ); 
 
+
+ $('#responsable').on ('click', function() {
+    $('#siblh_mantenimientobundle_blhsolicitud_responsable').val (this.value); 
+    ;
+    });
+
 });
 
 function soloNumerosEnteros(e)

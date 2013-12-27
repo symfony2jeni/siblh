@@ -110,6 +110,11 @@ $('#siblh_mantenimientobundle_blhpasteurizacion_volumenPasteurizado').on('click'
           }
      
  });  
+ 
+  $('#responsable').on ('click', function() {
+    $('#siblh_mantenimientobundle_blhpasteurizacion_responsablePasteurizacion').val (this.value); 
+    ;
+    });
 });
 
 function soloNumerosEnteros(e)

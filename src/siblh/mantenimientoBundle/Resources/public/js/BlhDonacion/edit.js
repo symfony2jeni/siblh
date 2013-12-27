@@ -50,6 +50,11 @@ $(function() {
 
     $('#button').button();
    $('#boton1').button();
+   
+    $('#responsable').on ('click', function() {
+    $('#siblh_mantenimientobundle_blhdonacion_responsableDonacion').val (this.value); 
+    ;
+    });
 
 });
 

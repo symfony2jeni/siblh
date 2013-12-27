@@ -50,6 +50,20 @@ $(function() {
 
     $('#button').button();
    $('#boton1').button();
+   
+   
+    $('#responsable').on ('click', function() {
+    $('#siblh_mantenimientobundle_blhdonacion_responsableDonacion').val (this.value); 
+    ;
+    });
+   
+
+  /*  function funresponsable(){
+  var myselect = document.getElementById("responsable");
+  $nombre = myselect.options[myselect.selectedIndex].value;
+  alert($nombre);
+  $('#siblh_mantenimientobundle_blhdonacion_responsableDonacion').val= $nombre;
+}  */
 
 });
 
