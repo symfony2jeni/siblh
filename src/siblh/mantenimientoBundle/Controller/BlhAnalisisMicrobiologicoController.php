@@ -310,7 +310,7 @@ class BlhAnalisisMicrobiologicoController extends Controller
         $query = $em->createQuery("SELECT p.id, p.codigoFrascoProcesado,p.observacionFrascoProcesado, e.fechaPasteurizacion
                                    FROM siblhmantenimientoBundle:BlhFrascoProcesado p
                                    join p.idPasteurizacion e
-                                   where p.idEstado=3 and substring(p.codigoFrascoProcesado,1,2) = '$idp' ");
+                                   where p.idEstado=3 and substring(p.codigoFrascoProcesado,1,2) = '$idp' ORDER BY e.fechaPasteurizacion DESC");
         
         $frascos_pasteurizados= $query->getResult();
       

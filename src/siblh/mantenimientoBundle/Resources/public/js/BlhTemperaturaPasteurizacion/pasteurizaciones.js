@@ -20,7 +20,7 @@ $(document).ready(function() {
         colModel :[
            // {name:'id',width:10,editable:true},
             {name:'Codigo',width:15,align:'center'},
-            {name:'Fecha', width:20,align:'center'},
+            {name:'FechaPasteurizacion', width:20,align:'center'},
             {name:'Responsable&nbsp;Pasteurizacion', width:40,align:'center', search:false},
             {name:'Acción', width:15,align:'center', search:false}
    

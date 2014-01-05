@@ -4,7 +4,6 @@
  * and open the template in the editor.
  */
 
-
  $(document).ready(function() { 
      
       $.noConflict();                   
@@ -21,6 +20,8 @@
     //Validar el formulario
     
     $('form').bValidator(optionsRed);
+    
+    //Validando los estados.
          
        $('#boton').on ('click', function() {
            

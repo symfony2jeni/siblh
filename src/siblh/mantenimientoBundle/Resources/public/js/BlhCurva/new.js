@@ -121,6 +121,10 @@ this.value = $valorCurva; } );
                            if(($tiempo3 == "") || ($tiempo3 < 5)  || ($tiempo3>10)) {
                            alert("Ingrese tiempo entre 5 y 10 minutos!");
                             return false;} 
+                        else {
+                            alert("Datos almacenados!")
+                             }
+
                              }
                          }
                       }

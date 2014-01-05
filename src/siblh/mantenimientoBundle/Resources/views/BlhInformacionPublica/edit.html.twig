@@ -22,9 +22,9 @@
     {{ form_errors(edit_form) }}
     
  <table align = "center" >
-        <tr> 
-        <td align="left"style="visibility:hidden">
-        <font color="red">*</font>
+       <tr> 
+       <td align="left"style="visibility:hidden">
+       <font color="red">*</font>
         {{ form_label(edit_form.idBancoDeLeche, 'Banco de Leche') }}
         {{ form_errors(edit_form.idBancoDeLeche) }}
         {{ form_widget(edit_form.idBancoDeLeche) }} 
@@ -61,9 +61,9 @@
      </tr> 
      
  
-   <tr> 
+    <tr> 
      <td  align = 'left' WIDTH = "150"><P><font color="red">* Campos requeridos</font></td>  
-   </tr> 
+    </tr> 
    
 </table>   
     
@@ -74,6 +74,7 @@
     <td align='left' width='50%'><input id = "boton1" type="button" value="Regresar" onClick=' window.location.href="{{ path('_NewInfoPublicaEdit') }}" '> </td>
 </tr>
  </table> 
+    
 {{ form_end(edit_form) }} 
     
 {{ form_start(delete_form) }}

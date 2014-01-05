@@ -9,7 +9,7 @@
      
       $.noConflict();
       
-      
+      //Calendario que toma la fecha de hoy
       $.datepicker.setDefaults($.datepicker.regional["es"]);
    $('input[id$="_fechaPublicacion"]').datepicker({ dateFormat: 'yy-mm-dd',  
                            changeMonth: true,
@@ -22,16 +22,7 @@
                            dayNamesMin: ["Do", "Lu", "Ma", "Mi", "Ju", "Vi", "Sa"],
                            monthNamesShort: ["Ene", "Feb", "Mar", "Abr", "May", "Jun",
                                              "Jul", "Ago", "Sep", "Oct", "Nov", "Dic"]
-                          });
-                          
- 
-   $('#siblh_mantenimientobundle_blhinformacionpublica_fechaPublicacion').
-        attr('data-bvalidator', "regex['/^\d{4}[\/\-](0?[1-9]|1[012])[\/\-](0?[1-9]|[12][0-9]|3[01])$/']");
-
-   $('#siblh_mantenimientobundle_blhinformacionpublica_path').
-            attr('data-bvalidator', 'required');
-    
-                          
+                          });                          
  
     $('#boton').button(); 
     $('#boton1').button(); 

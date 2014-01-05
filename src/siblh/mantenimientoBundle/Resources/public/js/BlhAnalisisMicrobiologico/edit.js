@@ -12,6 +12,7 @@
     $('#boton1').button(); 
 
          
+         //Validando estados.
        $('#boton').on ('click', function() {
            
        $coliformesTotales=$('#siblh_mantenimientobundle_blhanalisismicrobiologico_coliformesTotales').val();
