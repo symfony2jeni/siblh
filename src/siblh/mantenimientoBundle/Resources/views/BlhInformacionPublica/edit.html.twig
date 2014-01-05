@@ -10,7 +10,7 @@
  {% block javascripts %}
     {{parent()}}
     
-    <script type="text/javascript" src="{{ asset('bundles/siblhmantenimiento/js/BlhInformacionPublica/new.js') }}" ></script>
+    <script type="text/javascript" src="{{ asset('bundles/siblhmantenimiento/js/BlhInformacionPublica/edit.js') }}" ></script>
     
  {% endblock %}
 
@@ -22,41 +22,62 @@
     {{ form_errors(edit_form) }}
     
  <table align = "center" >
-          
- <tr><td align='left' ><P>
-  {{ form_label(edit_form.tipo,'Tipo') }}
- </td><td align='left'>{{ form_widget(edit_form.tipo) }}</td></tr>
- 
- <tr><td align='left' ><P>
-  {{ form_label(edit_form.nombreDocumento,'Documento') }}
- </td><td align='left'>{{ form_widget(edit_form.nombreDocumento) }}</td></tr>
- 
-
- <tr><td align='left' ><P>
-  {{ form_label(edit_form.fechaPublicacion,'Fecha') }}
- </td><td align='left'>{{ form_widget(edit_form.fechaPublicacion, {'attr':{'readonly': 'true', 'title': 'Dar clic y seleccionar fecha de curva'} }) }}</td></tr>
-  
-     
-
- <tr><td align='left' ><P>
- {{ form_label(edit_form.file,'Archivo') }}        
- </td><td align='center'>{{ form_widget(edit_form.file) }}</td></tr>
- 
-
- <td style="visibility:hidden" align='left' ><font color="red">*</font>
-  {{ form_label(edit_form.idBancoDeLeche,'Banco de Leche') }}
-  {{ form_widget(edit_form.idBancoDeLeche) }}</td></tr>
-</table>
-<table align='center' width='35%'>     
-  <tr> 
-    <td align='right' width='50%'><input type="submit" class= "ui-button" value="Actualizar"/></td>
-    <td align='left' width='50%'><input id = "boton" type="button" value="Regresar" onClick=' window.location.href="{{ path('_NewInfoPublicaEdit') }}" '> </td>
-</tr>
+        <tr> 
+        <td align="left"style="visibility:hidden">
+        <font color="red">*</font>
+        {{ form_label(edit_form.idBancoDeLeche, 'Banco de Leche') }}
+        {{ form_errors(edit_form.idBancoDeLeche) }}
+        {{ form_widget(edit_form.idBancoDeLeche) }} 
+        </td>
+        </tr>     
    
- </table>   
-   {{ form_end(edit_form) }} </tr>
+      <tr> 
+      <td align="left"><P><font color="red">* </font>{{ form_label(edit_form.tipo, 'Tipo' )}}
+      <td align="left"> {{ form_errors(edit_form.tipo) }}
+        {{ form_widget(edit_form.tipo) }} 
+      </td>    
+      </tr>     
+        
+      <tr> 
+      <td align="left"><P><font color="red">* </font>{{ form_label(edit_form.nombreDocumento, 'Titulo documento') }}
+      <td align="left"> {{ form_errors(edit_form.nombreDocumento) }}
+        {{ form_widget(edit_form.nombreDocumento) }}
+      </td>
+      </tr>     
+        
+     <tr> 
+     <td align="left"><P><font color="red">* </font>{{ form_label(edit_form.fechaPublicacion, 'Fecha actualizacion')}}
+     <td align="left">{{ form_errors(edit_form.fechaPublicacion) }}
+        {{ form_widget(edit_form.fechaPublicacion, {'attr':{'readonly': 'true', 'title': 'Dar clic y seleccionar fecha'} })}}
+     </td>
+     </tr>         
+        
+
+  {# Al escribir la plantilla, no olvidar fijar el atributo enctype.#}                          
+     <tr> 
+     <td colspan = '2' ><P><P><font color="red">* </font><form action="#" method="post" {{ form_enctype(edit_form.file) }}>
+        {{ form_widget(edit_form.file) }}
+     </td>        
+     </tr> 
+     
+ 
+   <tr> 
+     <td  align = 'left' WIDTH = "150"><P><font color="red">* Campos requeridos</font></td>  
+   </tr> 
+   
+</table>   
+    
+    
+ <table align = "center" >   
+  <tr> 
+    <td align='right' width='50%'><input id = "boton" type="submit" value="Actualizar"/></td>
+    <td align='left' width='50%'><input id = "boton1" type="button" value="Regresar" onClick=' window.location.href="{{ path('_NewInfoPublicaEdit') }}" '> </td>
+</tr>
+ </table> 
+{{ form_end(edit_form) }} 
+    
 {{ form_start(delete_form) }}
-<td align = 'center'> <input type="submit" class= "ui-button" value="Eliminar"/></td>
+<td align = 'center'> <input id = "boton2" type="submit" value="Eliminar"/></td>
 {{ form_end(delete_form) }}
 
 {% endblock %}       

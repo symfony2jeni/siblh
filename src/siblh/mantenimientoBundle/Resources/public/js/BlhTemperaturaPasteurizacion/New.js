@@ -21,10 +21,10 @@ $(document).ready(function() {
    
 
 $('#siblh_mantenimientobundle_blhtemperaturapasteurizacion_temperaturaP').
-        attr('data-bvalidator', 'between[5:30],required');
+        attr('data-bvalidator', 'between[62.5:66],required');
     
 $('#siblh_mantenimientobundle_blhtemperaturapasteurizacion_temperaturaP').
-        attr('data-bvalidator-msg', "Ingrese valores para la temperatura entre 5 y 30");  
+        attr('data-bvalidator-msg', "Ingrese valores para la temperatura de 62.5 a 66 grados C");  
 
 });
 

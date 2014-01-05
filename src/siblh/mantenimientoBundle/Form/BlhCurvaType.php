@@ -19,14 +19,13 @@ class BlhCurvaType extends AbstractType
            ->add('tiempo1','number', array ( 'invalid_message'=>'Debe ser entre 5 y 10'))
             ->add('tiempo2', 'number', array ( 'invalid_message'=>'Debe ser entre 5 y 10'))
             ->add('tiempo3','number', array ( 'invalid_message'=>'Debe ser entre 5 y 10'))
-            /*->add('valorCurva') */
+            ->add('valorCurva') 
             ->add('fechaCurva',  'date', 
                     array(  'widget' => 'single_text',
                             'format' => 'yy-MM-dd',
-                            'attr' => array('class' => 'date'
-                                ), 'required'=> true ))
-            ->add('cantidadFrascos','number')
-            ->add('volumenPorFrasco','number')
+                            'attr' => array('class' => 'date'), 'required'=> true ))
+            ->add('cantidadFrascos','number',array ( 'invalid_message'=>'Debe ser de 10 a 60 frascos'))
+            ->add('volumenPorFrasco','number',array ( 'invalid_message'=>'Debe ser de 60 a 500 ml'))
             ->add('horaInicioCurva')
         ;
     }

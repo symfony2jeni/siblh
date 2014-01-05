@@ -75,17 +75,9 @@
         if($nombreDocumento == "" ) {
             alert("Pendiente titulo del documento !");
             return false;}
-        else{
-             if($fechaPublicacion == "" ) {
-            alert("Ingrese una fecha valida !");
-            return false;}
-        else{ 
-             if($file == "" ) {
-            alert("Debe adjuntar un archivo !");
-            return false;}
-            
-            
-            }}
+        else {
+            alert("Datos actualizados !");
+             }
        });
  });
 

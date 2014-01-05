@@ -286,7 +286,7 @@ class BlhAnalisisMicrobiologicoController extends Controller
      /**
      * Lists all BlhFrascoRecolectado entities.
      *
-     * @Route("/frascospasteurizadosM", name="blhanalisismicro")
+     * @Route("/frascospasteurizadosM", name="AnalisisMicro")
      * @Method("GET")
      * @Template()
      */
@@ -307,9 +307,13 @@ class BlhAnalisisMicrobiologicoController extends Controller
         else{$idp = (string)$codigo;}
       
         
-        $query = $em->createQuery("SELECT p.id, p.codigoFrascoProcesado,p.observacionFrascoProcesado FROM siblhmantenimientoBundle:BlhFrascoProcesado p where p.idEstado=3
-                                    and substring(p.codigoFrascoProcesado,1,2) = '$idp'");
+        $query = $em->createQuery("SELECT p.id, p.codigoFrascoProcesado,p.observacionFrascoProcesado, e.fechaPasteurizacion
+                                   FROM siblhmantenimientoBundle:BlhFrascoProcesado p
+                                   join p.idPasteurizacion e
+                                   where p.idEstado=3 and substring(p.codigoFrascoProcesado,1,2) = '$idp' ");
+        
         $frascos_pasteurizados= $query->getResult();
+      
         
         return array(
             'frascos_pasteurizados' =>  $frascos_pasteurizados,

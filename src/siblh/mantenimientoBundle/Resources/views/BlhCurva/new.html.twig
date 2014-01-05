@@ -85,7 +85,19 @@
         {{ form_errors(form.tiempo3) }}
         {{ form_widget(form.tiempo3,{ 'attr': {'title': '99.99','onKeyPress':"return soloNumeros(event);"} }) }} </td>  
     
+     
+    
  </tr> 
+ <tr>
+     <td colspan="6" align="center"><font color="red">*</font>  {{ form_label(form.valorCurva, 'Valor Curva' )}}</td>
+   </tr>    
+
+   <tr>
+    <td colspan="6">
+     {{ form_errors(form.valorCurva) }}
+     {{ form_widget(form.valorCurva, {'attr':{ 'readonly': 'true' } }) }} </td> 
+   </tr>   
+ 
 <tr><P>   
 <td align = 'left' WIDTH = "150"> <P><font color="red">* Campos requeridos</font></td> </tr> 
 <tr>  

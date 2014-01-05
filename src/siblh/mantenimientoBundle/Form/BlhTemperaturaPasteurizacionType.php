@@ -15,7 +15,7 @@ class BlhTemperaturaPasteurizacionType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('temperaturaP','number', array ( 'invalid_message'=>'Debe ser entre 5 y 10'))
+            ->add('temperaturaP','number', array ( 'invalid_message'=>'Ingresar de 62.5 a 66 grados C'))
             ->add('idPasteurizacion')
         ;
     }

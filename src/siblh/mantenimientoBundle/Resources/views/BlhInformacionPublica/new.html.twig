@@ -33,24 +33,24 @@
                  
     <tr> 
 <td align="left"><P><font color="red">* </font>{{ form_label(form.tipo, 'Tipo' )}}
-        <td> {{ form_errors(form.tipo) }}
+        <td align="left"> {{ form_errors(form.tipo) }}
         {{ form_widget(form.tipo) }}
         
      <tr> 
         <td align="left"><P><font color="red">* </font>{{ form_label(form.nombreDocumento, 'Titulo documento') }}
-         <td> {{ form_errors(form.nombreDocumento) }}
+         <td align="left"> {{ form_errors(form.nombreDocumento) }}
         {{ form_widget(form.nombreDocumento) }}
         
      <tr> 
         <td align="left"><P><font color="red">* </font>{{ form_label(form.fechaPublicacion, 'Fecha actualizacion')}}
-         <td>{{ form_errors(form.fechaPublicacion) }}
-        {{ form_widget(form.fechaPublicacion, {'attr':{'readonly': 'true', 'title': 'Dar clic y seleccionar fecha de curva'} })}}
+         <td align="left">{{ form_errors(form.fechaPublicacion) }}
+        {{ form_widget(form.fechaPublicacion, {'attr':{'readonly': 'true', 'title': 'Dar clic y seleccionar fecha'} })}}
              
         
 
   {# Al escribir la plantilla, no olvidar fijar el atributo enctype.#}                          
   <tr> 
-        <td colspan = '2'><P><P><font color="red">* </font><form action="#" method="post" {{ form_enctype(form.file) }}>
+        <td colspan = '2' ><P><P><font color="red">* </font><form action="#" method="post" {{ form_enctype(form.file, {'attr':{'readonly': 'true', 'title': 'Dar clic y seleccionar archivo'} }) }}>
         {{ form_widget(form.file) }}
                         
   </tr> 

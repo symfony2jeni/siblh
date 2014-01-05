@@ -20,6 +20,7 @@ $(document).ready(function() {
         colModel :[
            // {name:'id',width:10,editable:true},
             {name:'Frasco',width:15,align:'center'},
+            {name:'FechaPasteurizacion',width:15,align:'center'},
             {name:'Observacion', width:40,align:'center', search:false},
             {name:'Acción', width:15,align:'center', search:false}
    

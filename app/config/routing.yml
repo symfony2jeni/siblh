@@ -95,11 +95,12 @@ _NewDonacion:
 _NewCurva:
    pattern:  /Curva/Nueva
    defaults: { _controller: siblhmantenimientoBundle:BlhCurva:new} 
-    
-_NewAnalisisMicrobiologico:
-   pattern:  /AnalisisMicro/
-   defaults: { _controller: siblhmantenimientoBundle:BlhAnalisisMicrobiologico:frascospasteurizados} 
-
+   
+ 
+_NewAnalisisMicro:
+    pattern:  /frascospasteurizadosM/
+    defaults: { _controller: siblhmantenimientoBundle:BlhAnalisisMicrobiologico:frascospasteurizados}  
+ 
  
 
 _NewFrascoRecolectado:
@@ -233,7 +234,6 @@ _NewEditBLH:
     defaults: { _controller: siblhmantenimientoBundle:BlhBancoDeLeche:index} 
  
    
-
 _NewDespacho:
     pattern:  /grupo/despachar
     defaults: { _controller: siblhmantenimientoBundle:BlhGrupoSolicitud:seleccionGrupoDespachar} 
