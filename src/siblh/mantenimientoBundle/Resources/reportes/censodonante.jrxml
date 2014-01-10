@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="censodonante" language="groovy" pageWidth="1368" pageHeight="788" columnWidth="1328" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="c04c4cb8-4181-4d71-9432-68e5d2cd66d8">
 	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="20"/>
+	<property name="ireport.y" value="0"/>
 	<style name="table">
 		<box>
 			<pen lineWidth="1.0" lineColor="#000000"/>
@@ -75,9 +75,8 @@
 		</parameter>
 		<queryString>
 			<![CDATA[select row_number() OVER (ORDER BY dt.codigo_donante), dt.codigo_donante,fr.codigo_frasco_recolectado,
-dt.primer_nombre ||' ' ||dt.segundo_nombre||' '||dt.primer_apellido||' '||dt.segundo_apellido as Donante,
-dt.edad, dt.procedencia, fr.volumen_recolectado, fr.onz_recolectado,
-e.nombre_estado as Estado, dn.fecha_donacion::date+'15 days'::interval  as fecha_vencimiento
+dt.primer_nombre ||' ' ||coalesce(dt.segundo_nombre, '')||' '||dt.primer_apellido||' '||coalesce(dt.segundo_apellido, '') as Donante,
+dt.edad, dt.procedencia, fr.volumen_recolectado, fr.onz_recolectado, replace (substring(e.nombre_estado from 1 for 13), 'Analizado', 'Aprobado') as Estado, dn.fecha_donacion::date+'15 days'::interval  as fecha_vencimiento
 from blh_donante dt, blh_donacion dn, blh_frasco_recolectado fr, blh_estado e
 where dn.id_donante = dt.id and fr.id_donacion = dn.id
 and e.id = fr.id_estado and dn.fecha_donacion between to_date($P{fechai},'YYYY-MM-DD') and to_date($P{fechaf},'YYYY-MM-DD')
@@ -107,9 +106,9 @@ order by dt.codigo_donante;]]>
 		</parameter>
 		<queryString>
 			<![CDATA[select row_number() OVER (ORDER BY dt.codigo_donante), dt.codigo_donante,fr.codigo_frasco_recolectado,
-dt.primer_nombre ||' ' ||dt.segundo_nombre||' '||dt.primer_apellido||' '||dt.segundo_apellido as Donante,
+dt.primer_nombre ||' ' ||coalesce(dt.segundo_nombre, '')||' '||dt.primer_apellido||' '||coalesce(dt.segundo_apellido, '') as Donante,
 dt.edad, dt.procedencia, fr.volumen_recolectado, fr.onz_recolectado,
-e.nombre_estado as Estado, dn.fecha_donacion::date+'15 days'::interval  as fecha_vencimiento
+replace (substring(e.nombre_estado from 1 for 9), 'Analizado', 'Aprobado') as Estado, dn.fecha_donacion::date+'15 days'::interval  as fecha_vencimiento
 from blh_donante dt, blh_donacion dn, blh_frasco_recolectado fr, blh_estado e
 where dn.id_donante = dt.id and fr.id_donacion = dn.id
 and e.id = fr.id_estado and dn.fecha_donacion between to_date($P{fechai},'YYYY-MM-DD') and to_date($P{fechaf},'YYYY-MM-DD')
@@ -139,10 +138,9 @@ order by dt.codigo_donante;]]>
 	<parameter name="nombre" class="java.lang.String"/>
 	<queryString>
 		<![CDATA[select row_number() OVER (ORDER BY dt.codigo_donante), dt.codigo_donante,fr.codigo_frasco_recolectado,
-dt.primer_nombre ||' ' ||dt.segundo_nombre||' '||dt.primer_apellido||' '||dt.segundo_apellido as Donante,
+dt.primer_nombre ||' ' ||coalesce(dt.segundo_nombre, '')||' '||dt.primer_apellido||' '||coalesce(dt.segundo_apellido, '') as Donante,
 dt.edad, dt.procedencia, fr.volumen_recolectado, fr.onz_recolectado,
-e.nombre_estado as Estado, dn.fecha_donacion::date+'15 days'::interval  as fecha_vencimiento
-from blh_donante dt, blh_donacion dn, blh_frasco_recolectado fr, blh_estado e
+replace (substring(e.nombre_estado from 1 for 9), 'Analizado', 'Aprobado') as Estado, dn.fecha_donacion::date+'15 days'::interval  as fecha_vencimiento from blh_donante dt, blh_donacion dn, blh_frasco_recolectado fr, blh_estado e
 where dn.id_donante = dt.id and fr.id_donacion = dn.id
 and e.id = fr.id_estado and dn.fecha_donacion between to_date($P{fechai},'YYYY-MM-DD') and to_date($P{fechaf},'YYYY-MM-DD')
 and dt.id_banco_de_leche = cast ($P{id} as numeric)
@@ -162,31 +160,31 @@ order by dt.codigo_donante;]]>
 		<band splitType="Stretch"/>
 	</background>
 	<title>
-		<band height="130" splitType="Stretch">
-			<image>
-				<reportElement uuid="969da6f7-85b9-4611-ad4a-dc48bb013c71" x="14" y="8" width="158" height="107"/>
-				<imageExpression><![CDATA["/home/jeni/NetBeansProjects/siblh/src/siblh/mantenimientoBundle/Resources/reportes/blh.jpg"]]></imageExpression>
-			</image>
-			<image>
-				<reportElement uuid="a7495c0a-1db6-4827-b017-d331528cc4c8" x="854" y="14" width="158" height="101"/>
-				<imageExpression><![CDATA["/home/jeni/NetBeansProjects/siblh/src/siblh/mantenimientoBundle/Resources/reportes/minsal2.jpg"]]></imageExpression>
-			</image>
+		<band height="165" splitType="Stretch">
 			<staticText>
-				<reportElement uuid="68f506f1-8464-4171-b0e7-7b3e68891122" x="427" y="15" width="182" height="24"/>
+				<reportElement uuid="68f506f1-8464-4171-b0e7-7b3e68891122" x="556" y="61" width="182" height="24"/>
 				<textElement>
 					<font fontName="Comic Sans MS" size="14"/>
 				</textElement>
 				<text><![CDATA[MINISTERIO DE SALUD]]></text>
 			</staticText>
+			<image>
+				<reportElement uuid="bff6c0dc-9df2-4488-8210-e5ae9007be5d" x="72" y="49" width="158" height="107"/>
+				<imageExpression><![CDATA["/var/www/siblh/siblh/src/siblh/mantenimientoBundle/Resources/reportes/blh.jpg"]]></imageExpression>
+			</image>
+			<image>
+				<reportElement uuid="9a934240-0523-4136-b85f-b4abdd7fef60" x="1116" y="56" width="158" height="101"/>
+				<imageExpression><![CDATA["/var/www/siblh/siblh/src/siblh/mantenimientoBundle/Resources/reportes/minsal2.jpg"]]></imageExpression>
+			</image>
 			<staticText>
-				<reportElement uuid="55a91768-d2f3-437a-8839-1437ff00d2f1" x="383" y="63" width="289" height="35"/>
+				<reportElement uuid="55a91768-d2f3-437a-8839-1437ff00d2f1" x="512" y="109" width="289" height="35"/>
 				<textElement>
 					<font fontName="Comic Sans MS" size="14"/>
 				</textElement>
 				<text><![CDATA[CENSO DE REGISTRO DE DONANTES]]></text>
 			</staticText>
 			<textField>
-				<reportElement uuid="3d777fa8-4c98-4563-9afa-b8ba71801fbf" x="190" y="43" width="643" height="20"/>
+				<reportElement uuid="3d777fa8-4c98-4563-9afa-b8ba71801fbf" x="319" y="89" width="643" height="20"/>
 				<textElement textAlignment="Center">
 					<font size="16" isBold="false"/>
 				</textElement>
@@ -195,30 +193,30 @@ order by dt.codigo_donante;]]>
 		</band>
 	</title>
 	<pageHeader>
-		<band height="35" splitType="Stretch">
+		<band height="43" splitType="Stretch">
 			<textField>
-				<reportElement uuid="e2bfb3c2-716a-4763-a1e1-97cec295056f" x="297" y="7" width="100" height="20"/>
+				<reportElement uuid="e2bfb3c2-716a-4763-a1e1-97cec295056f" x="494" y="7" width="100" height="20"/>
 				<textElement>
 					<font size="14"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$P{fechai}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement uuid="485f5f07-e79a-4234-a385-ba537d06e846" x="602" y="7" width="100" height="20"/>
+				<reportElement uuid="485f5f07-e79a-4234-a385-ba537d06e846" x="799" y="7" width="100" height="20"/>
 				<textElement>
 					<font size="14"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$P{fechaf}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement uuid="43f51a60-9f65-4110-b21b-8c2fe9ef7fd3" x="154" y="7" width="133" height="20"/>
+				<reportElement uuid="43f51a60-9f65-4110-b21b-8c2fe9ef7fd3" x="351" y="7" width="133" height="20"/>
 				<textElement>
 					<font size="16" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Fecha Inicio:]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="ac007fc0-c56d-481a-becd-342766f270e3" x="449" y="7" width="135" height="20"/>
+				<reportElement uuid="ac007fc0-c56d-481a-becd-342766f270e3" x="646" y="7" width="135" height="20"/>
 				<textElement>
 					<font size="16" isBold="true"/>
 				</textElement>
@@ -227,9 +225,9 @@ order by dt.codigo_donante;]]>
 		</band>
 	</pageHeader>
 	<columnHeader>
-		<band height="223" splitType="Stretch">
+		<band height="216" splitType="Stretch">
 			<componentElement>
-				<reportElement uuid="815ee260-169e-44f5-a12c-6a807c03f64a" key="table 2" style="table 2" x="14" y="13" width="1296" height="197"/>
+				<reportElement uuid="815ee260-169e-44f5-a12c-6a807c03f64a" key="table 2" style="table 2" x="62" y="9" width="1248" height="197"/>
 				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
 					<datasetRun subDataset="New Dataset 1" uuid="ef9ac12b-c3dd-465e-864d-c3ae2d479b59">
 						<datasetParameter name="fechai">
@@ -243,10 +241,10 @@ order by dt.codigo_donante;]]>
 						</datasetParameter>
 						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
 					</datasetRun>
-					<jr:column width="90" uuid="518de5ed-3fd3-424b-ad67-eb8e325e8d52">
+					<jr:column width="60" uuid="518de5ed-3fd3-424b-ad67-eb8e325e8d52">
 						<jr:columnHeader style="table 2_CH" height="30" rowSpan="1">
 							<staticText>
-								<reportElement uuid="c55201b7-b0fd-4fde-a274-579da94502fa" x="0" y="0" width="90" height="30"/>
+								<reportElement uuid="c55201b7-b0fd-4fde-a274-579da94502fa" x="15" y="1" width="43" height="18"/>
 								<textElement>
 									<font size="12" isBold="true"/>
 								</textElement>
@@ -255,7 +253,7 @@ order by dt.codigo_donante;]]>
 						</jr:columnHeader>
 						<jr:detailCell style="table 2_TD" height="20" rowSpan="1">
 							<textField>
-								<reportElement uuid="240d501f-a22b-447a-8b7c-9d008ad5abd7" x="7" y="0" width="74" height="20"/>
+								<reportElement uuid="240d501f-a22b-447a-8b7c-9d008ad5abd7" x="11" y="0" width="47" height="20"/>
 								<textElement/>
 								<textFieldExpression><![CDATA[$F{row_number}]]></textFieldExpression>
 							</textField>
@@ -264,7 +262,7 @@ order by dt.codigo_donante;]]>
 					<jr:column width="124" uuid="20c97955-f55d-4bdc-aa26-eb510f9e09d8">
 						<jr:columnHeader style="table 2_CH" height="30" rowSpan="1">
 							<staticText>
-								<reportElement uuid="6d067103-09f4-46dd-9a49-c9f25d43581a" x="0" y="0" width="119" height="30"/>
+								<reportElement uuid="6d067103-09f4-46dd-9a49-c9f25d43581a" x="2" y="0" width="119" height="30"/>
 								<textElement>
 									<font size="12" isBold="true"/>
 								</textElement>
@@ -282,7 +280,7 @@ order by dt.codigo_donante;]]>
 					<jr:column width="147" uuid="39d21da0-8c0a-4b51-a472-a261309e00a6">
 						<jr:columnHeader style="table 2_CH" height="30" rowSpan="1">
 							<staticText>
-								<reportElement uuid="cc420c91-77ff-45c2-ac40-c32bae57cb37" x="0" y="0" width="137" height="30"/>
+								<reportElement uuid="cc420c91-77ff-45c2-ac40-c32bae57cb37" x="7" y="0" width="137" height="30"/>
 								<textElement>
 									<font size="12" isBold="true"/>
 								</textElement>
@@ -387,10 +385,10 @@ order by dt.codigo_donante;]]>
 							</textField>
 						</jr:detailCell>
 					</jr:column>
-					<jr:column width="90" uuid="394afe18-e53b-42dc-a674-36e144ae7135">
+					<jr:column width="120" uuid="394afe18-e53b-42dc-a674-36e144ae7135">
 						<jr:columnHeader style="table 2_CH" height="30" rowSpan="1">
 							<staticText>
-								<reportElement uuid="c4b9d6bb-7c68-4f27-a217-364cccce6801" x="0" y="0" width="90" height="30"/>
+								<reportElement uuid="c4b9d6bb-7c68-4f27-a217-364cccce6801" x="24" y="0" width="90" height="30"/>
 								<textElement>
 									<font size="12" isBold="true"/>
 								</textElement>
@@ -399,7 +397,7 @@ order by dt.codigo_donante;]]>
 						</jr:columnHeader>
 						<jr:detailCell style="table 2_TD" height="20" rowSpan="1">
 							<textField>
-								<reportElement uuid="02c91d55-0de3-4e60-bc47-908f9f25cd19" x="7" y="0" width="79" height="20"/>
+								<reportElement uuid="02c91d55-0de3-4e60-bc47-908f9f25cd19" x="7" y="0" width="113" height="20"/>
 								<textElement/>
 								<textFieldExpression><![CDATA[$F{estado}]]></textFieldExpression>
 							</textField>
@@ -428,7 +426,7 @@ order by dt.codigo_donante;]]>
 		</band>
 	</columnHeader>
 	<detail>
-		<band height="48" splitType="Stretch">
+		<band height="22" splitType="Stretch">
 			<elementGroup/>
 		</band>
 	</detail>
@@ -436,13 +434,7 @@ order by dt.codigo_donante;]]>
 		<band height="30" splitType="Stretch"/>
 	</columnFooter>
 	<pageFooter>
-		<band height="36" splitType="Stretch">
-			<textField>
-				<reportElement uuid="1b023293-7eec-459c-8ee4-90fe4c0d4449" x="1066" y="9" width="31" height="20"/>
-				<textElement/>
-				<textFieldExpression><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
-			</textField>
-		</band>
+		<band height="21" splitType="Stretch"/>
 	</pageFooter>
 	<summary>
 		<band height="38" splitType="Stretch"/>

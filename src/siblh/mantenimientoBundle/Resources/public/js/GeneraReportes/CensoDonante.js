@@ -42,9 +42,9 @@ $(document).ready(function() {
   $fi= $('#fechai').val();
      $ff= $('#fechaf').val();          
    
-      if (($fi == " ") || ($ff == " "))
+      if (($fi == " ") || ($ff == " ") || ($ff < $fi))
             
-           { alert("Debe seleccionar un rango de fecha"); }
+           { alert("Debe seleccionar un rango de fecha valido"); }
         
         else
             {
