@@ -25,6 +25,8 @@
     <field name="escolaridad" type="string" column="escolaridad" length="15" nullable="true"/>
     <field name="tipoColecta" type="string" column="tipo_colecta" length="10" nullable="false"/>
     <field name="observaciones" type="string" column="observaciones" length="150" nullable="true"/>
+    <field name="estado" type="string" column="estado" length="8" nullable="true"/>
+    <field name="usuario" type="integer" column="usuario" nullable="true"/>
     <many-to-one field="idMunicipio" target-entity="CtlMunicipio">
       <join-columns>
         <join-column name="id_municipio" referenced-column-name="id"/>

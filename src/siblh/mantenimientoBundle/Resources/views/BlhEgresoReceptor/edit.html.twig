@@ -34,7 +34,9 @@
        <tr><td colspan=2 align = "left" height=10  ></td></tr>   
        <tr><td align='left' ><font color="red">*</font>{{ form_label(edit_form.diagnosticoEgreso) }}</td><td align='left'>{{ form_widget(edit_form.diagnosticoEgreso)  }}</td></tr>
        <tr><td colspan=2 align = "left" height=10  ></td></tr>   
-       <tr><td align='left' >{{ form_label(edit_form.hospitalSeguimientoEgreso) }}</td><td align='left'>{{ form_widget(edit_form.hospitalSeguimientoEgreso,  { 'attr': {'size': '60'} })  }}</td></tr>
+       <tr>
+	   <td style="visibility:hidden">{{ form_widget(edit_form.usuario, {'attr':{ 'value' : user_ID }}) }} </td>
+	   <td align='left' >{{ form_label(edit_form.hospitalSeguimientoEgreso) }}</td><td align='left'>{{ form_widget(edit_form.hospitalSeguimientoEgreso,  { 'attr': {'size': '60'} })  }}</td></tr>
        <tr style="visibility:hidden"><td align='left' ><font color="red">*</font>{{ form_label(edit_form.idReceptor) }}</td><td align='left'>{{ form_widget(edit_form.idReceptor)  }}</td></tr>
        <tr><td align = "left"><font color="red" size = "2" face = "Comic Sans MS">* Campos requeridos</font></td> </tr>     
        <tr><td colspan = '2' align = 'center'>  <input type="submit" id= "button" value="Actualizar"/>

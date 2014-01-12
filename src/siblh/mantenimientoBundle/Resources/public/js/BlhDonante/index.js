@@ -9,9 +9,10 @@ $(document).ready(function() {
  tableToGrid("#listado_donantes", {
         pager : '#pagerdonantes',
         rowNum:10, 
+	rownumbers: true,
         height: '100%',
         gridview: true, 
-       // caption: "Seleccione la donante",
+       caption: "Listado de donantes",
          
         
         
@@ -40,7 +41,7 @@ $(document).ready(function() {
         ],
     
     });
-    jQuery("#listado_donantes").jqGrid('sortGrid',"id",true);
+    jQuery("#listado_donantes").jqGrid('sortGrid',"Codigo",true);
     jQuery("#listado_donantes").jqGrid('navGrid','#pagerdonantes', {
         edit:false, 
         add:false, 

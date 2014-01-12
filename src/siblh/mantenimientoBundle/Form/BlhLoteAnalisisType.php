@@ -21,6 +21,7 @@ class BlhLoteAnalisisType extends AbstractType
                             'format' => 'yy-MM-dd',
                             'attr' => array('class' => 'date')))
             ->add('responsableAnalisis')
+			->add('usuario')
         ;
     }
     

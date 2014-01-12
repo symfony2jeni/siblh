@@ -25,7 +25,9 @@
     <tr><td align='left' >{{ form_label(edit_form.onzRecolectado,'Onzas recolectadas') }}</td><td align='left'>{{ form_widget(edit_form.onzRecolectado, {'attr':{'readonly': 'true' } }) }}</td></tr>
     <tr><td colspan=2 align = "left" height=10  ></td></tr>
     <tr><td align='left' >{{ form_label(edit_form.observacionFrascoRecolectado,'Observaciones') }}</td><td align='left'>{{ form_widget(edit_form.observacionFrascoRecolectado,  { 'attr': {'size': '50'} }) }}</td></tr>
-    <tr><td colspan=2 align = "left" height=10  ></td></tr>
+    <tr>
+	<td style="visibility:hidden">{{ form_widget(edit_form.usuario, {'attr':{ 'value' : user_ID }}) }} </td>
+	<td colspan=2 align = "left" height=10  ></td></tr>
     <tr style="visibility:hidden"><td align='left' ><font color="red">*</font>{{ form_label(edit_form.idEstado,'Estado') }}</td><td align='left'>{{ form_widget(edit_form.idEstado) }}</td></tr>
     <tr style="visibility:hidden"><td align='right'><font color="red">*</font>{{ form_label(edit_form.idDonacion) }}</td><td align='left'>{{ form_widget(edit_form.idDonacion) }}</td></tr>
     <tr style="visibility:hidden"><td align='right'><font color="red">*</font>{{ form_label(edit_form.idDonante) }}</td><td align='left'>{{ form_widget(edit_form.idDonante) }}</td></tr>

@@ -11,6 +11,14 @@
 
 {% block body -%}
     <h1>Registro de Historia Actual</h1>
+     <script type="text/javascript">
+function prueba(visible, id)
+ {
+
+var elemento = document.getElementById(id);
+elemento.style.visibility = visible ? "visible" : "hidden";
+ }
+</script>   
 
   <FORM> 
    <table align = "center">
@@ -28,7 +36,7 @@
 </form>  
     
     {{ form_start(form) }}
- {{ form_start(form) }}
+
     {{ form_errors(form) }}
      <table align = "center"  >
           <tr><td colspan = "4" style="visibility:hidden"> 
@@ -99,6 +107,7 @@
           <input id = "button" type="submit" value="Guardar"/>
           <input id = "boton1" type="button" value="Regresar" onClick=' window.location.href="{{ path('_NewHistoriaActual') }}" '>
 </td>
+<td style="visibility:hidden">{{ form_widget(form.usuario, {'attr':{ 'value' : user_ID }}) }} </td>
   </tr>
 
    </table>

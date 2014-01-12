@@ -5,6 +5,7 @@
       <generator strategy="SEQUENCE"/>
     </id>
     <field name="volumenAgregado" type="decimal" column="volumen_agregado" nullable="false"/>
+    <field name="usuario" type="integer" column="usuario" nullable="true"/>
     <many-to-one field="idFrascoProcesado" target-entity="BlhFrascoProcesado">
       <join-columns>
         <join-column name="id_frasco_procesado" referenced-column-name="id"/>

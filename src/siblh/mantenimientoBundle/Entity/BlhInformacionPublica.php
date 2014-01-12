@@ -58,6 +58,13 @@ class BlhInformacionPublica
     private $fechaPublicacion;
 
     /**
+     * @var integer
+     *
+     * @ORM\Column(name="usuario", type="integer", nullable=true)
+     */
+    private $usuario;
+
+/**
      * @var \BlhBancoDeLeche
      *
      * @ORM\ManyToOne(targetEntity="BlhBancoDeLeche")
@@ -148,7 +155,32 @@ class BlhInformacionPublica
         return $this->fechaPublicacion;
     }
 
+
+
     /**
+     * Set usuario
+     *
+     * @param integer $usuario
+     * @return BlhInformacionPublica
+     */
+    public function setUsuario($usuario)
+    {
+        $this->usuario = $usuario;
+    
+        return $this;
+    }
+
+    /**
+     * Get usuario
+     *
+     * @return integer 
+     */
+    public function getUsuario()
+    {
+        return $this->usuario;
+    }
+
+     /**
      * Set idBancoDeLeche
      *
      * @param \siblh\mantenimientoBundle\Entity\BlhBancoDeLeche $idBancoDeLeche

@@ -28,13 +28,13 @@ $(document).ready(function() {
 
 
 $('#siblh_mantenimientobundle_blhpasteurizacion_volumenPasteurizado').
-      attr('data-bvalidator', 'between[1:30],required');
+      attr('data-bvalidator', 'between[30:130],required');
     
 $('#siblh_mantenimientobundle_blhpasteurizacion_volumenPasteurizado').
-      attr('data-bvalidator-msg', "Ingrese el volumen en ml de 1 a 30 ml");  
+      attr('data-bvalidator-msg', "Ingrese el volumen en ml de 30 a 130 ml");  
       
 $('#siblh_mantenimientobundle_blhpasteurizacion_numFrascosPasteurizados').
-      attr('data-bvalidator', 'min[1],required');
+      attr('data-bvalidator', 'between[5:100],required');
     
 $('#siblh_mantenimientobundle_blhpasteurizacion_numFrascosPasteurizados').
       attr('data-bvalidator-msg', "Ingrese la cantidad de frascos mayor que 1");  
@@ -102,6 +102,11 @@ $('#siblh_mantenimientobundle_blhpasteurizacion_numFrascosPasteurizados').
  });  
    $('#button').button(); 
    $('#boton').button(); 
+   
+    $('#responsable').on ('click', function() {
+    $('#siblh_mantenimientobundle_blhpasteurizacion_responsablePasteurizacion').val (this.value); 
+    ;
+    });
 });
 
 

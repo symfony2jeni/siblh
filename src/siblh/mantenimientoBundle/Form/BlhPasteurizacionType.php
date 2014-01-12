@@ -29,6 +29,7 @@ class BlhPasteurizacionType extends AbstractType
             ->add('horaFinalE')
             ->add('responsablePasteurizacion')
             ->add('idCurva')
+			->add('usuario')
         ;
     }
     

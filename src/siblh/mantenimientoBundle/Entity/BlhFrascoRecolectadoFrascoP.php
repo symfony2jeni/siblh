@@ -30,6 +30,13 @@ class BlhFrascoRecolectadoFrascoP
     private $volumenAgregado;
 
     /**
+     * @var integer
+     *
+     * @ORM\Column(name="usuario", type="integer", nullable=true)
+     */
+    private $usuario;
+
+    /**
      * @var \BlhFrascoRecolectado
      *
      * @ORM\ManyToOne(targetEntity="BlhFrascoRecolectado")
@@ -82,6 +89,29 @@ class BlhFrascoRecolectadoFrascoP
     public function getVolumenAgregado()
     {
         return $this->volumenAgregado;
+    }
+
+    /**
+     * Set usuario
+     *
+     * @param integer $usuario
+     * @return BlhFrascoRecolectadoFrascoP
+     */
+    public function setUsuario($usuario)
+    {
+        $this->usuario = $usuario;
+    
+        return $this;
+    }
+
+    /**
+     * Get usuario
+     *
+     * @return integer 
+     */
+    public function getUsuario()
+    {
+        return $this->usuario;
     }
 
     /**

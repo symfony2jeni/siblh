@@ -16,6 +16,7 @@ class BlhExamenType extends AbstractType
     {
         $builder
             ->add('nombreExamen')
+			->add('usuario')
         ;
     }
     

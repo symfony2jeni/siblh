@@ -79,6 +79,34 @@ class BlhSeguimientoReceptor
     private $complicaciones;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="observacion", type="string", length=150, nullable=true)
+     */
+    private $observacion;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="periodo_evaluacion", type="integer", nullable=true)
+     */
+    private $periodoEvaluacion;
+
+    /**
+     * @var float
+     *
+     * @ORM\Column(name="ganancia_dia_pc", type="decimal", nullable=true)
+     */
+    private $gananciaDiaPc;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="usuario", type="integer", nullable=true)
+     */
+    private $usuario;
+
+    /**
      * @var \BlhReceptor
      *
      * @ORM\ManyToOne(targetEntity="BlhReceptor")
@@ -282,6 +310,98 @@ class BlhSeguimientoReceptor
     public function getComplicaciones()
     {
         return $this->complicaciones;
+    }
+
+    /**
+     * Set observacion
+     *
+     * @param string $observacion
+     * @return BlhSeguimientoReceptor
+     */
+    public function setObservacion($observacion)
+    {
+        $this->observacion = $observacion;
+    
+        return $this;
+    }
+
+    /**
+     * Get observacion
+     *
+     * @return string 
+     */
+    public function getObservacion()
+    {
+        return $this->observacion;
+    }
+
+    /**
+     * Set periodoEvaluacion
+     *
+     * @param integer $periodoEvaluacion
+     * @return BlhSeguimientoReceptor
+     */
+    public function setPeriodoEvaluacion($periodoEvaluacion)
+    {
+        $this->periodoEvaluacion = $periodoEvaluacion;
+    
+        return $this;
+    }
+
+    /**
+     * Get periodoEvaluacion
+     *
+     * @return integer 
+     */
+    public function getPeriodoEvaluacion()
+    {
+        return $this->periodoEvaluacion;
+    }
+
+    /**
+     * Set gananciaDiaPc
+     *
+     * @param float $gananciaDiaPc
+     * @return BlhSeguimientoReceptor
+     */
+    public function setGananciaDiaPc($gananciaDiaPc)
+    {
+        $this->gananciaDiaPc = $gananciaDiaPc;
+    
+        return $this;
+    }
+
+    /**
+     * Get gananciaDiaPc
+     *
+     * @return float 
+     */
+    public function getGananciaDiaPc()
+    {
+        return $this->gananciaDiaPc;
+    }
+
+    /**
+     * Set usuario
+     *
+     * @param integer $usuario
+     * @return BlhSeguimientoReceptor
+     */
+    public function setUsuario($usuario)
+    {
+        $this->usuario = $usuario;
+    
+        return $this;
+    }
+
+    /**
+     * Get usuario
+     *
+     * @return integer 
+     */
+    public function getUsuario()
+    {
+        return $this->usuario;
     }
 
     /**

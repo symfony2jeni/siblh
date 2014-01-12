@@ -14,6 +14,7 @@
     <field name="mediaCt" type="decimal" column="media_ct" nullable="true"/>
     <field name="porcentajeCrema" type="decimal" column="porcentaje_crema" nullable="true"/>
     <field name="kilocalorias" type="decimal" column="kilocalorias" nullable="true"/>
+    <field name="usuario" type="integer" column="usuario" nullable="true"/>
     <many-to-one field="idFrascoRecolectado" target-entity="BlhFrascoRecolectado">
       <join-columns>
         <join-column name="id_frasco_recolectado" referenced-column-name="id"/>

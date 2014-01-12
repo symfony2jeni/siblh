@@ -37,6 +37,7 @@ class BlhSolicitudType extends AbstractType
             ->add('responsable')
            // ->add('idGrupoSolicitud')
             ->add('idReceptor')
+			->add('usuario')
         ;
     }
     

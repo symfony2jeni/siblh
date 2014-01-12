@@ -66,6 +66,8 @@ class BlhPasteurizacionController extends Controller
     public function createAction(Request $request)
     {
         $entity = new BlhPasteurizacion();
+		$usuario = $this->container->get('security.context')->getToken()->getUser()->getId();
+        $entity->setUsuario($usuario);
         $form = $this->createCreateForm($entity);
         $form->handleRequest($request);
 
@@ -145,7 +147,7 @@ class BlhPasteurizacionController extends Controller
     public function editAction($id)
     {
         $em = $this->getDoctrine()->getManager();
-
+			   $user_ID = $this->container->get('security.context')->getToken()->getUser()->getId();
         $entity = $em->getRepository('siblhmantenimientoBundle:BlhPasteurizacion')->find($id);
 
         if (!$entity) {
@@ -159,11 +161,15 @@ class BlhPasteurizacionController extends Controller
         $userEst = $this->container->get('security.context')->getToken()->getUser()->getIdEst();
         $query1 = $em->createQuery("SELECT e.nombre, e.direccion, e.telefono FROM siblhmantenimientoBundle:CtlEstablecimiento e WHERE e.id = $userEst");
         $establecimiento = $query1->getResult(); 
+        $queryresponsable = $em->createQuery("SELECT r.nombre FROM siblhmantenimientoBundle:BlhPersonal r WHERE r.idEstablecimiento = $userEst");
+        $responsable = $queryresponsable->getResult(); 
         return array(
             'entity'      => $entity,
             'edit_form'   => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
             'hospital' => $establecimiento,
+            'responsable' => $responsable,
+			'user_ID' => $user_ID,
         );
     }
 
@@ -197,7 +203,8 @@ class BlhPasteurizacionController extends Controller
         $em = $this->getDoctrine()->getManager();
 
         $entity = $em->getRepository('siblhmantenimientoBundle:BlhPasteurizacion')->find($id);
-
+		$usuario = $this->container->get('security.context')->getToken()->getUser()->getId();
+        $entity->setUsuario($usuario);
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find BlhPasteurizacion entity.');
         }
@@ -314,7 +321,7 @@ public function curvasAction()
      */
     public function newAction($id)            
       {
-        
+        	   $user_ID = $this->container->get('security.context')->getToken()->getUser()->getId();
         $em = $this->getDoctrine()->getManager();
         $query = $em->createQuery("SELECT c.id as iden, c.valorCurva as valorCurva, 
                    c.fechaCurva, c.cantidadFrascos as cantidadFrascos, c.volumenPorFrasco as volumenPorFrasco 
@@ -371,6 +378,8 @@ public function curvasAction()
             
        
         $codpasteurizacion = $idp.'-'.$correlativo.'-'.$anio;
+        $queryresponsable = $em->createQuery("SELECT r.nombre FROM siblhmantenimientoBundle:BlhPersonal r WHERE r.idEstablecimiento = $userEst");
+        $responsable = $queryresponsable->getResult(); 
         $entity = new BlhPasteurizacion();
         $entity->setIdCurva($curva);
         $entity->setCodigoPasteurizacion($codpasteurizacion);
@@ -382,6 +391,8 @@ public function curvasAction()
             'form'   => $form->createView(),
             'datos_curva' =>  $datos_curva,
             'hospital' => $establecimiento,
+            'responsable' => $responsable,
+			'user_ID' => $user_ID,
         
          
         );

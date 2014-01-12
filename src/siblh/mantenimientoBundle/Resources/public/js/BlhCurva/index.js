@@ -8,20 +8,23 @@ $(document).ready(function() {
     
     tableToGrid("#listado_curvas", {
         pager : '#pagerCurvas',
-        rowNum:10, 
+        rowNum:10,
+	rownumbers: true,
+	height:'100%',
+	width:800, 
         gridview: true, 
         caption: "Curva de Pentracion",
         
         colModel :[
            // {name:'id',width:10,editable:true},
             {name:'Valor&nbsp;Curva', width:20,align:'center', search:false},
-            {name:'Fecha&nbsp;Curva', width:20,align:'center'},
-            {name:'Cantidad&nbsp;Frascos', width:20,align:'center'},
-            {name:'Volumen&nbsp;Frascos', width:20,align:'center'},
+            {name:'Fecha', width:20,align:'center'},
+            {name:'Frascos', width:20,align:'center'},
+            {name:'VolumenFrascos', width:20,align:'center'},
             {name:'Acción', width:20,align:'center', search:false}
         ]
     });
-    jQuery("#listado_curvas").jqGrid('sortGrid',"Id",true);
+    jQuery("#listado_curvas").jqGrid('sortGrid',"Fecha",true);
     jQuery("#listado_curvas").jqGrid('navGrid','#pagerCurvas', {
         edit:false, 
         add:false, 

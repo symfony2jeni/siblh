@@ -6,13 +6,13 @@ $(document).ready(function() {
  
      $.datepicker.setDefaults($.datepicker.regional["es"]);
    $('input[id$="_fechaDonacion"]').datepicker({ dateFormat: 'yy-mm-dd',  
-                           changeMonth: true,
-                           changeYear: true,
+                          // changeMonth: true,
+                          // changeYear: true,
                            clearStatus: 'Borra fecha actual',  
                            defaultDate: 'today',
-                           minDate: '2012-10-08',
+                           minDate: 'today',
                            maxDate: 'today',
-                           yearRange: '2012:y',    
+                           //yearRange: 'y',   
                            dayNamesMin: ["Do", "Lu", "Ma", "Mi", "Ju", "Vi", "Sa"],
                            monthNamesShort: ["Ene", "Feb", "Mar", "Abr", "May", "Jun",
                                              "Jul", "Ago", "Sep", "Oct", "Nov", "Dic"]
@@ -50,6 +50,20 @@ $(function() {
 
     $('#button').button();
    $('#boton1').button();
+   
+   
+    $('#responsable').on ('click', function() {
+    $('#siblh_mantenimientobundle_blhdonacion_responsableDonacion').val (this.value); 
+    ;
+    });
+   
+
+  /*  function funresponsable(){
+  var myselect = document.getElementById("responsable");
+  $nombre = myselect.options[myselect.selectedIndex].value;
+  alert($nombre);
+  $('#siblh_mantenimientobundle_blhdonacion_responsableDonacion').val= $nombre;
+}  */
 
 });
 

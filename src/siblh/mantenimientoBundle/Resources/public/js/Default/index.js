@@ -23,7 +23,7 @@ $(document).ready(function($) {
       
     $( "#dialog-message" ).dialog({
       modal: false,
-      position: ['left', 330],
+      position: ['left', 190],
 
  autoOpen: true,
       show: {
@@ -53,7 +53,7 @@ $(document).ready(function($) {
      }
 
  $y = $('#2').val();
- //$x=0;
+//$x=0;
  if($y>0)
  {
  $(function() {

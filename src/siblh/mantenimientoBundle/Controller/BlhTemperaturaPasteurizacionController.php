@@ -45,7 +45,7 @@ class BlhTemperaturaPasteurizacionController extends Controller
          }
         else{$idp = (string)$codigo;}
       
-       $query = $em->createQuery("SELECT p.id, p.codigoPasteurizacion,p.fechaPasteurizacion, p.responsablePasteurizacion,
+       $query = $em->createQuery("SELECT t.id, p.codigoPasteurizacion,p.fechaPasteurizacion, p.responsablePasteurizacion,
                                   t.temperaturaP FROM siblhmantenimientoBundle:BlhTemperaturaPasteurizacion t join t.idPasteurizacion p
                                    where substring(p.codigoPasteurizacion,1,2) =  '$idp'");
                
@@ -66,12 +66,14 @@ class BlhTemperaturaPasteurizacionController extends Controller
     public function createAction(Request $request)
     {
         $entity = new BlhTemperaturaPasteurizacion();
+		$usuario = $this->container->get('security.context')->getToken()->getUser()->getId();
+        $entity->setUsuario($usuario);
        $form = $this->createCreateForm($entity); 
         $form->handleRequest($request);
 
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
-            $em->persist($entity);
+			$em->persist($entity);
             $em->flush();
 
             return $this->redirect($this->generateUrl('blhtemperaturapasteurizacion_show', array('id' => $entity->getId())));
@@ -140,7 +142,14 @@ class BlhTemperaturaPasteurizacionController extends Controller
 
         $deleteForm = $this->createDeleteForm($id);
 
+         //Obtener banco de leche//
+        
+      $userEst = $this->container->get('security.context')->getToken()->getUser()->getIdEst();
+      $query1 = $em->createQuery("SELECT e.nombre, e.direccion, e.telefono FROM siblhmantenimientoBundle:CtlEstablecimiento e WHERE e.id = $userEst");
+      $establecimiento = $query1->getResult(); 
+
         return array(
+           'hospital' => $establecimiento,
             'entity'      => $entity,
             'delete_form' => $deleteForm->createView(),
         );
@@ -208,7 +217,8 @@ class BlhTemperaturaPasteurizacionController extends Controller
         $em = $this->getDoctrine()->getManager();
 
         $entity = $em->getRepository('siblhmantenimientoBundle:BlhTemperaturaPasteurizacion')->find($id);
-
+		$usuario = $this->container->get('security.context')->getToken()->getUser()->getId();
+        $entity->setUsuario($usuario);
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find BlhTemperaturaPasteurizacion entity.');
         }

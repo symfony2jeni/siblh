@@ -63,7 +63,8 @@
     <td><font color="red" >*</font>
         {{ form_label(form.formaExtraccion, 'Forma de extraccion') }}</td>
     <td>{{ form_widget(form.formaExtraccion) }}</td>
-    <td align = "center">{{ form_label(form.observacionFrascoRecolectado, 'Observaciones') }}</td>
+    <td align = "center"><font color="red" >*</font>
+        {{ form_label(form.observacionFrascoRecolectado, 'Observaciones') }}</td>
     <td>{{ form_widget(form.observacionFrascoRecolectado,  { 'attr': {'size': '50'} }) }}</td>    
         </tr>   
         <tr><td height=10  ></td></tr>     
@@ -72,7 +73,7 @@
         {{ form_label(form.idEstado) }}</td>
         <td style="visibility:hidden">
         {{ form_widget(form.idEstado) }}</td>
-      
+      <td style="visibility:hidden">{{ form_widget(form.usuario, {'attr':{ 'value' : user_ID }}) }} </td>
         </tr>   
         <tr>
             <td align = "left"><font color="red" size = "2" face = "Comic Sans MS">* Campos requeridos</font></td> </tr>     

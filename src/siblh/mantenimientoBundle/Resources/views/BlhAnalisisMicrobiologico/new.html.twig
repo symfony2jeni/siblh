@@ -68,7 +68,7 @@
     
  </TR>
  
- <td colspan = '7' align = 'center'>  <input type="submit" id= "boton" value="Guardar"/></td></tr>
+ <td colspan = '7' align = 'center'><input type="submit" id= "boton" value="Guardar"/><input id = "boton1" type="button" value="Regresar" onClick=' window.location.href="{{ path('_NewAnalisisMicrobiologico' )}}"'> </td></tr>
 
      </table>
             
@@ -79,19 +79,13 @@
       <tr style="visibility:hidden">
     <td> {{ form_label(form.idFrascoProcesado) }}
         {{ form_errors(form.idFrascoProcesado) }}
-        {{ form_widget(form.idFrascoProcesado) }}</td>  
+        {{ form_widget(form.idFrascoProcesado) }}</td> 
+ <td style="visibility:hidden">{{ form_widget(form.usuario, {'attr':{ 'value' : user_ID }}) }} </td>		
         </tr>
+</table>
 
      {{ form_end(form) }}
 
      
 {% endblock %}
-
-
-  
-
-
-    
-   
-
 

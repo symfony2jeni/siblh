@@ -30,6 +30,13 @@ class BlhExamenDonante
     private $resultadoExamen;
 
     /**
+     * @var integer
+     *
+     * @ORM\Column(name="usuario", type="integer", nullable=true)
+     */
+    private $usuario;
+
+    /**
      * @var \BlhDonante
      *
      * @ORM\ManyToOne(targetEntity="BlhDonante")
@@ -82,6 +89,29 @@ class BlhExamenDonante
     public function getResultadoExamen()
     {
         return $this->resultadoExamen;
+    }
+
+    /**
+     * Set usuario
+     *
+     * @param integer $usuario
+     * @return BlhExamenDonante
+     */
+    public function setUsuario($usuario)
+    {
+        $this->usuario = $usuario;
+    
+        return $this;
+    }
+
+    /**
+     * Get usuario
+     *
+     * @return integer 
+     */
+    public function getUsuario()
+    {
+        return $this->usuario;
     }
 
     /**

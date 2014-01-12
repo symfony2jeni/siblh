@@ -31,11 +31,15 @@
                 <td width =200 align = "center"  ><font color="red">*</font>  
                 {{ form_label(form.fechaAnalisisFisicoQuimico, 'Fecha análisis' ) }}</td>
                 <td align='left'>{{ form_widget(form.fechaAnalisisFisicoQuimico, {'attr':{ 'readonly': 'true', 'title': 'Dar clic y seleccionar la fecha de registro' } }) }} </td>
-                       
-     
+                 <td align = "right"><font color="red" >*</font><b><font face="Verdana,Arial,Helvetica,sans-serif" ><i>Responsable</i></font></b></td>      
+                <td> <select name="responsable" id = "responsable" > 
+        <option value= ""></option>
+        {% for responsable in responsable%}        
+        <option value= "{{ responsable.nombre }}">{{ responsable.nombre }} </option>
+          {% endfor %}</select> </td> </tr>
      
              
-                <td width =150 align = "center" ><font color="red">*</font>  
+               <tr style="visibility:hidden"> <td width =150 align = "center" ><font color="red">*</font>  
                 {{ form_label(form.responsableAnalisis, 'Responsable') }}</td>
                 <td align='left'>{{ form_widget(form.responsableAnalisis,  { 'attr': {'size': '30' } }) }} </td></tr>
                 
@@ -71,10 +75,12 @@
     {#<div id='pagerfrascosLote' ></div>   #}
       
  <table align = "center" width = "90%"  >
- <tr><td colspan=2 align = "left" height=40  ><font color="red" face = "Comic Sans MS">* Campos Requeridos</font></td>
+ <tr>
+ <td style="visibility:hidden">{{ form_widget(form.usuario, {'attr':{ 'value' : user_ID }}) }} </td>
+ <td colspan=2 align = "left" height=40  ><font color="red" face = "Comic Sans MS">* Campos Requeridos</font></td>
  </tr>   
  <tr><td align= 'center'><INPUT  id='lote' name="agrupar" type=submit  value="Guardar"></td></tr>
- <td style="visibility:hidden"><INPUT  name="var" id="var" type=text size=10 ></td></td>
+ <td style="visibility:hidden"><INPUT  name="var" id="var" type=text size=10 ></td>
 </table>  
  {{ form_end(form) }}
       

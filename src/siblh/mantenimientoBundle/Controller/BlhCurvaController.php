@@ -50,8 +50,10 @@ class BlhCurvaController extends Controller
      * @Template("siblhmantenimientoBundle:BlhCurva:new.html.twig")
      */
     public function createAction(Request $request)
-    {
+    {   
         $entity = new BlhCurva();
+        $usuario = $this->container->get('security.context')->getToken()->getUser()->getId();
+        $entity->setUsuario($usuario);
         $form = $this->createCreateForm($entity);
         $form->handleRequest($request);
 
@@ -201,6 +203,8 @@ class BlhCurvaController extends Controller
         $em = $this->getDoctrine()->getManager();
 
         $entity = $em->getRepository('siblhmantenimientoBundle:BlhCurva')->find($id);
+        $usuario = $this->container->get('security.context')->getToken()->getUser()->getId();
+        $entity->setUsuario($usuario);
 
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find BlhCurva entity.');

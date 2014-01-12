@@ -4,7 +4,8 @@ $(document).ready(function() {
     
     tableToGrid("#listado_receptores", {
         pager : '#pagerReceptores',
-        rowNum:10, 
+        rowNum:10,
+	rownumbers: true, 
         gridview: true, 
         width:'1000',
         height:'100%',

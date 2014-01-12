@@ -44,6 +44,7 @@ class BlhHistorialClinicoType extends AbstractType
             ->add('formulaObstetricaV','text',array('max_length'=>'2'))
             ->add('formulaObstetricaM','text',array('max_length'=>'2'))
             ->add('idDonante')
+			->add('usuario')
         ;
     }
     

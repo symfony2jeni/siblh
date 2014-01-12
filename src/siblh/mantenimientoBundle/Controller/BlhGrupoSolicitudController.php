@@ -11,6 +11,7 @@ use siblh\mantenimientoBundle\Entity\BlhGrupoSolicitud;
 use siblh\mantenimientoBundle\Form\BlhGrupoSolicitudType;
 
 use siblh\mantenimientoBundle\Entity\BlhFrascoProcesadoSolicitud;
+use Doctrine\ORM\Query\ResultSetMapping;
 
 
 /**
@@ -100,11 +101,14 @@ class BlhGrupoSolicitudController extends Controller
     public function newAction()
     {
         $entity = new BlhGrupoSolicitud();
+			   $user_ID = $this->container->get('security.context')->getToken()->getUser()->getId();
+
         $form   = $this->createCreateForm($entity);
 
         return array(
             'entity' => $entity,
             'form'   => $form->createView(),
+			'user_ID' => $user_ID,
         );
     }
 
@@ -143,6 +147,7 @@ class BlhGrupoSolicitudController extends Controller
     public function editAction($id)
     {
         $em = $this->getDoctrine()->getManager();
+	   $user_ID = $this->container->get('security.context')->getToken()->getUser()->getId();
 
         $entity = $em->getRepository('siblhmantenimientoBundle:BlhGrupoSolicitud')->find($id);
 
@@ -164,6 +169,7 @@ class BlhGrupoSolicitudController extends Controller
             'edit_form'   => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
              'hospital' => $establecimiento,
+			 'user_ID' => $user_ID,
         );
     }
 
@@ -271,7 +277,7 @@ class BlhGrupoSolicitudController extends Controller
     public function seleccionSolicitudesAction()
     {
         $em = $this->getDoctrine()->getManager();
-        
+    	$user_ID = $this->container->get('security.context')->getToken()->getUser()->getId();
         $userEst = $this->container->get('security.context')->getToken()->getUser()->getIdEst();
          
         
@@ -297,6 +303,7 @@ class BlhGrupoSolicitudController extends Controller
         return array(
             'solicitudes' => $solicitudes,
                 'hospital' => $establecimiento,
+				 'user_ID' => $user_ID,
         );
     }
      
@@ -314,7 +321,7 @@ class BlhGrupoSolicitudController extends Controller
          $request = $this->getRequest();
          $ids_agrupar = $request->get('var');
          $ids= explode(",",$ids_agrupar);
-         
+         $usuario = $this->container->get('security.context')->getToken()->getUser()->getId();
          
        
          $tamanio = count($ids);   
@@ -386,6 +393,7 @@ class BlhGrupoSolicitudController extends Controller
        ///////////////////////////////////////////
         $Grupo_solicitud = new BlhGrupoSolicitud(); 
         $Grupo_solicitud->setcodigoGrupoSolicitud($codgrupo);//seteando el codigo de grupo
+        $Grupo_solicitud->setUsuario($usuario);
         $em->persist($Grupo_solicitud);
         $em->flush();
         $id_Grupo= $Grupo_solicitud->getId();
@@ -399,6 +407,7 @@ class BlhGrupoSolicitudController extends Controller
            $agrupacion = $em->getRepository('siblhmantenimientoBundle:BlhSolicitud')->find($ids[$i]);
            $agrupacion->setIdGrupoSolicitud($Grupo);//seteando el nuevo grupo a la solicitud agrupada
            $agrupacion->setestado('Agrupada');//cambiando estado de solicitud
+           $agrupacion->setUsuario($usuario);
            $em->persist($agrupacion);
            $em->flush();
             
@@ -424,9 +433,10 @@ class BlhGrupoSolicitudController extends Controller
     public function seleccionGrupoDespacharAction()
     {
         $em = $this->getDoctrine()->getManager();
+		$user_ID = $this->container->get('security.context')->getToken()->getUser()->getId();
 
      //   $entities = $em->getRepository('siblhmantenimientoBundle:BlhGrupoSolicitud')->findAll();
-        $query = $em->createQuery("SELECT gs.id as id, gs.codigoGrupoSolicitud as codigo FROM siblhmantenimientoBundle:BlhSolicitud s JOIN s.idGrupoSolicitud gs WHERE s.estado = 'Agrupada'");
+        $query = $em->createQuery("SELECT distinct gs.codigoGrupoSolicitud as codigo, gs.id as id  FROM siblhmantenimientoBundle:BlhSolicitud s JOIN s.idGrupoSolicitud gs WHERE s.estado = 'Agrupada'");
         $entities = $query->getResult(); 
               //Obtener banco de leche//  
       $userEst = $this->container->get('security.context')->getToken()->getUser()->getIdEst();
@@ -436,6 +446,7 @@ class BlhGrupoSolicitudController extends Controller
         return array(
             'entities' => $entities,
             'hospital' => $establecimiento,
+			'user_ID' => $user_ID,
         );
     }    
 
@@ -450,7 +461,6 @@ class BlhGrupoSolicitudController extends Controller
     {
 
          $em = $this->getDoctrine()->getManager();
-         
                 //Obtener banco de leche//  
       $userEst = $this->container->get('security.context')->getToken()->getUser()->getIdEst();
       $query1 = $em->createQuery("SELECT e.nombre, e.direccion, e.telefono FROM siblhmantenimientoBundle:CtlEstablecimiento e WHERE e.id = $userEst");
@@ -459,139 +469,42 @@ class BlhGrupoSolicitudController extends Controller
          
          
         $grupo = $em->getRepository('siblhmantenimientoBundle:BlhGrupoSolicitud')->find($id);
-         $query4 = $em->createQuery("SELECT sum(s.volumenPorDia) as total FROM siblhmantenimientoBundle:BlhSolicitud s JOIN s.idGrupoSolicitud gs WHERE gs.id = $id");
+        $query4 = $em->createQuery("SELECT sum(s.volumenPorDia) as total FROM siblhmantenimientoBundle:BlhSolicitud s JOIN s.idGrupoSolicitud gs WHERE gs.id = $id");
         $volumentotal=$query4->getResult(); 
         
-        $query5 = $em->createQuery("SELECT s.codigoSolicitud, s.acidezNecesaria, s.caloriasNecesarias FROM siblhmantenimientoBundle:BlhSolicitud s  WHERE s.idGrupoSolicitud = $id");
+        $query5 = $em->createQuery("SELECT s.id, s.codigoSolicitud, s.acidezNecesaria, s.caloriasNecesarias FROM siblhmantenimientoBundle:BlhSolicitud s  WHERE s.idGrupoSolicitud = $id");
         $solicitudes_grupo=$query5->getResult(); 
         
         
+        $rsm = new ResultSetMapping;
+        $rsm->addScalarResult('resp', 'resp');
+        $queryfrascos = $em->createNativeQuery('SELECT "despachogrupos"() resp', $rsm);
+        //$queryfrascos = $em->createNativeQuery('SELECT * from despachogrupos()', $rsm);
+         $frascos = $queryfrascos->getResult();
+    
+        $filas_fl= count($frascos);
         
-         $query2 = $em->createQuery("SELECT fp.id, fp.codigoFrascoProcesado, fp.acidezTotal, fp.kcaloriasTotales, fp.observacionFrascoProcesado, fp.volumenFrascoPasteurizado  FROM siblhmantenimientoBundle:BlhFrascoProcesado fp  WHERE fp.idEstado = 2 ORDER BY fp.id");
-         $frascosp = $query2->getResult(); 
-         $cantidad_frascosp = count($frascosp);
-         
-         
-        //volumen despachado agrupado por frasco y por grupo solicitud
-       $query3 = $em->createQuery("SELECT max(fps.volumenDespachado) as despachado, identity(fps.idFrascoProcesado) as idp, identity(s.idGrupoSolicitud)  FROM siblhmantenimientoBundle:BlhFrascoProcesadoSolicitud fps  join fps.idSolicitud s join fps.idFrascoProcesado fp
-                                   where fp.idEstado=2 GROUP BY s.idGrupoSolicitud, fps.idFrascoProcesado ORDER BY s.idGrupoSolicitud, fps.idFrascoProcesado");      
-       $volumen_despachado = $query3->getResult(); 
-       $resultCount = count($volumen_despachado);
-       //echo $resultCount;
-      // echo($volumen_despachado[0].despachado);
-     //  echo($cantidad_frascosp);
-       $cantidadnueva=$resultCount;
-       $x=$cantidad_frascosp-$resultCount;
-        
-  
-       if($cantidad_frascosp==0 ){
-       $vldisponible=0;}
-       
-       else{
-       if($resultCount==0)                    
-           {
-           for ($i=0; $i<$cantidad_frascosp; $i++)
-           {
-            // $vldisponible[$i]= $frascosp[$i]['volumenFrascoPasteurizado'];
-             $volumen_despachado[$i]['despachado']=0;
-             $volumen_despachado[$i]['idp']=$frascosp[$i]['id'];
+        //echo $filas_fl;
+      //var_dump($frascos);
+        //print_r($frascos);
+        for($i=0; $i<$filas_fl;$i++){
+            
+            $frascos_final[$i]= explode(',',$frascos[$i]['resp']); 
+            $frascos_final[$i][0]=substr($frascos_final[$i][0],1);
+             $frascos_final[$i][5] = substr ($frascos_final[$i][5], 0, strlen($frascos_final[$i][5]) - 1);
              
-           }
-           
-           for ($i=0; $i<$cantidad_frascosp; $i++) {
-           
-           $vldisponible[$i]= $frascosp[$i]['volumenFrascoPasteurizado'] -  $volumen_despachado[$i]['despachado']; 
-           
-           
-           }
-            
-      
-            
-           }
-           else{
-           if(($resultCount >0) && ($resultCount < $cantidad_frascosp)){
-               
-               /////////////////////ordenamiento de matriz
-                 //for($i=0;$i<$cantidad_frascosp;$i++){
-      
-      for($i=0;$i<$x;$i++){
-      if($frascosp[$i]['id']!=$volumen_despachado[$i]['idp']){
-         $volumen_despachado[$cantidadnueva]['idp']=$frascosp[$i]['id'];
-         $volumen_despachado[$cantidadnueva]['despachado']=0;
-         $cantidadnueva = count($volumen_despachado);
-         
-         //echo 'hola';
-      }
-    }//segundo for
-  
-    
-    
-    
-    
-    
-    /////////////////////////////
-    //}//primr for
-        
-   // echo $resultCount ;
-    ///////////////////////////
-    for($i=0;$i<$cantidadnueva-1;$i++){
-    for($j=0;$j<$cantidadnueva-1;$j++){
-        if($volumen_despachado[$j]['idp']>$volumen_despachado[$j+1]['idp']){
-            $y=$volumen_despachado[$j]['idp'];
-            $z=$volumen_despachado[$j]['despachado'];
-            $volumen_despachado[$j]['idp']=$volumen_despachado[$j+1]['idp'];
-            $volumen_despachado[$j]['despachado']=$volumen_despachado[$j+1]['despachado'];
-            $volumen_despachado[$j+1]['idp']=$y;
-            $volumen_despachado[$j+1]['despachado']=$z;
         }
         
-         
-        
-    }
-    
-    }
-    
-    
-               
-               
-               ////fin ordenamiento
-               
-               
-               for ($i=0; $i< $resultCount; $i++){
-                   $vldisponible[$i]= $frascosp[$i]['volumenFrascoPasteurizado'] -  $volumen_despachado[$i]['despachado'];
-                   }
-           for ($i=$resultCount; $i< $cantidad_frascosp; $i++){
-                   $vldisponible[$i]= $frascosp[$i]['volumenFrascoPasteurizado'];
-                   $volumen_despachado[$i]['despachado']=0;
-                   $volumen_despachado[$i]['idp']=$frascosp[$i]['id'];
+        //echo $frascos_final[1][5];
 
-           }
-       //    echo count($volumen_despachado);
-          //echo($x);           
-//$volumen_agregado=$filas;
-           }
-           else {         
-              for ($i=0; $i<$cantidad_frascosp; $i++)
-           {
-             $vldisponible[$i]= $frascosp[$i]['volumenFrascoPasteurizado'] -  $volumen_despachado[$i]['despachado'];
-           } 
-               
-           
-           }
-           }
-           
-           // echo $volumen_despachado[0]['idp'];
-           //echo 'hooooooola';
-           //echo $frascosp[0]['id'];
-          
-       }//fin else principal
-  
+        
+        
         return array(
-            'frascosp' => $frascosp,
+            'frascosp' => $frascos_final,
             'grupo' => $grupo,
             'hospital' => $establecimiento,
-            'volumen_despachado' => $volumen_despachado,
-            'vldisponible'=>$vldisponible,
+           // 'volumen_despachado' => $volumen_despachado,
+            //'vldisponible'=>$vldisponible,
            'volumentotal'=> $volumentotal,
             'solicitudes_grupo' => $solicitudes_grupo,
         );
@@ -607,19 +520,29 @@ class BlhGrupoSolicitudController extends Controller
     public function frascosProcesadosSolicitudesAction()
     {
         $em = $this->getDoctrine()->getManager();
+        $usuario = $this->container->get('security.context')->getToken()->getUser()->getId(); 
+        
        //obteniendo vector con  ids a despachar   
          $request = $this->getRequest();
          $ids_despachar = $request->get('idsdespachar');
          //obteniendo vector con volumenes a combinar
-         $vldespachar = $request->get('vldespachar');     
+        /* @var $vldespachar type */
+              $vldespachar = $request->get('vldespachar');     
+        /* @var $vldisponible type */
          $vldisponible = $request->get('vldisponible');    
          $grupo_despachar = $request->get('grupo'); 
-         echo'desp';
-       echo $vldespachar[0];
-       echo 'disp';
-        echo $vldisponible[0];
-       echo'ids_desp';
-        echo $ids_despachar[0];
+         $ids_solicitudes= $request->get('ids_solicitudes'); 
+        
+       //echo $ids_despachar[0];
+        //echo 'hola';
+        //echo $vldisponible[0];
+        //echo 'hola';
+       //echo $vldespachar[0];
+       
+       
+      
+       
+
         
        // $solicitudes_despachar = $em->getRepository('siblhmantenimientoBundle:BlhSolicitud')->findOneBy(array('idGrupoSolicitud' => $grupo_despachar));
          $query = $em->createQuery("SELECT s.id FROM siblhmantenimientoBundle:BlhSolicitud s  join s.idGrupoSolicitud gs  where gs.id = $grupo_despachar");      
@@ -630,28 +553,46 @@ class BlhGrupoSolicitudController extends Controller
                     
         for($i=0; $i< $cantidad_solicitudes;$i++ ){//for para solicitudes        
          
-            $idsolicitud = $solicitudes_despachar[$i]['id'];
+           $idsolicitud = $solicitudes_despachar[$i]['id'];
            $solicitud= $em->getRepository('siblhmantenimientoBundle:BlhSolicitud')->find($idsolicitud);
+           $solicitud->setUsuario($usuario);
+           //cambiando estado a solicitudes
+            $solicitud->setEstado('Despachada');
+            $em->persist($solicitud);
+            $em->flush();
+           
+           
             //Guardando los nuevos objetos frascrfrascop
             for($j=0; $j< $cantidad_frascos;$j++ ){ // for para frascos procesados
-               
-            $frascop = $em->getRepository('siblhmantenimientoBundle:BlhFrascoProcesado')->find($ids_despachar[$j]);
-                                 
+            $idfrascop = $ids_despachar[$j];
+            $frascop = $em->getRepository('siblhmantenimientoBundle:BlhFrascoProcesado')->find($idfrascop);
+              
+            
+            
+            
             //Asociando las solicitudes con cada frasco procesado
             $entity = new BlhFrascoProcesadoSolicitud();
             $entity->setidFrascoProcesado($frascop);
             $entity->setidSolicitud($solicitud);                            
             $entity->setvolumenDespachado($vldespachar[$j]);
+            $entity->setUsuario($usuario);
+            
             $em->persist($entity);
             $em->flush();
             
            
-            $voldisp=$vldisponible[$j]-$vldespachar[$j];
+            $voldisp=(int)$vldisponible[$j]-(int)$vldespachar[$j];
             
+             //echo $vldisponible[$j] . " ".$vldespachar[$j]." ".(string)$voldisp." Posicion=".(string)$j;
+             //echo chr(13).implode("->",$vldisponible);
+             //echo chr(13).implode("<-",$vldespachar);
+            //echo voldisp;
               //Cambiando estado a los frascos q no les queda volumen
             if($voldisp==0){
+                
             $nuevoestado = $em->getRepository('siblhmantenimientoBundle:BlhEstado')->find(16);
             $frascop->setIdEstado($nuevoestado);
+            $frascop->setUsuario($usuario);
             $em->persist($frascop);
             $em->flush();
            /* $idestado= $frascosr->getidEstado();

@@ -18,6 +18,7 @@ class BlhFrascoRecolectadoFrascoPType extends AbstractType
             ->add('volumenAgregado')
             ->add('idFrascoRecolectado')
             ->add('idFrascoProcesado')
+			->add('usuario')
         ;
     }
     

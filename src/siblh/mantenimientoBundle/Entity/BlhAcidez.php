@@ -65,6 +65,13 @@ class BlhAcidez
     private $mediaAcidez;
 
     /**
+     * @var integer
+     *
+     * @ORM\Column(name="usuario", type="integer", nullable=true)
+     */
+    private $usuario;
+
+    /**
      * @var \BlhFrascoRecolectado
      *
      * @ORM\ManyToOne(targetEntity="BlhFrascoRecolectado")
@@ -222,6 +229,28 @@ class BlhAcidez
     public function getMediaAcidez()
     {
         return $this->mediaAcidez;
+    }
+     /**
+     * Set usuario
+     *
+     * @param integer $usuario
+     * @return BlhAcidez
+     */
+    public function setUsuario($usuario)
+    {
+        $this->usuario = $usuario;
+    
+        return $this;
+    }
+
+    /**
+     * Get usuario
+     *
+     * @return integer 
+     */
+    public function getUsuario()
+    {
+        return $this->usuario;
     }
 
     /**

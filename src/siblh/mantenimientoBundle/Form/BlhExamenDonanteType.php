@@ -18,6 +18,7 @@ class BlhExamenDonanteType extends AbstractType
             ->add('resultadoExamen')
             ->add('idDonante')
             ->add('idExamen')
+			->add('usuario')
         ;
     }
     

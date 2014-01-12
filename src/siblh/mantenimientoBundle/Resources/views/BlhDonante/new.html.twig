@@ -63,7 +63,7 @@
         {{ form_label(form.tipoColecta) }} {{ form_errors(form.tipoColecta) }}</td><td align = "left" >
         {{ form_widget(form.tipoColecta) }} </td>
    <td align = "left"><font color="red" >*</font> 
-        {{ form_label(form.idMunicipio) }} {{ form_errors(form.idMunicipio) }}</td><td align = "left">
+        {{ form_label(form.idMunicipio,'Municipio') }} {{ form_errors(form.idMunicipio) }}</td><td align = "left">
         {{ form_widget(form.idMunicipio,  { 'attr': {'required': 'true'} }) }} </td></tr><tr><td height=10  ></td></tr>
    <tr><td align = "left">     
         {{ form_label(form.registro) }} {{ form_errors(form.registro) }}</td><td align = "left">     
@@ -79,11 +79,12 @@
     <tr><td align = "right" colspan = 2><font color="red">*</font> 
         {{ form_label(form.observaciones) }} {{ form_errors(form.observaciones) }}</td><td align = "left" colspan = 2 > 
         {{ form_widget(form.observaciones,  { 'attr': {'size': '50'} }) }} </td></tr>
-    <tr><td height=10  ></td></tr>   
+    <tr>
+	<td style="visibility:hidden">{{ form_widget(form.usuario, {'attr':{ 'value' : user_ID }}) }} </td>
+	<td height=10  ></td></tr>   
     <tr><td align = "left" colspan = '4'><font color="red" size = "2" face = "Comic Sans MS">* Campos requeridos</font></td><tr>
     <tr><td colspan = '4' align = 'center'>
     <input type="submit" id= "boton" value="Guardar"/></td></tr>
-    </tr>
     </table>
     
     {#<table align = "center">

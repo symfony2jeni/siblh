@@ -3,7 +3,8 @@ $(document).ready(function() {
    
     tableToGrid("#listado_crematocrito", {
         pager : '#pagerCrematocrito',
-        rowNum:10, 
+        rowNum:10,
+	rownumbers: true, 
         gridview: true, 
         height:'100%',
         //width:1400,
@@ -19,7 +20,7 @@ $(document).ready(function() {
         ],
        
     });
-    jQuery("#listado_crematocrito").jqGrid('sortGrid',"Crema&nbsp;1(ml)",true);
+    jQuery("#listado_crematocrito").jqGrid('sortGrid',"Frasco",true);
     jQuery("#listado_crematocrito").jqGrid('navGrid','#pagerCrematocrito', {
         edit:false, 
         add:false, 

@@ -22,23 +22,24 @@ class BlhReceptorType extends AbstractType
                             'attr' => array('class' => 'date')))
             ->add('procedencia')
 
-            ->add('estadoReceptor', 'choice', 
-                    array('choices' => array('' => 'Seleccione un valor','Activo' => 'Activo',
-                          'Egreso' => 'Egreso')))
+            ->add('estadoReceptor')
             ->add('edadDias', 'text')
             ->add('pesoReceptor')
              ->add('duracionCpap', 'text')
             ->add('clasificacionLubchengo')
              ->add('diagnosticoIngreso','textarea',array('max_length'=>'50'))
             ->add('duracionNpt', 'text')
-            ->add('apgar', 'text')
+            ->add('apgarPrimerMinuto', 'text')
             ->add('edadGestFur')
             ->add('duracionVentilacion', 'text')
             ->add('edadGestBallard')
             ->add('pc')
             ->add('tallaIngreso')
-            ->add('idBancoDeLeche')
+            ->add('apgarQuintoMinuto', 'text')
+            ->add('usuario')
+                     ->add('idBancoDeLeche')
             ->add('idPaciente')
+			->add('usuario')
         ;
     }
     

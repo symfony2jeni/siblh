@@ -35,6 +35,7 @@ class BlhInformacionPublicaType extends AbstractType
             ->add('idBancoDeLeche',null,array(
                'required' => true))
             ->add('file')
+			->add('usuario')
         ;
     }
     

@@ -64,6 +64,8 @@ class BlhTemperaturaEnfriamientoController extends Controller
     public function createAction(Request $request)
     {
         $entity = new BlhTemperaturaEnfriamiento();
+		$usuario = $this->container->get('security.context')->getToken()->getUser()->getId();
+        $entity->setUsuario($usuario);
         $form = $this->createCreateForm($entity);
         $form->handleRequest($request);
 
@@ -191,7 +193,8 @@ class BlhTemperaturaEnfriamientoController extends Controller
         $em = $this->getDoctrine()->getManager();
 
         $entity = $em->getRepository('siblhmantenimientoBundle:BlhTemperaturaEnfriamiento')->find($id);
-
+		$usuario = $this->container->get('security.context')->getToken()->getUser()->getId();
+        $entity->setUsuario($usuario);
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find BlhTemperaturaEnfriamiento entity.');
         }

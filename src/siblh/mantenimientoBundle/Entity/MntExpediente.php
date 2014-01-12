@@ -30,16 +30,6 @@ class MntExpediente
     private $numero;
 
     /**
-     * @var \MntPaciente
-     *
-     * @ORM\ManyToOne(targetEntity="MntPaciente")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="id_paciente", referencedColumnName="id")
-     * })
-     */
-    private $idPaciente;
-
-    /**
      * @var \CtlEstablecimiento
      *
      * @ORM\ManyToOne(targetEntity="CtlEstablecimiento")
@@ -48,6 +38,16 @@ class MntExpediente
      * })
      */
     private $idEstablecimiento;
+
+    /**
+     * @var \MntPaciente
+     *
+     * @ORM\ManyToOne(targetEntity="MntPaciente")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_paciente", referencedColumnName="id")
+     * })
+     */
+    private $idPaciente;
 
 
 
@@ -85,29 +85,6 @@ class MntExpediente
     }
 
     /**
-     * Set idPaciente
-     *
-     * @param \siblh\mantenimientoBundle\Entity\MntPaciente $idPaciente
-     * @return MntExpediente
-     */
-    public function setIdPaciente(\siblh\mantenimientoBundle\Entity\MntPaciente $idPaciente = null)
-    {
-        $this->idPaciente = $idPaciente;
-    
-        return $this;
-    }
-
-    /**
-     * Get idPaciente
-     *
-     * @return \siblh\mantenimientoBundle\Entity\MntPaciente 
-     */
-    public function getIdPaciente()
-    {
-        return $this->idPaciente;
-    }
-
-    /**
      * Set idEstablecimiento
      *
      * @param \siblh\mantenimientoBundle\Entity\CtlEstablecimiento $idEstablecimiento
@@ -128,5 +105,28 @@ class MntExpediente
     public function getIdEstablecimiento()
     {
         return $this->idEstablecimiento;
+    }
+
+    /**
+     * Set idPaciente
+     *
+     * @param \siblh\mantenimientoBundle\Entity\MntPaciente $idPaciente
+     * @return MntExpediente
+     */
+    public function setIdPaciente(\siblh\mantenimientoBundle\Entity\MntPaciente $idPaciente = null)
+    {
+        $this->idPaciente = $idPaciente;
+    
+        return $this;
+    }
+
+    /**
+     * Get idPaciente
+     *
+     * @return \siblh\mantenimientoBundle\Entity\MntPaciente 
+     */
+    public function getIdPaciente()
+    {
+        return $this->idPaciente;
     }
 }

@@ -1,0 +1,41 @@
+{% extends 'siblhmantenimientoBundle::plantilla.html.twig' %}
+{% block javascripts %}
+
+{{parent()}}
+
+<script type="text/javascript" src="{{ asset('bundles/siblhmantenimiento/js/BlhHistorialClinico/show.js') }}" ></script>
+       
+{% endblock %}
+
+{% block body -%}
+<style type="text/css">
+table#teft table {display: block; padding: 5px; border: 3px solid black; border-top: 1; -moz-border-radius: 10px 10px 10px 10px; color:"#2e6e9e"}
+th {
+font-family: verdana,arial,helvetica,sans-serif;
+color: #000000;
+font-weight: bold;
+border-style: solid;
+border-width: 1px;
+size: 2px;
+background-color: #2b8dd6;
+}
+td {
+font-family: verdana,arial,helvetica,sans-serif;}
+    </style>
+    <h1>Personal Registrado</h1>
+
+   <table id = "left" border = "1"  align = "center" bordercolor="#2e6e9e" >
+        <tbody>         
+                <tr>
+                <th>Nombre</th>
+                <td>{{ entity.nombre }}</td></tr>
+        </tbody>
+    </table>
+
+        <table  align = "center" >
+         <tr><td height=10  ></td></tr> 
+         <tr><td height=10  ></td></tr> 
+         <tr><td><input id = "boton1" type="button" value="Registrar Nuevo" onClick=' window.location.href="{{ path('_NewPersonal') }}" '>
+</td></tr>
+    </table>
+{% endblock %}

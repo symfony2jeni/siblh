@@ -45,6 +45,8 @@ class BlhFrascoRecolectadoFrascoPController extends Controller
     public function createAction(Request $request)
     {
         $entity = new BlhFrascoRecolectadoFrascoP();
+		$usuario = $this->container->get('security.context')->getToken()->getUser()->getId();
+        $entity->setUsuario($usuario);
         $form = $this->createCreateForm($entity);
         $form->handleRequest($request);
 
@@ -91,11 +93,14 @@ class BlhFrascoRecolectadoFrascoPController extends Controller
     public function newAction()
     {
         $entity = new BlhFrascoRecolectadoFrascoP();
+	   $user_ID = $this->container->get('security.context')->getToken()->getUser()->getId();
+
         $form   = $this->createCreateForm($entity);
 
         return array(
             'entity' => $entity,
             'form'   => $form->createView(),
+			'user_ID' => $user_ID,
         );
     }
 
@@ -134,6 +139,7 @@ class BlhFrascoRecolectadoFrascoPController extends Controller
     public function editAction($id)
     {
         $em = $this->getDoctrine()->getManager();
+	   $user_ID = $this->container->get('security.context')->getToken()->getUser()->getId();
 
         $entity = $em->getRepository('siblhmantenimientoBundle:BlhFrascoRecolectadoFrascoP')->find($id);
 
@@ -148,6 +154,7 @@ class BlhFrascoRecolectadoFrascoPController extends Controller
             'entity'      => $entity,
             'edit_form'   => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
+			'user_ID' => $user_ID,
         );
     }
 
@@ -181,7 +188,8 @@ class BlhFrascoRecolectadoFrascoPController extends Controller
         $em = $this->getDoctrine()->getManager();
 
         $entity = $em->getRepository('siblhmantenimientoBundle:BlhFrascoRecolectadoFrascoP')->find($id);
-
+		$usuario = $this->container->get('security.context')->getToken()->getUser()->getId();
+        $entity->setUsuario($usuario);
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find BlhFrascoRecolectadoFrascoP entity.');
         }

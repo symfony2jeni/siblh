@@ -37,6 +37,13 @@ class BlhMenu
      */
     private $descripcionMenu;
 
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="usuario", type="integer", nullable=true)
+     */
+    private $usuario;
+
 
 
     /**
@@ -93,5 +100,28 @@ class BlhMenu
     public function getDescripcionMenu()
     {
         return $this->descripcionMenu;
+    }
+
+    /**
+     * Set usuario
+     *
+     * @param integer $usuario
+     * @return BlhMenu
+     */
+    public function setUsuario($usuario)
+    {
+        $this->usuario = $usuario;
+    
+        return $this;
+    }
+
+    /**
+     * Get usuario
+     *
+     * @return integer 
+     */
+    public function getUsuario()
+    {
+        return $this->usuario;
     }
 }

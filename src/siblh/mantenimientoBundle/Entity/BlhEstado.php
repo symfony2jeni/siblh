@@ -28,6 +28,13 @@ class BlhEstado
      * @ORM\Column(name="nombre_estado", type="string", length=13, nullable=false)
      */
     private $nombreEstado;
+    
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="usuario", type="integer", nullable=true)
+     */
+    private $usuario;
 
 
 
@@ -63,8 +70,30 @@ class BlhEstado
     {
         return $this->nombreEstado;
     }
-  
-     public function __toString()
+
+    /**
+     * Set usuario
+     *
+     * @param integer $usuario
+     * @return BlhEstado
+     */
+    public function setUsuario($usuario)
+    {
+        $this->usuario = $usuario;
+    
+        return $this;
+    }
+
+    /**
+     * Get usuario
+     *
+     * @return integer 
+     */
+    public function getUsuario()
+    {
+        return $this->usuario;
+    }
+  public function __toString()
     {
        return $this->nombreEstado;
     }

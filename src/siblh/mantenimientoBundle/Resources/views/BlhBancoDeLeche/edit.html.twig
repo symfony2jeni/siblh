@@ -22,10 +22,11 @@
    <tr><td  align = "left" height=10  ></td></tr>
    <tr><td align='left'><font color="red">*</font>{{ form_label(edit_form.estadoBanco) }}</td><td align='left'>{{ form_widget(edit_form.estadoBanco) }}</td></tr>
    <tr><td  align = "left" height=10  ></td></tr>
-   <tr><td align='left'><font color="red">*</font>{{ form_label(edit_form.idEstablecimiento) }}</td><td align='left'>{{ form_widget(edit_form.idEstablecimiento) }}</td></tr>
+   <tr><td align='left'><font color="red">*</font>{{ form_label(edit_form.idEstablecimiento, 'Establecimiento') }}</td><td align='left'>{{ form_widget(edit_form.idEstablecimiento) }}</td></tr>
    <tr><td  align = "left" height=10  ></td></tr>
    <tr><td align = "left"><font color="red" size = "2" face = "Comic Sans MS">* Campos requeridos</font></td> </tr>     
    <tr><td colspan = '2' align = 'center'>  <input id= "button" type="submit" value="Actualizar"/>
+   <td style="visibility:hidden">{{ form_widget(edit_form.usuario, {'attr':{ 'value' : user_ID }}) }} </td>
    <input id = "boton" type="button" value="Regresar" onClick=' window.location.href="{{ path('blhbancodeleche') }}" '></td></tr>
 
     

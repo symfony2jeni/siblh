@@ -15,7 +15,7 @@
 {% block body -%}
     <h1>Despacho grupos de solicitudes</h1>
 <FORM method="POST" action="{{path("frascosprocesados_solicitudes")}}">
- 
+ <input type = "hidden" id="suma_aux" value = "0"/>
  {%set volumentotal = volumentotal%}    
  {#{%set tamanio1 = total_volumen | length%}     
  {%set volumentotal = 0%}      
@@ -24,17 +24,17 @@
     {% set volumentotal = volumentotal+total_volumen[i].volumen%}   
      {% endfor %}#}
     
-<table align = "center" width = "70%" border=1 >
+<table align = "center" width = "70%"  >
 
 <tr>
-       <td width=10 align = "right"><b>Grupo</b></td>
+       <td width=10 align = "left"><b>Grupo</b></td>
                 <td width = "120" align = "left">
                 <INPUT type=text STYLE="text-align:center" name="nombre" disabled="disabled" size=25 readonly="readonly" value= "{{ grupo.codigoGrupoSolicitud}}">
                </td>
                
-        <td width=10 align = "right"><b>Total Volumen a despachar(ml)</b></td>
+        <td width=10 align = "left"><b>Total Volumen a despachar(ml)</b></td>
                 <td width = "120" align = "left">
-                <INPUT type=text STYLE="text-align:center" name="nombre" disabled="disabled" size=25 readonly="readonly" value= "{{ volumentotal[0].total}}">
+                <INPUT type=text STYLE="text-align:center" name="nombre" id ="vol_despachar" disabled="disabled" size=25 readonly="readonly" value= "{{ volumentotal[0].total|number_format(2, '.', ',')}}">
                </td>
                                 
        </tr>
@@ -64,28 +64,37 @@
                 <INPUT type=text STYLE="text-align:center" name="nombre" disabled="disabled" size=25 readonly="readonly" value= "{{ solicitudes_grupo[i].caloriasNecesarias}}">
                </td>
       </tr>
+         
+ 
     {%endfor%}
       
  </table>
+    
+    <table align=center>
+         <tr>
+          {% for i in 0 ..(cantidad_solicitudes-1)%}
+          <td width = "120" align = "left">
+              <INPUT type=text STYLE="visibility:hidden" name="ids_solicitudes[]" disabled="disabled" size=25 readonly="readonly" value= "{{ solicitudes_grupo[i].id}}">
+          </td>
+          {%endfor%}
+      </tr>
+        </table>
     <p>
     <p>
    {%set frascosp = frascosp%}    
    {%set tamanio = frascosp | length%}      
-    {%set volumen_despachado = volumen_despachado%}    
+  {#  {%set volumen_despachado = volumen_despachado%} #}   
  
 {% if tamanio != 0 %}                       
  <table border=1 align = "center" bordercolor="#2e6e9e"  >
      <thead>
             <tr bgcolor="#2b8dd6">
+                <th style="visibility:hidden">id</th>
                 <th>Select</th>
-                <th>id</th>
                 <th>Código frasco</th>
                 <th>Acidez</th>
                 <th>Calorias</th>
-                <th>Volumen total</th>
                 <th>Observacion</th>
-                <th>idDespachado</th>
-                <th>Despachado</th>
                 <th>Volumen disponible</th>
                 <th>Volumen a despachar</th>                
             </tr>
@@ -94,17 +103,14 @@
             
         {% for i in 0 ..(tamanio-1)%}
                 <tr>
-              <td><input type="checkbox" name="idsdespachar[]" id="idsdespachar_{{ frascosp[i].id}}" value="{{ frascosp[i].id}}"/></td>
-               <td>{{ frascosp[i].id}}</td>
-                <td>{{ frascosp[i].codigoFrascoProcesado}}</td>
-                <td>{{ frascosp[i].acidezTotal }}</td>                      
-                <td>{{frascosp[i].kcaloriasTotales}}</td>
-                <td>{{ frascosp[i].volumenFrascoPasteurizado }}</td>  
-                <td>{{ frascosp[i].observacionFrascoProcesado }}</td>                  
-                <td>{{volumen_despachado[i].idp}}</td>
-                <td><input type=text value = "{{ volumen_despachado[i].despachado }}"/> </td>  
-                 <td><input name='vldisponible[]' id= "vldisponible_{{ frascosp[i].id}}"  type=text value ="{{vldisponible[i]}}"  /> </td>  
-                <td><input name="vldespachar[]" id="vldespachar_{{volumen_despachado[i].idp}}"  type=text/></td>   
+                <td style="visibility:hidden">{{ frascosp[i][0]}}</td>
+              <td><input type="checkbox" name="idsdespachar[]" id="idsdespachar_{{ frascosp[i][0]}}" value="{{ frascosp[i][0]}}"/></td>
+                <td>{{ frascosp[i][1]}}</td>
+                <td>{{ frascosp[i][2] }}</td>                      
+                <td>{{frascosp[i][3]}}</td>
+                <td>{{ frascosp[i][4]}}</td>                  
+                 <td><input name="vldisponible[]" id= "vldisponible_{{frascosp[i][0]}}"  type=text value ="{{frascosp[i][5]|number_format(2, '.', ',')}}" disabled=disabled STYLE="text-align:center"/> </td>  
+                <td><input name="vldespachar[]" id="vldespachar_{{frascosp[i][0]}}"  type=text value="0" onkeypress='javascript:return isNumberKey(event);'/></td>   
                 </tr>
         {% endfor %}
           
@@ -113,10 +119,10 @@
     </table>
     
     
-   <table align = "center" width = "70%" border=1> 
+   <table align = "center" width = "70%" > 
         
   <tr><td style="visibility:hidden"><INPUT  name="grupo" id="grupo" type=text value="{{grupo.id}}" size=10 ></td></tr>      
- <td align= 'center'><INPUT  id='lote' name="Despachar" type=submit title="Despachar" value="Despachar"></td>
+ <td align= 'center'><INPUT  id='lote' name="Despachar" type=submit title="Despachar" value="Despachar"><input id = "boton" type="button" value="Regresar" onClick=' window.location.href="{{ path('_NewDespacho' )}}"'></td>
 
 </table>
 {%endif%}
@@ -125,25 +131,26 @@
      
     <table table border=1 align = "center" bordercolor="#2e6e9e"   >
         <thead>
-            <tr bgcolor="#2b8dd6">
-                <th>box</th>
-                <th>id</th>
-                <th>Código&nbsp;frasco</th>
+              <tr bgcolor="#2b8dd6">
+                <th style="visibility:hidden">id</th>
+                <th>Select</th>
+                <th>Código frasco</th>
                 <th>Acidez</th>
                 <th>Calorias</th>
-                <th>Volumen&nbsp;total</th>
                 <th>Observacion</th>
-                <th>Agregado</th>
-                <th>Volumen&nbsp;Disponible</th>
-                <th>Volumen&nbsp;a&nbsp;despachar</th>                
+                <th>Volumen disponible</th>
+                <th>Volumen a despachar</th>                
             </tr>
             </thead>
-                <tbody>
-                <tr>
-                 <td>No existen frascos para despacho</td>   
-                </tr>
+            <tbody>
+                <tr style="visibility:hidden"><td align = "right" height=40  ></td></tr>
                 </tbody>
+
     </table>     
+    <table  align='center'>
+              <tr><td align = "right" height=40  ></td></tr>
+              <tr><td><input id = "boton" type="button" value="Regresar" onClick=' window.location.href="{{ path('_NewDespacho' )}}"'></td></tr>
+    </table>  
                 
                         
          

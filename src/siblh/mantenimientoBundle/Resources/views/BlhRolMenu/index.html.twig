@@ -7,6 +7,7 @@
         <thead>
             <tr>
                 <th>Id</th>
+                <th>Usuario</th>
                 <th>Actions</th>
             </tr>
         </thead>
@@ -14,6 +15,7 @@
         {% for entity in entities %}
             <tr>
                 <td><a href="{{ path('blhrolmenu_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
+                <td>{{ entity.usuario }}</td>
                 <td>
                 <ul>
                     <li>

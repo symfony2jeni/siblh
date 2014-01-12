@@ -25,7 +25,7 @@ class BlhFrascoProcesado
     /**
      * @var string
      *
-     * @ORM\Column(name="codigo_frasco_procesado", type="string", length=15, nullable=false)
+     * @ORM\Column(name="codigo_frasco_procesado", type="string", length=15, nullable=true)
      */
     private $codigoFrascoProcesado;
 
@@ -56,6 +56,20 @@ class BlhFrascoProcesado
      * @ORM\Column(name="observacion_frasco_procesado", type="string", length=150, nullable=true)
      */
     private $observacionFrascoProcesado;
+
+    /**
+     * @var float
+     *
+     * @ORM\Column(name="volumen_disponible_fp", type="decimal", nullable=true)
+     */
+    private $volumenDisponibleFp;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="usuario", type="integer", nullable=true)
+     */
+    private $usuario;
 
     /**
      * @var \BlhEstado
@@ -205,6 +219,52 @@ class BlhFrascoProcesado
     }
 
     /**
+     * Set volumenDisponibleFp
+     *
+     * @param float $volumenDisponibleFp
+     * @return BlhFrascoProcesado
+     */
+    public function setVolumenDisponibleFp($volumenDisponibleFp)
+    {
+        $this->volumenDisponibleFp = $volumenDisponibleFp;
+    
+        return $this;
+    }
+
+    /**
+     * Get volumenDisponibleFp
+     *
+     * @return float 
+     */
+    public function getVolumenDisponibleFp()
+    {
+        return $this->volumenDisponibleFp;
+    }
+
+    /**
+     * Set usuario
+     *
+     * @param integer $usuario
+     * @return BlhFrascoProcesado
+     */
+    public function setUsuario($usuario)
+    {
+        $this->usuario = $usuario;
+    
+        return $this;
+    }
+
+    /**
+     * Get usuario
+     *
+     * @return integer 
+     */
+    public function getUsuario()
+    {
+        return $this->usuario;
+    }
+
+    /**
      * Set idEstado
      *
      * @param \siblh\mantenimientoBundle\Entity\BlhEstado $idEstado
@@ -252,6 +312,6 @@ class BlhFrascoProcesado
     
      public function __toString()
     {
-       return $this->codigoFrascoProcesado;
+       return $this->volumenFrascoPasteurizado;
     }
 }

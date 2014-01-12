@@ -3,7 +3,7 @@
 
 {% block stylesheets %}
     {{ parent() }}
-	<link href="{{ asset('bundles/siblhmantenimiento/css/form.css') }}" rel="stylesheet" type="text/css" />
+        <link href="{{ asset('bundles/siblhmantenimiento/css/form.css') }}" rel="stylesheet" type="text/css" />
  
 {% endblock %}
 
@@ -42,13 +42,22 @@
     <tr><td align='left'><font color="red">*</font>{{form_label(edit_form.acidezNecesaria,'Acidez Dornic') }}</td><td>{{form_widget(edit_form.acidezNecesaria) }}</td></tr>
     <tr><td colspan=2 align = "right" height=10  ></td></tr>
     <tr><td align='left'>{{form_label(edit_form.volumenPorDia,'Volumen total por día (ml)') }}</td><td>{{form_widget(edit_form.volumenPorDia, {'attr':{ 'readonly': 'true' } }) }}</td></tr>
-    <tr><td colspan=2 align = "right" height=10  ></td></tr>
-    <tr><td align='left'>{{ form_label(edit_form.responsable) }}</td><td>{{ form_widget(edit_form.responsable) }}</td></tr>
+    <tr>
+	<td style="visibility:hidden">{{ form_widget(edit_form.usuario, {'attr':{ 'value' : user_ID }}) }} </td>
+	<td colspan=2 align = "right" height=10  ></td></tr>
+    <tr><td align = "left"><font color="red" >*</font><b><font face="Verdana,Arial,Helvetica,sans-serif" ><i>Responsable</i></font></b></td>
+        <td align = "left"> 
+            <select name="responsable" id = "responsable" > 
+        <option value= ""></option>
+        {% for responsable in responsable%}        
+        <option value= "{{ responsable.nombre }}">{{ responsable.nombre }} </option>
+          {% endfor %}</select> </td></tr>
     <tr><td colspan=2 align = "right" height=10  ></td></tr>
     <tr><td align='left'><font color="red">*</font>{{ form_label(edit_form.estado) }}</td><td>{{ form_widget(edit_form.estado) }}</td></tr>
     <tr><td colspan=2 align = "right" height=10  ></td></tr>
     <tr><td align='left' style="visibility:hidden">{{ form_label(edit_form.idReceptor) }}</td><td style="visibility:hidden">{{ form_widget(edit_form.idReceptor) }}</td></tr>
     <tr><td colspan=2 align = "right" height=10  ></td></tr>
+     <tr style="visibility:hidden"><td align='left'>{{ form_label(edit_form.responsable) }}</td><td>{{ form_widget(edit_form.responsable) }}</td></tr>
 
 </table>
     <table align = "center" width=50%>

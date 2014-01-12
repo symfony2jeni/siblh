@@ -21,6 +21,7 @@ class BlhAnalisisSensorialType extends AbstractType
             ->add('flavor', 'choice',array('choices' => array('' => 'Seleccione un valor','Aprobado' => 'Aprobado','Reprobado' => 'Reprobado','NR' => 'No realizado')))
             ->add('observacion','textarea',array('max_length'=>'150'))
             ->add('idFrascoRecolectado')
+			->add('usuario')
         ;
     }
     

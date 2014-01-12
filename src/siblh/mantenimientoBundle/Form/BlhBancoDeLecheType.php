@@ -20,6 +20,7 @@ class BlhBancoDeLecheType extends AbstractType
                     array('choices' => array ('' => 'Seleccione un valor', 
                         'Activo' => 'Activo', 'Inactivo'=> 'Inactivo')))
             ->add('idEstablecimiento')
+			->add('usuario')
         ;
     }
     

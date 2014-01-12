@@ -51,6 +51,13 @@ class BlhAnalisisMicrobiologico
     private $situacion;
 
     /**
+     * @var integer
+     *
+     * @ORM\Column(name="usuario", type="integer", nullable=true)
+     */
+    private $usuario;
+
+    /**
      * @var \BlhFrascoProcesado
      *
      * @ORM\ManyToOne(targetEntity="BlhFrascoProcesado")
@@ -162,6 +169,29 @@ class BlhAnalisisMicrobiologico
     public function getSituacion()
     {
         return $this->situacion;
+    }
+    
+     /**
+     * Set usuario
+     *
+     * @param integer $usuario
+     * @return BlhAnalisisMicrobiologico
+     */
+    public function setUsuario($usuario)
+    {
+        $this->usuario = $usuario;
+    
+        return $this;
+    }
+
+    /**
+     * Get usuario
+     *
+     * @return integer 
+     */
+    public function getUsuario()
+    {
+        return $this->usuario;
     }
 
     /**

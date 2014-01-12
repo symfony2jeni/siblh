@@ -62,6 +62,8 @@ class BlhFrascoRecolectadoController extends Controller
     public function createAction(Request $request)
     {
         $entity = new BlhFrascoRecolectado();
+		$usuario = $this->container->get('security.context')->getToken()->getUser()->getId();
+        $entity->setUsuario($usuario);		
         $form = $this->createCreateForm($entity);
         $form->handleRequest($request);
 
@@ -158,6 +160,7 @@ class BlhFrascoRecolectadoController extends Controller
     public function editAction($id)
     {
         $em = $this->getDoctrine()->getManager();
+	   $user_ID = $this->container->get('security.context')->getToken()->getUser()->getId();
 
         $entity = $em->getRepository('siblhmantenimientoBundle:BlhFrascoRecolectado')->find($id);
         //Obtener banco de leche//
@@ -181,6 +184,7 @@ class BlhFrascoRecolectadoController extends Controller
             'edit_form'   => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
             'hospital' => $establecimiento, 
+			'user_ID' => $user_ID,
         );
     }
 
@@ -214,7 +218,8 @@ class BlhFrascoRecolectadoController extends Controller
         $em = $this->getDoctrine()->getManager();
 
         $entity = $em->getRepository('siblhmantenimientoBundle:BlhFrascoRecolectado')->find($id);
-
+		$usuario = $this->container->get('security.context')->getToken()->getUser()->getId();
+        $entity->setUsuario($usuario);
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find BlhFrascoRecolectado entity.');
         }
@@ -302,7 +307,7 @@ class BlhFrascoRecolectadoController extends Controller
         $codigo=$id_blh[0]['id']; 
         //Obteniendo lista de pacientes que son receptores y que estan en estado "Activo"  
         $query = $em->createQuery("SELECT r.id, r.fechaDonacion, r.responsableDonacion, p.id as identificador, p.primerNombre as nombre1, p.segundoNombre as nombre2, p.primerApellido as apellido1, p.segundoApellido as apellido2, p.codigoDonante as codigo FROM siblhmantenimientoBundle:BlhDonacion r JOIN r.idDonante p
-            where p.idBancoDeLeche = $codigo");
+            where p.idBancoDeLeche = $codigo and r.fechaDonacion=current_date()");
         
         $donaciones_donantes  = $query->getResult();
         //Obtener banco de leche//
@@ -326,6 +331,7 @@ class BlhFrascoRecolectadoController extends Controller
     public function newAction($id)
     {
          $em = $this->getDoctrine()->getManager();
+	   $user_ID = $this->container->get('security.context')->getToken()->getUser()->getId();
         
         $query = $em->createQuery("SELECT r.id, r.fechaDonacion, r.responsableDonacion, p.id as identificador, p.codigoDonante as codigo_donante, p.primerNombre as nombre1, p.segundoNombre as nombre2, p.primerApellido as apellido1, p.segundoApellido as apellido2 FROM siblhmantenimientoBundle:BlhDonacion r JOIN r.idDonante p  WHERE r.id = $id "); 
         $datos_donacion  = $query->getResult();
@@ -368,6 +374,7 @@ class BlhFrascoRecolectadoController extends Controller
             'form'   => $form->createView(),
             'datos_donacion' =>  $datos_donacion,  
             'hospital' => $establecimiento,
+			'user_ID' => $user_ID,
         );
     }
     

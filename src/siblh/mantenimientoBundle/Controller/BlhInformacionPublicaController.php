@@ -50,6 +50,8 @@ class BlhInformacionPublicaController extends Controller
     public function createAction(Request $request)
     {
         $entity = new BlhInformacionPublica();
+		$usuario = $this->container->get('security.context')->getToken()->getUser()->getId();
+        $entity->setUsuario($usuario);
         $form = $this->createCreateForm($entity);
         $form->handleRequest($request);
 
@@ -100,7 +102,8 @@ class BlhInformacionPublicaController extends Controller
       $userEst = $this->container->get('security.context')->getToken()->getUser()->getIdEst();
       $query1 = $em->createQuery("SELECT e.nombre, e.direccion, e.telefono FROM siblhmantenimientoBundle:CtlEstablecimiento e WHERE e.id = $userEst");
       $establecimiento = $query1->getResult(); 
-      
+      	   $user_ID = $this->container->get('security.context')->getToken()->getUser()->getId();
+
       //seteando el banco de leche al nuevo objeto//
        $queryi = $em->createQuery("SELECT b.id FROM siblhmantenimientoBundle:BlhBancoDeLeche b WHERE b.idEstablecimiento = $userEst");
        $id_blh = $queryi->getResult(); 
@@ -116,6 +119,7 @@ class BlhInformacionPublicaController extends Controller
             'entity' => $entity,
             'form'   => $form->createView(),
             'hospital' => $establecimiento,
+			'user_ID' => $user_ID,
         );
     }
 
@@ -137,8 +141,14 @@ class BlhInformacionPublicaController extends Controller
         }
 
         $deleteForm = $this->createDeleteForm($id);
+         //Obtener banco de leche//
+        
+      $userEst = $this->container->get('security.context')->getToken()->getUser()->getIdEst();
+      $query1 = $em->createQuery("SELECT e.nombre, e.direccion, e.telefono FROM siblhmantenimientoBundle:CtlEstablecimiento e WHERE e.id = $userEst");
+      $establecimiento = $query1->getResult(); 
 
         return array(
+            'hospital' => $establecimiento,
             'entity'      => $entity,
             'delete_form' => $deleteForm->createView(),
         );
@@ -154,6 +164,7 @@ class BlhInformacionPublicaController extends Controller
     public function editAction($id)
     {
         $em = $this->getDoctrine()->getManager();
+	   $user_ID = $this->container->get('security.context')->getToken()->getUser()->getId();
 
         $entity = $em->getRepository('siblhmantenimientoBundle:BlhInformacionPublica')->find($id);
 
@@ -174,6 +185,8 @@ class BlhInformacionPublicaController extends Controller
             'edit_form'   => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
             'hospital' => $establecimiento,
+			'user_ID' => $user_ID,
+
         );
     }
 
@@ -207,7 +220,8 @@ class BlhInformacionPublicaController extends Controller
         $em = $this->getDoctrine()->getManager();
 
         $entity = $em->getRepository('siblhmantenimientoBundle:BlhInformacionPublica')->find($id);
-
+		$usuario = $this->container->get('security.context')->getToken()->getUser()->getId();
+        $entity->setUsuario($usuario);
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find BlhInformacionPublica entity.');
         }

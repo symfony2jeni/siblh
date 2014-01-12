@@ -20,8 +20,11 @@ class BlhFrascoProcesadoType extends AbstractType
             //->add('acidezTotal')
             //->add('kcaloriasTotales')
             ->add('observacionFrascoProcesado', 'textarea')
-            ->add('idEstado')
+          //  ->add('volumenDisponibleFp')
+          //  ->add('usuario')
+             ->add('idEstado')
             ->add('idPasteurizacion')
+			->add('usuario')
         ;
     }
     

@@ -4,14 +4,14 @@
     <id name="id" type="integer" column="id">
       <generator strategy="SEQUENCE"/>
     </id>
-    <many-to-one field="group" target-entity="FosUserUser">
-      <join-columns>
-        <join-column name="group_id" referenced-column-name="id"/>
-      </join-columns>
-    </many-to-one>
     <many-to-one field="user" target-entity="FosUserGroup">
       <join-columns>
         <join-column name="user_id" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="group" target-entity="FosUserUser">
+      <join-columns>
+        <join-column name="group_id" referenced-column-name="id"/>
       </join-columns>
     </many-to-one>
   </entity>

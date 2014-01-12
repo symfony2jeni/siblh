@@ -65,7 +65,9 @@
       <td align='left' ><b>{{ form_label(edit_form.formulaObstetricaV, 'V') }}
                                {{ form_widget(edit_form.formulaObstetricaV,  { 'attr': {'size': '2', 'onKeyPress':"return soloNumerosEnteros(event);"} }) }}</td>
        <td align='left' ><b>{{ form_label(edit_form.formulaObstetricaM, 'M') }}
-                               {{ form_widget(edit_form.formulaObstetricaM,  { 'attr': {'size': '2', 'onKeyPress':"return soloNumerosEnteros(event);"} }) }}</td></tr>
+                               {{ form_widget(edit_form.formulaObstetricaM,  { 'attr': {'size': '2', 'onKeyPress':"return soloNumerosEnteros(event);"} }) }}</td>
+							   <td style="visibility:hidden">{{ form_widget(edit_form.usuario, {'attr':{ 'value' : user_ID }}) }} </td>
+							   </tr>
 
 
 

@@ -2,7 +2,7 @@
 
 {% block stylesheets %}
     {{ parent() }}
-	<link href="{{ asset('bundles/siblhmantenimiento/css/form.css') }}" rel="stylesheet" type="text/css" />
+        <link href="{{ asset('bundles/siblhmantenimiento/css/form.css') }}" rel="stylesheet" type="text/css" />
  
 {% endblock %}
 {% block javascripts %}
@@ -40,8 +40,11 @@
     <tr><td colspan=2 align = "right" height=10  ></td></tr>
     <tr><td align='left'>{{form_label(edit_form.kilocalorias) }}</td><td>{{form_widget(edit_form.kilocalorias, {'attr':{ 'readonly': 'true' } }) }}</td></tr>
     <tr><td colspan=2 align = "right" height=10  ></td></tr>
-    <tr><td align='left' style="visibility:hidden">{{ form_label(edit_form.idFrascoRecolectado) }}</td><td style="visibility:hidden">{{ form_widget(edit_form.idFrascoRecolectado) }}</td></tr>
-    <tr><td colspan=2 align = "right" height=10  ></td></tr>
+    <tr>
+        <td style="visibility:hidden">{{ form_widget(edit_form.usuario, {'attr':{ 'value' : user_ID }}) }} </td>
+        <td align='left' style="visibility:hidden">{{ form_label(edit_form.idFrascoRecolectado) }}</td><td style="visibility:hidden">{{ form_widget(edit_form.idFrascoRecolectado) }}</td></tr>
+    <tr>
+	<td colspan=2 align = "right" height=10  ></td></tr>
 
 </table>
     <table align = "center" width=50%>

@@ -44,6 +44,14 @@ class BlhLoteAnalisis
     private $responsableAnalisis;
 
 
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="usuario", type="integer", nullable=true)
+     */
+    private $usuario;
+
+
 
     /**
      * Get id
@@ -122,5 +130,28 @@ class BlhLoteAnalisis
     public function getResponsableAnalisis()
     {
         return $this->responsableAnalisis;
+    }
+
+    /**
+     * Set usuario
+     *
+     * @param integer $usuario
+     * @return BlhLoteAnalisis
+     */
+    public function setUsuario($usuario)
+    {
+        $this->usuario = $usuario;
+    
+        return $this;
+    }
+
+    /**
+     * Get usuario
+     *
+     * @return integer 
+     */
+    public function getUsuario()
+    {
+        return $this->usuario;
     }
 }

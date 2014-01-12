@@ -22,9 +22,12 @@ class BlhFrascoRecolectadoType extends AbstractType
                           'Mecanica' => 'Mecanica')))
             ->add('onzRecolectado')
             ->add('observacionFrascoRecolectado','textarea',array('max_length'=>'150'))
-            ->add('idEstado')
+        //    ->add('volumenDisponibleFr')
+        //    ->add('usuario')
+                        ->add('idEstado')
             ->add('idDonacion')
             ->add('idDonante')
+			->add('usuario')
           //  ->add('idLoteAnalisis')
         ;
     }

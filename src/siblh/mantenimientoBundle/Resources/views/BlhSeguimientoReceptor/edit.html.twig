@@ -2,7 +2,7 @@
 
 {% block stylesheets %}
   {{ parent() }}
-	<link href="{{ asset('bundles/siblhmantenimiento/css/form.css') }}" rel="stylesheet" type="text/css" />
+        <link href="{{ asset('bundles/siblhmantenimiento/css/form.css') }}" rel="stylesheet" type="text/css" />
         
 {% endblock %}
 
@@ -21,7 +21,9 @@
     
     <table align='center'>
         
-    <tr><td  align = "right" height=10  ></td></tr>
+    <tr>
+	<td style="visibility:hidden">{{ form_widget(edit_form.usuario, {'attr':{ 'value' : user_ID }}) }} </td>
+	<td  align = "right" height=10  ></td></tr>
 <tr>
     <tr><td align='left' ><font color="red">*</font>{{ form_label(edit_form.fechaSeguimiento,'Fecha') }}</td><td align='left'>{{ form_widget(edit_form.fechaSeguimiento, {'attr':{ 'readonly': 'true', 'title': 'Dar clic y seleccionar la fecha de seguimiento' } }) }}</td></tr>
     <tr><td align = "right" height=10  ></td></tr>

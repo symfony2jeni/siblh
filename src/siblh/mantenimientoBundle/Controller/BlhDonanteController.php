@@ -68,6 +68,8 @@ class BlhDonanteController extends Controller
     {
         
         $entity = new BlhDonante();
+		$usuario = $this->container->get('security.context')->getToken()->getUser()->getId();
+        $entity->setUsuario($usuario);
         $form = $this->createCreateForm($entity);
         $form->handleRequest($request);
 
@@ -115,7 +117,9 @@ class BlhDonanteController extends Controller
     public function newAction()
     {
         //Obtener banco de leche//
-      $em = $this->getDoctrine()->getManager();          
+      $em = $this->getDoctrine()->getManager();
+	   $user_ID = $this->container->get('security.context')->getToken()->getUser()->getId();
+	  
       $userEst = $this->container->get('security.context')->getToken()->getUser()->getIdEst();       
       $query1 = $em->createQuery("SELECT e.nombre, e.direccion, e.telefono FROM siblhmantenimientoBundle:CtlEstablecimiento e WHERE e.id = $userEst");
       $establecimiento = $query1->getResult(); 
@@ -132,6 +136,7 @@ class BlhDonanteController extends Controller
           'entity' => $entity,
           'form'   => $form->createView(),
           'hospital' => $establecimiento,
+		  'user_ID' => $user_ID,
         );
     }
 
@@ -178,6 +183,7 @@ class BlhDonanteController extends Controller
     public function editAction($id)
     {
         $em = $this->getDoctrine()->getManager();
+	   $user_ID = $this->container->get('security.context')->getToken()->getUser()->getId();
 
         $entity = $em->getRepository('siblhmantenimientoBundle:BlhDonante')->find($id);
          //Obtener banco de leche//
@@ -201,6 +207,7 @@ class BlhDonanteController extends Controller
             'edit_form'   => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
             'hospital' => $establecimiento,
+			'user_ID' => $user_ID,
         );
     }
 
@@ -236,7 +243,8 @@ class BlhDonanteController extends Controller
         $em = $this->getDoctrine()->getManager();
 
         $entity = $em->getRepository('siblhmantenimientoBundle:BlhDonante')->find($id);
-
+		$usuario = $this->container->get('security.context')->getToken()->getUser()->getId();
+        $entity->setUsuario($usuario);
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find BlhDonante entity.');
         }
@@ -361,4 +369,3 @@ class BlhDonanteController extends Controller
 
 
     }    
-

@@ -12,6 +12,7 @@
     <field name="patologiaDonante" type="string" column="patologia_donante" length="50" nullable="true"/>
     <field name="imc" type="decimal" column="imc" nullable="false"/>
     <field name="estadoDonante" type="string" column="estado_donante" length="12" nullable="false"/>
+    <field name="usuario" type="integer" column="usuario" nullable="true"/>
     <many-to-one field="idDonante" target-entity="BlhDonante">
       <join-columns>
         <join-column name="id_donante" referenced-column-name="id"/>

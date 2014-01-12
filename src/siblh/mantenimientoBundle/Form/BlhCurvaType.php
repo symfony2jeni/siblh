@@ -25,8 +25,8 @@ class BlhCurvaType extends AbstractType
                             'format' => 'yy-MM-dd',
                             'attr' => array('class' => 'date'
                                 ), 'required'=> true ))
-            ->add('cantidadFrascos','number',array ( 'invalid_message'=>'Debe ser entre 5 y 25 '))
-            ->add('volumenPorFrasco','number',array ( 'invalid_message'=>'Debe ser entre 25 y 75 ml'))
+            ->add('cantidadFrascos','number')
+            ->add('volumenPorFrasco','number')
             ->add('horaInicioCurva')
         ;
     }

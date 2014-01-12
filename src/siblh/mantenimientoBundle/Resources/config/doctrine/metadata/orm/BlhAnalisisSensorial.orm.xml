@@ -9,6 +9,7 @@
     <field name="color" type="string" column="color" length="9" nullable="true"/>
     <field name="flavor" type="string" column="flavor" length="9" nullable="true"/>
     <field name="observacion" type="string" column="observacion" length="150" nullable="true"/>
+    <field name="usuario" type="integer" column="usuario" nullable="true"/>
     <many-to-one field="idFrascoRecolectado" target-entity="BlhFrascoRecolectado">
       <join-columns>
         <join-column name="id_frasco_recolectado" referenced-column-name="id"/>

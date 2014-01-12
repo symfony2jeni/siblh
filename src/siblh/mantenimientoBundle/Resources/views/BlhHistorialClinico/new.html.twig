@@ -123,7 +123,9 @@ elemento.style.visibility = visible ? "visible" : "hidden";
        {{ form_widget(form.patologiaEmbarazo, {'attr': { 'value' : 'N/A'} }) }}</td></tr> 
   <tr><td height=10  ></td></tr>
   <tr><td align = "left"><font color="red" size = "2" face = "Comic Sans MS">* Campos requeridos</font></td></tr>
-  <tr><td colspan = '4' align = 'center'>
+  <tr>
+  <td style="visibility:hidden">{{ form_widget(form.usuario, {'attr':{ 'value' : user_ID }}) }} </td>
+  <td colspan = '4' align = 'center'>
       <input id = "boton" type="submit"  value="Guardar"/>
       
       <input id = "boton1" type="button" value="Regresar" onClick=' window.location.href="{{ path('_NewHistorialClinico') }}" '>

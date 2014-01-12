@@ -9,7 +9,8 @@ $(document).ready(function() {
     
     tableToGrid("#listado_pasteurizados", {
         pager : '#pagerPasteurizados',
-        rowNum:10, 
+        rowNum:10,
+	rownumbers: true, 
         gridview: true, 
         caption: "Pasteurizaciones Activas",
         height:'100%',
@@ -25,7 +26,7 @@ $(document).ready(function() {
         ]
     
     });
-    jQuery("#listado_pasteurizados").jqGrid('sortGrid',"Codigo&nbsp;Frasco",true);
+    jQuery("#listado_pasteurizados").jqGrid('sortGrid',"Frasco",true);
     jQuery("#listado_pasteurizados").jqGrid('navGrid','#pagerPasteurizados', {
         edit:false, 
         add:false, 

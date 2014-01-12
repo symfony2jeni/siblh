@@ -83,7 +83,9 @@
      <tr style="visibility:hidden"><td align = left colspan = "3">
         {{ form_label(form.idReceptor) }}
         {{ form_errors(form.idReceptor) }}
-        {{ form_widget(form.idReceptor) }} </td></tr>        
+        {{ form_widget(form.idReceptor) }} </td>
+		<td style="visibility:hidden">{{ form_widget(form.usuario, {'attr':{ 'value' : user_ID }}) }} </td>
+		</tr>        
     
     <tr><td align = "left"><font color="red" size = "2" face = "Comic Sans MS">* Campos requeridos</font>   </td></tr>
     <tr>  <td colspan = '6' align = 'center'>   

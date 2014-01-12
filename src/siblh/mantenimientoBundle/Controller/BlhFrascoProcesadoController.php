@@ -54,23 +54,23 @@ class BlhFrascoProcesadoController extends Controller
     public function createAction(Request $request)
     {
         $entity = new BlhFrascoProcesado();
+		$usuario = $this->container->get('security.context')->getToken()->getUser()->getId();
+        $entity->setUsuario($usuario);
         $form = $this->createCreateForm($entity);
         $form->handleRequest($request);
         $em = $this->getDoctrine()->getManager();
    
 
         if ($form->isValid()) {
-            
-     
-            
-         //obteniendo vector con  ids a combinar   
+        //obteniendo vector con  ids a combinar   
          $request = $this->getRequest();
          $ids_combinar = $request->get('idscombinar');
          //obteniendo vector con volumenes a combinar
          $vlcombinar = $request->get('vlcombinar');     
          $vldisponible = $request->get('vldisponible');    
          
-         //echo ($vldisponible[1]);
+         
+         
         $acideztotal=0;
         $caloriastotal=0;
         $volumentotal=0;
@@ -105,6 +105,9 @@ class BlhFrascoProcesadoController extends Controller
             $em->persist($entity);
             $em->flush();
             
+            $pasteurizacion = $entity->getidPasteurizacion();
+            $idpast= $pasteurizacion->getId();
+            
             $id_frascop= $entity->getId();
             $frascop = $em->getRepository('siblhmantenimientoBundle:BlhFrascoProcesado')->find($id_frascop);
             
@@ -112,9 +115,10 @@ class BlhFrascoProcesadoController extends Controller
             //Guardando los nuevos objetos frascrfrascop
             for($i=0; $i<$tamanio;$i++ ){
             $frascosr = $em->getRepository('siblhmantenimientoBundle:BlhFrascoRecolectado')->find($ids_combinar[$i]);
-                                 
+            $frascosr->setUsuario($usuario);                     
             //Asociando el farsco procesado con los frascos recolectados
             $entity1 = new BlhFrascoRecolectadoFrascoP();
+			$entity1->setUsuario($usuario);
             $entity1->setidFrascoProcesado($frascop);
             $entity1->setidFrascoRecolectado($frascosr);                            
             $entity1->setvolumenAgregado($vlcombinar[$i]);
@@ -122,7 +126,7 @@ class BlhFrascoProcesadoController extends Controller
             $em->flush();
             
            
-            $voldisp=$vldisponible[$i]-$vlcombinar[$i];
+            $voldisp=(int)$vldisponible[$i]-(int)$vlcombinar[$i];
             
               //Cambiando estado a los frascos q no les queda volumen
             if($voldisp==0){
@@ -135,9 +139,11 @@ class BlhFrascoProcesadoController extends Controller
             $frascosr->setIdEstado($estado);*/
             }
             }
+          
            
-            return $this->redirect($this->generateUrl('blhfrascoprocesado_new', array('id' => $entity->getId())));
-        }
+            return $this->redirect($this->generateUrl('blhfrascoprocesado_new', array('id'=> $idpast)));   
+         
+       }
 
         return array(
             'entity' => $entity,
@@ -175,7 +181,9 @@ class BlhFrascoProcesadoController extends Controller
     {
 
 //Obtener banco de leche//
-        $em = $this->getDoctrine()->getManager();       
+        $em = $this->getDoctrine()->getManager();  
+	   $user_ID = $this->container->get('security.context')->getToken()->getUser()->getId();
+		
         $userEst = $this->container->get('security.context')->getToken()->getUser()->getIdEst();
      
       
@@ -257,6 +265,7 @@ class BlhFrascoProcesadoController extends Controller
             'calorias'=>$calorias,
             'volumen_agregado'=>$volumen_agregado,
             'vldisponible'=>$vldisponible,
+			'user_ID' => $user_ID,
         );
     }
    
@@ -296,6 +305,7 @@ class BlhFrascoProcesadoController extends Controller
     public function editAction($id)
     {
         $em = $this->getDoctrine()->getManager();
+	   $user_ID = $this->container->get('security.context')->getToken()->getUser()->getId();
 
         $entity = $em->getRepository('siblhmantenimientoBundle:BlhFrascoProcesado')->find($id);
 
@@ -320,6 +330,7 @@ class BlhFrascoProcesadoController extends Controller
             'edit_form'   => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
             'hospital' => $establecimiento,
+			'user_ID' => $user_ID,
         );
     }
 
@@ -353,7 +364,8 @@ class BlhFrascoProcesadoController extends Controller
         $em = $this->getDoctrine()->getManager();
 
         $entity = $em->getRepository('siblhmantenimientoBundle:BlhFrascoProcesado')->find($id);
-
+		$usuario = $this->container->get('security.context')->getToken()->getUser()->getId();
+        $entity->setUsuario($usuario);
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find BlhFrascoProcesado entity.');
         }
@@ -462,4 +474,3 @@ class BlhFrascoProcesadoController extends Controller
     
    
 }
-

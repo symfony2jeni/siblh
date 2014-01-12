@@ -4,7 +4,7 @@
 
 {% block stylesheets %}
   {{ parent() }}
-	<link href="{{ asset('bundles/siblhmantenimiento/css/form.css') }}" rel="stylesheet" type="text/css" />
+        <link href="{{ asset('bundles/siblhmantenimiento/css/form.css') }}" rel="stylesheet" type="text/css" />
         
 {% endblock %}
         
@@ -45,6 +45,7 @@
         <table align = "center" width = "90%" >
           
         <tr>
+		<td style="visibility:hidden">{{ form_widget(form.usuario, {'attr':{ 'value' : user_ID }}) }} </td>
         <td height=10 align = "left" width=400><font color="red">*</font>{{ form_label(form.fechaSeguimiento, 'Fecha') }}</td>
         <td height=10 align="left" > {{ form_widget(form.fechaSeguimiento, {'attr':{ 'readonly': 'true', 'title': 'Dar clic y seleccionar la fecha de seguimiento' } }) }} </td>
         <td height=10 align = "left" width=350 ><font color="red" >*</font>{{ form_label(form.semana) }}</td>

@@ -3,7 +3,7 @@
 
 {% block stylesheets %}
     {{ parent() }}
-	<link href="{{ asset('bundles/siblhmantenimiento/css/form.css') }}" rel="stylesheet" type="text/css" />
+        <link href="{{ asset('bundles/siblhmantenimiento/css/form.css') }}" rel="stylesheet" type="text/css" />
  
 {% endblock %}
         
@@ -85,6 +85,7 @@
             <tr><td width=172 align = 'left'  ><font color="red" face = "Comic Sans MS">* Campos requeridos</font>{#<INPUT type=text STYLE="text-align:center" name="idfrasco[]" disabled="disabled" size=5 readonly="readonly" value= "{{ id }}"></td>#}</tr>
         <tr>            
              <td width=900 align = 'center' ><input type='submit' id="boton" title="Guardar"  value="Guardar"/><input id = "boton1" type="button" value="Regresar" onClick=' window.location.href="{{ path('blhfrascosAnalisis_sensorial' )}}"'></td>              
+			 <td style="visibility:hidden">{{ form_widget(form.usuario, {'attr':{ 'value' : user_ID }}) }} </td>
           </tr>
            </table>
            {{ form_end(form) }}

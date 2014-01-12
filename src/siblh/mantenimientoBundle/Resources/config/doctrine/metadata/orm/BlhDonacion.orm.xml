@@ -6,6 +6,7 @@
     </id>
     <field name="fechaDonacion" type="date" column="fecha_donacion" nullable="false"/>
     <field name="responsableDonacion" type="string" column="responsable_donacion" length="60" nullable="false"/>
+    <field name="usuario" type="integer" column="usuario" nullable="true"/>
     <many-to-one field="idDonante" target-entity="BlhDonante">
       <join-columns>
         <join-column name="id_donante" referenced-column-name="id"/>

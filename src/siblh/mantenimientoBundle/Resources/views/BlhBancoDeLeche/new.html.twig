@@ -10,7 +10,7 @@
 {% endblock %}
  
 {% block body -%}
-    <h1>BlhBancoDeLeche creation</h1>
+    <h1>Registro de banco de leche</h1>
 
 
     {{ form_start(form) }}
@@ -24,13 +24,14 @@
         {{ form_label(form.estadoBanco) }} {{ form_errors(form.estadoBanco) }}</td><td align = "left" >   
         {{ form_widget(form.estadoBanco, {'attr':{'required': 'true'} }) }} </td><td   align = "left"> 
    <tr><td align = "left" > <font color="red">*</font>
-        {{ form_label(form.idEstablecimiento) }} {{ form_errors(form.idEstablecimiento) }}</td><td align = "left" >   
+        {{ form_label(form.idEstablecimiento, 'Establecimiento') }} {{ form_errors(form.idEstablecimiento) }}</td><td align = "left" >   
         {{ form_widget(form.idEstablecimiento, {'attr':{'required': 'true'} }) }} </td><td   align = "left"> 
   <tr><td height=10  ></td></tr>   
-    <tr><td align = "left" colspan = '4'><font color="red" size = "2" face = "Comic Sans MS">* Campos requeridos</font></td><tr>
+    <tr>
+	<td style="visibility:hidden">{{ form_widget(form.usuario, {'attr':{ 'value' : user_ID }}) }} </td>
+	<td align = "left" colspan = '4'><font color="red" size = "2" face = "Comic Sans MS">* Campos requeridos</font></td><tr>
     <tr><td colspan = '4' align = 'center'>
     <input type="submit" id= "boton" value="Guardar"/></td></tr>
-    </tr>
     </table>
     
    {{ form_end(form) }} 

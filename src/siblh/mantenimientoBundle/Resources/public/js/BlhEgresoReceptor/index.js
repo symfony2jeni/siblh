@@ -2,10 +2,11 @@ $(document).ready(function() {
 
  tableToGrid("#listado_Egresos", {
         pager : '#pagerEgresos',
-        rowNum:10, 
+        rowNum:10,
+	rownumbers: true, 
          height: '100%',
         gridview: true, 
-       // caption: "Seleccione la donante",
+       caption: "Listado de egresos",
          sortorder: "desc",
         
         
@@ -27,7 +28,7 @@ $(document).ready(function() {
         ],
     
     });
-    jQuery("#listado_Egresos").jqGrid('sortGrid',"id",true);
+    jQuery("#listado_Egresos").jqGrid('sortGrid',"Codigo",true);
     jQuery("#listado_Egresos").jqGrid('navGrid','#pagerEgresos', {
         edit:false, 
         add:false, 

@@ -22,6 +22,7 @@ class BlhDonacionType extends AbstractType
             ->add('responsableDonacion')
             ->add('idBancoDeLeche')
             ->add('idDonante')
+			->add('usuario')
         ;
     }
     

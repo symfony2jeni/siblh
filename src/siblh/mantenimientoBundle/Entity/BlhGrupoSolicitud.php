@@ -29,6 +29,13 @@ class BlhGrupoSolicitud
      */
     private $codigoGrupoSolicitud;
 
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="usuario", type="integer", nullable=true)
+     */
+    private $usuario;
+
 
 
     /**
@@ -63,7 +70,31 @@ class BlhGrupoSolicitud
     {
         return $this->codigoGrupoSolicitud;
     }
-    public function __toString()
+
+    /**
+     * Set usuario
+     *
+     * @param integer $usuario
+     * @return BlhGrupoSolicitud
+     */
+    public function setUsuario($usuario)
+    {
+        $this->usuario = $usuario;
+    
+        return $this;
+    }
+
+    /**
+     * Get usuario
+     *
+     * @return integer 
+     */
+    public function getUsuario()
+    {
+        return $this->usuario;
+    }
+    
+     public function __toString()
     {
        return $this->codigoGrupoSolicitudo;
     }

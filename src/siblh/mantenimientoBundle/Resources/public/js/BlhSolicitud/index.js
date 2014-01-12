@@ -5,6 +5,7 @@ $(document).ready(function() {
     tableToGrid("#listado_solicitudes", {
         pager : '#pagerSolicitudes',
         rowNum:10, 
+	rownumbers: true,
         gridview: true, 
         height:'100%',
         width:1400,
@@ -24,7 +25,7 @@ $(document).ready(function() {
         ]
        
     });
-    jQuery("#listado_solicitudes").jqGrid('sortGrid',"Código&nbsp;Solicitud",true);
+    jQuery("#listado_solicitudes").jqGrid('sortGrid',"Código",true);
     jQuery("#listado_solicitudes").jqGrid('navGrid','#pagerSolicitudes', {
         edit:false, 
         add:false, 

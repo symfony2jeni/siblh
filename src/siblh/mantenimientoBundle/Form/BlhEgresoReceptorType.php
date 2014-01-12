@@ -34,6 +34,7 @@ class BlhEgresoReceptorType extends AbstractType
                             'attr' => array('class' => 'date')))
             ->add('estanciaHospitalaria', 'text')
             ->add('idReceptor')
+			->add('usuario')
         ;
     }
     

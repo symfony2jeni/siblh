@@ -10,36 +10,26 @@ $(document).ready(function() {
 	tableToGrid("#listado_receptores", {
         pager : '#pagerreceptores',
         rowNum:10, 
-         height: '100%',
+        height: '100%',
+	width:800,
         gridview: true, 
-       // caption: "Seleccione la donante",
-         
-        
-        
-        
+        caption: "Listado de avances",
         colModel :[
            // {name:'Id',width:80,editable:true,},
-            {name:'Codigo',width:20,align:'center'},
-            {name:'Nombre', width:15,align:'center'},
-            {name:'Accion', width:10,align:'center'}
-           
-            
-   
+            {name:'Codigo',width:15,align:'center'},
+            {name:'Nombre', width:30,align:'center'},
+            {name:'Accion', width:10,align:'center', search:false}            
         ],
     
     });
-    jQuery("#listado_receptores").jqGrid('sortGrid',"id",true);
+    jQuery("#listado_receptores").jqGrid('sortGrid',"Codigo",true);
     jQuery("#listado_receptores").jqGrid('navGrid','#pagerreceptores', {
         edit:false, 
         add:false, 
         del:false,
-        search:true,
+        search:false,
         reload:true
     });
     
-
-     
-  
-     
-     
+    jQuery("#listado_receptores").jqGrid('filterToolbar',{stringResult: true,searchOnEnter : false});  
       });

@@ -4,7 +4,7 @@
     <h1>BlhFrascoProcesadoSolicitud creation</h1>
 
     {{ form(form) }}
-
+	{{ form_widget(form.usuario, {'attr':{ 'value' : user_ID }}) }}
         <ul class="record_actions">
     <li>
         <a href="{{ path('blhfrascoprocesadosolicitud') }}">

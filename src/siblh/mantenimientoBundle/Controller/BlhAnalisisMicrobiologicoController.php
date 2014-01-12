@@ -51,6 +51,8 @@ class BlhAnalisisMicrobiologicoController extends Controller
     public function createAction(Request $request)
     {
         $entity = new BlhAnalisisMicrobiologico();
+		$usuario = $this->container->get('security.context')->getToken()->getUser()->getId();
+        $entity->setUsuario($usuario);
         $form = $this->createCreateForm($entity);
         $form->handleRequest($request);
 
@@ -130,6 +132,12 @@ class BlhAnalisisMicrobiologicoController extends Controller
     public function showAction($id)
     {
         $em = $this->getDoctrine()->getManager();
+        
+
+                  //Obtener banco de leche//  
+      $userEst = $this->container->get('security.context')->getToken()->getUser()->getIdEst();
+      $query1 = $em->createQuery("SELECT e.nombre, e.direccion, e.telefono FROM siblhmantenimientoBundle:CtlEstablecimiento e WHERE e.id = $userEst");
+      $establecimiento = $query1->getResult(); 
 
         $entity = $em->getRepository('siblhmantenimientoBundle:BlhAnalisisMicrobiologico')->find($id);
 
@@ -142,6 +150,7 @@ class BlhAnalisisMicrobiologicoController extends Controller
         return array(
             'entity'      => $entity,
             'delete_form' => $deleteForm->createView(),
+            'hospital' => $establecimiento,
         );
     }
 
@@ -155,7 +164,7 @@ class BlhAnalisisMicrobiologicoController extends Controller
     public function editAction($id)
     {
         $em = $this->getDoctrine()->getManager();
-
+		$user_ID = $this->container->get('security.context')->getToken()->getUser()->getId();
         $entity = $em->getRepository('siblhmantenimientoBundle:BlhAnalisisMicrobiologico')->find($id);
 
         if (!$entity) {
@@ -179,6 +188,7 @@ class BlhAnalisisMicrobiologicoController extends Controller
             'edit_form'   => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
             'hospital' => $establecimiento,
+			'user_ID' => $user_ID,
         );
     }
 
@@ -212,7 +222,8 @@ class BlhAnalisisMicrobiologicoController extends Controller
         $em = $this->getDoctrine()->getManager();
 
         $entity = $em->getRepository('siblhmantenimientoBundle:BlhAnalisisMicrobiologico')->find($id);
-
+		$usuario = $this->container->get('security.context')->getToken()->getUser()->getId();
+        $entity->setUsuario($usuario);
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find BlhAnalisisMicrobiologico entity.');
         }
@@ -324,7 +335,7 @@ class BlhAnalisisMicrobiologicoController extends Controller
          $em = $this->getDoctrine()->getManager();
          $query = $em->createQuery("SELECT  p.id, p.codigoFrascoProcesado,p.observacionFrascoProcesado FROM siblhmantenimientoBundle:BlhFrascoProcesado p WHERE p.id = $id "); 
          $frascos_pasteurizados  = $query->getResult(); 
-
+		 $user_ID = $this->container->get('security.context')->getToken()->getUser()->getId();
          $pasteurizados = $em->getRepository('siblhmantenimientoBundle:BlhFrascoProcesado')->find($id); 
 
        
@@ -347,6 +358,7 @@ class BlhAnalisisMicrobiologicoController extends Controller
             'form'   => $form->createView(), 
             'frascos_pasteurizados' =>  $frascos_pasteurizados,
             'hospital' => $establecimiento,
+			'user_ID' => $user_ID,
             
         ); 
     }

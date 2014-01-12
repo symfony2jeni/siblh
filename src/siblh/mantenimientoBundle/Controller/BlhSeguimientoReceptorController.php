@@ -71,6 +71,8 @@ class BlhSeguimientoReceptorController extends Controller
     public function createAction(Request $request)
     {
         $entity = new BlhSeguimientoReceptor();
+		$usuario = $this->container->get('security.context')->getToken()->getUser()->getId();
+        $entity->setUsuario($usuario);
         $form = $this->createCreateForm($entity);
         $form->handleRequest($request);
 
@@ -168,7 +170,7 @@ class BlhSeguimientoReceptorController extends Controller
     public function editAction($id)
     {
         $em = $this->getDoctrine()->getManager();
-
+		$user_ID = $this->container->get('security.context')->getToken()->getUser()->getId();
         $entity = $em->getRepository('siblhmantenimientoBundle:BlhSeguimientoReceptor')->find($id);
 
         if (!$entity) {
@@ -187,6 +189,7 @@ class BlhSeguimientoReceptorController extends Controller
             'edit_form'   => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
             'hospital' => $establecimiento,
+			'user_ID' => $user_ID,
         );
     }
 
@@ -220,7 +223,8 @@ class BlhSeguimientoReceptorController extends Controller
         $em = $this->getDoctrine()->getManager();
 
         $entity = $em->getRepository('siblhmantenimientoBundle:BlhSeguimientoReceptor')->find($id);
-
+		$usuario = $this->container->get('security.context')->getToken()->getUser()->getId();
+        $entity->setUsuario($usuario);
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find BlhSeguimientoReceptor entity.');
         }
@@ -341,7 +345,7 @@ class BlhSeguimientoReceptorController extends Controller
         
          //mostrando los datos del receptor seleccionado
         $em = $this->getDoctrine()->getManager();
-        
+        $user_ID = $this->container->get('security.context')->getToken()->getUser()->getId();
         $query = $em->createQuery("SELECT r.id,r.codigoReceptor, p.primerNombre as primer_nombre, p.segundoNombre as segundo_nombre, p.tercerNombre as tercer_nombre, p.primerApellido as primer_apellido, p.segundoApellido as segundo_apellido FROM siblhmantenimientoBundle:BlhReceptor r JOIN r.idPaciente p WHERE r.id = $id "); 
         
         $datos_receptor  = $query->getResult();
@@ -371,6 +375,7 @@ class BlhSeguimientoReceptorController extends Controller
             'form'   => $form->createView(),
             'datos_receptor' => $datos_receptor,
             'hospital' => $establecimiento,
+			'user_ID' => $user_ID,
         );
     }
     

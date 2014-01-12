@@ -67,7 +67,7 @@ class BlhHistorialClinico
     /**
      * @var string
      *
-     * @ORM\Column(name="lugar_parto", type="string", length=30, nullable=false)
+     * @ORM\Column(name="lugar_parto", type="string", length=150, nullable=false)
      */
     private $lugarParto;
 
@@ -95,44 +95,51 @@ class BlhHistorialClinico
     /**
      * @var string
      *
-     * @ORM\Column(name="formula_obstetrica_g", type="string", length=1, nullable=true)
+     * @ORM\Column(name="formula_obstetrica_g", type="string", length=2, nullable=true)
      */
     private $formulaObstetricaG;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="formula_obstetrica_p1", type="string", length=1, nullable=true)
+     * @ORM\Column(name="formula_obstetrica_p1", type="string", length=2, nullable=true)
      */
     private $formulaObstetricaP1;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="formula_obstetrica_p2", type="string", length=1, nullable=true)
+     * @ORM\Column(name="formula_obstetrica_p2", type="string", length=2, nullable=true)
      */
     private $formulaObstetricaP2;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="formula_obstetrica_a", type="string", length=1, nullable=true)
+     * @ORM\Column(name="formula_obstetrica_a", type="string", length=2, nullable=true)
      */
     private $formulaObstetricaA;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="formula_obstetrica_v", type="string", length=1, nullable=true)
+     * @ORM\Column(name="formula_obstetrica_v", type="string", length=2, nullable=true)
      */
     private $formulaObstetricaV;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="formula_obstetrica_m", type="string", length=1, nullable=true)
+     * @ORM\Column(name="formula_obstetrica_m", type="string", length=2, nullable=true)
      */
     private $formulaObstetricaM;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="usuario", type="integer", nullable=true)
+     */
+    private $usuario;
 
     /**
      * @var \BlhDonante
@@ -522,6 +529,29 @@ class BlhHistorialClinico
     public function getFormulaObstetricaM()
     {
         return $this->formulaObstetricaM;
+    }
+
+    /**
+     * Set usuario
+     *
+     * @param integer $usuario
+     * @return BlhHistorialClinico
+     */
+    public function setUsuario($usuario)
+    {
+        $this->usuario = $usuario;
+    
+        return $this;
+    }
+
+    /**
+     * Get usuario
+     *
+     * @return integer 
+     */
+    public function getUsuario()
+    {
+        return $this->usuario;
     }
 
     /**

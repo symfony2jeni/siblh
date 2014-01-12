@@ -5,13 +5,15 @@ $(document).ready(function() {
         pager : '#pagerlistadoGrupos',
         rowNum:10, 
         gridview: true, 
-       // caption: "Seleccione la donante",
+        height: '100%',
+        width:700,
+        caption: "Seleccione el grupo a despachar",
          sortorder: "desc",
                 
         colModel :[
            // {name:'Id',width:80,editable:true,},
-            {name:'Codigo&nbsp;grupo',width:15,align:'center'},
-            {name:'Acción', width:15,align:'center'}
+            {name:'Codigo&nbsp;grupo',width:30,align:'center'},
+            {name:'Acción', width:20,align:'center'}
         ]    
     });
     jQuery("#listadoGrupos").jqGrid('sortGrid',"id",true);
@@ -22,6 +24,5 @@ $(document).ready(function() {
         search:true,
         reload:true
     });
+
      });
-
-

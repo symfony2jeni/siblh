@@ -1,7 +1,8 @@
 $(document).ready(function() {
     tableToGrid("#frascosAnalisisCrematocrito", {
         pager : '#pagerFrascosAnalisisCrematocrito',
-        rowNum:10, 
+        rowNum:10,
+	rownumbers: true, 
         gridview: true, 
         caption: "Listado frascos para analisis",
         height:'100%',

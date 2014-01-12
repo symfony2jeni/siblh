@@ -4,7 +4,8 @@ $(document).ready(function() {
     
     tableToGrid("#listado_receptoresSeguimiento", {
         pager : '#pagerReceptoresSeguimiento',
-        rowNum:10, 
+        rowNum:10,
+	rownumbers: true, 
         gridview: true, 
         caption: "Listado de receptores",
         height:'100%',
