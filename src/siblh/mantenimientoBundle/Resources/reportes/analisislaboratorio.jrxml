@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="analisislaboratorio" language="groovy" pageWidth="1728" pageHeight="792" columnWidth="1688" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="d551ee5e-8cc6-4cdf-b5ab-403e2246819e">
 	<property name="ireport.zoom" value="1.0"/>
-	<property name="ireport.x" value="923"/>
-	<property name="ireport.y" value="0"/>
+	<property name="ireport.x" value="349"/>
+	<property name="ireport.y" value="123"/>
 	<style name="table">
 		<box>
 			<pen lineWidth="1.0" lineColor="#000000"/>
@@ -186,9 +186,9 @@ and (substring(fr.codigo_frasco_recolectado from 1 for 2) = $P{id});]]>
 		</band>
 	</pageHeader>
 	<columnHeader>
-		<band height="175" splitType="Stretch">
+		<band height="77">
 			<componentElement>
-				<reportElement uuid="5f03f63a-a6cd-4bb8-977f-58aef8d1c6e6" key="table" style="table" x="45" y="13" width="1418" height="140"/>
+				<reportElement uuid="5f03f63a-a6cd-4bb8-977f-58aef8d1c6e6" key="table" style="table" x="89" y="0" width="1418" height="52"/>
 				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
 					<datasetRun subDataset="New Dataset 1" uuid="b889b3f3-64f2-4955-9e73-b65f8a0f298d">
 						<datasetParameter name="fechai">
@@ -684,13 +684,4 @@ and (substring(fr.codigo_frasco_recolectado from 1 for 2) = $P{id});]]>
 			</componentElement>
 		</band>
 	</columnHeader>
-	<detail>
-		<band height="64" splitType="Stretch"/>
-	</detail>
-	<columnFooter>
-		<band height="45" splitType="Stretch"/>
-	</columnFooter>
-	<summary>
-		<band height="42" splitType="Stretch"/>
-	</summary>
 </jasperReport>

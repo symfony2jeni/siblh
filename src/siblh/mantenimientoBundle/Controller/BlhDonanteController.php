@@ -358,6 +358,146 @@ class BlhDonanteController extends Controller
      
         
     }
+    
 
+        /**
+     * @Route("/leche/donante",name="LecheDonante")
+     * @Method("GET") 
+     * @Template()
+     */
+    
+ 
+ public function LecheDonanteAction()
+    {
+        $em = $this->getDoctrine()->getManager();      
+        
+        //Obteniendo lista de pacientes"  
+        $query = $em->createQuery("SELECT d.id as identificador, d.primerNombre as nombre1, d.segundoNombre as nombre2, 
+            d.primerApellido as apellido1, d.segundoApellido as apellido2,  d.codigoDonante
+            FROM siblhmantenimientoBundle:BlhDonante d where d.estado = 'Activa'
+            and  (d.id in (select don.id from siblhmantenimientoBundle:BlhHistorialClinico hc 
+JOIN hc.idDonante don)) and (d.id in (select donan.id from siblhmantenimientoBundle:BlhHistoriaActual ha 
+JOIN ha.idDonante donan))");  
+         
+        $donantes  = $query->getResult();
+           //Obtener banco de leche//
+              
+      $userEst = $this->container->get('security.context')->getToken()->getUser()->getIdEst();
+      /*  $query1 = $em->createQuery("SELECT b.id FROM siblhmantenimientoBundle:BlhBancoDeLeche b WHERE b.idEstablecimiento = $userEst");
+        $id_blh = $query1->getResult(); 
+        $codigo=$id_blh[0]['id']; */
+       
+       $query1 = $em->createQuery("SELECT e.nombre, e.direccion, e.telefono FROM siblhmantenimientoBundle:CtlEstablecimiento e WHERE e.id = $userEst");
+       $establecimiento = $query1->getResult(); 
+       $query2 = $em->createQuery("SELECT b.id as id2 FROM siblhmantenimientoBundle:BlhBancoDeLeche b WHERE b.idEstablecimiento = $userEst");
+       $id_blh = $query2->getResult(); 
+       
+      $id2=$id_blh[0]['id2']; 
+       
+       
+  
+      $nombre=$establecimiento[0]['nombre']; 
+        return array(
+            'donantes' =>  $donantes,  
+            'hospital' => $establecimiento,
+            'id2' => $id2,
+            'nombre' => $nombre    
+         
+        );
+        
+    }   
 
+ /**
+     * @Route("/informacion/donante",name="InfoDonante")
+     * @Method("GET") 
+     * @Template()
+     */
+    
+ 
+ public function InfoDonanteAction()
+    {
+        $em = $this->getDoctrine()->getManager();      
+        
+        //Obteniendo lista de pacientes"  
+        $query = $em->createQuery("SELECT d.id as identificador, d.primerNombre as nombre1, d.segundoNombre as nombre2, 
+            d.primerApellido as apellido1, d.segundoApellido as apellido2,  d.codigoDonante
+            FROM siblhmantenimientoBundle:BlhDonante d where d.estado = 'Activa'
+            and  (d.id in (select don.id from siblhmantenimientoBundle:BlhHistorialClinico hc 
+JOIN hc.idDonante don)) and (d.id in (select donan.id from siblhmantenimientoBundle:BlhHistoriaActual ha 
+JOIN ha.idDonante donan))");  
+         
+        $donantes  = $query->getResult();
+           //Obtener banco de leche//
+              
+      $userEst = $this->container->get('security.context')->getToken()->getUser()->getIdEst();
+      /*  $query1 = $em->createQuery("SELECT b.id FROM siblhmantenimientoBundle:BlhBancoDeLeche b WHERE b.idEstablecimiento = $userEst");
+        $id_blh = $query1->getResult(); 
+        $codigo=$id_blh[0]['id']; */
+       
+       $query1 = $em->createQuery("SELECT e.nombre, e.direccion, e.telefono FROM siblhmantenimientoBundle:CtlEstablecimiento e WHERE e.id = $userEst");
+       $establecimiento = $query1->getResult(); 
+       $query2 = $em->createQuery("SELECT b.id as id2 FROM siblhmantenimientoBundle:BlhBancoDeLeche b WHERE b.idEstablecimiento = $userEst");
+       $id_blh = $query2->getResult(); 
+       
+      $id2=$id_blh[0]['id2']; 
+       
+       
+  
+      $nombre=$establecimiento[0]['nombre']; 
+        return array(
+            'donantes' =>  $donantes,  
+            'hospital' => $establecimiento,
+            'id2' => $id2,
+            'nombre' => $nombre    
+         
+        );
+        
+    }   
+
+    /**
+     * @Route("/donaciones/donante",name="donaciones_Donante")
+     * @Method("GET") 
+     * @Template()
+     */
+    
+ 
+ public function donaciones_DonanteAction()
+    {
+        $em = $this->getDoctrine()->getManager();      
+        
+        //Obteniendo lista de pacientes"  
+        $query = $em->createQuery("SELECT d.id as identificador, d.primerNombre as nombre1, d.segundoNombre as nombre2, 
+            d.primerApellido as apellido1, d.segundoApellido as apellido2,  d.codigoDonante
+            FROM siblhmantenimientoBundle:BlhDonante d where d.estado = 'Activa'
+            and  (d.id in (select don.id from siblhmantenimientoBundle:BlhHistorialClinico hc 
+JOIN hc.idDonante don)) and (d.id in (select donan.id from siblhmantenimientoBundle:BlhHistoriaActual ha 
+JOIN ha.idDonante donan))");  
+         
+        $donantes  = $query->getResult();
+           //Obtener banco de leche//
+              
+      $userEst = $this->container->get('security.context')->getToken()->getUser()->getIdEst();
+      /*  $query1 = $em->createQuery("SELECT b.id FROM siblhmantenimientoBundle:BlhBancoDeLeche b WHERE b.idEstablecimiento = $userEst");
+        $id_blh = $query1->getResult(); 
+        $codigo=$id_blh[0]['id']; */
+       
+       $query1 = $em->createQuery("SELECT e.nombre, e.direccion, e.telefono FROM siblhmantenimientoBundle:CtlEstablecimiento e WHERE e.id = $userEst");
+       $establecimiento = $query1->getResult(); 
+       $query2 = $em->createQuery("SELECT b.id as id2 FROM siblhmantenimientoBundle:BlhBancoDeLeche b WHERE b.idEstablecimiento = $userEst");
+       $id_blh = $query2->getResult(); 
+       
+      $id2=$id_blh[0]['id2']; 
+       
+       
+  
+      $nombre=$establecimiento[0]['nombre']; 
+        return array(
+            'donantes' =>  $donantes,  
+            'hospital' => $establecimiento,
+            'id2' => $id2,
+            'nombre' => $nombre    
+         
+        );
+        
+    } 
     }    

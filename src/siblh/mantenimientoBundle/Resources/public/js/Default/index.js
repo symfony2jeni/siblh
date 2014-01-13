@@ -1,4 +1,4 @@
-$(document).ready(function($) { 
+ $(document).ready(function($) { 
     
     $('#reporte').click(function(){
       var url="/app_dev.php/reportes/reporte/alertaprealmacenado/AlertaPrealmacenado/pdf";

@@ -379,6 +379,12 @@ public function curvasAction()
         $entity = new BlhPasteurizacion();
         $entity->setIdCurva($curva);
         $entity->setCodigoPasteurizacion($codpasteurizacion);
+        
+        //alerta de ciclos
+         $queryciclos = $em->createQuery("SELECT count(p.id) as ciclos FROM siblhmantenimientoBundle:BlhPasteurizacion p WHERE p.idCurva = $id");
+         $ciclos = $queryciclos->getResult(); 
+        
+        
         $form   = $this->createCreateForm($entity);
         
 
@@ -388,6 +394,7 @@ public function curvasAction()
             'datos_curva' =>  $datos_curva,
             'hospital' => $establecimiento,
             'responsable' => $responsable,
+            'ciclos' => $ciclos,
         
          
         );

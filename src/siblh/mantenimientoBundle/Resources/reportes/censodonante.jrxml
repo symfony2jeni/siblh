@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="censodonante" language="groovy" pageWidth="1368" pageHeight="788" columnWidth="1328" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="c04c4cb8-4181-4d71-9432-68e5d2cd66d8">
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="censodonante" language="groovy" pageWidth="1368" pageHeight="788" columnWidth="1328" leftMargin="20" rightMargin="20" topMargin="45" bottomMargin="20" uuid="c04c4cb8-4181-4d71-9432-68e5d2cd66d8">
 	<property name="ireport.zoom" value="1.0"/>
-	<property name="ireport.x" value="0"/>
+	<property name="ireport.x" value="72"/>
 	<property name="ireport.y" value="0"/>
 	<style name="table">
 		<box>
@@ -63,37 +63,6 @@
 			<pen lineWidth="0.5" lineColor="#000000"/>
 		</box>
 	</style>
-	<subDataset name="Table Dataset 1" uuid="b59eed32-c840-425f-8a6d-a6d89802c6f6">
-		<parameter name="fechai" class="java.lang.String">
-			<defaultValueExpression><![CDATA[]]></defaultValueExpression>
-		</parameter>
-		<parameter name="fechaf" class="java.lang.String">
-			<defaultValueExpression><![CDATA[]]></defaultValueExpression>
-		</parameter>
-		<parameter name="id" class="java.lang.Integer">
-			<defaultValueExpression><![CDATA[$P{id}]]></defaultValueExpression>
-		</parameter>
-		<queryString>
-			<![CDATA[select row_number() OVER (ORDER BY dt.codigo_donante), dt.codigo_donante,fr.codigo_frasco_recolectado,
-dt.primer_nombre ||' ' ||coalesce(dt.segundo_nombre, '')||' '||dt.primer_apellido||' '||coalesce(dt.segundo_apellido, '') as Donante,
-dt.edad, dt.procedencia, fr.volumen_recolectado, fr.onz_recolectado, replace (substring(e.nombre_estado from 1 for 13), 'Analizado', 'Aprobado') as Estado, dn.fecha_donacion::date+'15 days'::interval  as fecha_vencimiento
-from blh_donante dt, blh_donacion dn, blh_frasco_recolectado fr, blh_estado e
-where dn.id_donante = dt.id and fr.id_donacion = dn.id
-and e.id = fr.id_estado and dn.fecha_donacion between to_date($P{fechai},'YYYY-MM-DD') and to_date($P{fechaf},'YYYY-MM-DD')
-and dt.id_banco_de_leche = cast ($P{id} as numeric)
-order by dt.codigo_donante;]]>
-		</queryString>
-		<field name="row_number" class="java.lang.Long"/>
-		<field name="codigo_donante" class="java.lang.String"/>
-		<field name="codigo_frasco_recolectado" class="java.lang.String"/>
-		<field name="donante" class="java.lang.String"/>
-		<field name="edad" class="java.lang.Integer"/>
-		<field name="procedencia" class="java.lang.String"/>
-		<field name="volumen_recolectado" class="java.math.BigDecimal"/>
-		<field name="onz_recolectado" class="java.math.BigDecimal"/>
-		<field name="estado" class="java.lang.String"/>
-		<field name="fecha_vencimiento" class="java.sql.Timestamp"/>
-	</subDataset>
 	<subDataset name="New Dataset 1" uuid="4baeaefe-5137-4faa-9359-051f75a79eba">
 		<parameter name="fechai" class="java.lang.String">
 			<defaultValueExpression><![CDATA[]]></defaultValueExpression>
@@ -168,14 +137,6 @@ order by dt.codigo_donante;]]>
 				</textElement>
 				<text><![CDATA[MINISTERIO DE SALUD]]></text>
 			</staticText>
-			<image>
-				<reportElement uuid="bff6c0dc-9df2-4488-8210-e5ae9007be5d" x="72" y="49" width="158" height="107"/>
-				<imageExpression><![CDATA["/var/www/siblh/siblh/src/siblh/mantenimientoBundle/Resources/reportes/blh.jpg"]]></imageExpression>
-			</image>
-			<image>
-				<reportElement uuid="9a934240-0523-4136-b85f-b4abdd7fef60" x="1116" y="56" width="158" height="101"/>
-				<imageExpression><![CDATA["/var/www/siblh/siblh/src/siblh/mantenimientoBundle/Resources/reportes/minsal2.jpg"]]></imageExpression>
-			</image>
 			<staticText>
 				<reportElement uuid="55a91768-d2f3-437a-8839-1437ff00d2f1" x="512" y="109" width="289" height="35"/>
 				<textElement>
@@ -184,12 +145,20 @@ order by dt.codigo_donante;]]>
 				<text><![CDATA[CENSO DE REGISTRO DE DONANTES]]></text>
 			</staticText>
 			<textField>
-				<reportElement uuid="3d777fa8-4c98-4563-9afa-b8ba71801fbf" x="319" y="89" width="643" height="20"/>
+				<reportElement uuid="3d777fa8-4c98-4563-9afa-b8ba71801fbf" x="319" y="87" width="643" height="20"/>
 				<textElement textAlignment="Center">
-					<font size="16" isBold="false"/>
+					<font fontName="Comic Sans MS" size="14" isBold="false"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$P{nombre}]]></textFieldExpression>
 			</textField>
+			<image>
+				<reportElement uuid="061ab2f7-82b7-4c41-9569-389ad111c58b" x="24" y="21" width="190" height="125"/>
+				<imageExpression><![CDATA["/home/jeni/NetBeansProjects/siblh/src/siblh/mantenimientoBundle/Resources/reportes/blh.jpg"]]></imageExpression>
+			</image>
+			<image>
+				<reportElement uuid="9a6f537b-9bcb-47f9-82b2-087bb4ea1234" x="1137" y="21" width="162" height="125"/>
+				<imageExpression><![CDATA["/home/jeni/NetBeansProjects/siblh/src/siblh/mantenimientoBundle/Resources/reportes/minsal2.jpg"]]></imageExpression>
+			</image>
 		</band>
 	</title>
 	<pageHeader>
@@ -224,10 +193,10 @@ order by dt.codigo_donante;]]>
 			</staticText>
 		</band>
 	</pageHeader>
-	<columnHeader>
-		<band height="216" splitType="Stretch">
+	<summary>
+		<band height="234" splitType="Stretch">
 			<componentElement>
-				<reportElement uuid="815ee260-169e-44f5-a12c-6a807c03f64a" key="table 2" style="table 2" x="62" y="9" width="1248" height="197"/>
+				<reportElement uuid="815ee260-169e-44f5-a12c-6a807c03f64a" key="table 2" style="table 2" isPrintRepeatedValues="false" x="24" y="30" width="1248" height="197" isPrintWhenDetailOverflows="true"/>
 				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
 					<datasetRun subDataset="New Dataset 1" uuid="ef9ac12b-c3dd-465e-864d-c3ae2d479b59">
 						<datasetParameter name="fechai">
@@ -424,19 +393,5 @@ order by dt.codigo_donante;]]>
 				</jr:table>
 			</componentElement>
 		</band>
-	</columnHeader>
-	<detail>
-		<band height="22" splitType="Stretch">
-			<elementGroup/>
-		</band>
-	</detail>
-	<columnFooter>
-		<band height="30" splitType="Stretch"/>
-	</columnFooter>
-	<pageFooter>
-		<band height="21" splitType="Stretch"/>
-	</pageFooter>
-	<summary>
-		<band height="38" splitType="Stretch"/>
 	</summary>
 </jasperReport>
