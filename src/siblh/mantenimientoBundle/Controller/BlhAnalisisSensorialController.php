@@ -85,6 +85,8 @@ class BlhAnalisisSensorialController extends Controller
         $form->handleRequest($request);
 
         if ($form->isValid()) {
+            $usuario = $this->container->get('security.context')->getToken()->getUser()->getId();
+            $entity->setUsuario($usuario);
             $em = $this->getDoctrine()->getManager();
             $em->persist($entity);
             $em->flush();
@@ -258,6 +260,8 @@ class BlhAnalisisSensorialController extends Controller
         $editForm->handleRequest($request);
 
         if ($editForm->isValid()) {
+            $usuario = $this->container->get('security.context')->getToken()->getUser()->getId();
+            $entity->setUsuario($usuario);
             $em->flush();
 
             return $this->redirect($this->generateUrl('blhanalisissensorial_edit', array('id' => $id)));

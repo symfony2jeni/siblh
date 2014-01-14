@@ -57,8 +57,8 @@ $('#siblh_mantenimientobundle_blhdonante_documentoIdentificacion').on('change', 
         $formato = 'A99999999'; 
             break;
         case 'Carnet de Minoridad':
-            regex ='[A-Z]\\d{5}';
-            $formato = 'X99999';
+            regex ='\\d{8}';
+            $formato = '999999';
             break;
         
     } 
@@ -117,6 +117,11 @@ $(function() {
  
 
 });
+
+
+
+      
+
 
 
 

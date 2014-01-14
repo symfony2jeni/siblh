@@ -315,7 +315,7 @@ class BlhGrupoSolicitudController extends Controller
          $request = $this->getRequest();
          $ids_agrupar = $request->get('var');
          $ids= explode(",",$ids_agrupar);
-         
+         $usuario = $this->container->get('security.context')->getToken()->getUser()->getId();
          
        
          $tamanio = count($ids);   
@@ -387,6 +387,7 @@ class BlhGrupoSolicitudController extends Controller
        ///////////////////////////////////////////
         $Grupo_solicitud = new BlhGrupoSolicitud(); 
         $Grupo_solicitud->setcodigoGrupoSolicitud($codgrupo);//seteando el codigo de grupo
+        $Grupo_solicitud->setUsuario($usuario);
         $em->persist($Grupo_solicitud);
         $em->flush();
         $id_Grupo= $Grupo_solicitud->getId();
@@ -400,6 +401,7 @@ class BlhGrupoSolicitudController extends Controller
            $agrupacion = $em->getRepository('siblhmantenimientoBundle:BlhSolicitud')->find($ids[$i]);
            $agrupacion->setIdGrupoSolicitud($Grupo);//seteando el nuevo grupo a la solicitud agrupada
            $agrupacion->setestado('Agrupada');//cambiando estado de solicitud
+           $agrupacion->setUsuario($usuario);
            $em->persist($agrupacion);
            $em->flush();
             
@@ -547,6 +549,7 @@ class BlhGrupoSolicitudController extends Controller
            
            //cambiando estado a solicitudes
             $solicitud->setEstado('Despachada');
+            $solicitud->setUsuario($usuario);
             $em->persist($solicitud);
             $em->flush();
            
@@ -563,9 +566,8 @@ class BlhGrupoSolicitudController extends Controller
             $entity = new BlhFrascoProcesadoSolicitud();
             $entity->setidFrascoProcesado($frascop);
             $entity->setidSolicitud($solicitud);                            
-            $entity->setvolumenDespachado($vldespachar[$j]);
-           
-            
+            $entity->setvolumenDespachado($vldespachar[$j]);         
+            $entity->setUsuario($usuario);
             $em->persist($entity);
             $em->flush();
             
@@ -581,6 +583,7 @@ class BlhGrupoSolicitudController extends Controller
                 
             $nuevoestado = $em->getRepository('siblhmantenimientoBundle:BlhEstado')->find(16);
             $frascop->setIdEstado($nuevoestado);
+            $frascop->setUsuario($usuario);
             $em->persist($frascop);
             $em->flush();
            /* $idestado= $frascosr->getidEstado();

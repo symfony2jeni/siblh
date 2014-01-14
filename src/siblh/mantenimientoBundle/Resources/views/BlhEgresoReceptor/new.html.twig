@@ -46,13 +46,13 @@
         
      <td align = center colspan = "3"><font color="red" >*</font> 
         {{ form_label(form.estanciaHospitalaria, 'Dias de estancia hospitalaria') }}</td><td align = left>
-        {{ form_widget(form.estanciaHospitalaria,  { 'attr': {'size': '3', 'title': 'Dias mayor que cero', 'onKeyPress':"return soloNumerosEnteros(event);"} }) }} </td>   
+        {{ form_widget(form.estanciaHospitalaria,  { 'attr': {'size': '3', 'title': 'Ingrese los dias de estancia hospitalaria, entre 1 y 120', 'onKeyPress':"return soloNumerosEnteros(event);"} }) }} </td>   
         
       </tr><tr><td height=10  ></td></tr>      
     <tr>
     <td align = left><font color="red" >*</font> 
         {{ form_label(form.permanenciaUcin, 'Permanencia en UCIN') }}</td><td align = left>
-        {{ form_widget(form.permanenciaUcin,  { 'attr': {'size': '3','title': 'Dias mayor que cero', 'onKeyPress':"return soloNumerosEnteros(event);"} }) }} </td>
+        {{ form_widget(form.permanenciaUcin,  { 'attr': {'size': '3','title': 'Ingrese los dias de permanencia en UCIN, entre 1 y 120', 'onKeyPress':"return soloNumerosEnteros(event);"} }) }} </td>
         
      <td align = left><font color="red" >*</font> 
         {{ form_label(form.madreCanguro) }}</td><td align = left>
@@ -75,10 +75,11 @@
      <td align = left ><font color="red" >*</font> 
         {{ form_label(form.diagnosticoEgreso, 'Diagnostico de Egreso') }}</td><td align = left>
         {{ form_widget(form.diagnosticoEgreso) }} </td></tr> 
-      <tr><td height=10  ></td></tr>             
-    <tr><td align = left colspan = 2>
-        {{ form_label(form.hospitalSeguimientoEgreso, 'Hosital de seguimiento egreso') }}</td><td  colspan = "4" align = left>
-        {{ form_widget(form.hospitalSeguimientoEgreso,  { 'attr': {'size': '60'} }) }} </td></tr>
+      <tr><td height=10  ></td></tr> 
+
+    <tr><td align = left colspan=2><font color="red" >*</font> 
+        {{ form_label(form.hospitalSeguimientoEgreso, 'Hospital de seguimiento egreso') }}</td><td colspan=4 align = left>
+        {{ form_widget(form.hospitalSeguimientoEgreso) }} </td></tr>
             
      <tr style="visibility:hidden"><td align = left colspan = "3">
         {{ form_label(form.idReceptor) }}

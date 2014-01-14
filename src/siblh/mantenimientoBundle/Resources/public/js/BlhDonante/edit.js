@@ -22,14 +22,14 @@ $(document).ready(function() {
                            defaultDate: 'today',
                            minDate: '2012-10-08',
                            maxDate: 'today',
-                           yearRange: '2012:y',    
+                           yearRange: '2012:y',  
                            dayNamesMin: ["Do", "Lu", "Ma", "Mi", "Ju", "Vi", "Sa"],
                            monthNamesShort: ["Ene", "Feb", "Mar", "Abr", "May", "Jun",
                                              "Jul", "Ago", "Sep", "Oct", "Nov", "Dic"]
                           });  
                           
-                           $('#button').button();
-                            $('#boton1').button();
+                           $('#boton').button();
+                          
                           
                         //  $('#siblh_mantenimientobundle_blhdonante_numeroDocumentoIdentificacion').
       //  attr('data-bvalidator', 'regex[a{3}],required');
@@ -57,8 +57,8 @@ $('#siblh_mantenimientobundle_blhdonante_documentoIdentificacion').on('change', 
         $formato = 'A99999999'; 
             break;
         case 'Carnet de Minoridad':
-            regex ='[A-Z]\\d{5}';
-            $formato = 'X99999';
+            regex ='\\d{8}';
+            $formato = '999999';
             break;
         
     } 
@@ -91,6 +91,8 @@ $('#siblh_mantenimientobundle_blhdonante_registro').
  
 $('#siblh_mantenimientobundle_blhdonante_registro').
         attr('data-bvalidator-msg', "Ingrese el registro en el formato correcto 999999-9999"); 
+ $('#siblh_mantenimientobundle_blhdonante_fechaNacimiento').
+            attr('data-bvalidator', 'required'); 
 
 
 
@@ -112,14 +114,10 @@ $(function() {
         
            });
 
-
-
-
-  
+ 
 
 });
 
 
 
       
-

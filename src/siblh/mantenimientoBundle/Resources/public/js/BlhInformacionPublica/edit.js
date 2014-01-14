@@ -8,7 +8,7 @@
      
       $.noConflict();
       
-      //Calendario que toma la fecha de hoy
+      
       $.datepicker.setDefaults($.datepicker.regional["es"]);
    $('input[id$="_fechaPublicacion"]').datepicker({ dateFormat: 'yy-mm-dd',  
                            changeMonth: true,
@@ -21,7 +21,9 @@
                            dayNamesMin: ["Do", "Lu", "Ma", "Mi", "Ju", "Vi", "Sa"],
                            monthNamesShort: ["Ene", "Feb", "Mar", "Abr", "May", "Jun",
                                              "Jul", "Ago", "Sep", "Oct", "Nov", "Dic"]
-                          });                          
+                          });
+                          
+                          
  
     $('#boton').button(); 
     $('#boton1').button(); 
@@ -65,16 +67,11 @@
         if($nombreDocumento == "" ) {
             alert("Pendiente titulo del documento !");
             return false;}
-        else{
-             if($fechaPublicacion == "" ) {
-            alert("Ingrese una fecha valida !");
-            return false;}
-        else{ 
-             if($file == "" ) {
-            alert("Debe adjuntar un archivo !");
-            return false;}
-            
-            
-            }}
+        else {
+            alert("Datos actualizados !");
+             }
        });
  });
+
+
+

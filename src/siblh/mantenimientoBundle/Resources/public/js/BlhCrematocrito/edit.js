@@ -40,13 +40,13 @@ $(document).ready(function() {
 
   
  $('#siblh_mantenimientobundle_blhcrematocrito_crema1').
-            attr('data-bvalidator', 'required,between[1:99]');
+            attr('data-bvalidator', 'required,between[1:20]');
 
   $('#siblh_mantenimientobundle_blhcrematocrito_crema2').
-            attr('data-bvalidator', 'required,between[1:99]');
+            attr('data-bvalidator', 'required,between[1:20]');
     
  $('#siblh_mantenimientobundle_blhcrematocrito_crema3').
-            attr('data-bvalidator', 'required,between[1:99]');
+            attr('data-bvalidator', 'required,between[1:20]');
     
  $('#siblh_mantenimientobundle_blhcrematocrito_ct1').
             attr('data-bvalidator', 'required,between[1:99]');

@@ -25,10 +25,10 @@ $(document).ready(function() {
   //      attr('data-bvalidator', 'between[0:],required');
 
   $('#siblh_mantenimientobundle_blhegresoreceptor_estanciaHospitalaria').
-        attr('data-bvalidator', "regex[\\d]");
+        attr('data-bvalidator', "required,between[1:120]");
     
 $('#siblh_mantenimientobundle_blhegresoreceptor_permanenciaUcin').
-        attr('data-bvalidator', "regex[\\d]");
+        attr('data-bvalidator', "required,between[1:120]");
 
  $('#button').button(); 
  $('#boton').button(); 

@@ -33,7 +33,9 @@
         <tr><td colspan=2 align = "left" height=10  ></td></tr>
         <tr><td align='left' >{{ form_label(edit_form.direccion,'Direccion') }}</td><td align='left'>{{ form_widget(edit_form.direccion,  { 'attr': {'size': '100'} }) }}</td></tr>
         <tr><td colspan=2 align = "left" height=10  ></td></tr>
-        <tr><td align='left' >{{ form_label(edit_form.procedencia,'Procedencia') }}</td><td align='left'>{{ form_widget(edit_form.procedencia) }}</td></tr>
+        <tr><td align='left' ><font color="red">*</font>{{ form_label(edit_form.idMunicipio,'Procedencia') }}</td><td align='left'>{{ form_widget(edit_form.idMunicipio,  { 'attr': {'required': 'true'} }) }}</td></tr>
+        {#<tr><td colspan=2 align = "left" height=10  ></td></tr>
+        <tr><td align='left' >{{ form_label(edit_form.procedencia,'Procedencia') }}</td><td align='left'>{{ form_widget(edit_form.procedencia) }}</td></tr>#}
         <tr><td colspan=2 align = "left" height=10  ></td></tr>
         <tr><td align='left' >{{ form_label(edit_form.registro,'Registro') }}</td><td align='left'>{{ form_widget(edit_form.registro,  { 'attr': {'title': '999999-9999 correlativo-anio'} }) }}</td></tr>
         <tr><td colspan=2 align = "left" height=10  ></td></tr>
@@ -58,8 +60,7 @@
         <tr><td align='left' >{{ form_label(edit_form.telefonoMovil,'Celular') }}</td><td align='left'>{{ form_widget(edit_form.telefonoMovil,  { 'attr': {'title': '9999-9999'} }) }}</td></tr>
         <tr><td colspan=2 align = "left" height=10  ></td></tr>
         <tr><td align='left' ><font color="red">*</font>{{ form_label(edit_form.observaciones,'Observaciones') }}</td><td align='left'>{{ form_widget(edit_form.observaciones,  { 'attr': {'size': '50'} }) }}</td></tr>
-        <tr><td colspan=2 align = "left" height=10  ></td></tr>
-        <tr><td align='left' ><font color="red">*</font>{{ form_label(edit_form.idMunicipio,'Municipio') }}</td><td align='left'>{{ form_widget(edit_form.idMunicipio,  { 'attr': {'required': 'true'} }) }}</td></tr>
+        
        <tr style="visibility:hidden"><td align='left' ><font color="red">*</font>{{ form_label(edit_form.idBancoDeLeche,'blh') }}</td><td align='left'>{{ form_widget(edit_form.idBancoDeLeche) }}</td></tr>
        <tr><td align = "left"><font color="red" size = "2" face = "Comic Sans MS">* Campos requeridos</font></td> </tr>     
 

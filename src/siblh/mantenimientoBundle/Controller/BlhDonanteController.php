@@ -47,8 +47,8 @@ class BlhDonanteController extends Controller
           d.primerApellido, d.segundoApellido,
            d.fechaNacimiento, d.fechaRegistroDonanteBlh, d.telefonoFijo, d.telefonoMovil,
            d.direccion, d.procedencia, d.registro, d.documentoIdentificacion, d.numeroDocumentoIdentificacion,
-           d.edad, d.ocupacion, d.estadoCivil, d.nacionalidad, d.escolaridad, d.tipoColecta, d.observaciones
-       FROM siblhmantenimientoBundle:BlhDonante d where 
+           d.edad, d.ocupacion, d.estadoCivil, d.nacionalidad, d.escolaridad, d.tipoColecta, d.observaciones, m.nombre
+       FROM siblhmantenimientoBundle:BlhDonante d join d.idMunicipio m where 
        d.idBancoDeLeche = $codigo order by d.codigoDonante");
        $donante  = $query->getResult(); 
         return array(
@@ -73,6 +73,8 @@ class BlhDonanteController extends Controller
 
        if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
+            $usuario = $this->container->get('security.context')->getToken()->getUser()->getId();
+            $entity->setUsuario($usuario);
             $em->persist($entity);
             $em->flush();
 
@@ -246,6 +248,8 @@ class BlhDonanteController extends Controller
         $editForm->handleRequest($request);
 
         if ($editForm->isValid()) {
+            $usuario = $this->container->get('security.context')->getToken()->getUser()->getId();
+            $entity->setUsuario($usuario);
             $em->flush();
 
             return $this->redirect($this->generateUrl('blhdonante_edit', array('id' => $id)));

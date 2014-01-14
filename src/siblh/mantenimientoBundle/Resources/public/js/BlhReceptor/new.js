@@ -113,28 +113,28 @@ $('#siblh_mantenimientobundle_blhreceptor_pc').
 $('#siblh_mantenimientobundle_blhreceptor_pc').
         attr('data-bvalidator-msg', "Ingrese la talla entre 20 y 40 cm"); 
 
-$('#siblh_mantenimientobundle_blhreceptor_apgar').
-        attr('data-bvalidator', 'between[0:10],required');
     
-$('#siblh_mantenimientobundle_blhreceptor_apgar').
-        attr('data-bvalidator-msg', "Ingrese el valor apgar entre 0 y 10"); 
+
+$('#siblh_mantenimientobundle_blhreceptor_apgarPrimerMinuto').attr('data-bvalidator', 'required,between[0:9]');
+    
+$('#siblh_mantenimientobundle_blhreceptor_apgarQuintoMinuto').attr('data-bvalidator', 'required,between[0:10]');
 
 
 $('#siblh_mantenimientobundle_blhreceptor_edadGestBallard').
-        attr('data-bvalidator', 'between[24:42],required');
+        attr('data-bvalidator', 'between[20:42],required');
     
 $('#siblh_mantenimientobundle_blhreceptor_edadGestBallard').
-        attr('data-bvalidator-msg', "Ingrese la edad en semanas de 24 a 42 semananas"); 
+        attr('data-bvalidator-msg', "Ingrese la edad en semanas de 20 a 42 semananas"); 
 
 
 $('#siblh_mantenimientobundle_blhreceptor_duracionVentilacion').
-        attr('data-bvalidator', 'between[0:52],required');
+        attr('data-bvalidator', 'between[0:99],required');
 
 $('#siblh_mantenimientobundle_blhreceptor_duracionCpap').
-        attr('data-bvalidator', 'between[0:52],required');
+        attr('data-bvalidator', 'between[0:50],required');
 
 $('#siblh_mantenimientobundle_blhreceptor_duracionNpt').
-        attr('data-bvalidator', 'between[0:52],required');
+        attr('data-bvalidator', 'between[0:50],required');
 
  $(function() {
     $( document ).tooltip({

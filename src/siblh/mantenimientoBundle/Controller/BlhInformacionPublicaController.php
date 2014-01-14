@@ -55,6 +55,8 @@ class BlhInformacionPublicaController extends Controller
 
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
+            $usuario = $this->container->get('security.context')->getToken()->getUser()->getId();
+            $entity->setUsuario($usuario);
             $em->persist($entity);
             $em->flush();
 
@@ -219,6 +221,8 @@ class BlhInformacionPublicaController extends Controller
         }
 
         $deleteForm = $this->createDeleteForm($id);
+        $usuario = $this->container->get('security.context')->getToken()->getUser()->getId();
+        $entity->setUsuario($usuario);
         $editForm = $this->createEditForm($entity);
         $editForm->handleRequest($request);
 

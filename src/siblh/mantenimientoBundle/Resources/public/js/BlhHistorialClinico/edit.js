@@ -36,8 +36,8 @@ $(document).ready(function() {
                            monthNamesShort: ["Ene", "Feb", "Mar", "Abr", "May", "Jun",
                                              "Jul", "Ago", "Sep", "Oct", "Nov", "Dic"]
                           });    
-          $('#button').button(); 
-          $('#boton').button(); 
+     $('#boton').button();  
+     $('#boton1').button();  
                           
  //$('form').bValidator(optionsRed);
   $('#lugC').hide();
@@ -48,13 +48,13 @@ $('#siblh_mantenimientobundle_blhhistorialclinico_controlPrenatal').on('change',
     switch( this.value ) {
         case 'No':
            $('#lugC').hide();
-            $('#numC').hide();
+        //    $('#numC').hide();
  //  alert ("hola");
            
             break;
         case 'Si':
            $('#lugC').show();
-           $('#numC').show();
+        //   $('#numC').show();
             break;
         
     }   
@@ -63,40 +63,40 @@ $('#siblh_mantenimientobundle_blhhistorialclinico_controlPrenatal').on('change',
    //Validaciones
          
 $('#siblh_mantenimientobundle_blhhistorialclinico_formulaObstetricaG').
-            attr('data-bvalidator', 'between[0:20]'); 
+            attr('data-bvalidator', 'between[1:15]'); 
     
  $('#siblh_mantenimientobundle_blhhistorialclinico_formulaObstetricaG').   
-    attr('data-bvalidator-msg', "El valor debe estar entre 0 y 20"); 
+    attr('data-bvalidator-msg', "El valor debe estar entre 1 y 15"); 
     
  $('#siblh_mantenimientobundle_blhhistorialclinico_formulaObstetricaP1').
-            attr('data-bvalidator', 'between[0:20]'); 
+            attr('data-bvalidator', 'between[0:15]'); 
     
  $('#siblh_mantenimientobundle_blhhistorialclinico_formulaObstetricaP1').   
-    attr('data-bvalidator-msg', "El valor debe estar entre 0 y 20"); 
+    attr('data-bvalidator-msg', "El valor debe estar entre 0 y 15"); 
     
  $('#siblh_mantenimientobundle_blhhistorialclinico_formulaObstetricaP2').
-            attr('data-bvalidator', 'between[0:20]'); 
+            attr('data-bvalidator', 'between[0:15]'); 
     
  $('#siblh_mantenimientobundle_blhhistorialclinico_formulaObstetricaP2').   
-    attr('data-bvalidator-msg', "El valor debe estar entre 0 y 20"); 
+    attr('data-bvalidator-msg', "El valor debe estar entre 0 y 15"); 
     
  $('#siblh_mantenimientobundle_blhhistorialclinico_formulaObstetricaA').
-            attr('data-bvalidator', 'between[0:20]'); 
+            attr('data-bvalidator', 'between[0:15]'); 
     
  $('#siblh_mantenimientobundle_blhhistorialclinico_formulaObstetricaA').   
-    attr('data-bvalidator-msg', "El valor debe estar entre 0 y 20"); 
+    attr('data-bvalidator-msg', "El valor debe estar entre 0 y 15"); 
     
  $('#siblh_mantenimientobundle_blhhistorialclinico_formulaObstetricaV').
-            attr('data-bvalidator', 'between[0:20]'); 
+            attr('data-bvalidator', 'between[0:15]'); 
     
  $('#siblh_mantenimientobundle_blhhistorialclinico_formulaObstetricaV').   
-    attr('data-bvalidator-msg', "El valor debe estar entre 0 y 20"); 
+    attr('data-bvalidator-msg', "El valor debe estar entre 0 y 15"); 
     
 $('#siblh_mantenimientobundle_blhhistorialclinico_formulaObstetricaM').
-            attr('data-bvalidator', 'between[0:20]'); 
+            attr('data-bvalidator', 'between[0:15]'); 
     
  $('#siblh_mantenimientobundle_blhhistorialclinico_formulaObstetricaM').   
-    attr('data-bvalidator-msg', "El valor debe estar entre 0 y 20"); 
+    attr('data-bvalidator-msg', "El valor debe estar entre 0 y 15"); 
   
 
 $('#siblh_mantenimientobundle_blhhistorialclinico_numeroControl').
@@ -116,8 +116,6 @@ $('#siblh_mantenimientobundle_blhhistorialclinico_numeroControl').
 
 $('#siblh_mantenimientobundle_blhhistorialclinico_amenorrea').
         attr('data-bvalidator-msg', "El valor debe estar entre 1 y 38"); 
-
-
 
 
  //Opciones del validador
@@ -145,9 +143,37 @@ $('#siblh_mantenimientobundle_blhhistorialclinico_amenorrea').
       }
     });
         
-           });
+});
+
+//validacion de formula obstetrica
+$('#boton').on('click',function()
+{
+
+
+$g=$('#siblh_mantenimientobundle_blhhistorialclinico_formulaObstetricaG').val();
+$p1=$('#siblh_mantenimientobundle_blhhistorialclinico_formulaObstetricaP1').val();
+$p2=$('#siblh_mantenimientobundle_blhhistorialclinico_formulaObstetricaP2').val();
+$a=$('#siblh_mantenimientobundle_blhhistorialclinico_formulaObstetricaA').val();
+$v=$('#siblh_mantenimientobundle_blhhistorialclinico_formulaObstetricaV').val();
+$m=$('#siblh_mantenimientobundle_blhhistorialclinico_formulaObstetricaM').val();
+
+$embarazos=parseInt($g); 
+$partos=parseInt($p1); 
+$prematuros=parseInt($p2); 
+$abortos=parseInt($a); 
+$vivos=parseInt($v); 
+$muertos=parseInt($m); 
+
+$np=$partos+$prematuros+$abortos;
+if($embarazos != $np) 
+{
+alert ('Error en formula obstetrica: El numero de embarazos debes ser igual a la sumatoria de partos, partos prematuros y abortos.');
+return false;
+}    
+});
 
 });
+
 
 function soloNumerosEnteros(e)
 {
@@ -166,3 +192,4 @@ return true;
  
 return /\d/.test(String.fromCharCode(keynum));
 }
+

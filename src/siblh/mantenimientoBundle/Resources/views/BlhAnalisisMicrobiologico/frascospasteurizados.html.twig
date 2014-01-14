@@ -15,9 +15,9 @@
     <div align=center>
     <table id="listado_pasteurizados">
         <thead>
-            <tr>
-        
+            <tr> 
                 <th>Frasco</th>
+                <th>Fecha</th>
                 <th>Observacion</th> 
                 <th>Acción</th>
             </tr>
@@ -29,6 +29,7 @@
             <tr> 
                 
                 <td>{{ pasteurizados.codigoFrascoProcesado}}</td>
+                <td>{{ pasteurizados.fechaPasteurizacion|date('Y-m-d')}}</td>
                 <td>{{ pasteurizados.observacionFrascoProcesado }}</td>      
                 <td> <a href="{{ path('blhanalisismicrobiologico_new', { 'id': pasteurizados.id })}}"><font color="blue"><u>Nuevo Analisis</u></font></a></td>
                  </tr>

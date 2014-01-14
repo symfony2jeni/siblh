@@ -34,11 +34,8 @@
   {{ form_label(edit_form.idPasteurizacion,'Pasteurizacion') }}
  </td><td align='left'>{{ form_widget(edit_form.idPasteurizacion) }}</td></tr> 
  
- <tr>
- <td><P><input type="submit" class= "ui-button" value="Actualizar"/></td>
- <td><P><input id = "boton" type="button" value="Regresar" onClick=' window.location.href="{{ path('blhtemperaturapasteurizacion') }}" '></td> 
- </tr>
- 
+ <tr><td colspan = '2' align = 'center'>  <input id= "boton1" type="submit" value="Actualizar"/>
+ <input id = "boton" type="button" value="Regresar" onClick=' window.location.href="{{ path('blhtemperaturapasteurizacion') }}" '></td></tr>
 
           </table>
     {{ form_end(edit_form) }}

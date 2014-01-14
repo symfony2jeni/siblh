@@ -41,7 +41,7 @@ font-family: verdana,arial,helvetica,sans-serif;}
                 <td>{{ entity.pcSeguimiento|number_format(2, '.', ',') }}</td>
             </tr>
             <tr align = "left">
-                <th>Ganancia&nbsp;de&nbsp;peso&nbsp;por&nbsp;día(g)</th>
+                <th>Ganancia/Pérdida&nbsp;de&nbsp;peso&nbsp;por&nbsp;día(g)</th>
                 <td>{{ entity.gananciaDiaPeso|number_format(2, '.', ',') }}</td>
             </tr>
             <tr align = "left">
@@ -53,12 +53,24 @@ font-family: verdana,arial,helvetica,sans-serif;}
                 <td>{{ entity.fechaSeguimiento|date('Y-m-d') }}</td>
             </tr>
             <tr align = "left">
-                <th> Ganancia&nbsp;de&nbsp;talla&nbsp;por&nbsp;día(cm)</th>
+                <th> Ganancia/Pérdida&nbsp;de&nbsp;talla&nbsp;por&nbsp;día(cm)</th>
                 <td>{{ entity.gananciaDiaTalla|number_format(2, '.', ',') }}</td>
+            </tr>
+            <tr align = "left">
+                <th> Ganancia/Pérdida&nbsp;perímetro&nbsp;cefálico&nbsp;por&nbsp;día(cm)</th>
+                <td>{{ entity.gananciaDiaPc|number_format(2, '.', ',') }}</td>
+            </tr>
+            <tr align = "left">
+                <th>Periodo&nbsp;de&nbsp;evaluacion(‎días)</th>
+                <td>{{ entity.periodoEvaluacion }}</td>
             </tr>
             <tr align = "left">
                 <th>Complicaciones</th>
                 <td>{{ entity.complicaciones }}</td>
+            </tr>
+            <tr align = "left">
+                <th>Observaciones</th>
+                <td>{{ entity.observacion }}</td>
             </tr>
     </table>
     

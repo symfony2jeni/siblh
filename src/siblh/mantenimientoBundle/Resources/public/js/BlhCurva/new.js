@@ -5,38 +5,24 @@
 $(document).ready(function() { 
     $.noConflict();
    $('#boton').button();
+   $('#boton1').button();
 
       
      $.datepicker.setDefaults($.datepicker.regional["es"]);
    $('input[id$="_fechaCurva"]').datepicker({ dateFormat: 'yy-mm-dd',  
                            changeMonth: true,
                            changeYear: true,
+                           minDate:'todate',
                            maxDate: 'todate',
                            clearStatus: 'Borra fecha actual',  
-                           defaultDate: '01-01-2012',
-                           yearRange: '2012:y',
+                           //defaultDate: '01-01-2012',
+                           yearRange: '2013:y',
                            dayNamesMin: ["Do", "Lu", "Ma", "Mi", "Ju", "Vi", "Sa"],
                            monthNamesShort: ["Ene", "Feb", "Mar", "Abr", "May", "Jun",
                                              "Jul", "Ago", "Sep", "Oct", "Nov", "Dic"]
                           });
  
-$('#siblh_mantenimientobundle_blhcurva_tiempo1').
-        attr('data-bvalidator', 'between[5:10],required');                      
-                          
-$('#siblh_mantenimientobundle_blhcurva_tiempo2').
-        attr('data-bvalidator', 'between[5:10],required');
-                           
-$('#siblh_mantenimientobundle_blhcurva_tiempo3').
-        attr('data-bvalidator', 'between[5:10],required');
 
-$('#siblh_mantenimientobundle_blhcurva_cantidadFrascos').
-        attr('data-bvalidator', 'between[5:100],required');
-
-$('#siblh_mantenimientobundle_blhcurva_volumenPorFrasco').
-        attr('data-bvalidator', 'between[30:130],required');
-    
-$('#siblh_mantenimientobundle_blhcurva_fechaCurva').
-        attr('data-bvalidator',  "regex['/^\d{4}[\/\-](0?[1-9]|1[012])[\/\-](0?[1-9]|[12][0-9]|3[01])$/']");   
  
     //Opciones del validador
     var optionsRed = { 
@@ -44,12 +30,41 @@ $('#siblh_mantenimientobundle_blhcurva_fechaCurva').
         lang: 'es'
     };
  
+ 
+ //Calculando campos                        
+var $tiempo1; 
+var $tiempo2; 
+var $tiempo3;  
+var $valor1;
+var $valorCurva;
+  $('#siblh_mantenimientobundle_blhcurva_tiempo1').on('input', function() { 
+    $tiempo1 = this.value;
+});
+ $('#siblh_mantenimientobundle_blhcurva_tiempo1').on('input', function() { 
+    $tiempo1 = this.value;
+});
+$('#siblh_mantenimientobundle_blhcurva_tiempo2').on('input', function() { 
+    $tiempo2 = this.value;
+});
+$('#siblh_mantenimientobundle_blhcurva_tiempo3').on('input', function() { 
+    $tiempo3 = this.value;
+    $valor1=parseInt($tiempo1)+parseInt($tiempo2)+parseInt($tiempo3);
+    $valorCurva= Math.round(($valor1/3)* 100) / 100;  
+});
+
+$('#siblh_mantenimientobundle_blhcurva_valorCurva').on ('click', function() {
+this.value = $valorCurva; } ); 
+
+
+ 
+ 
+ 
     //Validar el formulario
     
     $('form').bValidator(optionsRed);
     
     
-    
+    //funcion para presentacion de mensajes
     $(function() {
     $( document ).tooltip({
       position: {
@@ -66,14 +81,63 @@ $('#siblh_mantenimientobundle_blhcurva_fechaCurva').
       }
     });
         
-           });
+  });
 
+   
+ $('#boton').on ('click', function() {
 
+       $fechaCurva=$('#siblh_mantenimientobundle_blhcurva_fechaCurva').val();
+       $cantidadFrascos=$('#siblh_mantenimientobundle_blhcurva_cantidadFrascos').val();
+       $volumenPorFrasco=$('#siblh_mantenimientobundle_blhcurva_volumenPorFrasco').val();
+       $tiempo1=$('#siblh_mantenimientobundle_blhcurva_tiempo1').val();
+       $tiempo2=$('#siblh_mantenimientobundle_blhcurva_tiempo2').val();
+       $tiempo3=$('#siblh_mantenimientobundle_blhcurva_tiempo3').val();
+       
+        if($fechaCurva == "" ) {
+            alert("Ingrese una fecha valida!");
+            return false;}
+        else{
+            if(($cantidadFrascos == "") || ($cantidadFrascos < 20)  || ($cantidadFrascos > 60)) {
+            alert("Ingrese cantidad de frascos entre 20 y 60!");
+            return false;}
+        
+            else{
+                if(($volumenPorFrasco == "") || ($volumenPorFrasco < 60)  || ($volumenPorFrasco > 500)) {
+                alert("Ingrese Volumen de frascos entre 60 y 500 ML!");
+                return false;} 
+            
+                 else{
+                    if(($tiempo1 == "") || ($tiempo1 < 5)  || ($tiempo1>10)) {
+                    alert("Ingrese tiempo entre 5 y 10 minutos!");
+                    return false;}
+                
+                     else{
+                        if(($tiempo2 == "") || ($tiempo2 < 5)  || ($tiempo2>10)) {
+                        alert("Ingrese tiempo entre 5 y 10 minutos!");
+                        return false;} 
+                 
+                        else{
+                           if(($tiempo3 == "") || ($tiempo3 < 5)  || ($tiempo3>10)) {
+                           alert("Ingrese tiempo entre 5 y 10 minutos!");
+                            return false;} 
+                        else {
+                            alert("Datos almacenados!")
+                             }
+
+                             }
+                         }
+                      }
+                }
+            }
+       
+       });
 
 
   
 
 });
+    
+    
     
 function soloNumeros(e)
 {
@@ -101,32 +165,4 @@ if (keynum === 8)
 return true;
  
 return /\d/.test(String.fromCharCode(keynum));
-} 
-  
-
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
-  
+}

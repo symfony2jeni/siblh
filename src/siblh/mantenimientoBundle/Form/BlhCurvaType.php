@@ -28,6 +28,8 @@ class BlhCurvaType extends AbstractType
             ->add('cantidadFrascos','number')
             ->add('volumenPorFrasco','number')
             ->add('horaInicioCurva')
+            ->add('valorCurva') 
+
         ;
     }
     

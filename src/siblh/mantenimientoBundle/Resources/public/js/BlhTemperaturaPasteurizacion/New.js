@@ -5,6 +5,8 @@
 $(document).ready(function() { 
     $.noConflict();
    $('#boton').button();
+   $('#boton1').button();
+
  
    
  
@@ -17,16 +19,27 @@ $(document).ready(function() {
     //Validar el formulario
          
     $('form').bValidator(optionsRed);
-    
-   
 
-$('#siblh_mantenimientobundle_blhtemperaturapasteurizacion_temperaturaP').
-        attr('data-bvalidator', 'between[5:30],required');
-    
-$('#siblh_mantenimientobundle_blhtemperaturapasteurizacion_temperaturaP').
-        attr('data-bvalidator-msg', "Ingrese valores para la temperatura entre 5 y 30");  
 
-});
+
+    $('#boton1').on ('click', function() {
+           
+       $temperaturaP=$('#siblh_mantenimientobundle_blhtemperaturapasteurizacion_temperaturaP').val();
+  
+       
+        if(($temperaturaP == "") || ($temperaturaP < 62)|| ($temperaturaP > 66)){
+            alert("Ingrese valores para la temperatura de 62 a 66 grados C");
+            return false;}
+           
+        else
+            {
+             alert("Datos almacenados");
+                 
+            }
+       });
+ 
+ });
+
 
 function soloNumerosEnteros(e)
 {
@@ -36,6 +49,3 @@ return true;
  
 return /\d/.test(String.fromCharCode(keynum));
 } 
- 
- 
-  

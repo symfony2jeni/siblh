@@ -54,6 +54,8 @@ class BlhFrascoProcesadoController extends Controller
     public function createAction(Request $request)
     {
         $entity = new BlhFrascoProcesado();
+        $usuario = $this->container->get('security.context')->getToken()->getUser()->getId();
+        $entity->setUsuario($usuario);
         $form = $this->createCreateForm($entity);
         $form->handleRequest($request);
         $em = $this->getDoctrine()->getManager();
@@ -116,6 +118,7 @@ class BlhFrascoProcesadoController extends Controller
                                  
             //Asociando el farsco procesado con los frascos recolectados
             $entity1 = new BlhFrascoRecolectadoFrascoP();
+            $entity1->setUsuario($usuario);
             $entity1->setidFrascoProcesado($frascop);
             $entity1->setidFrascoRecolectado($frascosr);                            
             $entity1->setvolumenAgregado($vlcombinar[$i]);
@@ -129,6 +132,7 @@ class BlhFrascoProcesadoController extends Controller
             if($voldisp==0){
             $nuevoestado = $em->getRepository('siblhmantenimientoBundle:BlhEstado')->find(15);
             $frascosr->setIdEstado($nuevoestado);
+            $frascosr->setUsuario($usuario);
             $em->persist($frascosr);
             $em->flush();
            /* $idestado= $frascosr->getidEstado();
@@ -356,7 +360,8 @@ class BlhFrascoProcesadoController extends Controller
         $em = $this->getDoctrine()->getManager();
 
         $entity = $em->getRepository('siblhmantenimientoBundle:BlhFrascoProcesado')->find($id);
-
+        $usuario = $this->container->get('security.context')->getToken()->getUser()->getId();
+        $entity->setUsuario($usuario);
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find BlhFrascoProcesado entity.');
         }

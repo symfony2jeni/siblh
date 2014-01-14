@@ -11,7 +11,7 @@ $(document).ready(function() {
                            defaultDate: 'today',
                            minDate: '2012-10-08',
                            maxDate: 'today',
-                            yearRange: '2012:y',
+                           yearRange: '2012:y',
                            dayNamesMin: ["Do", "Lu", "Ma", "Mi", "Ju", "Vi", "Sa"],
                            monthNamesShort: ["Ene", "Feb", "Mar", "Abr", "May", "Jun",
                                              "Jul", "Ago", "Sep", "Oct", "Nov", "Dic"]
@@ -39,27 +39,32 @@ $(document).ready(function() {
     
     $('#boton')
       .button();
-      $('#boton1')
+     $('#boton1')
       .button();
      
   
  $('#siblh_mantenimientobundle_blhseguimientoreceptor_fechaSeguimiento').
             attr('data-bvalidator', 'required');
 
-  $('#siblh_mantenimientobundle_blhseguimientoreceptor_semana').
-            attr('data-bvalidator', 'required,min[1]');
+  $('#siblh_mantenimientobundle_blhseguimientoreceptor_semana').attr('data-bvalidator', 'required,between[1:16]');
+    
+     $('#siblh_mantenimientobundle_blhseguimientoreceptor_periodoEvaluacion').attr('data-bvalidator', 'required,between[5:10]');
+
 
     
      
  $('#siblh_mantenimientobundle_blhseguimientoreceptor_pcSeguimiento').
             attr('data-bvalidator', 'required,between[20:40]');
     
+  $('#siblh_mantenimientobundle_blhseguimientoreceptor_gananciaDiaPc').
+      attr('data-bvalidator', 'required,between[-5:5]');   
+    
  $('#siblh_mantenimientobundle_blhseguimientoreceptor_pesoSeguimiento').
             attr('data-bvalidator', 'required,between[500:5000]');
   
     
  $('#siblh_mantenimientobundle_blhseguimientoreceptor_gananciaDiaPeso').
-            attr('data-bvalidator', 'required,between[0:50]');
+            attr('data-bvalidator', 'required,between[-50:50]');
  
     
  $('#siblh_mantenimientobundle_blhseguimientoreceptor_tallaReceptor').
@@ -67,7 +72,7 @@ $(document).ready(function() {
     
     
   $('#siblh_mantenimientobundle_blhseguimientoreceptor_gananciaDiaTalla').
-            attr('data-bvalidator', 'required,between[0:5]');
+            attr('data-bvalidator', 'required,between[-5:5]');
     
 
       //Opciones del validador
@@ -94,13 +99,11 @@ return /\d/.test(String.fromCharCode(keynum));
 function soloNumeros(e)
 {
 var keynum = window.event ? window.event.keyCode : e.which;
-if ((keynum === 8) || (keynum === 46))
+if ((keynum === 8) || (keynum === 46) || (keynum === 45))
 return true;
  
 return /\d/.test(String.fromCharCode(keynum));
 }
 
 
-
       
-

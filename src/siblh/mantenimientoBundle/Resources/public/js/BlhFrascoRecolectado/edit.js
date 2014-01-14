@@ -2,7 +2,7 @@ $(document).ready(function() {
     
    $('button').button();
    $('#siblh_mantenimientobundle_blhfrascorecolectado_volumenRecolectado').
-        attr('data-bvalidator', 'between[1:300],required');
+        attr('data-bvalidator', 'between[1:500],required');
  
    
  

@@ -63,16 +63,18 @@ $(document).ready(function() {
 
   
  $('#siblh_mantenimientobundle_blhacidez_acidez1').
-            attr('data-bvalidator', 'required,between[0:15]');
+            attr('data-bvalidator', 'required,between[1:15]');
 
   $('#siblh_mantenimientobundle_blhacidez_acidez2').
-            attr('data-bvalidator', 'required,between[0:15]');
+            attr('data-bvalidator', 'required,between[1:15]');
     
  $('#siblh_mantenimientobundle_blhacidez_acidez3').
-            attr('data-bvalidator', 'required,between[0:15]');
-    
+            attr('data-bvalidator', 'required,between[1:15]');
+  
+  
+ 
  $('#siblh_mantenimientobundle_blhacidez_factor').
-            attr('data-bvalidator', 'required,between[0:5]');
+            attr('data-bvalidator', 'required,between[0.9:1.1]');
   
  
                           

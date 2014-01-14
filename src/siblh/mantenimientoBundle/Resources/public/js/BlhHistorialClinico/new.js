@@ -63,40 +63,40 @@ $('#siblh_mantenimientobundle_blhhistorialclinico_controlPrenatal').on('change',
    //Validaciones
          
 $('#siblh_mantenimientobundle_blhhistorialclinico_formulaObstetricaG').
-            attr('data-bvalidator', 'between[0:20]'); 
+            attr('data-bvalidator', 'between[1:15]'); 
     
  $('#siblh_mantenimientobundle_blhhistorialclinico_formulaObstetricaG').   
-    attr('data-bvalidator-msg', "El valor debe estar entre 0 y 20"); 
+    attr('data-bvalidator-msg', "El valor debe estar entre 1 y 15"); 
     
  $('#siblh_mantenimientobundle_blhhistorialclinico_formulaObstetricaP1').
-            attr('data-bvalidator', 'between[0:20]'); 
+            attr('data-bvalidator', 'between[0:15]'); 
     
  $('#siblh_mantenimientobundle_blhhistorialclinico_formulaObstetricaP1').   
-    attr('data-bvalidator-msg', "El valor debe estar entre 0 y 20"); 
+    attr('data-bvalidator-msg', "El valor debe estar entre 0 y 15"); 
     
  $('#siblh_mantenimientobundle_blhhistorialclinico_formulaObstetricaP2').
-            attr('data-bvalidator', 'between[0:20]'); 
+            attr('data-bvalidator', 'between[0:15]'); 
     
  $('#siblh_mantenimientobundle_blhhistorialclinico_formulaObstetricaP2').   
-    attr('data-bvalidator-msg', "El valor debe estar entre 0 y 20"); 
+    attr('data-bvalidator-msg', "El valor debe estar entre 0 y 15"); 
     
  $('#siblh_mantenimientobundle_blhhistorialclinico_formulaObstetricaA').
-            attr('data-bvalidator', 'between[0:20]'); 
+            attr('data-bvalidator', 'between[0:15]'); 
     
  $('#siblh_mantenimientobundle_blhhistorialclinico_formulaObstetricaA').   
-    attr('data-bvalidator-msg', "El valor debe estar entre 0 y 20"); 
+    attr('data-bvalidator-msg', "El valor debe estar entre 0 y 15"); 
     
  $('#siblh_mantenimientobundle_blhhistorialclinico_formulaObstetricaV').
-            attr('data-bvalidator', 'between[0:20]'); 
+            attr('data-bvalidator', 'between[0:15]'); 
     
  $('#siblh_mantenimientobundle_blhhistorialclinico_formulaObstetricaV').   
-    attr('data-bvalidator-msg', "El valor debe estar entre 0 y 20"); 
+    attr('data-bvalidator-msg', "El valor debe estar entre 0 y 15"); 
     
 $('#siblh_mantenimientobundle_blhhistorialclinico_formulaObstetricaM').
-            attr('data-bvalidator', 'between[0:20]'); 
+            attr('data-bvalidator', 'between[0:15]'); 
     
  $('#siblh_mantenimientobundle_blhhistorialclinico_formulaObstetricaM').   
-    attr('data-bvalidator-msg', "El valor debe estar entre 0 y 20"); 
+    attr('data-bvalidator-msg', "El valor debe estar entre 0 y 15"); 
   
 
 $('#siblh_mantenimientobundle_blhhistorialclinico_numeroControl').
@@ -146,7 +146,7 @@ $('#siblh_mantenimientobundle_blhhistorialclinico_amenorrea').
 });
 
 //validacion de formula obstetrica
-/*$('#boton').on('click',function()
+$('#boton').on('click',function()
 {
 
 
@@ -157,31 +157,20 @@ $a=$('#siblh_mantenimientobundle_blhhistorialclinico_formulaObstetricaA').val();
 $v=$('#siblh_mantenimientobundle_blhhistorialclinico_formulaObstetricaV').val();
 $m=$('#siblh_mantenimientobundle_blhhistorialclinico_formulaObstetricaM').val();
 
-$ng=parseInt($g); 
-$np1=parseInt($p1); 
-$np2=parseInt($p2); 
-$na=parseInt($a); 
-$nv=parseInt($v); 
-$nm=parseInt($m); 
+$embarazos=parseInt($g); 
+$partos=parseInt($p1); 
+$prematuros=parseInt($p2); 
+$abortos=parseInt($a); 
+$vivos=parseInt($v); 
+$muertos=parseInt($m); 
 
-
-if($nv != $np1) 
+$np=$partos+$prematuros+$abortos;
+if($embarazos != $np) 
 {
-alert ('Error en formula obstetrica: El numero de vivos debe ser igual al numero de partos');
+alert ('Error en formula obstetrica: El numero de embarazos debes ser igual a la sumatoria de partos, partos prematuros y abortos.');
 return false;
 }    
-if($nm != $na){
-alert('Error en formula obstetrica: El numero de muertos debe ser igual al numero de abortos');
-return false;
-}
-
-$abortos=$ng-$np1;
-
-if($na != $abortos){
-alert('Error en formula obstetrica: El numero de abortos debe ser igual a la diferencia de Embarazos y Partos');
-return false;
-}
-});*/
+});
 
 });
 
@@ -203,4 +192,5 @@ return true;
  
 return /\d/.test(String.fromCharCode(keynum));
 }
+
 
