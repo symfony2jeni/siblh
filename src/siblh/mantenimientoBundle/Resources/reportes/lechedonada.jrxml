@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="lechedonada" language="groovy" pageWidth="936" pageHeight="792" columnWidth="896" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="18318696-7550-4f54-be06-7dd6491473b2">
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="lechedonada" language="groovy" pageWidth="936" pageHeight="792" columnWidth="896" leftMargin="20" rightMargin="20" topMargin="45" bottomMargin="20" uuid="18318696-7550-4f54-be06-7dd6491473b2">
 	<property name="ireport.zoom" value="1.0"/>
-	<property name="ireport.x" value="229"/>
-	<property name="ireport.y" value="453"/>
+	<property name="ireport.x" value="55"/>
+	<property name="ireport.y" value="0"/>
 	<style name="table">
 		<box>
 			<pen lineWidth="1.0" lineColor="#000000"/>
@@ -42,6 +42,7 @@ order by fr.codigo_frasco_recolectado;]]>
 		<field name="fecha_donacion" class="java.sql.Date"/>
 		<field name="fecha_vencimiento" class="java.sql.Timestamp"/>
 	</subDataset>
+	<parameter name="nombre" class="java.lang.String"/>
 	<queryString>
 		<![CDATA[select row_number() OVER (ORDER BY fr.codigo_frasco_recolectado) as N, fr.codigo_frasco_recolectado,
  d.codigo_donante, fr.volumen_recolectado, fr.onz_recolectado, fr.forma_extraccion,
@@ -63,14 +64,7 @@ order by fr.codigo_frasco_recolectado;]]>
 		<band splitType="Stretch"/>
 	</background>
 	<title>
-		<band height="150" splitType="Stretch">
-			<staticText>
-				<reportElement uuid="875bb159-3fb2-488c-b63e-fd115d4e2481" x="374" y="41" width="223" height="24"/>
-				<textElement>
-					<font fontName="Comic Sans MS" size="14"/>
-				</textElement>
-				<text><![CDATA[HOSPITAL DE MATERNIDAD]]></text>
-			</staticText>
+		<band height="125" splitType="Stretch">
 			<staticText>
 				<reportElement uuid="745df685-4496-4e6f-9adb-bd0abf2023e2" x="392" y="17" width="182" height="24"/>
 				<textElement>
@@ -79,7 +73,7 @@ order by fr.codigo_frasco_recolectado;]]>
 				<text><![CDATA[MINISTERIO DE SALUD]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="5c3131e2-80cf-48ab-acc6-dc82ee6255ba" x="354" y="68" width="264" height="50"/>
+				<reportElement uuid="5c3131e2-80cf-48ab-acc6-dc82ee6255ba" x="238" y="93" width="481" height="24"/>
 				<textElement textAlignment="Center">
 					<font fontName="Comic Sans MS" size="14"/>
 				</textElement>
@@ -93,15 +87,19 @@ order by fr.codigo_frasco_recolectado;]]>
 				<reportElement uuid="4956bfe9-d4ed-40c9-ad9e-22d787ca99c1" x="738" y="17" width="158" height="101"/>
 				<imageExpression><![CDATA["/home/jeni/NetBeansProjects/siblh/src/siblh/mantenimientoBundle/Resources/reportes/minsal2.jpg"]]></imageExpression>
 			</image>
+			<textField>
+				<reportElement uuid="65e82a81-a1e9-43f7-8974-40cc8a5c4098" x="239" y="41" width="481" height="41"/>
+				<textElement textAlignment="Center">
+					<font fontName="Comic Sans MS" size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{nombre}]]></textFieldExpression>
+			</textField>
 		</band>
 	</title>
-	<pageHeader>
-		<band height="35" splitType="Stretch"/>
-	</pageHeader>
-	<columnHeader>
-		<band height="189" splitType="Stretch">
+	<summary>
+		<band height="163" splitType="Stretch">
 			<componentElement>
-				<reportElement uuid="ece20a50-0c38-44c3-98b6-b1519d6b2635" key="table" style="table" x="32" y="18" width="808" height="140"/>
+				<reportElement uuid="ece20a50-0c38-44c3-98b6-b1519d6b2635" key="table" style="table" x="32" y="13" width="808" height="140"/>
 				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
 					<datasetRun subDataset="New Dataset 1" uuid="f2652a79-0a0e-4a12-a5e0-c11b9918d9a1">
 						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
@@ -110,7 +108,7 @@ order by fr.codigo_frasco_recolectado;]]>
 						<jr:tableHeader style="table_TH" height="0" rowSpan="1"/>
 						<jr:columnHeader style="table_CH" height="30" rowSpan="1">
 							<staticText>
-								<reportElement uuid="69fdbb05-0fd5-43fe-a63d-6f4614342106" x="0" y="0" width="43" height="30"/>
+								<reportElement uuid="69fdbb05-0fd5-43fe-a63d-6f4614342106" x="17" y="0" width="26" height="30"/>
 								<textElement>
 									<font size="12" isBold="true"/>
 								</textElement>
@@ -119,7 +117,7 @@ order by fr.codigo_frasco_recolectado;]]>
 						</jr:columnHeader>
 						<jr:detailCell style="table_TD" height="20" rowSpan="1">
 							<textField>
-								<reportElement uuid="38732e65-fa8d-4cc2-9eba-229bb6a6d210" x="0" y="0" width="43" height="20"/>
+								<reportElement uuid="38732e65-fa8d-4cc2-9eba-229bb6a6d210" x="9" y="0" width="28" height="20"/>
 								<textElement/>
 								<textFieldExpression><![CDATA[$F{n}]]></textFieldExpression>
 							</textField>
@@ -138,8 +136,8 @@ order by fr.codigo_frasco_recolectado;]]>
 						</jr:columnHeader>
 						<jr:detailCell style="table_TD" height="20" rowSpan="1">
 							<textField>
-								<reportElement uuid="05b79964-c66d-47bd-9217-6ed6604548e5" x="0" y="0" width="90" height="20"/>
-								<textElement/>
+								<reportElement uuid="05b79964-c66d-47bd-9217-6ed6604548e5" x="0" y="0" width="106" height="20"/>
+								<textElement textAlignment="Center"/>
 								<textFieldExpression><![CDATA[$F{codigo_frasco_recolectado}]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>
@@ -148,7 +146,7 @@ order by fr.codigo_frasco_recolectado;]]>
 						<jr:tableHeader style="table_TH" height="0" rowSpan="1"/>
 						<jr:columnHeader style="table_CH" height="30" rowSpan="1">
 							<staticText>
-								<reportElement uuid="b4c3c840-7119-451a-a9e2-6fb8b190e2df" x="0" y="4" width="129" height="25"/>
+								<reportElement uuid="b4c3c840-7119-451a-a9e2-6fb8b190e2df" x="10" y="4" width="116" height="25"/>
 								<textElement>
 									<font size="12" isBold="true"/>
 								</textElement>
@@ -157,8 +155,8 @@ order by fr.codigo_frasco_recolectado;]]>
 						</jr:columnHeader>
 						<jr:detailCell style="table_TD" height="20" rowSpan="1">
 							<textField>
-								<reportElement uuid="17c92289-3681-4ac3-96c1-290d99eda10b" x="0" y="0" width="90" height="20"/>
-								<textElement/>
+								<reportElement uuid="17c92289-3681-4ac3-96c1-290d99eda10b" x="13" y="0" width="90" height="20"/>
+								<textElement textAlignment="Center"/>
 								<textFieldExpression><![CDATA[$F{codigo_donante}]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>
@@ -176,8 +174,8 @@ order by fr.codigo_frasco_recolectado;]]>
 						</jr:columnHeader>
 						<jr:detailCell style="table_TD" height="20" rowSpan="1">
 							<textField pattern="###0.00">
-								<reportElement uuid="f5d8005b-9110-47e3-970b-dc811e42e05f" x="0" y="0" width="59" height="20"/>
-								<textElement/>
+								<reportElement uuid="f5d8005b-9110-47e3-970b-dc811e42e05f" x="15" y="0" width="59" height="20"/>
+								<textElement textAlignment="Center"/>
 								<textFieldExpression><![CDATA[$F{volumen_recolectado}]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>
@@ -195,8 +193,8 @@ order by fr.codigo_frasco_recolectado;]]>
 						</jr:columnHeader>
 						<jr:detailCell style="table_TD" height="20" rowSpan="1">
 							<textField pattern="###0.00">
-								<reportElement uuid="dc4daa03-6eb1-4a71-bc60-11812068c0c7" x="0" y="0" width="76" height="20"/>
-								<textElement/>
+								<reportElement uuid="dc4daa03-6eb1-4a71-bc60-11812068c0c7" x="10" y="0" width="76" height="20"/>
+								<textElement textAlignment="Center"/>
 								<textFieldExpression><![CDATA[$F{onz_recolectado}]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>
@@ -205,7 +203,7 @@ order by fr.codigo_frasco_recolectado;]]>
 						<jr:tableHeader style="table_TH" height="0" rowSpan="1"/>
 						<jr:columnHeader style="table_CH" height="30" rowSpan="1">
 							<staticText>
-								<reportElement uuid="16832c00-5fa5-4159-9b86-ab87971689ac" x="0" y="6" width="158" height="19"/>
+								<reportElement uuid="16832c00-5fa5-4159-9b86-ab87971689ac" x="10" y="6" width="144" height="19"/>
 								<textElement>
 									<font size="12" isBold="true"/>
 								</textElement>
@@ -214,8 +212,8 @@ order by fr.codigo_frasco_recolectado;]]>
 						</jr:columnHeader>
 						<jr:detailCell style="table_TD" height="20" rowSpan="1">
 							<textField>
-								<reportElement uuid="82b56109-818e-4e49-acb3-a2260fcc431f" x="0" y="0" width="90" height="20"/>
-								<textElement/>
+								<reportElement uuid="82b56109-818e-4e49-acb3-a2260fcc431f" x="37" y="0" width="90" height="20"/>
+								<textElement textAlignment="Center"/>
 								<textFieldExpression><![CDATA[$F{forma_extraccion}]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>
@@ -232,9 +230,9 @@ order by fr.codigo_frasco_recolectado;]]>
 							</staticText>
 						</jr:columnHeader>
 						<jr:detailCell style="table_TD" height="20" rowSpan="1">
-							<textField>
-								<reportElement uuid="fbfb7fe2-b17f-40fd-b7d3-7ab00cf9d874" x="0" y="0" width="90" height="20"/>
-								<textElement/>
+							<textField pattern="yyyy/MM/dd">
+								<reportElement uuid="fbfb7fe2-b17f-40fd-b7d3-7ab00cf9d874" x="20" y="0" width="90" height="20"/>
+								<textElement textAlignment="Center"/>
 								<textFieldExpression><![CDATA[$F{fecha_donacion}]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>
@@ -251,9 +249,9 @@ order by fr.codigo_frasco_recolectado;]]>
 							</staticText>
 						</jr:columnHeader>
 						<jr:detailCell style="table_TD" height="20" rowSpan="1">
-							<textField>
-								<reportElement uuid="9db647d1-3af3-427d-9737-5ee684b0cff0" x="0" y="0" width="90" height="20"/>
-								<textElement/>
+							<textField pattern="yyyy/MM/dd">
+								<reportElement uuid="9db647d1-3af3-427d-9737-5ee684b0cff0" x="19" y="0" width="90" height="20"/>
+								<textElement textAlignment="Center"/>
 								<textFieldExpression><![CDATA[$F{fecha_vencimiento}]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>
@@ -261,23 +259,5 @@ order by fr.codigo_frasco_recolectado;]]>
 				</jr:table>
 			</componentElement>
 		</band>
-	</columnHeader>
-	<detail>
-		<band height="125" splitType="Stretch"/>
-	</detail>
-	<columnFooter>
-		<band height="45" splitType="Stretch"/>
-	</columnFooter>
-	<pageFooter>
-		<band height="54" splitType="Stretch">
-			<textField>
-				<reportElement uuid="c691931e-196e-4703-b4e3-b1794e6534a5" x="860" y="27" width="25" height="20"/>
-				<textElement/>
-				<textFieldExpression><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
-			</textField>
-		</band>
-	</pageFooter>
-	<summary>
-		<band height="42" splitType="Stretch"/>
 	</summary>
 </jasperReport>

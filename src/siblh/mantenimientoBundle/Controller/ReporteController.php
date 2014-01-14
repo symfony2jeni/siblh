@@ -88,7 +88,7 @@ class ReporteController extends Controller {
     
       /**
      *
-     * @Route("/reporte/lechedonada/{report_name}/{report_format}/{id}/{codigo}/{nombre}", name="mostrar_frascos")
+     * @Route("/reporte/lechedonada2/{report_name}/{report_format}/{id}/{codigo}/{nombre}", name="mostrar_frascos")
      * @Template()
      */
     public function ReporteLecheDonadaAction($report_name, $report_format, $id, $codigo, $nombre) {
@@ -131,7 +131,10 @@ class ReporteController extends Controller {
         $jasper_username = JASPER_USER;
         $jasper_password = JASPER_PASSWORD;
         $report_unit = "/reports/siblh/" . $report_name;  //rutadejasperserverreports
-        $report_params = array();
+        $request = $this->getRequest();
+        $nombre = $request->get('nombre');
+        $id = $request->get('idp');
+        $report_params = array('nombre' => $nombre, 'id' => $id);
 
         $client = new JasperClient($jasper_url, $jasper_username, $jasper_password);
 
@@ -862,8 +865,10 @@ class ReporteController extends Controller {
         $jasper_username = JASPER_USER;
         $jasper_password = JASPER_PASSWORD;
         $report_unit = "/reports/siblh/" . $report_name;  //rutadejasperserverreports
-        $report_params = array();
-
+         $request = $this->getRequest();
+         $nombre = $request->get('nombre');
+        $report_params = array('nombre' => $nombre);
+        
         $client = new JasperClient($jasper_url, $jasper_username, $jasper_password);
 
         $contentType = (($report_format == 'HTML') ? 'text' : 'application') .

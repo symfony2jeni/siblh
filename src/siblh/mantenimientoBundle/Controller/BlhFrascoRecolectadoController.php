@@ -392,9 +392,20 @@ class BlhFrascoRecolectadoController extends Controller
       $userEst = $this->container->get('security.context')->getToken()->getUser()->getIdEst();
       $query1 = $em->createQuery("SELECT e.nombre, e.direccion, e.telefono FROM siblhmantenimientoBundle:CtlEstablecimiento e WHERE e.id = $userEst");
       $establecimiento = $query1->getResult(); 
+      $queryb = $em->createQuery("SELECT b.id FROM siblhmantenimientoBundle:BlhBancoDeLeche b WHERE b.idEstablecimiento = $userEst");
+      $id_blh = $queryb->getResult(); 
+      $codigo=$id_blh[0]['id']; 
+       if ($codigo<10){
+      $idp='0'.$codigo;
+      $idp = (string)$idp;
+         }
+      else{$idp = (string)$codigo;}
+        
+
            
          return array(
             'hospital' => $establecimiento,
+             'idp' => $idp,
         );
         
     }
