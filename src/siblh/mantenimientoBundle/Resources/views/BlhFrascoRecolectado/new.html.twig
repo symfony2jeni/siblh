@@ -56,7 +56,7 @@
         {{ form_label(form.volumenRecolectado, 'Volumen en ml') }}</td>
     <td>{{ form_widget(form.volumenRecolectado,  { 'attr': {'title': 'Digite el volumen en ml de', 'onKeyPress':"return soloNumeros(event);"} }) }}</td>
     <td>{{ form_label(form.onzRecolectado, 'Volumen en onz') }}</td>
-    <td>{{ form_widget(form.onzRecolectado, {'attr':{'readonly': 'true' } }) }}</td>    
+    <td>{{ form_widget(form.onzRecolectado, {'attr':{'readonly': 'true', 'title':'Dar clic para obtener resultado' } }) }}</td>    
         </tr>
         <tr><td height=10  ></td></tr>     
       <tr>

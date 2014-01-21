@@ -58,13 +58,13 @@ $( "#dialog-message" ).dialog({
   
 
 $('#siblh_mantenimientobundle_blhsolicitud_cuna').
-            attr('data-bvalidator', 'required,min[1]');
+            attr('data-bvalidator', 'required,between[1:60]');
   
  $('#siblh_mantenimientobundle_blhsolicitud_fechaSolicitud').
             attr('data-bvalidator', 'required');
 
  $('#siblh_mantenimientobundle_blhsolicitud_volumenPorToma').
-            attr('data-bvalidator', 'required,between[1:25]');
+            attr('data-bvalidator', 'required,between[5:60]');
 
     
  $('#siblh_mantenimientobundle_blhsolicitud_pesoDia').
@@ -72,13 +72,9 @@ $('#siblh_mantenimientobundle_blhsolicitud_cuna').
   
     
  $('#siblh_mantenimientobundle_blhsolicitud_tomaPorDia').
-            attr('data-bvalidator', 'required,between[1:5]');
+            attr('data-bvalidator', 'required,between[3:12]');
  
     
-
-    
-  $('#siblh_mantenimientobundle_blhsolicitud_responsable').
-            attr('data-bvalidator', 'alpha');
     
     
   //Opciones del validador
@@ -121,6 +117,26 @@ this.value = $VolumenDia; } );
     $('#siblh_mantenimientobundle_blhsolicitud_responsable').val (this.value); 
     ;
     });
+    
+    //Otras validaciones
+    
+$('#boton').on('click',function()
+{    
+$vol=$('#siblh_mantenimientobundle_blhsolicitud_volumenPorToma').val();
+$tom=$('#siblh_mantenimientobundle_blhsolicitud_tomaPorDia').val();
+
+
+$volumen=parseInt($vol); 
+$tomas=parseInt($tom);
+
+if($tomas >=10) 
+{
+if($volumen>=30)
+alert ('Error, cantidades de volumen por toma y tomas por dia demasiado grandes, ingrese cantidades aceptables');
+return false;
+}    
+});
+
 
 });
 

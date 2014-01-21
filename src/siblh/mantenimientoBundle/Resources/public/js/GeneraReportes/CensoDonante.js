@@ -44,7 +44,8 @@ $(document).ready(function() {
    
       if (($fi == " ") || ($ff == " ") || ($ff < $fi))
             
-           { alert("Debe seleccionar un rango de fecha valido"); }
+           { alert("Debe seleccionar un rango de fecha valido"); 
+           return false;}
         
         else
             {

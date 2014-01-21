@@ -46,7 +46,7 @@
     <tr><td height=10  ></td></tr>
     <tr><td align = "left"><font color="red">*</font>
         {{ form_label(form.nacionalidad) }} {{ form_errors(form.nacionalidad) }}</td><td align = "left">
-        {{ form_widget(form.nacionalidad) }}</td><td align = "left"> 
+        {{ form_widget(form.nacionalidad) }}</td><td align = "left"><font color="red">*</font>
         {{ form_label(form.escolaridad) }} {{ form_errors(form.escolaridad) }}</td><td align = "left">   
         {{ form_widget(form.escolaridad) }} </td></tr><tr>   <td  align = "left">
         {{ form_label(form.direccion) }} {{ form_errors(form.direccion) }}</td><td colspan = "3" align = "left">
@@ -64,8 +64,8 @@
    <tr><td height=10  ></td></tr>
   
    <tr><td align = "left">     
-        {{ form_label(form.registro) }} {{ form_errors(form.registro) }}</td><td align = "left">     
-        {{ form_widget(form.registro,  { 'attr': {'title': '999999-9999 correlativo-anio'} }) }} </td><td align = "left">
+        {{ form_label(form.registro) }} {{ form_errors(form.registro) }}</td><td align = "left"> 
+        {{ form_widget(form.registro,  { 'attr': {'title': '999999-9999 correlativo-anio'} }) }} </td><td align = "left"><font color="red" >*</font>  
         {{ form_label(form.fechaRegistroDonanteBlh, 'Fecha registro') }} {{ form_errors(form.fechaRegistroDonanteBlh) }}</td><td align = "left">       
         {{ form_widget(form.fechaRegistroDonanteBlh, {'attr':{'readonly': 'true', 'title': 'Dar clic y seleccionar fecha de registro'} }) }} </td></tr>
       <tr><td height=10  ></td></tr>
@@ -81,6 +81,10 @@
     <td align = "left" ><font color="red">*</font> 
         {{ form_label(form.observaciones) }} {{ form_errors(form.observaciones) }}</td><td align = "left"  > 
         {{ form_widget(form.observaciones,  { 'attr': {'size': '50'} }) }} </td></tr>
+    <tr> <td colspan = '3' align = 'left' style="visibility:hidden">
+        {{ form_label(form.estado) }}
+        {{ form_widget(form.estado) }}
+         </td></tr>
     <tr><td height=10  ></td></tr>   
     <tr><td align = "left" colspan = '4'><font color="red" size = "2" face = "Comic Sans MS">* Campos requeridos</font></td><tr>
     <tr><td colspan = '4' align = 'center'>

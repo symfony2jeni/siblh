@@ -33,6 +33,9 @@ $(document).ready(function() {
                           
                         //  $('#siblh_mantenimientobundle_blhdonante_numeroDocumentoIdentificacion').
       //  attr('data-bvalidator', 'regex[a{3}],required');
+      
+      $('#boton1').button();
+      $('#button').button();
                           
                           //Opciones del validador
     var optionsRed = { 
@@ -56,9 +59,9 @@ $('#siblh_mantenimientobundle_blhdonante_documentoIdentificacion').on('change', 
         regex ='A\\d{8}';
         $formato = 'A99999999'; 
             break;
-        case 'Carnet de Minoridad':
-            regex ='\\d{8}';
-            $formato = '999999';
+        case 'Minoridad':
+            regex ='\\d{6}';
+            $formato = 'A99999999'; 
             break;
         
     } 
@@ -94,7 +97,8 @@ $('#siblh_mantenimientobundle_blhdonante_registro').
  $('#siblh_mantenimientobundle_blhdonante_fechaNacimiento').
             attr('data-bvalidator', 'required'); 
 
-
+   $('#siblh_mantenimientobundle_blhdonante_fechaRegistroDonanteBlh').
+            attr('data-bvalidator', 'required'); 
 
 $(function() {
     $( document ).tooltip({

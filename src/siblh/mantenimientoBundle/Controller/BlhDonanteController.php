@@ -420,19 +420,7 @@ JOIN ha.idDonante donan))");
  
  public function InfoDonanteAction()
     {
-        $em = $this->getDoctrine()->getManager();      
-        
-        //Obteniendo lista de pacientes"  
-        $query = $em->createQuery("SELECT d.id as identificador, d.primerNombre as nombre1, d.segundoNombre as nombre2, 
-            d.primerApellido as apellido1, d.segundoApellido as apellido2,  d.codigoDonante
-            FROM siblhmantenimientoBundle:BlhDonante d where d.estado = 'Activa'
-            and  (d.id in (select don.id from siblhmantenimientoBundle:BlhHistorialClinico hc 
-JOIN hc.idDonante don)) and (d.id in (select donan.id from siblhmantenimientoBundle:BlhHistoriaActual ha 
-JOIN ha.idDonante donan))");  
-         
-        $donantes  = $query->getResult();
-           //Obtener banco de leche//
-              
+        $em = $this->getDoctrine()->getManager();   
       $userEst = $this->container->get('security.context')->getToken()->getUser()->getIdEst();
       /*  $query1 = $em->createQuery("SELECT b.id FROM siblhmantenimientoBundle:BlhBancoDeLeche b WHERE b.idEstablecimiento = $userEst");
         $id_blh = $query1->getResult(); 
@@ -445,6 +433,19 @@ JOIN ha.idDonante donan))");
        
       $id2=$id_blh[0]['id2']; 
        
+        
+        //Obteniendo lista de pacientes"  
+        $query = $em->createQuery("SELECT d.id as identificador, d.primerNombre as nombre1, d.segundoNombre as nombre2, 
+            d.primerApellido as apellido1, d.segundoApellido as apellido2,  d.codigoDonante
+            FROM siblhmantenimientoBundle:BlhDonante d where d.estado = 'Activa' and d.idBancoDeLeche = $id2
+            and  (d.id in (select don.id from siblhmantenimientoBundle:BlhHistorialClinico hc 
+JOIN hc.idDonante don)) and (d.id in (select donan.id from siblhmantenimientoBundle:BlhHistoriaActual ha 
+JOIN ha.idDonante donan))");  
+         
+        $donantes  = $query->getResult();
+           //Obtener banco de leche//
+              
+     
        
   
       $nombre=$establecimiento[0]['nombre']; 

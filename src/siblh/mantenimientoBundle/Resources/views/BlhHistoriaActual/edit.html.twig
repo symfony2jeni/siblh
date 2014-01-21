@@ -28,7 +28,7 @@
    <tr><td  align = "left" height=10  ></td></tr>
    <tr><td align='left'>{{ form_label(edit_form.patologiaDonante) }}</td><td align='left'>{{ form_widget(edit_form.patologiaDonante,  { 'attr': {'size': '40'} }) }}</td></tr>
    <tr><td  align = "left" height=10  ></td></tr>
-   <tr><td align='left'><font color="red">*</font>{{ form_label(edit_form.imc) }}</td><td align='left'>{{ form_widget(edit_form.imc) }}</td></tr>
+   <tr><td align='left'><font color="red">*</font>{{ form_label(edit_form.imc) }}</td><td align='left'>{{ form_widget(edit_form.imc,  { 'attr': {'title': 'Dar clic para obtener resultado'} }) }}</td></tr>
    <tr><td  align = "left" height=10  ></td></tr>
    <tr><td align='left'><font color="red">*</font>{{ form_label(edit_form.estadoDonante) }}</td><td align='left'>{{ form_widget(edit_form.estadoDonante) }}</td></tr>
  <tr style="visibility:hidden"><td align='left'>{{ form_label(edit_form.idDonante) }}</td><td align='left'>{{ form_widget(edit_form.idDonante) }}</td></tr>

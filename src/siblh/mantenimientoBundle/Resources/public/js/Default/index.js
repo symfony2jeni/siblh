@@ -1,6 +1,6 @@
  $(document).ready(function($) { 
     
-    $('#reporte').click(function(){
+   /* $('#reporte').click(function(){
       var url="/app_dev.php/reportes/reporte/alertaprealmacenado/AlertaPrealmacenado/pdf";
        window.open(url,'_blank');
        return false;
@@ -10,7 +10,7 @@
       var url="/app_dev.php/reportes/reporte/alertapasteurizado/AlertaPasteurizado/pdf";
        window.open(url,'_blank');
        return false;
-    });
+    });*/
     
  //$x=0;
  
@@ -22,7 +22,7 @@
   $(function() {
       
     $( "#dialog-message" ).dialog({
-      modal: false,
+      modal: true,
       position: ['left', 190],
 
  autoOpen: true,
@@ -37,8 +37,8 @@
       
       buttons: {
           
-        Ok: function() {
-          $( this ).dialog( "close" );
+        Ver: function() {
+            window.open("/app_dev.php/reportes/reporte/alertaprealmacenado/AlertaPrealmacenado/pdf",'_blank');;
         }
       }
     });
@@ -58,7 +58,7 @@
  {
  $(function() {
     $( "#dialog-message2" ).dialog({
-      modal: false,
+      modal: true,
    position: ['left', 570],
    autoOpen: true,
       show: {
@@ -71,8 +71,8 @@
       },    
   
       buttons: {
-        Ok: function() {
-          $( this ).dialog( "close" );
+        Ver: function() {
+           window.open("/app_dev.php/reportes/reporte/alertapasteurizado/AlertaPasteurizado/pdf",'_blank');
         }
       }
     });

@@ -44,7 +44,7 @@ class BlhTemperaturaEnfriamientoController extends Controller
          }
         else{$idp = (string)$codigo;}
         
-         $query = $em->createQuery("SELECT te.id, p.codigoPasteurizacion as codigo, te.temperaturaE
+        $query = $em->createQuery("SELECT te.id, p.codigoPasteurizacion as codigo,p.fechaPasteurizacion, te.temperaturaE
        FROM siblhmantenimientoBundle:BlhTemperaturaEnfriamiento te join te.idPasteurizacion p where 
        substring (p.codigoPasteurizacion, 1, 2) = '$idp' order by p.codigoPasteurizacion, te.id");
        $pastemperatura  = $query->getResult(); 

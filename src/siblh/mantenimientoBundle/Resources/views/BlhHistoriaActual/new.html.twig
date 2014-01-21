@@ -38,7 +38,7 @@ elemento.style.visibility = visible ? "visible" : "hidden";
     {{ form_start(form) }}
 
     {{ form_errors(form) }}
-     <table align = "center"  >
+     <table align = "center" >
           <tr><td colspan = "4" style="visibility:hidden"> 
         {{ form_label(form.idDonante) }}
         {{ form_errors(form.idDonante) }}
@@ -52,44 +52,49 @@ elemento.style.visibility = visible ? "visible" : "hidden";
     <tr><td height=10  ></td></tr>
  
   <tr><td align = "left"><font color="red" >*</font> {{ form_label(form.imc) }}</td>
-      <td align = "left"> {{ form_widget(form.imc,  { 'attr': {'title': 'Peso Kg/Talla cm^2'} }) }} </td>  
+      <td align = "left"> {{ form_widget(form.imc,  { 'attr': {'title': 'Dar clic para obtener resultado'} }) }} </td>
+  <td align = "left"><font color="red" >*</font>
+        {{ form_label(form.motivoDonacion, "Motivo por el cual dona leche:") }}</td> 
+      <td align = "left">
+        {{ form_widget(form.motivoDonacion,  { 'attr': {'size': '50'} }) }} </td>
+  
+  </tr>  
                    
-  <td align = "left"><label>Uso de medicamentos:</label></td>
+ <tr><td align = "left"><label>Uso de medicamentos:</label></td>
 
    <td align = "left"><input type="radio" name="group2" value="si" onClick="prueba(true, 'medicamento');prueba(true, 'medicamento1');"> Si
-        <input type="radio" name="group2" value="no" onClick="prueba(false, 'medicamento'); prueba(false, 'medicamento1');"> No<br></td></tr>
-  <tr><td height=10  ></td></tr> 
-<tr>  <td  id= "medicamento" style="visibility:hidden" align = "left"> 
+        <input type="radio" name="group2" value="no" onClick="prueba(false, 'medicamento'); prueba(false, 'medicamento1');"> No<br></td>
+  
+ <td  id= "medicamento" style="visibility:hidden" align = "left"> 
 
         {{ form_label(form.medicamento) }}</td>
     <td id= "medicamento1" style="visibility:hidden" align = "left">
-        {{ form_widget(form.medicamento,  { 'attr': {'size': '40'} }) }} </td>  
+        {{ form_widget(form.medicamento,  { 'attr': {'size': '40'} }) }} </td></tr>   
+     <tr><td height=10  ></td></tr>
   
- <td align = "left"><label>Habitos toxicos:</label></td>
+<tr><td align = "left"><label>Habitos toxicos:</label></td>
   <td align = "left">      <input type="radio" name="group" value="si" onClick="prueba(true, 'habitos'); prueba(true, 'habitos1');"> Si
-        <input type="radio" name="group" value="no" onClick="prueba(false, 'habitos'); prueba(false, 'habitos1');"> No<br></td></tr>
-    <tr><td height=10  ></td></tr> 
-  <tr><td id= "habitos" style="visibility:hidden" align = "left"> 
+        <input type="radio" name="group" value="no" onClick="prueba(false, 'habitos'); prueba(false, 'habitos1');"> No<br></td>
+   
+ <td id= "habitos" style="visibility:hidden" align = "left"> 
 
         {{ form_label(form.habitoToxico) }}</td>
    <td id= "habitos1" style="visibility:hidden" align = "left"> 
-        {{ form_widget(form.habitoToxico,  { 'attr': {'size': '40'} }) }} </td>  
-<td align = "left"> 
+        {{ form_widget(form.habitoToxico,  { 'attr': {'size': '40'} }) }} </td></tr>  
+    <tr><td height=10  ></td></tr>
+<tr><td align = "left"> 
 
      
         <label>Patologias:</label></td>
      <td align = "left">   <input type="radio" name="group1" value="si" onClick="prueba(true, 'patologiasd');prueba(true, 'patologiasd1');"> Si
-        <input type="radio" name="group1" value="no" onClick="prueba(false, 'patologiasd');prueba(false, 'patologiasd1');"> No<br></td></tr>
-   <tr><td height=10  ></td></tr> 
- <tr> <td id= "patologiasd" style="visibility:hidden" align = "left"> 
+        <input type="radio" name="group1" value="no" onClick="prueba(false, 'patologiasd');prueba(false, 'patologiasd1');"> No<br></td>
+  
+  <td id= "patologiasd" style="visibility:hidden" align = "left"> 
 
         {{ form_label(form.patologiaDonante) }}</td>
   <td id= "patologiasd1" style="visibility:hidden" align = "left"> 
-        {{ form_widget(form.patologiaDonante,  { 'attr': {'size': '40'} }) }} </td>   
-  <td align = "left"><font color="red" >*</font>
-        {{ form_label(form.motivoDonacion, "Motivo por el cual dona leche:") }}</td> 
-      <td align = "left">
-        {{ form_widget(form.motivoDonacion,  { 'attr': {'size': '50'} }) }} </td>  </tr>
+        {{ form_widget(form.patologiaDonante,  { 'attr': {'size': '40'} }) }} </td></tr>   
+
       <tr><td height=10  ></td></tr>          
       <tr>  <td colspan = 2 align = "center">&nbsp;&nbsp; &nbsp; &nbsp;
                                              &nbsp;&nbsp; &nbsp; &nbsp;

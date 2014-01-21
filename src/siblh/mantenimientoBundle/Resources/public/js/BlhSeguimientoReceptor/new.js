@@ -3,6 +3,10 @@ $(document).ready(function() {
      $.noConflict();
      $.datepicker.setDefaults($.datepicker.regional["es"]);
      
+     var semana = Number($('#sem').val().trim());
+     semana = semana === 0 ? 1 : semana;  
+     $('#siblh_mantenimientobundle_blhseguimientoreceptor_semana').val( semana );
+     
        //Calendario  
      $('input[id$="_fechaSeguimiento"]').datepicker({ dateFormat: 'yy-mm-dd',  
                            changeMonth: true,
@@ -87,6 +91,80 @@ $(document).ready(function() {
     //Validar el formulario
     $('form').bValidator(optionsRed);
 
+$sem = $('#siblh_mantenimientobundle_blhseguimientoreceptor_semana').val();
+$tallaseg = $('#tallaseg').val();
+$pesoseg = $('#pesoseg').val();
+$pcseg = $('#pcseg').val();
+$tallain = $('#tallain').val();
+$pesoin = $('#pesoin').val();
+$pcin = $('#pcin').val();
+$('#siblh_mantenimientobundle_blhseguimientoreceptor_gananciaDiaPc').on ('click', function() {
+$dias = $('#siblh_mantenimientobundle_blhseguimientoreceptor_periodoEvaluacion').val();
+$pc = $('#siblh_mantenimientobundle_blhseguimientoreceptor_pcSeguimiento').val();
+
+if ($sem > 1)
+    {
+       // $pc = typeof $pc.float;
+    
+        $gananciapc = ($pc - $pcseg) / $dias;
+        $gananciapc=$gananciapc.toFixed(4);
+        this.value = $gananciapc;
+    }
+else
+   {
+        $gananciapc = ($pc - $pcin) / $dias;
+        $gananciapc=$gananciapc.toFixed(4);
+        this.value = $gananciapc;
+    }    
+    
+
+});
+
+
+$('#siblh_mantenimientobundle_blhseguimientoreceptor_gananciaDiaPeso').on ('click', function() {
+$dias = $('#siblh_mantenimientobundle_blhseguimientoreceptor_periodoEvaluacion').val();
+$peso = $('#siblh_mantenimientobundle_blhseguimientoreceptor_pesoSeguimiento').val();
+
+if ($sem > 1)
+    {
+       // $pc = typeof $pc.float;
+    
+        $gananciapeso = ($peso - $pesoseg) / $dias;
+        $gananciapeso=$gananciapeso.toFixed(4);
+        this.value = $gananciapeso;
+    }
+else
+   {
+        $gananciapeso = ($peso - $pesoin) / $dias;
+        $gananciapeso=$gananciapeso.toFixed(4);
+        this.value = $gananciapeso;
+    }    
+    
+
+});
+
+
+$('#siblh_mantenimientobundle_blhseguimientoreceptor_gananciaDiaTalla').on ('click', function() {
+$dias = $('#siblh_mantenimientobundle_blhseguimientoreceptor_periodoEvaluacion').val();
+$talla = $('#siblh_mantenimientobundle_blhseguimientoreceptor_tallaReceptor').val();
+
+if ($sem > 1)
+    {
+       // $pc = typeof $pc.float;
+    
+        $gananciatalla = ($talla - $tallaseg) / $dias;
+        $gananciatalla=$gananciatalla.toFixed(4);
+        this.value = $gananciatalla;
+    }
+else
+   {
+        $gananciatalla = ($talla - $tallain) / $dias;
+        $gananciatalla=$gananciatalla.toFixed(4);
+        this.value = $gananciatalla;
+    }    
+    
+
+});
 
 });
 
@@ -108,5 +186,7 @@ return true;
 return /\d/.test(String.fromCharCode(keynum));
 }
 
-
+function IsNumeric (o) {
+    return typeof o === 'number' && isFinite(o);
+}
       

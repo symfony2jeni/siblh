@@ -400,16 +400,16 @@ class BlhFrascoRecolectadoController extends Controller
       $id_blh = $queryb->getResult(); 
       $codigo=$id_blh[0]['id']; 
        if ($codigo<10){
-      $idp='0'.$codigo;
-      $idp = (string)$idp;
+      $id='0'.$codigo;
+      $id = (string)$id;
          }
-      else{$idp = (string)$codigo;}
+      else{$id = (string)$codigo;}
         
 
            
          return array(
             'hospital' => $establecimiento,
-             'idp' => $idp,
+             'id' => $id,
         );
         
     }

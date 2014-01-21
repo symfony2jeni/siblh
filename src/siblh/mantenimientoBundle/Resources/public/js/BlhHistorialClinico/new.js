@@ -18,9 +18,11 @@ $(document).ready(function() {
      $('input[id$="_fechaParto"]').datepicker({ dateFormat: 'yy-mm-dd',  
                            changeMonth: true,
                            changeYear: true,
-                           defaultDate: '-y',
+                           defaultDate: 'today',
                            clearStatus: 'Borra fecha actual', 
-                            yearRange: '-1y:y',
+                            //yearRange: '-y:today',
+                           minDate: '-1y',
+                           maxDate: 'y',
                            dayNamesMin: ["Do", "Lu", "Ma", "Mi", "Ju", "Vi", "Sa"],
                            monthNamesShort: ["Ene", "Feb", "Mar", "Abr", "May", "Jun",
                                              "Jul", "Ago", "Sep", "Oct", "Nov", "Dic"]
@@ -31,7 +33,9 @@ $(document).ready(function() {
                            changeYear: true,
                            defaultDate: null,
                            clearStatus: 'Borra fecha actual', 
-                            yearRange: '-5y:-1y',
+                           yearRange: '-37y:y',
+                           //minDate: '2012-10-08',
+                           maxDate: '-7m',
                            dayNamesMin: ["Do", "Lu", "Ma", "Mi", "Ju", "Vi", "Sa"],
                            monthNamesShort: ["Ene", "Feb", "Mar", "Abr", "May", "Jun",
                                              "Jul", "Ago", "Sep", "Oct", "Nov", "Dic"]
@@ -111,11 +115,15 @@ $('#siblh_mantenimientobundle_blhhistorialclinico_numeroControl').
   $('#siblh_mantenimientobundle_blhhistorialclinico_periodoIntergenesico').
       attr('data-bvalidator-msg', "El valor debe estar entre 1 y 20"); 
 
-    $('#siblh_mantenimientobundle_blhhistorialclinico_amenorrea').
+ /*   $('#siblh_mantenimientobundle_blhhistorialclinico_amenorrea').
             attr('data-bvalidator', 'between[1:38]');    
 
 $('#siblh_mantenimientobundle_blhhistorialclinico_amenorrea').
-        attr('data-bvalidator-msg', "El valor debe estar entre 1 y 38"); 
+        attr('data-bvalidator-msg', "El valor debe estar entre 1 y 38"); */
+
+
+    $('#siblh_mantenimientobundle_blhhistorialclinico_fechaUltimaRegla').
+            attr('data-bvalidator', 'required');  
 
 
  //Opciones del validador
@@ -145,8 +153,11 @@ $('#siblh_mantenimientobundle_blhhistorialclinico_amenorrea').
         
 });
 
+
+
+
 //validacion de formula obstetrica
-$('#boton').on('click',function()
+/*$('#boton').on('click',function()
 {
 
 
@@ -171,6 +182,95 @@ alert ('Error en formula obstetrica: El numero de embarazos debes ser igual a la
 return false;
 }    
 });
+*/
+    
+$('#boton').on ('click', function() {
+
+$fregla=$('#siblh_mantenimientobundle_blhhistorialclinico_fechaUltimaRegla').val();
+$fparto=$('#siblh_mantenimientobundle_blhhistorialclinico_fechaParto').val();
+
+$fregla = new Date($fregla);
+$fparto = new Date($fparto);
+      
+  $resta =  ($fparto.getYear() * 12 + $fparto.getMonth()) - ($fregla.getYear() * 12 + $fregla.getMonth())
+if ($resta > 10)
+{
+alert ('La diferencia entre fecha de parto y fecha de ultima regla no puede ser mayor a 10 meses');
+return false;
+}
+
+});
+
+
+$('#siblh_mantenimientobundle_blhhistorialclinico_amenorrea').on ('click', function() {
+$fregla=$('#siblh_mantenimientobundle_blhhistorialclinico_fechaUltimaRegla').val();
+$fparto=$('#siblh_mantenimientobundle_blhhistorialclinico_fechaParto').val();
+
+$fregla = new Date($fregla);
+$fr = $fregla.getDate();
+$fparto = new Date($fparto);
+$fp = $fparto.getDate();
+
+  
+    $dd = $fregla.getDate();
+    $mm = $fregla.getMonth() +1;
+    $yyyy = $fregla.getFullYear();
+if($dd<10){$dd='0'+$dd}
+if($mm<10){$mm='0'+$mm}
+$fr = $dd+'-'+$mm+'-'+$yyyy;
+
+$dd1 = $fparto.getDate();
+    $mm1 = $fparto.getMonth() +1;
+    $yyyy1 = $fparto.getFullYear();
+if($dd1<10){$dd1='0'+$dd1}
+if($mm1<10){$mm1='0'+$mm1}
+$fp = $dd1+'-'+$mm1+'-'+$yyyy1;
+
+
+$fr = new Date(parseFloat($fr.substr(6,4)), parseFloat($fr.substr(3,2))-1, parseFloat($fr.substr(0,2)));
+$fp = new Date(parseFloat($fp.substr(6,4)), parseFloat($fp.substr(3,2))-1, parseFloat($fp.substr(0,2)));
+
+	$fin = $fp.getTime() - $fr.getTime();
+	$dias = Math.floor($fin / (24 * 60 * 60 * 1000));  
+        $dias = $dias/7;
+        $dias=$dias.toFixed(4);
+
+ this.value = $dias;
+
+});
+
+$('#boton').on ('click', function() {
+
+$partoanterior=$('#siblh_mantenimientobundle_blhhistorialclinico_fechaPartoAnterior').val();
+$parto=$('#siblh_mantenimientobundle_blhhistorialclinico_fechaParto').val();
+
+$partoanterior = new Date($partoanterior);
+$parto = new Date($parto);
+      
+  $resta2 =  ($parto.getYear() * 12 + $parto.getMonth()) - ($partoanterior.getYear() * 12 + $partoanterior.getMonth())
+if ($resta2 < 7)
+{
+alert ('La diferencia entre fecha de parto y fecha de parto anterior no puede ser menor a 7 meses');
+return false;
+}
+
+});
+
+
+$('#boton').on ('click', function() {
+    alert ('hola');
+    $f = $('#siblh_mantenimientobundle_blhhistorialclinico_fechaPartoAnterior').val();
+    $f = new Date($f);
+    $hoy = new Date();
+    alert ($f);
+    alert ($hoy);
+    if ($f == $hoy)
+        {
+            $('#siblh_mantenimientobundle_blhhistorialclinico_fechaPartoAnterior').value = null;
+        }
+
+});
+
 
 });
 

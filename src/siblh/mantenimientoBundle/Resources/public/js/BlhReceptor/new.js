@@ -35,7 +35,7 @@ $fn = new Date(parseFloat($fn.substr(6,4)), parseFloat($fn.substr(3,2))-1, parse
 	//$fn = new Date($fn[2], parseFloat($fn[2])-1, parseFloat($fn[0]));
  
 	$fin = $hoy.getTime() - $fn.getTime();
-	$dias = Math.floor($fin / (24 * 60 * 60 * 1000))  
+	$dias = Math.floor($fin / (24 * 60 * 60 * 1000));  
 
 
 

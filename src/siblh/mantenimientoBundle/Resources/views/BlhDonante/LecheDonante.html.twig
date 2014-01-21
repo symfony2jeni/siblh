@@ -31,7 +31,7 @@
        {% for donantes in donantes%}
                 <td>{{ donantes.codigoDonante }}</td> 
                 <td>{{ donantes.nombre1 }} {{ donantes.nombre2 }} {{ donantes.apellido1 }} {{ donantes.apellido2 }}</td>
-                <td><a href="{{ path('mostrar_frascos',{'report_name':'DonacionesDonante','report_format':'pdf', 'id': donantes.codigoDonante, 'nombre': nombre, 'codigo': id2 })}}"  target="_blank"  id="reporte"> <font color="blue"><u>Leche donada</u></font> </a></td></tr>
+                <td><a href="{{ path('mostrar_frascos',{'report_name':'DonacionesDonante','report_format':'pdf', 'id': donantes.codigoDonante, 'nombre': nombre })}}"  target="_blank"  id="reporte"> <font color="blue"><u>Leche donada</u></font> </a></td></tr>
     {% endfor %}
             
         </tbody>   

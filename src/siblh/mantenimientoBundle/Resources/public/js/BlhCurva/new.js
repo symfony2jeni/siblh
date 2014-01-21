@@ -12,8 +12,8 @@ $(document).ready(function() {
    $('input[id$="_fechaCurva"]').datepicker({ dateFormat: 'yy-mm-dd',  
                            changeMonth: true,
                            changeYear: true,
-                           minDate:'todate',
-                           maxDate: 'todate',
+                           minDate:'-7d',
+                           maxDate: 'today',
                            clearStatus: 'Borra fecha actual',  
                            //defaultDate: '01-01-2012',
                            yearRange: '2013:y',
@@ -83,8 +83,23 @@ this.value = $valorCurva; } );
         
   });
 
-   
- $('#boton').on ('click', function() {
+$('#siblh_mantenimientobundle_blhcurva_cantidadFrascos').
+            attr('data-bvalidator', 'required,between[10:60]');
+$('#siblh_mantenimientobundle_blhcurva_volumenPorFrasco').
+            attr('data-bvalidator', 'required,between[60:500]');
+$('#siblh_mantenimientobundle_blhcurva_tiempo1').
+            attr('data-bvalidator', 'required,between[5:10]');
+$('#siblh_mantenimientobundle_blhcurva_tiempo2').
+            attr('data-bvalidator', 'required,between[5:10]');
+$('#siblh_mantenimientobundle_blhcurva_tiempo3').
+            attr('data-bvalidator', 'required,between[5:10]');
+$('#siblh_mantenimientobundle_blhcurva_fechaCurva').
+            attr('data-bvalidator', 'required');
+
+
+
+//Validacion ROX   
+ /*$('#boton').on ('click', function() {
 
        $fechaCurva=$('#siblh_mantenimientobundle_blhcurva_fechaCurva').val();
        $cantidadFrascos=$('#siblh_mantenimientobundle_blhcurva_cantidadFrascos').val();
@@ -97,8 +112,8 @@ this.value = $valorCurva; } );
             alert("Ingrese una fecha valida!");
             return false;}
         else{
-            if(($cantidadFrascos == "") || ($cantidadFrascos < 20)  || ($cantidadFrascos > 60)) {
-            alert("Ingrese cantidad de frascos entre 20 y 60!");
+            if(($cantidadFrascos == "") || ($cantidadFrascos < 10)  || ($cantidadFrascos > 60)) {
+            alert("Ingrese cantidad de frascos entre 10 y 60!");
             return false;}
         
             else{
@@ -130,7 +145,7 @@ this.value = $valorCurva; } );
                 }
             }
        
-       });
+       });*/
 
 
   

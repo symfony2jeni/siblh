@@ -7,7 +7,7 @@ $(document).ready(function() {
 	rownumbers: true, 
         height: '100%',
         gridview: true, 
-        width: 300,
+        width: 700,
         caption: "Temperaturas",
          
         
@@ -15,13 +15,14 @@ $(document).ready(function() {
         
         colModel :[
            // {name:'Id',width:80,editable:true,},
-            {name:'Codigo',width:15,align:'center'},
-            {name:'Temperatura',width:15,align:'center'},
-            {name:'Accion', width:10,align:'center'}
+            {name:'Codigo',width:130,align:'center'},
+            {name:'FechaPasteurizacion', width:130,align:'center'},
+            {name:'Temperatura',width:110,align:'center',search:false},
+            {name:'Accion', width:70,align:'center',search:false}
            
             
    
-        ],
+        ]
     
     });
     jQuery("#listado_temperaturas").jqGrid('sortGrid',"Codigo",true);
@@ -29,7 +30,8 @@ $(document).ready(function() {
         edit:false, 
         add:false, 
         del:false,
-        search:true,
+        search:false,
         reload:true
     });
+     jQuery("#listado_temperaturas").jqGrid('filterToolbar',{stringResult: true,searchOnEnter : false});
      });
