@@ -203,13 +203,23 @@ return false;
 
 
 $('#siblh_mantenimientobundle_blhhistorialclinico_amenorrea').on ('click', function() {
+    
 $fregla=$('#siblh_mantenimientobundle_blhhistorialclinico_fechaUltimaRegla').val();
 $fparto=$('#siblh_mantenimientobundle_blhhistorialclinico_fechaParto').val();
+if (($fregla == '') || ($fparto == ''))
+{
+
+alert ('Debe digitar una fecha valida de parto y ultima regla');
+return false;
+}
+
+else {
 
 $fregla = new Date($fregla);
 $fr = $fregla.getDate();
 $fparto = new Date($fparto);
 $fp = $fparto.getDate();
+
 
   
     $dd = $fregla.getDate();
@@ -236,6 +246,7 @@ $fp = new Date(parseFloat($fp.substr(6,4)), parseFloat($fp.substr(3,2))-1, parse
         $dias=$dias.toFixed(4);
 
  this.value = $dias;
+}
 
 });
 

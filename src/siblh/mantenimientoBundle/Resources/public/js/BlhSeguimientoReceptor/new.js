@@ -102,6 +102,11 @@ $('#siblh_mantenimientobundle_blhseguimientoreceptor_gananciaDiaPc').on ('click'
 $dias = $('#siblh_mantenimientobundle_blhseguimientoreceptor_periodoEvaluacion').val();
 $pc = $('#siblh_mantenimientobundle_blhseguimientoreceptor_pcSeguimiento').val();
 
+if (($pc == '') || ($dias == '') || ($pc<20) || ($pc>40)){alert ('Verificar que Periodo de seguimiento y Perimetro cefalico esten ingresados correctamente');
+    return false;}
+
+else {
+
 if ($sem > 1)
     {
        // $pc = typeof $pc.float;
@@ -117,13 +122,19 @@ else
         this.value = $gananciapc;
     }    
     
-
+}
 });
 
 
 $('#siblh_mantenimientobundle_blhseguimientoreceptor_gananciaDiaPeso').on ('click', function() {
 $dias = $('#siblh_mantenimientobundle_blhseguimientoreceptor_periodoEvaluacion').val();
 $peso = $('#siblh_mantenimientobundle_blhseguimientoreceptor_pesoSeguimiento').val();
+
+
+if (($peso == '') || ($dias == '') || ($peso<500) || ($peso>5000)){alert ('Verificar que Periodo de seguimiento y Peso esten ingresados correctamente');
+    return false;}
+
+else {
 
 if ($sem > 1)
     {
@@ -139,7 +150,7 @@ else
         $gananciapeso=$gananciapeso.toFixed(4);
         this.value = $gananciapeso;
     }    
-    
+} 
 
 });
 
@@ -148,6 +159,10 @@ $('#siblh_mantenimientobundle_blhseguimientoreceptor_gananciaDiaTalla').on ('cli
 $dias = $('#siblh_mantenimientobundle_blhseguimientoreceptor_periodoEvaluacion').val();
 $talla = $('#siblh_mantenimientobundle_blhseguimientoreceptor_tallaReceptor').val();
 
+if (($talla == '') || ($dias == '') || ($talla<25) || ($talla>55)){alert ('Verificar que Periodo de seguimiento y Talla esten ingresados correctamente');
+    return false;}
+
+else {
 if ($sem > 1)
     {
        // $pc = typeof $pc.float;
@@ -162,7 +177,8 @@ else
         $gananciatalla=$gananciatalla.toFixed(4);
         this.value = $gananciatalla;
     }    
-    
+ 
+}
 
 });
 

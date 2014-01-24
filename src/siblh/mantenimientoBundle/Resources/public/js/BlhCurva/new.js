@@ -32,7 +32,7 @@ $(document).ready(function() {
  
  
  //Calculando campos                        
-var $tiempo1; 
+/*var $tiempo1; 
 var $tiempo2; 
 var $tiempo3;  
 var $valor1;
@@ -50,10 +50,24 @@ $('#siblh_mantenimientobundle_blhcurva_tiempo3').on('input', function() {
     $tiempo3 = this.value;
     $valor1=parseInt($tiempo1)+parseInt($tiempo2)+parseInt($tiempo3);
     $valorCurva= Math.round(($valor1/3)* 100) / 100;  
-});
+}); */
 
 $('#siblh_mantenimientobundle_blhcurva_valorCurva').on ('click', function() {
-this.value = $valorCurva; } ); 
+  
+$tiempo1 = $('#siblh_mantenimientobundle_blhcurva_tiempo1').val();
+$tiempo2 = $('#siblh_mantenimientobundle_blhcurva_tiempo2').val();
+$tiempo3 = $('#siblh_mantenimientobundle_blhcurva_tiempo3').val();
+
+if (($tiempo1 == '') || ($tiempo2 == '') || ($tiempo3 == '') || ($tiempo1 < 5) || ($tiempo1 > 10) || ($tiempo2 < 5) || ($tiempo2 > 10)  || ($tiempo3 < 5) || ($tiempo3 > 10) ) 
+{ alert ('Digite valores validos para los tiempos');
+    return false;}
+else {
+
+ $valor1=parseInt($tiempo1)+parseInt($tiempo2)+parseInt($tiempo3);
+    $valorCurva= Math.round(($valor1/3)* 100) / 100;     
+    
+this.value = $valorCurva; }
+} ); 
 
 
  

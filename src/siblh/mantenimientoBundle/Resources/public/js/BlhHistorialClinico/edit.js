@@ -216,13 +216,17 @@ return false;
 
 
 $('#siblh_mantenimientobundle_blhhistorialclinico_amenorrea').on ('click', function() {
+    
 $fregla=$('#siblh_mantenimientobundle_blhhistorialclinico_fechaUltimaRegla').val();
 $fparto=$('#siblh_mantenimientobundle_blhhistorialclinico_fechaParto').val();
 
 $fregla = new Date($fregla);
+alert ($fregla);
 $fr = $fregla.getDate();
+
 $fparto = new Date($fparto);
 $fp = $fparto.getDate();
+
 
   
     $dd = $fregla.getDate();

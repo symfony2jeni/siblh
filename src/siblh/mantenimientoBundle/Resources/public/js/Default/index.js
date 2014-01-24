@@ -14,7 +14,37 @@
     
  //$x=0;
  
-  $x = $('#1').val();
+
+
+ $y = $('#2').val();
+//$x=0;
+ if($y>0)
+ {
+ $(function() {
+    $( "#dialog-message2" ).dialog({
+      modal: true,
+   position: ['left', 570],
+   autoOpen: true,
+      show: {
+        effect: "blind",
+        duration: 1000
+      },
+      hide: {
+        effect: "fade",
+        duration: 1000
+      },    
+  
+      buttons: {
+        Ver: function() {
+           window.open("/app_dev.php/reportes/reporte/alertapasteurizado/AlertaPasteurizado/pdf",'_blank');
+        }
+      }
+    });
+  });
+ }
+    
+    /////////////////////////
+      $x = $('#1').val();
  //$x=0;
  if($x>0)
      {
@@ -51,34 +81,6 @@
 
       
      }
-
- $y = $('#2').val();
-//$x=0;
- if($y>0)
- {
- $(function() {
-    $( "#dialog-message2" ).dialog({
-      modal: true,
-   position: ['left', 570],
-   autoOpen: true,
-      show: {
-        effect: "blind",
-        duration: 1000
-      },
-      hide: {
-        effect: "fade",
-        duration: 1000
-      },    
-  
-      buttons: {
-        Ver: function() {
-           window.open("/app_dev.php/reportes/reporte/alertapasteurizado/AlertaPasteurizado/pdf",'_blank');
-        }
-      }
-    });
-  });
- }
-    
 
      
      //prueba------------------------------------//

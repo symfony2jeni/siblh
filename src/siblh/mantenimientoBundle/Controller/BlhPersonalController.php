@@ -54,8 +54,8 @@ class BlhPersonalController extends Controller
 
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
-            $usuario = $this->container->get('security.context')->getToken()->getUser()->getId();
-            $entity->setUsuario($usuario);
+             $usuario = $this->container->get('security.context')->getToken()->getUser()->getId();
+            $entity->setUsuario($usuario);   
             $em->persist($entity);
             $em->flush();
 
