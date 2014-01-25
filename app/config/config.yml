@@ -115,7 +115,7 @@ sonata_admin:
     security:
         handler: sonata.admin.security.handler.role
     title:      MINSAL::SIBLH
-    title_logo: /bundles/siblhmantenimientosiaps/imagenes/logo_salud.png
+    title_logo: /bundles/siblhmantenimiento/imagenes/logo_salud.png
     templates:
         # default global templates
         layout:  SonataAdminBundle::standard_layout.html.twig

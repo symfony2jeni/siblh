@@ -20,10 +20,14 @@ class BlhDonanteType extends AbstractType
             ->add('segundoNombre')
             ->add('primerApellido')
             ->add('segundoApellido')
+                
+               
              ->add('fechaNacimiento', 'date', 
                     array(  'widget' => 'single_text',
                             'format' => 'yy-MM-dd',
                             'attr' => array('class' => 'date')))
+                        
+                        
             ->add('fechaRegistroDonanteBlh', 'date', 
                     array(  'widget' => 'single_text',
                             'format' => 'yy-MM-dd',

@@ -23,9 +23,9 @@ class BlhHistorialClinico
     private $id;
 
     /**
-     * @var integer
+     * @var float
      *
-     * @ORM\Column(name="amenorrea", type="integer", nullable=true)
+     * @ORM\Column(name="amenorrea", type="decimal", nullable=true)
      */
     private $amenorrea;
 

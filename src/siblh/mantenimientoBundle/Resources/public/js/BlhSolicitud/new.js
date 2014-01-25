@@ -92,25 +92,17 @@ $('#siblh_mantenimientobundle_blhsolicitud_cuna').
 
 var $VolumenToma; 
 var $VolumenDia;
-  $('#siblh_mantenimientobundle_blhsolicitud_volumenPorToma').on('input', function() {
-    
-    $VolumenToma = this.value;
-   
-    
-   
-});
-
-   $('#siblh_mantenimientobundle_blhsolicitud_tomaPorDia').on('input', function() {
-    
-     var $TomasDia = this.value;
-     $VolumenDia = $VolumenToma * $TomasDia;
-    
-   
-});
 
 $('#siblh_mantenimientobundle_blhsolicitud_volumenPorDia').on ('click', function() {
- 
-this.value = $VolumenDia; } ); 
+    $VolumenToma =  $('#siblh_mantenimientobundle_blhsolicitud_volumenPorToma').val();
+    $VolumenDia =  $('#siblh_mantenimientobundle_blhsolicitud_tomaPorDia').val();
+     if (($VolumenToma == '') || ($VolumenDia == '') || ($VolumenToma <5) || ($VolumenToma > 60) || ($VolumenDia <3) || ($VolumenDia >12) ) 
+{ alert ('Digite valores validos para volumen por toma y tomas por dia');
+    return false;}
+else {
+    $VolumenDia = $VolumenToma * $VolumenDia;
+this.value = $VolumenDia; } 
+} ); 
 
 
  $('#responsable').on ('click', function() {

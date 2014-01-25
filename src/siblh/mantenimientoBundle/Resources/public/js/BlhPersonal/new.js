@@ -1,5 +1,5 @@
 $(document).ready(function() { 
-   
+   $.noConflict();
     $('#button').button();
        
 });

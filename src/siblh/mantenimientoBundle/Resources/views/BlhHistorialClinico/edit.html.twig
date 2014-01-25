@@ -29,7 +29,7 @@
      
      <tr><td  align = "left" height=10  ></td></tr>
      <tr><td align='left' ><font color="red" >*</font> <b>{{ form_label(edit_form.fechaUltimaRegla, 'Ultima Regla') }}</b></td>
-         <td align='left' >   {{ form_widget(edit_form.fechaUltimaRegla, {'attr':{'readonly': 'true', 'title': 'Dar clic y seleccionar fecha de ultima regla' } }) }}</td></tr>
+         <td align='left' >   {{ form_widget(edit_form.fechaUltimaRegla, {'attr':{'readonly': 'true', 'title': 'Dar clic y seleccionar fecha de ultima regla', 'date_format': 'Y-mm-dd' } }) }}</td></tr>
       <tr><td  align = "left" height=10  ></td></tr>
      <tr><td align='left' ><b><font color="red">*</font>
                                {{ form_label(edit_form.fechaParto) }}</b></td>

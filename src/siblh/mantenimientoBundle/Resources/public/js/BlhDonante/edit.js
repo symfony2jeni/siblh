@@ -1,5 +1,23 @@
 $(document).ready(function() { 
        
+ /*$fnac = $('#siblh_mantenimientobundle_blhdonante_fechaNacimiento').val();
+ $anio = $fnac.slice(0,2);
+ alert ($anio);
+ if (($anio == '00') || ($anio == '01'))
+     {
+  $fnac = '20' + $fnac; 
+  $('#siblh_mantenimientobundle_blhdonante_fechaNacimiento').val($fnac);
+  }
+ else
+    {
+        $fnac = '19' + $fnac; 
+       $('#siblh_mantenimientobundle_blhdonante_fechaNacimiento').val($fnac);        
+  } */
+ 
+ $freg =$('#siblh_mantenimientobundle_blhdonante_fechaRegistroDonanteBlh').val(); 
+ $freg = '20' + $freg; 
+ $('#siblh_mantenimientobundle_blhdonante_fechaRegistroDonanteBlh').val($freg); 
+    
      $.noConflict();
      $.datepicker.setDefaults($.datepicker.regional["es"]);
    $('input[id$="_fechaNacimiento"]').datepicker({ dateFormat: 'yy-mm-dd',  

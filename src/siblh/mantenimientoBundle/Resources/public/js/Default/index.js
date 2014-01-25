@@ -14,8 +14,16 @@
     
  //$x=0;
  
+$rol = $('#3').val();
 
 
+//var str = "Hello world, welcome to the universe.";
+$user_rol1 = $rol.indexOf("LABORATORISTA");
+$user_rol2 = $rol.indexOf("JEFE");
+
+if (($user_rol1 != -1) || ($user_rol2 != -1))
+    {   
+    
  $y = $('#2').val();
 //$x=0;
  if($y>0)
@@ -81,6 +89,10 @@
 
       
      }
+     
+     }
+    
+
 
      
      //prueba------------------------------------//

@@ -89,9 +89,9 @@ var $mediaAcidez;
 var $factor;
 var $resultado;
 
-  $('#siblh_mantenimientobundle_blhacidez_acidez1').on('input', function() {
+/*  $('#siblh_mantenimientobundle_blhacidez_acidez1').on('input', function() {
     
-   $Acidez1 = parseInt(this.value);
+   $Acidez1 = this.value;
    
     
    
@@ -106,33 +106,53 @@ var $resultado;
    $('#siblh_mantenimientobundle_blhacidez_acidez3').on('input', function() {
     
    $Acidez3 = parseInt(this.value);
- $mediaAcidez= ($Acidez1 + $Acidez2 + $Acidez3)/3;
 
-});
+
+}); */
 
     
 $('#siblh_mantenimientobundle_blhacidez_mediaAcidez').on ('click', function() {
- 
+    $Acidez1 = $('#siblh_mantenimientobundle_blhacidez_acidez1').val();
+    $Acidez2 = $('#siblh_mantenimientobundle_blhacidez_acidez2').val();
+    $Acidez3 = $('#siblh_mantenimientobundle_blhacidez_acidez3').val();
+    
+    if (($Acidez1 == '') || ($Acidez2 == '') || ($Acidez3 == '') || ($Acidez1 < 1) || ($Acidez1 > 15) || ($Acidez2 < 1) || ($Acidez2 > 15)  || ($Acidez3 < 1) || ($Acidez3 > 15) ) 
+{ alert ('Digite valores validos para la acidez');
+    return false;}
+else {
+   $mediaAcidez= (parseInt($Acidez1) + parseInt($Acidez2) + parseInt($Acidez3))/3;
 //Redondeando el resultado a 2 decimales 
 $mediaAcidez = Math.round( $mediaAcidez* 100) / 100;
  
  
-this.value = $mediaAcidez; } ); 
+this.value = $mediaAcidez;  
+}
+ ; } ); 
 
-   $('#siblh_mantenimientobundle_blhacidez_factor').on('input', function() {
+/*   $('#siblh_mantenimientobundle_blhacidez_factor').on('input', function() {
     
  $factor = this.value;
 
-});
+}); */
 
 $('#siblh_mantenimientobundle_blhacidez_resultado').on ('click', function() {
  
-
+ $factor = $('#siblh_mantenimientobundle_blhacidez_factor').val();
+ $mediaAcidez = $('#siblh_mantenimientobundle_blhacidez_mediaAcidez').val();
+ 
+ if (($factor == '') || ($mediaAcidez == '') || ($factor < 0.9) || ($factor > 1.1) ) 
+{ alert ('Verifique que el valor del facotor y la media acidez sean correctas');
+    return false;}
+else {
 $resultado = $mediaAcidez*$factor;
 //Redondeando el resultado a 2 decimales 
 $resultado = Math.round( $resultado* 100) / 100;
  
-this.value = $resultado; } ); 
+this.value = $resultado; }
+} ); 
+
+
+
 
 $('#boton').on ('click', function() {
 

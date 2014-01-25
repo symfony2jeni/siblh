@@ -73,84 +73,76 @@ var $porcentajeCrema;
 var $kilocalorias;
 
 //CREMA
-  $('#siblh_mantenimientobundle_blhcrematocrito_crema1').on('input', function() {
-    
-   $crema1 = parseInt(this.value);
-   
-    
-   
-});
-
-   $('#siblh_mantenimientobundle_blhcrematocrito_crema2').on('input', function() {
-    
-     $crema2 = parseInt(this.value);
-    
-   
-});
-   $('#siblh_mantenimientobundle_blhcrematocrito_crema3').on('input', function() {
-    
-   $crema3 = parseInt(this.value);
-   $mediaCrema= ($crema1 + $crema2 + $crema3)/3;
-
-});
-
     
 $('#siblh_mantenimientobundle_blhcrematocrito_mediaCrema').on ('click', function() {
- 
+  $crema1 =  $('#siblh_mantenimientobundle_blhcrematocrito_crema1').val();
+  $crema2 =  $('#siblh_mantenimientobundle_blhcrematocrito_crema2').val();
+  $crema3 =  $('#siblh_mantenimientobundle_blhcrematocrito_crema3').val();
+  
+   if (($crema1 == '') || ($crema2 == '') || ($crema3 == '') || ($crema1 < 1) || ($crema1 > 20) || ($crema2 < 1) || ($crema2 > 20)  || ($crema3 < 1) || ($crema3 > 20) ) 
+{ alert ('Digite valores validos para la crema');
+    return false;}
+else {
+     $mediaCrema= (parseInt($crema1) + parseInt($crema2) + parseInt($crema3))/3;
+
 //Redondeando el resultado a 2 decimales 
 $mediaCrema = Math.round($mediaCrema* 100) / 100;
  
  
-this.value = $mediaCrema; } ); 
+this.value = $mediaCrema; 
+}} ); 
 
 
 //COLIFORMES
 
-$('#siblh_mantenimientobundle_blhcrematocrito_ct1').on('input', function() {
-    
- $ct1 = parseInt(this.value);
-
-});
-   $('#siblh_mantenimientobundle_blhcrematocrito_ct2').on('input', function() {
-    
- $ct2 = parseInt(this.value);
-
-});
-   $('#siblh_mantenimientobundle_blhcrematocrito_ct3').on('input', function() {
-    
- $ct3 = parseInt(this.value);
- 
- $mediaCt= ($ct1 + $ct2 + $ct3)/3;
-
-});
 
 $('#siblh_mantenimientobundle_blhcrematocrito_mediaCt').on ('click', function() {
  
+  $ct1 = $('#siblh_mantenimientobundle_blhcrematocrito_ct1').val();
+  $ct2 = $('#siblh_mantenimientobundle_blhcrematocrito_ct2').val();
+  $ct3 = $('#siblh_mantenimientobundle_blhcrematocrito_ct3').val();
+ 
+ if (($ct1 == '') || ($ct2 == '') || ($ct3 == '') || ($ct1 < 1) || ($ct1 > 99) || ($ct2 < 1) || ($ct2 > 99)  || ($ct3 < 1) || ($ct3 > 99) ) 
+{ alert ('Digite valores validos para las columnas totales');
+    return false;}
+else {
+    $mediaCt= (parseInt($ct1) + parseInt($ct2) + parseInt($ct3))/3;
 //Redondeando el resultado a 2 decimales 
-$mediaCt = Math.round($mediaCt* 100) / 100;
- 
- 
-this.value = $mediaCt; } ); 
+$mediaCt = Math.round($mediaCt* 100) / 100; 
+this.value = $mediaCt;
+}
+    } ); 
+
+
+
+
+
 
 $('#siblh_mantenimientobundle_blhcrematocrito_porcentajeCrema').on('click', function() {
-    
-$porcentajeCrema=$mediaCrema/($mediaCt*100);
+    $mediaCrema = $('#siblh_mantenimientobundle_blhcrematocrito_mediaCrema').val();
+    $mediaCt = $('#siblh_mantenimientobundle_blhcrematocrito_mediaCt').val();
+    if (($mediaCrema == '') || ($mediaCt == '')) 
+{ alert ('Para obtener este valor necesita calcular las medias de la crema y columnas totales');
+    return false;}
+else {
+ $porcentajeCrema=$mediaCrema/($mediaCt*100);
 //$porcentajeCrema= Math.round( $porcentajeCrema* 100) / 100;
  $porcentajeCrema=Math.round($porcentajeCrema*Math.pow(10,4))/Math.pow(10,4);
 this.value = $porcentajeCrema;
-
+}
 });
 
 $('#siblh_mantenimientobundle_blhcrematocrito_kilocalorias').on ('click', function() {
- 
-
+$porcentajeCrema = $('#siblh_mantenimientobundle_blhcrematocrito_porcentajeCrema').val();
+if ($porcentajeCrema == '')
+{ alert ('Para obtener este valor necesita calcular el porcentaje de crema');
+    return false;}
+else {
 $kilocalorias = ($porcentajeCrema*268)+290;
 //Redondeando el resultado a 2 decimales 
 $kilocalorias= Math.round( $kilocalorias* 100) / 100;
  
-this.value = $kilocalorias; } ); 
-
-
+this.value = $kilocalorias; } } ); 
 
 
 });

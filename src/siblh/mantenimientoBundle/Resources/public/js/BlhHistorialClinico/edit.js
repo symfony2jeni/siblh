@@ -1,5 +1,21 @@
 $(document).ready(function() { 
+  $fuRegla = $('#siblh_mantenimientobundle_blhhistorialclinico_fechaUltimaRegla').val();
+  $fuRegla = '20' + $fuRegla; 
+    $('#siblh_mantenimientobundle_blhhistorialclinico_fechaUltimaRegla').val($fuRegla);
+    
+    
+  $fechaP =$('#siblh_mantenimientobundle_blhhistorialclinico_fechaParto').val();
+  $fechaP = '20' + $fechaP;
+  $('#siblh_mantenimientobundle_blhhistorialclinico_fechaParto').val($fechaP);
   
+  
+    $fechaPA =$('#siblh_mantenimientobundle_blhhistorialclinico_fechaPartoAnterior').val();
+    if ($fechaPA != '')
+        {
+  $fechaPA = '20' + $fechaPA;
+  $('#siblh_mantenimientobundle_blhhistorialclinico_fechaPartoAnterior').val($fechaPA);
+  
+        }
      $.noConflict();
      $.datepicker.setDefaults($.datepicker.regional["es"]);
    $('input[id$="_fechaUltimaRegla"]').datepicker({ dateFormat: 'yy-mm-dd',  
@@ -220,8 +236,10 @@ $('#siblh_mantenimientobundle_blhhistorialclinico_amenorrea').on ('click', funct
 $fregla=$('#siblh_mantenimientobundle_blhhistorialclinico_fechaUltimaRegla').val();
 $fparto=$('#siblh_mantenimientobundle_blhhistorialclinico_fechaParto').val();
 
+
+//alert ($fregla);
 $fregla = new Date($fregla);
-alert ($fregla);
+
 $fr = $fregla.getDate();
 
 $fparto = new Date($fparto);
