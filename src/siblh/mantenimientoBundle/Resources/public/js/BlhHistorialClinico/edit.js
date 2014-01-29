@@ -1,21 +1,40 @@
 $(document).ready(function() { 
-  $fuRegla = $('#siblh_mantenimientobundle_blhhistorialclinico_fechaUltimaRegla').val();
-  $fuRegla = '20' + $fuRegla; 
-    $('#siblh_mantenimientobundle_blhhistorialclinico_fechaUltimaRegla').val($fuRegla);
     
+    $aux = 0;
+    $aux2 = 0;
     
-  $fechaP =$('#siblh_mantenimientobundle_blhhistorialclinico_fechaParto').val();
-  $fechaP = '20' + $fechaP;
-  $('#siblh_mantenimientobundle_blhhistorialclinico_fechaParto').val($fechaP);
-  
-  
-    $fechaPA =$('#siblh_mantenimientobundle_blhhistorialclinico_fechaPartoAnterior').val();
-    if ($fechaPA != '')
-        {
-  $fechaPA = '20' + $fechaPA;
-  $('#siblh_mantenimientobundle_blhhistorialclinico_fechaPartoAnterior').val($fechaPA);
-  
-        }
+   
+
+
+$('#siblh_mantenimientobundle_blhhistorialclinico_fechaUltimaRegla').on ('click', function() {
+    $aux = 1;
+     });
+    
+  $('#siblh_mantenimientobundle_blhhistorialclinico_fechaParto').on ('click', function() {
+    $aux = 1;
+     });
+      
+      
+     $('#siblh_mantenimientobundle_blhhistorialclinico_amenorrea').click(function() {
+         $aux2 = 1;
+            if (calcular($(this).val()))
+                {}
+            else
+                {$(this).focus();}
+}       );
+
+
+
+$('#siblh_mantenimientobundle_blhhistorialclinico_fechaParto').click(function() {
+            if (calcular($(this).val()))
+                {}
+            else
+                {$(this).focus();}
+}       );
+
+
+
+
      $.noConflict();
      $.datepicker.setDefaults($.datepicker.regional["es"]);
    $('input[id$="_fechaUltimaRegla"]').datepicker({ dateFormat: 'yy-mm-dd',  
@@ -68,8 +87,7 @@ $('#siblh_mantenimientobundle_blhhistorialclinico_controlPrenatal').on('change',
     switch( this.value ) {
         case 'No':
            $('#lugC').hide();
-        //    $('#numC').hide();
- //  alert ("hola");
+        
            
             break;
         case 'Si':
@@ -168,32 +186,12 @@ $('#siblh_mantenimientobundle_blhhistorialclinico_amenorrea').
         
 });
 
-//validacion de formula obstetrica
-/*$('#boton').on('click',function()
-{
 
-
-$g=$('#siblh_mantenimientobundle_blhhistorialclinico_formulaObstetricaG').val();
-$p1=$('#siblh_mantenimientobundle_blhhistorialclinico_formulaObstetricaP1').val();
-$p2=$('#siblh_mantenimientobundle_blhhistorialclinico_formulaObstetricaP2').val();
-$a=$('#siblh_mantenimientobundle_blhhistorialclinico_formulaObstetricaA').val();
-$v=$('#siblh_mantenimientobundle_blhhistorialclinico_formulaObstetricaV').val();
-$m=$('#siblh_mantenimientobundle_blhhistorialclinico_formulaObstetricaM').val();
-
-$embarazos=parseInt($g); 
-$partos=parseInt($p1); 
-$prematuros=parseInt($p2); 
-$abortos=parseInt($a); 
-$vivos=parseInt($v); 
-$muertos=parseInt($m); 
-
-$np=$partos+$prematuros+$abortos;
-if($embarazos != $np) 
-{
-alert ('Error en formula obstetrica: El numero de embarazos debes ser igual a la sumatoria de partos, partos prematuros y abortos.');
-return false;
-}    
-});*/
+$('#button').on ('click', function() {
+if (($aux == 1) && ($aux2 == 0))
+    {alert ('Probablemente cambio la fecha de parto o de ultima regla, de clic en amenorrea para calcular el nuevo valor');
+    return false;}
+});
    
 $('#button').on ('click', function() {
 
@@ -204,7 +202,7 @@ $fregla = new Date($fregla);
 $fparto = new Date($fparto);
       
   $resta =  ($fparto.getYear() * 12 + $fparto.getMonth()) - ($fregla.getYear() * 12 + $fregla.getMonth());
-alert ($resta);
+
 if ($resta > 10)
 {
 alert ('La diferencia entre fecha de parto y fecha de ultima regla no puede ser mayor a 10 meses');
@@ -231,18 +229,55 @@ return false;
 });
 
 
-$('#siblh_mantenimientobundle_blhhistorialclinico_amenorrea').on ('click', function() {
-    
+});
+
+
+function soloNumerosEnteros(e)
+{
+var keynum = window.event ? window.event.keyCode : e.which;
+if (keynum === 8)
+return true;
+ 
+return /\d/.test(String.fromCharCode(keynum));
+}
+
+function soloNumeros(e)
+{
+var keynum = window.event ? window.event.keyCode : e.which;
+if ((keynum === 8) || (keynum === 46))
+return true;
+ 
+return /\d/.test(String.fromCharCode(keynum));
+}
+
+
+
+/////////funcion para valores calculados//////
+
+function calcular(valor)
+{
+     
 $fregla=$('#siblh_mantenimientobundle_blhhistorialclinico_fechaUltimaRegla').val();
 $fparto=$('#siblh_mantenimientobundle_blhhistorialclinico_fechaParto').val();
 
-
-//alert ($fregla);
 $fregla = new Date($fregla);
+$fparto = new Date($fparto);
+      
+  $resta =  ($fparto.getYear() * 12 + $fparto.getMonth()) - ($fregla.getYear() * 12 + $fregla.getMonth());
+//alert ($resta);
+if ($resta > 10)
+{
+alert ('La diferencia entre fecha de parto y fecha de ultima regla no puede ser mayor a 10 meses');
+return false;
+}
+
+    else {
+            
+ //$fregla = new Date($fregla);
 
 $fr = $fregla.getDate();
 
-$fparto = new Date($fparto);
+//$fparto = new Date($fparto);
 $fp = $fparto.getDate();
 
 
@@ -269,28 +304,9 @@ $fp = new Date(parseFloat($fp.substr(6,4)), parseFloat($fp.substr(3,2))-1, parse
 	$dias = Math.floor($fin / (24 * 60 * 60 * 1000));  
         $dias = $dias/7;
         $dias=$dias.toFixed(4);
-
- this.value = $dias;
-
-});
-});
-
-
-function soloNumerosEnteros(e)
-{
-var keynum = window.event ? window.event.keyCode : e.which;
-if (keynum === 8)
-return true;
- 
-return /\d/.test(String.fromCharCode(keynum));
+           
+            $('#siblh_mantenimientobundle_blhhistorialclinico_amenorrea').val($dias); 
+            return true;
+        } 
+    
 }
-
-function soloNumeros(e)
-{
-var keynum = window.event ? window.event.keyCode : e.which;
-if ((keynum === 8) || (keynum === 46))
-return true;
- 
-return /\d/.test(String.fromCharCode(keynum));
-}
-

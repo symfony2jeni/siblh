@@ -29,7 +29,7 @@ class BlhSolicitudType extends AbstractType
             ->add('tomaPorDia','text')
             ->add('fechaSolicitud' ,'date', 
                     array(  'widget' => 'single_text',
-                            'format' => 'yy-MM-dd',
+                            'format' => 'y-MM-dd',
                             'attr' => array('class' => 'date')))
             ->add('cuna', 'text')
             ->add('estado','choice', 

@@ -108,7 +108,7 @@ class BlhEgresoReceptorController extends Controller
     /**
      * Finds and displays a BlhEgresoReceptor entity.
      *
-     * @Route("/{id}", name="blhegresoreceptor_show")
+     * @Route("/{id}", name="blhegresoreceptor_show")  
      * @Method("GET")
      * @Template()
      */

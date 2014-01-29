@@ -24,13 +24,13 @@ class BlhDonanteType extends AbstractType
                
              ->add('fechaNacimiento', 'date', 
                     array(  'widget' => 'single_text',
-                            'format' => 'yy-MM-dd',
+                            'format' => 'y-MM-dd',
                             'attr' => array('class' => 'date')))
                         
                         
             ->add('fechaRegistroDonanteBlh', 'date', 
                     array(  'widget' => 'single_text',
-                            'format' => 'yy-MM-dd',
+                            'format' => 'y-MM-dd',
                             'attr' => array('class' => 'date')))
             ->add('telefonoFijo')
             ->add('telefonoMovil')

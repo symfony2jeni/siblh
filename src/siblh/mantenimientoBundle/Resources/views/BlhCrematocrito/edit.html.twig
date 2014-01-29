@@ -15,10 +15,10 @@
 
 {% block body -%}
     <h1>Editar Analisis de crematocrito</h1>
-
-    <table align='center'>
     {{ form_start(edit_form) }}
     {{ form_errors(edit_form) }}
+    <table align='center'>
+   
 <tr>
     <tr><td align='left'><font color="red">*</font>{{ form_label(edit_form.crema1,'Crema 1(mm)') }}</td><td>{{ form_widget(edit_form.crema1, {'attr':{ 'onKeyPress':"return soloNumeros(event);",'title': 'Por favor ingrese la crema 1, entre 1 y 20 mm' } }) }}</td></tr>
     <tr><td colspan=2 align = "right" height=10  ></td></tr>

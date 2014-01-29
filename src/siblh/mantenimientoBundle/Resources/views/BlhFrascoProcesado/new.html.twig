@@ -55,9 +55,9 @@
                 <th>Frasco</th>
                 <th>Acidez</th>                
                 <th>Calorias</th>
-                <th>Volumen frasco</th>     
-                <th>Volumen disponible</th>
-                <th>Volumen&nbsp;a&nbsp;combinar</th>  
+                <th>Volumen frasco(ml)</th>     
+                <th>Volumen disponible(ml)</th>
+                <th>Volumen&nbsp;a&nbsp;combinar(ml)</th>  
                 <th style="visibility:hidden">idAgregado</th>
                 <th style="visibility:hidden">Agregado</th>
             </tr>
@@ -73,7 +73,7 @@
                 <td align=center>{{ frasco[i].resultado|number_format(2, '.', ',') }}</td>                                    
                 <td align=center>{{ caloria[i].kilocalorias|number_format(2, '.', ',') }}</td>  
                 <td><input id = "vl"  type=text value = "{{ caloria[i].vl|number_format(2, '.', ',')}}" disabled=disabled STYLE="text-align:center"/> </td>                           
-                 <td><input name='vldisponible[]' id= "vldisponible_{{ frasco[i].id}}"  type=text value ="{{vldisponible[i]|number_format(2, '.', ',')}}" disabled=disabled STYLE="text-align:center"/> </td>  
+                 <td><input name='vldisponible[]' id= "vldisponible_{{ frasco[i].id}}"  type=text value ="{{frasco[i].disponible|number_format(2, '.', ',')}}" disabled=disabled STYLE="text-align:center"/> </td>  
                 <td><input name="vlcombinar[]" id="vlcombinar_{{frasco[i].id}}" type=text value="0" onkeypress='javascript:return isNumberKey(event);'/></td>  
                  <td style="visibility:hidden">{{volumen_agregado[i].id}}</td>
                 <td style="visibility:hidden"><input type=text value = "{{ volumen_agregado[i].agregado }}"/> </td>  
@@ -112,9 +112,9 @@
                 <th>Código&nbsp;Frasco</th>
                 <th>Acidez</th>                
                 <th>Calorias</th>
-                <th>Volumen Recolectado</th>     
-                <th>VolumenDisponible</th>
-                <th>Volumen&nbsp;a&nbsp;combinar</th>  
+                <th>Volumen Recolectado(ml)</th>     
+                <th>VolumenDisponible(ml)</th>
+                <th>Volumen&nbsp;a&nbsp;combinar(ml)</th>  
                 <th style="visibility:hidden">idAgregado</th>
                 <th style="visibility:hidden">Agregado</th>               
             </tr>

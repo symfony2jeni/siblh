@@ -29,14 +29,14 @@ class BlhEgresoReceptorType extends AbstractType
             ->add('permanenciaUcin', 'text')
             ->add('fechaEgreso', 'date', 
                     array(  'widget' => 'single_text',
-                            'format' => 'yy-MM-dd',
+                            'format' => 'y-MM-dd',
                             'attr' => array('class' => 'date')))
             ->add('estanciaHospitalaria', 'text')
             ->add('idReceptor')
             ->add('hospitalSeguimientoEgreso', 'choice', 
                     array('choices' => array('' => 'Seleccione Hospital de seguimiento',
                             'Sin Seguimiento' => 'Sin Seguimiento',
-                            'Hospital Nacional San Salvador Maternidad Dr. Raúl Arguello Escolan ' => 'Hospital Nacional San Salvador Maternidad Dr. Raúl Arguello Escolan ',
+                            'Hospital Nacional San Salvador Maternidad Dr. Raúl Arguello Escolan' => 'Hospital Nacional San Salvador Maternidad Dr. Raúl Arguello Escolan ',
                             'Hospital Nacional Santa Ana San Juan de Dios' => 'Hospital Nacional Santa Ana San Juan de Dios',
                             'Hospital Nacional San Miguel  SM San Juan de Dios' => 'Hospital Nacional San Miguel  SM San Juan de Dios',
                             'Hospital Nacional Metapán Dr. Arturo Morales' => 'Hospital Nacional Metapán Dr. Arturo Morales',

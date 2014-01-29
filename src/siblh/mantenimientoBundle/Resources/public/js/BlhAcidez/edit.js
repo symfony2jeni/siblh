@@ -1,8 +1,83 @@
-
-
-
 $(document).ready(function() { 
-     /*$('button').button();*/
+  
+      
+ $('#siblh_mantenimientobundle_blhacidez_acidez1').keyup(function() {
+            if (calcular($(this).val()))
+                {calcular1();}
+            else
+                {$(this).focus();}
+}       );
+
+
+
+
+
+$('#siblh_mantenimientobundle_blhacidez_acidez1').change(function() {
+            if ($('#siblh_mantenimientobundle_blhacidez_acidez1').val()=='')
+                {alert('Digite un valor valido para el crematocrito 1');}
+            else
+                {$('#siblh_mantenimientobundle_blhacidez_acidez1').focus();}
+}       );
+
+
+   $('#siblh_mantenimientobundle_blhacidez_acidez2').keyup(function() {
+            if (calcular($(this).val()))
+                {calcular1();}
+            else
+                {$(this).focus();}
+}       );
+
+
+
+
+
+$('#siblh_mantenimientobundle_blhacidez_acidez2').change(function() {
+            if ($('#siblh_mantenimientobundle_blhacidez_acidez2').val()=='')
+                {alert('Digite un valor valido para el crematocrito 2');}
+            else
+                {$('#siblh_mantenimientobundle_blhacidez_acidez2').focus();}
+}       );
+
+
+ $('#siblh_mantenimientobundle_blhacidez_acidez3').keyup(function() {
+            if (calcular($(this).val()))
+                {calcular1();}
+            else
+                {$(this).focus();}
+}       );
+
+
+
+
+
+$('#siblh_mantenimientobundle_blhacidez_acidez3').change(function() {
+            if ($('#siblh_mantenimientobundle_blhacidez_acidez3').val()=='')
+                {alert('Digite un valor valido para el crematocrito 3');}
+            else
+                {$('#siblh_mantenimientobundle_blhacidez_acidez3').focus();}
+}       );
+
+
+  
+  $('#siblh_mantenimientobundle_blhacidez_factor').blur(function() {
+            if (calcular1($(this).val()))
+                {}
+            else
+                {$(this).focus();}
+}       );
+
+
+
+
+
+$('#siblh_mantenimientobundle_blhacidez_factor').change(function() {
+            if ($('#siblh_mantenimientobundle_blhacidez_factor').val()=='')
+                {alert('Digite un valor valido para el factor');}
+            else
+                {$('#siblh_mantenimientobundle_blhacidez_factor').focus();}
+}       );
+
+ 
      $.noConflict();
      
    
@@ -74,38 +149,11 @@ $(document).ready(function() {
   
  
  $('#siblh_mantenimientobundle_blhacidez_factor').
-            attr('data-bvalidator', 'required,between[0.9:1.1]');
+            attr('data-bvalidator', 'required');
   
  
                           
 
-
-//Calculando campos                        
-
-var $Acidez1; 
-var $Acidez2; 
-var $Acidez3; 
-var $mediaAcidez;
-var $factor;
-var $resultado;
-
- $('#siblh_mantenimientobundle_blhacidez_mediaAcidez').on ('click', function() {
-    $Acidez1 = $('#siblh_mantenimientobundle_blhacidez_acidez1').val();
-    $Acidez2 = $('#siblh_mantenimientobundle_blhacidez_acidez2').val();
-    $Acidez3 = $('#siblh_mantenimientobundle_blhacidez_acidez3').val();
-    
-    if (($Acidez1 == '') || ($Acidez2 == '') || ($Acidez3 == '') || ($Acidez1 < 1) || ($Acidez1 > 15) || ($Acidez2 < 1) || ($Acidez2 > 15)  || ($Acidez3 < 1) || ($Acidez3 > 15) ) 
-{ alert ('Verifique que los valores para la acidez sean validos');
-    return false;}
-else {
-   $mediaAcidez= (parseInt($Acidez1) + parseInt($Acidez2) + parseInt($Acidez3))/3;
-//Redondeando el resultado a 2 decimales 
-$mediaAcidez = Math.round( $mediaAcidez* 100) / 100;
- 
- 
-this.value = $mediaAcidez;  
-}
- ; } ); 
 
 /*   $('#siblh_mantenimientobundle_blhacidez_factor').on('input', function() {
     
@@ -113,23 +161,6 @@ this.value = $mediaAcidez;
 
 }); */
 
-$('#siblh_mantenimientobundle_blhacidez_resultado').on ('click', function() {
-
- $factor = $('#siblh_mantenimientobundle_blhacidez_factor').val();
- $mediaAcidez = $('#siblh_mantenimientobundle_blhacidez_mediaAcidez').val();
-
- 
- if (($factor == '') || ($mediaAcidez == '') || ($factor < 0.9) || ($factor > 1.1) ) 
-{ alert ('Verifique que el valor del facotor y la media acidez sean correctas');
-    return false;}
-else {
-$resultado = parseFloat($mediaAcidez) * parseFloat($factor);
-//Redondeando el resultado a 2 decimales 
-$resultado = Math.round( $resultado* 100) / 100;
- 
-this.value = $resultado; }
-} ); 
- 
  
  
  
@@ -167,5 +198,59 @@ return /\d/.test(String.fromCharCode(keynum));
 
 
  
+
+/////////funcion para valores calculados//////
+
+function calcular(valor)
+{
+    $Acidez1 = $('#siblh_mantenimientobundle_blhacidez_acidez1').val();
+    $Acidez2 = $('#siblh_mantenimientobundle_blhacidez_acidez2').val();
+    $Acidez3 = $('#siblh_mantenimientobundle_blhacidez_acidez3').val();
+    if(valor !='')
+     { 
+    if (($Acidez1 == '') || ($Acidez2 == '') || ($Acidez3 == '') || ($Acidez1 < 1) || ($Acidez1 > 15) || ($Acidez2 < 1) || ($Acidez2 > 15)  || ($Acidez3 < 1) || ($Acidez3 > 15) ) 
+{ alert ('Verifique que los valores para la acidez sean validos');
+    return false;}
+    else {
+            
+ $mediaAcidez= (parseInt($Acidez1) + parseInt($Acidez2) + parseInt($Acidez3))/3;
+//Redondeando el resultado a 2 decimales 
+$mediaAcidez = $mediaAcidez.toFixed(2);
+
+           
+            $('#siblh_mantenimientobundle_blhacidez_mediaAcidez').val($mediaAcidez); 
+            return true;
+        } 
+     }
+     else
+         {return false;}
+} 
+ 
+ 
+ 
+ 
+function calcular1(valor)
+{
+ $factor = $('#siblh_mantenimientobundle_blhacidez_factor').val();
+ $factor = parseFloat($factor); 
+ $mediaAcidez = $('#siblh_mantenimientobundle_blhacidez_mediaAcidez').val();
+    if(valor !='')
+     { 
+   if (($factor == '') || ($mediaAcidez == '') || ($factor < 0.9) || ($factor > 1.1) ) 
+{ alert ('Verifique que el valor del facotor sea correcto');
+    return false;}
+    else {
+            
+$resultado = parseFloat($mediaAcidez) * parseFloat($factor);
+//Redondeando el resultado a 2 decimales
+$resultado = $resultado.toFixed(2);
+           
+            $('#siblh_mantenimientobundle_blhacidez_resultado').val($resultado); 
+            return true;
+        } 
+     }
+     else
+         {return false;}
+} 
  
  

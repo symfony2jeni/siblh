@@ -125,8 +125,12 @@ class BlhFrascoProcesadoController extends Controller
             $em->persist($entity1);
             $em->flush();
             
-           
-            $voldisp=(int)$vldisponible[$i]-(int)$vlcombinar[$i];
+           $voldisp=(float)$vldisponible[$i]-(float)$vlcombinar[$i];
+            
+            $frascosr->setvolumenDisponibleFr($voldisp);
+            $em->persist($frascosr);
+             $em->flush();
+          //  $voldisp=(int)$vldisponible[$i]-(int)$vlcombinar[$i];
             
               //Cambiando estado a los frascos q no les queda volumen
             if($voldisp==0){
@@ -205,11 +209,11 @@ class BlhFrascoProcesadoController extends Controller
         //Obtener los frascos a combinar
         
         //Acides->frasco
-       $query = $em->createQuery("select fr.id, fr.codigoFrascoRecolectado, a.resultado  from siblhmantenimientoBundle:BlhAcidez a join a.idFrascoRecolectado fr  where fr.idEstado = 6 AND fr.idLoteAnalisis IS NOT NULL and (substring (fr.codigoFrascoRecolectado, 1, 2) = '$idp') ORDER BY fr.id ");
+       $query = $em->createQuery("select distinct fr.id, fr.codigoFrascoRecolectado, a.resultado, fr.volumenDisponibleFr as disponible  from siblhmantenimientoBundle:BlhAcidez a join a.idFrascoRecolectado fr  where fr.idEstado = 6 AND fr.idLoteAnalisis IS NOT NULL and (substring (fr.codigoFrascoRecolectado, 1, 2) = '$idp') and fr.volumenDisponibleFr > 0 ORDER BY fr.id ");
        $frascos_combinar = $query->getResult(); 
        $Cantidad_frascos = count($frascos_combinar);
        //Crematocrito->frasco
-       $query2 = $em->createQuery("SELECT fr.id, fr.codigoFrascoRecolectado, fr.volumenRecolectado vl, c.kilocalorias FROM siblhmantenimientoBundle:BlhCrematocrito c join c.idFrascoRecolectado fr  where fr.idEstado = 6 AND fr.idLoteAnalisis IS NOT NULL and (substring (fr.codigoFrascoRecolectado, 1, 2) = '$idp') ORDER BY fr.id ");      
+       $query2 = $em->createQuery("SELECT distinct fr.id, fr.codigoFrascoRecolectado, fr.volumenRecolectado vl, c.kilocalorias FROM siblhmantenimientoBundle:BlhCrematocrito c join c.idFrascoRecolectado fr  where fr.idEstado = 6 AND fr.idLoteAnalisis IS NOT NULL and (substring (fr.codigoFrascoRecolectado, 1, 2) = '$idp') ORDER BY fr.id");      
        $calorias = $query2->getResult(); 
        $filas = count($calorias );
        

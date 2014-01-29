@@ -14,9 +14,7 @@ $(document).ready(function() {
        $('#siblh_mantenimientobundle_blhdonante_fechaNacimiento').val($fnac);        
   } */
  
- $freg =$('#siblh_mantenimientobundle_blhdonante_fechaRegistroDonanteBlh').val(); 
- $freg = '20' + $freg; 
- $('#siblh_mantenimientobundle_blhdonante_fechaRegistroDonanteBlh').val($freg); 
+ 
     
      $.noConflict();
      $.datepicker.setDefaults($.datepicker.regional["es"]);

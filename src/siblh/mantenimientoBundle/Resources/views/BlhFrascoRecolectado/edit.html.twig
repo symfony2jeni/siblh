@@ -18,7 +18,7 @@
           
        
         <tr><td colspan=2 align = "left" height=10  ></td></tr>
-        <tr><td align='left' ><font color="red">*</font>{{ form_label(edit_form.volumenRecolectado,'Volumen recolectado') }}</td><td align='left'>{{ form_widget(edit_form.volumenRecolectado,  { 'attr': {'title': 'Digite el volumen en ml de', 'onKeyPress':"return soloNumeros(event);"} }) }}</td></tr>
+        <tr><td align='left' ><font color="red">*</font>{{ form_label(edit_form.volumenRecolectado,'Volumen recolectado') }}</td><td align='left'>{{ form_widget(edit_form.volumenRecolectado,  { 'attr': {'title': 'Volumen entre 1 y 500 ml', 'onKeyPress':"return soloNumeros(event);"} }) }}</td></tr>
     <tr><td colspan=2 align = "left" height=10  ></td></tr>
     <tr><td align='left' ><font color="red">*</font>{{ form_label(edit_form.formaExtraccion,'Forma extraccion') }}</td><td align='left'>{{ form_widget(edit_form.formaExtraccion) }}</td></tr>
     <tr><td colspan=2 align = "left" height=10  ></td></tr>
