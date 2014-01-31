@@ -1,4 +1,5 @@
 $(document).ready(function() { 
+
    $('button').button();
    $('#siblh_mantenimientobundle_blhfrascorecolectado_volumenRecolectado').
         attr('data-bvalidator', 'between[1:500],required');
@@ -58,7 +59,8 @@ this.value = $onz; } )
         
            });
 
- 
+          $('#siblh_mantenimientobundle_blhfrascorecolectado_onzRecolectado').
+            attr('data-bvalidator', 'required'); 
 });
 
 function soloNumerosEnteros(e)

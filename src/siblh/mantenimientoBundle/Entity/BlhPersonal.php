@@ -39,6 +39,12 @@ class BlhPersonal
      */
     private $idEstablecimiento;
 
+    /**
+* @var integer
+*
+* @ORM\Column(name="usuario", type="integer", nullable=true)
+*/
+private $usuario;
 
 
     /**
@@ -95,5 +101,28 @@ class BlhPersonal
     public function getIdEstablecimiento()
     {
         return $this->idEstablecimiento;
+    }
+    
+   /**
+     * Set usuario
+     *
+     * @param integer $usuario
+     * @return BlhPersonal
+     */
+    public function setUsuario($usuario)
+    {
+        $this->usuario = $usuario;
+    
+        return $this;
+    }
+
+    /**
+     * Get nombre
+     *
+     * @return integer 
+     */
+    public function getUsuario()
+    {
+        return $this->usuario;
     }
 }

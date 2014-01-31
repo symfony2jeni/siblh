@@ -21,7 +21,7 @@
        <tr>
        <td align = "right" colspan = "5">Curva</td>
         <td align = "right" colspan = "2">
-        <INPUT type=text disabled="disabled" size=10 readonly="readonly" value= "{{ datos_curva[0].iden }}"></td></tr>
+        <INPUT type=text disabled="disabled" size=10 readonly="readonly" value= "{{ datos_curva[0].valorCurva }}"></td></tr>
         <td align = "right" colspan = "5">Fecha Curva</td>
         <td align = "right" colspan = "2">
         <INPUT type=text disabled="disabled" size=10 readonly="readonly" value= "{{ datos_curva[0].fechaCurva|date('d-m-Y') }}"></td></tr>
@@ -31,7 +31,7 @@
         <td align = "right" colspan = "5">Volumen frascos</td>
         <td align = "right" colspan = "2">
         <INPUT id="vol" type=text disabled="disabled" size=10 readonly="readonly" value= "{{ datos_curva[0].volumenPorFrasco }}"></td></tr>
-        <td align = "right" colspan = "2" style="visibility:visible">
+        <td align = "right" colspan = "2" style="visibility:hidden">
         <INPUT id="ciclos" type=text disabled="disabled" size=10 readonly="readonly" value= "{{ ciclos[0].ciclos }}"></td></tr>
 
    </table>

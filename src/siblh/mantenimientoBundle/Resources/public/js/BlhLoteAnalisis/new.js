@@ -1,4 +1,5 @@
 $(document).ready(function() { 
+    
      /*$('button').button();*/
      $.noConflict();
      $.datepicker.setDefaults($.datepicker.regional["es"]);
@@ -9,9 +10,9 @@ $(document).ready(function() {
                            changeYear: true,
                            clearStatus: 'Borra fecha actual',  
                            defaultDate: 'today',
-                           minDate: '2012-10-08',
+                           minDate: '-7d',
                            maxDate: 'today',
-                           yearRange: '2012:y',
+                          // yearRange: '2012:y',
                            dayNamesMin: ["Do", "Lu", "Ma", "Mi", "Ju", "Vi", "Sa"],
                            monthNamesShort: ["Ene", "Feb", "Mar", "Abr", "May", "Jun",
                                              "Jul", "Ago", "Sep", "Oct", "Nov", "Dic"]
@@ -108,9 +109,9 @@ jQuery("#lote").on ('click', function() {
         var s = new Array();
       
     
-        if (corr_seleccionados.length === 0){
+        if (corr_seleccionados.length < 15){
             
-                alert('No se han seleccionado frascos para agregar al lote');
+                alert('El numero de frascos para un lote debe ser mayor o igual que 15');
                 return false;
                  //$('#var').val(0);
         }
@@ -131,11 +132,22 @@ jQuery("#lote").on ('click', function() {
 
  $('#responsable').on ('click', function() {
     $('#siblh_mantenimientobundle_blhloteanalisis_responsableAnalisis').val (this.value); 
-    ;
+
     });
+$('#lote').on ('click', function() {
+    $aux = $('#siblh_mantenimientobundle_blhloteanalisis_responsableAnalisis').val();
+   if($aux=='')
+   {alert('Seleccione un responsable');
+   return false;}
+ 
+    
+    });
+
+
 
 });
 
+ 
 
 
 

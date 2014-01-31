@@ -206,7 +206,12 @@ $('#siblh_mantenimientobundle_blhhistorialclinico_amenorrea').on ('click', funct
     
 $fregla=$('#siblh_mantenimientobundle_blhhistorialclinico_fechaUltimaRegla').val();
 $fparto=$('#siblh_mantenimientobundle_blhhistorialclinico_fechaParto').val();
-if (($fregla == '') || ($fparto == ''))
+$fregla = new Date($fregla);
+$fparto = new Date($fparto);
+      
+  $resta =  ($fparto.getYear() * 12 + $fparto.getMonth()) - ($fregla.getYear() * 12 + $fregla.getMonth())
+
+if (($fregla == '') || ($fparto == '') || ($resta <1))
 {
 
 alert ('Debe digitar una fecha valida de parto y ultima regla');
@@ -269,12 +274,12 @@ return false;
 
 
 $('#boton').on ('click', function() {
-    alert ('hola');
+   
+
     $f = $('#siblh_mantenimientobundle_blhhistorialclinico_fechaPartoAnterior').val();
     $f = new Date($f);
     $hoy = new Date();
-    alert ($f);
-    alert ($hoy);
+
     if ($f == $hoy)
         {
             $('#siblh_mantenimientobundle_blhhistorialclinico_fechaPartoAnterior').value = null;
@@ -282,7 +287,8 @@ $('#boton').on ('click', function() {
 
 });
 
-
+  $('#siblh_mantenimientobundle_blhhistorialclinico_amenorrea').
+            attr('data-bvalidator', 'required');   
 });
 
 

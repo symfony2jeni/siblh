@@ -549,6 +549,8 @@ class BlhGrupoSolicitudController extends Controller
            
            //cambiando estado a solicitudes
             $solicitud->setEstado('Despachada');
+             $usuario = $this->container->get('security.context')->getToken()->getUser()->getId();
+
             $solicitud->setUsuario($usuario);
             $em->persist($solicitud);
             $em->flush();
@@ -566,7 +568,9 @@ class BlhGrupoSolicitudController extends Controller
             $entity = new BlhFrascoProcesadoSolicitud();
             $entity->setidFrascoProcesado($frascop);
             $entity->setidSolicitud($solicitud);                            
-            $entity->setvolumenDespachado($vldespachar[$j]);         
+            $entity->setvolumenDespachado($vldespachar[$j]);  
+            $usuario = $this->container->get('security.context')->getToken()->getUser()->getId();
+
             $entity->setUsuario($usuario);
             $em->persist($entity);
             $em->flush();

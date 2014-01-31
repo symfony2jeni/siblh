@@ -129,7 +129,8 @@ return false;
 }    
 });
 
-
+    $('#siblh_mantenimientobundle_blhsolicitud_volumenPorDia').
+            attr('data-bvalidator', 'required'); 
 });
 
 function soloNumerosEnteros(e)

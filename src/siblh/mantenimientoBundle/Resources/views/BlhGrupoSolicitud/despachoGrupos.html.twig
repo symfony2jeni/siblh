@@ -90,7 +90,7 @@
      <thead>
             <tr bgcolor="#2b8dd6">
                 <th style="visibility:hidden">id</th>
-                <th>Select</th>
+                <th>Seleccionar</th>
                 <th>Código frasco</th>
                 <th>Acidez</th>
                 <th>Calorias</th>
@@ -110,7 +110,7 @@
                 <td>{{frascosp[i][3]}}</td>
                 <td>{{ frascosp[i][4]}}</td>                  
                  <td><input name="vldisponible[]" id= "vldisponible_{{frascosp[i][0]}}"  type=text value ="{{frascosp[i][5]|number_format(2, '.', ',')}}" disabled=disabled STYLE="text-align:center"/> </td>  
-                <td><input name="vldespachar[]" id="vldespachar_{{frascosp[i][0]}}"  type=text value="0" onkeypress='javascript:return isNumberKey(event);'/></td>   
+                <td><input name="vldespachar[]" id="vldespachar_{{frascosp[i][0]}}"  type=text value="0" onkeypress='javascript:return soloNumeros(event);'/></td>   
                 </tr>
         {% endfor %}
           

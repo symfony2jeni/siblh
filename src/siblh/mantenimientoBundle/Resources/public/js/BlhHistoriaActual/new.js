@@ -56,7 +56,9 @@ this.value = $imc;
            
            
            
-           
+ 
+          $('#siblh_mantenimientobundle_blhhistoriaactual_imc').
+            attr('data-bvalidator', 'required');           
            
    $('#button').button();
    $('#boton1').button();

@@ -484,7 +484,7 @@ JOIN sr.idReceptor rec)");
         $query = $em->createQuery("SELECT r.id as identificador, p.primerNombre as nombre1, p.segundoNombre as nombre2, 
             p.tercerNombre as nombre3, p.primerApellido as apellido1, p.segundoApellido as apellido2,  r.codigoReceptor
             FROM siblhmantenimientoBundle:BlhReceptor r join r.idPaciente p where r.estadoReceptor = 'Activo'
-            and r.id in (select rec.id from siblhmantenimientoBundle:BlhSeguimientoReceptor sr 
+            and r.id in (select rec.id from siblhmantenimientoBundle:BlhEgresoReceptor sr 
 JOIN sr.idReceptor rec)");  
          
         $receptores_registrados  = $query->getResult();
@@ -555,8 +555,7 @@ JOIN sr.idReceptor rec)");
         $query = $em->createQuery("SELECT r.id as identificador, p.primerNombre as nombre1, p.segundoNombre as nombre2, 
             p.tercerNombre as nombre3, p.primerApellido as apellido1, p.segundoApellido as apellido2,  r.codigoReceptor
             FROM siblhmantenimientoBundle:BlhReceptor r join r.idPaciente p where r.estadoReceptor = 'Activo'
-            and r.id in (select rec.id from siblhmantenimientoBundle:BlhSeguimientoReceptor sr 
-JOIN sr.idReceptor rec)");  
+            ");  
          
         $receptores_registrados  = $query->getResult();
            //Obtener banco de leche//

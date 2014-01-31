@@ -112,57 +112,10 @@ $('#siblh_mantenimientobundle_blhcurva_fechaCurva').
 
 
 
-//Validacion ROX   
- /*$('#boton').on ('click', function() {
-
-       $fechaCurva=$('#siblh_mantenimientobundle_blhcurva_fechaCurva').val();
-       $cantidadFrascos=$('#siblh_mantenimientobundle_blhcurva_cantidadFrascos').val();
-       $volumenPorFrasco=$('#siblh_mantenimientobundle_blhcurva_volumenPorFrasco').val();
-       $tiempo1=$('#siblh_mantenimientobundle_blhcurva_tiempo1').val();
-       $tiempo2=$('#siblh_mantenimientobundle_blhcurva_tiempo2').val();
-       $tiempo3=$('#siblh_mantenimientobundle_blhcurva_tiempo3').val();
-       
-        if($fechaCurva == "" ) {
-            alert("Ingrese una fecha valida!");
-            return false;}
-        else{
-            if(($cantidadFrascos == "") || ($cantidadFrascos < 10)  || ($cantidadFrascos > 60)) {
-            alert("Ingrese cantidad de frascos entre 10 y 60!");
-            return false;}
-        
-            else{
-                if(($volumenPorFrasco == "") || ($volumenPorFrasco < 60)  || ($volumenPorFrasco > 500)) {
-                alert("Ingrese Volumen de frascos entre 60 y 500 ML!");
-                return false;} 
-            
-                 else{
-                    if(($tiempo1 == "") || ($tiempo1 < 5)  || ($tiempo1>10)) {
-                    alert("Ingrese tiempo entre 5 y 10 minutos!");
-                    return false;}
-                
-                     else{
-                        if(($tiempo2 == "") || ($tiempo2 < 5)  || ($tiempo2>10)) {
-                        alert("Ingrese tiempo entre 5 y 10 minutos!");
-                        return false;} 
-                 
-                        else{
-                           if(($tiempo3 == "") || ($tiempo3 < 5)  || ($tiempo3>10)) {
-                           alert("Ingrese tiempo entre 5 y 10 minutos!");
-                            return false;} 
-                        else {
-                            alert("Datos almacenados!")
-                             }
-
-                             }
-                         }
-                      }
-                }
-            }
-       
-       });*/
 
 
-  
+    $('#siblh_mantenimientobundle_blhcurva_valorCurva').
+            attr('data-bvalidator', 'required'); 
 
 });
     

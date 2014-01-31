@@ -1,6 +1,3 @@
-
-
-
 $(document).ready(function() { 
      /*$('button').button();*/
      $.noConflict();
@@ -164,7 +161,11 @@ if($acidez>8){
 
 });
      
-
+   $('#siblh_mantenimientobundle_blhacidez_mediaAcidez').
+            attr('data-bvalidator', 'required');
+    
+   $('#siblh_mantenimientobundle_blhacidez_resultado').
+            attr('data-bvalidator', 'required');
 
 });
 

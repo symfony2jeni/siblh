@@ -182,6 +182,14 @@ else
 
 });
 
+  $('#siblh_mantenimientobundle_blhseguimientoreceptor_gananciaDiaPc').
+            attr('data-bvalidator', 'required');
+
+  $('#siblh_mantenimientobundle_blhseguimientoreceptor_gananciaDiaPeso').
+            attr('data-bvalidator', 'required');
+    
+      $('#siblh_mantenimientobundle_blhseguimientoreceptor_gananciaDiaTalla').
+            attr('data-bvalidator', 'required');
 });
 
 function soloNumerosEnteros(e)

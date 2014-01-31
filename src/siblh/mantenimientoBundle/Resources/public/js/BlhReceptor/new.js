@@ -155,6 +155,9 @@ $('#siblh_mantenimientobundle_blhreceptor_duracionNpt').
            });
     $('#button').button();
     $('#boton1').button();
+    
+      $('#siblh_mantenimientobundle_blhreceptor_edadDias').
+            attr('data-bvalidator', 'required');
 });
 
 function soloNumerosEnteros(e)

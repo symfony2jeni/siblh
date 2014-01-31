@@ -144,7 +144,17 @@ $kilocalorias= Math.round( $kilocalorias* 100) / 100;
  
 this.value = $kilocalorias; } } ); 
 
-
+      $('#siblh_mantenimientobundle_blhcrematocrito_mediaCrema').
+            attr('data-bvalidator', 'required');
+    
+          $('#siblh_mantenimientobundle_blhcrematocrito_mediaCt').
+            attr('data-bvalidator', 'required');
+    
+          $('#siblh_mantenimientobundle_blhcrematocrito_porcentajeCrema').
+            attr('data-bvalidator', 'required');
+    
+          $('#siblh_mantenimientobundle_blhcrematocrito_kilocalorias').
+            attr('data-bvalidator', 'required');
 
 
 });
