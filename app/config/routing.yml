@@ -245,3 +245,7 @@ _NewPersonal:
 _NewEditPersonal:
     pattern:  /Personal/listado
     defaults: { _controller: siblhmantenimientoBundle:BlhPersonal:index} 
+    
+_Bitacora:
+    pattern:  /blhbitacora/busqueda/
+    defaults: { _controller: siblhmantenimientoBundle:BlhBitacoral:BusquedaBitacora} 

@@ -1,0 +1,71 @@
+{% extends 'siblhmantenimientoBundle::plantilla.html.twig' %}
+{% block javascripts %}
+    {{parent()}}
+    <script type="text/javascript" src="{{ asset('bundles/siblhmantenimiento/js/BlhBitacora/BusquedaBitacora.js') }}" ></script>
+{% endblock %}
+   
+{% block body -%}
+ <link href="{{asset('bundles/jquery/jquery.jqGrid-4.5.4/css/ui.jqgrid.css')}}" rel="stylesheet"  type="text/css" media="all"/>  
+ 
+ <script type="text/javascript" src="{{asset('bundles/jquery/jquery.jqGrid-4.5.4/js/i18n/grid.locale-es.js')}}"></script>
+      <script type="text/javascript" src="{{asset('bundles/jquery/jquery.jqGrid-4.5.4/js/jquery.jqGrid.min.js')}}" ></script> 
+ <script type="text/javascript" src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
+      <script src="{{ path('fos_js_routing_js', {"callback": "fos.Router.setData"}) }}"></script>
+  {% block stylesheets %}
+    {{ parent() }}
+        <link href="{{ asset('bundles/siblhmantenimiento/css/form.css') }}" rel="stylesheet" type="text/css" />
+ 
+{% endblock %}   
+        <h1>Bitacora de acciones realizadas por los usuarios</h1>
+        <div style="width:50%; margin:0 auto;">
+        
+       <form method="POST" action="{{path("blhbitacora")}}"> 
+        <table   align = "center">
+            <tr><td colspan = 2 align = "center"><b>Seleccione el criterio de búsqueda</b><p></td></tr>
+            <tr><td><font color="blue"><b>Búsqueda por:</b></font></td>
+                <td>
+                    <select id="forma_busqueda">
+                        <option value="1">Nombre de usuario</option>
+                        <option value="2">Periodo de fechas</option>
+                    </select>
+                    
+                </td></tr>
+            <tr>
+                <td>
+                    <div id = "criterioNombre" style="display:none"><font color="blue"><b>Nombre de usuario</b></font></div>
+                    <div id = "criterioFecha" style="display:none"><font color="blue"><b>Fecha de inicio</b></font></div>
+                </td>
+                <td> 
+                    <div id = "criterioNombre2" style="display:none"><INPUT id="nombreUser" name = "nombreUser" type=text value = ""></div>
+                    <div id = "criterioFecha2" style="display:none"><INPUT id="fechai" name = "fechai" type=text value = ""></div>
+                </td>
+            </tr>
+            
+            <tr>
+                <td>
+                    <div id = "criterioFecha3" style="display:none"><font color="blue"><b>Fecha de fin</b></font></div>
+                </td>
+                <td> 
+                    <div id = "criterioFecha4" style="display:none"><INPUT id="fechaf" name = "fechaf" type=text value = ""></div>
+                </td>
+            </tr>
+            
+            
+        <tr  style="visibility:hidden"><td colspan =2> <INPUT id="opcionSeleccionada"  name = "opcionSeleccionada" type=text></td></tr>
+      
+        <tr style="visibility:hidden"><td colspan =2> <INPUT id="id" size=2 name = "blh" type=text readonly="readonly" value= " {{ id }} "></td></tr>
+        <tr style="visibility:hidden"><td colspan =2> <INPUT id="nombre"  name = "blh" type=text readonly="readonly" value= " {{ hospital[0].nombre }} "></td></tr>
+
+        <tr><td colspan = 2 align = "center">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <button id = "exportar_pdf3" type="submit" value="Guardar" ><img src={{ asset('bundles/siblhmantenimiento/imagenes/search.jpeg') }}></button></td></tr>
+         
+       
+        
+        
+        
+        </table>   </form> </div>
+     
+ 
+ 
+
+
+ {% endblock %}
