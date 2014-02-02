@@ -49,8 +49,8 @@
  <table  border=1 align = "center" bordercolor="#2e6e9e" width = "115%" >
      <thead>
             <tr bgcolor="#2b8dd6">
-                <th style="visibility:hidden">id</th>
-                <th style="visibility:hidden">idCalorias</th>
+                <th style="visibility:hidden; display:none" >id</th>
+                <th style="visibility:hidden; display:none">idCalorias</th>
                 <th>Seleccionar</th>
                 <th>Frasco</th>
                 <th>Acidez</th>                
@@ -58,16 +58,16 @@
                 <th>Volumen frasco(ml)</th>     
                 <th>Volumen disponible(ml)</th>
                 <th>Volumen&nbsp;a&nbsp;combinar(ml)</th>  
-                <th style="visibility:hidden">idAgregado</th>
-                <th style="visibility:hidden">Agregado</th>
+                <th style="visibility:hidden; display:none">idAgregado</th>
+                <th style="visibility:hidden; display:none">Agregado</th>
             </tr>
             </thead>
             <tbody>
             
         {% for i in 0 ..(tamanio-1)%}
                 <tr>              
-               <td style="visibility:hidden">{{ frasco[i].id}}</td>
-               <td style="visibility:hidden">{{caloria[i].id}}</td>
+               <td style="visibility:hidden; display:none">{{ frasco[i].id}}</td>
+               <td style="visibility:hidden; display:none">{{caloria[i].id}}</td>
                <td align=center><input type="checkbox" name="idscombinar[]" id="idscombinar_{{ frasco[i].id}}" value="{{ frasco[i].id}}"/></td>
                 <td align=center>{{ frasco[i].codigoFrascoRecolectado }}</td>
                 <td align=center>{{ frasco[i].resultado|number_format(2, '.', ',') }}</td>                                    
@@ -75,8 +75,8 @@
                 <td><input id = "vl"  type=text value = "{{ caloria[i].vl|number_format(2, '.', ',')}}" disabled=disabled STYLE="text-align:center"/> </td>                           
                  <td><input name='vldisponible[]' id= "vldisponible_{{ frasco[i].id}}"  type=text value ="{{frasco[i].disponible|number_format(2, '.', ',')}}" disabled=disabled STYLE="text-align:center"/> </td>  
                 <td><input name="vlcombinar[]" id="vlcombinar_{{frasco[i].id}}" type=text value="0" onkeypress='javascript:return soloNumeros(event);'/></td>  
-                 <td style="visibility:hidden">{{volumen_agregado[i].id}}</td>
-                <td style="visibility:hidden"><input type=text value = "{{ volumen_agregado[i].agregado }}"/> </td>  
+                 <td style="visibility:hidden; display:none">{{volumen_agregado[i].id}}</td>
+                <td style="visibility:hidden; display:none"><input type=text value = "{{ volumen_agregado[i].agregado }}"/> </td>  
                 </tr>
         {% endfor %}
           
@@ -106,8 +106,8 @@
     <table  border=1 align = "center" bordercolor="#2e6e9e"  >
          <thead>
             <tr bgcolor="#2b8dd6">
-                <th style="visibility:hidden">id</th>
-                <th style="visibility:hidden">idCalorias</th>
+                <th style="visibility:hidden; display:none">id</th>
+                <th style="visibility:hidden; display:none">idCalorias</th>
                 <th>Seleccionar</th>
                 <th>Código&nbsp;Frasco</th>
                 <th>Acidez</th>                
@@ -115,8 +115,8 @@
                 <th>Volumen Recolectado(ml)</th>     
                 <th>VolumenDisponible(ml)</th>
                 <th>Volumen&nbsp;a&nbsp;combinar(ml)</th>  
-                <th style="visibility:hidden">idAgregado</th>
-                <th style="visibility:hidden">Agregado</th>               
+                <th style="visibility:hidden; display:none">idAgregado</th>
+                <th style="visibility:hidden; display:none">Agregado</th>               
             </tr>
      </thead>
                 <tbody>
