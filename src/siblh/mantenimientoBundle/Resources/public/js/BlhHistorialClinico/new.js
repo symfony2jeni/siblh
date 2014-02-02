@@ -7,7 +7,7 @@ $(document).ready(function() {
                            changeYear: true,
                            defaultDate: null,
                            clearStatus: 'Borra fecha actual',  
-                           minDate: '-2m',
+                           minDate: '-16m',
                            maxDate: 'm',
                          // monthRange: '-2m:m',
                            dayNamesMin: ["Do", "Lu", "Ma", "Mi", "Ju", "Vi", "Sa"],
