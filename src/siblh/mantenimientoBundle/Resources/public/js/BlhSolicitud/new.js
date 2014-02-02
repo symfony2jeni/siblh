@@ -124,8 +124,8 @@ $tomas=parseInt($tom);
 if($tomas >=10) 
 {
 if($volumen>=30)
-alert ('Error, cantidades de volumen por toma y tomas por dia demasiado grandes, ingrese cantidades aceptables');
-return false;
+{alert ('Error, cantidades de volumen por toma y tomas por dia demasiado grandes, ingrese cantidades aceptables');
+return false;}
 }    
 });
 

@@ -75,15 +75,15 @@
      
     <td colspan="2"> 
         {{ form_errors(form.tiempo1) }}
-        {{ form_widget(form.tiempo1,{ 'attr': {'title': 'Ingrese tiempo 1, entre 5 y 10 minutos','onKeyPress':"return soloNumeros(event);"} }) }} </td>
+        {{ form_widget(form.tiempo1,{ 'attr': {'title': 'Ingrese tiempo 1, entre 5 y 10 minutos','onKeyPress':"return soloNumerosEnteros(event);"} }) }} </td>
     
     <td colspan="2">   
         {{ form_errors(form.tiempo2) }}
-        {{ form_widget(form.tiempo2,{ 'attr': {'title': 'Ingrese tiempo 2, entre 5 y 10 minutos','onKeyPress':"return soloNumeros(event);"} }) }} </td>
+        {{ form_widget(form.tiempo2,{ 'attr': {'title': 'Ingrese tiempo 2, entre 5 y 10 minutos','onKeyPress':"return soloNumerosEnteros(event);"} }) }} </td>
   
     <td colspan="2">  
         {{ form_errors(form.tiempo3) }}
-        {{ form_widget(form.tiempo3,{ 'attr': {'title': 'Ingrese tiempo 3, entre 5 y 10 minutos','onKeyPress':"return soloNumeros(event);"} }) }} </td>  
+        {{ form_widget(form.tiempo3,{ 'attr': {'title': 'Ingrese tiempo 3, entre 5 y 10 minutos','onKeyPress':"return soloNumerosEnteros(event);"} }) }} </td>  
     
  </tr> 
  
