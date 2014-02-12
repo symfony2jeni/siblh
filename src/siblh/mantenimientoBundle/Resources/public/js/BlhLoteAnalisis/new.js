@@ -37,6 +37,7 @@ $(document).ready(function() {
     //Boton   
     
       $( "#lote" ).button();
+      $( "#auto" ).button();
       
    //Spiner   
  $(function() {
@@ -129,6 +130,24 @@ jQuery("#lote").on ('click', function() {
 
 	
 });
+
+jQuery("#auto").on( 'click', function() {
+	jQuery("#frascosLote").jqGrid('setSelection',"1");
+        jQuery("#frascosLote").jqGrid('setSelection',"2");
+        jQuery("#frascosLote").jqGrid('setSelection',"3");
+        jQuery("#frascosLote").jqGrid('setSelection',"4");
+        jQuery("#frascosLote").jqGrid('setSelection',"5");
+        jQuery("#frascosLote").jqGrid('setSelection',"6");
+        jQuery("#frascosLote").jqGrid('setSelection',"7");
+        jQuery("#frascosLote").jqGrid('setSelection',"8");
+        jQuery("#frascosLote").jqGrid('setSelection',"9");
+        jQuery("#frascosLote").jqGrid('setSelection',"10");
+        jQuery("#frascosLote").jqGrid('setSelection',"11");
+        jQuery("#frascosLote").jqGrid('setSelection',"12");
+        jQuery("#frascosLote").jqGrid('setSelection',"13");
+        jQuery("#frascosLote").jqGrid('setSelection',"14");
+        jQuery("#frascosLote").jqGrid('setSelection',"15");
+        });
 
  $('#responsable').on ('click', function() {
     $('#siblh_mantenimientobundle_blhloteanalisis_responsableAnalisis').val (this.value); 
