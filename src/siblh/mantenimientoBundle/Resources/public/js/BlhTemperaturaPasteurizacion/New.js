@@ -57,7 +57,18 @@ $(document).ready(function() {
                  
             }
        });
- 
+            
+              $('#siblh_mantenimientobundle_blhtemperaturapasteurizacion_temperaturaP').blur(function(){
+     $valor= $('#siblh_mantenimientobundle_blhtemperaturapasteurizacion_temperaturaP').val();
+     $valor = parseInt($valor);  
+   //  alert(typeof $valor);
+    if (($valor < 62) ||  ($valor > 66))
+      {
+          alert ("La temepratura debe estar entre 62 y 66 grados");
+          $(this).focus();
+          return false;
+      }
+});
  });
 
 

@@ -30,10 +30,10 @@ $(document).ready(function() {
 
 
 $('#siblh_mantenimientobundle_blhpasteurizacion_volumenPasteurizado').
-      attr('data-bvalidator', 'between[30:130],required');
+      attr('data-bvalidator', 'between[30:500],required');
     
 $('#siblh_mantenimientobundle_blhpasteurizacion_volumenPasteurizado').
-      attr('data-bvalidator-msg', "Ingrese el volumen en ml de 30 a 30 ml");  
+      attr('data-bvalidator-msg', "Ingrese el volumen en ml de 30 a 5000 ml");  
       
 $('#siblh_mantenimientobundle_blhpasteurizacion_numFrascosPasteurizados').
       attr('data-bvalidator', 'between[5:100],required');

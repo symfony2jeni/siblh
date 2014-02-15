@@ -113,7 +113,7 @@ $('#siblh_mantenimientobundle_blhcurva_tiempo3').change(function() {
 $('#siblh_mantenimientobundle_blhcurva_cantidadFrascos').
             attr('data-bvalidator', 'required,between[10:60]');
 $('#siblh_mantenimientobundle_blhcurva_volumenPorFrasco').
-            attr('data-bvalidator', 'required,between[60:500]');
+            attr('data-bvalidator', 'required,between[30:500]');
 $('#siblh_mantenimientobundle_blhcurva_tiempo1').
             attr('data-bvalidator', 'required,between[5:10]');
 $('#siblh_mantenimientobundle_blhcurva_tiempo2').

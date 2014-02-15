@@ -27,7 +27,13 @@ $(document).ready(function() {
                           });
                              
    
-
+$('#button').on('click', function() {
+    
+    $val=$('#siblh_mantenimientobundle_blhreceptor_clasificacionLubchengo').val();
+    if($val === '')
+        {alert('Seleccione la Clasificacion Lubechengo');
+        return false;}
+});
 $('#2').on ('click', function() {
     
    $valor = this.value;
@@ -51,10 +57,12 @@ $('#4').on ('click', function() {
     
    $valor = this.value;
  //  alert ($valor);
+ 
     
  $('#siblh_mantenimientobundle_blhreceptor_clasificacionLubchengo').val (this.value); 
     
 });
+
 
 $('#siblh_mantenimientobundle_blhreceptor_edadGestFur').
         attr('data-bvalidator', 'between[24:42],required');
@@ -126,6 +134,128 @@ $('#siblh_mantenimientobundle_blhreceptor_duracionNpt').
       $('#siblh_mantenimientobundle_blhreceptor_edadDias').
             attr('data-bvalidator', 'required');
     calcularEdadDias();
+    
+       $('#siblh_mantenimientobundle_blhreceptor_edadGestFur').blur(function(){
+     $valor= $('#siblh_mantenimientobundle_blhreceptor_edadGestFur').val();
+     $valor = parseInt($valor);  
+   //  alert(typeof $valor);
+    if (($valor < 24) ||  ($valor > 42))
+      {
+          alert ("La edad gestacional FUR debe estar entre 24 y 42 semanas");
+          $(this).focus();
+          return false;
+      }
+}); 
+
+       $('#siblh_mantenimientobundle_blhreceptor_tallaIngreso').blur(function(){
+     $valor= $('#siblh_mantenimientobundle_blhreceptor_tallaIngreso').val();
+     $valor = parseInt($valor);  
+   //  alert(typeof $valor);
+    if (($valor < 25) ||  ($valor > 55))
+      {
+          alert ("El peso debe estar entre 25 y 55 cm");
+          $(this).focus();
+          return false;
+      }
+}); 
+
+       $('#siblh_mantenimientobundle_blhreceptor_pesoReceptor').blur(function(){
+     $valor= $('#siblh_mantenimientobundle_blhreceptor_pesoReceptor').val();
+     $valor = parseFloat($valor);  
+   //  alert(typeof $valor);
+    if (($valor < 500) ||  ($valor > 5000))
+      {
+          alert ("El peso debe estar entre 500 y 5000 gramos");
+          $(this).focus();
+          return false;
+      }
+}); 
+
+       $('#siblh_mantenimientobundle_blhreceptor_pc').blur(function(){
+     $valor= $('#siblh_mantenimientobundle_blhreceptor_pc').val();
+     $valor = parseFloat($valor);  
+   //  alert(typeof $valor);
+    if (($valor < 20) ||  ($valor > 40))
+      {
+          alert ("El perimetro cefalico debe estar entre 20 y 40");
+          $(this).focus();
+          return false;
+      }
+}); 
+       $('#siblh_mantenimientobundle_blhreceptor_apgarPrimerMinuto').blur(function(){
+     $valor= $('#siblh_mantenimientobundle_blhreceptor_apgarPrimerMinuto').val();
+     $valor = parseInt($valor);  
+   //  alert(typeof $valor);
+    if (($valor < 0) ||  ($valor > 9))
+      {
+          alert ("El valor de apgar al primer minuto debe estar entre 0 y 9");
+          $(this).focus();
+          return false;
+      }
+}); 
+
+       $('#siblh_mantenimientobundle_blhreceptor_apgarQuintoMinuto').blur(function(){
+     $valor= $('#siblh_mantenimientobundle_blhreceptor_apgarQuintoMinuto').val();
+     $valor = parseInt($valor);  
+   //  alert(typeof $valor);
+    if (($valor < 0) ||  ($valor > 10))
+      {
+          alert ("El valor de apgar al quinto minuto debe estar entre 0 y 10");
+          $(this).focus();
+          return false;
+      }
+}); 
+
+       $('#siblh_mantenimientobundle_blhreceptor_edadGestBallard').blur(function(){
+     $valor= $('#siblh_mantenimientobundle_blhreceptor_edadGestBallard').val();
+     $valor = parseInt($valor);  
+   //  alert(typeof $valor);
+    if (($valor < 20) ||  ($valor > 42))
+      {
+          alert ("La edad gestacional Ballard debe estar entre 20 y 42 semanas");
+          $(this).focus();
+          return false;
+      }
+}); 
+
+       $('#siblh_mantenimientobundle_blhreceptor_duracionVentilacion').blur(function(){
+     $valor= $('#siblh_mantenimientobundle_blhreceptor_duracionVentilacion').val();
+     $valor = parseInt($valor);  
+   //  alert(typeof $valor);
+    if (($valor < 0) ||  ($valor > 99))
+      {
+          alert ("El valor de ventilacion mecanica debe estar entre 0 y 99 dias");
+          $(this).focus();
+          return false;
+      }
+}); 
+
+       $('#siblh_mantenimientobundle_blhreceptor_duracionCpap').blur(function(){
+     $valor= $('#siblh_mantenimientobundle_blhreceptor_duracionCpap').val();
+     $valor = parseInt($valor);  
+   //  alert(typeof $valor);
+    if (($valor < 0) ||  ($valor > 50))
+      {
+          alert ("El valor de duracion CPAP debe estar entre 0 y 50 dias");
+          $(this).focus();
+          return false;
+      }
+}); 
+
+       $('#siblh_mantenimientobundle_blhreceptor_duracionNpt').blur(function(){
+     $valor= $('#siblh_mantenimientobundle_blhreceptor_duracionNpt').val();
+     $valor = parseInt($valor);  
+   //  alert(typeof $valor);
+    if (($valor < 0) ||  ($valor > 50))
+      {
+          alert ("El valor de nutricion parenteral debe estar entre 0 y 50");
+          $(this).focus();
+          return false;
+      }
+}); 
+
+
+
 });
 
 function soloNumerosEnteros(e)

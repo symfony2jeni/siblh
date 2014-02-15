@@ -190,6 +190,10 @@ else
     
       $('#siblh_mantenimientobundle_blhseguimientoreceptor_gananciaDiaTalla').
             attr('data-bvalidator', 'required');
+    
+
+
+    
 });
 
 function soloNumerosEnteros(e)

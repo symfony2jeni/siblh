@@ -66,7 +66,7 @@
         <td height=10 align="left" width=250>{{ form_widget(form.periodoEvaluacion, { 'attr': {'title': 'Por favor ingrese el perdiodo de evaluacion, entre 5 y 10.','onKeyPress':"return soloNumerosEnteros(event);"} }) }} </td>
         
         <td height=10 align = "left" width=400 ><font color="red" >*</font>{{ form_label(form.semana) }}</td>
-        <td height=10 align="center" width=250>{{ form_widget(form.semana, { 'attr': {'title': 'Por favor ingrese la semana de seguimiento, entre 1 y 16.','readonly': 'true', 'onKeyPress':"return soloNumerosEnteros(event);"} }) }} </td>
+        <td height=10 align="center" width=250>{{ form_widget(form.semana, { 'attr': {'readonly': 'true', 'onKeyPress':"return soloNumerosEnteros(event);"} }) }} </td>
         
         </tr>
      

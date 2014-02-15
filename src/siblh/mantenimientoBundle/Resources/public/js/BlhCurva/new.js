@@ -165,7 +165,7 @@ this.value = $valorCurva; }
 $('#siblh_mantenimientobundle_blhcurva_cantidadFrascos').
             attr('data-bvalidator', 'required,between[10:60]');
 $('#siblh_mantenimientobundle_blhcurva_volumenPorFrasco').
-            attr('data-bvalidator', 'required,between[60:500]');
+            attr('data-bvalidator', 'required,between[30:500]');
 $('#siblh_mantenimientobundle_blhcurva_tiempo1').
             attr('data-bvalidator', 'required,between[5:10]');
 $('#siblh_mantenimientobundle_blhcurva_tiempo2').
@@ -181,6 +181,30 @@ $('#siblh_mantenimientobundle_blhcurva_fechaCurva').
 
     $('#siblh_mantenimientobundle_blhcurva_valorCurva').
             attr('data-bvalidator', 'required'); 
+        
+     $('#siblh_mantenimientobundle_blhcurva_cantidadFrascos').blur(function(){
+     $valor= $('#siblh_mantenimientobundle_blhcurva_cantidadFrascos').val();
+     $valor = parseInt($valor);  
+   //  alert(typeof $valor);
+    if (($valor < 10) ||  ($valor > 60))
+      {
+          alert ("La cantidad de frascos debe estar entre 10 y 60");
+          $(this).focus();
+          return false;
+      }
+});  
+
+ $('#siblh_mantenimientobundle_blhcurva_volumenPorFrasco').blur(function(){
+     $valor= $('#siblh_mantenimientobundle_blhcurva_volumenPorFrasco').val();
+     $valor = parseFloat($valor);  
+   //  alert(typeof $valor);
+    if (($valor < 30) ||  ($valor > 500))
+      {
+          alert ("El volumen debe estar entre 30 y 500 ml");
+          $(this).focus();
+          return false;
+      }
+});  
 
 });
     

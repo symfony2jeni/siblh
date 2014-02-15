@@ -62,6 +62,31 @@ this.value = $imc;
            
    $('#button').button();
    $('#boton1').button();
+   
+   $('#siblh_mantenimientobundle_blhhistoriaactual_pesoDonante').blur(function(){
+     $valor= $('#siblh_mantenimientobundle_blhhistoriaactual_pesoDonante').val();
+     $valor = parseFloat($valor);  
+   //  alert(typeof $valor);
+    if (($valor < 22) ||  ($valor > 136))
+      {
+          alert ("El peso debe estar entre 22 kg y 136 kg");
+          $(this).focus();
+          return false;
+      }
+});  
+
+   $('#siblh_mantenimientobundle_blhhistoriaactual_tallaDonante').blur(function(){
+     $valor= $('#siblh_mantenimientobundle_blhhistoriaactual_tallaDonante').val();
+     $valor = parseFloat($valor);  
+   //  alert(typeof $valor);
+    if (($valor < 100) ||  ($valor > 200))
+      {
+          alert ("La talla debe estar entre 100 cm y 200 cm");
+          $(this).focus();
+          return false;
+      }
+});  
+
 });
 
 function soloNumerosEnteros(e)

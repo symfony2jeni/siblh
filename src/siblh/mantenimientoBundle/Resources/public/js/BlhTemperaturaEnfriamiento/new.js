@@ -39,6 +39,19 @@ $('#siblh_mantenimientobundle_blhtemperaturaenfriamiento_temperaturaE').
     });
         
            });
+           
+           
+              $('#siblh_mantenimientobundle_blhtemperaturaenfriamiento_temperaturaE').blur(function(){
+     $valor= $('#siblh_mantenimientobundle_blhtemperaturaenfriamiento_temperaturaE').val();
+     $valor = parseInt($valor);  
+   //  alert(typeof $valor);
+    if (($valor < 0) ||  ($valor > 5))
+      {
+          alert ("La temepratura debe estar entre 0 y 5 grados");
+          $(this).focus();
+          return false;
+      }
+});  
 });
 
 

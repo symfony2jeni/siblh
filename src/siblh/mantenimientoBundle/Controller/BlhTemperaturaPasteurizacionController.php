@@ -315,7 +315,7 @@ class BlhTemperaturaPasteurizacionController extends Controller
         else{$idp = (string)$codigo;}
         //Obteniendo lista de pasteurizaciones  
         $query = $em->createQuery("SELECT r.id, r.codigoPasteurizacion,r.fechaPasteurizacion, r.responsablePasteurizacion FROM siblhmantenimientoBundle:BlhPasteurizacion r
-                                   where substring(r.codigoPasteurizacion,1,2) = '$idp'");
+                                   where substring(r.codigoPasteurizacion,1,2) = '$idp' and (date_diff(current_date(),r.fechaPasteurizacion)) <= 1");
         //Obtengo resultado y lo guardo
         $pasteurizaciones_frascos  = $query->getResult();
      

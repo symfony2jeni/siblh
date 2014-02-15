@@ -53,7 +53,17 @@ $( "#dialog-message" ).dialog({
     $( "#boton" ).button();
     $( "#boton1" ).button();
 
-       
+        $('#siblh_mantenimientobundle_blhsolicitud_volumenPorToma').blur(function(){
+     $valor= $('#siblh_mantenimientobundle_blhsolicitud_volumenPorToma').val();
+     $valor = parseFloat($valor);  
+   //  alert(typeof $valor);
+    if (($valor < 5) ||  ($valor > 60))
+      {
+          alert ("El volumen por toma debe estar entre 5 y 60 ml");
+          $(this).focus();
+          return false;
+      }
+}); 
  
   
 
@@ -190,6 +200,32 @@ return false;}
 
     $('#siblh_mantenimientobundle_blhsolicitud_volumenPorDia').
             attr('data-bvalidator', 'required'); 
+    
+     $('#siblh_mantenimientobundle_blhsolicitud_cuna').blur(function(){
+     $valor= $('#siblh_mantenimientobundle_blhsolicitud_cuna').val();
+     $valor = parseInt($valor);  
+   //  alert(typeof $valor);
+    if (($valor < 1) ||  ($valor > 60))
+      {
+          alert ("El numero de cuna debe estar entre 1 y 60");
+          $(this).focus();
+          return false;
+      }
+}); 
+
+     $('#siblh_mantenimientobundle_blhsolicitud_pesoDia').blur(function(){
+     $valor= $('#siblh_mantenimientobundle_blhsolicitud_pesoDia').val();
+     $valor = parseFloat($valor);  
+   //  alert(typeof $valor);
+    if (($valor < 500) ||  ($valor > 5000))
+      {
+          alert ("El peso debe estar entre 500 y 5000 gramos");
+          $(this).focus();
+          return false;
+      }
+}); 
+    
+
 });
 
 function soloNumerosEnteros(e)

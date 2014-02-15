@@ -69,70 +69,7 @@ $('#siblh_mantenimientobundle_blhhistorialclinico_controlPrenatal').on('change',
         
     }   
     });          
-    
-   //Validaciones
-         
-$('#siblh_mantenimientobundle_blhhistorialclinico_formulaObstetricaG').
-            attr('data-bvalidator', 'between[1:15]'); 
-    
- $('#siblh_mantenimientobundle_blhhistorialclinico_formulaObstetricaG').   
-    attr('data-bvalidator-msg', "El valor debe estar entre 1 y 15"); 
-    
- $('#siblh_mantenimientobundle_blhhistorialclinico_formulaObstetricaP1').
-            attr('data-bvalidator', 'between[0:15]'); 
-    
- $('#siblh_mantenimientobundle_blhhistorialclinico_formulaObstetricaP1').   
-    attr('data-bvalidator-msg', "El valor debe estar entre 0 y 15"); 
-    
- $('#siblh_mantenimientobundle_blhhistorialclinico_formulaObstetricaP2').
-            attr('data-bvalidator', 'between[0:15]'); 
-    
- $('#siblh_mantenimientobundle_blhhistorialclinico_formulaObstetricaP2').   
-    attr('data-bvalidator-msg', "El valor debe estar entre 0 y 15"); 
-    
- $('#siblh_mantenimientobundle_blhhistorialclinico_formulaObstetricaA').
-            attr('data-bvalidator', 'between[0:15]'); 
-    
- $('#siblh_mantenimientobundle_blhhistorialclinico_formulaObstetricaA').   
-    attr('data-bvalidator-msg', "El valor debe estar entre 0 y 15"); 
-    
- $('#siblh_mantenimientobundle_blhhistorialclinico_formulaObstetricaV').
-            attr('data-bvalidator', 'between[0:15]'); 
-    
- $('#siblh_mantenimientobundle_blhhistorialclinico_formulaObstetricaV').   
-    attr('data-bvalidator-msg', "El valor debe estar entre 0 y 15"); 
-    
-$('#siblh_mantenimientobundle_blhhistorialclinico_formulaObstetricaM').
-            attr('data-bvalidator', 'between[0:15]'); 
-    
- $('#siblh_mantenimientobundle_blhhistorialclinico_formulaObstetricaM').   
-    attr('data-bvalidator-msg', "El valor debe estar entre 0 y 15"); 
-  
-
-$('#siblh_mantenimientobundle_blhhistorialclinico_numeroControl').
-            attr('data-bvalidator', 'between[0:9]'); 
-    
-$('#siblh_mantenimientobundle_blhhistorialclinico_numeroControl').  
-        attr('data-bvalidator-msg', "El valor debe estar entre 0 y 9"); 
-
-  $('#siblh_mantenimientobundle_blhhistorialclinico_periodoIntergenesico').
-            attr('data-bvalidator', 'between[1:20],required');    
-
-  $('#siblh_mantenimientobundle_blhhistorialclinico_periodoIntergenesico').
-      attr('data-bvalidator-msg', "El valor debe estar entre 1 y 20"); 
-
- /*   $('#siblh_mantenimientobundle_blhhistorialclinico_amenorrea').
-            attr('data-bvalidator', 'between[1:38]');    
-
-$('#siblh_mantenimientobundle_blhhistorialclinico_amenorrea').
-        attr('data-bvalidator-msg', "El valor debe estar entre 1 y 38"); */
-
-
-    $('#siblh_mantenimientobundle_blhhistorialclinico_fechaUltimaRegla').
-            attr('data-bvalidator', 'required');  
-
-
- //Opciones del validador
+     //Opciones del validador
     var optionsRed = { 
         classNamePrefix: 'bvalidator_red_', 
         lang: 'es'
@@ -159,37 +96,70 @@ $('#siblh_mantenimientobundle_blhhistorialclinico_amenorrea').
         
 });
 
-
-
-
-//validacion de formula obstetrica
-/*$('#boton').on('click',function()
-{
-
-
-$g=$('#siblh_mantenimientobundle_blhhistorialclinico_formulaObstetricaG').val();
-$p1=$('#siblh_mantenimientobundle_blhhistorialclinico_formulaObstetricaP1').val();
-$p2=$('#siblh_mantenimientobundle_blhhistorialclinico_formulaObstetricaP2').val();
-$a=$('#siblh_mantenimientobundle_blhhistorialclinico_formulaObstetricaA').val();
-$v=$('#siblh_mantenimientobundle_blhhistorialclinico_formulaObstetricaV').val();
-$m=$('#siblh_mantenimientobundle_blhhistorialclinico_formulaObstetricaM').val();
-
-$embarazos=parseInt($g); 
-$partos=parseInt($p1); 
-$prematuros=parseInt($p2); 
-$abortos=parseInt($a); 
-$vivos=parseInt($v); 
-$muertos=parseInt($m); 
-
-$np=$partos+$prematuros+$abortos;
-if($embarazos != $np) 
-{
-alert ('Error en formula obstetrica: El numero de embarazos debes ser igual a la sumatoria de partos, partos prematuros y abortos.');
-return false;
-}    
-});
-*/
+   //Validaciones
+   
+   $('#siblh_mantenimientobundle_blhhistorialclinico_amenorrea').
+              attr('data-bvalidator', 'required');  
+         
+$('#siblh_mantenimientobundle_blhhistorialclinico_formulaObstetricaG').
+            attr('data-bvalidator', 'between[1:20]'); 
     
+ $('#siblh_mantenimientobundle_blhhistorialclinico_formulaObstetricaG').   
+    attr('data-bvalidator-msg', "El valor debe estar entre 1 y 15"); 
+    
+ $('#siblh_mantenimientobundle_blhhistorialclinico_formulaObstetricaP1').
+            attr('data-bvalidator', 'between[0:20]'); 
+    
+ $('#siblh_mantenimientobundle_blhhistorialclinico_formulaObstetricaP1').   
+    attr('data-bvalidator-msg', "El valor debe estar entre 0 y 20"); 
+    
+ $('#siblh_mantenimientobundle_blhhistorialclinico_formulaObstetricaP2').
+            attr('data-bvalidator', 'between[0:20]'); 
+    
+ $('#siblh_mantenimientobundle_blhhistorialclinico_formulaObstetricaP2').   
+    attr('data-bvalidator-msg', "El valor debe estar entre 0 y 20"); 
+    
+ $('#siblh_mantenimientobundle_blhhistorialclinico_formulaObstetricaA').
+            attr('data-bvalidator', 'between[0:20]'); 
+    
+ $('#siblh_mantenimientobundle_blhhistorialclinico_formulaObstetricaA').   
+    attr('data-bvalidator-msg', "El valor debe estar entre 0 y 20"); 
+    
+ $('#siblh_mantenimientobundle_blhhistorialclinico_formulaObstetricaV').
+            attr('data-bvalidator', 'between[0:20]'); 
+    
+ $('#siblh_mantenimientobundle_blhhistorialclinico_formulaObstetricaV').   
+    attr('data-bvalidator-msg', "El valor debe estar entre 0 y 20"); 
+    
+$('#siblh_mantenimientobundle_blhhistorialclinico_formulaObstetricaM').
+            attr('data-bvalidator', 'between[0:20]'); 
+    
+ $('#siblh_mantenimientobundle_blhhistorialclinico_formulaObstetricaM').   
+    attr('data-bvalidator-msg', "El valor debe estar entre 0 y 20"); 
+  
+
+$('#siblh_mantenimientobundle_blhhistorialclinico_numeroControl').
+            attr('data-bvalidator', 'between[0:9]'); 
+    
+$('#siblh_mantenimientobundle_blhhistorialclinico_numeroControl').  
+        attr('data-bvalidator-msg', "El valor debe estar entre 0 y 9"); 
+
+  $('#siblh_mantenimientobundle_blhhistorialclinico_periodoIntergenesico').
+            attr('data-bvalidator', 'between[1:20],required');    
+
+  $('#siblh_mantenimientobundle_blhhistorialclinico_periodoIntergenesico').
+      attr('data-bvalidator-msg', "El valor debe estar entre 1 y 20"); 
+
+ /*   $('#siblh_mantenimientobundle_blhhistorialclinico_amenorrea').
+            attr('data-bvalidator', 'between[1:38]');    
+
+$('#siblh_mantenimientobundle_blhhistorialclinico_amenorrea').
+        attr('data-bvalidator-msg', "El valor debe estar entre 1 y 38"); */
+
+
+    $('#siblh_mantenimientobundle_blhhistorialclinico_fechaUltimaRegla').
+            attr('data-bvalidator', 'required');  
+        
 $('#boton').on ('click', function() {
 
 $fregla=$('#siblh_mantenimientobundle_blhhistorialclinico_fechaUltimaRegla').val();
@@ -207,7 +177,7 @@ return false;
 
 });
 
-
+/*
 $('#siblh_mantenimientobundle_blhhistorialclinico_amenorrea').on ('click', function() {
     
 $fregla=$('#siblh_mantenimientobundle_blhhistorialclinico_fechaUltimaRegla').val();
@@ -259,7 +229,7 @@ $fp = new Date(parseFloat($fp.substr(6,4)), parseFloat($fp.substr(3,2))-1, parse
  this.value = $dias;
 }
 
-});
+});*/
 
 $('#boton').on ('click', function() {
 
@@ -358,8 +328,98 @@ $fp = new Date(parseFloat($fp.substr(6,4)), parseFloat($fp.substr(3,2))-1, parse
 }
 }
 
-   $('#siblh_mantenimientobundle_blhhistorialclinico_amenorrea')
-            attr('data-bvalidator', 'required');   
+$('#siblh_mantenimientobundle_blhhistorialclinico_formulaObstetricaG').blur(function(){
+     $valor= $('#siblh_mantenimientobundle_blhhistorialclinico_formulaObstetricaG').val();
+     $valor = parseInt($valor);  
+   //  alert(typeof $valor);
+    if (($valor < 1) ||  ($valor > 20))
+      {
+          alert ("El valor digitado debe estar entre 1 y 20");
+          $(this).focus();
+          return false;
+      }
+});
+    
+ $('#siblh_mantenimientobundle_blhhistorialclinico_formulaObstetricaP1').blur(function(){
+     $valor= $('#siblh_mantenimientobundle_blhhistorialclinico_formulaObstetricaP1').val();
+     $valor = parseInt($valor);  
+   //  alert(typeof $valor);
+    if (($valor < 0) ||  ($valor > 20))
+      {
+          alert ("El valor digitado debe estar entre 0 y 20");
+          $(this).focus();
+          return false;
+      }
+});   
+
+ $('#siblh_mantenimientobundle_blhhistorialclinico_formulaObstetricaP2').blur(function(){
+     $valor= $('#siblh_mantenimientobundle_blhhistorialclinico_formulaObstetricaP2').val();
+     $valor = parseInt($valor);  
+   //  alert(typeof $valor);
+    if (($valor < 0) ||  ($valor > 20))
+      {
+          alert ("El valor digitado debe estar entre 0 y 20");
+          $(this).focus();
+          return false;
+      }
+});  
+ $('#siblh_mantenimientobundle_blhhistorialclinico_formulaObstetricaA').blur(function(){
+     $valor= $('#siblh_mantenimientobundle_blhhistorialclinico_formulaObstetricaA').val();
+     $valor = parseInt($valor);  
+   //  alert(typeof $valor);
+    if (($valor < 0) ||  ($valor > 20))
+      {
+          alert ("El valor digitado debe estar entre 0 y 20");
+          $(this).focus();
+          return false;
+      }
+});  
+ $('#siblh_mantenimientobundle_blhhistorialclinico_formulaObstetricaV').blur(function(){
+     $valor= $('#siblh_mantenimientobundle_blhhistorialclinico_formulaObstetricaV').val();
+     $valor = parseInt($valor);  
+   //  alert(typeof $valor);
+    if (($valor < 0) ||  ($valor > 20))
+      {
+          alert ("El valor digitado debe estar entre 0 y 20");
+          $(this).focus();
+          return false;
+      }
+});  
+ $('#siblh_mantenimientobundle_blhhistorialclinico_formulaObstetricaM').blur(function(){
+     $valor= $('#siblh_mantenimientobundle_blhhistorialclinico_formulaObstetricaM').val();
+     $valor = parseInt($valor);  
+   //  alert(typeof $valor);
+    if (($valor < 0) ||  ($valor > 20))
+      {
+          alert ("El valor digitado debe estar entre 0 y 20");
+          $(this).focus();
+          return false;
+      }
+});  
+ $('#siblh_mantenimientobundle_blhhistorialclinico_periodoIntergenesico').blur(function(){
+     $valor= $('#siblh_mantenimientobundle_blhhistorialclinico_periodoIntergenesico').val();
+     $valor = parseInt($valor);  
+   //  alert(typeof $valor);
+    if (($valor < 1) ||  ($valor > 20))
+      {
+          alert ("El periodo intergenesico debe estar entre 1 y 20");
+          $(this).focus();
+          return false;
+      }
+}); 
+
+  $('#siblh_mantenimientobundle_blhhistorialclinico_numeroControl').blur(function(){
+     $valor= $('#siblh_mantenimientobundle_blhhistorialclinico_numeroControl').val();
+     $valor = parseInt($valor);  
+   //  alert(typeof $valor);
+    if (($valor < 0) ||  ($valor > 9))
+      {
+          alert ("El valor digitado debe estar entre 0 y 9");
+          $(this).focus();
+          return false;
+      }
+}); 
+
 });
 
 

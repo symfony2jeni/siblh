@@ -52,6 +52,32 @@ $(function() {
            });
     $('#button').button();
     $('#boton1').button();
+    
+  $('#siblh_mantenimientobundle_blhegresoreceptor_estanciaHospitalaria').blur(function(){
+     $valor= $('#siblh_mantenimientobundle_blhegresoreceptor_estanciaHospitalaria').val();
+     $valor = parseInt($valor);  
+   //  alert(typeof $valor);
+    if (($valor < 1) ||  ($valor > 20))
+      {
+          alert ("Los dias de estancia hospitalaria deben estar entre 1 y 20 dias");
+          $(this).focus();
+          return false;
+      }
+});  
+ 
+   $('#siblh_mantenimientobundle_blhegresoreceptor_permanenciaUcin').blur(function(){
+     $valor= $('#siblh_mantenimientobundle_blhegresoreceptor_permanenciaUcin').val();
+     $valor = parseInt($valor);  
+   //  alert(typeof $valor);
+    if (($valor < 1) ||  ($valor > 20))
+      {
+          alert ("Los dias de permanencia en UCIN deben estar entre 1 y 20 dias");
+          $(this).focus();
+          return false;
+      }
+});  
+    
+    
 });
 
 function soloNumerosEnteros(e)

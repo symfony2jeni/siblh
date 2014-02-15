@@ -290,7 +290,7 @@ public function pasteurizacionAction()
         //Obteniendo lista de pacientes"  
         $query = $em->createQuery("SELECT r.id as identificador, r.codigoPasteurizacion, r.numCiclo, r.volumenPasteurizado, r.numFrascosPasteurizados, r.fechaPasteurizacion 
             FROM siblhmantenimientoBundle:BlhPasteurizacion r
-                                   where substring(r.codigoPasteurizacion,1,2) = '$idp'");
+                                   where substring(r.codigoPasteurizacion,1,2) = '$idp' and (date_diff(current_date(),r.fechaPasteurizacion)) <= 1");
         
        //echo $hisclinico[idDonante];
                 

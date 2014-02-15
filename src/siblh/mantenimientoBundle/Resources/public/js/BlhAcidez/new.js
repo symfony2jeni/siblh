@@ -185,7 +185,7 @@ else {
  if ($factor < 0.9 && $factor !='' &&  $factor!='0.')
  {
      $('#siblh_mantenimientobundle_blhacidez_factor').val('');
-     alert ('Verifique que el valor del facotor y la media acidez sean correctas');
+     alert ('Verifique que el valor del factor y la media acidez sean correctas');
      
     return false;
  }
@@ -225,6 +225,18 @@ if($acidez>8){
     
    $('#siblh_mantenimientobundle_blhacidez_resultado').
             attr('data-bvalidator', 'required');
+    
+       $('#siblh_mantenimientobundle_blhacidez_factor').blur(function(){
+     $valor= $('#siblh_mantenimientobundle_blhacidez_factor').val();
+     $valor = parseFloat($valor);  
+   //  alert(typeof $valor);
+    if (($valor < 0.9) ||  ($valor > 1.1))
+      {
+          alert ("El valor del factor debe estar entre 0.9 y 1.1");
+          $(this).focus();
+          return false;
+      }
+});  
 
 });
 

@@ -18,20 +18,15 @@ $(document).ready(function() {
     $('form').bValidator(optionsRed);
     
     
-    $('#siblh_mantenimientobundle_blhfrascorecolectado_volumenRecolectado').on('input', function() {
-    
-    $ml = this.value;
-    $onz = $ml * 0.033814;
-    $onz=$onz.toFixed(4);
-    $('#siblh_mantenimientobundle_blhfrascorecolectado_onzRecolectado').val($onz);
-   
-});
+  
 
-$('#siblh_mantenimientobundle_blhfrascorecolectado_volumenRecolectado').keyup(function(){
+$('#siblh_mantenimientobundle_blhfrascorecolectado_volumenRecolectado').blur(function(){
+    if ((this.value >= 1) && (this.value <= 500)) {
     $ml = this.value;
     $onz = $ml * 0.033814;
     $onz=$onz.toFixed(4);
-    $('#siblh_mantenimientobundle_blhfrascorecolectado_onzRecolectado').val($onz);
+    $('#siblh_mantenimientobundle_blhfrascorecolectado_onzRecolectado').val($onz); }
+else {alert ("Digite el volumen entre 1 y 500 ml");}
    
 });
 
