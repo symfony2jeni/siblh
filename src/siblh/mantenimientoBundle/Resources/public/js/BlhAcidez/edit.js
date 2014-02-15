@@ -67,15 +67,15 @@ $('#siblh_mantenimientobundle_blhacidez_acidez3').change(function() {
 }       );
 
 
-
-
-
-$('#siblh_mantenimientobundle_blhacidez_factor').change(function() {
-            if ($('#siblh_mantenimientobundle_blhacidez_factor').val()=='')
-                {alert('Digite un valor valido para el factor');}
+  $('#siblh_mantenimientobundle_blhacidez_factor').keyup(function() {
+            if ($(this).val() !='' || $(this).val() !='0.' || $(this).val() !='0')
+                {calcular1($(this).val());}
             else
-                {$('#siblh_mantenimientobundle_blhacidez_factor').focus();}
+                {$(this).focus();}
 }       );
+
+
+
 
  
      $.noConflict();
@@ -232,25 +232,42 @@ $mediaAcidez = $mediaAcidez.toFixed(2);
 function calcular1(valor)
 {
  $factor = $('#siblh_mantenimientobundle_blhacidez_factor').val();
- $factor = parseFloat($factor); 
+ 
  $mediaAcidez = $('#siblh_mantenimientobundle_blhacidez_mediaAcidez').val();
     if(valor !='')
      { 
-   if (($factor == '') || ($mediaAcidez == '') || ($factor < 0.9) || ($factor > 1.1) ) 
-{ alert ('Verifique que el valor del facotor sea correcto');
+   if ( ($factor > 1.1) ) 
+{ 
+    
+    $('#siblh_mantenimientobundle_blhacidez_factor').val('');
+    $('#siblh_mantenimientobundle_blhacidez_factor').focusin();
+    $('#siblh_mantenimientobundle_blhacidez_factor').focus();
+    alert ('Verifique que el valor del facotor sea correcto');
     return false;}
     else {
-            
-$resultado = parseFloat($mediaAcidez) * parseFloat($factor);
+ $factor = $('#siblh_mantenimientobundle_blhacidez_factor').val();  
+ if ( ($factor < 0.9) && ($factor!='') && ($factor!='0')&& ($factor!='0.')) 
+{ 
+    
+    $('#siblh_mantenimientobundle_blhacidez_factor').val('');
+    $('#siblh_mantenimientobundle_blhacidez_factor').focusin();
+    $('#siblh_mantenimientobundle_blhacidez_factor').focus();
+    alert ('Verifique que el valor del facotor sea correcto');
+    return false;}
+$resultado = parseFloat($mediaAcidez) * $factor;
 //Redondeando el resultado a 2 decimales
 $resultado = $resultado.toFixed(2);
            
             $('#siblh_mantenimientobundle_blhacidez_resultado').val($resultado); 
+            if (isNaN($resultado))
+            {
+                $('#siblh_mantenimientobundle_blhacidez_factor').focusin();
+    $('#siblh_mantenimientobundle_blhacidez_factor').focus();
+                 $('#siblh_mantenimientobundle_blhacidez_factor').val('');
+            }
             return true;
         } 
      }
      else
          {return false;}
 } 
- 
- 

@@ -51,17 +51,82 @@ $('#siblh_mantenimientobundle_blhcurva_tiempo3').on('input', function() {
     $valor1=parseInt($tiempo1)+parseInt($tiempo2)+parseInt($tiempo3);
     $valorCurva= Math.round(($valor1/3)* 100) / 100;  
 }); */
+    
+$('#siblh_mantenimientobundle_blhcurva_tiempo1').keyup(function(){
+    $('#siblh_mantenimientobundle_blhcurva_valorCurva').click();
+    
+});
+
+$('#siblh_mantenimientobundle_blhcurva_tiempo2').keyup(function(){
+    $('#siblh_mantenimientobundle_blhcurva_valorCurva').click();
+    
+});
+
+$('#siblh_mantenimientobundle_blhcurva_tiempo3').keyup(function(){
+    $('#siblh_mantenimientobundle_blhcurva_valorCurva').click();
+    
+});
+
 
 $('#siblh_mantenimientobundle_blhcurva_valorCurva').on ('click', function() {
   
-$tiempo1 = $('#siblh_mantenimientobundle_blhcurva_tiempo1').val();
-$tiempo2 = $('#siblh_mantenimientobundle_blhcurva_tiempo2').val();
-$tiempo3 = $('#siblh_mantenimientobundle_blhcurva_tiempo3').val();
+$tiempo1 = ($('#siblh_mantenimientobundle_blhcurva_tiempo1').val()==='')?5:$('#siblh_mantenimientobundle_blhcurva_tiempo1').val();
+$tiempo2 = ($('#siblh_mantenimientobundle_blhcurva_tiempo2').val()==='')?5:$('#siblh_mantenimientobundle_blhcurva_tiempo2').val();
+$tiempo3 = ($('#siblh_mantenimientobundle_blhcurva_tiempo3').val()==='')?5:$('#siblh_mantenimientobundle_blhcurva_tiempo3').val();
 
-if (($tiempo1 == '') || ($tiempo2 == '') || ($tiempo3 == '') || ($tiempo1 < 5) || ($tiempo1 > 10) || ($tiempo2 < 5) || ($tiempo2 > 10)  || ($tiempo3 < 5) || ($tiempo3 > 10) ) 
-{ alert ('Digite valores validos para los tiempos');
+if (($tiempo1 > 10) || ($tiempo2 > 10) || ($tiempo3 > 10) ) 
+{ alert ('Digite valores validos para los tiempos1');
     return false;}
 else {
+    
+
+
+    $tiempo1 = ($('#siblh_mantenimientobundle_blhcurva_tiempo1').val()==='')?'a1':$('#siblh_mantenimientobundle_blhcurva_tiempo1').val();
+$tiempo2 = ($('#siblh_mantenimientobundle_blhcurva_tiempo2').val()==='')?'a2':$('#siblh_mantenimientobundle_blhcurva_tiempo2').val();
+$tiempo3 = ($('#siblh_mantenimientobundle_blhcurva_tiempo3').val()==='')?'a3':$('#siblh_mantenimientobundle_blhcurva_tiempo3').val();
+//alert($tiempo1 + '-'+$tiempo2+'-'+$tiempo3);
+if($tiempo1==='a1')
+{
+    $tiempo1=0;
+}
+
+if($tiempo2==='a2')
+{
+    $tiempo2=0;
+}
+
+if($tiempo3==='a3')
+{
+    $tiempo3=0;
+}
+
+if($tiempo1!== 0)
+{
+    if (($tiempo1 < 5))
+    {
+            alert ('Digite valores validos para los tiempos');
+    return false;
+    }
+}
+   
+   
+if($tiempo2!== 0)
+{
+    if (($tiempo2 < 5))
+    {
+            alert ('Digite valores validos para los tiempos');
+    return false;
+    }
+}
+
+if($tiempo3!== 0)
+{
+    if (($tiempo3 < 5))
+    {
+            alert ('Digite valores validos para los tiempos');
+    return false;
+    }
+}
 
  $valor1=parseInt($tiempo1)+parseInt($tiempo2)+parseInt($tiempo3);
     $valorCurva= Math.round(($valor1/3)* 100) / 100;     
@@ -148,3 +213,4 @@ return true;
  
 return /\d/.test(String.fromCharCode(keynum));
 }
+
