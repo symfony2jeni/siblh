@@ -119,8 +119,13 @@ class BlhDonacionController extends Controller
         
         //Obteniendo lista de donantes"  
             $query = $em->createQuery("SELECT p.id as identificador, p.primerNombre as nombre1, p.segundoNombre as nombre2,
-            p.primerApellido as apellido1, p.segundoApellido as apellido2 FROM siblhmantenimientoBundle:BlhDonante p 
-            where p.idBancoDeLeche = $codigo");
+            p.primerApellido as apellido1, p.segundoApellido as apellido2 FROM siblhmantenimientoBundle:BlhHistoriaActual hac join hac.idDonante p 
+            where p.idBancoDeLeche = $codigo
+            and p.id in (select don.id from siblhmantenimientoBundle:BlhHistorialClinico hc JOIN hc.idDonante don)        
+            and p.id in (select dona.id from siblhmantenimientoBundle:BlhHistoriaActual ha JOIN ha.idDonante dona) and hac.estadoDonante = 'Apta'");    
+       
+                    
+                    
         
        //echo $hisclinico[idDonante];
                 
