@@ -76,7 +76,7 @@ class BlhTemperaturaPasteurizacionController extends Controller
             $em->persist($entity);
             $em->flush();
 
-            return $this->redirect($this->generateUrl('_NewTemperaturaP', array('id' => $entity->getId())));
+            return $this->redirect($this->generateUr', array('id' => $entity->getId())));
         }
 
         return array(

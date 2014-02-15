@@ -11,39 +11,6 @@ $(document).ready(function() {
     $('form').bValidator(optionsRed);
     
    
-$('#siblh_mantenimientobundle_blhreceptor_edadDias').on ('click', function() {
- //$edad = 2;
- $fn = $('#1').val();
-    $d = new Date();
-    $hoy = $d.getDate();
-    
-    
-    $dd = $d.getDate();
-    $mm = $d.getMonth() +1;
-    $yyyy = $d.getFullYear();
-if($dd<10){$dd='0'+$dd}
-if($mm<10){$mm='0'+$mm}
-$hoy = $dd+'-'+$mm+'-'+$yyyy;
-  //  $edad = $hoy.getTime() - $fn.getTime();
-
- 
- 
-//probando//
-$hoy = new Date(parseFloat($hoy.substr(6,4)), parseFloat($hoy.substr(3,2))-1, parseFloat($hoy.substr(0,2)));
-$fn = new Date(parseFloat($fn.substr(6,4)), parseFloat($fn.substr(3,2))-1, parseFloat($fn.substr(0,2)));
-//$fn = new Date(2013,10-1,20);	
-	//$fn = new Date($fn[2], parseFloat($fn[2])-1, parseFloat($fn[0]));
- 
-	$fin = $hoy.getTime() - $fn.getTime();
-	$dias = Math.floor($fin / (24 * 60 * 60 * 1000));  
-
-
-
-//////////////////
- this.value = $dias;   
- 
-
-} ) ;
     
   $.datepicker.setDefaults($.datepicker.regional["es"]);
    $('input[id$="_fechaRegistroBlh"]').datepicker({ dateFormat: 'yy-mm-dd',  
@@ -158,6 +125,7 @@ $('#siblh_mantenimientobundle_blhreceptor_duracionNpt').
     
       $('#siblh_mantenimientobundle_blhreceptor_edadDias').
             attr('data-bvalidator', 'required');
+    calcularEdadDias();
 });
 
 function soloNumerosEnteros(e)
@@ -176,4 +144,39 @@ if ((keynum === 8) || (keynum === 46))
 return true;
  
 return /\d/.test(String.fromCharCode(keynum));
+}
+
+function calcularEdadDias()
+{
+    
+    $fn = $('#1').val();
+    $d = new Date();
+    $hoy = $d.getDate();
+    
+    
+    $dd = $d.getDate();
+    $mm = $d.getMonth() +1;
+    $yyyy = $d.getFullYear();
+if($dd<10){$dd='0'+$dd}
+if($mm<10){$mm='0'+$mm}
+$hoy = $dd+'-'+$mm+'-'+$yyyy;
+  //  $edad = $hoy.getTime() - $fn.getTime();
+
+ 
+ 
+//probando//
+$hoy = new Date(parseFloat($hoy.substr(6,4)), parseFloat($hoy.substr(3,2))-1, parseFloat($hoy.substr(0,2)));
+$fn = new Date(parseFloat($fn.substr(6,4)), parseFloat($fn.substr(3,2))-1, parseFloat($fn.substr(0,2)));
+//$fn = new Date(2013,10-1,20);	
+	//$fn = new Date($fn[2], parseFloat($fn[2])-1, parseFloat($fn[0]));
+ 
+	$fin = $hoy.getTime() - $fn.getTime();
+	$dias = Math.floor($fin / (24 * 60 * 60 * 1000));  
+
+
+
+//////////////////
+ $('#siblh_mantenimientobundle_blhreceptor_edadDias').val($dias);   
+ 
+    
 }

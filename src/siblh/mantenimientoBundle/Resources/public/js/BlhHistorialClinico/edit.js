@@ -17,7 +17,7 @@ $('#siblh_mantenimientobundle_blhhistorialclinico_fechaUltimaRegla').on ('click'
       
      $('#siblh_mantenimientobundle_blhhistorialclinico_amenorrea').click(function() {
          $aux2 = 1;
-            if (calcular($(this).val()))
+        if (calcular($(this).val()))
                 {}
             else
                 {$(this).focus();}
@@ -47,7 +47,10 @@ $('#siblh_mantenimientobundle_blhhistorialclinico_fechaParto').click(function() 
                          // monthRange: '-2m:m',
                            dayNamesMin: ["Do", "Lu", "Ma", "Mi", "Ju", "Vi", "Sa"],
                            monthNamesShort: ["Ene", "Feb", "Mar", "Abr", "May", "Jun",
-                                             "Jul", "Ago", "Sep", "Oct", "Nov", "Dic"]
+                                             "Jul", "Ago", "Sep", "Oct", "Nov", "Dic"],
+                           onSelect: function(textoFecha, objDatepicker){
+			   calcular( $('#siblh_mantenimientobundle_blhhistorialclinico_amenorrea').val());
+                            }
                           });
                           
      $('input[id$="_fechaParto"]').datepicker({ dateFormat: 'yy-mm-dd',  
@@ -60,7 +63,10 @@ $('#siblh_mantenimientobundle_blhhistorialclinico_fechaParto').click(function() 
                            maxDate: 'y',
                            dayNamesMin: ["Do", "Lu", "Ma", "Mi", "Ju", "Vi", "Sa"],
                            monthNamesShort: ["Ene", "Feb", "Mar", "Abr", "May", "Jun",
-                                             "Jul", "Ago", "Sep", "Oct", "Nov", "Dic"]
+                                             "Jul", "Ago", "Sep", "Oct", "Nov", "Dic"],
+                           onSelect: function(textoFecha, objDatepicker){
+			   calcular( $('#siblh_mantenimientobundle_blhhistorialclinico_amenorrea').val());
+                            }
                           });      
                           
     $('input[id$="_fechaPartoAnterior"]').datepicker({ dateFormat: 'yy-mm-dd',  
@@ -310,3 +316,4 @@ $fp = new Date(parseFloat($fp.substr(6,4)), parseFloat($fp.substr(3,2))-1, parse
         } 
     
 }
+

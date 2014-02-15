@@ -1,7 +1,9 @@
 $(document).ready(function() { 
      //$('#button').button();
      $.noConflict();
-  
+     $('#siblh_mantenimientobundle_blhanalisissensorial_color').prop('disabled','disabled');
+     $('#siblh_mantenimientobundle_blhanalisissensorial_suciedad').prop('disabled','disabled');
+     $('#siblh_mantenimientobundle_blhanalisissensorial_flavor').prop('disabled','disabled');
     //Tooltip                      
  
         
@@ -200,14 +202,139 @@ $('#boton').on ('click', function() {
   
   
   
+ $( "#siblh_mantenimientobundle_blhanalisissensorial_embalaje" )
+.change(function () {
+var str = "";
+
+str = $(this).val();
+//$( "div" ).text( str );
+
+ 
+if (str=="Aprobado")
+    {
+         
+   
+         $('#siblh_mantenimientobundle_blhanalisissensorial_suciedad').removeAttr('disabled');
+         $('#siblh_mantenimientobundle_blhanalisissensorial_suciedad').val('');
+
+    }
+  else if(str=="Reprobado")
+  {
+      
+        $('#siblh_mantenimientobundle_blhanalisissensorial_suciedad').prop('disabled','disabled');
+        $('#siblh_mantenimientobundle_blhanalisissensorial_color').prop('disabled','disabled');
+        $('#siblh_mantenimientobundle_blhanalisissensorial_flavor').prop('disabled','disabled');
+        
+        $('#siblh_mantenimientobundle_blhanalisissensorial_color').val('NR');
+        $('#siblh_mantenimientobundle_blhanalisissensorial_flavor').val('NR');
+        $('#siblh_mantenimientobundle_blhanalisissensorial_suciedad').val('NR');
+  }
+  
+  //$('#siblh_mantenimientobundle_blhanalisissensorial_embalaje').val($(this).val());
+})//.change();
+ 
+ 
+ 
+ 
+ $( "#siblh_mantenimientobundle_blhanalisissensorial_suciedad" )
+.change(function () {
+var str = "";
+
+str = $(this).val();
+//$( "div" ).text( str );
+
+if ($('#siblh_mantenimientobundle_blhanalisissensorial_embalaje').val()=='Aprobado' && $(this).val()=='NR')
+    {
+        $(this).val('');
+        $('#siblh_mantenimientobundle_blhanalisissensorial_color').prop('disabled','disabled');
+        $('#siblh_mantenimientobundle_blhanalisissensorial_flavor').prop('disabled','disabled');
+        $('#siblh_mantenimientobundle_blhanalisissensorial_color').val('NR');
+        $('#siblh_mantenimientobundle_blhanalisissensorial_flavor').val('NR');
+    }
+
+if (str=="Aprobado")
+    {
+          
+   
+         $('#siblh_mantenimientobundle_blhanalisissensorial_color').removeAttr('disabled');
+         $('#siblh_mantenimientobundle_blhanalisissensorial_color').val('');
+    }
+  else if(str=="Reprobado")
+  {
+    
+        
+        $('#siblh_mantenimientobundle_blhanalisissensorial_color').prop('disabled','disabled');
+        $('#siblh_mantenimientobundle_blhanalisissensorial_flavor').prop('disabled','disabled');
+        
+
+        $('#siblh_mantenimientobundle_blhanalisissensorial_color').val('NR');
+        $('#siblh_mantenimientobundle_blhanalisissensorial_flavor').val('NR');
+  }
+  
+  //$('#siblh_mantenimientobundle_blhanalisissensorial_embalaje').val($(this).val());
+})//.change();
  
 
+$( "#siblh_mantenimientobundle_blhanalisissensorial_color" )
+.change(function () {
+var str = "";
+
+str = $(this).val();
+//$( "div" ).text( str );
+if ($('#siblh_mantenimientobundle_blhanalisissensorial_suciedad').val()=='Aprobado' && $(this).val()=='NR')
+    {
+        $(this).val('');
+         $('#siblh_mantenimientobundle_blhanalisissensorial_flavor').prop('disabled','disabled');
+         $('#siblh_mantenimientobundle_blhanalisissensorial_flavor').val('NR');
+    }
+ 
+if (str=="Aprobado")
+    {
+         
+   
+         $('#siblh_mantenimientobundle_blhanalisissensorial_flavor').removeAttr('disabled');
+         $('#siblh_mantenimientobundle_blhanalisissensorial_flavor').val('');
+    }
+  else if(str=="Reprobado")
+  {
+     
+        
+        $('#siblh_mantenimientobundle_blhanalisissensorial_flavor').prop('disabled','disabled');
+        
+        
+
+       
+        $('#siblh_mantenimientobundle_blhanalisissensorial_flavor').val('NR');
+  }
+  
+  //$('#siblh_mantenimientobundle_blhanalisissensorial_embalaje').val($(this).val());
+})//.change();
+ 
+ 
+$( "#siblh_mantenimientobundle_blhanalisissensorial_flavor" )
+.change(function () {
+var str = "";
+
+str = $(this).val();
+//$( "div" ).text( str );
+if ($('#siblh_mantenimientobundle_blhanalisissensorial_color').val()=='Aprobado' && $(this).val()=='NR')
+    {
+        $(this).val('');
+       
+    }
+ 
+  
+  //$('#siblh_mantenimientobundle_blhanalisissensorial_embalaje').val($(this).val());
+})//.change();
+
+    
 
 });
 
 
 
       
+
 
 
 
