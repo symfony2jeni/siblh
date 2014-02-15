@@ -18,15 +18,15 @@
   <table align = "center" width = "87%"  >     
   <tr><td align = "left" > <font color="red">*</font>
         {{ form_label(form.primerNombre) }} {{ form_errors(form.primerNombre) }}</td><td align = "left" >   
-        {{ form_widget(form.primerNombre) }} </td><td   align = "left"> 
+        {{ form_widget(form.primerNombre,  { 'attr': {'onKeyPress':"return soloLetras(event);"} }) }} </td><td   align = "left"> 
         {{ form_label(form.segundoNombre) }} {{ form_errors(form.segundoNombre) }}</td><td align = "left" >  
-        {{ form_widget(form.segundoNombre) }} </td></tr>
+        {{ form_widget(form.segundoNombre,  { 'attr': {'onKeyPress':"return soloLetras(event);"} }) }} </td></tr>
     <tr><td height=10  ></td></tr> 
     <tr><td align = "left"><font color="red">*</font>
         {{ form_label(form.primerApellido) }} {{ form_errors(form.primerApellido) }}</td><td align = "left">    
-        {{ form_widget(form.primerApellido) }} </td><td  align = "left"> 
+        {{ form_widget(form.primerApellido,  { 'attr': {'onKeyPress':"return soloLetras(event);"} }) }} </td><td  align = "left"> 
         {{ form_label(form.segundoApellido) }} {{ form_errors(form.segundoApellido) }}</td><td  align = "left">      
-        {{ form_widget(form.segundoApellido) }} </td></tr>
+        {{ form_widget(form.segundoApellido,  { 'attr': {'onKeyPress':"return soloLetras(event);"} }) }} </td></tr>
     <tr><td height=10  ></td></tr>
       <tr><td align = "left"><font color="red" >*</font> 
         {{ form_label(form.idMunicipio,'Procedencia') }} {{ form_errors(form.idMunicipio) }}</td><td align = "left">
@@ -42,11 +42,11 @@
         {{ form_label(form.estadoCivil) }} {{ form_errors(form.estadoCivil) }}</td><td align = "left">
         {{ form_widget(form.estadoCivil) }} </td><td align = "left"> 
         {{ form_label(form.ocupacion) }} {{ form_errors(form.ocupacion) }}</td><td align = "left"> 
-        {{ form_widget(form.ocupacion) }} </td></tr>
+        {{ form_widget(form.ocupacion,  { 'attr': {'onKeyPress':"return soloLetras(event);"} }) }} </td></tr>
     <tr><td height=10  ></td></tr>
     <tr><td align = "left"><font color="red">*</font>
         {{ form_label(form.nacionalidad) }} {{ form_errors(form.nacionalidad) }}</td><td align = "left">
-        {{ form_widget(form.nacionalidad) }}</td><td align = "left"><font color="red">*</font>
+        {{ form_widget(form.nacionalidad,  { 'attr': {'onKeyPress':"return soloLetras(event);"} }) }}</td><td align = "left"><font color="red">*</font>
         {{ form_label(form.escolaridad) }} {{ form_errors(form.escolaridad) }}</td><td align = "left">   
         {{ form_widget(form.escolaridad) }} </td></tr><tr>   <td  align = "left">
         {{ form_label(form.direccion) }} {{ form_errors(form.direccion) }}</td><td colspan = "3" align = "left">
@@ -60,20 +60,20 @@
         {{ form_widget(form.documentoIdentificacion) }}</td>  
    <td align = "left"><font color="red">*</font>
         {{ form_label(form.numeroDocumentoIdentificacion, 'Numero Documento') }} {{ form_errors(form.numeroDocumentoIdentificacion) }}</td><td align = "left">
-        {{ form_widget(form.numeroDocumentoIdentificacion) }}</td></tr>
+        {{ form_widget(form.numeroDocumentoIdentificacion,  { 'attr': {'onKeyPress':"return Numeros_Guion(event);"} }) }}</td></tr>
    <tr><td height=10  ></td></tr>
   
    <tr><td align = "left">     
         {{ form_label(form.registro) }} {{ form_errors(form.registro) }}</td><td align = "left"> 
-        {{ form_widget(form.registro,  { 'attr': {'title': '999999-9999 correlativo-anio'} }) }} </td><td align = "left"><font color="red" >*</font>  
+        {{ form_widget(form.registro,  { 'attr': {'title': '999999-9999 correlativo-anio', 'onKeyPress':"return Numeros_Guion(event);"} }) }} </td><td align = "left"><font color="red" >*</font>  
         {{ form_label(form.fechaRegistroDonanteBlh, 'Fecha registro') }} {{ form_errors(form.fechaRegistroDonanteBlh) }}</td><td align = "left">       
         {{ form_widget(form.fechaRegistroDonanteBlh, {'attr':{'readonly': 'true', 'title': 'Dar clic y seleccionar fecha de registro'} }) }} </td></tr>
       <tr><td height=10  ></td></tr>
       <tr><td align = "left" > 
         {{ form_label(form.telefonoFijo) }} {{ form_errors(form.telefonoFijo) }}</td><td align = "left" > 
-        {{ form_widget(form.telefonoFijo,  { 'attr': {'title': '9999-9999'} }) }} </td><td align = "left" > 
+        {{ form_widget(form.telefonoFijo,  { 'attr': {'title': '9999-9999', 'onKeyPress':"return Numeros_Guion(event);"} }) }} </td><td align = "left" > 
         {{ form_label(form.telefonoMovil) }} {{ form_errors(form.telefonoMovil) }}</td><td align = "left" >        
-        {{ form_widget(form.telefonoMovil,  { 'attr': {'title': '9999-9999'} }) }} </td></tr>
+        {{ form_widget(form.telefonoMovil,  { 'attr': {'title': '9999-9999', 'onKeyPress':"return Numeros_Guion(event);"} }) }} </td></tr>
               
       <tr><td align = "left" ><font color="red" >*</font>
         {{ form_label(form.tipoColecta) }} {{ form_errors(form.tipoColecta) }}</td><td align = "left" >
