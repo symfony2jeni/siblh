@@ -22,7 +22,6 @@ class BlhAcidezType extends AbstractType
             ->add('resultado')
             ->add('mediaAcidez')
             ->add('idFrascoRecolectado')
-			->add('usuario')
         ;
     }
     

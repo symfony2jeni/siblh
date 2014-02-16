@@ -64,16 +64,16 @@
      
        <tr> 
           <td>Vencimiento de leche prealmacenada </td> 
-          <td><a href="{{ path('mostrar_frascos',{'report_name':'LecheDonada','report_format':'pdf','nombre': hospital[0].nombre})}}" target=”_blank”> <font color="blue"><u>Generar Reporte</u></font></a></td></tr>
+         <td><a href="{{ path('mostrarfrascos',{'report_name':'LecheDonada','report_format':'pdf','nombre': hospital[0].nombre,'id': id})}}" target=”_blank”> <font color="blue"><u>Generar Reporte</u></font></a></td></tr> 
        <tr> 
           <td>Vencimiento de leche pasteurizada</td> 
-          <td><a href="{{ path('mostrar_frascosp',{'report_name':'VencimientoPasteurizada','report_format':'pdf','nombre': hospital[0].nombre})}}" target=”_blank”> <font color="blue"><u>Generar Reporte</u></font></a></td></tr>
+          <td><a href="{{ path('mostrar_frascosp',{'report_name':'VencimientoPasteurizada','report_format':'pdf','nombre': hospital[0].nombre,'id': id})}}" target=”_blank”> <font color="blue"><u>Generar Reporte</u></font></a></td></tr>
         <tr> 
           <td>Leche despachada segun solicitudes agrupadas</td> 
           <td><a href="{{ path('LecheDespachadaSolicitudes',{'report_name':'reportesEstudiantes','report_format':'pdf'})}}" target=”_blank”> <font color="blue"><u>Generar Reporte</u></font></a></td></tr>
         <tr> 
           <td>Resultados de analisis de laboratorio</td> 
-          <td><a href="{{ path('AnalisisLaboratorio') }}"><font color="blue"><u>Generar Reporte</u></font></a></td></tr>
+          <td><a href="{{ path('AnalisisLaboratorio') }}" target=”_blank”><font color="blue"><u>Generar Reporte</u></font></a></td></tr>
          <tr> 
           <td>Frascos de leche combinados y pasteurizados</td> 
           <td><a href="{{ path('CombinadosPasteurizados',{'report_name':'reportesEstudiantes','report_format':'pdf'})}}" target=”_blank”> <font color="blue"><u>Generar Reporte</u></font></a></td></tr>
@@ -85,7 +85,7 @@
           <td><a href="{{ path('TemperaturaEnfriamiento',{'report_name':'reportesEstudiantes','report_format':'pdf'})}}" target=”_blank”> <font color="blue"><u>Generar Reporte</u></font></a></td></tr>
             <tr> 
           <td>Resultados de control de calidad microbiologico</td> 
-          <td><a href="{{ path('ControlMicrobiologico') }}"><font color="blue"><u>Generar Reporte</u></font></a></td></tr>
+          <td><a href="{{ path('ControlMicrobiologico') }}" target=”_blank”><font color="blue"><u>Generar Reporte</u></font></a></td></tr>
              <tr> 
           <td>Leche descartada durante el proceso</td> 
           <td><a href="{{ path('LecheDescartada',{'report_name':'reportesEstudiantes','report_format':'pdf'})}}" target=”_blank”> <font color="blue"><u>Generar Reporte</u></font></a></td></tr>

@@ -57,6 +57,14 @@ class BlhBitacora
      */
     private $accion;
 
+    
+     /**
+     * @var string
+     *
+     * @ORM\Column(name="detalle", type="string", length=500, nullable=false)
+     */
+    private $detalle;
+
 
 
     /**
@@ -183,4 +191,15 @@ class BlhBitacora
     {
         return $this->accion;
     }
+    
+    /**
+     * Get detalle
+     *
+     * @return string 
+     */
+    public function getDetalle()
+    {
+        return $this->detalle;
+    }
 }
+

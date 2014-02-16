@@ -1,6 +1,85 @@
 $(document).ready(function() { 
-     /*$('button').button();*/
+  
+      
+ $('#siblh_mantenimientobundle_blhacidez_acidez1').keyup(function() {
+            if (calcular($(this).val()))
+                {calcular1();}
+            else
+                {$(this).focus();}
+}       );
+
+
+
+
+
+$('#siblh_mantenimientobundle_blhacidez_acidez1').change(function() {
+            if ($('#siblh_mantenimientobundle_blhacidez_acidez1').val()=='')
+                {alert('Digite un valor valido para el crematocrito 1');}
+            else
+                {$('#siblh_mantenimientobundle_blhacidez_acidez1').focus();}
+}       );
+
+
+   $('#siblh_mantenimientobundle_blhacidez_acidez2').keyup(function() {
+            if (calcular($(this).val()))
+                {calcular1();}
+            else
+                {$(this).focus();}
+}       );
+
+
+
+
+
+$('#siblh_mantenimientobundle_blhacidez_acidez2').change(function() {
+            if ($('#siblh_mantenimientobundle_blhacidez_acidez2').val()=='')
+                {alert('Digite un valor valido para el crematocrito 2');}
+            else
+                {$('#siblh_mantenimientobundle_blhacidez_acidez2').focus();}
+}       );
+
+
+ $('#siblh_mantenimientobundle_blhacidez_acidez3').keyup(function() {
+            if (calcular($(this).val()))
+                {calcular1();}
+            else
+                {$(this).focus();}
+}       );
+
+
+
+
+
+$('#siblh_mantenimientobundle_blhacidez_acidez3').change(function() {
+            if ($('#siblh_mantenimientobundle_blhacidez_acidez3').val()=='')
+                {alert('Digite un valor valido para el crematocrito 3');}
+            else
+                {$('#siblh_mantenimientobundle_blhacidez_acidez3').focus();}
+}       );
+
+
+  
+  $('#siblh_mantenimientobundle_blhacidez_factor').blur(function() {
+            if (calcular1($(this).val()))
+                {}
+            else
+                {$(this).focus();}
+}       );
+
+
+  $('#siblh_mantenimientobundle_blhacidez_factor').keyup(function() {
+            if ($(this).val() !='' || $(this).val() !='0.' || $(this).val() !='0')
+                {calcular1($(this).val());}
+            else
+                {$(this).focus();}
+}       );
+
+
+
+
+ 
      $.noConflict();
+     
    
     //Tooltip                      
       
@@ -59,75 +138,32 @@ $(document).ready(function() {
 
   
  $('#siblh_mantenimientobundle_blhacidez_acidez1').
-            attr('data-bvalidator', 'required,between[0:15]');
+            attr('data-bvalidator', 'required,between[1:15]');
 
   $('#siblh_mantenimientobundle_blhacidez_acidez2').
-            attr('data-bvalidator', 'required,between[0:15]');
+            attr('data-bvalidator', 'required,between[1:15]');
     
  $('#siblh_mantenimientobundle_blhacidez_acidez3').
-            attr('data-bvalidator', 'required,between[0:15]');
-    
+            attr('data-bvalidator', 'required,between[1:15]');
+  
+  
+ 
  $('#siblh_mantenimientobundle_blhacidez_factor').
-            attr('data-bvalidator', 'required,between[0:5]');
+            attr('data-bvalidator', 'required');
   
  
                           
 
 
-//Calculando campos                        
-
-var $Acidez1; 
-var $Acidez2; 
-var $Acidez3; 
-var $mediaAcidez;
-var $factor;
-var $resultado;
-
-  $('#siblh_mantenimientobundle_blhacidez_acidez1').on('input', function() {
-    
-   $Acidez1 = parseInt(this.value);
-   
-    
-   
-});
-
-   $('#siblh_mantenimientobundle_blhacidez_acidez2').on('input', function() {
-    
-     $Acidez2 = parseInt(this.value);
-    
-   
-});
-   $('#siblh_mantenimientobundle_blhacidez_acidez3').on('input', function() {
-    
-   $Acidez3 = parseInt(this.value);
- $mediaAcidez= ($Acidez1 + $Acidez2 + $Acidez3)/3;
-
-});
-
-    
-$('#siblh_mantenimientobundle_blhacidez_mediaAcidez').on ('click', function() {
- 
-//Redondeando el resultado a 2 decimales 
-$mediaAcidez = Math.round( $mediaAcidez* 100) / 100;
- 
- 
-this.value = $mediaAcidez; } ); 
-
-   $('#siblh_mantenimientobundle_blhacidez_factor').on('input', function() {
+/*   $('#siblh_mantenimientobundle_blhacidez_factor').on('input', function() {
     
  $factor = this.value;
 
-});
+}); */
 
-$('#siblh_mantenimientobundle_blhacidez_resultado').on ('click', function() {
  
-
-$resultado = $mediaAcidez*$factor;
-//Redondeando el resultado a 2 decimales 
-$resultado = Math.round( $resultado* 100) / 100;
  
-this.value = $resultado; } ); 
-
+ 
 $('#boton').on ('click', function() {
 
 $acidez=$('#siblh_mantenimientobundle_blhacidez_resultado').val();
@@ -137,6 +173,8 @@ if($acidez>8){
 }
 
 });
+     
+
 
 });
 
@@ -158,11 +196,78 @@ return true;
 return /\d/.test(String.fromCharCode(keynum));
 }
 
-      
 
+ 
 
+/////////funcion para valores calculados//////
 
+function calcular(valor)
+{
+    $Acidez1 = $('#siblh_mantenimientobundle_blhacidez_acidez1').val();
+    $Acidez2 = $('#siblh_mantenimientobundle_blhacidez_acidez2').val();
+    $Acidez3 = $('#siblh_mantenimientobundle_blhacidez_acidez3').val();
+    if(valor !='')
+     { 
+    if (($Acidez1 == '') || ($Acidez2 == '') || ($Acidez3 == '') || ($Acidez1 < 1) || ($Acidez1 > 15) || ($Acidez2 < 1) || ($Acidez2 > 15)  || ($Acidez3 < 1) || ($Acidez3 > 15) ) 
+{ alert ('Verifique que los valores para la acidez sean validos');
+    return false;}
+    else {
+            
+ $mediaAcidez= (parseInt($Acidez1) + parseInt($Acidez2) + parseInt($Acidez3))/3;
+//Redondeando el resultado a 2 decimales 
+$mediaAcidez = $mediaAcidez.toFixed(2);
 
-      
-
-
+           
+            $('#siblh_mantenimientobundle_blhacidez_mediaAcidez').val($mediaAcidez); 
+            return true;
+        } 
+     }
+     else
+         {return false;}
+} 
+ 
+ 
+ 
+ 
+function calcular1(valor)
+{
+ $factor = $('#siblh_mantenimientobundle_blhacidez_factor').val();
+ 
+ $mediaAcidez = $('#siblh_mantenimientobundle_blhacidez_mediaAcidez').val();
+    if(valor !='')
+     { 
+   if ( ($factor > 1.1) ) 
+{ 
+    
+    $('#siblh_mantenimientobundle_blhacidez_factor').val('');
+    $('#siblh_mantenimientobundle_blhacidez_factor').focusin();
+    $('#siblh_mantenimientobundle_blhacidez_factor').focus();
+    alert ('Verifique que el valor del facotor sea correcto');
+    return false;}
+    else {
+ $factor = $('#siblh_mantenimientobundle_blhacidez_factor').val();  
+ if ( ($factor < 0.9) && ($factor!='') && ($factor!='0')&& ($factor!='0.')) 
+{ 
+    
+    $('#siblh_mantenimientobundle_blhacidez_factor').val('');
+    $('#siblh_mantenimientobundle_blhacidez_factor').focusin();
+    $('#siblh_mantenimientobundle_blhacidez_factor').focus();
+    alert ('Verifique que el valor del facotor sea correcto');
+    return false;}
+$resultado = parseFloat($mediaAcidez) * $factor;
+//Redondeando el resultado a 2 decimales
+$resultado = $resultado.toFixed(2);
+           
+            $('#siblh_mantenimientobundle_blhacidez_resultado').val($resultado); 
+            if (isNaN($resultado))
+            {
+                $('#siblh_mantenimientobundle_blhacidez_factor').focusin();
+    $('#siblh_mantenimientobundle_blhacidez_factor').focus();
+                 $('#siblh_mantenimientobundle_blhacidez_factor').val('');
+            }
+            return true;
+        } 
+     }
+     else
+         {return false;}
+} 

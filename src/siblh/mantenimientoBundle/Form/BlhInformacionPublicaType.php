@@ -28,14 +28,13 @@ class BlhInformacionPublicaType extends AbstractType
                 
             ->add('fechaPublicacion', 'date', 
                     array(  'widget' => 'single_text',
-                            'format' => 'yy-MM-dd',
+                            'format' => 'y-MM-dd',
                             'attr' => array('class' => 'date'
                                 ), 'required'=> true ))
                 
             ->add('idBancoDeLeche',null,array(
                'required' => true))
             ->add('file')
-			->add('usuario')
         ;
     }
     

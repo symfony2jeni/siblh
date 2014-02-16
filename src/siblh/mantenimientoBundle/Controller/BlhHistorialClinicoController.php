@@ -65,13 +65,13 @@ class BlhHistorialClinicoController extends Controller
     public function createAction(Request $request)
     {
         $entity = new BlhHistorialClinico();
-		$usuario = $this->container->get('security.context')->getToken()->getUser()->getId();
-        $entity->setUsuario($usuario);
         $form = $this->createCreateForm($entity);
         $form->handleRequest($request);
 
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
+            $usuario = $this->container->get('security.context')->getToken()->getUser()->getId();
+            $entity->setUsuario($usuario);
             $em->persist($entity);
             $em->flush();
 
@@ -163,8 +163,7 @@ class BlhHistorialClinicoController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
         //Obtener banco de leche//
-        	   $user_ID = $this->container->get('security.context')->getToken()->getUser()->getId();
-    
+            
       $userEst = $this->container->get('security.context')->getToken()->getUser()->getIdEst();
         $query1 = $em->createQuery("SELECT e.nombre, e.direccion, e.telefono FROM siblhmantenimientoBundle:CtlEstablecimiento e WHERE e.id = $userEst");
         $establecimiento = $query1->getResult(); 
@@ -183,7 +182,6 @@ class BlhHistorialClinicoController extends Controller
             'edit_form'   => $editForm->createView(),
            'delete_form' => $deleteForm->createView(),
             'hospital' => $establecimiento,
-			'user_ID' => $user_ID,
         );
     }
 
@@ -217,13 +215,14 @@ class BlhHistorialClinicoController extends Controller
         $em = $this->getDoctrine()->getManager();
 
         $entity = $em->getRepository('siblhmantenimientoBundle:BlhHistorialClinico')->find($id);
-		$usuario = $this->container->get('security.context')->getToken()->getUser()->getId();
-        $entity->setUsuario($usuario);
+
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find BlhHistorialClinico entity.');
         }
 
         $deleteForm = $this->createDeleteForm($id);
+        $usuario = $this->container->get('security.context')->getToken()->getUser()->getId();
+        $entity->setUsuario($usuario);
         $editForm = $this->createEditForm($entity);
         $editForm->handleRequest($request);
 
@@ -336,8 +335,7 @@ JOIN hc.idDonante don) and p.idBancoDeLeche = $codigo");
     {
         
         $em = $this->getDoctrine()->getManager();
-        	   $user_ID = $this->container->get('security.context')->getToken()->getUser()->getId();
-$query = $em->createQuery("SELECT p.id as identificador, p.codigoDonante as codigo_donante, p.primerNombre as nombre1, p.segundoNombre as nombre2, p.primerApellido as apellido1, p.segundoApellido as apellido2 FROM siblhmantenimientoBundle:BlhDonante p  WHERE p.id = $id "); 
+        $query = $em->createQuery("SELECT p.id as identificador, p.codigoDonante as codigo_donante, p.primerNombre as nombre1, p.segundoNombre as nombre2, p.primerApellido as apellido1, p.segundoApellido as apellido2 FROM siblhmantenimientoBundle:BlhDonante p  WHERE p.id = $id "); 
         $datos_donantes  = $query->getResult();
      //   $donante = $em->getRepository('siblhmantenimientoBundle:BlhDonante')->find($id);   
        $donante = $em->getRepository('siblhmantenimientoBundle:BlhDonante')->find($datos_donantes[0]['identificador']);
@@ -364,7 +362,6 @@ $query = $em->createQuery("SELECT p.id as identificador, p.codigoDonante as codi
             'form'   => $form->createView(),
             'datos_donantes' =>  $datos_donantes, 
             'hospital' => $establecimiento,
-			'user_ID' => $user_ID,
         );
     }
 

@@ -16,7 +16,6 @@ class BlhGrupoSolicitudType extends AbstractType
     {
         $builder
             ->add('codigoGrupoSolicitud')
-			->add('usuario')
         ;
     }
     

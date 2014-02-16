@@ -67,7 +67,7 @@ class BlhEgresoReceptor
     /**
      * @var string
      *
-     * @ORM\Column(name="hospital_seguimiento_egreso", type="string", length=30, nullable=true)
+     * @ORM\Column(name="hospital_seguimiento_egreso", type="string", length=80, nullable=true)
      */
     private $hospitalSeguimientoEgreso;
 

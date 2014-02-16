@@ -59,13 +59,13 @@ class BlhDonacionController extends Controller
     public function createAction(Request $request)
     {
         $entity = new BlhDonacion();
-		$usuario = $this->container->get('security.context')->getToken()->getUser()->getId();
-        $entity->setUsuario($usuario);
         $form = $this->createCreateForm($entity);
         $form->handleRequest($request);
 
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
+            $usuario = $this->container->get('security.context')->getToken()->getUser()->getId();
+            $entity->setUsuario($usuario);
             $em->persist($entity);
             $em->flush();
 
@@ -118,9 +118,10 @@ class BlhDonacionController extends Controller
        $codigo=$id_blh[0]['id']; 
         
         //Obteniendo lista de donantes"  
-            $query = $em->createQuery("SELECT p.id as identificador, p.primerNombre as nombre1, p.segundoNombre as nombre2,
-            p.primerApellido as apellido1, p.segundoApellido as apellido2 FROM siblhmantenimientoBundle:BlhDonante p 
-            where p.idBancoDeLeche = $codigo");
+         $query = $em->createQuery("SELECT p.id as identificador, p.primerNombre as nombre1, p.segundoNombre as nombre2,
+            p.primerApellido as apellido1, p.segundoApellido as apellido2 FROM siblhmantenimientoBundle:BlhHistoriaActual hac join hac.idDonante p 
+            where p.idBancoDeLeche = $codigo and p.id in (select don.id from siblhmantenimientoBundle:BlhHistorialClinico hc JOIN hc.idDonante don)        
+            and p.id in (select dona.id from siblhmantenimientoBundle:BlhHistoriaActual ha JOIN ha.idDonante dona) and hac.estadoDonante = 'Apta'");  
         
        //echo $hisclinico[idDonante];
                 
@@ -146,8 +147,6 @@ class BlhDonacionController extends Controller
     public function newAction($id)
     {
         $em = $this->getDoctrine()->getManager();
-			   $user_ID = $this->container->get('security.context')->getToken()->getUser()->getId();
-
          $query = $em->createQuery("SELECT p.id as identificador, p.codigoDonante as codigo_donante, p.primerNombre as nombre1, p.segundoNombre as nombre2, p.primerApellido as apellido1, p.segundoApellido as apellido2 FROM siblhmantenimientoBundle:BlhDonante p  WHERE p.id = $id "); 
         $datos_donantes  = $query->getResult();
         //   $donante = $em->getRepository('siblhmantenimientoBundle:BlhDonante')->find($id);   
@@ -180,7 +179,6 @@ class BlhDonacionController extends Controller
             'hospital' => $establecimiento,
             'datos_donantes' => $datos_donantes,
             'responsable' => $responsable,
-			'user_ID' => $user_ID,
             );
     }
 
@@ -224,8 +222,6 @@ class BlhDonacionController extends Controller
     public function editAction($id)
     {
         $em = $this->getDoctrine()->getManager();
-			   $user_ID = $this->container->get('security.context')->getToken()->getUser()->getId();
-
          $userEst = $this->container->get('security.context')->getToken()->getUser()->getIdEst();
        $query1 = $em->createQuery("SELECT e.nombre, e.direccion, e.telefono FROM siblhmantenimientoBundle:CtlEstablecimiento e WHERE e.id = $userEst");
        $establecimiento = $query1->getResult(); 
@@ -247,7 +243,6 @@ class BlhDonacionController extends Controller
             'delete_form' => $deleteForm->createView(),
             'hospital' => $establecimiento,
             'responsable' => $responsable,
-			'user_ID' => $user_ID,
         );
     }
 
@@ -281,8 +276,7 @@ class BlhDonacionController extends Controller
         $em = $this->getDoctrine()->getManager();
 
         $entity = $em->getRepository('siblhmantenimientoBundle:BlhDonacion')->find($id);
-		$usuario = $this->container->get('security.context')->getToken()->getUser()->getId();
-        $entity->setUsuario($usuario);
+
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find BlhDonacion entity.');
         }
@@ -292,6 +286,8 @@ class BlhDonacionController extends Controller
         $editForm->handleRequest($request);
 
         if ($editForm->isValid()) {
+            $usuario = $this->container->get('security.context')->getToken()->getUser()->getId();
+            $entity->setUsuario($usuario);
             $em->flush();
 
             return $this->redirect($this->generateUrl('blhdonacion_edit', array('id' => $id)));

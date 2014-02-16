@@ -22,12 +22,14 @@ class BlhCurvaType extends AbstractType
             /*->add('valorCurva') */
             ->add('fechaCurva',  'date', 
                     array(  'widget' => 'single_text',
-                            'format' => 'yy-MM-dd',
+                            'format' => 'y-MM-dd',
                             'attr' => array('class' => 'date'
                                 ), 'required'=> true ))
             ->add('cantidadFrascos','number')
             ->add('volumenPorFrasco','number')
             ->add('horaInicioCurva')
+            ->add('valorCurva') 
+
         ;
     }
     

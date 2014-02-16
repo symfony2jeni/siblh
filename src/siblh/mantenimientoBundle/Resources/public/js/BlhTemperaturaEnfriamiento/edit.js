@@ -1,4 +1,34 @@
 $(document).ready(function() { 
+    
+  //Inicio de modificacion de rox  
+        
+  //Temperatura enfriamiento
+    
+       $('#siblh_mantenimientobundle_blhtemperaturaenfriamiento_temperaturaE').keyup(function() 
+    {
+             if (($(this).val()< 0 || $(this).val()> 5) && $(this).val()!=='')
+        {   
+            $('#siblh_mantenimientobundle_blhtemperaturaenfriamiento_temperaturaE').val(''); 
+            alert('Digite un valor valido en Temperatura');
+         }
+            else
+                {$(this).focus();}
+     } );
+     
+     
+     
+     $('#siblh_mantenimientobundle_blhtemperaturaenfriamiento_temperaturaE').change(function() {
+            if ($(this).val()=='')
+                {alert('Digite un valor valido en Temperatura');}
+                
+            else
+                {$(this).focus();}
+                 } ); 
+                              
+                 
+   //Fin de modificacion de rox              
+    
+    
     //Opciones del validador
     var optionsRed = { 
         classNamePrefix: 'bvalidator_red_', 
@@ -15,10 +45,10 @@ $(document).ready(function() {
 
 
 $('#siblh_mantenimientobundle_blhtemperaturaenfriamiento_temperaturaE').
-      attr('data-bvalidator', 'between[1:30],required');
+      attr('data-bvalidator', 'between[0:5],required');
     
 $('#siblh_mantenimientobundle_blhtemperaturaenfriamiento_temperaturaE').
-      attr('data-bvalidator-msg', "Ingrese la temperatura de 1 a 30 grados");  
+      attr('data-bvalidator-msg', "Ingrese la temperatura de 0 a 5 grados");  
       
 $(function() {
     $( document ).tooltip({

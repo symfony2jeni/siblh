@@ -91,14 +91,11 @@ class BlhExamenController extends Controller
     public function newAction()
     {
         $entity = new BlhExamen();
-			   $user_ID = $this->container->get('security.context')->getToken()->getUser()->getId();
-
         $form   = $this->createCreateForm($entity);
 
         return array(
             'entity' => $entity,
             'form'   => $form->createView(),
-			'user_ID' => $user_ID,
         );
     }
 
@@ -137,7 +134,6 @@ class BlhExamenController extends Controller
     public function editAction($id)
     {
         $em = $this->getDoctrine()->getManager();
-	   $user_ID = $this->container->get('security.context')->getToken()->getUser()->getId();
 
         $entity = $em->getRepository('siblhmantenimientoBundle:BlhExamen')->find($id);
 
@@ -152,7 +148,6 @@ class BlhExamenController extends Controller
             'entity'      => $entity,
             'edit_form'   => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
-			'user_ID' => $user_ID,
         );
     }
 

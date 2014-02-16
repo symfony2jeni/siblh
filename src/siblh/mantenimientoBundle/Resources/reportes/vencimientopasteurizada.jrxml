@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="vencimientoprealmacenada" language="groovy" pageWidth="720" pageHeight="792" columnWidth="680" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="a235e65f-fc70-45be-967f-452266abf6cd">
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="vencimientoprealmacenada" language="groovy" pageWidth="720" pageHeight="792" columnWidth="680" leftMargin="20" rightMargin="20" topMargin="45" bottomMargin="20" uuid="a235e65f-fc70-45be-967f-452266abf6cd">
 	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="0"/>
+	<property name="ireport.y" value="38"/>
 	<style name="table">
 		<box>
 			<pen lineWidth="1.0" lineColor="#000000"/>
@@ -24,13 +24,17 @@
 		</box>
 	</style>
 	<subDataset name="New Dataset 1" uuid="e8af777e-1a8e-440c-bd92-34598f6558bd">
+		<parameter name="id" class="java.lang.String">
+			<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+		</parameter>
 		<queryString>
 			<![CDATA[select row_number() OVER (ORDER BY fp.codigo_frasco_procesado) as N, fp.codigo_frasco_procesado as cod, fp.volumen_frasco_pasteurizado as ml,
 fp.volumen_frasco_pasteurizado * 0.033814 as onz, fp.acidez_total as acidez, fp.kcalorias_totales as kc,
 p.fecha_pasteurizacion::date+'6 month'::interval  as venci
 from blh_frasco_procesado fp, blh_pasteurizacion p
 where fp.id_pasteurizacion = p.id
-and fp.id_estado = 2;]]>
+and fp.id_estado = 2
+and (substring(fp.codigo_frasco_procesado from 1 for 2) = $P{id});]]>
 		</queryString>
 		<field name="n" class="java.lang.Long"/>
 		<field name="cod" class="java.lang.String"/>
@@ -40,6 +44,10 @@ and fp.id_estado = 2;]]>
 		<field name="kc" class="java.math.BigDecimal"/>
 		<field name="venci" class="java.sql.Timestamp"/>
 	</subDataset>
+	<parameter name="nombre" class="java.lang.String"/>
+	<parameter name="id" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
 	<queryString>
 		<![CDATA[select row_number() OVER (ORDER BY fp.codigo_frasco_procesado) as N, fp.codigo_frasco_procesado as cod, fp.volumen_frasco_pasteurizado as ml,
 fp.volumen_frasco_pasteurizado * 0.033814 as onz, fp.acidez_total as acidez, fp.kcalorias_totales as kc,
@@ -60,7 +68,7 @@ order by p.fecha_pasteurizacion]]>
 		<band splitType="Stretch"/>
 	</background>
 	<title>
-		<band height="127" splitType="Stretch">
+		<band height="120" splitType="Stretch">
 			<staticText>
 				<reportElement uuid="12df2c9b-d1ed-4131-9543-e77010c2221f" x="240" y="14" width="182" height="24"/>
 				<textElement>
@@ -69,38 +77,38 @@ order by p.fecha_pasteurizacion]]>
 				<text><![CDATA[MINISTERIO DE SALUD]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="f7af9109-a2b6-4918-b77c-b7d627f54622" x="193" y="62" width="322" height="24"/>
+				<reportElement uuid="f7af9109-a2b6-4918-b77c-b7d627f54622" x="186" y="90" width="322" height="24"/>
 				<textElement>
 					<font fontName="Comic Sans MS" size="14"/>
 				</textElement>
 				<text><![CDATA[VENCIMIENTO DE LECHE PASTEURIZADA]]></text>
-			</staticText>
-			<staticText>
-				<reportElement uuid="684f9903-6ede-4455-bedc-972fc1f01fcd" x="225" y="38" width="211" height="24"/>
-				<textElement>
-					<font fontName="Comic Sans MS" size="14"/>
-				</textElement>
-				<text><![CDATA[HOSPITAL DE MATERNIDAD]]></text>
 			</staticText>
 			<image>
 				<reportElement uuid="dfbae604-be33-4def-927f-ea98bbc49fa1" x="10" y="6" width="158" height="107"/>
 				<imageExpression><![CDATA["/home/jeni/NetBeansProjects/siblh/src/siblh/mantenimientoBundle/Resources/reportes/blh.jpg"]]></imageExpression>
 			</image>
 			<image>
-				<reportElement uuid="e9e9021a-b20e-4b64-98e9-15819b985e29" x="519" y="8" width="158" height="101"/>
+				<reportElement uuid="e9e9021a-b20e-4b64-98e9-15819b985e29" x="518" y="8" width="158" height="101"/>
 				<imageExpression><![CDATA["/home/jeni/NetBeansProjects/siblh/src/siblh/mantenimientoBundle/Resources/reportes/minsal2.jpg"]]></imageExpression>
 			</image>
+			<textField>
+				<reportElement uuid="30f7af18-16b9-47bb-9b69-3ab961b9a494" x="186" y="45" width="322" height="38"/>
+				<textElement textAlignment="Center">
+					<font fontName="Comic Sans MS" size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{nombre}]]></textFieldExpression>
+			</textField>
 		</band>
 	</title>
-	<pageHeader>
-		<band height="35" splitType="Stretch"/>
-	</pageHeader>
-	<columnHeader>
-		<band height="159" splitType="Stretch">
+	<summary>
+		<band height="100" splitType="Stretch">
 			<componentElement>
-				<reportElement uuid="0c470c4d-9f9d-4a46-8d46-5b0982a6cf88" key="table" style="table" x="15" y="6" width="661" height="75"/>
+				<reportElement uuid="0c470c4d-9f9d-4a46-8d46-5b0982a6cf88" key="table" style="table" x="10" y="11" width="661" height="75"/>
 				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
-					<datasetRun subDataset="New Dataset 1" uuid="6a6df9cc-0714-4d72-99ba-5b645df44452">
+					<datasetRun subDataset="New Dataset 1" uuid="2572cd20-00e7-4929-9694-561172abb227">
+						<datasetParameter name="id">
+							<datasetParameterExpression><![CDATA[$P{id}]]></datasetParameterExpression>
+						</datasetParameter>
 						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
 					</datasetRun>
 					<jr:column width="61" uuid="0001e6fc-1f76-4251-a03b-3bdb18185daf">
@@ -133,7 +141,7 @@ order by p.fecha_pasteurizacion]]>
 						</jr:columnHeader>
 						<jr:detailCell style="table_TD" height="20" rowSpan="1">
 							<textField>
-								<reportElement uuid="7bae8dc8-d602-4ccb-8fbe-017ef7dcb8ea" x="0" y="0" width="113" height="20"/>
+								<reportElement uuid="7bae8dc8-d602-4ccb-8fbe-017ef7dcb8ea" x="5" y="0" width="113" height="20"/>
 								<textElement/>
 								<textFieldExpression><![CDATA[$F{cod}]]></textFieldExpression>
 							</textField>
@@ -150,8 +158,8 @@ order by p.fecha_pasteurizacion]]>
 							</staticText>
 						</jr:columnHeader>
 						<jr:detailCell style="table_TD" height="20" rowSpan="1">
-							<textField>
-								<reportElement uuid="926f341c-3c41-4a9c-8c58-2d9c100ef64f" x="0" y="0" width="71" height="20"/>
+							<textField pattern="###0.00">
+								<reportElement uuid="926f341c-3c41-4a9c-8c58-2d9c100ef64f" x="10" y="0" width="66" height="20"/>
 								<textElement/>
 								<textFieldExpression><![CDATA[$F{ml}]]></textFieldExpression>
 							</textField>
@@ -168,8 +176,8 @@ order by p.fecha_pasteurizacion]]>
 							</staticText>
 						</jr:columnHeader>
 						<jr:detailCell style="table_TD" height="20" rowSpan="1">
-							<textField>
-								<reportElement uuid="df92c584-9d16-4f3c-9406-e4f511433ec5" x="0" y="0" width="69" height="20"/>
+							<textField pattern="###0.00">
+								<reportElement uuid="df92c584-9d16-4f3c-9406-e4f511433ec5" x="6" y="0" width="69" height="20"/>
 								<textElement/>
 								<textFieldExpression><![CDATA[$F{onz}]]></textFieldExpression>
 							</textField>
@@ -186,8 +194,8 @@ order by p.fecha_pasteurizacion]]>
 							</staticText>
 						</jr:columnHeader>
 						<jr:detailCell style="table_TD" height="20" rowSpan="1">
-							<textField>
-								<reportElement uuid="d96ab786-2d48-4b33-aed5-d84ec374f00e" x="0" y="0" width="90" height="20"/>
+							<textField pattern="###0.00">
+								<reportElement uuid="d96ab786-2d48-4b33-aed5-d84ec374f00e" x="10" y="0" width="79" height="20"/>
 								<textElement/>
 								<textFieldExpression><![CDATA[$F{acidez}]]></textFieldExpression>
 							</textField>
@@ -204,8 +212,8 @@ order by p.fecha_pasteurizacion]]>
 							</staticText>
 						</jr:columnHeader>
 						<jr:detailCell style="table_TD" height="20" rowSpan="1">
-							<textField>
-								<reportElement uuid="45d75026-bb97-4c9f-8a52-332b60e85bbe" x="0" y="0" width="90" height="20"/>
+							<textField pattern="###0.00">
+								<reportElement uuid="45d75026-bb97-4c9f-8a52-332b60e85bbe" x="18" y="0" width="86" height="20"/>
 								<textElement/>
 								<textFieldExpression><![CDATA[$F{kc}]]></textFieldExpression>
 							</textField>
@@ -222,8 +230,8 @@ order by p.fecha_pasteurizacion]]>
 							</staticText>
 						</jr:columnHeader>
 						<jr:detailCell style="table_TD" height="20" rowSpan="1">
-							<textField>
-								<reportElement uuid="f698c88d-0707-4498-8ff5-4d18edab9124" x="0" y="0" width="90" height="20"/>
+							<textField pattern="yyyy/MM/dd">
+								<reportElement uuid="f698c88d-0707-4498-8ff5-4d18edab9124" x="12" y="0" width="90" height="20"/>
 								<textElement/>
 								<textFieldExpression><![CDATA[$F{venci}]]></textFieldExpression>
 							</textField>
@@ -232,17 +240,5 @@ order by p.fecha_pasteurizacion]]>
 				</jr:table>
 			</componentElement>
 		</band>
-	</columnHeader>
-	<detail>
-		<band height="34" splitType="Stretch"/>
-	</detail>
-	<columnFooter>
-		<band height="45" splitType="Stretch"/>
-	</columnFooter>
-	<pageFooter>
-		<band height="54" splitType="Stretch"/>
-	</pageFooter>
-	<summary>
-		<band height="42" splitType="Stretch"/>
 	</summary>
 </jasperReport>

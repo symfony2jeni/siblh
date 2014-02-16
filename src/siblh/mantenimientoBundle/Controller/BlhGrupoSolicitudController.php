@@ -101,14 +101,11 @@ class BlhGrupoSolicitudController extends Controller
     public function newAction()
     {
         $entity = new BlhGrupoSolicitud();
-			   $user_ID = $this->container->get('security.context')->getToken()->getUser()->getId();
-
         $form   = $this->createCreateForm($entity);
 
         return array(
             'entity' => $entity,
             'form'   => $form->createView(),
-			'user_ID' => $user_ID,
         );
     }
 
@@ -147,7 +144,6 @@ class BlhGrupoSolicitudController extends Controller
     public function editAction($id)
     {
         $em = $this->getDoctrine()->getManager();
-	   $user_ID = $this->container->get('security.context')->getToken()->getUser()->getId();
 
         $entity = $em->getRepository('siblhmantenimientoBundle:BlhGrupoSolicitud')->find($id);
 
@@ -169,7 +165,6 @@ class BlhGrupoSolicitudController extends Controller
             'edit_form'   => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
              'hospital' => $establecimiento,
-			 'user_ID' => $user_ID,
         );
     }
 
@@ -277,7 +272,7 @@ class BlhGrupoSolicitudController extends Controller
     public function seleccionSolicitudesAction()
     {
         $em = $this->getDoctrine()->getManager();
-    	$user_ID = $this->container->get('security.context')->getToken()->getUser()->getId();
+        
         $userEst = $this->container->get('security.context')->getToken()->getUser()->getIdEst();
          
         
@@ -303,7 +298,6 @@ class BlhGrupoSolicitudController extends Controller
         return array(
             'solicitudes' => $solicitudes,
                 'hospital' => $establecimiento,
-				 'user_ID' => $user_ID,
         );
     }
      
@@ -433,7 +427,6 @@ class BlhGrupoSolicitudController extends Controller
     public function seleccionGrupoDespacharAction()
     {
         $em = $this->getDoctrine()->getManager();
-		$user_ID = $this->container->get('security.context')->getToken()->getUser()->getId();
 
      //   $entities = $em->getRepository('siblhmantenimientoBundle:BlhGrupoSolicitud')->findAll();
         $query = $em->createQuery("SELECT distinct gs.codigoGrupoSolicitud as codigo, gs.id as id  FROM siblhmantenimientoBundle:BlhSolicitud s JOIN s.idGrupoSolicitud gs WHERE s.estado = 'Agrupada'");
@@ -446,7 +439,6 @@ class BlhGrupoSolicitudController extends Controller
         return array(
             'entities' => $entities,
             'hospital' => $establecimiento,
-			'user_ID' => $user_ID,
         );
     }    
 
@@ -461,6 +453,7 @@ class BlhGrupoSolicitudController extends Controller
     {
 
          $em = $this->getDoctrine()->getManager();
+         
                 //Obtener banco de leche//  
       $userEst = $this->container->get('security.context')->getToken()->getUser()->getIdEst();
       $query1 = $em->createQuery("SELECT e.nombre, e.direccion, e.telefono FROM siblhmantenimientoBundle:CtlEstablecimiento e WHERE e.id = $userEst");
@@ -520,8 +513,6 @@ class BlhGrupoSolicitudController extends Controller
     public function frascosProcesadosSolicitudesAction()
     {
         $em = $this->getDoctrine()->getManager();
-        $usuario = $this->container->get('security.context')->getToken()->getUser()->getId(); 
-        
        //obteniendo vector con  ids a despachar   
          $request = $this->getRequest();
          $ids_despachar = $request->get('idsdespachar');
@@ -555,9 +546,12 @@ class BlhGrupoSolicitudController extends Controller
          
            $idsolicitud = $solicitudes_despachar[$i]['id'];
            $solicitud= $em->getRepository('siblhmantenimientoBundle:BlhSolicitud')->find($idsolicitud);
-           $solicitud->setUsuario($usuario);
+           
            //cambiando estado a solicitudes
             $solicitud->setEstado('Despachada');
+             $usuario = $this->container->get('security.context')->getToken()->getUser()->getId();
+
+            $solicitud->setUsuario($usuario);
             $em->persist($solicitud);
             $em->flush();
            
@@ -574,9 +568,10 @@ class BlhGrupoSolicitudController extends Controller
             $entity = new BlhFrascoProcesadoSolicitud();
             $entity->setidFrascoProcesado($frascop);
             $entity->setidSolicitud($solicitud);                            
-            $entity->setvolumenDespachado($vldespachar[$j]);
+            $entity->setvolumenDespachado($vldespachar[$j]);  
+            $usuario = $this->container->get('security.context')->getToken()->getUser()->getId();
+
             $entity->setUsuario($usuario);
-            
             $em->persist($entity);
             $em->flush();
             

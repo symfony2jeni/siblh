@@ -53,8 +53,6 @@ class BlhLoteAnalisisController extends Controller
     public function createAction(Request $request)
     {
         $entity = new BlhLoteAnalisis();
-		$usuario = $this->container->get('security.context')->getToken()->getUser()->getId();
-        $entity->setUsuario($usuario);
         $form = $this->createCreateForm($entity);
         $form->handleRequest($request);
         
@@ -74,6 +72,8 @@ class BlhLoteAnalisisController extends Controller
         else{
         if ($form->isValid() ) {
             $em = $this->getDoctrine()->getManager();
+            $usuario = $this->container->get('security.context')->getToken()->getUser()->getId();
+            $entity->setUsuario($usuario);
             $em->persist($entity);
             $em->flush();
             
@@ -88,7 +88,6 @@ class BlhLoteAnalisisController extends Controller
         for ($i = 0; $i < $tamanio; $i++) {
            $frasco_lote = $em->getRepository('siblhmantenimientoBundle:BlhFrascoRecolectado')->find($ids[$i]); //obteniendo el frasco a agrupar en lote
            $frasco_lote->setIdLoteAnalisis($lote);//seteando el nuevo lote al frasco agrupado
-		   $frasco_lote->setUsuario($usuario);
            $em->persist($frasco_lote);
            $em->flush();
             
@@ -136,7 +135,7 @@ class BlhLoteAnalisisController extends Controller
         
          //Obteniendo listado de frascos para lote
          $em = $this->getDoctrine()->getManager();
- 	   $user_ID = $this->container->get('security.context')->getToken()->getUser()->getId();       
+        
               //Obtener banco de leche//
         $userEst = $this->container->get('security.context')->getToken()->getUser()->getIdEst();
         $query2 = $em->createQuery("SELECT e.nombre, e.direccion, e.telefono FROM siblhmantenimientoBundle:CtlEstablecimiento e WHERE e.id = $userEst");
@@ -186,7 +185,7 @@ class BlhLoteAnalisisController extends Controller
         
         
          //$frascos = $em->getRepository('siblhmantenimientoBundle:BlhFrascoRecolectado')->findBy(array('idEstado' => 1,  'idLoteAnalisis'=>NULL));
-         $queryfrascos = $em->createQuery("SELECT fr.id, fr.codigoFrascoRecolectado, fr.volumenRecolectado, fr.onzRecolectado, d.fechaDonacion as fecha FROM siblhmantenimientoBundle:BlhFrascoRecolectado fr join fr.idDonacion d WHERE fr.idEstado=1 and fr.idLoteAnalisis IS NULL" );
+         $queryfrascos = $em->createQuery("SELECT fr.id, fr.codigoFrascoRecolectado, fr.volumenRecolectado, fr.onzRecolectado, d.fechaDonacion as fecha FROM siblhmantenimientoBundle:BlhFrascoRecolectado fr join fr.idDonacion d WHERE fr.idEstado=1 and fr.idLoteAnalisis IS NULL and (date_diff(date_add(d.fechaDonacion,15,'day'),current_date())) > 0 ORDER BY fecha ASC" );
          $frascos = $queryfrascos->getResult(); 
          
          $queryresponsable = $em->createQuery("SELECT r.nombre FROM siblhmantenimientoBundle:BlhPersonal r WHERE r.idEstablecimiento = $userEst");
@@ -204,7 +203,6 @@ class BlhLoteAnalisisController extends Controller
             'frascos'=>$frascos,
             'hospital' => $establecimiento,
             'responsable' => $responsable,
-			'user_ID' => $user_ID,
         );
      }
     
@@ -244,7 +242,7 @@ class BlhLoteAnalisisController extends Controller
     public function editAction($id)
     {
         $em = $this->getDoctrine()->getManager();
-	   $user_ID = $this->container->get('security.context')->getToken()->getUser()->getId();
+
         $entity = $em->getRepository('siblhmantenimientoBundle:BlhLoteAnalisis')->find($id);
 
         if (!$entity) {
@@ -264,7 +262,6 @@ class BlhLoteAnalisisController extends Controller
             'edit_form'   => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
             'hospital' => $establecimiento,
-			'user_ID' => $user_ID,
         );
     }
 
@@ -298,13 +295,14 @@ class BlhLoteAnalisisController extends Controller
         $em = $this->getDoctrine()->getManager();
 
         $entity = $em->getRepository('siblhmantenimientoBundle:BlhLoteAnalisis')->find($id);
-		$usuario = $this->container->get('security.context')->getToken()->getUser()->getId();
-        $entity->setUsuario($usuario);
+
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find BlhLoteAnalisis entity.');
         }
 
         $deleteForm = $this->createDeleteForm($id);
+        $usuario = $this->container->get('security.context')->getToken()->getUser()->getId();
+        $entity->setUsuario($usuario);
         $editForm = $this->createEditForm($entity);
         $editForm->handleRequest($request);
 

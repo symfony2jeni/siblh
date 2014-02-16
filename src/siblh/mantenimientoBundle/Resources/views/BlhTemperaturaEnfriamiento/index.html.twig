@@ -16,6 +16,7 @@
     <table id = "listado_temperaturas">
         <thead>
             <tr><th>Codigo</th>
+                <th>FechaPasteurizacion</th>      
                 <th>Temperatura</th>
                 <th>Accion</th></tr>
         </thead>
@@ -23,6 +24,7 @@
         {% for entity in pastemperatura %}
             <tr>
                 <td>{{ entity.codigo }}</td>
+                <td>{{ entity.fechaPasteurizacion|date('d-m-Y')}}</td>
                 <td>{{ entity.temperaturaE }}</td>
                 <td><a href="{{ path('blhtemperaturaenfriamiento_edit', { 'id': entity.id }) }}"><font color="blue"><u>Editar</u></font></a></td></tr>
         {% endfor %}

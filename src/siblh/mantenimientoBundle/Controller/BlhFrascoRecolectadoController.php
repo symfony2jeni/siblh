@@ -62,13 +62,13 @@ class BlhFrascoRecolectadoController extends Controller
     public function createAction(Request $request)
     {
         $entity = new BlhFrascoRecolectado();
-		$usuario = $this->container->get('security.context')->getToken()->getUser()->getId();
-        $entity->setUsuario($usuario);		
         $form = $this->createCreateForm($entity);
         $form->handleRequest($request);
 
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
+            $usuario = $this->container->get('security.context')->getToken()->getUser()->getId();
+            $entity->setUsuario($usuario);  
             $em->persist($entity);
             $em->flush();
 
@@ -160,7 +160,6 @@ class BlhFrascoRecolectadoController extends Controller
     public function editAction($id)
     {
         $em = $this->getDoctrine()->getManager();
-	   $user_ID = $this->container->get('security.context')->getToken()->getUser()->getId();
 
         $entity = $em->getRepository('siblhmantenimientoBundle:BlhFrascoRecolectado')->find($id);
         //Obtener banco de leche//
@@ -184,7 +183,6 @@ class BlhFrascoRecolectadoController extends Controller
             'edit_form'   => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
             'hospital' => $establecimiento, 
-			'user_ID' => $user_ID,
         );
     }
 
@@ -218,8 +216,7 @@ class BlhFrascoRecolectadoController extends Controller
         $em = $this->getDoctrine()->getManager();
 
         $entity = $em->getRepository('siblhmantenimientoBundle:BlhFrascoRecolectado')->find($id);
-		$usuario = $this->container->get('security.context')->getToken()->getUser()->getId();
-        $entity->setUsuario($usuario);
+
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find BlhFrascoRecolectado entity.');
         }
@@ -229,6 +226,8 @@ class BlhFrascoRecolectadoController extends Controller
         $editForm->handleRequest($request);
 
         if ($editForm->isValid()) {
+            $usuario = $this->container->get('security.context')->getToken()->getUser()->getId();
+            $entity->setUsuario($usuario);  
             $em->flush();
 
             return $this->redirect($this->generateUrl('blhfrascorecolectado_edit', array('id' => $id)));
@@ -331,7 +330,6 @@ class BlhFrascoRecolectadoController extends Controller
     public function newAction($id)
     {
          $em = $this->getDoctrine()->getManager();
-	   $user_ID = $this->container->get('security.context')->getToken()->getUser()->getId();
         
         $query = $em->createQuery("SELECT r.id, r.fechaDonacion, r.responsableDonacion, p.id as identificador, p.codigoDonante as codigo_donante, p.primerNombre as nombre1, p.segundoNombre as nombre2, p.primerApellido as apellido1, p.segundoApellido as apellido2 FROM siblhmantenimientoBundle:BlhDonacion r JOIN r.idDonante p  WHERE r.id = $id "); 
         $datos_donacion  = $query->getResult();
@@ -374,7 +372,6 @@ class BlhFrascoRecolectadoController extends Controller
             'form'   => $form->createView(),
             'datos_donacion' =>  $datos_donacion,  
             'hospital' => $establecimiento,
-			'user_ID' => $user_ID,
         );
     }
     
@@ -399,9 +396,20 @@ class BlhFrascoRecolectadoController extends Controller
       $userEst = $this->container->get('security.context')->getToken()->getUser()->getIdEst();
       $query1 = $em->createQuery("SELECT e.nombre, e.direccion, e.telefono FROM siblhmantenimientoBundle:CtlEstablecimiento e WHERE e.id = $userEst");
       $establecimiento = $query1->getResult(); 
+      $queryb = $em->createQuery("SELECT b.id FROM siblhmantenimientoBundle:BlhBancoDeLeche b WHERE b.idEstablecimiento = $userEst");
+      $id_blh = $queryb->getResult(); 
+      $codigo=$id_blh[0]['id']; 
+       if ($codigo<10){
+      $id='0'.$codigo;
+      $id = (string)$id;
+         }
+      else{$id = (string)$codigo;}
+        
+
            
          return array(
             'hospital' => $establecimiento,
+             'id' => $id,
         );
         
     }

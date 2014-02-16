@@ -36,10 +36,9 @@ class BlhReceptorType extends AbstractType
             ->add('pc')
             ->add('tallaIngreso')
             ->add('apgarQuintoMinuto', 'text')
-            ->add('usuario')
+            //->add('usuario')
                      ->add('idBancoDeLeche')
             ->add('idPaciente')
-			->add('usuario')
         ;
     }
     

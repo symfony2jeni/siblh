@@ -18,7 +18,7 @@
     
     <table  align = "center">
     <tr><td  align = "left" height=10  ></td></tr>
-    <tr><td align='left'><font color="red">*</font>{{ form_label(edit_form.temperaturaE, 'Temperatura Enfriamiento') }}</td><td align='left'>{{ form_widget(edit_form.temperaturaE, {'attr':{'Title': 'Temperatura entre 0 y 30', 'onKeyPress':"return soloNumerosEnteros(event);"} }) }}</td></tr>
+    <tr><td align='left'><font color="red">*</font>{{ form_label(edit_form.temperaturaE, 'Temperatura Enfriamiento') }}</td><td align='left'>{{ form_widget(edit_form.temperaturaE, {'attr':{'Title': 'Temperatura entre 0 y 5 grados', 'onKeyPress':"return soloNumerosEnteros(event);"} }) }}</td></tr>
     <tr><td  align = "left" height=10  ></td></tr>
     <tr><td  align = "left" height=10  ></td></tr>
     <tr style="visibility:hidden"><td align='left'>{{ form_label(edit_form.idPasteurizacion) }}</td><td align='left'>{{ form_widget(edit_form.idPasteurizacion) }}</td></tr>

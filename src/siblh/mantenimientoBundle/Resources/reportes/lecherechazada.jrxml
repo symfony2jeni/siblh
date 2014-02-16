@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="lecherechazada" language="groovy" pageWidth="864" pageHeight="792" columnWidth="824" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="44fec83f-4ece-43fd-9cbf-08bc28057770">
 	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="213"/>
+	<property name="ireport.y" value="289"/>
 	<style name="table">
 		<box>
 			<pen lineWidth="1.0" lineColor="#000000"/>
@@ -234,7 +234,7 @@
 			<defaultValueExpression><![CDATA[$P{id}]]></defaultValueExpression>
 		</parameter>
 		<queryString>
-			<![CDATA[select count (fr.id) as rechazados, e.nombre_estado
+			<![CDATA[select coalesce(count (fr.id), 0) as rechazados, e.nombre_estado
 from blh_frasco_recolectado fr join blh_estado e
 on fr.id_estado = e.id join blh_lote_analisis an
 on fr.id_lote_analisis = an.id
@@ -257,8 +257,8 @@ group by e.nombre_estado;]]>
 			<defaultValueExpression><![CDATA[$P{id}]]></defaultValueExpression>
 		</parameter>
 		<queryString>
-			<![CDATA[select (a.volr + b.volp) as volrech from
-(select sum (fr.volumen_recolectado) as volr
+			<![CDATA[select coalesce((a.volr + b.volp), 0) as volrech from
+(select coalesce(sum (fr.volumen_recolectado),0) as volr
 from blh_frasco_recolectado fr left join blh_estado e
 on fr.id_estado = e.id
 join blh_lote_analisis an
@@ -267,7 +267,7 @@ where e.nombre_estado like '%Reprobado%'
 and (an.fecha_analisis_fisico_quimico between to_date($P{fechai},'YYYY-MM-DD') and to_date($P{fechaf},'YYYY-MM-DD'))
 and (substring(fr.codigo_frasco_recolectado from 1 for 2) = $P{id})) a,
 
-(select sum (fp.volumen_frasco_pasteurizado) as volp
+(select coalesce(sum (fp.volumen_frasco_pasteurizado),0) as volp
 from blh_frasco_procesado fp left join blh_estado e
 on fp.id_estado = e.id
 join blh_pasteurizacion pz
@@ -289,7 +289,7 @@ and (substring(fp.codigo_frasco_procesado from 1 for 2) = $P{id}))  b]]>
 			<defaultValueExpression><![CDATA[$P{id}]]></defaultValueExpression>
 		</parameter>
 		<queryString>
-			<![CDATA[select count (fr.id) as rechazados, e.nombre_estado
+			<![CDATA[select coalesce(count (fr.id),0) as rechazados, e.nombre_estado
 from blh_frasco_recolectado fr join blh_estado e
 on fr.id_estado = e.id join blh_lote_analisis an
 on fr.id_lote_analisis = an.id
@@ -312,7 +312,7 @@ group by e.nombre_estado;]]>
 			<defaultValueExpression><![CDATA[$P{id}]]></defaultValueExpression>
 		</parameter>
 		<queryString>
-			<![CDATA[select count (fr.id) as rechazados, e.nombre_estado
+			<![CDATA[select coalesce(count (fr.id),0) as rechazados, e.nombre_estado
 from blh_frasco_recolectado fr join blh_estado e
 on fr.id_estado = e.id
 join blh_lote_analisis an
@@ -336,7 +336,7 @@ group by e.nombre_estado;]]>
 			<defaultValueExpression><![CDATA[$P{id}]]></defaultValueExpression>
 		</parameter>
 		<queryString>
-			<![CDATA[select count (fr.id) as rechazados, e.nombre_estado
+			<![CDATA[select coalesce(count (fr.id),0) as rechazados, e.nombre_estado
 from blh_frasco_recolectado fr join blh_estado e
 on fr.id_estado = e.id join blh_lote_analisis an
 on fr.id_lote_analisis = an.id
@@ -359,7 +359,7 @@ group by e.nombre_estado;]]>
 			<defaultValueExpression><![CDATA[$P{id}]]></defaultValueExpression>
 		</parameter>
 		<queryString>
-			<![CDATA[select count (fr.id) as acidez, e.nombre_estado
+			<![CDATA[select coalesce(count (fr.id),0) as acidez, e.nombre_estado
 from blh_frasco_recolectado fr join blh_estado e
 on fr.id_estado = e.id
 join blh_lote_analisis an
@@ -383,7 +383,7 @@ group by e.nombre_estado;]]>
 			<defaultValueExpression><![CDATA[$P{id}]]></defaultValueExpression>
 		</parameter>
 		<queryString>
-			<![CDATA[select count (fp.id) as rechazados, e.nombre_estado
+			<![CDATA[select coalesce(count (fp.id),0) as rechazados, e.nombre_estado
 from blh_frasco_procesado fp join blh_estado e
 on fp.id_estado = e.id join blh_pasteurizacion pz
 on fp.id_pasteurizacion = pz.id
@@ -406,7 +406,7 @@ group by e.nombre_estado;]]>
 			<defaultValueExpression><![CDATA[$P{id}]]></defaultValueExpression>
 		</parameter>
 		<queryString>
-			<![CDATA[select count (fp.id) as rechazados, e.nombre_estado
+			<![CDATA[select coalesce(count (fp.id), 0) as rechazados, e.nombre_estado
 from blh_frasco_procesado fp join blh_estado e
 on fp.id_estado = e.id join blh_pasteurizacion pz
 on fp.id_pasteurizacion = pz.id
@@ -429,7 +429,7 @@ group by e.nombre_estado;]]>
 			<defaultValueExpression><![CDATA[$P{id}]]></defaultValueExpression>
 		</parameter>
 		<queryString>
-			<![CDATA[select a.cantr + b.cantp  as cantrechazado from
+			<![CDATA[select coalesce((a.cantr + b.cantp), 0)  as cantrechazado from
 (select count (fr.id) as cantr
 from blh_frasco_recolectado fr left join blh_estado e
 on fr.id_estado = e.id
@@ -439,7 +439,7 @@ where e.nombre_estado like '%Reprobado%'
 and (an.fecha_analisis_fisico_quimico between to_date($P{fechai},'YYYY-MM-DD') and to_date($P{fechaf},'YYYY-MM-DD'))
 and (substring(fr.codigo_frasco_recolectado from 1 for 2) = $P{id})) a,
 
-(select count (fp.id) as cantp
+(select coalesce(count (fp.id), 0) as cantp
 from blh_frasco_procesado fp left join blh_estado e
 on fp.id_estado = e.id
 join blh_pasteurizacion pz
@@ -461,7 +461,7 @@ and (substring(fp.codigo_frasco_procesado from 1 for 2) = $P{id}))  b]]>
 			<defaultValueExpression><![CDATA[$P{id}]]></defaultValueExpression>
 		</parameter>
 		<queryString>
-			<![CDATA[select sum (fp.volumen_frasco_pasteurizado) as volacep
+			<![CDATA[select coalesce(sum (fp.volumen_frasco_pasteurizado),0) as volacep
 from blh_frasco_procesado fp left join blh_estado e
 on fp.id_estado = e.id
 join blh_pasteurizacion pz
@@ -483,7 +483,7 @@ and (substring(fp.codigo_frasco_procesado from 1 for 2) = $P{id})]]>
 			<defaultValueExpression><![CDATA[$P{id}]]></defaultValueExpression>
 		</parameter>
 		<queryString>
-			<![CDATA[select count (fp.id) as cantaceptada
+			<![CDATA[select coalesce(count (fp.id),0) as cantaceptada
 from blh_frasco_procesado fp left join blh_estado e
 on fp.id_estado = e.id
 join blh_pasteurizacion pz
@@ -506,7 +506,7 @@ and (substring(fp.codigo_frasco_procesado from 1 for 2) = $P{id})]]>
 	</parameter>
 	<parameter name="nombre" class="java.lang.String"/>
 	<queryString>
-		<![CDATA[select count (fr.id) as rechazados, e.nombre_estado
+		<![CDATA[select coalesce(count (fr.id),0) as rechazados, e.nombre_estado
 from blh_frasco_recolectado fr join blh_estado e
 on fr.id_estado = e.id join blh_lote_analisis an
 on fr.id_lote_analisis = an.id
@@ -543,14 +543,6 @@ group by e.nombre_estado;]]>
 				</textElement>
 				<text><![CDATA[LECHE DESCARTADA DURANTE EL PROCESO]]></text>
 			</staticText>
-			<image>
-				<reportElement uuid="f901feab-7a01-4396-94cc-3a6d5045ef49" x="6" y="8" width="160" height="125"/>
-				<imageExpression><![CDATA["/home/jeni/NetBeansProjects/siblh/src/siblh/mantenimientoBundle/Resources/reportes/blh.jpg"]]></imageExpression>
-			</image>
-			<image>
-				<reportElement uuid="352df5bb-07d5-40e8-8d20-915bfbfbbb5a" x="657" y="13" width="162" height="125"/>
-				<imageExpression><![CDATA["/home/jeni/NetBeansProjects/siblh/src/siblh/mantenimientoBundle/Resources/reportes/minsal2.jpg"]]></imageExpression>
-			</image>
 		</band>
 	</title>
 	<pageHeader>
@@ -619,7 +611,7 @@ group by e.nombre_estado;]]>
 							</staticText>
 						</jr:columnHeader>
 						<jr:detailCell style="table_TD" height="20" rowSpan="1">
-							<textField>
+							<textField pattern="###0.00" isBlankWhenNull="true">
 								<reportElement uuid="6ca8a2c4-3e5a-4666-a0de-314dfed96af1" x="9" y="0" width="90" height="20"/>
 								<textElement/>
 								<textFieldExpression><![CDATA[$F{rechazados}]]></textFieldExpression>
@@ -654,7 +646,7 @@ group by e.nombre_estado;]]>
 							</staticText>
 						</jr:columnHeader>
 						<jr:detailCell style="table 1_TD" height="20" rowSpan="1">
-							<textField>
+							<textField pattern="###0.00" isBlankWhenNull="true">
 								<reportElement uuid="cb2dff41-f9ee-43fd-95ab-7e894d6a5a6d" x="20" y="0" width="67" height="20"/>
 								<textElement/>
 								<textFieldExpression><![CDATA[$F{volrech}]]></textFieldExpression>
@@ -666,7 +658,7 @@ group by e.nombre_estado;]]>
 			<frame>
 				<reportElement uuid="b9e43d3a-2393-42dc-9f0d-bb14eefb1fb2" style="table 1" x="168" y="8" width="90" height="50" backcolor="#1F0C0C"/>
 				<componentElement>
-					<reportElement uuid="fc93f22a-ab23-438f-98c6-8f4d8cf84ff7" key="table 2" style="table 2" x="0" y="1" width="76" height="39"/>
+					<reportElement uuid="fc93f22a-ab23-438f-98c6-8f4d8cf84ff7" key="table 2" style="table 2" x="0" y="0" width="76" height="49"/>
 					<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" whenNoDataType="AllSectionsNoDetail">
 						<datasetRun subDataset="suciedad" uuid="c74d7266-447f-46a3-aa08-bcb73c4722c2">
 							<datasetParameter name="fechai">
@@ -691,8 +683,8 @@ group by e.nombre_estado;]]>
 								</staticText>
 							</jr:columnHeader>
 							<jr:detailCell style="table 2_TD" height="20" rowSpan="1">
-								<textField>
-									<reportElement uuid="69abcdbb-c3d3-4474-b2eb-33a2234de281" x="8" y="0" width="77" height="20"/>
+								<textField pattern="###0.00" isBlankWhenNull="true">
+									<reportElement uuid="69abcdbb-c3d3-4474-b2eb-33a2234de281" x="6" y="0" width="77" height="20"/>
 									<textElement textAlignment="Center"/>
 									<textFieldExpression><![CDATA[$F{rechazados}]]></textFieldExpression>
 								</textField>
@@ -702,7 +694,7 @@ group by e.nombre_estado;]]>
 				</componentElement>
 			</frame>
 			<frame>
-				<reportElement uuid="712d221d-9d95-44ba-b794-c59a010844e9" style="table 1" x="258" y="8" width="90" height="49" backcolor="#FFFFFF"/>
+				<reportElement uuid="712d221d-9d95-44ba-b794-c59a010844e9" style="table 1" x="258" y="8" width="90" height="50" backcolor="#FFFFFF"/>
 				<componentElement>
 					<reportElement uuid="d41b3515-2b8d-4447-9f91-32b248b2ff52" key="table 3" style="table 3" x="0" y="0" width="48" height="49"/>
 					<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" whenNoDataType="AllSectionsNoDetail">
@@ -729,7 +721,7 @@ group by e.nombre_estado;]]>
 								</staticText>
 							</jr:columnHeader>
 							<jr:detailCell style="table 3_TD" height="20" rowSpan="1">
-								<textField>
+								<textField pattern="###0.00" isBlankWhenNull="true">
 									<reportElement uuid="988d0fa5-2511-4280-90c5-598135a4a907" x="0" y="0" width="90" height="20"/>
 									<textElement textAlignment="Center"/>
 									<textFieldExpression><![CDATA[$F{rechazados}]]></textFieldExpression>
@@ -767,7 +759,7 @@ group by e.nombre_estado;]]>
 								</staticText>
 							</jr:columnHeader>
 							<jr:detailCell style="table 4_TD" height="20" rowSpan="1">
-								<textField>
+								<textField pattern="###0.00" isBlankWhenNull="true">
 									<reportElement uuid="450d024f-c959-4297-ae7d-c0f0d49cd203" x="0" y="0" width="90" height="20"/>
 									<textElement textAlignment="Center"/>
 									<textFieldExpression><![CDATA[$F{rechazados}]]></textFieldExpression>
@@ -806,7 +798,7 @@ group by e.nombre_estado;]]>
 							</staticText>
 						</jr:columnHeader>
 						<jr:detailCell style="table 5_TD" height="20" rowSpan="1">
-							<textField>
+							<textField pattern="###0.00" isBlankWhenNull="true">
 								<reportElement uuid="9830f1c3-edf3-4d8d-8290-7f17477a0370" x="0" y="0" width="90" height="20"/>
 								<textElement textAlignment="Center"/>
 								<textFieldExpression><![CDATA[$F{acidez}]]></textFieldExpression>
@@ -843,7 +835,7 @@ group by e.nombre_estado;]]>
 								</staticText>
 							</jr:columnHeader>
 							<jr:detailCell style="table 6_TD" height="20" rowSpan="1">
-								<textField>
+								<textField pattern="###0.00" isBlankWhenNull="true">
 									<reportElement uuid="734adf0c-cab4-49fb-8caf-1f8eff1bd559" x="10" y="0" width="90" height="20"/>
 									<textElement textAlignment="Center"/>
 									<textFieldExpression><![CDATA[$F{rechazados}]]></textFieldExpression>
@@ -882,7 +874,7 @@ group by e.nombre_estado;]]>
 							</staticText>
 						</jr:columnHeader>
 						<jr:detailCell style="table 7_TD" height="20" rowSpan="1">
-							<textField>
+							<textField pattern="###0.00" isBlankWhenNull="true">
 								<reportElement uuid="b7ae6d67-77f0-424b-b707-49232ea8a241" x="0" y="0" width="90" height="20"/>
 								<textElement textAlignment="Center"/>
 								<textFieldExpression><![CDATA[$F{rechazados}]]></textFieldExpression>
@@ -920,7 +912,7 @@ group by e.nombre_estado;]]>
 							</staticText>
 						</jr:columnHeader>
 						<jr:detailCell style="table 8_TD" height="20" rowSpan="1">
-							<textField pattern="###0.00">
+							<textField pattern="###0.00" isBlankWhenNull="true">
 								<reportElement uuid="ef50cdb7-c782-4695-92a0-d686b739976e" x="0" y="0" width="90" height="20"/>
 								<textElement textAlignment="Center"/>
 								<textFieldExpression><![CDATA[$F{cantrechazado}]]></textFieldExpression>
@@ -958,7 +950,7 @@ group by e.nombre_estado;]]>
 							</staticText>
 						</jr:columnHeader>
 						<jr:detailCell style="table 9_TD" height="20" rowSpan="1">
-							<textField pattern="###0.000" isBlankWhenNull="true">
+							<textField pattern="###0.00" isBlankWhenNull="true">
 								<reportElement uuid="3d15f152-4714-4b76-84c4-31315c96cd41" x="0" y="0" width="90" height="20"/>
 								<textElement textAlignment="Center"/>
 								<textFieldExpression><![CDATA[$F{volacep}]]></textFieldExpression>
@@ -997,7 +989,7 @@ group by e.nombre_estado;]]>
 							</staticText>
 						</jr:columnHeader>
 						<jr:detailCell style="table 10_TD" height="20" rowSpan="1">
-							<textField>
+							<textField pattern="###0.00" isBlankWhenNull="true">
 								<reportElement uuid="8e89c4ff-ce92-4382-97ac-56f13188cae0" x="0" y="0" width="90" height="20"/>
 								<textElement textAlignment="Center"/>
 								<textFieldExpression><![CDATA[$F{cantaceptada}]]></textFieldExpression>

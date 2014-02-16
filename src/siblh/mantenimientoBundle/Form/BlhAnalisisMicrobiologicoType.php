@@ -41,8 +41,7 @@ class BlhAnalisisMicrobiologicoType extends AbstractType
                     ) )
                 
                 
-            ->add('idFrascoProcesado')
-			->add('usuario');
+            ->add('idFrascoProcesado');
      
     }
     

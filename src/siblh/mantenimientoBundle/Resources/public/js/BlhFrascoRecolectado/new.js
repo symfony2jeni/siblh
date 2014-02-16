@@ -1,7 +1,8 @@
 $(document).ready(function() { 
+
    $('button').button();
    $('#siblh_mantenimientobundle_blhfrascorecolectado_volumenRecolectado').
-        attr('data-bvalidator', 'between[1:300],required');
+        attr('data-bvalidator', 'between[1:500],required');
  
    
  
@@ -22,12 +23,18 @@ $(document).ready(function() {
     $ml = this.value;
     $onz = $ml * 0.033814;
     $onz=$onz.toFixed(4);
+    $('#siblh_mantenimientobundle_blhfrascorecolectado_onzRecolectado').val($onz);
    
 });
 
- $('#siblh_mantenimientobundle_blhfrascorecolectado_onzRecolectado').on ('click', function() {
- 
-this.value = $onz; } ) 
+$('#siblh_mantenimientobundle_blhfrascorecolectado_volumenRecolectado').keyup(function(){
+    $ml = this.value;
+    $onz = $ml * 0.033814;
+    $onz=$onz.toFixed(4);
+    $('#siblh_mantenimientobundle_blhfrascorecolectado_onzRecolectado').val($onz);
+   
+});
+
 
  $('#button').button();
  $('#boton1').button();
@@ -58,7 +65,8 @@ this.value = $onz; } )
         
            });
 
- 
+          $('#siblh_mantenimientobundle_blhfrascorecolectado_onzRecolectado').
+            attr('data-bvalidator', 'required'); 
 });
 
 function soloNumerosEnteros(e)
@@ -78,3 +86,4 @@ return true;
  
 return /\d/.test(String.fromCharCode(keynum));
 }
+

@@ -22,14 +22,14 @@ class BlhSeguimientoReceptorType extends AbstractType
             ->add('semana','text')
             ->add('fechaSeguimiento','date', 
                     array(  'widget' => 'single_text',
-                            'format' => 'yy-MM-dd',
+                            'format' => 'y-MM-dd',
                             'attr' => array('class' => 'date')))
             ->add('gananciaDiaTalla')
-            ->add('complicaciones', 'textarea',array('max_length'=>'50'))
-            ->add('observacion')
-            ->add('periodoEvaluacion')
+            ->add('complicaciones', 'textarea',array('max_length'=>'150'))
+            ->add('observacion', 'textarea',array('max_length'=>'150'))
+            ->add('periodoEvaluacion','text')
             ->add('gananciaDiaPc')
-            ->add('usuario')
+            //->add('usuario')
        ->add('idReceptor')
         ;
     }

@@ -69,14 +69,15 @@ class BlhSolicitudController extends Controller
     {
      
         $entity = new BlhSolicitud();
-		$usuario = $this->container->get('security.context')->getToken()->getUser()->getId();
-        $entity->setUsuario($usuario);        
+        
         
         $form = $this->createCreateForm($entity);
         $form->handleRequest($request);
        
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
+            $usuario = $this->container->get('security.context')->getToken()->getUser()->getId();
+            $entity->setUsuario($usuario);   
             $em->persist($entity);
             $em->flush();
 
@@ -197,7 +198,7 @@ class BlhSolicitudController extends Controller
     public function editAction($id)
     {
         $em = $this->getDoctrine()->getManager();
-			   $user_ID = $this->container->get('security.context')->getToken()->getUser()->getId();
+
         $entity = $em->getRepository('siblhmantenimientoBundle:BlhSolicitud')->find($id);
 
         if (!$entity) {
@@ -219,7 +220,6 @@ class BlhSolicitudController extends Controller
             'delete_form' => $deleteForm->createView(),
             'hospital' => $establecimiento,
             'responsable' => $responsable,
-			'user_ID' => $user_ID,
         );
     }
 
@@ -253,13 +253,14 @@ class BlhSolicitudController extends Controller
         $em = $this->getDoctrine()->getManager();
 
         $entity = $em->getRepository('siblhmantenimientoBundle:BlhSolicitud')->find($id);
-		$usuario = $this->container->get('security.context')->getToken()->getUser()->getId();
-        $entity->setUsuario($usuario);
+
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find BlhSolicitud entity.');
         }
 
         $deleteForm = $this->createDeleteForm($id);
+        $usuario = $this->container->get('security.context')->getToken()->getUser()->getId();
+        $entity->setUsuario($usuario);   
         $editForm = $this->createEditForm($entity);
         $editForm->handleRequest($request);
 
@@ -380,7 +381,7 @@ class BlhSolicitudController extends Controller
         
         //mostrando los datos del receptor seleccionado
         $em = $this->getDoctrine()->getManager();
-        $user_ID = $this->container->get('security.context')->getToken()->getUser()->getId();
+        
         $query = $em->createQuery("SELECT  r.edadGestFur, r.pesoReceptor, r.diagnosticoIngreso, r.id as id_receptor, r.procedencia, r.codigoReceptor, p.fechaNacimiento as fecha_nacimiento, p.primerNombre as primer_nombre, p.segundoNombre as segundo_nombre, p.tercerNombre as tercer_nombre, p.primerApellido as primer_apellido, p.segundoApellido as segundo_apellido, s.nombre as sexo  FROM siblhmantenimientoBundle:BlhReceptor  r JOIN r.idPaciente p JOIN p.idSexo s  WHERE r.id = $id "); 
         
         $datos_receptor  = $query->getResult();
@@ -418,7 +419,6 @@ class BlhSolicitudController extends Controller
             'form'   => $form->createView(),
             'hospital' => $establecimiento,
             'responsable' => $responsable,
-			'user_ID' => $user_ID,
            
             
            

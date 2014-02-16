@@ -45,13 +45,13 @@ class BlhFrascoProcesadoSolicitudController extends Controller
     public function createAction(Request $request)
     {
         $entity = new BlhFrascoProcesadoSolicitud();
-		$usuario = $this->container->get('security.context')->getToken()->getUser()->getId();
-        $entity->setUsuario($usuario);
         $form = $this->createCreateForm($entity);
         $form->handleRequest($request);
 
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
+            $usuario = $this->container->get('security.context')->getToken()->getUser()->getId();
+            $entity->setUsuario($usuario);
             $em->persist($entity);
             $em->flush();
 
@@ -92,15 +92,12 @@ class BlhFrascoProcesadoSolicitudController extends Controller
      */
     public function newAction()
     {
-		   $user_ID = $this->container->get('security.context')->getToken()->getUser()->getId();
-
         $entity = new BlhFrascoProcesadoSolicitud();
         $form   = $this->createCreateForm($entity);
 
         return array(
             'entity' => $entity,
             'form'   => $form->createView(),
-			'user_ID' => $user_ID,
         );
     }
 
@@ -139,7 +136,6 @@ class BlhFrascoProcesadoSolicitudController extends Controller
     public function editAction($id)
     {
         $em = $this->getDoctrine()->getManager();
-	   $user_ID = $this->container->get('security.context')->getToken()->getUser()->getId();
 
         $entity = $em->getRepository('siblhmantenimientoBundle:BlhFrascoProcesadoSolicitud')->find($id);
 
@@ -154,7 +150,6 @@ class BlhFrascoProcesadoSolicitudController extends Controller
             'entity'      => $entity,
             'edit_form'   => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
-			'user_ID' => $user_ID,
         );
     }
 
@@ -188,8 +183,7 @@ class BlhFrascoProcesadoSolicitudController extends Controller
         $em = $this->getDoctrine()->getManager();
 
         $entity = $em->getRepository('siblhmantenimientoBundle:BlhFrascoProcesadoSolicitud')->find($id);
-		$usuario = $this->container->get('security.context')->getToken()->getUser()->getId();
-        $entity->setUsuario($usuario);
+
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find BlhFrascoProcesadoSolicitud entity.');
         }
@@ -199,6 +193,8 @@ class BlhFrascoProcesadoSolicitudController extends Controller
         $editForm->handleRequest($request);
 
         if ($editForm->isValid()) {
+            $usuario = $this->container->get('security.context')->getToken()->getUser()->getId();
+            $entity->setUsuario($usuario);
             $em->flush();
 
             return $this->redirect($this->generateUrl('blhfrascoprocesadosolicitud_edit', array('id' => $id)));

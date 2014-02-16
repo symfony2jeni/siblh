@@ -27,7 +27,6 @@ class BlhHistoriaActualType extends AbstractType
                           'No Apta' => 'No Apta',
                           'Estimulacion' => 'Estimulacion')))
             ->add('idDonante')
-			->add('usuario')
         ;
     }
     

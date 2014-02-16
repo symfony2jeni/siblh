@@ -45,8 +45,6 @@ class FosUserUserController extends Controller
     public function createAction(Request $request)
     {
         $entity = new FosUserUser();
-		$usuario = $this->container->get('security.context')->getToken()->getUser()->getId();
-        $entity->setUsuario($usuario);
         $form = $this->createCreateForm($entity);
         $form->handleRequest($request);
 
@@ -183,8 +181,7 @@ class FosUserUserController extends Controller
         $em = $this->getDoctrine()->getManager();
 
         $entity = $em->getRepository('siblhmantenimientoBundle:FosUserUser')->find($id);
-		$usuario = $this->container->get('security.context')->getToken()->getUser()->getId();
-        $entity->setUsuario($usuario);
+
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find FosUserUser entity.');
         }

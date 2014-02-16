@@ -41,16 +41,24 @@ $('#siblh_mantenimientobundle_blhhistoriaactual_pesoDonante').
  $('#siblh_mantenimientobundle_blhhistoriaactual_imc').on ('click', function() {
   $talla= $('#siblh_mantenimientobundle_blhhistoriaactual_tallaDonante').val();
  $peso = $('#siblh_mantenimientobundle_blhhistoriaactual_pesoDonante').val();
+ if (($talla == '') || ($peso == '') || ($talla < 100) || ($talla > 200) || ($peso < 22) || ($peso > 136)) 
+{ alert ('Digite valores validos para el peso y talla');
+    return false;}
+else {
  $aux= Math.pow($talla,2);
  $imc = $peso / $aux;
  $imc=$imc.toFixed(4);
 this.value = $imc; 
+    }
+ 
 } ); 
 
            
            
            
-           
+ 
+          $('#siblh_mantenimientobundle_blhhistoriaactual_imc').
+            attr('data-bvalidator', 'required');           
            
    $('#button').button();
    $('#boton1').button();

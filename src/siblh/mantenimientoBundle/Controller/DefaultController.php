@@ -32,8 +32,10 @@ class DefaultController extends Controller
             
     {
         
-        $em = $this->getDoctrine()->getManager();      
-        
+        $em = $this->getDoctrine()->getManager();     
+        $usuario = $this->container->get('security.context')->getToken()->getUser()->getId();
+        $query_rol_usuario = $em->createQuery("select u.roles from siblhmantenimientoBundle:FosUserUser u where u.id = $usuario"); 
+        $rol_usuario   = $query_rol_usuario->getResult();
         //Obteniendo lista de pacientes"  
      // $query = $em->createQuery("SELECT d.id FROM siblhmantenimientoBundle:BlhDonacion d");
        $query = $em->createQuery("select date_diff(date_add(don.fechaDonacion,15,'day'),current_date()) as dias
@@ -66,6 +68,7 @@ from siblhmantenimientoBundle:BlhFrascoProcesado  fp JOIN fp.idPasteurizacion pa
             'resultado' =>  $resultCount,  
              'resultado2' => $resultCount2,
             'hospital' => $establecimiento,
+            'rol_usuario' => $rol_usuario,
          
         );
         

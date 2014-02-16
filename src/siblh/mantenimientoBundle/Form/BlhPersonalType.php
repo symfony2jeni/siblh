@@ -17,7 +17,6 @@ class BlhPersonalType extends AbstractType
         $builder
             ->add('nombre')
             ->add('idEstablecimiento')
-			->add('usuario')
         ;
     }
     

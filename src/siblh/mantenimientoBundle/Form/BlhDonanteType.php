@@ -20,18 +20,22 @@ class BlhDonanteType extends AbstractType
             ->add('segundoNombre')
             ->add('primerApellido')
             ->add('segundoApellido')
+                
+               
              ->add('fechaNacimiento', 'date', 
                     array(  'widget' => 'single_text',
-                            'format' => 'yy-MM-dd',
+                            'format' => 'y-MM-dd',
                             'attr' => array('class' => 'date')))
+                        
+                        
             ->add('fechaRegistroDonanteBlh', 'date', 
                     array(  'widget' => 'single_text',
-                            'format' => 'yy-MM-dd',
+                            'format' => 'y-MM-dd',
                             'attr' => array('class' => 'date')))
             ->add('telefonoFijo')
             ->add('telefonoMovil')
             ->add('direccion')
-            ->add('procedencia')
+           // ->add('procedencia')
             ->add('registro')
             ->add('numeroDocumentoIdentificacion')
             ->add('documentoIdentificacion', 'choice', 
@@ -46,16 +50,21 @@ class BlhDonanteType extends AbstractType
                           'Acompanada' => 'Acompañada',
                           'Viuda' => 'Viuda')))
             ->add('nacionalidad', 'text',array('data' => 'Salvadorena'))
-            ->add('escolaridad')
+            ->add('escolaridad', 'choice', 
+                    array('choices' => array('' => 'Seleccione un valor','Primaria' => 'Primaria(1 - 6 grado)',
+                          'Media' => 'Media(7 - 9 grado)',
+                          'Secundaria' => 'Secundaria(Bachillerato)',
+                          'Superior' => 'Superior(universidad)')))
             ->add('tipoColecta', 'choice',
                     array('choices' => array ('' => 'Seleccione un valor', 
                         'Domiciliar' => 'Domiciliar', 'BLH'=> 'BLH')))
             ->add('observaciones','textarea',array('max_length'=>'150'))
-            ->add('estado')
+            ->add('estado', 'choice', 
+                    array('choices' => array('Activa' => 'Activa',
+                          'Inactiva' => 'Inactiva')))
           //  ->add('usuario')
                ->add('idBancoDeLeche')
             ->add('idMunicipio')
-			->add('usuario')
                 
                 
         ;

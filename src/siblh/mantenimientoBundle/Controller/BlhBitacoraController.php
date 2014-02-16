@@ -18,22 +18,51 @@ use siblh\mantenimientoBundle\Form\BlhBitacoraType;
 class BlhBitacoraController extends Controller
 {
 
+  
     /**
-     * Lists all BlhBitacora entities.
+     * Displays a form to edit an existing BlhBitacora entity.
      *
      * @Route("/", name="blhbitacora")
-     * @Method("GET")
+     * @Method("POST")
      * @Template()
      */
     public function indexAction()
     {
         $em = $this->getDoctrine()->getManager();
-
-        $entities = $em->getRepository('siblhmantenimientoBundle:BlhBitacora')->findAll();
-
-        return array(
-            'entities' => $entities,
+        $request = $this->getRequest();
+     
+        $tipoBusqueda = $request->get('opcionSeleccionada');
+        $nombreUsuario = $request->get('nombreUser');
+        $fechaInicio= $request->get('fechai');
+        $fechaFin = $request->get('fechaf');
+        
+        $userEst = $this->container->get('security.context')->getToken()->getUser()->getIdEst();      
+        $queryEstablecimiento = $em->createQuery("SELECT e.nombre, e.direccion, e.telefono FROM siblhmantenimientoBundle:CtlEstablecimiento e WHERE e.id = $userEst");
+        $establecimiento = $queryEstablecimiento->getResult(); 
+        if ($tipoBusqueda == 1)
+        {
+            $query1 = $em->createQuery("SELECT e.id, e.fechaAccion,e.codigo,e.tabla,e.usuario,e.accion,e.detalle FROM siblhmantenimientoBundle:BlhBitacora e WHERE e.usuario ='$nombreUsuario'");
+            $entities = $query1->getResult();
+  
+        }
+ 
+        if ($tipoBusqueda == 2)
+        {
+            $query1 = $em->createQuery("SELECT e.id, e.fechaAccion,e.codigo,e.tabla,e.usuario,e.accion,e.detalle FROM siblhmantenimientoBundle:BlhBitacora e WHERE e.fechaAccion >='$fechaInicio' and e.fechaAccion <='$fechaFin'");
+            $entities = $query1->getResult();
+  
+        }
+       
+       
+  
+                 return array(
+                     'entities' => $entities,
+                     'hospital' => $establecimiento,
         );
+        /*return array(
+            'entities' => $entities,
+        );*/
+        
     }
     /**
      * Creates a new BlhBitacora entity.
@@ -228,6 +257,43 @@ class BlhBitacoraController extends Controller
         return $this->redirect($this->generateUrl('blhbitacora'));
     }
 
+    
+    
+    
+              
+/**
+     * @Route("/busqueda/",name="BusquedaBitacora")
+     * @Template("siblhmantenimientoBundle:BlhBitacora:BusquedaBitacora.html.twig")
+     */
+    public function BusquedaBitacoraAction()
+            
+             {
+         
+       $em = $this->getDoctrine()->getManager();  
+          //Obtener banco de leche//
+        
+      $userEst = $this->container->get('security.context')->getToken()->getUser()->getIdEst();
+      $query1 = $em->createQuery("SELECT e.nombre, e.direccion, e.telefono FROM siblhmantenimientoBundle:CtlEstablecimiento e WHERE e.id = $userEst");
+      $establecimiento = $query1->getResult(); 
+      
+      $query2 = $em->createQuery("SELECT b.id FROM siblhmantenimientoBundle:BlhBancoDeLeche b WHERE b.idEstablecimiento = $userEst");
+      $id_blh = $query2->getResult(); 
+      $codigo=$id_blh[0]['id']; 
+          if ($codigo<10){
+        $id='0'.$codigo;}
+        else{$id = strval($codigo);}
+      
+        return array('hospital' => $establecimiento,
+                     'id' => $id
+                );
+          }  
+
+    
+    
+    
+    
+    
+    
     /**
      * Creates a form to delete a BlhBitacora entity by id.
      *

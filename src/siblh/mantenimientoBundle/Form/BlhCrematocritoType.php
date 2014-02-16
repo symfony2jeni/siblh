@@ -26,7 +26,6 @@ class BlhCrematocritoType extends AbstractType
             ->add('porcentajeCrema')
             ->add('kilocalorias')
             ->add('idFrascoRecolectado')
-			->add('usuario')
         ;
     }
     

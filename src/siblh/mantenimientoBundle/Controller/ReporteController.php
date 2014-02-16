@@ -88,7 +88,7 @@ class ReporteController extends Controller {
     
       /**
      *
-     * @Route("/reporte/lechedonada/{report_name}/{report_format}/{nombre}", name="mostrar_frascos")
+     * @Route("/reporte/lechedonada2/{report_name}/{report_format}/{nombre}", name="mostrar_frascos")
      * @Template()
      */
     public function ReporteLecheDonadaAction($report_name, $report_format) {
@@ -97,8 +97,10 @@ class ReporteController extends Controller {
         $jasper_username = JASPER_USER;
         $jasper_password = JASPER_PASSWORD;
         $report_unit = "/reports/siblh/" . $report_name;  //rutadejasperserverreports
-        $report_params = array();
-
+        $request = $this->getRequest();
+        $id = $request->get('id'); 
+        $nombre = $request->get('nombre');                     
+        $report_params = array('id' => $id, 'nombre' => $nombre);
         $client = new JasperClient($jasper_url, $jasper_username, $jasper_password);
 
         $contentType = (($report_format == 'HTML') ? 'text' : 'application') .
@@ -129,7 +131,10 @@ class ReporteController extends Controller {
         $jasper_username = JASPER_USER;
         $jasper_password = JASPER_PASSWORD;
         $report_unit = "/reports/siblh/" . $report_name;  //rutadejasperserverreports
-        $report_params = array();
+        $request = $this->getRequest();
+        $nombre = $request->get('nombre');
+        $id = $request->get('id');
+        $report_params = array('nombre' => $nombre, 'id' => $id);
 
         $client = new JasperClient($jasper_url, $jasper_username, $jasper_password);
 
@@ -313,7 +318,7 @@ class ReporteController extends Controller {
 
        $response = new Response();
        $response->headers->set('Content-Type', $contentType);
-         if (strtoupper($report_format) != 'PDF')//para cuando sea una hoja de calculo, en este informe sólo  están las opciones PDF y hoja de cálculo
+         if (strtoupper($report_format) != 'pdf')//para cuando sea una hoja de calculo, en este informe sólo  están las opciones PDF y hoja de cálculo
          $response->headers->set('Content-disposition', 'attachment; filename="' . $report_name . '.' . strtolower($report_format) . '"');
        $response->setContent($result);
 
@@ -703,9 +708,9 @@ class ReporteController extends Controller {
    }  
    
 /**
-    * @Route("/reporte/{report_name}/{report_format}", name="_IDonante", options={"expose"=true})
+    * @Route("/reporte/{report_name}/{report_format}/{id}/{codigo}/{nombre}", name="_IDonante", options={"expose"=true})
     */
-   public function exportarReporteInformacionDonante($report_name, $report_format) {
+   public function exportarReporteInformacionDonante($report_name, $report_format, $id, $codigo, $nombre) {
       $jasper_url = JASPER_URL;
        $jasper_username = JASPER_USER;
        $jasper_password = JASPER_PASSWORD;
@@ -719,10 +724,10 @@ class ReporteController extends Controller {
 
      // $codigo= explode(" ", $cod);
        $nombre = $request->get('nombre');
-         $id2 = $request->get('id2');
+         $codigo = $request->get('codigo');
      //  echo $codigo;
        
-       $report_params = array('id' => $id,'nombre' => $nombre, 'id2' => $id2);
+       $report_params = array('id' => $id,'nombre' => $nombre, 'codigo' => $codigo);
        $client = new JasperClient($jasper_url, $jasper_username, $jasper_password);
 
        $contentType = (($report_format == 'HTML') ? 'text' : 'application') .
@@ -740,9 +745,9 @@ class ReporteController extends Controller {
    }  
 
  /**
-    * @Route("/reporte/{report_name}/{report_format}", name="_DDonante", options={"expose"=true})
+    * @Route("/reporte/{report_name}/{report_format}/{id}/{codigo}/{nombre}", name="_DDonante", options={"expose"=true})
     */
-   public function exportarReporteDonacionesDonante($report_name, $report_format) {
+   public function exportarReporteDonacionesDonante($report_name, $report_format, $id, $codigo, $nombre) {
       $jasper_url = JASPER_URL;
        $jasper_username = JASPER_USER;
        $jasper_password = JASPER_PASSWORD;
@@ -752,14 +757,14 @@ class ReporteController extends Controller {
     
     //   $fecha_fin = $request->get('fechaf');
      
-       $id = $request->get('id');
+         $id = $request->get('id');
 
      // $codigo= explode(" ", $cod);
        $nombre = $request->get('nombre');
-         $id2 = $request->get('id2');
+         $codigo = $request->get('codigo');
      //  echo $codigo;
        
-       $report_params = array('id' => $id,'nombre' => $nombre, 'id2' => $id2);
+       $report_params = array('id' => $id,'nombre' => $nombre, 'codigo' => $codigo);
        $client = new JasperClient($jasper_url, $jasper_username, $jasper_password);
 
        $contentType = (($report_format == 'HTML') ? 'text' : 'application') .
@@ -848,6 +853,37 @@ class ReporteController extends Controller {
 
        return $response;
    }   
+   
+   /**
+     *
+     * @Route("/reporte/lechedonada/{report_name}/{report_format}/{nombre}", name="mostrarfrascos")
+     * @Template()
+     */
+    public function ReporteLeche_DonadaAction($report_name, $report_format) {
+        //$report_format='pdf';
+        $jasper_url = JASPER_URL;
+        $jasper_username = JASPER_USER;
+        $jasper_password = JASPER_PASSWORD;
+        $report_unit = "/reports/siblh/" . $report_name;  //rutadejasperserverreports
+        $request = $this->getRequest();
+        $nombre = $request->get('nombre');
+        $id = $request->get('id');
+        $report_params = array('nombre' => $nombre, 'id' => $id);
+        $client = new JasperClient($jasper_url, $jasper_username, $jasper_password);
+
+        $contentType = (($report_format == 'HTML') ? 'text' : 'application') .
+                '/' . strtolower($report_format);
+
+        $result = $client->requestReport($report_unit, $report_format, $report_params);
+
+        $response = new Response();
+        $response->headers->set('Content-Type', $contentType);
+        //if (strtoupper($report_format) != 'HTML')
+        //$response->headers->set('Content-disposition', 'attachment; filename="' . $report_name . '.' . strtolower($report_format) . '"');
+        $response->setContent($result);
+
+        return $response;
+    }
    
    
 }

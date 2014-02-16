@@ -44,7 +44,7 @@ class BlhTemperaturaEnfriamientoController extends Controller
          }
         else{$idp = (string)$codigo;}
         
-         $query = $em->createQuery("SELECT te.id, p.codigoPasteurizacion as codigo, te.temperaturaE
+        $query = $em->createQuery("SELECT te.id, p.codigoPasteurizacion as codigo,p.fechaPasteurizacion, te.temperaturaE
        FROM siblhmantenimientoBundle:BlhTemperaturaEnfriamiento te join te.idPasteurizacion p where 
        substring (p.codigoPasteurizacion, 1, 2) = '$idp' order by p.codigoPasteurizacion, te.id");
        $pastemperatura  = $query->getResult(); 
@@ -64,13 +64,13 @@ class BlhTemperaturaEnfriamientoController extends Controller
     public function createAction(Request $request)
     {
         $entity = new BlhTemperaturaEnfriamiento();
-		$usuario = $this->container->get('security.context')->getToken()->getUser()->getId();
-        $entity->setUsuario($usuario);
         $form = $this->createCreateForm($entity);
         $form->handleRequest($request);
 
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
+            $usuario = $this->container->get('security.context')->getToken()->getUser()->getId();
+            $entity->setUsuario($usuario);
             $em->persist($entity);
             $em->flush();
 
@@ -193,13 +193,14 @@ class BlhTemperaturaEnfriamientoController extends Controller
         $em = $this->getDoctrine()->getManager();
 
         $entity = $em->getRepository('siblhmantenimientoBundle:BlhTemperaturaEnfriamiento')->find($id);
-		$usuario = $this->container->get('security.context')->getToken()->getUser()->getId();
-        $entity->setUsuario($usuario);
+
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find BlhTemperaturaEnfriamiento entity.');
         }
 
         $deleteForm = $this->createDeleteForm($id);
+        $usuario = $this->container->get('security.context')->getToken()->getUser()->getId();
+        $entity->setUsuario($usuario);
         $editForm = $this->createEditForm($entity);
         $editForm->handleRequest($request);
 

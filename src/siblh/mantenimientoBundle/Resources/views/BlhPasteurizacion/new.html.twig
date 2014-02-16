@@ -21,7 +21,7 @@
        <tr>
        <td align = "right" colspan = "5">Curva</td>
         <td align = "right" colspan = "2">
-        <INPUT type=text disabled="disabled" size=10 readonly="readonly" value= "{{ datos_curva[0].iden }}"></td></tr>
+        <INPUT type=text disabled="disabled" size=10 readonly="readonly" value= "{{ datos_curva[0].valorCurva }}"></td></tr>
         <td align = "right" colspan = "5">Fecha Curva</td>
         <td align = "right" colspan = "2">
         <INPUT type=text disabled="disabled" size=10 readonly="readonly" value= "{{ datos_curva[0].fechaCurva|date('d-m-Y') }}"></td></tr>
@@ -31,6 +31,8 @@
         <td align = "right" colspan = "5">Volumen frascos</td>
         <td align = "right" colspan = "2">
         <INPUT id="vol" type=text disabled="disabled" size=10 readonly="readonly" value= "{{ datos_curva[0].volumenPorFrasco }}"></td></tr>
+        <td align = "right" colspan = "2" style="visibility:hidden">
+        <INPUT id="ciclos" type=text disabled="disabled" size=10 readonly="readonly" value= "{{ ciclos[0].ciclos }}"></td></tr>
 
    </table>
      
@@ -83,9 +85,7 @@
         {{ form_widget(form.horaFinalE) }} </td></tr> 
         <tr style="visibility:hidden"> <td align = left><font color="red">*</font>
         {{ form_label(form.responsablePasteurizacion, 'Responsable') }}</td><td align = left>
-        {{ form_widget(form.responsablePasteurizacion) }} </td>
-		<td style="visibility:hidden">{{ form_widget(form.usuario, {'attr':{ 'value' : user_ID }}) }} </td>
-		</tr>
+        {{ form_widget(form.responsablePasteurizacion) }} </td></tr>
     
        
       
@@ -97,16 +97,8 @@
        
    <tr><td colspan = 4 align = center> <input type="submit" id = "button"  value="Guardar"/>
        <input id = "boton1" type="button" value="Regresar" onClick=' window.location.href="{{ path('_NewPasteurizacion') }}" '>
-
-       </td></tr>
-   
-       
-       
-       </table> 
-    
-    
-    
-    
+       </td></tr>       
+       </table>     
       {{ form_end(form) }}
     
 {#<table align = 'center'>
@@ -115,5 +107,11 @@
         <a href="{{ path('blhpasteurizacion') }}">
              Ver listado </a>
         </td></tr></table> #}
-     
+     <table>
+    <tr style="visibility:hidden"> <td>
+<div id="dialog-message" title="Alerta de ciclos de pasteurizacion">
+<p><span class="ui-icon ui-icon-alert" style="float: left; margin: 0 7px 50px 0;"></span>Pasteurizacion 30 para la curva seleccionada.</p>
+  </div></td></tr>
+ </table>
+  
 {% endblock %}

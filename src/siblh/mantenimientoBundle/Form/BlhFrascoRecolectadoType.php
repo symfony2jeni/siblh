@@ -27,7 +27,6 @@ class BlhFrascoRecolectadoType extends AbstractType
                         ->add('idEstado')
             ->add('idDonacion')
             ->add('idDonante')
-			->add('usuario')
           //  ->add('idLoteAnalisis')
         ;
     }

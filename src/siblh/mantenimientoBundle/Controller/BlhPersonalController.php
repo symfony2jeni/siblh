@@ -49,13 +49,13 @@ class BlhPersonalController extends Controller
     public function createAction(Request $request)
     {
         $entity = new BlhPersonal();
-		$usuario = $this->container->get('security.context')->getToken()->getUser()->getId();
-        $entity->setUsuario($usuario);
         $form = $this->createCreateForm($entity);
         $form->handleRequest($request);
 
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
+             $usuario = $this->container->get('security.context')->getToken()->getUser()->getId();
+            $entity->setUsuario($usuario);   
             $em->persist($entity);
             $em->flush();
 
@@ -97,7 +97,7 @@ class BlhPersonalController extends Controller
     public function newAction()
     {
      
-        	   $user_ID = $this->container->get('security.context')->getToken()->getUser()->getId();
+        
         $em = $this->getDoctrine()->getManager();
         $userEst = $this->container->get('security.context')->getToken()->getUser()->getIdEst();
         $query1 = $em->createQuery("SELECT e.id, e.nombre, e.direccion, e.telefono FROM siblhmantenimientoBundle:CtlEstablecimiento e WHERE e.id = $userEst");
@@ -113,7 +113,6 @@ class BlhPersonalController extends Controller
             'entity' => $entity,
             'hospital' => $establecimiento,
             'form'   => $form->createView(),
-			'user_ID' => $user_ID,
             
         );
     }
@@ -157,7 +156,7 @@ class BlhPersonalController extends Controller
     public function editAction($id)
     {
         $em = $this->getDoctrine()->getManager();
-			   $user_ID = $this->container->get('security.context')->getToken()->getUser()->getId();
+
         $entity = $em->getRepository('siblhmantenimientoBundle:BlhPersonal')->find($id);
 
         if (!$entity) {
@@ -175,7 +174,6 @@ class BlhPersonalController extends Controller
             'edit_form'   => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
              'hospital' => $establecimiento,
-			 'user_ID' => $user_ID,
         );
     }
 
@@ -209,13 +207,14 @@ class BlhPersonalController extends Controller
         $em = $this->getDoctrine()->getManager();
 
         $entity = $em->getRepository('siblhmantenimientoBundle:BlhPersonal')->find($id);
-		$usuario = $this->container->get('security.context')->getToken()->getUser()->getId();
-        $entity->setUsuario($usuario);
+
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find BlhPersonal entity.');
         }
 
         $deleteForm = $this->createDeleteForm($id);
+        $usuario = $this->container->get('security.context')->getToken()->getUser()->getId();
+        $entity->setUsuario($usuario);
         $editForm = $this->createEditForm($entity);
         $editForm->handleRequest($request);
 

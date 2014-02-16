@@ -19,7 +19,6 @@ class CtlEstablecimientoType extends AbstractType
             ->add('direccion')
             ->add('telefono')
             ->add('fax')
-			->add('usuario')
         ;
     }
     
