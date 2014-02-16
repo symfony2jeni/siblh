@@ -138,6 +138,37 @@ $(function() {
 
 });
 
+function Numeros_Guion(e)
+{
+var keynum = window.event ? window.event.keyCode : e.which;
+if ((keynum === 8) || (keynum === 45))
+return true;
+ 
+return /\d/.test(String.fromCharCode(keynum));
+}
 
+function soloNumerosEnteros(e)
+{
+var keynum = window.event ? window.event.keyCode : e.which;
+if (keynum === 8)
+return true;
+ 
+return /\d/.test(String.fromCharCode(keynum));
+} 
+
+  function soloLetras(e){
+     tecla = (document.all) ? e.keyCode : e.which; 
+    if (tecla==8) return true; // backspace
+    if (tecla==32) return true; // espacio
+    if (tecla==239) return true; // acento
+    if (e.ctrlKey && tecla==86) { return true;} //Ctrl v (Pegar)
+    if (e.ctrlKey && tecla==67) { return true;} //Ctrl c (Copiar)
+    if (e.ctrlKey && tecla==88) { return true;} //Ctrl x (Cortar)
+ 
+    letras = /[a-zA-ZáéíóúñÑ]/; //letras permitidas
+ 
+    te = String.fromCharCode(tecla); 
+    return letras.test(te); // prueba de letras permitidas
+    }
 
       

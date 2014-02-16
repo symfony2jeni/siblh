@@ -21,13 +21,13 @@
 <table align = "center">
        
         <tr><td colspan=2 align = "left" height=10  ></td></tr>
-        <tr><td align='left' ><font color="red">*</font>{{ form_label(edit_form.primerNombre,'Primer Nombre') }}</td><td align='left'>{{ form_widget(edit_form.primerNombre) }}</td></tr>
+        <tr><td align='left' ><font color="red">*</font>{{ form_label(edit_form.primerNombre,'Primer Nombre') }}</td><td align='left'>{{ form_widget(edit_form.primerNombre,  { 'attr': {'onKeyPress':"return soloLetras(event);"} }) }}</td></tr>
         <tr><td colspan=2 align = "left" height=10  ></td></tr>
-        <tr><td align='left' >{{ form_label(edit_form.segundoNombre,'Segundo Nombre') }}</td><td align='left'>{{ form_widget(edit_form.segundoNombre) }}</td></tr>
+        <tr><td align='left' >{{ form_label(edit_form.segundoNombre,'Segundo Nombre') }}</td><td align='left'>{{ form_widget(edit_form.segundoNombre,  { 'attr': {'onKeyPress':"return soloLetras(event);"} }) }}</td></tr>
         <tr><td colspan=2 align = "left" height=10  ></td></tr>
-        <tr><td align='left' ><font color="red">*</font>{{ form_label(edit_form.primerApellido,'Primer Apellido') }}</td><td align='left'>{{ form_widget(edit_form.primerApellido) }}</td></tr>
+        <tr><td align='left' ><font color="red">*</font>{{ form_label(edit_form.primerApellido,'Primer Apellido') }}</td><td align='left'>{{ form_widget(edit_form.primerApellido,  { 'attr': {'onKeyPress':"return soloLetras(event);"} }) }}</td></tr>
         <tr><td colspan=2 align = "left" height=10  ></td></tr>
-        <tr><td align='left' >{{ form_label(edit_form.segundoApellido,'Segundo Apellido') }}</td><td align='left'>{{ form_widget(edit_form.segundoApellido) }}</td></tr>
+        <tr><td align='left' >{{ form_label(edit_form.segundoApellido,'Segundo Apellido') }}</td><td align='left'>{{ form_widget(edit_form.segundoApellido,  { 'attr': {'onKeyPress':"return soloLetras(event);"} }) }}</td></tr>
         <tr><td colspan=2 align = "left" height=10  ></td></tr>
         <tr><td align='left' ><font color="red">*</font>{{ form_label(edit_form.fechaNacimiento,'Fecha de Nacimiento') }} </td><td align='left'>{{ form_widget(edit_form.fechaNacimiento, {'attr':{'required': 'true', 'readonly': 'true', 'title': 'Dar clic y seleccionar fecha de nacimiento'} }) }}</td></tr>
         <tr><td colspan=2 align = "left" height=10  ></td></tr>
@@ -37,27 +37,27 @@
         {#<tr><td colspan=2 align = "left" height=10  ></td></tr>
         <tr><td align='left' >{{ form_label(edit_form.procedencia,'Procedencia') }}</td><td align='left'>{{ form_widget(edit_form.procedencia) }}</td></tr>#}
         <tr><td colspan=2 align = "left" height=10  ></td></tr>
-        <tr><td align='left' >{{ form_label(edit_form.registro,'Registro') }}</td><td align='left'>{{ form_widget(edit_form.registro,  { 'attr': {'title': '999999-9999 correlativo-anio'} }) }}</td></tr>
+        <tr><td align='left' >{{ form_label(edit_form.registro,'Registro') }}</td><td align='left'>{{ form_widget(edit_form.registro,  { 'attr': {'title': '999999-9999 correlativo-anio', 'onKeyPress':"return Numeros_Guion(event);"} }) }}</td></tr>
         <tr><td colspan=2 align = "left" height=10  ></td></tr>
         <tr><td align='left' ><font color="red" >*</font>{{ form_label(edit_form.fechaRegistroDonanteBlh,'Fecha de Registro') }}</td><td align='left'>{{ form_widget(edit_form.fechaRegistroDonanteBlh, {'attr':{'readonly': 'true', 'title': 'Dar clic y seleccionar fecha de registro'} }) }}</td></tr>
         <tr><td colspan=2 align = "left" height=10  ></td></tr>
         <tr><td align='left' ><font color="red">*</font>{{ form_label(edit_form.documentoIdentificacion,'Documento de Identificacion') }}</td><td align='left'>{{ form_widget(edit_form.documentoIdentificacion) }}</td></tr>
         <tr><td colspan=2 align = "left" height=10  ></td></tr>
-        <tr><td align='left' ><font color="red">*</font>{{ form_label(edit_form.numeroDocumentoIdentificacion,'Numero de Documento') }}</td><td align='left'>{{ form_widget(edit_form.numeroDocumentoIdentificacion) }}</td></tr>
+        <tr><td align='left' ><font color="red">*</font>{{ form_label(edit_form.numeroDocumentoIdentificacion,'Numero de Documento') }}</td><td align='left'>{{ form_widget(edit_form.numeroDocumentoIdentificacion,  { 'attr': {'onKeyPress':"return Numeros_Guion(event);"} }) }}</td></tr>
         <tr><td colspan=2 align = "left" height=10  ></td></tr>
-        <tr><td align='left' >{{ form_label(edit_form.ocupacion,'Ocupacion') }}</td><td align='left'>{{ form_widget(edit_form.ocupacion) }}</td></tr>
+        <tr><td align='left' >{{ form_label(edit_form.ocupacion,'Ocupacion') }}</td><td align='left'>{{ form_widget(edit_form.ocupacion,  { 'attr': {'onKeyPress':"return soloLetras(event);"} }) }}</td></tr>
         <tr><td colspan=2 align = "left" height=10  ></td></tr>
         <tr><td align='left' ><font color="red">*</font>{{ form_label(edit_form.estadoCivil,'Estado Civil') }}</td><td align='left'>{{ form_widget(edit_form.estadoCivil) }}</td></tr>
         <tr><td colspan=2 align = "left" height=10  ></td></tr>
-        <tr><td align='left' ><font color="red">*</font>{{ form_label(edit_form.nacionalidad,'Nacionalidad') }}</td><td align='left'>{{ form_widget(edit_form.nacionalidad) }}</td></tr>
+        <tr><td align='left' ><font color="red">*</font>{{ form_label(edit_form.nacionalidad,'Nacionalidad') }}</td><td align='left'>{{ form_widget(edit_form.nacionalidad,  { 'attr': {'onKeyPress':"return soloLetras(event);"} }) }}</td></tr>
         <tr><td colspan=2 align = "left" height=10  ></td></tr>
         <tr><td align='left' >{{ form_label(edit_form.escolaridad,'Escolaridad') }}</td><td align='left'>{{ form_widget(edit_form.escolaridad) }}</td></tr>
         <tr><td colspan=2 align = "left" height=10  ></td></tr>
         <tr><td align='left' ><font color="red">*</font>{{ form_label(edit_form.tipoColecta,'Tipo Colecta') }}</td><td align='left'>{{ form_widget(edit_form.tipoColecta) }}</td></tr>
         <tr><td colspan=2 align = "left" height=10  ></td></tr>
-        <tr><td align='left' >{{ form_label(edit_form.telefonoFijo,'Telefono') }}</td><td align='left'>{{ form_widget(edit_form.telefonoFijo,  { 'attr': {'title': '9999-9999'} }) }}</td></tr>
+        <tr><td align='left' >{{ form_label(edit_form.telefonoFijo,'Telefono') }}</td><td align='left'>{{ form_widget(edit_form.telefonoFijo,  { 'attr': {'title': '9999-9999', 'onKeyPress':"return Numeros_Guion(event);"} }) }}</td></tr>
         <tr><td colspan=2 align = "left" height=10  ></td></tr>
-        <tr><td align='left' >{{ form_label(edit_form.telefonoMovil,'Celular') }}</td><td align='left'>{{ form_widget(edit_form.telefonoMovil,  { 'attr': {'title': '9999-9999'} }) }}</td></tr>
+        <tr><td align='left' >{{ form_label(edit_form.telefonoMovil,'Celular') }}</td><td align='left'>{{ form_widget(edit_form.telefonoMovil,  { 'attr': {'title': '9999-9999', 'onKeyPress':"return Numeros_Guion(event);"} }) }}</td></tr>
         <tr><td colspan=2 align = "left" height=10  ></td></tr>
         <tr><td align='left' ><font color="red">*</font>{{ form_label(edit_form.observaciones,'Observaciones') }}</td><td align='left'>{{ form_widget(edit_form.observaciones,  { 'attr': {'size': '50'} }) }}</td></tr>
         <tr><td colspan=2 align = "left" height=10  ></td></tr>
