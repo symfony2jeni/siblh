@@ -1,4 +1,32 @@
 $(document).ready(function() { 
+    
+    //Inicio de modificacion de rox
+        
+  //Temperatura enfriamiento
+    
+       $('#siblh_mantenimientobundle_blhtemperaturaenfriamiento_temperaturaE').keyup(function()
+    {
+             if (($(this).val()< 0 || $(this).val()> 5) && $(this).val()!=='')
+        {
+            $('#siblh_mantenimientobundle_blhtemperaturaenfriamiento_temperaturaE').val('');
+            alert('Digite un valor valido en Temperatura');
+         }
+            else
+                {$(this).focus();}
+     } );
+     
+     
+     
+     $('#siblh_mantenimientobundle_blhtemperaturaenfriamiento_temperaturaE').change(function() {
+            if ($(this).val()=='')
+                {alert('Digite un valor valido en Temperatura');}
+                
+            else
+                {$(this).focus();}
+                 } );
+                              
+                 
+   //Fin de modificacion de rox 
     //Opciones del validador
     var optionsRed = { 
         classNamePrefix: 'bvalidator_red_', 

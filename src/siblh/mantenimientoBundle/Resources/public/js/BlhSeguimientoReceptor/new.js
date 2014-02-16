@@ -110,7 +110,7 @@ $pcin = $('#pcin').val();
       $('#siblh_mantenimientobundle_blhseguimientoreceptor_gananciaDiaTalla').
             attr('data-bvalidator', 'required');
     
-    
+ //Cambios Henry   
     
     $('#siblh_mantenimientobundle_blhseguimientoreceptor_periodoEvaluacion').keyup(function(){
         var valor = $(this).val();

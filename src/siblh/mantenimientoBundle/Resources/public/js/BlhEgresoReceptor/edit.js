@@ -1,4 +1,54 @@
 $(document).ready(function() { 
+    //Inicio de modificacion de rox
+    
+  //estanciaHospitalaria
+    
+       $('#siblh_mantenimientobundle_blhegresoreceptor_estanciaHospitalaria').keyup(function()
+    {
+             if (($(this).val()< 1 || $(this).val()> 120) && $(this).val()!=='')
+        {
+            $('#siblh_mantenimientobundle_blhegresoreceptor_estanciaHospitalaria').val('');
+            alert('Digite un valor valido en estancia Hospitalaria');
+         }
+            else
+                {$(this).focus();}
+     } );
+     
+     
+     
+     $('#siblh_mantenimientobundle_blhegresoreceptor_estanciaHospitalaria').change(function() {
+            if ($(this).val()=='')
+                {alert('Digite un valor valido en estancia Hospitalaria');}
+                
+            else
+                {$(this).focus();}
+                 } );
+    
+     //permanenciaUcin
+    
+       $('#siblh_mantenimientobundle_blhegresoreceptor_permanenciaUcin').keyup(function()
+    {
+             if (($(this).val()< 1 || $(this).val()> 120) && $(this).val()!=='')
+        {
+            $('#siblh_mantenimientobundle_blhegresoreceptor_permanenciaUcin').val('');
+            alert('Digite un valor valido en permanencia Ucin');
+         }
+            else
+                {$(this).focus();}
+     } );
+     
+     
+     
+     $('#siblh_mantenimientobundle_blhegresoreceptor_permanenciaUcin').change(function() {
+            if ($(this).val()=='')
+                {alert('Digite un valor valido en permanencia Ucin');}
+                
+            else
+                {$(this).focus();}
+                 } );
+     
+   
+  //Fin de modificacion de rox 
      $.noConflict();
      $.datepicker.setDefaults($.datepicker.regional["es"]);
    $('input[id$="_fechaEgreso"]').datepicker({ dateFormat: 'yy-MM-dd',  

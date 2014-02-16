@@ -1,7 +1,189 @@
 $(document).ready(function() { 
     
     $aux = 0;
-    $aux2 = 0;
+    $aux2 = 0;//Inicio de modificacion de rox
+    
+    //Periodo Intergenesico
+    
+       $('#siblh_mantenimientobundle_blhhistorialclinico_periodoIntergenesico').keyup(function()
+    {
+             if (($(this).val()< 1 || $(this).val()> 20) && $(this).val()!=='')
+        {
+            $('#siblh_mantenimientobundle_blhhistorialclinico_periodoIntergenesico').val('');
+            alert('Digite un valor valido en periodo Intergenesico');
+         }
+            else
+                {$(this).focus();}
+     } );
+     
+     
+     
+     $('#siblh_mantenimientobundle_blhhistorialclinico_periodoIntergenesico').change(function() {
+            if ($(this).val()=='')
+                {alert('Digite un valor valido en periodo Intergenesico');}
+                
+            else
+                {$(this).focus();}
+                 } );
+
+//Control
+
+   $('#siblh_mantenimientobundle_blhhistorialclinico_numeroControl').keyup(function()
+    {
+             if (($(this).val()< 0 || $(this).val()> 9) && $(this).val()!=='')
+        {
+            $('#siblh_mantenimientobundle_blhhistorialclinico_numeroControl').val('');
+            alert('Digite un valor valido en numero de control');
+         }
+            else
+                {$(this).focus();}
+     } );
+     
+
+     $('#siblh_mantenimientobundle_blhhistorialclinico_numeroControl').change(function() {
+            if ($(this).val()=='')
+                {alert('Digite un valor valido en numero de control');}
+                
+            else
+                {$(this).focus();}
+    } );
+
+
+
+   //formulaObstetricaG
+ $('#siblh_mantenimientobundle_blhhistorialclinico_formulaObstetricaG').keyup(function()
+    {
+             if (($(this).val()< 1 || $(this).val()> 15) && $(this).val()!=='')
+        {
+            $('#siblh_mantenimientobundle_blhhistorialclinico_formulaObstetricaG').val('');
+            alert('Digite un valor valido en G "Embarazos"');
+         }
+            else
+                {$(this).focus();}
+     } );
+     
+
+     $('#siblh_mantenimientobundle_blhhistorialclinico_formulaObstetricaG').change(function() {
+            if ($(this).val()=='')
+                {alert('Digite un valor valido en G "Embarazos"');}
+                
+            else
+                {$(this).focus();}
+    } );
+
+
+ //formulaObstetricaP1
+ $('#siblh_mantenimientobundle_blhhistorialclinico_formulaObstetricaP1').keyup(function()
+    {
+             if (($(this).val()< 0 || $(this).val()> 15) && $(this).val()!=='')
+        {
+            $('#siblh_mantenimientobundle_blhhistorialclinico_formulaObstetricaP1').val('');
+            alert('Digite un valor valido en P "Partos"');
+         }
+            else
+                {$(this).focus();}
+     } );
+     
+
+     $('#siblh_mantenimientobundle_blhhistorialclinico_formulaObstetricaP1').change(function() {
+            if ($(this).val()=='')
+                {alert('Digite un valor valido en P "Partos"');}
+                
+            else
+                {$(this).focus();}
+    } );
+    
+    
+     //formulaObstetricaP2
+ $('#siblh_mantenimientobundle_blhhistorialclinico_formulaObstetricaP2').keyup(function()
+    {
+             if (($(this).val()< 0 || $(this).val()> 15) && $(this).val()!=='')
+        {
+            $('#siblh_mantenimientobundle_blhhistorialclinico_formulaObstetricaP2').val('');
+            alert('Digite un valor valido en P "Prematuros"');
+         }
+            else
+                {$(this).focus();}
+     } );
+     
+
+     $('#siblh_mantenimientobundle_blhhistorialclinico_formulaObstetricaP2').change(function() {
+            if ($(this).val()=='')
+                {alert('Digite un valor valido en P "Prematuros"');}
+                
+            else
+                {$(this).focus();}
+    } );
+    
+ 
+       //formulaObstetricaA
+ $('#siblh_mantenimientobundle_blhhistorialclinico_formulaObstetricaA').keyup(function()
+    {
+             if (($(this).val()< 0 || $(this).val()> 15) && $(this).val()!=='')
+        {
+            $('#siblh_mantenimientobundle_blhhistorialclinico_formulaObstetricaA').val('');
+            alert('Digite un valor valido en A "Abortos"');
+         }
+            else
+                {$(this).focus();}
+     } );
+     
+
+     $('#siblh_mantenimientobundle_blhhistorialclinico_formulaObstetricaA').change(function() {
+            if ($(this).val()=='')
+                {alert('Digite un valor valido en A "Abortos"');}
+                
+            else
+                {$(this).focus();}
+    } );
+    
+    
+      //formulaObstetricaV
+ $('#siblh_mantenimientobundle_blhhistorialclinico_formulaObstetricaV').keyup(function()
+    {
+             if (($(this).val()< 0 || $(this).val()> 15) && $(this).val()!=='')
+        {
+            $('#siblh_mantenimientobundle_blhhistorialclinico_formulaObstetricaV').val('');
+            alert('Digite un valor valido en V "Vivos"');
+         }
+            else
+                {$(this).focus();}
+     } );
+     
+
+     $('#siblh_mantenimientobundle_blhhistorialclinico_formulaObstetricaV').change(function() {
+            if ($(this).val()=='')
+                {alert('Digite un valor valido en V "Vivos"');}
+                
+            else
+                {$(this).focus();}
+    } );
+
+
+
+     //formulaObstetricaM
+ $('#siblh_mantenimientobundle_blhhistorialclinico_formulaObstetricaM').keyup(function()
+    {
+             if (($(this).val()< 0 || $(this).val()> 15) && $(this).val()!=='')
+        {
+            $('#siblh_mantenimientobundle_blhhistorialclinico_formulaObstetricaM').val('');
+            alert('Digite un valor valido en M "Muertos"');
+         }
+            else
+                {$(this).focus();}
+     } );
+     
+
+     $('#siblh_mantenimientobundle_blhhistorialclinico_formulaObstetricaM').change(function() {
+            if ($(this).val()=='')
+                {alert('Digite un valor valido en M "Muertos"');}
+                
+            else
+                {$(this).focus();}
+    } );
+
+
+ //Fin de modificacion de rox
     
    
 
