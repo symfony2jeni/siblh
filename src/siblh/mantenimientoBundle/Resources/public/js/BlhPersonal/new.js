@@ -1,6 +1,8 @@
 $(document).ready(function() { 
    $.noConflict();
     $('#button').button();
+     $('#siblh_mantenimientobundle_blhpersonal_nombre').
+              attr('data-bvalidator', 'required'); 
        
 });
 
