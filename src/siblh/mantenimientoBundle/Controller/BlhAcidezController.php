@@ -65,12 +65,12 @@ class BlhAcidezController extends Controller
     public function createAction(Request $request)
     {
         $entity = new BlhAcidez();
-		$usuario = $this->container->get('security.context')->getToken()->getUser()->getId();
-        $entity->setUsuario($usuario);
         $form = $this->createCreateForm($entity);
         $form->handleRequest($request);
 
         if ($form->isValid()) {
+            $usuario = $this->container->get('security.context')->getToken()->getUser()->getId();
+            $entity->setUsuario($usuario);
             $em = $this->getDoctrine()->getManager();
             $em->persist($entity);
             $em->flush();
@@ -115,7 +115,7 @@ class BlhAcidezController extends Controller
         $em = $this->getDoctrine()->getManager();
         $query = $em->createQuery("SELECT  f.codigoFrascoRecolectado,f.volumenRecolectado,f.onzRecolectado,d.primerNombre as nombre1,d.segundoNombre as nombre2,d.primerApellido as apellido1,d.segundoApellido as apellido2, l.fechaAnalisisFisicoQuimico as fecha FROM siblhmantenimientoBundle:BlhFrascoRecolectado  f JOIN f.idDonante d JOIN f.idLoteAnalisis l   WHERE f.id = $id ");        
         $datos_frasco  = $query->getResult();
-        	   $user_ID = $this->container->get('security.context')->getToken()->getUser()->getId();
+        
          $frasco = $em->getRepository('siblhmantenimientoBundle:BlhFrascoRecolectado')->find($id);
          
         $entity = new BlhAcidez();
@@ -131,7 +131,6 @@ class BlhAcidezController extends Controller
             'entity' => $entity,
             'form'   => $form->createView(),
             'hospital' => $establecimiento,
-			'user_ID' => $user_ID,
         );
     }
 
@@ -177,7 +176,7 @@ class BlhAcidezController extends Controller
     public function editAction($id)
     {
         $em = $this->getDoctrine()->getManager();
-		$user_ID = $this->container->get('security.context')->getToken()->getUser()->getId();
+
         $entity = $em->getRepository('siblhmantenimientoBundle:BlhAcidez')->find($id);
 
         if (!$entity) {
@@ -196,7 +195,6 @@ class BlhAcidezController extends Controller
             'edit_form'   => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
              'hospital' => $establecimiento,
-			 'user_ID' => $user_ID,
         );
     }
 
@@ -230,8 +228,7 @@ class BlhAcidezController extends Controller
         $em = $this->getDoctrine()->getManager();
 
         $entity = $em->getRepository('siblhmantenimientoBundle:BlhAcidez')->find($id);
-		$usuario = $this->container->get('security.context')->getToken()->getUser()->getId();
-        $entity->setUsuario($usuario);
+
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find BlhAcidez entity.');
         }
@@ -241,6 +238,8 @@ class BlhAcidezController extends Controller
         $editForm->handleRequest($request);
 
         if ($editForm->isValid()) {
+            $usuario = $this->container->get('security.context')->getToken()->getUser()->getId();
+            $entity->setUsuario($usuario);
             $em->flush();
 
             return $this->redirect($this->generateUrl('blhacidez_edit', array('id' => $id)));

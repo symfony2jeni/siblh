@@ -5,6 +5,7 @@ $(document).ready(function() {
 $('#siblh_mantenimientobundle_blhhistoriaactual_pesoDonante').
         attr('data-bvalidator', 'between[22:136],required');
  
+ $('#siblh_mantenimientobundle_blhhistoriaactual_imc').attr('readonly','readonly');
   
  
     //Opciones del validador
@@ -35,22 +36,82 @@ $('#siblh_mantenimientobundle_blhhistoriaactual_pesoDonante').
         
            });
            
-        
+  $('#siblh_mantenimientobundle_blhhistoriaactual_pesoDonante').blur(function(){
+      var valor= $('#siblh_mantenimientobundle_blhhistoriaactual_pesoDonante').val();
+      if ((valor < 22 || valor > 136)&& valor!='')
+      {
+          $('#siblh_mantenimientobundle_blhhistoriaactual_pesoDonante').val('');
+          $('#siblh_mantenimientobundle_blhhistoriaactual_pesoDonante').focusin();
+          alert('Digite un valor entre 22 y 136 para el campo peso');
+          
+      }
+      
+  });      
 
+ $('#siblh_mantenimientobundle_blhhistoriaactual_tallaDonante').keyup(function (){
+     var peso_donate = $('#siblh_mantenimientobundle_blhhistoriaactual_pesoDonante').val();
+     var tallaDonante = $('#siblh_mantenimientobundle_blhhistoriaactual_tallaDonante').val();
+     if(peso_donate < 22 || peso_donate > 136)
+     {
+          $('#siblh_mantenimientobundle_blhhistoriaactual_pesoDonante').val('');
+          $('#siblh_mantenimientobundle_blhhistoriaactual_pesoDonante').focusin();
+          $('#siblh_mantenimientobundle_blhhistoriaactual_pesoDonante').focus();
+          alert('Digite un valor entre 22 y 136 para el campo peso');
+          return false;
+     }
+     
+     else
+     {
+          if(tallaDonante !== '')
+                {
+		    if( tallaDonante!=0)
+                    {
+                         $talla= $('#siblh_mantenimientobundle_blhhistoriaactual_tallaDonante').val();
+                         $peso = $('#siblh_mantenimientobundle_blhhistoriaactual_pesoDonante').val();
+                          $aux= Math.pow($talla,2);
+                        $imc = $peso / $aux;
+                        $imc=$imc.toFixed(4);
+                        $('#siblh_mantenimientobundle_blhhistoriaactual_imc').val($imc); 
+		    }
+		    else
+		    {
+			 $('#siblh_mantenimientobundle_blhseguimientoreceptor_tallaDonante').val('');
+			 $('#siblh_mantenimientobundle_blhhistoriaactual_imc').val('');
+		    }              
+                                       
+                }
+                else
+                {
+                    return false;
+                }
+     }
+     
+ });
  
- $('#siblh_mantenimientobundle_blhhistoriaactual_imc').on ('click', function() {
-  $talla= $('#siblh_mantenimientobundle_blhhistoriaactual_tallaDonante').val();
- $peso = $('#siblh_mantenimientobundle_blhhistoriaactual_pesoDonante').val();
- $aux= Math.pow($talla,2);
- $imc = $peso / $aux;
- $imc=$imc.toFixed(4);
-this.value = $imc; 
-} ); 
-
+  $('#siblh_mantenimientobundle_blhhistoriaactual_tallaDonante').blur(function (){
+      tallaDonante = $(this).val();
+      if ((tallaDonante <100 || tallaDonante > 200) && tallaDonante !='')
+      {
+                $(this).val('');
+                $('#pagina').blur();
+                $('#siblh_mantenimientobundle_blhhistoriaactual_imc').val('');
+                $('#siblh_mantenimientobundle_blhhistoriaactual_tallaDonante').focusin();
+                alert('Digite un valor entre 100 y 200 para el campo talla');
+      }
+      else if(tallaDonante==='')
+        {    $('#siblh_mantenimientobundle_blhhistoriaactual_imc').val('');
+             $('#siblh_mantenimientobundle_blhhistoriaactual_tallaDonante').focusin();
+             return false;
+        }
+  });
+ 
+ 
            
            
            
-           
+ 
+          $('#siblh_mantenimientobundle_blhhistoriaactual_imc').
+            attr('data-bvalidator', 'required');           
            
    $('#button').button();
    $('#boton1').button();

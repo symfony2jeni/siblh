@@ -26,11 +26,11 @@
     <tr><td colspan=2 align = "right" height=10  ></td></tr>
     <tr><td align='left'><font color="red" >*</font>{{ form_label(edit_form.acidez3,'Acidez 3(Grados dornic)') }}</td><td>{{ form_widget(edit_form.acidez3, {'attr':{ 'onKeyPress':"return soloNumerosEnteros(event);",'title': 'Por favor ingrese la acidez 3, entre 1 y 15 grasdos Dornic' } }) }}</td></tr>
     <tr><td colspan=2 align = "right" height=10  ></td></tr>
-    <tr><td align='left'>{{ form_label(edit_form.mediaAcidez,'Media acidez(Grados dornic)') }}</td><td>{{ form_widget(edit_form.mediaAcidez, {'attr':{ 'readonly': 'true' } }) }}</td></tr>
+    <tr><td align='left'>{{ form_label(edit_form.mediaAcidez,'Media acidez(Grados dornic)') }}</td><td>{{ form_widget(edit_form.mediaAcidez, {'attr':{ 'readonly': 'true'} }) }}</td></tr>
     <tr><td colspan=2 align = "right" height=10  ></td></tr>
-    <tr><td align='left'><font color="red" >*</font>{{ form_label(edit_form.factor, 'Factor(%)') }}</td><td>{{ form_widget(edit_form.factor, {'attr':{ 'onKeyPress':"return soloNumeros(event);",'title': 'Por favor ingrese el factor para cálculo de acidez, entre 1 y 5 %' } }) }}</td></tr>
+    <tr><td align='left'><font color="red" >*</font>{{ form_label(edit_form.factor, 'Factor(%)') }}</td><td>{{ form_widget(edit_form.factor, {'attr':{ 'onKeyPress':"return soloNumeros(event);",'title': 'Por favor ingrese el factor para cálculo de acidez, entre 0.9 y 1.1 %' } }) }}</td></tr>
     <tr><td colspan=2 align = "right" height=10  ></td></tr>
-    <tr><td align='left'>{{ form_label(edit_form.resultado,'Resultado(Grados dornic)') }}</td><td>{{ form_widget(edit_form.resultado, {'attr':{ 'readonly': 'true' } }) }}</td></tr>
+    <tr><td align='left'>{{ form_label(edit_form.resultado,'Resultado(Grados dornic)') }}</td><td>{{ form_widget(edit_form.resultado, {'attr':{ 'readonly': 'true'} }) }}</td></tr>
     <tr><td colspan=2 align = "right" height=10  ></td></tr>
     <tr><td align='left' style="visibility:hidden">{{ form_label(edit_form.idFrascoRecolectado) }}{{ form_widget(edit_form.idFrascoRecolectado) }}</td></tr>
 </table>
@@ -40,7 +40,6 @@
           </tr>
            <tr>
              <td align = 'center' > <input type='submit' id='boton' title="Actualizar Analisis de Acidez Dornic"  value="Actualizar"/><input id = "boton1" type="button" value="Regresar" onClick=' window.location.href="{{ path('blhacidez' )}}"'></td>              
-			  <td style="visibility:hidden">{{ form_widget(edit_form.usuario, {'attr':{ 'value' : user_ID }}) }} </td>
           </tr>
            </table>
     

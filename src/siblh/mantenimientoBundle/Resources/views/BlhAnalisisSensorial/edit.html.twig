@@ -37,8 +37,6 @@
   
            <tr>
              <td align = 'center' > <input type='submit' id='boton'   value="Actualizar"/><input id = "boton1" type="button" value="Regresar" onClick=' window.location.href="{{ path('blhanalisissensorial' )}}"'></td>              
-			 <td style="visibility:hidden">{{ form_widget(edit_form.usuario, {'attr':{ 'value' : user_ID }}) }} </td>
-
           </tr>
            </table>
     {{ form_end(edit_form) }}

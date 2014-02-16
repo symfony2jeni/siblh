@@ -1,49 +1,54 @@
-{% extends '::base.html.twig' %}
+{% extends 'siblhmantenimientoBundle::plantilla.html.twig' %}
 
+{% block javascripts %}
+    {{parent()}}
+   <script type="text/javascript" src="{{ asset('bundles/siblhmantenimiento/js/BlhBitacora/index.js') }}" ></script>
+{% endblock %}
+  
 {% block body -%}
-    <h1>BlhBitacora list</h1>
+ <link href="{{asset('bundles/jquery/jquery.jqGrid-4.5.4/css/ui.jqgrid.css')}}" rel="stylesheet"  type="text/css" media="all"/> 
+ 
+ <script type="text/javascript" src="{{asset('bundles/jquery/jquery.jqGrid-4.5.4/js/i18n/grid.locale-es.js')}}"></script>
+      <script type="text/javascript" src="{{asset('bundles/jquery/jquery.jqGrid-4.5.4/js/jquery.jqGrid.min.js')}}" ></script>
+ <script type="text/javascript" src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
+      <script src="{{ path('fos_js_routing_js', {"callback": "fos.Router.setData"}) }}"></script>
+    
+ 
+    <h1>Bitacora de acciones del usuario</h1>
+          {%set tamanio1 = entities | length %}
+        {% if tamanio1 >= 1 %}
 
-    <table class="records_list">
+    <table id ='records_list'>
         <thead>
             <tr>
-                <th>Id</th>
-                <th>Fechaaccion</th>
+            
+                <th>Fecha&nbsp;Accion</th>
                 <th>Codigo</th>
                 <th>Tabla</th>
                 <th>Usuario</th>
                 <th>Accion</th>
-                <th>Actions</th>
+                <th>Detalle</th>
+              
             </tr>
         </thead>
         <tbody>
-        {% for entity in entities %}
+              {% for entity in entities %}
             <tr>
-                <td><a href="{{ path('blhbitacora_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
-                <td>{% if entity.fechaAccion %}{{ entity.fechaAccion|date('Y-m-d H:i:s') }}{% endif %}</td>
+             
+                <td>{% if entity.fechaAccion %}{{ entity.fechaAccion|date('d-m-Y') }}{% endif %}</td>
                 <td>{{ entity.codigo }}</td>
                 <td>{{ entity.tabla }}</td>
                 <td>{{ entity.usuario }}</td>
                 <td>{{ entity.accion }}</td>
-                <td>
-                <ul>
-                    <li>
-                        <a href="{{ path('blhbitacora_show', { 'id': entity.id }) }}">show</a>
-                    </li>
-                    <li>
-                        <a href="{{ path('blhbitacora_edit', { 'id': entity.id }) }}">edit</a>
-                    </li>
-                </ul>
-                </td>
+                 <td>{{ entity.detalle }}</td>
+               
             </tr>
         {% endfor %}
+
         </tbody>
     </table>
-
-        <ul>
-        <li>
-            <a href="{{ path('blhbitacora_new') }}">
-                Create a new entry
-            </a>
-        </li>
-    </ul>
+   {% else %}
+            <div>Su consulta no obtuvo ningun resultado</div>
+   {% endif %}
+<div id='pagerbitacora' ></div>
     {% endblock %}

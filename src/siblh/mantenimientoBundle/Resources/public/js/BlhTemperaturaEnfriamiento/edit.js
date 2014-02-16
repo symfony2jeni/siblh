@@ -15,10 +15,10 @@ $(document).ready(function() {
 
 
 $('#siblh_mantenimientobundle_blhtemperaturaenfriamiento_temperaturaE').
-      attr('data-bvalidator', 'between[1:30],required');
+      attr('data-bvalidator', 'between[0:5],required');
     
 $('#siblh_mantenimientobundle_blhtemperaturaenfriamiento_temperaturaE').
-      attr('data-bvalidator-msg', "Ingrese la temperatura de 1 a 30 grados");  
+      attr('data-bvalidator-msg', "Ingrese la temperatura de 0 a 5 grados");  
       
 $(function() {
     $( document ).tooltip({

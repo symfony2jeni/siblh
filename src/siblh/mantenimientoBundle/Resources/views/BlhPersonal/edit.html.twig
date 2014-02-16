@@ -13,17 +13,15 @@
 {% endblock %}
 
 {% block body -%}
-    <h1>BlhPersonal edit</h1>
+    <h1>Editar personal</h1>
 
     {{ form_start(edit_form) }}
     {{ form_errors(edit_form) }}
     
 <table align = "center">
        
-        <tr>
-		<td style="visibility:hidden">{{ form_widget(edit_form.usuario, {'attr':{ 'value' : user_ID }}) }} </td>
-		<td colspan=2 align = "left" height=10  ></td></tr>
-        <tr><td align='left' ><font color="red">*</font>{{ form_label(edit_form.nombre,'Nombre') }}</td><td align='left'>{{ form_widget(edit_form.nombre) }}</td></tr>
+        <tr><td colspan=2 align = "left" height=10  ></td></tr>
+        <tr><td align='left' ><font color="red">*</font>{{ form_label(edit_form.nombre,'Nombre') }}</td><td align='left'>{{ form_widget(edit_form.nombre,{ 'attr': {'title': 'Ingrese el nombre de la persona a registrar'} }) }}</td></tr>
         <tr><td colspan=2 align = "left" height=10  ></td></tr>
         <tr style="visibility:hidden"><td align='left' ><font color="red">*</font>{{ form_label(edit_form.idEstablecimiento) }}</td><td align='left'>{{ form_widget(edit_form.idEstablecimiento) }}</td></tr>
 <tr><td colspan = '2' align = 'center'>  <input type="submit" id= "button" value="Actualizar"/>

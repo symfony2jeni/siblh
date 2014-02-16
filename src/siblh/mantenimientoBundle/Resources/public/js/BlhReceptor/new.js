@@ -11,39 +11,6 @@ $(document).ready(function() {
     $('form').bValidator(optionsRed);
     
    
-$('#siblh_mantenimientobundle_blhreceptor_edadDias').on ('click', function() {
- //$edad = 2;
- $fn = $('#1').val();
-    $d = new Date();
-    $hoy = $d.getDate();
-    
-    
-    $dd = $d.getDate();
-    $mm = $d.getMonth() +1;
-    $yyyy = $d.getFullYear();
-if($dd<10){$dd='0'+$dd}
-if($mm<10){$mm='0'+$mm}
-$hoy = $dd+'-'+$mm+'-'+$yyyy;
-  //  $edad = $hoy.getTime() - $fn.getTime();
-
- 
- 
-//probando//
-$hoy = new Date(parseFloat($hoy.substr(6,4)), parseFloat($hoy.substr(3,2))-1, parseFloat($hoy.substr(0,2)));
-$fn = new Date(parseFloat($fn.substr(6,4)), parseFloat($fn.substr(3,2))-1, parseFloat($fn.substr(0,2)));
-//$fn = new Date(2013,10-1,20);	
-	//$fn = new Date($fn[2], parseFloat($fn[2])-1, parseFloat($fn[0]));
- 
-	$fin = $hoy.getTime() - $fn.getTime();
-	$dias = Math.floor($fin / (24 * 60 * 60 * 1000))  
-
-
-
-//////////////////
- this.value = $dias;   
- 
-
-} ) ;
     
   $.datepicker.setDefaults($.datepicker.regional["es"]);
    $('input[id$="_fechaRegistroBlh"]').datepicker({ dateFormat: 'yy-mm-dd',  
@@ -113,28 +80,28 @@ $('#siblh_mantenimientobundle_blhreceptor_pc').
 $('#siblh_mantenimientobundle_blhreceptor_pc').
         attr('data-bvalidator-msg', "Ingrese la talla entre 20 y 40 cm"); 
 
-$('#siblh_mantenimientobundle_blhreceptor_apgar').
-        attr('data-bvalidator', 'between[0:10],required');
     
-$('#siblh_mantenimientobundle_blhreceptor_apgar').
-        attr('data-bvalidator-msg', "Ingrese el valor apgar entre 0 y 10"); 
+
+$('#siblh_mantenimientobundle_blhreceptor_apgarPrimerMinuto').attr('data-bvalidator', 'required,between[0:9]');
+    
+$('#siblh_mantenimientobundle_blhreceptor_apgarQuintoMinuto').attr('data-bvalidator', 'required,between[0:10]');
 
 
 $('#siblh_mantenimientobundle_blhreceptor_edadGestBallard').
-        attr('data-bvalidator', 'between[24:42],required');
+        attr('data-bvalidator', 'between[20:42],required');
     
 $('#siblh_mantenimientobundle_blhreceptor_edadGestBallard').
-        attr('data-bvalidator-msg', "Ingrese la edad en semanas de 24 a 42 semananas"); 
+        attr('data-bvalidator-msg', "Ingrese la edad en semanas de 20 a 42 semananas"); 
 
 
 $('#siblh_mantenimientobundle_blhreceptor_duracionVentilacion').
-        attr('data-bvalidator', 'between[0:52],required');
+        attr('data-bvalidator', 'between[0:99],required');
 
 $('#siblh_mantenimientobundle_blhreceptor_duracionCpap').
-        attr('data-bvalidator', 'between[0:52],required');
+        attr('data-bvalidator', 'between[0:50],required');
 
 $('#siblh_mantenimientobundle_blhreceptor_duracionNpt').
-        attr('data-bvalidator', 'between[0:52],required');
+        attr('data-bvalidator', 'between[0:50],required');
 
  $(function() {
     $( document ).tooltip({
@@ -155,6 +122,10 @@ $('#siblh_mantenimientobundle_blhreceptor_duracionNpt').
            });
     $('#button').button();
     $('#boton1').button();
+    
+      $('#siblh_mantenimientobundle_blhreceptor_edadDias').
+            attr('data-bvalidator', 'required');
+    calcularEdadDias();
 });
 
 function soloNumerosEnteros(e)
@@ -173,4 +144,39 @@ if ((keynum === 8) || (keynum === 46))
 return true;
  
 return /\d/.test(String.fromCharCode(keynum));
+}
+
+function calcularEdadDias()
+{
+    
+    $fn = $('#1').val();
+    $d = new Date();
+    $hoy = $d.getDate();
+    
+    
+    $dd = $d.getDate();
+    $mm = $d.getMonth() +1;
+    $yyyy = $d.getFullYear();
+if($dd<10){$dd='0'+$dd}
+if($mm<10){$mm='0'+$mm}
+$hoy = $dd+'-'+$mm+'-'+$yyyy;
+  //  $edad = $hoy.getTime() - $fn.getTime();
+
+ 
+ 
+//probando//
+$hoy = new Date(parseFloat($hoy.substr(6,4)), parseFloat($hoy.substr(3,2))-1, parseFloat($hoy.substr(0,2)));
+$fn = new Date(parseFloat($fn.substr(6,4)), parseFloat($fn.substr(3,2))-1, parseFloat($fn.substr(0,2)));
+//$fn = new Date(2013,10-1,20);	
+	//$fn = new Date($fn[2], parseFloat($fn[2])-1, parseFloat($fn[0]));
+ 
+	$fin = $hoy.getTime() - $fn.getTime();
+	$dias = Math.floor($fin / (24 * 60 * 60 * 1000));  
+
+
+
+//////////////////
+ $('#siblh_mantenimientobundle_blhreceptor_edadDias').val($dias);   
+ 
+    
 }

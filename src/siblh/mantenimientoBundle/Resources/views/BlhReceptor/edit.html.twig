@@ -26,31 +26,31 @@
         <tr><td colspan=2 align = "left" height=10  ></td></tr>
         <tr><td align='left' ><font color="red">*</font>{{ form_label(edit_form.estadoReceptor,'Estado') }}</td><td align='left'>{{ form_widget(edit_form.estadoReceptor,  { 'attr': {'readonly': 'true'} }) }}</td></tr>
         <tr><td colspan=2 align = "left" height=10  ></td></tr>
-        <tr><td align='left' ><font color="red">*</font>{{ form_label(edit_form.edadDias,'Edad en Dias') }}</td><td align='left'>{{ form_widget(edit_form.edadDias, {'attr':{'readonly': 'true'} }) }}</td></tr>
+        <tr><td align='left' ><font color="red">*</font>{{ form_label(edit_form.edadDias,'Edad en Dias') }}</td><td align='left'>{{ form_widget(edit_form.edadDias, {'attr':{'readonly': 'true','title': 'Dar clic para obtener el resultado'} }) }}</td></tr>
         <tr><td colspan=2 align = "left" height=10  ></td></tr>
         <tr><td align='left' ><font color="red">*</font>{{ form_label(edit_form.pesoReceptor, 'peso al nacer') }}</td><td align='left'>{{ form_widget(edit_form.pesoReceptor,  { 'attr': {'title': 'Peso entre 500 a 5000 gramos', 'onKeyPress':"return soloNumeros(event);"} }) }}</td></tr>
         <tr><td colspan=2 align = "left" height=10  ></td></tr>
-        <tr><td align='left' ><font color="red">*</font>{{ form_label(edit_form.duracionCpap,'Duracion de CPAP Nasal') }}</td><td align='left'>{{ form_widget(edit_form.duracionCpap) }}</td></tr>
+        <tr><td align='left' ><font color="red">*</font>{{ form_label(edit_form.duracionCpap,'Duracion de CPAP Nasal') }}</td><td align='left'>{{ form_widget(edit_form.duracionCpap,  { 'attr': {'title': 'Dias entre 0 y 50', 'onKeyPress':"return soloNumerosEnteros(event);"} }) }}</td></tr>
         <tr><td colspan=2 align = "left" height=10  ></td></tr>
         <tr><td align='left' ><font color="red">*</font>{{ form_label(edit_form.clasificacionLubchengo,'Clasificacion Lubchengo') }}</td><td align='left'>{{ form_widget(edit_form.clasificacionLubchengo) }}</td></tr>
         <tr><td colspan=2 align = "left" height=10  ></td></tr>
-        <tr><td align='left' ><font color="red">*</font>{{ form_label(edit_form.diagnosticoIngreso,'Diagnostico') }}</td><td align='left'>{{ form_widget(edit_form.diagnosticoIngreso) }}</td></tr>
-        <tr><td colspan=2 align = "left" height=10  ></td></tr>
-        <tr><td align='left' ><font color="red">*</font>{{ form_label(edit_form.duracionNpt,'Nutricion parenteral') }}</td><td align='left'>{{ form_widget(edit_form.duracionNpt) }}</td></tr>
+        <tr><td align='left' ><font color="red">*</font>{{ form_label(edit_form.duracionNpt,'Nutricion parenteral') }}</td><td align='left'>{{ form_widget(edit_form.duracionNpt, { 'attr': {'title': 'Dias entre 0 y 50', 'onKeyPress':"return soloNumerosEnteros(event);"} }) }}</td></tr>
         <tr><td colspan=2 align = "left" height=10  ></td></tr>
         <tr><td align='left' ><font color="red">*</font>{{ form_label(edit_form.edadGestFur,'Edad Gestacion FUR') }}</td><td align='left'>{{ form_widget(edit_form.edadGestFur,  { 'attr': {'title': 'Entre 24 a 42 Semanas', 'onKeyPress':"return soloNumerosEnteros(event);"} }) }}</td></tr>
         <tr><td colspan=2 align = "left" height=10  ></td></tr>
-        <tr>
-		<td style="visibility:hidden">{{ form_widget(edit_form.usuario, {'attr':{ 'value' : user_ID }}) }} </td>
-		<td align='left' ><font color="red">*</font>{{ form_label(edit_form.duracionVentilacion,'Duracion ventilacion mecanica') }}</td><td align='left'>{{ form_widget(edit_form.duracionVentilacion) }}</td></tr>
+        <tr><td align='left' ><font color="red">*</font>{{ form_label(edit_form.duracionVentilacion,'Duracion ventilacion mecanica') }}</td><td align='left'>{{ form_widget(edit_form.duracionVentilacion,  { 'attr': {'title': 'Dias de ventilacion mecanica, entre 0 y 99', 'onKeyPress':"return soloNumerosEnteros(event);"} }) }}</td></tr>
         <tr><td colspan=2 align = "left" height=10  ></td></tr>
-        <tr><td align='left' ><font color="red">*</font>{{ form_label(edit_form.edadGestBallard) }}</td><td align='left'>{{ form_widget(edit_form.edadGestBallard,  { 'attr': {'title': 'Entre 24 a 42 Semanas', 'onKeyPress':"return soloNumerosEnteros(event);"} }) }}</td></tr>
+        <tr><td align='left' ><font color="red">*</font>{{ form_label(edit_form.edadGestBallard) }}</td><td align='left'>{{ form_widget(edit_form.edadGestBallard,  { 'attr': {'title': 'Entre 20 a 42 Semanas', 'onKeyPress':"return soloNumerosEnteros(event);"} }) }}</td></tr>
         <tr><td colspan=2 align = "left" height=10  ></td></tr>
         <tr><td align='left' ><font color="red">*</font>{{ form_label(edit_form.pc, 'Perimetro Cefalico') }}</td><td align='left'>{{ form_widget(edit_form.pc,  { 'attr': {'title': 'entre 20 y 40 cm', 'onKeyPress':"return soloNumerosEnteros(event);"} }) }}</td></tr>
         <tr><td colspan=2 align = "left" height=10  ></td></tr>
         <tr><td align='left' ><font color="red">*</font>{{ form_label(edit_form.tallaIngreso) }}</td><td align='left'>{{ form_widget(edit_form.tallaIngreso,  { 'attr': {'title': 'Talla entre 25 a 55 cm', 'onKeyPress':"return soloNumeros(event);"} }) }}</td></tr>
         <tr><td colspan=2 align = "left" height=10  ></td></tr>
-        <tr><td align='left' ><font color="red">*</font>{{ form_label(edit_form.apgarPrimerMinuto) }}</td><td align='left'>{{ form_widget(edit_form.apgarPrimerMinuto,  { 'attr': {'title': 'Entre 0 a 10 minutos', 'onKeyPress':"return soloNumerosEnteros(event);"} }) }}</td></tr>
+        <tr><td align='left' ><font color="red">*</font>{{ form_label(edit_form.apgarPrimerMinuto, 'APGAR al primer minuto') }}</td><td align='left'>{{ form_widget(edit_form.apgarPrimerMinuto,   { 'attr': {'title': 'Ingrese APGAR al primer minuto, entre 0 y 9', 'onKeyPress':"return soloNumeros(event);"} }) }}</td></tr>
+        <tr><td colspan=2 align = "left" height=10  ></td></tr>
+        <tr><td align='left' ><font color="red">*</font>{{ form_label(edit_form.apgarQuintoMinuto, 'APGAR al quinto minuto') }}</td><td align='left'>{{ form_widget(edit_form.apgarQuintoMinuto, { 'attr': {'title': 'Ingrese APGAR al quinto minuto, entre 0 y 10', 'onKeyPress':"return soloNumeros(event);"} }) }}</td></tr>
+        <tr><td colspan=2 align = "left" height=10  ></td></tr>
+        <tr><td align='left' ><font color="red">*</font>{{ form_label(edit_form.diagnosticoIngreso,'Diagnostico') }}</td><td align='left'>{{ form_widget(edit_form.diagnosticoIngreso) }}</td></tr>
         <tr style="visibility:hidden"><td align='left' ><font color="red">*</font>{{ form_label(edit_form.idPaciente) }}</td><td align='left'>{{ form_widget(edit_form.idPaciente, {'attr':{'readonly': 'true' } })  }}</td></tr>
          
         <tr style="visibility:hidden"><td align='left' ><font color="red">*</font>{{ form_label(edit_form.idBancoDeLeche) }}</td><td align='left'>{{ form_widget(edit_form.idBancoDeLeche, {'attr':{'readonly': 'true' } })  }}</td></tr>

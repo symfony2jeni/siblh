@@ -8,7 +8,7 @@
 
 {% block javascripts %}
     {{parent()}}
-    <script type="text/javascript" src="{{ asset('bundles/siblhmantenimiento/js/BlhCurva/new.js') }}" ></script>   
+    <script type="text/javascript" src="{{ asset('bundles/siblhmantenimiento/js/BlhCurva/edit.js') }}" ></script>   
 {% endblock %}
 
 
@@ -22,15 +22,15 @@
  <tr><td colspan=2 align = "left" height=10  ></td></tr>
  <tr><td align='left' ><font color="red">*</font>
   {{ form_label(edit_form.tiempo1,'Primer Tiempo') }}
- </td><td align='left'>{{ form_widget(edit_form.tiempo1,{ 'attr': {'title': '99.99','onKeyPress':"return soloNumeros(event);"} }) }}</td></tr>
+ </td><td align='left'>{{ form_widget(edit_form.tiempo1,{ 'attr': {'title': 'Ingrese tiempo 1, entre 5 y 10 minutos','onKeyPress':"return soloNumerosEnteros(event);"} }) }}</td></tr>
  <tr><td colspan=2 align = "left" height=10  ></td></tr>
  <tr><td align='left' ><font color="red">*</font>
   {{ form_label(edit_form.tiempo2,'Segundo Tiempo') }}
- </td><td align='left'>{{ form_widget(edit_form.tiempo2,{ 'attr': {'title': '99.99','onKeyPress':"return soloNumeros(event);"} }) }}</td></tr>
+ </td><td align='left'>{{ form_widget(edit_form.tiempo2,{ 'attr': {'title': 'Ingrese tiempo 2, entre 5 y 10 minutos','onKeyPress':"return soloNumerosEnteros(event);"} }) }}</td></tr>
  <tr><td colspan=2 align = "left" height=10  ></td></tr>
  <tr><td align='left' ><font color="red">*</font>
   {{ form_label(edit_form.tiempo3,' Tercer Tiempo') }}
- </td><td align='left'>{{ form_widget(edit_form.tiempo3,{ 'attr': {'title': '99.99','onKeyPress':"return soloNumeros(event);"} }) }}</td></tr>        
+ </td><td align='left'>{{ form_widget(edit_form.tiempo3,{ 'attr': {'title': 'Ingrese tiempo 3, entre 5 y 10 minutos','onKeyPress':"return soloNumerosEnteros(event);"} }) }}</td></tr>        
  <tr><td colspan=2 align = "left" height=10  ></td></tr>
  <tr><td align='left' ><font color="red">*</font>
   {{ form_label(edit_form.fechaCurva,'Fecha') }}
@@ -38,31 +38,30 @@
  <tr><td colspan=2 align = "left" height=10  ></td></tr>
  <tr><td align='left' ><font color="red">*</font>
   {{ form_label(edit_form.cantidadFrascos,'Cantidad Frascos') }}
- </td><td align='left'>{{ form_widget(edit_form.cantidadFrascos,{ 'attr': {'title': '99','onKeyPress':"return soloNumerosEnteros(event);"} }) }}</td></tr> 
+ </td><td align='left'>{{ form_widget(edit_form.cantidadFrascos,{ 'attr': {'title': 'Ingrese la cantidad de frascos, entre 10 y 60','onKeyPress':"return soloNumerosEnteros(event);"} }) }}</td></tr> 
  <tr><td colspan=2 align = "left" height=10  ></td></tr>
  <tr><td align='left' ><font color="red">*</font>
   {{ form_label(edit_form.volumenPorFrasco,'Volumen ML') }}
- </td><td align='left'>{{ form_widget(edit_form.volumenPorFrasco,{ 'attr': {'title': '99.9999 ML','onKeyPress':"return soloNumeros(event);"} }) }}</td></tr>
+ </td><td align='left'>{{ form_widget(edit_form.volumenPorFrasco,{ 'attr': {'title': 'Ingrese el volumen de los frascos, entre  60 y 500 ml','onKeyPress':"return soloNumeros(event);"} }) }}</td></tr>
  <tr><td colspan=2 align = "left" height=10  ></td></tr>
  <tr><td align='left' ><font color="red">*</font>
   {{ form_label(edit_form.horaInicioCurva,'Hora Inicio') }}
  </td><td align='left'>{{ form_widget(edit_form.horaInicioCurva) }}</td></tr>        
-
+ <tr style="visibility:hidden"><td colspan=2 align = "left" height=10  ></td></tr>
+ <tr style="visibility:visible"><td align='left' ><font color="red">*</font>
+  {{ form_label(edit_form.valorCurva,'Valor Curva') }}
+ </td><td align='left'>{{ form_widget(edit_form.valorCurva, {'attr':{ 'readonly': 'true'} }) }}</td></tr>   
  
 
  
  <tr>    
-    <td align ='center'><P> <input type="submit" class= "ui-button" value="Actualizar"/></td>
-    <td align = 'center'><P><input id = "boton" type="button" value="Regresar" onClick=' window.location.href="{{ path('blhcurva') }}" '> </td>
-</tr>         
-
+    <td align ='center'><P> <input id = "boton" type="submit" value="Actualizar"/></td>
+    <td align = 'center'><P><input id = "boton1" type="button" value="Regresar" onClick=' window.location.href="{{ path('blhcurva') }}" '> </td>
+</tr>
  
  
- 
+ </table>
 {{ form_end(edit_form) }}
 
- 
-        
- 
 
 {% endblock %}       

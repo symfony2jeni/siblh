@@ -20,9 +20,7 @@
    {{ form_start(form, {'attr':{ 'id': 'form' } }) }}
    {{ form_errors(form) }}
    <table align = "center" width = "100%">
-        <tr>
-		<td style="visibility:hidden">{{ form_widget(form.usuario, {'attr':{ 'value' : user_ID }}) }} </td>
-		<td  align = "right" height=40  ></td></tr>
+        <tr><td  align = "right" height=40  ></td></tr>
        <tr>
        <td align = "left" width=210><b>Servicio</b></td>
                 <td  align = "left">
@@ -96,17 +94,17 @@
         <td align = "left"><font color="red">*</font>{{ form_label(form.fechaSolicitud, 'Fecha') }}</td>
         <td align = "left" width=200>{{ form_widget(form.fechaSolicitud, {'attr':{ 'readonly': 'true', 'readonly': 'true', 'title': 'Dar clic y seleccionar la fecha de registro' } }) }} </td>
         <td align = "left" ><font color="red">*</font>{{ form_label(form.cuna,'No. de cuna') }}</td>
-        <td align = "left" width=150>{{ form_widget(form.cuna, {'attr':{ 'onKeyPress':"return soloNumerosEnteros(event);",'title': 'Por favor ingrese el numero de cuna, ejemplo 1,2,3,etc.' } }) }} </td>
+        <td align = "left" width=150>{{ form_widget(form.cuna, {'attr':{ 'onKeyPress':"return soloNumerosEnteros(event);",'title': 'Por favor ingrese el numero de cuna, entre 1 y 60.' } }) }} </td>
         <td align = "left" ><font color="red">*</font>{{ form_label(form.pesoDia, 'Peso del paciente(g)') }}</td>
          <td align = "left" width=50>{{ form_widget(form.pesoDia, {'attr':{ 'onKeyPress':"return soloNumeros(event);",'title': 'Por favor ingrese el peso del paciente, entre 500 y 5000 g' } }) }} </td>
           </tr>
         <tr><td align = "right" height=10  ></td></tr>
       <tr>
            <td align = "left" ><font color="red">*</font>{{ form_label(form.volumenPorToma,'Volumen por toma (ml)') }}</td>
-           <td align = "left">{{ form_widget(form.volumenPorToma, {'attr':{ 'onKeyPress':"return soloNumeros(event);",'title': 'Por favor ingrese el volumen de cada toma, entre 1 y 25 ml' } }) }} </td>
+           <td align = "left">{{ form_widget(form.volumenPorToma, {'attr':{ 'onKeyPress':"return soloNumeros(event);",'title': 'Por favor ingrese el volumen de cada toma, entre 5 y 60 ml' } }) }} </td>
      
         <td align = "left"><font color="red">*</font>{{ form_label(form.tomaPorDia, 'Tomas por día') }}</td>
-        <td align = "left">{{ form_widget(form.tomaPorDia, {'attr':{ 'onKeyPress':"return soloNumerosEnteros(event);",'title': 'Por favor ingrese la tomas por día, entre 1 y 5' } }) }} </td>
+        <td align = "left">{{ form_widget(form.tomaPorDia, {'attr':{ 'onKeyPress':"return soloNumerosEnteros(event);",'title': 'Por favor ingrese la tomas por día, entre 3 y 12.' } }) }} </td>
         <td align = "left"><font color="red">*</font>{{ form_label(form.caloriasNecesarias,'Calorías necesarias') }}</td>
         <td align = "left">{{ form_widget(form.caloriasNecesarias) }} </td>
        
@@ -116,8 +114,8 @@
         <td  align = "left"><font color="red">*</font>{{ form_label(form.acidezNecesaria,'Acidez Dornic') }}</td>
         <td align = "left">{{ form_widget(form.acidezNecesaria) }} </td>
         
-        <td align = "left">{{ form_label(form.volumenPorDia,'Volumen total por día (ml)') }}</td>
-        <td align = "left">{{ form_widget(form.volumenPorDia, {'attr':{ 'readonly': 'true' } }) }} </td>
+        <td align = "left"><font color="red">*</font>{{ form_label(form.volumenPorDia,'Volumen total por día (ml)') }}</td>
+        <td align = "left">{{ form_widget(form.volumenPorDia, {'attr':{ 'readonly': 'true'} }) }} </td>
         <td align = "left"><font color="red" >*</font><b><font face="Verdana,Arial,Helvetica,sans-serif" ><i>Responsable</i></font></b></td>
         <td align = "left"> 
             <select name="responsable" id = "responsable" > 

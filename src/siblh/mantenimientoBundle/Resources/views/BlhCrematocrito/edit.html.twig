@@ -15,36 +15,33 @@
 
 {% block body -%}
     <h1>Editar Analisis de crematocrito</h1>
-
-    <table align='center'>
     {{ form_start(edit_form) }}
     {{ form_errors(edit_form) }}
+    <table align='center'>
+   
 <tr>
-    <tr><td align='left'><font color="red">*</font>{{ form_label(edit_form.crema1,'Crema 1(mm)') }}</td><td>{{ form_widget(edit_form.crema1, {'attr':{ 'onKeyPress':"return soloNumeros(event);",'title': 'Por favor ingrese la crema 1, entre 1 y 99 mm' } }) }}</td></tr>
+    <tr><td align='left'><font color="red">*</font>{{ form_label(edit_form.crema1,'Crema 1(mm)') }}</td><td>{{ form_widget(edit_form.crema1, {'attr':{ 'onKeyPress':"return soloNumeros(event);",'title': 'Por favor ingrese la crema 1, entre 1 y 20 mm' } }) }}</td></tr>
     <tr><td colspan=2 align = "right" height=10  ></td></tr>
-    <tr><td align='left'><font color="red">*</font>{{ form_label(edit_form.crema2,'Crema 2(mm)') }}</td><td>{{ form_widget(edit_form.crema2, {'attr':{ 'onKeyPress':"return soloNumeros(event);",'title': 'Por favor ingrese la crema 2, entre 1 y 99 mm' } }) }}</td></tr>
+    <tr><td align='left'><font color="red">*</font>{{ form_label(edit_form.crema2,'Crema 2(mm)') }}</td><td>{{ form_widget(edit_form.crema2, {'attr':{ 'onKeyPress':"return soloNumeros(event);",'title': 'Por favor ingrese la crema 2, entre 1 y 20 mm' } }) }}</td></tr>
     <tr><td colspan=2 align = "right" height=10  ></td></tr>
-    <tr><td align='left'><font color="red">*</font>{{ form_label(edit_form.crema3,'Crema 3(mm)') }}</td><td>{{ form_widget(edit_form.crema3, {'attr':{ 'onKeyPress':"return soloNumeros(event);",'title': 'Por favor ingrese la crema 3, entre 1 y 99 mm' } }) }}</td></tr>
+    <tr><td align='left'><font color="red">*</font>{{ form_label(edit_form.crema3,'Crema 3(mm)') }}</td><td>{{ form_widget(edit_form.crema3, {'attr':{ 'onKeyPress':"return soloNumeros(event);",'title': 'Por favor ingrese la crema 3, entre 1 y 20 mm' } }) }}</td></tr>
     <tr><td colspan=2 align = "right" height=10  ></td></tr>
-    <tr><td align='left'><font color="red">*</font>{{ form_label(edit_form.ct1, 'Caloría  1(mm)') }}</td><td>{{ form_widget(edit_form.ct1, {'attr':{ 'onKeyPress':"return soloNumeros(event);",'title': 'Por favor ingrese la caloría 1, entre 1 y 99 mm' } }) }}</td></tr>
+    <tr><td align='left'><font color="red">*</font>{{ form_label(edit_form.ct1, 'Column total  1(mm)') }}</td><td>{{ form_widget(edit_form.ct1, {'attr':{ 'onKeyPress':"return soloNumeros(event);",'title': 'Por favor ingrese la columna total 1, entre 1 y 99 mm' } }) }}</td></tr>
     <tr><td colspan=2 align = "right" height=10  ></td></tr>
-    <tr><td align='left'><font color="red">*</font>{{ form_label(edit_form.ct2, 'Caloría  2(mm)') }}</td><td>{{ form_widget(edit_form.ct2, {'attr':{ 'onKeyPress':"return soloNumeros(event);",'title': 'Por favor ingrese la caloría 2, entre 1 y 99 mm' } }) }}</td></tr>
+    <tr><td align='left'><font color="red">*</font>{{ form_label(edit_form.ct2, 'Column total  2(mm)') }}</td><td>{{ form_widget(edit_form.ct2, {'attr':{ 'onKeyPress':"return soloNumeros(event);",'title': 'Por favor ingrese la columna total 2, entre 1 y 99 mm' } }) }}</td></tr>
     <tr><td colspan=2 align = "right" height=10  ></td></tr>
-    <tr><td align='left'><font color="red">*</font>{{ form_label(edit_form.ct3, 'Caloría  3(mm)') }}</td><td>{{ form_widget(edit_form.ct3, {'attr':{ 'onKeyPress':"return soloNumeros(event);",'title': 'Por favor ingrese la caloría 3, entre 1 y 99 mm' } }) }}</td></tr>
+    <tr><td align='left'><font color="red">*</font>{{ form_label(edit_form.ct3, 'Column total  3(mm)') }}</td><td>{{ form_widget(edit_form.ct3, {'attr':{ 'onKeyPress':"return soloNumeros(event);",'title': 'Por favor ingrese la columna total 3, entre 1 y 99 mm' } }) }}</td></tr>
     <tr><td colspan=2 align = "right" height=10  ></td></tr>
-    <tr><td align='left'>{{form_label(edit_form.mediaCrema,'Media crema(mm) ') }}</td><td>{{form_widget(edit_form.mediaCrema, {'attr':{ 'readonly': 'true' } }) }}</td></tr>
+    <tr><td align='left'>{{form_label(edit_form.mediaCrema,'Media crema(mm) ') }}</td><td>{{form_widget(edit_form.mediaCrema, {'attr':{ 'readonly': 'true'} }) }}</td></tr>
     <tr><td colspan=2 align = "right" height=10  ></td></tr>
-    <tr><td align='left'>{{form_label(edit_form.mediaCt, 'Media calorías(mm)') }}</td><td>{{form_widget(edit_form.mediaCt, {'attr':{ 'readonly': 'true' } }) }}</td></tr>
+    <tr><td align='left'>{{form_label(edit_form.mediaCt, 'Media columna total(mm)') }}</td><td>{{form_widget(edit_form.mediaCt, {'attr':{ 'readonly': 'true'} }) }}</td></tr>
     <tr><td colspan=2 align = "right" height=10  ></td></tr>
-    <tr><td align='left'>{{form_label(edit_form.porcentajeCrema,'Porcentaje crema') }}</td><td>{{form_widget(edit_form.porcentajeCrema, {'attr':{ 'readonly': 'true' } }) }}</td></tr>
+    <tr><td align='left'>{{form_label(edit_form.porcentajeCrema,'Porcentaje crema') }}</td><td>{{form_widget(edit_form.porcentajeCrema, {'attr':{ 'readonly': 'true'} }) }}</td></tr>
     <tr><td colspan=2 align = "right" height=10  ></td></tr>
-    <tr><td align='left'>{{form_label(edit_form.kilocalorias) }}</td><td>{{form_widget(edit_form.kilocalorias, {'attr':{ 'readonly': 'true' } }) }}</td></tr>
+    <tr><td align='left'>{{form_label(edit_form.kilocalorias) }}</td><td>{{form_widget(edit_form.kilocalorias, {'attr':{ 'readonly': 'true'} }) }}</td></tr>
     <tr><td colspan=2 align = "right" height=10  ></td></tr>
-    <tr>
-        <td style="visibility:hidden">{{ form_widget(edit_form.usuario, {'attr':{ 'value' : user_ID }}) }} </td>
-        <td align='left' style="visibility:hidden">{{ form_label(edit_form.idFrascoRecolectado) }}</td><td style="visibility:hidden">{{ form_widget(edit_form.idFrascoRecolectado) }}</td></tr>
-    <tr>
-	<td colspan=2 align = "right" height=10  ></td></tr>
+    <tr><td align='left' style="visibility:hidden">{{ form_label(edit_form.idFrascoRecolectado) }}</td><td style="visibility:hidden">{{ form_widget(edit_form.idFrascoRecolectado) }}</td></tr>
+    <tr><td colspan=2 align = "right" height=10  ></td></tr>
 
 </table>
     <table align = "center" width=50%>

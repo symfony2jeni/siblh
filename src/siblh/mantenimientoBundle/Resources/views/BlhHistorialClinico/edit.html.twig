@@ -17,9 +17,7 @@
     {{ form_errors(edit_form) }}
     
     <table  align = "center" >
-   <tr><td  align = "left" height=10  ></td></tr>
-        <tr><td align='left'>{{ form_label(edit_form.amenorrea) }}</td><td align='left'>{{ form_widget(edit_form.amenorrea,  { 'attr': {'size': '4', 'title': 'Digite valor entre 1 y 38 Semanas', 'onKeyPress':"return soloNumerosEnteros(event);"} }) }}</td></tr>
-        <tr><td  align = "left" height=10  ></td></tr>
+  
         <tr><td align='left' ><font color="red">*</font>{{ form_label(edit_form.controlPrenatal) }}</td><td align='left'>{{ form_widget(edit_form.controlPrenatal) }}</td></tr>
              
       <tr><td  align = "left" height=10  ></td></tr>
@@ -30,13 +28,16 @@
          <td align='left' >    {{ form_widget(edit_form.numeroControl, {'attr': { 'required' : 'false', 'value' : 0, 'onKeyPress':"return soloNumerosEnteros(event);"} }) }}</td></tr>
      
      <tr><td  align = "left" height=10  ></td></tr>
-     <tr><td align='left' ><b>{{ form_label(edit_form.fechaUltimaRegla, 'Ultima Regla') }}</b></td>
-         <td align='left' >   {{ form_widget(edit_form.fechaUltimaRegla, {'attr':{'readonly': 'true', 'title': 'Dar clic y seleccionar fecha de ultima regla' } }) }}</td></tr>
+     <tr><td align='left' ><font color="red" >*</font> <b>{{ form_label(edit_form.fechaUltimaRegla, 'Ultima Regla') }}</b></td>
+         <td align='left' >   {{ form_widget(edit_form.fechaUltimaRegla, {'attr':{'readonly': 'true', 'title': 'Dar clic y seleccionar fecha de ultima regla', 'date_format': 'Y-mm-dd' } }) }}</td></tr>
       <tr><td  align = "left" height=10  ></td></tr>
      <tr><td align='left' ><b><font color="red">*</font>
                                {{ form_label(edit_form.fechaParto) }}</b></td>
           <td align='left' >                     {{ form_widget(edit_form.fechaParto, {'attr':{'readonly': 'true', 'title': 'Dar clic y seleccionar fecha de parto' } }) }}</td></tr>
              <tr><td  align = "left" height=10  ></td></tr>
+              <tr><td  align = "left" height=10  ></td></tr>
+        <tr><td align='left'><font color="red" >*</font> {{ form_label(edit_form.amenorrea) }}</td><td align='left'>{{ form_widget(edit_form.amenorrea,  { 'attr': {'readonly': 'true', 'title':'Dar clic para obtener resultado' } }) }}</td></tr>
+        <tr><td  align = "left" height=10  ></td></tr>
      <tr><td align='left' ><b><font color="red">*</font>
                                {{ form_label(edit_form.lugarParto) }}</b></td>
           <td align='left' >                     {{ form_widget(edit_form.lugarParto) }}</td></tr>
@@ -53,21 +54,19 @@
       </table>
     <table align = "center"> 
         <tr><td align='center' colspan = "6"><b></b></td></tr>
-     <tr><td align='center' colspan = "6"><b>Formula obstetrica</b></td></tr>
+     <tr><td align='center' colspan = "6"><font color="red" >*</font> <b>Formula obstetrica</b></td></tr>
      <tr><td align='left' ><b>{{ form_label(edit_form.formulaObstetricaG, 'G') }}
-                               {{ form_widget(edit_form.formulaObstetricaG,  { 'attr': {'size': '2', 'title':'Embarazos', 'onKeyPress':"return soloNumerosEnteros(event);"} }) }}</td>
+                               {{ form_widget(edit_form.formulaObstetricaG,  { 'attr': {'size': '2', 'title':'Digite el numero de Embarazos', 'onKeyPress':"return soloNumerosEnteros(event);"} }) }}</td>
     <td align='left' ><b>{{ form_label(edit_form.formulaObstetricaP1, 'P') }}
-                               {{ form_widget(edit_form.formulaObstetricaP1,  { 'attr': {'size': '2', 'onKeyPress':"return soloNumerosEnteros(event);"} }) }}</td>
+                               {{ form_widget(edit_form.formulaObstetricaP1,  { 'attr': {'size': '2','title':'Digite el numero de Partos', 'onKeyPress':"return soloNumerosEnteros(event);"} }) }}</td>
       <td align='left' ><b>{{ form_label(edit_form.formulaObstetricaP2, 'P') }}
-                               {{ form_widget(edit_form.formulaObstetricaP2,  { 'attr': {'size': '2', 'onKeyPress':"return soloNumerosEnteros(event);"} }) }}</td>
+                               {{ form_widget(edit_form.formulaObstetricaP2,  { 'attr': {'size': '2', 'title':'Digite el numero de Prematuros', 'onKeyPress':"return soloNumerosEnteros(event);"} }) }}</td>
      <td align='left' ><b>{{ form_label(edit_form.formulaObstetricaA, 'A') }}
-                               {{ form_widget(edit_form.formulaObstetricaA,  { 'attr': {'size': '2', 'onKeyPress':"return soloNumerosEnteros(event);"} }) }}</td>
+                               {{ form_widget(edit_form.formulaObstetricaA,  { 'attr': {'size': '2', 'title':'Digite el numero de Abortos', 'onKeyPress':"return soloNumerosEnteros(event);"} }) }}</td>
       <td align='left' ><b>{{ form_label(edit_form.formulaObstetricaV, 'V') }}
-                               {{ form_widget(edit_form.formulaObstetricaV,  { 'attr': {'size': '2', 'onKeyPress':"return soloNumerosEnteros(event);"} }) }}</td>
+                               {{ form_widget(edit_form.formulaObstetricaV,  { 'attr': {'size': '2', 'title':'Digite el numero de Vivos', 'onKeyPress':"return soloNumerosEnteros(event);"} }) }}</td>
        <td align='left' ><b>{{ form_label(edit_form.formulaObstetricaM, 'M') }}
-                               {{ form_widget(edit_form.formulaObstetricaM,  { 'attr': {'size': '2', 'onKeyPress':"return soloNumerosEnteros(event);"} }) }}</td>
-							   <td style="visibility:hidden">{{ form_widget(edit_form.usuario, {'attr':{ 'value' : user_ID }}) }} </td>
-							   </tr>
+                               {{ form_widget(edit_form.formulaObstetricaM,  { 'attr': {'size': '2', 'title':'Digite el numero de Muertos', 'onKeyPress':"return soloNumerosEnteros(event);"} }) }}</td></tr>
 
 
 

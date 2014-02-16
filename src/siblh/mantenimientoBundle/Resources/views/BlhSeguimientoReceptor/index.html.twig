@@ -14,13 +14,16 @@
             <tr>
                 <th>Nombre</th> 
                 <th>Fecha</th>
+                <th>Periodo&nbsp;Evaluacion</th>
                 <th>Semana</th>
                 <th>Talla(cm)</th>
-                <th>Ganancia&nbsp;talla&nbsp;día(cm)</th>
+                <th>Ganancia/Pérdida&nbsp;talla(cm)</th>
                 <th>Peso(g)</th>
-                <th>Ganancia&nbsp;peso&nbsp;día(g)</th>
-                <th>Perímetro&nbsp;cefálico(cm)</th>            
+                <th>Ganancia/Pérdida&nbsp;peso(g)</th>
+                <th>Perímetro&nbsp;cefálico(cm)</th>       
+                <th>Ganancia/Pérdida&nbsp;PC(cm)</th>
                 <th>Complicaciones</th>
+                <th>Observaciones</th>
                 <th>Acción</th>
             </tr>
         </thead>
@@ -29,13 +32,16 @@
             <tr>
                 <td>{{ entity.nombre1 }}&nbsp;{{entity.nombre2 }}&nbsp;{{ entity.nombre3 }}&nbsp;{{ entity.nombre3 }}&nbsp;{{ entity.apellido1 }}&nbsp;{{ entity.apellido2 }}</td>
                 <td>{% if entity.fechaSeguimiento %}{{ entity.fechaSeguimiento|date('Y-m-d') }}{% endif %}</td>
+                <td>{{ entity.periodoEvaluacion }}</td>
                 <td>{{ entity.semana }}</td>
                 <td>{{ entity.tallaReceptor|number_format(2, '.', ',') }}</td>
                 <td>{{ entity.gananciaDiaTalla|number_format(2, '.', ',') }}</td>
                 <td>{{ entity.pesoSeguimiento|number_format(2, '.', ',') }}</td>
                 <td>{{ entity.gananciaDiaPeso|number_format(2, '.', ',') }}</td>
                 <td>{{ entity.pcSeguimiento|number_format(2, '.', ',') }}</td>
+                <td>{{ entity.gananciaDiaPc|number_format(2, '.', ',') }}</td>
                 <td>{{ entity.complicaciones }}</td>
+                <td>{{ entity.observacion }}</td>
                 <td><a href="{{ path('blhseguimientoreceptor_edit', { 'id': entity.id }) }}"><font color="blue"><u>Editar</u></font></a></td>
                {# <td>
                 <ul>

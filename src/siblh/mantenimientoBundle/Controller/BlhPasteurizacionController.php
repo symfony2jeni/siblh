@@ -66,13 +66,13 @@ class BlhPasteurizacionController extends Controller
     public function createAction(Request $request)
     {
         $entity = new BlhPasteurizacion();
-		$usuario = $this->container->get('security.context')->getToken()->getUser()->getId();
-        $entity->setUsuario($usuario);
         $form = $this->createCreateForm($entity);
         $form->handleRequest($request);
 
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
+            $usuario = $this->container->get('security.context')->getToken()->getUser()->getId();
+            $entity->setUsuario($usuario);
             $em->persist($entity);
             $em->flush();
            //  $em = $this->getDoctrine()->getManager();
@@ -147,7 +147,7 @@ class BlhPasteurizacionController extends Controller
     public function editAction($id)
     {
         $em = $this->getDoctrine()->getManager();
-			   $user_ID = $this->container->get('security.context')->getToken()->getUser()->getId();
+
         $entity = $em->getRepository('siblhmantenimientoBundle:BlhPasteurizacion')->find($id);
 
         if (!$entity) {
@@ -169,7 +169,6 @@ class BlhPasteurizacionController extends Controller
             'delete_form' => $deleteForm->createView(),
             'hospital' => $establecimiento,
             'responsable' => $responsable,
-			'user_ID' => $user_ID,
         );
     }
 
@@ -203,13 +202,14 @@ class BlhPasteurizacionController extends Controller
         $em = $this->getDoctrine()->getManager();
 
         $entity = $em->getRepository('siblhmantenimientoBundle:BlhPasteurizacion')->find($id);
-		$usuario = $this->container->get('security.context')->getToken()->getUser()->getId();
-        $entity->setUsuario($usuario);
+
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find BlhPasteurizacion entity.');
         }
 
         $deleteForm = $this->createDeleteForm($id);
+        $usuario = $this->container->get('security.context')->getToken()->getUser()->getId();
+        $entity->setUsuario($usuario);
         $editForm = $this->createEditForm($entity);
         $editForm->handleRequest($request);
 
@@ -321,7 +321,7 @@ public function curvasAction()
      */
     public function newAction($id)            
       {
-        	   $user_ID = $this->container->get('security.context')->getToken()->getUser()->getId();
+        
         $em = $this->getDoctrine()->getManager();
         $query = $em->createQuery("SELECT c.id as iden, c.valorCurva as valorCurva, 
                    c.fechaCurva, c.cantidadFrascos as cantidadFrascos, c.volumenPorFrasco as volumenPorFrasco 
@@ -383,6 +383,12 @@ public function curvasAction()
         $entity = new BlhPasteurizacion();
         $entity->setIdCurva($curva);
         $entity->setCodigoPasteurizacion($codpasteurizacion);
+        
+        //alerta de ciclos
+         $queryciclos = $em->createQuery("SELECT count(p.id) as ciclos FROM siblhmantenimientoBundle:BlhPasteurizacion p WHERE p.idCurva = $id");
+         $ciclos = $queryciclos->getResult(); 
+        
+        
         $form   = $this->createCreateForm($entity);
         
 
@@ -392,7 +398,7 @@ public function curvasAction()
             'datos_curva' =>  $datos_curva,
             'hospital' => $establecimiento,
             'responsable' => $responsable,
-			'user_ID' => $user_ID,
+            'ciclos' => $ciclos,
         
          
         );

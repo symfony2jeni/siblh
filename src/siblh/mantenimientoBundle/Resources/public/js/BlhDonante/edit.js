@@ -1,5 +1,21 @@
 $(document).ready(function() { 
        
+ /*$fnac = $('#siblh_mantenimientobundle_blhdonante_fechaNacimiento').val();
+ $anio = $fnac.slice(0,2);
+ alert ($anio);
+ if (($anio == '00') || ($anio == '01'))
+     {
+  $fnac = '20' + $fnac; 
+  $('#siblh_mantenimientobundle_blhdonante_fechaNacimiento').val($fnac);
+  }
+ else
+    {
+        $fnac = '19' + $fnac; 
+       $('#siblh_mantenimientobundle_blhdonante_fechaNacimiento').val($fnac);        
+  } */
+ 
+ 
+    
      $.noConflict();
      $.datepicker.setDefaults($.datepicker.regional["es"]);
    $('input[id$="_fechaNacimiento"]').datepicker({ dateFormat: 'yy-mm-dd',  
@@ -22,17 +38,20 @@ $(document).ready(function() {
                            defaultDate: 'today',
                            minDate: '2012-10-08',
                            maxDate: 'today',
-                           yearRange: '2012:y',    
+                           yearRange: '2012:y',  
                            dayNamesMin: ["Do", "Lu", "Ma", "Mi", "Ju", "Vi", "Sa"],
                            monthNamesShort: ["Ene", "Feb", "Mar", "Abr", "May", "Jun",
                                              "Jul", "Ago", "Sep", "Oct", "Nov", "Dic"]
                           });  
                           
-                           $('#button').button();
-                            $('#boton1').button();
+                           $('#boton').button();
+                          
                           
                         //  $('#siblh_mantenimientobundle_blhdonante_numeroDocumentoIdentificacion').
       //  attr('data-bvalidator', 'regex[a{3}],required');
+      
+      $('#boton1').button();
+      $('#button').button();
                           
                           //Opciones del validador
     var optionsRed = { 
@@ -56,9 +75,9 @@ $('#siblh_mantenimientobundle_blhdonante_documentoIdentificacion').on('change', 
         regex ='A\\d{8}';
         $formato = 'A99999999'; 
             break;
-        case 'Carnet de Minoridad':
-            regex ='[A-Z]\\d{5}';
-            $formato = 'X99999';
+        case 'Minoridad':
+            regex ='\\d{6}';
+            $formato = 'A99999999'; 
             break;
         
     } 
@@ -91,8 +110,11 @@ $('#siblh_mantenimientobundle_blhdonante_registro').
  
 $('#siblh_mantenimientobundle_blhdonante_registro').
         attr('data-bvalidator-msg', "Ingrese el registro en el formato correcto 999999-9999"); 
+ $('#siblh_mantenimientobundle_blhdonante_fechaNacimiento').
+            attr('data-bvalidator', 'required'); 
 
-
+   $('#siblh_mantenimientobundle_blhdonante_fechaRegistroDonanteBlh').
+            attr('data-bvalidator', 'required'); 
 
 $(function() {
     $( document ).tooltip({
@@ -112,14 +134,10 @@ $(function() {
         
            });
 
-
-
-
-  
+ 
 
 });
 
 
 
       
-

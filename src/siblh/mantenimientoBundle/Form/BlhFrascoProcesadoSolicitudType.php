@@ -18,7 +18,6 @@ class BlhFrascoProcesadoSolicitudType extends AbstractType
             ->add('volumenDespachado')
             ->add('idFrascoProcesado')
             ->add('idSolicitud')
-			->add('usuario')
         ;
     }
     

@@ -115,6 +115,41 @@ $('#siblh_mantenimientobundle_blhpasteurizacion_volumenPasteurizado').on('click'
     $('#siblh_mantenimientobundle_blhpasteurizacion_responsablePasteurizacion').val (this.value); 
     ;
     });
+    
+ //alerta de ciclos
+ $y = $('#ciclos').val();
+//$x=0;
+ if($y==29)
+ {
+ $(function() {
+    $( "#dialog-message" ).dialog({
+      modal: false,
+   position: ['center', 370],
+   autoOpen: true,
+      show: {
+        effect: "blind",
+        duration: 1000
+      },
+      hide: {
+        effect: "fade",
+        duration: 1000
+      },    
+  
+      buttons: {
+        Ok: function() {
+          $( this ).dialog( "close" );
+        }
+      }
+    });
+  });
+ }
+ 
+ 
+ 
+ ///////////////////////
+    
+    
+    
 });
 
 function soloNumerosEnteros(e)

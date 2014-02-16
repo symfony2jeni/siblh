@@ -88,29 +88,29 @@
 {% if tamanio != 0 %}                       
  <table border=1 align = "center" bordercolor="#2e6e9e"  >
      <thead>
-            <tr bgcolor="#2b8dd6">
-                <th style="visibility:hidden">id</th>
-                <th>Select</th>
+                <tr bgcolor="#2b8dd6">
+                <th style="visibility:hidden; display:none">id</th>
+                <th>Seleccionar</th>
                 <th>Código frasco</th>
                 <th>Acidez</th>
                 <th>Calorias</th>
                 <th>Observacion</th>
-                <th>Volumen disponible</th>
-                <th>Volumen a despachar</th>                
+                <th>Volumen disponible(ml)</th>
+                <th>Volumen a despachar(ml)</th>                
             </tr>
             </thead>
             <tbody>
             
         {% for i in 0 ..(tamanio-1)%}
                 <tr>
-                <td style="visibility:hidden">{{ frascosp[i][0]}}</td>
+                <td style="visibility:hidden; display:none">{{ frascosp[i][0]}}</td>
               <td><input type="checkbox" name="idsdespachar[]" id="idsdespachar_{{ frascosp[i][0]}}" value="{{ frascosp[i][0]}}"/></td>
                 <td>{{ frascosp[i][1]}}</td>
                 <td>{{ frascosp[i][2] }}</td>                      
                 <td>{{frascosp[i][3]}}</td>
                 <td>{{ frascosp[i][4]}}</td>                  
                  <td><input name="vldisponible[]" id= "vldisponible_{{frascosp[i][0]}}"  type=text value ="{{frascosp[i][5]|number_format(2, '.', ',')}}" disabled=disabled STYLE="text-align:center"/> </td>  
-                <td><input name="vldespachar[]" id="vldespachar_{{frascosp[i][0]}}"  type=text value="0" onkeypress='javascript:return isNumberKey(event);'/></td>   
+                <td><input name="vldespachar[]" id="vldespachar_{{frascosp[i][0]}}"  type=text value="0" onkeypress='javascript:return soloNumeros(event);'/></td>   
                 </tr>
         {% endfor %}
           
@@ -132,14 +132,14 @@
     <table table border=1 align = "center" bordercolor="#2e6e9e"   >
         <thead>
               <tr bgcolor="#2b8dd6">
-                <th style="visibility:hidden">id</th>
-                <th>Select</th>
+                <th style="visibility:hidden; display:none">id</th>
+                <th>Seleccionar</th>
                 <th>Código frasco</th>
                 <th>Acidez</th>
                 <th>Calorias</th>
                 <th>Observacion</th>
-                <th>Volumen disponible</th>
-                <th>Volumen a despachar</th>                
+                <th>Volumen disponible(ml)</th>
+                <th>Volumen a despachar(ml)</th>                
             </tr>
             </thead>
             <tbody>

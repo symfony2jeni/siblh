@@ -50,7 +50,7 @@ class BlhSeguimientoReceptorController extends Controller
         else{$idp = (string)$codigo;}
         
                 //$entities = $em->getRepository('siblhmantenimientoBundle:BlhSeguimientoReceptor')->findAll();
-        $query = $em->createQuery("SELECT s.id,s.fechaSeguimiento,s.semana,s.tallaReceptor,s.gananciaDiaTalla,s.pesoSeguimiento,s.gananciaDiaPeso,s.pcSeguimiento,s.complicaciones,p.primerNombre as nombre1, p.segundoNombre as nombre2, p.tercerNombre as nombre3, p.primerApellido as apellido1, p.segundoApellido as apellido2 FROM siblhmantenimientoBundle:BlhSeguimientoReceptor s JOIN s.idReceptor r JOIN r.idPaciente p where (substring (r.codigoReceptor, 1, 2) = '$idp')");
+       $query = $em->createQuery("SELECT s.id,s.periodoEvaluacion,s.fechaSeguimiento,s.semana,s.tallaReceptor,s.gananciaDiaTalla,s.pesoSeguimiento,s.gananciaDiaPeso,s.pcSeguimiento,s.gananciaDiaPc,s.complicaciones,s.observacion,p.primerNombre as nombre1, p.segundoNombre as nombre2, p.tercerNombre as nombre3, p.primerApellido as apellido1, p.segundoApellido as apellido2 FROM siblhmantenimientoBundle:BlhSeguimientoReceptor s JOIN s.idReceptor r JOIN r.idPaciente p where (substring (r.codigoReceptor, 1, 2) = '$idp')");
         
         $entities  = $query->getResult();
         
@@ -71,13 +71,13 @@ class BlhSeguimientoReceptorController extends Controller
     public function createAction(Request $request)
     {
         $entity = new BlhSeguimientoReceptor();
-		$usuario = $this->container->get('security.context')->getToken()->getUser()->getId();
-        $entity->setUsuario($usuario);
         $form = $this->createCreateForm($entity);
         $form->handleRequest($request);
 
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
+            $usuario = $this->container->get('security.context')->getToken()->getUser()->getId();
+            $entity->setUsuario($usuario);
             $em->persist($entity);
             $em->flush();
 
@@ -170,7 +170,7 @@ class BlhSeguimientoReceptorController extends Controller
     public function editAction($id)
     {
         $em = $this->getDoctrine()->getManager();
-		$user_ID = $this->container->get('security.context')->getToken()->getUser()->getId();
+
         $entity = $em->getRepository('siblhmantenimientoBundle:BlhSeguimientoReceptor')->find($id);
 
         if (!$entity) {
@@ -183,13 +183,40 @@ class BlhSeguimientoReceptorController extends Controller
          $userEst = $this->container->get('security.context')->getToken()->getUser()->getIdEst();
         $query1 = $em->createQuery("SELECT e.nombre, e.direccion, e.telefono FROM siblhmantenimientoBundle:CtlEstablecimiento e WHERE e.id = $userEst");
         $establecimiento = $query1->getResult(); 
+        
+        $query4 = $em->createQuery("SELECT e.semana as sem FROM siblhmantenimientoBundle:BlhSeguimientoReceptor e WHERE e.id = $id");
+      $sem = $query4->getResult(); 
+      settype ($sem, "integer"); 
+    //  echo $sem;
+      if ($sem == 1)
+      {
+      $query7 = $em->createQuery("SELECT IDENTITY(e.idReceptor) as receptor FROM siblhmantenimientoBundle:BlhSeguimientoReceptor e WHERE e.id = $id");
+      $receptor = $query7->getResult();
+      $irecep = $receptor[0]['receptor'];
+     
+      $query6 = $em->createQuery("SELECT e.tallaIngreso as talla, e.pesoReceptor as peso, e.pc as pc FROM siblhmantenimientoBundle:BlhReceptor e WHERE e.id = $irecep");
+      $talla_peso = $query6->getResult(); 
+       $x = count($talla_peso);
+
+      }
+      
+      else {
+      $query5 = $em->createQuery("SELECT e.tallaReceptor as talla, e.pesoSeguimiento as peso, e.pcSeguimiento as pc FROM siblhmantenimientoBundle:BlhSeguimientoReceptor e WHERE e.id = $id and e.semana = $sem");
+      $talla_peso = $query5->getResult();
+          
+      }
+      
+     
+      
+  
 
         return array(
             'entity'      => $entity,
             'edit_form'   => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
             'hospital' => $establecimiento,
-			'user_ID' => $user_ID,
+            'talla_peso' =>  $talla_peso,           
+           
         );
     }
 
@@ -223,13 +250,14 @@ class BlhSeguimientoReceptorController extends Controller
         $em = $this->getDoctrine()->getManager();
 
         $entity = $em->getRepository('siblhmantenimientoBundle:BlhSeguimientoReceptor')->find($id);
-		$usuario = $this->container->get('security.context')->getToken()->getUser()->getId();
-        $entity->setUsuario($usuario);
+
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find BlhSeguimientoReceptor entity.');
         }
 
         $deleteForm = $this->createDeleteForm($id);
+        $usuario = $this->container->get('security.context')->getToken()->getUser()->getId();
+        $entity->setUsuario($usuario);
         $editForm = $this->createEditForm($entity);
         $editForm->handleRequest($request);
 
@@ -345,7 +373,7 @@ class BlhSeguimientoReceptorController extends Controller
         
          //mostrando los datos del receptor seleccionado
         $em = $this->getDoctrine()->getManager();
-        $user_ID = $this->container->get('security.context')->getToken()->getUser()->getId();
+        
         $query = $em->createQuery("SELECT r.id,r.codigoReceptor, p.primerNombre as primer_nombre, p.segundoNombre as segundo_nombre, p.tercerNombre as tercer_nombre, p.primerApellido as primer_apellido, p.segundoApellido as segundo_apellido FROM siblhmantenimientoBundle:BlhReceptor r JOIN r.idPaciente p WHERE r.id = $id "); 
         
         $datos_receptor  = $query->getResult();
@@ -359,7 +387,23 @@ class BlhSeguimientoReceptorController extends Controller
       $query1 = $em->createQuery("SELECT e.nombre, e.direccion, e.telefono FROM siblhmantenimientoBundle:CtlEstablecimiento e WHERE e.id = $userEst");
       $establecimiento = $query1->getResult(); 
      
-        
+      $query3 = $em->createQuery("SELECT max(e.semana) + 1 as semana FROM siblhmantenimientoBundle:BlhSeguimientoReceptor e WHERE e.idReceptor = $id");
+      $semana = $query3->getResult();      
+      
+      $query4 = $em->createQuery("SELECT max(e.semana) as sem FROM siblhmantenimientoBundle:BlhSeguimientoReceptor e WHERE e.idReceptor = $id");
+      $sem = $query4->getResult(); 
+      settype ($sem, "integer");     
+      $query6 = $em->createQuery("SELECT e.tallaIngreso as talla, e.pesoReceptor as peso, e.pc as pc FROM siblhmantenimientoBundle:BlhReceptor e WHERE e.id = $id");
+      $talla_peso_in = $query6->getResult();       
+      
+      $query5 = $em->createQuery("SELECT e.tallaReceptor as talla, e.pesoSeguimiento as peso, e.pcSeguimiento as pc FROM siblhmantenimientoBundle:BlhSeguimientoReceptor e WHERE e.idReceptor = $id and e.semana = $sem");
+      $talla_peso_seg = $query5->getResult();
+      $x = count($talla_peso_seg);
+     
+      if ($x == 0) {
+      $talla_peso_seg =  $talla_peso_in; }
+      
+      
         if (!$datos_receptor) {
             throw $this->createNotFoundException('Unable to find BlhSolicitud entity.');
         }
@@ -375,7 +419,9 @@ class BlhSeguimientoReceptorController extends Controller
             'form'   => $form->createView(),
             'datos_receptor' => $datos_receptor,
             'hospital' => $establecimiento,
-			'user_ID' => $user_ID,
+            'semana' => $semana,
+            'talla_peso_seg' =>  $talla_peso_seg,           
+            'talla_peso_in' => $talla_peso_in,
         );
     }
     

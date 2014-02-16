@@ -65,13 +65,13 @@ class BlhEgresoReceptorController extends Controller
     public function createAction(Request $request)
     {
         $entity = new BlhEgresoReceptor();
-		$usuario = $this->container->get('security.context')->getToken()->getUser()->getId();
-        $entity->setUsuario($usuario);
         $form = $this->createCreateForm($entity);
         $form->handleRequest($request);
 
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
+            $usuario = $this->container->get('security.context')->getToken()->getUser()->getId();
+            $entity->setUsuario($usuario);
             $em->persist($entity);
             $em->flush();
 
@@ -108,7 +108,7 @@ class BlhEgresoReceptorController extends Controller
     /**
      * Finds and displays a BlhEgresoReceptor entity.
      *
-     * @Route("/{id}", name="blhegresoreceptor_show")
+     * @Route("/{id}", name="blhegresoreceptor_show")  
      * @Method("GET")
      * @Template()
      */
@@ -145,7 +145,6 @@ class BlhEgresoReceptorController extends Controller
     public function editAction($id)
     {
         $em = $this->getDoctrine()->getManager();
-	   $user_ID = $this->container->get('security.context')->getToken()->getUser()->getId();
 
         $entity = $em->getRepository('siblhmantenimientoBundle:BlhEgresoReceptor')->find($id);
 
@@ -165,7 +164,6 @@ class BlhEgresoReceptorController extends Controller
             'edit_form'   => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
             'hospital' => $establecimiento,
-			'user_ID' => $user_ID,
         );
     }
 
@@ -199,8 +197,7 @@ class BlhEgresoReceptorController extends Controller
         $em = $this->getDoctrine()->getManager();
 
         $entity = $em->getRepository('siblhmantenimientoBundle:BlhEgresoReceptor')->find($id);
-		$usuario = $this->container->get('security.context')->getToken()->getUser()->getId();
-        $entity->setUsuario($usuario);
+
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find BlhEgresoReceptor entity.');
         }
@@ -210,6 +207,8 @@ class BlhEgresoReceptorController extends Controller
         $editForm->handleRequest($request);
 
         if ($editForm->isValid()) {
+            $usuario = $this->container->get('security.context')->getToken()->getUser()->getId();
+            $entity->setUsuario($usuario);
             $em->flush();
 
             return $this->redirect($this->generateUrl('blhegresoreceptor_edit', array('id' => $id)));
@@ -317,8 +316,6 @@ JOIN e.idReceptor rec) and r.idBancoDeLeche = $codigo");
     public function newAction($id)
     {
         $em = $this->getDoctrine()->getManager();
-			   $user_ID = $this->container->get('security.context')->getToken()->getUser()->getId();
-
         $query = $em->createQuery("SELECT r.id as identificador, r.codigoReceptor,r.fechaRegistroBlh, p.primerNombre as nombre1, p.segundoNombre as nombre2, p.tercerNombre as nombre3, p.primerApellido as apellido1, p.segundoApellido as apellido2, p.direccion, p.fechaNacimiento FROM siblhmantenimientoBundle:BlhReceptor r join r.idPaciente p  WHERE r.id = $id "); 
         $datos_receptores  = $query->getResult();
         $receptor = $em->getRepository('siblhmantenimientoBundle:BlhReceptor')->find($datos_receptores[0]['identificador']);
@@ -340,7 +337,6 @@ JOIN e.idReceptor rec) and r.idBancoDeLeche = $codigo");
             'form'   => $form->createView(),
             'datos_receptores' =>  $datos_receptores, 
             'hospital' => $establecimiento,
-			'user_ID' => $user_ID,
         );
     }   
     

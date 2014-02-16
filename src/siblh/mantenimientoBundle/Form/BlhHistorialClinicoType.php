@@ -23,11 +23,11 @@ class BlhHistorialClinicoType extends AbstractType
             ->add('numeroControl', 'text')
             ->add('fechaUltimaRegla', 'date', 
                     array(  'widget' => 'single_text',
-                            'format' => 'yy-MM-dd',
+                            'format' => 'y-MM-dd',
                             'attr' => array('class' => 'date')))
             ->add('fechaParto', 'date', 
                     array(  'widget' => 'single_text',
-                            'format' => 'yy-MM-dd',
+                            'format' => 'y-MM-dd',
                             'attr' => array('class' => 'date')))
             ->add('lugarParto','text', array('required'=>'false'))
             ->add('patologiaEmbarazo','text', array('required'=>'false'))
@@ -35,7 +35,7 @@ class BlhHistorialClinicoType extends AbstractType
             ->add('periodoIntergenesico', 'text')
             ->add('fechaPartoAnterior', 'date', 
                     array(  'widget' => 'single_text',
-                            'format' => 'yy-MM-dd',
+                            'format' => 'y-MM-dd',
                             'attr' => array('class' => 'date')))
              ->add('formulaObstetricaG','text',array('max_length'=>'2'))
             ->add('formulaObstetricaP1','text',array('max_length'=>'2'))
@@ -44,7 +44,6 @@ class BlhHistorialClinicoType extends AbstractType
             ->add('formulaObstetricaV','text',array('max_length'=>'2'))
             ->add('formulaObstetricaM','text',array('max_length'=>'2'))
             ->add('idDonante')
-			->add('usuario')
         ;
     }
     

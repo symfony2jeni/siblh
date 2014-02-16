@@ -8,6 +8,7 @@
 {{parent()}}
 
 <script type="text/javascript" src="{{ asset('bundles/siblhmantenimiento/js/BlhHistorialClinico/new.js') }}" ></script>
+<script type="text/javascript" src="{{ asset('bundles/siblhmantenimiento/js/BlhHistorialClinico/dateformat.js') }}" ></script>
        
 {% endblock %}
 
@@ -55,26 +56,26 @@ elemento.style.visibility = visible ? "visible" : "hidden";
         {{ form_errors(form.idDonante) }}
         {{ form_widget(form.idDonante) }} </td></tr>
    <tr><td height=10  ></td></tr>
-   <tr><td align = "left"><b> Formula Obstetrica</b> </td>
+   <tr><td align = "left"><font color="red" >*</font> <b>Formula Obstetrica</b> </td>
         <td align = "left"> 
         {{ form_label(form.formulaObstetricaG, 'G') }}
-        {{ form_widget(form.formulaObstetricaG,  { 'attr': {'size': '2', 'title':'Embarazos', 'onKeyPress':"return soloNumerosEnteros(event);"} }) }}  
+        {{ form_widget(form.formulaObstetricaG,  { 'attr': {'size': '2', 'title':'Digite el numero de Embarazos', 'onKeyPress':"return soloNumerosEnteros(event);"} }) }}  
         {{ form_label(form.formulaObstetricaP1, 'P') }}
-        {{ form_widget(form.formulaObstetricaP1,  { 'attr': {'size': '2', 'title':'Partos', 'onKeyPress':"return soloNumerosEnteros(event);"} }) }}
+        {{ form_widget(form.formulaObstetricaP1,  { 'attr': {'size': '2', 'title':'Digite el numero de Partos', 'onKeyPress':"return soloNumerosEnteros(event);"} }) }}
         {{ form_label(form.formulaObstetricaP2, 'P') }}
-        {{ form_widget(form.formulaObstetricaP2,  { 'attr': {'size': '2', 'title':'Prematuros', 'onKeyPress':"return soloNumerosEnteros(event);"} }) }}
+        {{ form_widget(form.formulaObstetricaP2,  { 'attr': {'size': '2', 'title':'Digite el numero de Prematuros', 'onKeyPress':"return soloNumerosEnteros(event);"} }) }}
         {{ form_label(form.formulaObstetricaA, 'A') }}
-        {{ form_widget(form.formulaObstetricaA,  { 'attr': {'size': '2', 'title':'Abortos', 'onKeyPress':"return soloNumerosEnteros(event);"} }) }}
+        {{ form_widget(form.formulaObstetricaA,  { 'attr': {'size': '2', 'title':'Digite el numero de Abortos', 'onKeyPress':"return soloNumerosEnteros(event);"} }) }}
         {{ form_label(form.formulaObstetricaV, 'V') }}
-        {{ form_widget(form.formulaObstetricaV,  { 'attr': {'size': '2', 'title':'Vivos', 'onKeyPress':"return soloNumerosEnteros(event);"} }) }}
+        {{ form_widget(form.formulaObstetricaV,  { 'attr': {'size': '2', 'title':'Digite el numero de Vivos', 'onKeyPress':"return soloNumerosEnteros(event);"} }) }}
         {{ form_label(form.formulaObstetricaM, 'M') }}
-        {{ form_widget(form.formulaObstetricaM,  { 'attr': {'size': '2', 'title':'Muertos', 'onKeyPress':"return soloNumerosEnteros(event);"} }) }}</td>  
+        {{ form_widget(form.formulaObstetricaM,  { 'attr': {'size': '2', 'title':'Digite el numero de Muertos', 'onKeyPress':"return soloNumerosEnteros(event);"} }) }}</td>  
  
    <td align = "left"><font color="red" >*</font> 
         {{ form_label(form.periodoIntergenesico) }} </td><td align = "left">
         {{ form_widget(form.periodoIntergenesico,  { 'attr': {'size': '4', 'title': 'Digite el periodo entre 1 y 20', 'onKeyPress':"return soloNumerosEnteros(event);"} }) }} </td> </tr>
    <tr><td height=10  ></td></tr>
-   <tr> <td align = "left"> 
+   <tr> <td align = "left"><font color="red" >*</font> 
         {{ form_label(form.fechaUltimaRegla, 'Ultima Regla') }}</td>
   <td align = "left"> 
         {{ form_widget(form.fechaUltimaRegla, {'attr':{'readonly': 'true', 'title': 'Dar clic y seleccionar fecha de ultima regla' } } ) }}</td>
@@ -101,7 +102,7 @@ elemento.style.visibility = visible ? "visible" : "hidden";
         {{ form_widget(form.fechaParto, {'attr':{'readonly': 'true', 'title': 'Dar clic y seleccionar fecha de parto' } }) }}</td>
  <td align = "left"> <font color="red" >*</font> 
         {{ form_label(form.amenorrea) }} &nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><td align = "left">        
-        {{ form_widget(form.amenorrea,  { 'attr': {'size': '4', 'title': 'Digite valor entre 1 y 38 Semanas', 'onKeyPress':"return soloNumerosEnteros(event);"} }) }}</td></tr>
+        {{ form_widget(form.amenorrea,  { 'attr': {'readonly': 'true', 'title':'Dar clic para obtener resultado' } }) }}</td></tr>
  <tr><td height=10  ></td></tr>
   
   <tr><td align = "left"> 
@@ -123,9 +124,7 @@ elemento.style.visibility = visible ? "visible" : "hidden";
        {{ form_widget(form.patologiaEmbarazo, {'attr': { 'value' : 'N/A'} }) }}</td></tr> 
   <tr><td height=10  ></td></tr>
   <tr><td align = "left"><font color="red" size = "2" face = "Comic Sans MS">* Campos requeridos</font></td></tr>
-  <tr>
-  <td style="visibility:hidden">{{ form_widget(form.usuario, {'attr':{ 'value' : user_ID }}) }} </td>
-  <td colspan = '4' align = 'center'>
+  <tr><td colspan = '4' align = 'center'>
       <input id = "boton" type="submit"  value="Guardar"/>
       
       <input id = "boton1" type="button" value="Regresar" onClick=' window.location.href="{{ path('_NewHistorialClinico') }}" '>

@@ -25,13 +25,13 @@ $(document).ready(function() {
     $('form').bValidator(optionsRed);
                           
 //$('#siblh_mantenimientobundle_blhegresoreceptor_estanciaHospitalaria').
-  //      attr('data-bvalidator', 'between[0:],required');
+  //attr('data-bvalidator', 'between[0:],required');
 
   $('#siblh_mantenimientobundle_blhegresoreceptor_estanciaHospitalaria').
-        attr('data-bvalidator', "regex[\\d]");
+        attr('data-bvalidator', "required,between[1:120]");
     
 $('#siblh_mantenimientobundle_blhegresoreceptor_permanenciaUcin').
-        attr('data-bvalidator', "regex[\\d]");
+        attr('data-bvalidator', "required,between[1:120]");
 
 $(function() {
     $( document ).tooltip({
@@ -66,7 +66,7 @@ return /\d/.test(String.fromCharCode(keynum));
 function soloNumeros(e)
 {
 var keynum = window.event ? window.event.keyCode : e.which;
-if ((keynum === 8) || (keynum === 46))
+if ((keynum === 8) || (keynum === 46) )
 return true;
  
 return /\d/.test(String.fromCharCode(keynum));

@@ -24,7 +24,6 @@ class BlhFrascoProcesadoType extends AbstractType
           //  ->add('usuario')
              ->add('idEstado')
             ->add('idPasteurizacion')
-			->add('usuario')
         ;
     }
     

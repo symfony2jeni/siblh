@@ -10,5 +10,6 @@
         <join-column name="id_establecimiento" referenced-column-name="id"/>
       </join-columns>
     </many-to-one>
+    <field name="usuario" type="integer" column="usuario" nullable="true"/>
   </entity>
 </doctrine-mapping>

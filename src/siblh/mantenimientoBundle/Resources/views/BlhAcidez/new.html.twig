@@ -73,14 +73,14 @@
           
         <tr><td width=35 align = "right" height=10  ></td></tr>
       <tr>
-            <td width=35 align = "left" >{{ form_label(form.mediaAcidez,'Media acidez(Grados dornic)') }}</td>
-            <td width=20 align='left'>{{ form_widget(form.mediaAcidez, {'attr':{ 'readonly': 'true' } }) }} </td>
+            <td width=35 align = "left" ><font color="red">*</font>{{ form_label(form.mediaAcidez,'Media acidez(Grados dornic)') }}</td>
+            <td width=20 align='left'>{{ form_widget(form.mediaAcidez, {'attr':{ 'readonly': 'true'} }) }} </td>
            
             <td width=100  align = "left" ><font color="red">*</font>{{ form_label(form.factor, 'Factor(%)') }}</td>
-            <td width=2 align='left'> {{ form_widget(form.factor, {'attr':{ 'onKeyPress':"return soloNumeros(event);",'title': 'Por favor ingrese el factor para cálculo de acidez, entre 1 y 5 %' } }) }} </td>
+            <td width=2 align='left'> {{ form_widget(form.factor, {'attr':{ 'onKeyPress':"return soloNumeros(event);",'title': 'Por favor ingrese el factor para cálculo de acidez, entre 0.9 y 1.1 %' } }) }} </td>
       
-            <td width=35  align = "left" >{{ form_label(form.resultado,'Resultado(Grados dornic)') }}</td>
-            <td width=2 align='left'> {{ form_widget(form.resultado, {'attr':{ 'readonly': 'true' } }) }} </td>
+            <td width=35  align = "left" ><font color="red">*</font>{{ form_label(form.resultado,'Resultado(Grados dornic)') }}</td>
+            <td width=2 align='left'> {{ form_widget(form.resultado, {'attr':{ 'readonly': 'true'} }) }} </td>
         </tr>
         
         <tr><td width=35 align = "right" height=30  ></td></tr>
@@ -91,7 +91,6 @@
           </tr>
           <tr>
              <td width=500 align = 'center' ><input type='submit' id="boton"  value="Guardar"/><input id = "boton1" type="button" value="Regresar" onClick=' window.location.href="{{ path('blhfrascosAnalisis_acidez' )}}"'></td>              
-			  <td style="visibility:hidden">{{ form_widget(form.usuario, {'attr':{ 'value' : user_ID }}) }} </td>
           </tr>
            </table>
            {{ form_end(form) }}

@@ -1,6 +1,6 @@
-$(document).ready(function($) { 
+ $(document).ready(function($) { 
     
-    $('#reporte').click(function(){
+   /* $('#reporte').click(function(){
       var url="/app_dev.php/reportes/reporte/alertaprealmacenado/AlertaPrealmacenado/pdf";
        window.open(url,'_blank');
        return false;
@@ -10,11 +10,49 @@ $(document).ready(function($) {
       var url="/app_dev.php/reportes/reporte/alertapasteurizado/AlertaPasteurizado/pdf";
        window.open(url,'_blank');
        return false;
-    });
+    });*/
     
  //$x=0;
  
-  $x = $('#1').val();
+$rol = $('#3').val();
+
+
+//var str = "Hello world, welcome to the universe.";
+$user_rol1 = $rol.indexOf("LABORATORISTA");
+$user_rol2 = $rol.indexOf("JEFE");
+
+if (($user_rol1 != -1) || ($user_rol2 != -1))
+    {   
+    
+ $y = $('#2').val();
+//$x=0;
+ if($y>0)
+ {
+ $(function() {
+    $( "#dialog-message2" ).dialog({
+      modal: true,
+   position: ['left', 570],
+   autoOpen: true,
+      show: {
+        effect: "blind",
+        duration: 1000
+      },
+      hide: {
+        effect: "fade",
+        duration: 1000
+      },    
+  
+      buttons: {
+        Ver: function() {
+           window.open("/app_dev.php/reportes/reporte/alertapasteurizado/AlertaPasteurizado/pdf",'_blank');
+        }
+      }
+    });
+  });
+ }
+    
+    /////////////////////////
+      $x = $('#1').val();
  //$x=0;
  if($x>0)
      {
@@ -22,7 +60,7 @@ $(document).ready(function($) {
   $(function() {
       
     $( "#dialog-message" ).dialog({
-      modal: false,
+      modal: true,
       position: ['left', 190],
 
  autoOpen: true,
@@ -37,8 +75,8 @@ $(document).ready(function($) {
       
       buttons: {
           
-        Ok: function() {
-          $( this ).dialog( "close" );
+        Ver: function() {
+            window.open("/app_dev.php/reportes/reporte/alertaprealmacenado/AlertaPrealmacenado/pdf",'_blank');;
         }
       }
     });
@@ -51,34 +89,10 @@ $(document).ready(function($) {
 
       
      }
-
- $y = $('#2').val();
-//$x=0;
- if($y>0)
- {
- $(function() {
-    $( "#dialog-message2" ).dialog({
-      modal: false,
-   position: ['left', 570],
-   autoOpen: true,
-      show: {
-        effect: "blind",
-        duration: 1000
-      },
-      hide: {
-        effect: "fade",
-        duration: 1000
-      },    
-  
-      buttons: {
-        Ok: function() {
-          $( this ).dialog( "close" );
-        }
-      }
-    });
-  });
- }
+     
+     }
     
+
 
      
      //prueba------------------------------------//

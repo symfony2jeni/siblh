@@ -39,11 +39,11 @@
      
     <td colspan="3"> 
         {{ form_errors(form.cantidadFrascos) }}
-        {{ form_widget(form.cantidadFrascos,{ 'attr': {'title': '99','onKeyPress':"return soloNumerosEnteros(event);"} }) }} <P></td>
+        {{ form_widget(form.cantidadFrascos,{ 'attr': {'title': 'Ingrese la cantidad de frascos, entre 10 y 60','onKeyPress':"return soloNumerosEnteros(event);"} }) }} <P></td>
     
     <td colspan="3">   
         {{ form_errors(form.volumenPorFrasco) }}
-        {{ form_widget(form.volumenPorFrasco,{ 'attr': {'title': '99.9999 ML','onKeyPress':"return soloNumeros(event);"} }) }} <P></td>
+        {{ form_widget(form.volumenPorFrasco,{ 'attr': {'title': 'Ingrese el volumen de los frascos, entre  60 y 500 ml','onKeyPress':"return soloNumeros(event);"} }) }} <P></td>
   
     
  </tr> 
@@ -75,17 +75,28 @@
      
     <td colspan="2"> 
         {{ form_errors(form.tiempo1) }}
-        {{ form_widget(form.tiempo1,{ 'attr': {'title': '99.99','onKeyPress':"return soloNumeros(event);"} }) }} </td>
+        {{ form_widget(form.tiempo1,{ 'attr': {'title': 'Ingrese tiempo 1, entre 5 y 10 minutos','onKeyPress':"return soloNumerosEnteros(event);"} }) }} </td>
     
     <td colspan="2">   
         {{ form_errors(form.tiempo2) }}
-        {{ form_widget(form.tiempo2,{ 'attr': {'title': '99.99','onKeyPress':"return soloNumeros(event);"} }) }} </td>
+        {{ form_widget(form.tiempo2,{ 'attr': {'title': 'Ingrese tiempo 2, entre 5 y 10 minutos','onKeyPress':"return soloNumerosEnteros(event);"} }) }} </td>
   
     <td colspan="2">  
         {{ form_errors(form.tiempo3) }}
-        {{ form_widget(form.tiempo3,{ 'attr': {'title': '99.99','onKeyPress':"return soloNumeros(event);"} }) }} </td>  
+        {{ form_widget(form.tiempo3,{ 'attr': {'title': 'Ingrese tiempo 3, entre 5 y 10 minutos','onKeyPress':"return soloNumerosEnteros(event);"} }) }} </td>  
     
  </tr> 
+ 
+ <tr>
+     <td colspan="6" align="center"><font color="red">*</font>  {{ form_label(form.valorCurva, 'Valor Curva' )}}</td>
+ </tr>    
+
+ <tr>
+    <td colspan="6">
+     {{ form_errors(form.valorCurva) }}
+     {{ form_widget(form.valorCurva, {'attr':{ 'readonly': 'true'} }) }} </td> 
+ </tr>  
+ 
 <tr><P>   
 <td align = 'left' WIDTH = "150"> <P><font color="red">* Campos requeridos</font></td> </tr> 
 <tr>  

@@ -92,11 +92,10 @@ class CtlEstablecimientoController extends Controller
     {
         $entity = new CtlEstablecimiento();
         $form   = $this->createCreateForm($entity);
-		$user_ID = $this->container->get('security.context')->getToken()->getUser()->getId();
+
         return array(
             'entity' => $entity,
             'form'   => $form->createView(),
-			'user_ID' => $user_ID,
         );
     }
 
@@ -135,7 +134,7 @@ class CtlEstablecimientoController extends Controller
     public function editAction($id)
     {
         $em = $this->getDoctrine()->getManager();
-		 $user_ID = $this->container->get('security.context')->getToken()->getUser()->getId();
+
         $entity = $em->getRepository('siblhmantenimientoBundle:CtlEstablecimiento')->find($id);
 
         if (!$entity) {
@@ -149,7 +148,6 @@ class CtlEstablecimientoController extends Controller
             'entity'      => $entity,
             'edit_form'   => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
-			'user_ID' => $user_ID,
         );
     }
 

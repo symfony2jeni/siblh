@@ -51,13 +51,13 @@ class BlhAnalisisMicrobiologicoController extends Controller
     public function createAction(Request $request)
     {
         $entity = new BlhAnalisisMicrobiologico();
-		$usuario = $this->container->get('security.context')->getToken()->getUser()->getId();
-        $entity->setUsuario($usuario);
         $form = $this->createCreateForm($entity);
         $form->handleRequest($request);
 
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
+            $usuario = $this->container->get('security.context')->getToken()->getUser()->getId();
+            $entity->setUsuario($usuario);
             $em->persist($entity);
             $em->flush();
 
@@ -164,7 +164,7 @@ class BlhAnalisisMicrobiologicoController extends Controller
     public function editAction($id)
     {
         $em = $this->getDoctrine()->getManager();
-		$user_ID = $this->container->get('security.context')->getToken()->getUser()->getId();
+
         $entity = $em->getRepository('siblhmantenimientoBundle:BlhAnalisisMicrobiologico')->find($id);
 
         if (!$entity) {
@@ -188,7 +188,6 @@ class BlhAnalisisMicrobiologicoController extends Controller
             'edit_form'   => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
             'hospital' => $establecimiento,
-			'user_ID' => $user_ID,
         );
     }
 
@@ -222,8 +221,7 @@ class BlhAnalisisMicrobiologicoController extends Controller
         $em = $this->getDoctrine()->getManager();
 
         $entity = $em->getRepository('siblhmantenimientoBundle:BlhAnalisisMicrobiologico')->find($id);
-		$usuario = $this->container->get('security.context')->getToken()->getUser()->getId();
-        $entity->setUsuario($usuario);
+
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find BlhAnalisisMicrobiologico entity.');
         }
@@ -233,6 +231,8 @@ class BlhAnalisisMicrobiologicoController extends Controller
         $editForm->handleRequest($request);
 
         if ($editForm->isValid()) {
+            $usuario = $this->container->get('security.context')->getToken()->getUser()->getId();
+            $entity->setUsuario($usuario);
             $em->flush();
 
             return $this->redirect($this->generateUrl('blhanalisismicrobiologico_edit', array('id' => $id)));
@@ -311,10 +311,11 @@ class BlhAnalisisMicrobiologicoController extends Controller
         else{$idp = (string)$codigo;}
       
         
-        $query = $em->createQuery("SELECT p.id, p.codigoFrascoProcesado,p.observacionFrascoProcesado FROM siblhmantenimientoBundle:BlhFrascoProcesado p where p.idEstado=3
-                                    and substring(p.codigoFrascoProcesado,1,2) = '$idp'");
+        $query = $em->createQuery("SELECT p.id, p.codigoFrascoProcesado,p.observacionFrascoProcesado, e.fechaPasteurizacion
+                                   FROM siblhmantenimientoBundle:BlhFrascoProcesado p
+                                   join p.idPasteurizacion e
+                                   where p.idEstado=3 and substring(p.codigoFrascoProcesado,1,2) = '$idp' ORDER BY e.fechaPasteurizacion DESC");
         $frascos_pasteurizados= $query->getResult();
-        
         return array(
             'frascos_pasteurizados' =>  $frascos_pasteurizados,
             'hospital' => $establecimiento,    
@@ -335,7 +336,7 @@ class BlhAnalisisMicrobiologicoController extends Controller
          $em = $this->getDoctrine()->getManager();
          $query = $em->createQuery("SELECT  p.id, p.codigoFrascoProcesado,p.observacionFrascoProcesado FROM siblhmantenimientoBundle:BlhFrascoProcesado p WHERE p.id = $id "); 
          $frascos_pasteurizados  = $query->getResult(); 
-		 $user_ID = $this->container->get('security.context')->getToken()->getUser()->getId();
+
          $pasteurizados = $em->getRepository('siblhmantenimientoBundle:BlhFrascoProcesado')->find($id); 
 
        
@@ -358,7 +359,6 @@ class BlhAnalisisMicrobiologicoController extends Controller
             'form'   => $form->createView(), 
             'frascos_pasteurizados' =>  $frascos_pasteurizados,
             'hospital' => $establecimiento,
-			'user_ID' => $user_ID,
             
         ); 
     }

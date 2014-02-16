@@ -9,5 +9,6 @@
     <field name="tabla" type="string" column="tabla" length="30" nullable="false"/>
     <field name="usuario" type="string" column="usuario" length="20" nullable="false"/>
     <field name="accion" type="string" column="accion" length="10" nullable="false"/>
+    <field name="detalle" type="string" column="detalle" length="500" nullable="false"/>
   </entity>
 </doctrine-mapping>

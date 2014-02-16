@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="analisislaboratorio" language="groovy" pageWidth="1728" pageHeight="792" columnWidth="1688" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="d551ee5e-8cc6-4cdf-b5ab-403e2246819e">
 	<property name="ireport.zoom" value="1.0"/>
-	<property name="ireport.x" value="474"/>
-	<property name="ireport.y" value="0"/>
+	<property name="ireport.x" value="349"/>
+	<property name="ireport.y" value="123"/>
 	<style name="table">
 		<box>
 			<pen lineWidth="1.0" lineColor="#000000"/>
@@ -31,12 +31,11 @@
 		</parameter>
 		<parameter name="nombre" class="java.lang.String"/>
 		<queryString>
-			<![CDATA[select la.fecha_analisis_fisico_quimico as fecha, dt.codigo_donante, dt.primer_nombre || ' ' ||dt.segundo_nombre || ' ' ||
-dt.primer_apellido || ' ' ||dt.segundo_apellido as donante, fr.codigo_frasco_recolectado as cod, fr.volumen_recolectado as ml,
-ans.embalaje, ans.suciedad, ans.color, ans.flavor, ac.acidez1 as a1, ac.acidez2 as a2, ac.acidez3 as a3,
-ac.media_acidez as ma, ac.factor as fac, ac.resultado as res, cm.ct1, cm.ct2, cm.ct3,
-cm.media_ct as mct, cm.crema1 as c1, cm.crema2 as c2, cm.crema3 as c3, cm.media_crema as mcrema,
-cm.porcentaje_crema as porc, cm.kilocalorias as kc
+			<![CDATA[select la.fecha_analisis_fisico_quimico as fecha, dt.primer_nombre ||' ' ||coalesce(dt.segundo_nombre, '')||' '||dt.primer_apellido||' '||coalesce(dt.segundo_apellido, '') as donante, dt.codigo_donante, fr.codigo_frasco_recolectado as cod, coalesce(fr.volumen_recolectado,0) as ml,
+ans.embalaje, ans.suciedad, ans.color, ans.flavor, coalesce(ac.acidez1,0) as a1, coalesce(ac.acidez2,0) as a2, coalesce(ac.acidez3,0) as a3,
+coalesce(ac.media_acidez,0) as ma, coalesce(ac.factor,0) as fac, coalesce(ac.resultado,0) as res, coalesce(cm.ct1,0) as ct1, coalesce(cm.ct2,0) as ct2, coalesce(cm.ct3,0) as ct3,
+coalesce(cm.media_ct,0) as mct, coalesce(cm.crema1,0) as c1, coalesce(cm.crema2,0) as c2, coalesce(cm.crema3,0) as c3, coalesce(cm.media_crema,0) as mcrema,
+coalesce(cm.porcentaje_crema,0) as porc, coalesce(cm.kilocalorias,0) as kc
 from blh_analisis_sensorial ans join blh_frasco_recolectado fr
 on  ans.id_frasco_recolectado = fr.id join
 blh_donante dt on dt.id = fr.id_donante join
@@ -80,7 +79,7 @@ and (substring(fr.codigo_frasco_recolectado from 1 for 2) = $P{id});]]>
 	<parameter name="nombre" class="java.lang.String"/>
 	<queryString>
 		<![CDATA[select la.fecha_analisis_fisico_quimico as fecha, dt.codigo_donante, dt.primer_nombre || ' ' ||dt.segundo_nombre || ' ' ||
-dt.primer_apellido || ' ' ||dt.segundo_apellido as donante, fr.codigo_frasco_recolectado as cod, fr.volumen_recolectado as ml,
+dt.primer_apellido || ' ' ||dt.segundo_apellido as donante, dt.codigo_donante, fr.codigo_frasco_recolectado as cod, fr.volumen_recolectado as ml,
 ans.embalaje, ans.suciedad, ans.color, ans.flavor, ac.acidez1 as a1, ac.acidez2 as a2, ac.acidez3 as a3,
 ac.media_acidez as ma, ac.factor as fac, ac.resultado as res, cm.ct1, cm.ct2, cm.ct3,
 cm.media_ct as mct, cm.crema1 as c1, cm.crema2 as c2, cm.crema3 as c3, cm.media_crema as mcrema,
@@ -92,7 +91,7 @@ blh_lote_analisis la on fr.id_lote_analisis = la.id
 left join blh_acidez ac on fr.id = ac.id_frasco_recolectado
 left join blh_crematocrito cm on fr.id = cm.id_frasco_recolectado
 where (la.fecha_analisis_fisico_quimico between to_date($P{fechai},'YYYY-MM-DD') and to_date($P{fechaf},'YYYY-MM-DD'))
-and (substring(fr.codigo_frasco_recolectado from 1 for 2) = $P{id}); ]]>
+and (substring(fr.codigo_frasco_recolectado from 1 for 2) = $P{id});]]>
 	</queryString>
 	<field name="fecha" class="java.sql.Date"/>
 	<field name="codigo_donante" class="java.lang.String"/>
@@ -138,14 +137,6 @@ and (substring(fr.codigo_frasco_recolectado from 1 for 2) = $P{id}); ]]>
 				</textElement>
 				<text><![CDATA[RESULTADOS DE ANALISIS DE LABORATORIO]]></text>
 			</staticText>
-			<image>
-				<reportElement uuid="31726b2c-f132-4412-8896-b9e10232c294" x="15" y="21" width="158" height="107"/>
-				<imageExpression><![CDATA["/home/jeni/NetBeansProjects/siblh/src/siblh/mantenimientoBundle/Resources/reportes/blh.jpg"]]></imageExpression>
-			</image>
-			<image>
-				<reportElement uuid="fab6c045-3314-4486-b16d-218457ac4185" x="1503" y="15" width="158" height="101"/>
-				<imageExpression><![CDATA["/home/jeni/NetBeansProjects/siblh/src/siblh/mantenimientoBundle/Resources/reportes/minsal2.jpg"]]></imageExpression>
-			</image>
 			<textField>
 				<reportElement uuid="3176b362-02db-4e7c-abde-b4f8098eb8bd" x="515" y="47" width="643" height="20"/>
 				<textElement textAlignment="Center">
@@ -195,9 +186,9 @@ and (substring(fr.codigo_frasco_recolectado from 1 for 2) = $P{id}); ]]>
 		</band>
 	</pageHeader>
 	<columnHeader>
-		<band height="175" splitType="Stretch">
+		<band height="77">
 			<componentElement>
-				<reportElement uuid="5f03f63a-a6cd-4bb8-977f-58aef8d1c6e6" key="table" style="table" x="45" y="13" width="1418" height="140"/>
+				<reportElement uuid="5f03f63a-a6cd-4bb8-977f-58aef8d1c6e6" key="table" style="table" x="89" y="0" width="1418" height="52"/>
 				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
 					<datasetRun subDataset="New Dataset 1" uuid="b889b3f3-64f2-4955-9e73-b65f8a0f298d">
 						<datasetParameter name="fechai">
@@ -693,22 +684,4 @@ and (substring(fr.codigo_frasco_recolectado from 1 for 2) = $P{id}); ]]>
 			</componentElement>
 		</band>
 	</columnHeader>
-	<detail>
-		<band height="64" splitType="Stretch"/>
-	</detail>
-	<columnFooter>
-		<band height="45" splitType="Stretch"/>
-	</columnFooter>
-	<pageFooter>
-		<band height="54" splitType="Stretch">
-			<textField>
-				<reportElement uuid="92f94b7d-cb6a-4fd2-96a2-d38a984f976b" x="1642" y="22" width="31" height="20"/>
-				<textElement/>
-				<textFieldExpression><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
-			</textField>
-		</band>
-	</pageFooter>
-	<summary>
-		<band height="42" splitType="Stretch"/>
-	</summary>
 </jasperReport>

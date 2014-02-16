@@ -21,7 +21,7 @@ class BlhPasteurizacionType extends AbstractType
             ->add('numFrascosPasteurizados', 'text')
             ->add('fechaPasteurizacion', 'date', 
                     array(  'widget' => 'single_text',
-                            'format' => 'yy-MM-dd',
+                            'format' => 'y-MM-dd',
                             'attr' => array('class' => 'date')))
             ->add('horaInicioP')
             ->add('horaFinalP')
@@ -29,7 +29,6 @@ class BlhPasteurizacionType extends AbstractType
             ->add('horaFinalE')
             ->add('responsablePasteurizacion')
             ->add('idCurva')
-			->add('usuario')
         ;
     }
     

@@ -47,7 +47,6 @@ elemento.style.visibility = visible ? "visible" : "hidden";
         <td align = "right" colspan = "2">
         <INPUT type=text disabled="disabled" size=10 readonly="readonly" value= " {{ datos_pacientes[0].identificador }} "></td></tr>
       <tr>
-	  <td style="visibility:hidden">{{ form_widget(form.usuario, {'attr':{ 'value' : user_ID }}) }} </td>
        <td width= "130">Nombre paciente</td>
         <td width= "70">
          <INPUT name = "label2" type=text disabled="disabled" size=30 readonly="readonly" value= "{{ datos_pacientes[0].nombre1}}&nbsp;{{ datos_pacientes[0].nombre2  }}&nbsp;{{ datos_pacientes[0].nombre3  }}&nbsp;{{ datos_pacientes[0].apellido1  }} "></td>
@@ -91,7 +90,7 @@ elemento.style.visibility = visible ? "visible" : "hidden";
     
     </table >
     
-       <table align = "center"  WIDTH = "87%" >
+       <table align = "center"  WIDTH = "87%" border=0>
             <tr>
     <td align = left><font color="red">*</font>
         {{ form_label(form.fechaRegistroBlh,'Fecha de registro') }} </td>
@@ -101,7 +100,7 @@ elemento.style.visibility = visible ? "visible" : "hidden";
     <td align = left><font color="red">*</font>
         {{ form_label(form.edadDias,'Edad en Dias') }}</td>
     <td align = left>
-        {{ form_widget(form.edadDias, {'attr':{'readonly': 'true'} }) }} </td>
+        {{ form_widget(form.edadDias, {'attr':{'readonly': 'true','title': 'Dar clic para obtener el resultado'} }) }} </td>
    
     <td align = left>
         {{ form_label(form.procedencia,'Procedencia') }}</td>
@@ -127,18 +126,27 @@ elemento.style.visibility = visible ? "visible" : "hidden";
                    
        <td align = left><font color="red">*</font>
 
-   
-        {{ form_label(form.apgarPrimerMinuto) }} </td><td align = left>
+        {{ form_label(form.apgarPrimerMinuto, 'APGAR al primer minuto') }} </td><td align = left>
                   
-        {{ form_widget(form.apgarPrimerMinuto,  { 'attr': {'title': 'Entre 0 a 10 minutos', 'onKeyPress':"return soloNumerosEnteros(event);"} }) }} </td> 
-           
+        {{ form_widget(form.apgarPrimerMinuto,  { 'attr': {'title': 'Ingrese APGAR al primer minuto, entre 0 y 9', 'onKeyPress':"return soloNumeros(event);"} }) }} </td> 
+       
+         <td align = left><font color="red">*</font>
+
+        {{ form_label(form.apgarQuintoMinuto,'APGAR al quinto minuto') }} </td><td align = left>
+                  
+        {{ form_widget(form.apgarQuintoMinuto,  { 'attr': {'title': 'Ingrese APGAR al quinto minuto, entre 0 y 10', 'onKeyPress':"return soloNumeros(event);"} }) }} </td></tr> 
+         
+       
+ <tr><td height=10  ></td></tr>                  
+          <tr>
+
        <td align = left><font color="red">*</font>
         {{ form_label(form.edadGestBallard, 'Edad Gestacional Ballard') }} </td><td align = left>
-        {{ form_widget(form.edadGestBallard,  { 'attr': {'title': 'Entre 24 a 42 Semanas', 'onKeyPress':"return soloNumerosEnteros(event);"} }) }} </td></tr>
-          <tr><td height=10  ></td></tr>
-       <tr>
+        {{ form_widget(form.edadGestBallard,  { 'attr': {'title': 'Entre 20 a 42 Semanas', 'onKeyPress':"return soloNumerosEnteros(event);"} }) }} </td>
+
+       
         
-           <td align = left colspan = 2><font color="red">*</font>
+           <td align = left colspan = 4><font color="red">*</font>
                <form>
               <b>  Clasificacion Lubchenco  </b>
                <input type="radio" name="group1" id="2" value="PEG"> PEG
@@ -146,27 +154,27 @@ elemento.style.visibility = visible ? "visible" : "hidden";
                <input type="radio" name="group1" id="4" value="GEG">GEG
                </form>
            
-           </td>
+           </td></tr>
+           <tr><td height=10  ></td></tr>
+           
+           
            
                         
-      <td align = left> 
-
-     
+            <tr>
+           <td align = left >
         <label>Ventilacion mecanica:</label></td><td align = left>
         <input type="radio" name="group2" value="si" onClick="prueba(true, 'ventilacion');prueba(true, 'ventilacion1');"> Si
         <input type="radio" name="group2" value="no" onClick="prueba(false, 'ventilacion');prueba(false, 'ventilacion1');"> No<br></td>
- <td align = center id= "ventilacion" style="visibility:hidden"> 
+ <td align = left id= "ventilacion" style="visibility:hidden"> 
 
         {{ form_label(form.duracionVentilacion) }}</td><td align = left id= "ventilacion1" style="visibility:hidden">  
-        {{ form_widget(form.duracionVentilacion,  { 'attr': {'value': 0, 'size': '6', 'title': 'Dias de ventilacion mayor que cero', 'onKeyPress':"return soloNumerosEnteros(event);"} }) }} </td> 
+        {{ form_widget(form.duracionVentilacion,  { 'attr': {'value': 0,  'title': 'Dias de ventilacion mecanica, entre 0 y 99', 'onKeyPress':"return soloNumerosEnteros(event);"} }) }} </td> 
     </tr>
        
        <tr><td height=10  ></td></tr>
-    <tr><td align = left><font color="red" >*</font>
-        {{ form_label(form.diagnosticoIngreso) }}</td><td align = left>
-        {{ form_widget(form.diagnosticoIngreso,  { 'attr': {'size': '50'} }) }}  </td>
+    <tr>
                
-        <td align = center>
+        <td align = left>
         
           <label>CPAP</label> </td><td align = left>
         <input type="radio" name="group3" value="si" onClick="prueba(true, 'cpap');prueba(true, 'cpap1');"> Si
@@ -174,8 +182,9 @@ elemento.style.visibility = visible ? "visible" : "hidden";
  <td  id= "cpap" style="visibility:hidden" align = left> 
 
         {{ form_label(form.duracionCpap, 'Duracion de CPAP Nasal') }}</td><td align = left id= "cpap1" style="visibility:hidden">
-        {{ form_widget(form.duracionCpap,  { 'attr': {'value': 0, 'title': 'Dias mayor que cero', 'onKeyPress':"return soloNumerosEnteros(event);"} }) }} </td>         
+        {{ form_widget(form.duracionCpap,  { 'attr': {'value': 0, 'title': 'Dias entre 0 y 50', 'onKeyPress':"return soloNumerosEnteros(event);"} }) }} </td>         
     
+ 
     </tr>
     
        <tr><td height=10  ></td></tr>
@@ -189,21 +198,24 @@ elemento.style.visibility = visible ? "visible" : "hidden";
 
         {{ form_label(form.duracionNpt) }}</td><td align = left id= "npt1" style="visibility:hidden">
 
-        {{ form_widget(form.duracionNpt, { 'attr': {'value': 0, 'title': 'Dias mayor que cero', 'onKeyPress':"return soloNumerosEnteros(event);"} }) }} </td> 
+        {{ form_widget(form.duracionNpt, { 'attr': {'value': 0, 'title': 'Dias entre 0 y 50', 'onKeyPress':"return soloNumerosEnteros(event);"} }) }} </td> 
     <td style="visibility:hidden"><font color="red">*</font>
         {{ form_label(form.estadoReceptor,'Estado') }}</td><td style="visibility:hidden" align = left>
-        {{ form_widget(form.estadoReceptor,  { 'attr': {'value': 'Activo'} }) }} </td>  
-        
-
-    
+        {{ form_widget(form.estadoReceptor,  { 'attr': {'value': 'Activo'} }) }} </td>         
     </tr>
        <tr><td height=10  ></td></tr>
+       
     <tr>
+        <td align = left><font color="red" >*</font>
+        {{ form_label(form.diagnosticoIngreso) }}</td><td align = left>
+        {{ form_widget(form.diagnosticoIngreso,  { 'attr': {'size': '50'} }) }}  </td>   
+        
           <td style="visibility:hidden" align = left colspan = 3>
         {{ form_label(form.clasificacionLubchengo, 'cl') }}
         {{ form_errors(form.clasificacionLubchengo) }}
-        {{ form_widget(form.clasificacionLubchengo,  { 'attr': {'size': '3'} }) }}  </td>
-              <td colspan = '3' align = 'left' style="visibility:hidden">
+        {{ form_widget(form.clasificacionLubchengo,  { 'attr': {'size': '3'} }) }}  </td>       
+   
+        <td colspan = '3' align = 'left' style="visibility:hidden">
         {{ form_label(form.codigoReceptor) }}
         {{ form_errors(form.codigoReceptor) }}
         {{ form_widget(form.codigoReceptor) }}

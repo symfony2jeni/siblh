@@ -4,7 +4,7 @@
     <id name="id" type="integer" column="id">
       <generator strategy="SEQUENCE"/>
     </id>
-    <field name="amenorrea" type="integer" column="amenorrea" nullable="true"/>
+    <field name="amenorrea" type="decimal" column="amenorrea" nullable="true"/>
     <field name="controlPrenatal" type="string" column="control_prenatal" length="2" nullable="false"/>
     <field name="lugarControl" type="string" column="lugar_control" length="25" nullable="true"/>
     <field name="numeroControl" type="integer" column="numero_control" nullable="true"/>

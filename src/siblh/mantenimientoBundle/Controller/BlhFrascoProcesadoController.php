@@ -54,7 +54,7 @@ class BlhFrascoProcesadoController extends Controller
     public function createAction(Request $request)
     {
         $entity = new BlhFrascoProcesado();
-		$usuario = $this->container->get('security.context')->getToken()->getUser()->getId();
+        $usuario = $this->container->get('security.context')->getToken()->getUser()->getId();
         $entity->setUsuario($usuario);
         $form = $this->createCreateForm($entity);
         $form->handleRequest($request);
@@ -115,23 +115,28 @@ class BlhFrascoProcesadoController extends Controller
             //Guardando los nuevos objetos frascrfrascop
             for($i=0; $i<$tamanio;$i++ ){
             $frascosr = $em->getRepository('siblhmantenimientoBundle:BlhFrascoRecolectado')->find($ids_combinar[$i]);
-            $frascosr->setUsuario($usuario);                     
+                                 
             //Asociando el farsco procesado con los frascos recolectados
             $entity1 = new BlhFrascoRecolectadoFrascoP();
-			$entity1->setUsuario($usuario);
+            $entity1->setUsuario($usuario);
             $entity1->setidFrascoProcesado($frascop);
             $entity1->setidFrascoRecolectado($frascosr);                            
             $entity1->setvolumenAgregado($vlcombinar[$i]);
             $em->persist($entity1);
             $em->flush();
             
-           
-            $voldisp=(int)$vldisponible[$i]-(int)$vlcombinar[$i];
+           $voldisp=(float)$vldisponible[$i]-(float)$vlcombinar[$i];
+            
+            $frascosr->setvolumenDisponibleFr($voldisp);
+            $em->persist($frascosr);
+             $em->flush();
+          //  $voldisp=(int)$vldisponible[$i]-(int)$vlcombinar[$i];
             
               //Cambiando estado a los frascos q no les queda volumen
             if($voldisp==0){
             $nuevoestado = $em->getRepository('siblhmantenimientoBundle:BlhEstado')->find(15);
             $frascosr->setIdEstado($nuevoestado);
+            $frascosr->setUsuario($usuario);
             $em->persist($frascosr);
             $em->flush();
            /* $idestado= $frascosr->getidEstado();
@@ -181,9 +186,7 @@ class BlhFrascoProcesadoController extends Controller
     {
 
 //Obtener banco de leche//
-        $em = $this->getDoctrine()->getManager();  
-	   $user_ID = $this->container->get('security.context')->getToken()->getUser()->getId();
-		
+        $em = $this->getDoctrine()->getManager();       
         $userEst = $this->container->get('security.context')->getToken()->getUser()->getIdEst();
      
       
@@ -206,11 +209,11 @@ class BlhFrascoProcesadoController extends Controller
         //Obtener los frascos a combinar
         
         //Acides->frasco
-       $query = $em->createQuery("select fr.id, fr.codigoFrascoRecolectado, a.resultado  from siblhmantenimientoBundle:BlhAcidez a join a.idFrascoRecolectado fr  where fr.idEstado = 6 AND fr.idLoteAnalisis IS NOT NULL and (substring (fr.codigoFrascoRecolectado, 1, 2) = '$idp') ORDER BY fr.id ");
+       $query = $em->createQuery("select distinct fr.id, fr.codigoFrascoRecolectado, a.resultado, fr.volumenDisponibleFr as disponible  from siblhmantenimientoBundle:BlhAcidez a join a.idFrascoRecolectado fr  where fr.idEstado = 6 AND fr.idLoteAnalisis IS NOT NULL and (substring (fr.codigoFrascoRecolectado, 1, 2) = '$idp') and fr.volumenDisponibleFr > 0 ORDER BY fr.id ");
        $frascos_combinar = $query->getResult(); 
        $Cantidad_frascos = count($frascos_combinar);
        //Crematocrito->frasco
-       $query2 = $em->createQuery("SELECT fr.id, fr.codigoFrascoRecolectado, fr.volumenRecolectado vl, c.kilocalorias FROM siblhmantenimientoBundle:BlhCrematocrito c join c.idFrascoRecolectado fr  where fr.idEstado = 6 AND fr.idLoteAnalisis IS NOT NULL and (substring (fr.codigoFrascoRecolectado, 1, 2) = '$idp') ORDER BY fr.id ");      
+       $query2 = $em->createQuery("SELECT distinct fr.id, fr.codigoFrascoRecolectado, fr.volumenRecolectado vl, c.kilocalorias FROM siblhmantenimientoBundle:BlhCrematocrito c join c.idFrascoRecolectado fr  where fr.idEstado = 6 AND fr.idLoteAnalisis IS NOT NULL and (substring (fr.codigoFrascoRecolectado, 1, 2) = '$idp') ORDER BY fr.id");      
        $calorias = $query2->getResult(); 
        $filas = count($calorias );
        
@@ -265,7 +268,6 @@ class BlhFrascoProcesadoController extends Controller
             'calorias'=>$calorias,
             'volumen_agregado'=>$volumen_agregado,
             'vldisponible'=>$vldisponible,
-			'user_ID' => $user_ID,
         );
     }
    
@@ -305,7 +307,6 @@ class BlhFrascoProcesadoController extends Controller
     public function editAction($id)
     {
         $em = $this->getDoctrine()->getManager();
-	   $user_ID = $this->container->get('security.context')->getToken()->getUser()->getId();
 
         $entity = $em->getRepository('siblhmantenimientoBundle:BlhFrascoProcesado')->find($id);
 
@@ -330,7 +331,6 @@ class BlhFrascoProcesadoController extends Controller
             'edit_form'   => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
             'hospital' => $establecimiento,
-			'user_ID' => $user_ID,
         );
     }
 
@@ -364,7 +364,7 @@ class BlhFrascoProcesadoController extends Controller
         $em = $this->getDoctrine()->getManager();
 
         $entity = $em->getRepository('siblhmantenimientoBundle:BlhFrascoProcesado')->find($id);
-		$usuario = $this->container->get('security.context')->getToken()->getUser()->getId();
+        $usuario = $this->container->get('security.context')->getToken()->getUser()->getId();
         $entity->setUsuario($usuario);
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find BlhFrascoProcesado entity.');

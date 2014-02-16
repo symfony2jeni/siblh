@@ -41,9 +41,7 @@
         <option value= ""></option>
         {% for responsable in responsable%}        
         <option value= "{{ responsable.nombre }}">{{ responsable.nombre }} </option>
-          {% endfor %}</select> </td>
-		  <td style="visibility:hidden">{{ form_widget(edit_form.usuario, {'attr':{ 'value' : user_ID }}) }} </td>
-		  </tr>
+          {% endfor %}</select> </td></tr>
     
     
     

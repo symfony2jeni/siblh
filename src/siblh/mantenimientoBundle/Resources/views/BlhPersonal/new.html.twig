@@ -17,14 +17,13 @@
      {{ form_start(form) }}
     {{ form_errors(form) }}
     
-     <table align = "center"  WIDTH = "87%" >
+     <table align = "center"  WIDTH = "70%" >
             <tr>
-	<td style="visibility:hidden">{{ form_widget(form.usuario, {'attr':{ 'value' : user_ID }}) }} </td>
     <td align = left><font color="red">*</font>
         {{ form_label(form.nombre,'Nombre') }} </td>
         <td align = left>
-        {{ form_widget(form.nombre) }} </td></tr>
-         <tr style="visibility:visible">
+        {{ form_widget(form.nombre,{ 'attr': {'title': 'Ingrese el nombre de la persona a registrar'} })  }} </td></tr>
+         <tr style="visibility:hidden">
     <td align = left><font color="red">*</font>
         {{ form_label(form.idEstablecimiento) }} </td>
         <td align = left>
@@ -33,17 +32,7 @@
 <tr><td colspan =2 align = "left"><font color="red" size = "2" face = "Comic Sans MS">* Campos requeridos</font>   </td><tr>
 
      <tr><td colspan = 2 align = center><input id = "button"  type="submit"  value="Guardar"/></td>
-     
-     </tr>
-   
-              
-       </table> 
-    
-    
-    
-    
-      {{ form_end(form) }}
-    
-    
-   
+     </tr>             
+       </table>     
+      {{ form_end(form) }}  
 {% endblock %}

@@ -305,31 +305,7 @@ class GeneraReportesController extends Controller
                      'id' => $id
                 );
           }                           
-     /**
-     * @Route("/informacion/donante",name="Informacion_Donante")
-     * @Template()
-     */
-    public function InformacionDonanteAction()
-            
-             {
-      
-          $em = $this->getDoctrine()->getManager();  
-          //Obtener banco de leche//        
-      $userEst = $this->container->get('security.context')->getToken()->getUser()->getIdEst();
-      $query1 = $em->createQuery("SELECT e.nombre, e.direccion, e.telefono FROM siblhmantenimientoBundle:CtlEstablecimiento e WHERE e.id = $userEst");
-      $establecimiento = $query1->getResult(); 
-      
-      $query2 = $em->createQuery("SELECT b.id as id2 FROM siblhmantenimientoBundle:BlhBancoDeLeche b WHERE b.idEstablecimiento = $userEst");
-      $id_blh = $query2->getResult(); 
-      $id2=$id_blh[0]['id2']; 
-       
-
-        
-        return array('hospital' => $establecimiento,
-                     'id2' => $id2,
-                     
-                );
-          } 
+    
           
   /**
      * @Route("/informacion/receptor",name="Informacion_Receptor")
@@ -356,29 +332,6 @@ class GeneraReportesController extends Controller
                      
                 );
           }     
-   /**
-     * @Route("/donaciones/donante",name="donaciones_Donante")
-     * @Template()
-     */
-    public function DonacionesDonanteAction()
-            
-             {
-      
-          $em = $this->getDoctrine()->getManager();  
-          //Obtener banco de leche//        
-      $userEst = $this->container->get('security.context')->getToken()->getUser()->getIdEst();
-      $query1 = $em->createQuery("SELECT e.nombre, e.direccion, e.telefono FROM siblhmantenimientoBundle:CtlEstablecimiento e WHERE e.id = $userEst");
-      $establecimiento = $query1->getResult(); 
-      
-      $query2 = $em->createQuery("SELECT b.id as id2 FROM siblhmantenimientoBundle:BlhBancoDeLeche b WHERE b.idEstablecimiento = $userEst");
-      $id_blh = $query2->getResult(); 
-      $id2=$id_blh[0]['id2']; 
-        
-        return array('hospital' => $establecimiento,
-                     'id2' => $id2,
-                     
-                );
-          }         
   
   /**
      * @Route("/lechedespachada/solicitudes",name="LecheDespachadaSolicitudes")

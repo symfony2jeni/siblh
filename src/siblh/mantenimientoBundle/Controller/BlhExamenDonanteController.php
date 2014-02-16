@@ -45,13 +45,13 @@ class BlhExamenDonanteController extends Controller
     public function createAction(Request $request)
     {
         $entity = new BlhExamenDonante();
-		$usuario = $this->container->get('security.context')->getToken()->getUser()->getId();
-        $entity->setUsuario($usuario);
         $form = $this->createCreateForm($entity);
         $form->handleRequest($request);
 
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
+            $usuario = $this->container->get('security.context')->getToken()->getUser()->getId();
+            $entity->setUsuario($usuario);
             $em->persist($entity);
             $em->flush();
 
@@ -93,14 +93,11 @@ class BlhExamenDonanteController extends Controller
     public function newAction()
     {
         $entity = new BlhExamenDonante();
-			   $user_ID = $this->container->get('security.context')->getToken()->getUser()->getId();
-
         $form   = $this->createCreateForm($entity);
 
         return array(
             'entity' => $entity,
             'form'   => $form->createView(),
-			'user_ID' => $user_ID,
         );
     }
 
@@ -143,7 +140,6 @@ class BlhExamenDonanteController extends Controller
     public function editAction($id)
     {
         $em = $this->getDoctrine()->getManager();
-	   $user_ID = $this->container->get('security.context')->getToken()->getUser()->getId();
 
         $entity = $em->getRepository('siblhmantenimientoBundle:BlhExamenDonante')->find($id);
 
@@ -158,7 +154,6 @@ class BlhExamenDonanteController extends Controller
             'entity'      => $entity,
             'edit_form'   => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
-			'user_ID' => $user_ID,
         );
     }
 
@@ -192,8 +187,7 @@ class BlhExamenDonanteController extends Controller
         $em = $this->getDoctrine()->getManager();
 
         $entity = $em->getRepository('siblhmantenimientoBundle:BlhExamenDonante')->find($id);
-		$usuario = $this->container->get('security.context')->getToken()->getUser()->getId();
-        $entity->setUsuario($usuario);
+
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find BlhExamenDonante entity.');
         }
@@ -203,6 +197,8 @@ class BlhExamenDonanteController extends Controller
         $editForm->handleRequest($request);
 
         if ($editForm->isValid()) {
+            $usuario = $this->container->get('security.context')->getToken()->getUser()->getId();
+            $entity->setUsuario($usuario);
             $em->flush();
 
             return $this->redirect($this->generateUrl('blhexamendonante_edit', array('id' => $id)));

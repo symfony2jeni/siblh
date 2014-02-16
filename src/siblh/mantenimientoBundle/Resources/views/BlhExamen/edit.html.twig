@@ -4,12 +4,12 @@
     <h1>BlhExamen edit</h1>
 
     {{ form(edit_form) }}
-        {{ form_widget(edit_form.usuario, {'attr':{ 'value' : user_ID }}) }}
 
         <ul class="record_actions">
     <li>
         <a href="{{ path('blhexamen') }}">
             Back to the list
+        </a>
     </li>
     <li>{{ form(delete_form) }}</li>
 </ul>

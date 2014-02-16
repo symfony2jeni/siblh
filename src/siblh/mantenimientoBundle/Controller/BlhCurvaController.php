@@ -50,15 +50,15 @@ class BlhCurvaController extends Controller
      * @Template("siblhmantenimientoBundle:BlhCurva:new.html.twig")
      */
     public function createAction(Request $request)
-    {   
+    {
         $entity = new BlhCurva();
-        $usuario = $this->container->get('security.context')->getToken()->getUser()->getId();
-        $entity->setUsuario($usuario);
         $form = $this->createCreateForm($entity);
         $form->handleRequest($request);
 
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
+            $usuario = $this->container->get('security.context')->getToken()->getUser()->getId();
+            $entity->setUsuario($usuario);
             $em->persist($entity);
             $em->flush();
 
@@ -203,8 +203,6 @@ class BlhCurvaController extends Controller
         $em = $this->getDoctrine()->getManager();
 
         $entity = $em->getRepository('siblhmantenimientoBundle:BlhCurva')->find($id);
-        $usuario = $this->container->get('security.context')->getToken()->getUser()->getId();
-        $entity->setUsuario($usuario);
 
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find BlhCurva entity.');
@@ -215,6 +213,8 @@ class BlhCurvaController extends Controller
         $editForm->handleRequest($request);
 
         if ($editForm->isValid()) {
+            $usuario = $this->container->get('security.context')->getToken()->getUser()->getId();
+            $entity->setUsuario($usuario);
             $em->flush();
 
             return $this->redirect($this->generateUrl('blhcurva_edit', array('id' => $id)));

@@ -66,17 +66,17 @@ class BlhTemperaturaPasteurizacionController extends Controller
     public function createAction(Request $request)
     {
         $entity = new BlhTemperaturaPasteurizacion();
-		$usuario = $this->container->get('security.context')->getToken()->getUser()->getId();
-        $entity->setUsuario($usuario);
        $form = $this->createCreateForm($entity); 
         $form->handleRequest($request);
 
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
-			$em->persist($entity);
+            $usuario = $this->container->get('security.context')->getToken()->getUser()->getId();
+            $entity->setUsuario($usuario);
+            $em->persist($entity);
             $em->flush();
 
-            return $this->redirect($this->generateUrl('blhtemperaturapasteurizacion_show', array('id' => $entity->getId())));
+            return $this->redirect($this->generateUrl('_NewTemperaturaP', array('id' => $entity->getId())));
         }
 
         return array(
@@ -217,13 +217,14 @@ class BlhTemperaturaPasteurizacionController extends Controller
         $em = $this->getDoctrine()->getManager();
 
         $entity = $em->getRepository('siblhmantenimientoBundle:BlhTemperaturaPasteurizacion')->find($id);
-		$usuario = $this->container->get('security.context')->getToken()->getUser()->getId();
-        $entity->setUsuario($usuario);
+
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find BlhTemperaturaPasteurizacion entity.');
         }
 
         $deleteForm = $this->createDeleteForm($id);
+        $usuario = $this->container->get('security.context')->getToken()->getUser()->getId();
+        $entity->setUsuario($usuario);
         $editForm = $this->createEditForm($entity);
         $editForm->handleRequest($request);
 
