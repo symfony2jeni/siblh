@@ -4,7 +4,13 @@ $(document).ready(function() {
      $('#siblh_mantenimientobundle_blhpersonal_nombre').
               attr('data-bvalidator', 'required'); 
 
-
+$('#button').on('click', function() {
+    
+    $val=$('#siblh_mantenimientobundle_blhpersonal_nombre').val();
+    if($val === '')
+        {alert('Digite un nombre valido');
+        return false;}
+});
 
 $(function() {
     $( document ).tooltip({
