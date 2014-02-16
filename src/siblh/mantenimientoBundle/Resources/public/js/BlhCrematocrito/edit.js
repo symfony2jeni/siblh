@@ -267,7 +267,7 @@ function calcular4(valor)
      
  $porcentajeCrema = $('#siblh_mantenimientobundle_blhcrematocrito_porcentajeCrema').val();
 
-$kilocalorias = (parseFloat($porcentajeCrema)*268)+290;
+$kilocalorias = (parseFloat($porcentajeCrema)* 66.8)+290;
 //Redondeando el resultado a 2 decimales 
 $kilocalorias= Math.round( $kilocalorias* 100) / 100;
             $('#siblh_mantenimientobundle_blhcrematocrito_kilocalorias').val($kilocalorias); 
