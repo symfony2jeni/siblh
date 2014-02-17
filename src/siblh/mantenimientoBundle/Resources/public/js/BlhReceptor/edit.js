@@ -17,7 +17,7 @@ $('#siblh_mantenimientobundle_blhreceptor_edadGestFur').change(function() {
      
      // Edad Ballard
 $('#siblh_mantenimientobundle_blhreceptor_edadGestBallard').change(function() {
-            if (($(this).val()< 24 || $(this).val()> 42) || $(this).val()=='')
+            if (($(this).val()< 20 || $(this).val()> 42) || $(this).val()=='')
                 {alert('Digite un valor valido para edad Ballard');
                 $('#siblh_mantenimientobundle_blhreceptor_edadGestBallard').val('');}
                 
@@ -102,7 +102,7 @@ $('#siblh_mantenimientobundle_blhreceptor_pesoReceptor').change(function() {
 
      // Talla
 $('#siblh_mantenimientobundle_blhreceptor_tallaIngreso').change(function() {
-            if (($(this).val()< 30 || $(this).val()> 60) || $(this).val()=='')
+            if (($(this).val()< 25 || $(this).val()> 55) || $(this).val()=='')
                 {alert('Digite un valor valido para talla');
                 $('#siblh_mantenimientobundle_blhreceptor_tallaIngreso').val(''); }
                 
@@ -113,7 +113,7 @@ $('#siblh_mantenimientobundle_blhreceptor_tallaIngreso').change(function() {
      
           // Perimetro
 $('#siblh_mantenimientobundle_blhreceptor_pc').change(function() {
-            if (($(this).val()< 30 || $(this).val()> 60) || $(this).val()=='')
+            if (($(this).val()< 20 || $(this).val()> 40) || $(this).val()=='')
                 {alert('Digite un valor valido en perimetro cefalico');
                 $('#siblh_mantenimientobundle_blhreceptor_pc').val('');}
             else
@@ -286,16 +286,16 @@ $('#siblh_mantenimientobundle_blhreceptor_pesoReceptor').  // modifico rox
         attr('data-bvalidator-msg', "Ingrese el peso entre 500 y 5000 gramos"); 
 
 $('#siblh_mantenimientobundle_blhreceptor_tallaIngreso').
-        attr('data-bvalidator', 'between[30:60],required');
+        attr('data-bvalidator', 'between[25:55],required');
     
 $('#siblh_mantenimientobundle_blhreceptor_tallaIngreso').
-        attr('data-bvalidator-msg', "Ingrese la talla entre 30 y 60 cm"); 
+        attr('data-bvalidator-msg', "Ingrese la talla entre 25 y 55 cm"); 
 
 $('#siblh_mantenimientobundle_blhreceptor_pc').
-        attr('data-bvalidator', 'between[30:60],required');
+        attr('data-bvalidator', 'between[20:40],required');
     
 $('#siblh_mantenimientobundle_blhreceptor_pc').
-        attr('data-bvalidator-msg', "Ingrese la talla entre 30 y 60 cm"); 
+        attr('data-bvalidator-msg', "Ingrese la talla entre 20 y 40 cm"); 
 
 
 $('#siblh_mantenimientobundle_blhreceptor_apgarPrimerMinuto').attr('data-bvalidator', 'required,between[0:9]');
@@ -304,10 +304,10 @@ $('#siblh_mantenimientobundle_blhreceptor_apgarQuintoMinuto').attr('data-bvalida
     
 
 $('#siblh_mantenimientobundle_blhreceptor_edadGestBallard').   // modifico rox
-        attr('data-bvalidator', 'between[24:42],required');
+        attr('data-bvalidator', 'between[20:42],required');
     
 $('#siblh_mantenimientobundle_blhreceptor_edadGestBallard').
-        attr('data-bvalidator-msg', "Ingrese la edad en semanas de 24 a 42 semananas"); 
+        attr('data-bvalidator-msg', "Ingrese la edad en semanas de 20 a 42 semananas"); 
 
 
 $('#siblh_mantenimientobundle_blhreceptor_duracionVentilacion').
