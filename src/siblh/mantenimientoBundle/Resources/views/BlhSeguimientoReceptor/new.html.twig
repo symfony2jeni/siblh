@@ -60,8 +60,8 @@
           
         <tr>
         <td height=10 align = "left" width=400><font color="red">*</font>{{ form_label(form.fechaSeguimiento, 'Fecha') }}</td>
-        <td height=10 align="left" width=250> {{ form_widget(form.fechaSeguimiento, {'attr':{ 'readonly': 'true', 'title': 'Dar clic y seleccionar la fecha de seguimiento' } }) }} </td>
-        
+        <td height=10 align="left" width=250> {{ form_widget(form.fechaSeguimiento, {'attr':{ 'readonly': 'true'} }) }} </td>
+   
          <td height=10 align = "left" width=350 ><font color="red" >*</font>{{ form_label(form.periodoEvaluacion,'Periodo de evaluacion(‎días)') }}</td>
         <td height=10 align="left" width=250>{{ form_widget(form.periodoEvaluacion, { 'attr': {'title': 'Por favor ingrese el perdiodo de evaluacion, entre 5 y 10.','onKeyPress':"return soloNumerosEnteros(event);"} }) }} </td>
         
@@ -76,18 +76,18 @@
         <td  align = "left" width=300><font color="red">*</font>{{ form_label(form.pcSeguimiento,'Perímetro cefálico(cm)') }}</td>
         <td align=left>{{ form_widget(form.pcSeguimiento,{ 'attr': {'title': 'Por favor ingrese el perímetro cefálico, entre 20 y 40 cm','onKeyPress':"return soloNumeros(event);"} }) }} </td>    
         <td  align = "left" width=300><font color="red">*</font>{{ form_label(form.gananciaDiaPc,'Ganancia/Pérdida perímetro cefálico por día(cm)') }}</td>
-        <td align=left>{{ form_widget(form.gananciaDiaPc,{ 'attr': {'readonly': 'true', 'title':'Dar clic para obtener resultado'} }) }} </td>
+        <td align=left>{{ form_widget(form.gananciaDiaPc,{ 'attr': {'readonly': 'true'} }) }} </td>
         <td height=10 align = "left" ><font color="red" >*</font>{{ form_label(form.pesoSeguimiento, 'Peso(g)') }}</td>
         <td height=10 align="center">{{ form_widget(form.pesoSeguimiento, { 'attr': {'title': 'Por favor ingrese el peso, entre 500 y 5000 g','onKeyPress':"return soloNumeros(event);"} }) }} </td>     
         </tr>
          <tr><td align = "right" height=10  ></td></tr>
         <tr>  
         <td height=10 align = "left"><font color="red">*</font>{{ form_label(form.gananciaDiaPeso, 'Ganancia/Pérdida peso por día(g)') }}</td>
-        <td height=10 align="left">{{ form_widget(form.gananciaDiaPeso,{ 'attr': {'readonly': 'true', 'title':'Dar clic para obtener resultado'} }) }} </td>       
+        <td height=10 align="left">{{ form_widget(form.gananciaDiaPeso,{ 'attr': {'readonly': 'true'} }) }} </td>       
         <td align = "left"><font color="red">*</font>{{ form_label(form.tallaReceptor,'Talla(cm)') }}</td>
         <td align=left>{{ form_widget(form.tallaReceptor,{ 'attr': {'title': 'Por favor ingrese la talla, entre 25 y 55 cm','onKeyPress':"return soloNumeros(event);"} }) }} </td>
         <td height=10 align = "left" ><font color="red">*</font>{{ form_label(form.gananciaDiaTalla,'Ganancia/Pérdida talla por día(cm)') }}</td>
-        <td height=10 align="center" width=350>{{ form_widget(form.gananciaDiaTalla, { 'attr': {'readonly': 'true', 'title':'Dar clic para obtener resultado'} }) }} </td></tr>  
+        <td height=10 align="center" width=350>{{ form_widget(form.gananciaDiaTalla, { 'attr': {'readonly': 'true'} }) }} </td></tr>  
         <tr><td align = "right" height=10  ></td></tr>
       <tr>        
         <td height=10 align = "left"><font color="red">*</font>{{ form_label(form.complicaciones) }}</td>

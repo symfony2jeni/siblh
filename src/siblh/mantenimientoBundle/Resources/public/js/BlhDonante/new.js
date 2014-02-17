@@ -153,11 +153,3 @@ return /\d/.test(String.fromCharCode(keynum));
     te = String.fromCharCode(tecla); 
     return letras.test(te); // prueba de letras permitidas
     }
-
-      
-
-
-
-
-      
-

@@ -1,5 +1,46 @@
 $(document).ready(function() { 
+   //Inicio de modificacion de rox
+           
+  //Cuna
     
+
+       $('#siblh_mantenimientobundle_blhsolicitud_cuna').keyup(function()
+    {
+             if (($(this).val()< 1 || $(this).val()> 60) && $(this).val()!=='')
+        {
+            $('#siblh_mantenimientobundle_blhsolicitud_cuna').val('');
+            alert('El valor de cuna debe estar entre 1 y 60');
+         }
+            else
+                {$(this).focus();}
+     } );
+     
+     
+     
+     $('#siblh_mantenimientobundle_blhsolicitud_cuna').change(function() {
+            if ($(this).val()=='')
+                {alert('El valor de cuna debe estar entre 1 y 60');}
+                
+            else
+                {$(this).focus();}
+                 } );
+       
+    
+    
+     // Peso
+     
+$('#siblh_mantenimientobundle_blhsolicitud_pesoDia').change(function() {
+            if (($(this).val()< 500 || $(this).val()> 5000) || $(this).val()=='')
+                {alert('el Peso debe estar entre 500 y 5000');
+                $('#siblh_mantenimientobundle_blhsolicitud_pesoDia').val(''); }
+                
+            else
+                {$('#siblh_mantenimientobundle_blhsolicitud_pesoDia').focus();}
+} );
+    
+    
+    
+   //Fin de modificacion de rox 
         $('#siblh_mantenimientobundle_blhsolicitud_volumenPorToma').keyup(function() {
             if (calcular($(this).val()))
                 {}
@@ -143,6 +184,7 @@ this.value = $VolumenDia; }
 
 
 
+
  $('#responsable').on ('click', function() {
     $('#siblh_mantenimientobundle_blhsolicitud_responsable').val (this.value); 
     ;
@@ -158,6 +200,7 @@ $tom=$('#siblh_mantenimientobundle_blhsolicitud_tomaPorDia').val();
 
 $volumen=parseInt($vol); 
 $tomas=parseInt($tom);
+
 
 if($tomas >=10) 
 {

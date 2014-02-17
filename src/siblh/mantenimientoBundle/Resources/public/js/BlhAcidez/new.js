@@ -57,20 +57,24 @@ $(document).ready(function() {
     //Validar el formulario
     $('form').bValidator(optionsRed);
     
-$('#siblh_mantenimientobundle_blhacidez_acidez1').keyup(function(){
-    mediaAcidez();
+$('#siblh_mantenimientobundle_blhacidez_acidez1').blur(function(){
+   $x= mediaAcidez();
+   if ($x==0) {this.focus(); return false;}
 });
 
-$('#siblh_mantenimientobundle_blhacidez_acidez2').keyup(function(){
-    mediaAcidez();
+$('#siblh_mantenimientobundle_blhacidez_acidez2').blur(function(){
+   $x= mediaAcidez();
+   if ($x==0) {this.focus(); return false;}
 });
   
-$('#siblh_mantenimientobundle_blhacidez_acidez3').keyup(function(){
-    mediaAcidez();
+$('#siblh_mantenimientobundle_blhacidez_acidez3').blur(function(){
+    $x= mediaAcidez();
+   if ($x==0) {this.focus(); return false;}
 });
 
-$('#siblh_mantenimientobundle_blhacidez_factor').keyup(function(){
-    factorr();
+$('#siblh_mantenimientobundle_blhacidez_factor').blur(function(){
+$x= factorr();
+   if ($x==0) {this.focus(); return false;}
 });
  $('#siblh_mantenimientobundle_blhacidez_acidez1').
             attr('data-bvalidator', 'required,between[1:15]');
@@ -131,7 +135,7 @@ function mediaAcidez() {
     if (($Acidez1 == '') || ($Acidez2 == '') || ($Acidez3 == '') || ($Acidez1 < 1) || ($Acidez1 > 15) || ($Acidez2 < 1) || ($Acidez2 > 15)  || ($Acidez3 < 1) || ($Acidez3 > 15) ) 
 { 
     alert ('Digite valores validos para la acidez');
-    return false;
+    return 0;
 }
 else {
     $Acidez1 = ($('#siblh_mantenimientobundle_blhacidez_acidez1').val()=='')?'a1':$('#siblh_mantenimientobundle_blhacidez_acidez1').val();
@@ -160,6 +164,8 @@ $mediaAcidez = Math.round( $mediaAcidez* 100) / 100;
  
  
 $('#siblh_mantenimientobundle_blhacidez_mediaAcidez').val($mediaAcidez);  
+
+return 1;
 }
  ; }  
 
@@ -174,21 +180,15 @@ function factorr() {
  $factor = $('#siblh_mantenimientobundle_blhacidez_factor').val();
  $mediaAcidez = $('#siblh_mantenimientobundle_blhacidez_mediaAcidez').val();
  
- if (($mediaAcidez == '') || ($factor > 1.1) ) 
+ if (($mediaAcidez == '') || ($factor > 1.1) || ($factor < 0.9) ) 
  
-{ alert ('Verifique que el valor del facotor y la media acidez sean correctas');
+{ alert ('Verifique que el valor del factor y la media acidez sean correctas');
     $('#siblh_mantenimientobundle_blhacidez_factor').val('');
-    return false;}
+    return 0;}
 else {
  $factor = ($('#siblh_mantenimientobundle_blhacidez_factor').val()=='0')?'':$('#siblh_mantenimientobundle_blhacidez_factor').val();
  
- if ($factor < 0.9 && $factor !='' &&  $factor!='0.')
- {
-     $('#siblh_mantenimientobundle_blhacidez_factor').val('');
-     alert ('Verifique que el valor del factor y la media acidez sean correctas');
-     
-    return false;
- }
+ 
 $resultado = $mediaAcidez*$factor;
 //Redondeando el resultado a 2 decimales 
 $resultado = Math.round( $resultado* 100) / 100;
@@ -225,6 +225,7 @@ if($acidez>8){
     
    $('#siblh_mantenimientobundle_blhacidez_resultado').
             attr('data-bvalidator', 'required');
+
     
        $('#siblh_mantenimientobundle_blhacidez_factor').blur(function(){
      $valor= $('#siblh_mantenimientobundle_blhacidez_factor').val();
@@ -237,6 +238,7 @@ if($acidez>8){
           return false;
       }
 });  
+
 
 });
 

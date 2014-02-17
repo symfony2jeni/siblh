@@ -2,7 +2,7 @@ $(document).ready(function() {
  
         
 //para calculos///
- $('#siblh_mantenimientobundle_blhcrematocrito_crema1').keyup(function() {
+ $('#siblh_mantenimientobundle_blhcrematocrito_crema1').blur(function() {
             if (calcular1($(this).val()))
                 {calcular3();
                  calcular4();}
@@ -17,7 +17,7 @@ $('#siblh_mantenimientobundle_blhcrematocrito_crema1').change(function() {
                 {$('#siblh_mantenimientobundle_blhcrematocrito_crema1').focus();}
 }       );
 
-$('#siblh_mantenimientobundle_blhcrematocrito_crema2').keyup(function() {
+$('#siblh_mantenimientobundle_blhcrematocrito_crema2').blur(function() {
             if (calcular1($(this).val()))
                 {calcular3();
                  calcular4();}
@@ -32,7 +32,7 @@ $('#siblh_mantenimientobundle_blhcrematocrito_crema2').change(function() {
                 {$('#siblh_mantenimientobundle_blhcrematocrito_crema2').focus();}
 }       );
 
-$('#siblh_mantenimientobundle_blhcrematocrito_crema3').keyup(function() {
+$('#siblh_mantenimientobundle_blhcrematocrito_crema3').blur(function() {
             if (calcular1($(this).val()))
                 {calcular3();
                  calcular4();}
@@ -48,7 +48,7 @@ $('#siblh_mantenimientobundle_blhcrematocrito_crema3').change(function() {
 }       );
 
 
-$('#siblh_mantenimientobundle_blhcrematocrito_ct1').keyup(function() {
+$('#siblh_mantenimientobundle_blhcrematocrito_ct1').blur(function() {
             if (calcular2($(this).val()))
                 {calcular3();
                  calcular4();}
@@ -64,7 +64,7 @@ $('#siblh_mantenimientobundle_blhcrematocrito_ct1').change(function() {
 }       );
 
 
-$('#siblh_mantenimientobundle_blhcrematocrito_ct2').keyup(function() {
+$('#siblh_mantenimientobundle_blhcrematocrito_ct2').blur(function() {
             if (calcular2($(this).val()))
                 {calcular3();
                  calcular4();}
@@ -80,7 +80,7 @@ $('#siblh_mantenimientobundle_blhcrematocrito_ct2').change(function() {
 }       );
 
 
-$('#siblh_mantenimientobundle_blhcrematocrito_ct3').keyup(function() {
+$('#siblh_mantenimientobundle_blhcrematocrito_ct3').blur(function() {
             if (calcular2($(this).val()))
                 {calcular3();
                  calcular4();}
@@ -267,7 +267,9 @@ function calcular4(valor)
      
  $porcentajeCrema = $('#siblh_mantenimientobundle_blhcrematocrito_porcentajeCrema').val();
 
+
 $kilocalorias = (parseFloat($porcentajeCrema)* 66.8)+290;
+
 //Redondeando el resultado a 2 decimales 
 $kilocalorias= Math.round( $kilocalorias* 100) / 100;
             $('#siblh_mantenimientobundle_blhcrematocrito_kilocalorias').val($kilocalorias); 

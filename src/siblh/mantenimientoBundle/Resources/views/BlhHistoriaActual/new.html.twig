@@ -52,7 +52,9 @@ elemento.style.visibility = visible ? "visible" : "hidden";
     <tr><td height=10  ></td></tr>
  
   <tr><td align = "left"><font color="red" >*</font> {{ form_label(form.imc) }}</td>
-      <td align = "left"> {{ form_widget(form.imc,  { 'attr': {'title': 'Dar clic para obtener resultado'} }) }} </td>
+
+      <td align = "left"> {{ form_widget(form.imc) }} </td>
+
   <td align = "left"><font color="red" >*</font>
         {{ form_label(form.motivoDonacion, "Motivo por el cual dona leche:") }}</td> 
       <td align = "left">

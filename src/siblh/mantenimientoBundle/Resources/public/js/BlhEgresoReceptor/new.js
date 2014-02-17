@@ -57,9 +57,9 @@ $(function() {
      $valor= $('#siblh_mantenimientobundle_blhegresoreceptor_estanciaHospitalaria').val();
      $valor = parseInt($valor);  
    //  alert(typeof $valor);
-    if (($valor < 1) ||  ($valor > 20))
+    if (($valor < 1) ||  ($valor > 120))
       {
-          alert ("Los dias de estancia hospitalaria deben estar entre 1 y 20 dias");
+          alert ("Los dias de estancia hospitalaria deben estar entre 1 y 120 dias");
           $(this).focus();
           return false;
       }

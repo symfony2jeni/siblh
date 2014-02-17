@@ -98,89 +98,9 @@ $pcseg = $('#pcseg').val();
 $tallain = $('#tallain').val();
 $pesoin = $('#pesoin').val();
 $pcin = $('#pcin').val();
-$('#siblh_mantenimientobundle_blhseguimientoreceptor_gananciaDiaPc').on ('click', function() {
-$dias = $('#siblh_mantenimientobundle_blhseguimientoreceptor_periodoEvaluacion').val();
-$pc = $('#siblh_mantenimientobundle_blhseguimientoreceptor_pcSeguimiento').val();
-
-if (($pc == '') || ($dias == '') || ($pc<20) || ($pc>40)){alert ('Verificar que Periodo de seguimiento y Perimetro cefalico esten ingresados correctamente');
-    return false;}
-
-else {
-
-if ($sem > 1)
-    {
-       // $pc = typeof $pc.float;
-    
-        $gananciapc = ($pc - $pcseg) / $dias;
-        $gananciapc=$gananciapc.toFixed(4);
-        this.value = $gananciapc;
-    }
-else
-   {
-        $gananciapc = ($pc - $pcin) / $dias;
-        $gananciapc=$gananciapc.toFixed(4);
-        this.value = $gananciapc;
-    }    
-    
-}
-});
 
 
-$('#siblh_mantenimientobundle_blhseguimientoreceptor_gananciaDiaPeso').on ('click', function() {
-$dias = $('#siblh_mantenimientobundle_blhseguimientoreceptor_periodoEvaluacion').val();
-$peso = $('#siblh_mantenimientobundle_blhseguimientoreceptor_pesoSeguimiento').val();
 
-
-if (($peso == '') || ($dias == '') || ($peso<500) || ($peso>5000)){alert ('Verificar que Periodo de seguimiento y Peso esten ingresados correctamente');
-    return false;}
-
-else {
-
-if ($sem > 1)
-    {
-       // $pc = typeof $pc.float;
-    
-        $gananciapeso = ($peso - $pesoseg) / $dias;
-        $gananciapeso=$gananciapeso.toFixed(4);
-        this.value = $gananciapeso;
-    }
-else
-   {
-        $gananciapeso = ($peso - $pesoin) / $dias;
-        $gananciapeso=$gananciapeso.toFixed(4);
-        this.value = $gananciapeso;
-    }    
-} 
-
-});
-
-
-$('#siblh_mantenimientobundle_blhseguimientoreceptor_gananciaDiaTalla').on ('click', function() {
-$dias = $('#siblh_mantenimientobundle_blhseguimientoreceptor_periodoEvaluacion').val();
-$talla = $('#siblh_mantenimientobundle_blhseguimientoreceptor_tallaReceptor').val();
-
-if (($talla == '') || ($dias == '') || ($talla<25) || ($talla>55)){alert ('Verificar que Periodo de seguimiento y Talla esten ingresados correctamente');
-    return false;}
-
-else {
-if ($sem > 1)
-    {
-       // $pc = typeof $pc.float;
-    
-        $gananciatalla = ($talla - $tallaseg) / $dias;
-        $gananciatalla=$gananciatalla.toFixed(4);
-        this.value = $gananciatalla;
-    }
-else
-   {
-        $gananciatalla = ($talla - $tallain) / $dias;
-        $gananciatalla=$gananciatalla.toFixed(4);
-        this.value = $gananciatalla;
-    }    
- 
-}
-
-});
 
   $('#siblh_mantenimientobundle_blhseguimientoreceptor_gananciaDiaPc').
             attr('data-bvalidator', 'required');
@@ -191,11 +111,268 @@ else
       $('#siblh_mantenimientobundle_blhseguimientoreceptor_gananciaDiaTalla').
             attr('data-bvalidator', 'required');
     
+ //Cambios Henry   
+    
+    $('#siblh_mantenimientobundle_blhseguimientoreceptor_periodoEvaluacion').keyup(function(){
+        var valor = $(this).val();
+        if ( valor < 5 || valor > 10 )
+        {
+            if (valor != 1 && valor!=='')
+            {
+                $(this).focusin();
+                $(this).val('');
+                limpiarCampos();
+                alert('Digite un valor entre 5 y 10 para el campo periodo');
+                return false;
+            }
+        }
+    });
+    
+    $('#siblh_mantenimientobundle_blhseguimientoreceptor_periodoEvaluacion').blur(function(){
+        var valor = $(this).val();
+        if (valor==1)
+        {
+                $(this).focusin();
+                $(this).val('');
+                alert('Digite un valor entre 5 y 10 para el campo perimetro');
+                return false;            
+        }
+        else if(valor==='')
+        {
+            limpiarCampos();
+        }
+        
+    });
+    
+    $('#siblh_mantenimientobundle_blhseguimientoreceptor_pcSeguimiento').keyup(function(){
+        //alert ('Henry');
+        var valor = $('#siblh_mantenimientobundle_blhseguimientoreceptor_periodoEvaluacion').val();
+        var valorPcSeguimineto = $(this).val();
+        //alert (valor);
+        if (valor <5 || valor >10)
+        {       $('#siblh_mantenimientobundle_blhseguimientoreceptor_periodoEvaluacion').val('');
+                $('#siblh_mantenimientobundle_blhseguimientoreceptor_periodoEvaluacion').focus();
+               
+                alert('Digite un valor entre 5 y 10 para el campo periodo');
+                return false;
+        }
+        else
+        {  
+            if(valorPcSeguimineto < 20 || valorPcSeguimineto > 40)
+            {
+                if (valorPcSeguimineto != 2 && valorPcSeguimineto != 3 && valorPcSeguimineto != 4 && valorPcSeguimineto !=='')
+                {
+                    
+                    $(this).val('');
+                   
+                   
+                    alert('Digite un valor entre 20 y 40 para el campo perimetro');
+                     $('#siblh_mantenimientobundle_blhseguimientoreceptor_pcSeguimiento').focusin();
+                    $('#siblh_mantenimientobundle_blhseguimientoreceptor_gananciaDiaPc').val('');
+                    return false;            
 
+                }
+            }
+            else
+            {
+                if(valorPcSeguimineto !== '')
+                {
+                    
+                    $dias = $('#siblh_mantenimientobundle_blhseguimientoreceptor_periodoEvaluacion').val();
+                    $pc = $('#siblh_mantenimientobundle_blhseguimientoreceptor_pcSeguimiento').val();
+                    $pcseg = $('#pcseg').val();
+                    $gananciapc = ($pc - $pcseg) / $dias;
+                    $gananciapc=$gananciapc.toFixed(4);
+                    $('#siblh_mantenimientobundle_blhseguimientoreceptor_gananciaDiaPc').val($gananciapc);                    
+                                       
+                }
+                else
+                {
+                    return false;
+                }
+            }
+        }
+        
+    });
+    
+    $('#siblh_mantenimientobundle_blhseguimientoreceptor_pcSeguimiento').blur(function(){
+        var valor = $(this).val();
+        //alert(valor);
+        if ((valor== 2 || valor== 3 || valor== 4)&& valor!=='')
+        {
+                 $(this).val('');
+                $('#pagina').blur();
+               
+                $('#siblh_mantenimientobundle_blhseguimientoreceptor_pcSeguimiento').focusin();
+                
+                alert('Digite un valor entre 20 y 40 para el campo perimetro');
+
+                  
+                
+        }
+        else if(valor==='')
+        {    $('#siblh_mantenimientobundle_blhseguimientoreceptor_gananciaDiaPc').val('');
+             $('#siblh_mantenimientobundle_blhseguimientoreceptor_pcSeguimiento').val('');
+             $('#siblh_mantenimientobundle_blhseguimientoreceptor_pcSeguimiento').focus();
+             return false;
+        }
+        
+    });   
+ 
+    $('#siblh_mantenimientobundle_blhseguimientoreceptor_tallaReceptor').keyup(function(){
+        //alert ('Henry');
+        var valor = $('#siblh_mantenimientobundle_blhseguimientoreceptor_periodoEvaluacion').val();
+        var valorTallaReceptor = $(this).val();
+        //alert (valor);
+        if (valor <5 || valor >10)
+        {       $('#siblh_mantenimientobundle_blhseguimientoreceptor_periodoEvaluacion').val('');
+                $('#siblh_mantenimientobundle_blhseguimientoreceptor_periodoEvaluacion').focus();
+               
+                alert('Digite un valor entre 5 y 10 para el campo periodo');
+                return false;
+        }
+        else
+        {  
+            if(valorTallaReceptor < 25 || valorTallaReceptor > 55)
+            {
+                if (valorTallaReceptor != 2 && valorTallaReceptor != 3 && valorTallaReceptor != 4 && valorTallaReceptor != 5 && valorTallaReceptor !=='')
+                {
+                    alert('Digite un valor entre 25 y 55 para el campo talla');
+                    $(this).focusin();
+                    $(this).val('');
+                    $('#siblh_mantenimientobundle_blhseguimientoreceptor_gananciaDiaTalla').val('');
+                    //alert('Digite un valor entre 25 y 55 para el campo talla');
+                    return false;            
+
+                }
+            }
+            else
+            {
+                if(valorTallaReceptor !== '')
+                {
+                    
+                    $dias = $('#siblh_mantenimientobundle_blhseguimientoreceptor_periodoEvaluacion').val();
+                    $talla = $('#siblh_mantenimientobundle_blhseguimientoreceptor_tallaReceptor').val();
+                    $tallaseg = $('#tallaseg').val();
+               	    $gananciatalla = ($talla - $tallaseg) / $dias;
+		    $gananciatalla=$gananciatalla.toFixed(4);
+		    $('#siblh_mantenimientobundle_blhseguimientoreceptor_gananciaDiaTalla').val($gananciatalla); 
+		                  
+                                       
+                }
+                else
+                {
+                    return false;
+                }
+            }
+        }
+        
+    });
+    
+    $('#siblh_mantenimientobundle_blhseguimientoreceptor_tallaReceptor').blur(function(){
+        var valor = $(this).val();
+        //alert(valor);
+        if ((valor== 2 || valor== 3 || valor== 4 || valor== 5)&& valor!=='')
+        {
+                 $(this).val('');
+                $('#pagina').blur();
+               
+                $('#siblh_mantenimientobundle_blhseguimientoreceptor_tallaReceptor').focusin();
+                
+                alert('Digite un valor entre 25 y 55 para el campo perimetro');
+
+                  
+                
+        }
+        else if(valor==='')
+        {    $('#siblh_mantenimientobundle_blhseguimientoreceptor_gananciaDiaTalla').val('');
+             $('#siblh_mantenimientobundle_blhseguimientoreceptor_tallaReceptor').val('');
+             $('#siblh_mantenimientobundle_blhseguimientoreceptor_tallaReceptor').focus();
+             return false;
+        }
+        
+    });
+    
+    $('#siblh_mantenimientobundle_blhseguimientoreceptor_pesoSeguimiento').keyup(function(){
+        //alert ('Henry');
+        var valor = $('#siblh_mantenimientobundle_blhseguimientoreceptor_periodoEvaluacion').val();
+        var valorpesoSeguimiento = $(this).val();
+        //alert (valor);
+        if (valor <5 || valor >10)
+        {      alert('Digite un valor entre 5 y 10 para el campo periodo');
+                $('#siblh_mantenimientobundle_blhseguimientoreceptor_periodoEvaluacion').val('');
+                $('#siblh_mantenimientobundle_blhseguimientoreceptor_periodoEvaluacion').focus();
+               
+                
+                return false;
+        }
+        else
+        {  
+           
+            
+                if(valorpesoSeguimiento !== '')
+                {
+		    if( valorpesoSeguimiento!=0)
+                    {
+                    $dias = $('#siblh_mantenimientobundle_blhseguimientoreceptor_periodoEvaluacion').val();
+                    $peso = $('#siblh_mantenimientobundle_blhseguimientoreceptor_pesoSeguimiento').val();
+                    $pesoseg = $('#pesoseg').val();
+		    $gananciapeso = ($peso - $pesoseg) / $dias;
+        	    $gananciapeso=$gananciapeso.toFixed(4);
+		    $('#siblh_mantenimientobundle_blhseguimientoreceptor_gananciaDiaPeso').val($gananciapeso); 
+		    }
+		    else
+		    {
+			$peso = $('#siblh_mantenimientobundle_blhseguimientoreceptor_pesoSeguimiento').val('');
+			 $('#siblh_mantenimientobundle_blhseguimientoreceptor_gananciaDiaPeso').val('');
+		    }              
+                                       
+                }
+                else
+                {
+                    return false;
+                }
+            
+        }
+        
+    });
+    
+    $('#siblh_mantenimientobundle_blhseguimientoreceptor_pesoSeguimiento').blur(function(){
+        var valor = $(this).val();
+        //alert(valor);
+        if ((valor <500 || valor > 5000) && valor!=='')
+        {
+                 $(this).val('');
+                $('#pagina').blur();
+               
+                $('#siblh_mantenimientobundle_blhseguimientoreceptor_pesoSeguimiento').focusin();
+                $('#siblh_mantenimientobundle_blhseguimientoreceptor_gananciaDiaPeso').val('');
+             $('#siblh_mantenimientobundle_blhseguimientoreceptor_pesoSeguimiento').val('');
+             $('#siblh_mantenimientobundle_blhseguimientoreceptor_pesoSeguimiento').focus();
+                alert('Digite un valor entre 500 y 5000 para el campo peso');
+
+                  
+                
+        }
+        else if(valor==='')
+        {    $('#siblh_mantenimientobundle_blhseguimientoreceptor_gananciaDiaPeso').val('');
+             $('#siblh_mantenimientobundle_blhseguimientoreceptor_pesoSeguimiento').val('');
+             $('#siblh_mantenimientobundle_blhseguimientoreceptor_pesoSeguimiento').focus();
+             return false;
+        }
+        
+    });
 
     
 });
-
+function limpiarCampos(){
+                $('#siblh_mantenimientobundle_blhseguimientoreceptor_pesoSeguimiento').val('');
+                $('#siblh_mantenimientobundle_blhseguimientoreceptor_gananciaDiaPeso').val('');
+                $('#siblh_mantenimientobundle_blhseguimientoreceptor_tallaReceptor').val('');
+                $('#siblh_mantenimientobundle_blhseguimientoreceptor_gananciaDiaTalla').val('');
+                $('#siblh_mantenimientobundle_blhseguimientoreceptor_pcSeguimiento').val('');
+                $('#siblh_mantenimientobundle_blhseguimientoreceptor_gananciaDiaPc').val('');   
+}
 function soloNumerosEnteros(e)
 {
 var keynum = window.event ? window.event.keyCode : e.which;

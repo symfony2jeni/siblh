@@ -1,9 +1,26 @@
 $(document).ready(function() { 
      //$('#button').button();
      $.noConflict();
-     $('#siblh_mantenimientobundle_blhanalisissensorial_color').prop('disabled','disabled');
-     $('#siblh_mantenimientobundle_blhanalisissensorial_suciedad').prop('disabled','disabled');
-     $('#siblh_mantenimientobundle_blhanalisissensorial_flavor').prop('disabled','disabled');
+     $('#siblh_mantenimientobundle_blhanalisissensorial_color').addClass('disabled');
+     $('#siblh_mantenimientobundle_blhanalisissensorial_suciedad').addClass('disabled');
+     $('#siblh_mantenimientobundle_blhanalisissensorial_flavor').addClass('disabled');
+      $('#siblh_mantenimientobundle_blhanalisissensorial_color').bind('click dblclick focus',function(event){
+          
+   if ($(this).hasClass('disabled')) {alert('Campo bloqueado'); event.preventDefault();}
+});
+
+       $('#siblh_mantenimientobundle_blhanalisissensorial_suciedad').bind('focus',function(event){
+          
+   if ($(this).hasClass('disabled')) {alert('Campo bloqueado'); event.preventDefault();}
+});
+
+       $('#siblh_mantenimientobundle_blhanalisissensorial_flavor').bind('click dblclick focus',function(event){
+   if ($(this).hasClass('disabled')) {alert('Campo bloqueado'); event.preventDefault();}
+});
+
+       $('#siblh_mantenimientobundle_blhanalisissensorial_embalaje').bind('click dblclick focus',function(event){
+   if ($(this).hasClass('disabled')) {alert('Campo bloqueado'); event.preventDefault();}
+});
     //Tooltip                      
  
         
@@ -214,16 +231,16 @@ if (str=="Aprobado")
     {
          
    
-         $('#siblh_mantenimientobundle_blhanalisissensorial_suciedad').removeAttr('disabled');
+         $('#siblh_mantenimientobundle_blhanalisissensorial_suciedad').removeClass('disabled');
          $('#siblh_mantenimientobundle_blhanalisissensorial_suciedad').val('');
 
     }
   else if(str=="Reprobado")
   {
       
-        $('#siblh_mantenimientobundle_blhanalisissensorial_suciedad').prop('disabled','disabled');
-        $('#siblh_mantenimientobundle_blhanalisissensorial_color').prop('disabled','disabled');
-        $('#siblh_mantenimientobundle_blhanalisissensorial_flavor').prop('disabled','disabled');
+        $('#siblh_mantenimientobundle_blhanalisissensorial_suciedad').addClass('disabled');
+        $('#siblh_mantenimientobundle_blhanalisissensorial_color').addClass('disabled');
+        $('#siblh_mantenimientobundle_blhanalisissensorial_flavor').addClass('disabled');
         
         $('#siblh_mantenimientobundle_blhanalisissensorial_color').val('NR');
         $('#siblh_mantenimientobundle_blhanalisissensorial_flavor').val('NR');
@@ -246,8 +263,8 @@ str = $(this).val();
 if ($('#siblh_mantenimientobundle_blhanalisissensorial_embalaje').val()=='Aprobado' && $(this).val()=='NR')
     {
         $(this).val('');
-        $('#siblh_mantenimientobundle_blhanalisissensorial_color').prop('disabled','disabled');
-        $('#siblh_mantenimientobundle_blhanalisissensorial_flavor').prop('disabled','disabled');
+        $('#siblh_mantenimientobundle_blhanalisissensorial_color').addClass('disabled');
+        $('#siblh_mantenimientobundle_blhanalisissensorial_flavor').addClass('disabled');
         $('#siblh_mantenimientobundle_blhanalisissensorial_color').val('NR');
         $('#siblh_mantenimientobundle_blhanalisissensorial_flavor').val('NR');
     }
@@ -256,15 +273,15 @@ if (str=="Aprobado")
     {
           
    
-         $('#siblh_mantenimientobundle_blhanalisissensorial_color').removeAttr('disabled');
+         $('#siblh_mantenimientobundle_blhanalisissensorial_color').removeClass('disabled');
          $('#siblh_mantenimientobundle_blhanalisissensorial_color').val('');
     }
   else if(str=="Reprobado")
   {
     
         
-        $('#siblh_mantenimientobundle_blhanalisissensorial_color').prop('disabled','disabled');
-        $('#siblh_mantenimientobundle_blhanalisissensorial_flavor').prop('disabled','disabled');
+        $('#siblh_mantenimientobundle_blhanalisissensorial_color').addClass('disabled');
+        $('#siblh_mantenimientobundle_blhanalisissensorial_flavor').addClass('disabled');
         
 
         $('#siblh_mantenimientobundle_blhanalisissensorial_color').val('NR');
@@ -284,7 +301,7 @@ str = $(this).val();
 if ($('#siblh_mantenimientobundle_blhanalisissensorial_suciedad').val()=='Aprobado' && $(this).val()=='NR')
     {
         $(this).val('');
-         $('#siblh_mantenimientobundle_blhanalisissensorial_flavor').prop('disabled','disabled');
+         $('#siblh_mantenimientobundle_blhanalisissensorial_flavor').addClass('disabled');
          $('#siblh_mantenimientobundle_blhanalisissensorial_flavor').val('NR');
     }
  
@@ -292,14 +309,14 @@ if (str=="Aprobado")
     {
          
    
-         $('#siblh_mantenimientobundle_blhanalisissensorial_flavor').removeAttr('disabled');
+         $('#siblh_mantenimientobundle_blhanalisissensorial_flavor').removeClass('disabled');
          $('#siblh_mantenimientobundle_blhanalisissensorial_flavor').val('');
     }
   else if(str=="Reprobado")
   {
      
         
-        $('#siblh_mantenimientobundle_blhanalisissensorial_flavor').prop('disabled','disabled');
+        $('#siblh_mantenimientobundle_blhanalisissensorial_flavor').addClass('disabled');
         
         
 
@@ -327,14 +344,6 @@ if ($('#siblh_mantenimientobundle_blhanalisissensorial_color').val()=='Aprobado'
   //$('#siblh_mantenimientobundle_blhanalisissensorial_embalaje').val($(this).val());
 })//.change();
 
-    
+  ;  
 
 });
-
-
-
-      
-
-
-
-

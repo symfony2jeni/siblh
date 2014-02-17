@@ -105,7 +105,7 @@ function calcular(valor)
     if(valor !='')
      {if (($ml == '') || ($ml <1) || ($ml > 500) ) 
         { 
-            alert ('Digite un valor valido para el volumen recolectado');
+            alert ('El volumen recolectado debe estar entre 1 y 500');
             return false;
         }
     else {

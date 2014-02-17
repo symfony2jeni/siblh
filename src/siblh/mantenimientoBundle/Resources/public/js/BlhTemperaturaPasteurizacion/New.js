@@ -1,7 +1,3 @@
-/* 
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 $(document).ready(function() { 
     $.noConflict();
    $('#boton').button();
@@ -51,12 +47,9 @@ $(document).ready(function() {
             alert("Ingrese valores para la temperatura de 62 a 66 grados C");
             return false;}
            
-        else
-            {
-             alert("Datos almacenados");
-                 
-            }
+        
        });
+
             
               $('#siblh_mantenimientobundle_blhtemperaturapasteurizacion_temperaturaP').blur(function(){
      $valor= $('#siblh_mantenimientobundle_blhtemperaturapasteurizacion_temperaturaP').val();
@@ -69,6 +62,7 @@ $(document).ready(function() {
           return false;
       }
 });
+
  });
 
 

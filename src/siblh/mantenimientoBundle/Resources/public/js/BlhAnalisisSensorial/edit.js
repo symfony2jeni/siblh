@@ -1,7 +1,165 @@
 $(document).ready(function() { 
      //$('#button').button();
      $.noConflict();
+  x1= document.getElementById('siblh_mantenimientobundle_blhanalisissensorial_color');
+  x1.remove(0);
+  x1= document.getElementById('siblh_mantenimientobundle_blhanalisissensorial_suciedad');
+  x1.remove(0);
+  x1= document.getElementById('siblh_mantenimientobundle_blhanalisissensorial_flavor');
+  x1.remove(0);
+  x1= document.getElementById('siblh_mantenimientobundle_blhanalisissensorial_embalaje');
+  x1.remove(0);
   
+       $('#siblh_mantenimientobundle_blhanalisissensorial_color').bind('click dblclick focus',function(event){
+          
+   if ($(this).hasClass('disabled')) {alert('Campo bloqueado'); event.preventDefault();}
+});
+
+       $('#siblh_mantenimientobundle_blhanalisissensorial_suciedad').bind('focus',function(event){
+          
+   if ($(this).hasClass('disabled')) {alert('Campo bloqueado'); event.preventDefault();}
+});
+
+       $('#siblh_mantenimientobundle_blhanalisissensorial_flavor').bind('click dblclick focus',function(event){
+   if ($(this).hasClass('disabled')) {alert('Campo bloqueado'); event.preventDefault();}
+});
+
+       $('#siblh_mantenimientobundle_blhanalisissensorial_embalaje').bind('click dblclick focus',function(event){
+   if ($(this).hasClass('disabled')) {alert('Campo bloqueado'); event.preventDefault();}
+});
+     //$('#siblh_mantenimientobundle_blhanalisissensorial_suciedad').prop('readonly','readonly');
+     //$('#siblh_mantenimientobundle_blhanalisissensorial_flavor').prop('readonly','readonly');
+       
+      $( "#siblh_mantenimientobundle_blhanalisissensorial_embalaje" )
+.change(function () {
+var str = "";
+
+str = $(this).val();
+//$( "div" ).text( str );
+
+ 
+if (str=="Aprobado")
+    {
+         
+   
+         $('#siblh_mantenimientobundle_blhanalisissensorial_suciedad').removeClass('disabled');
+         $('#siblh_mantenimientobundle_blhanalisissensorial_suciedad').val('');
+                 $('#siblh_mantenimientobundle_blhanalisissensorial_color').val('');
+        $('#siblh_mantenimientobundle_blhanalisissensorial_flavor').val('');
+       
+
+    }
+  else if(str=="Reprobado")
+  {
+      
+        $('#siblh_mantenimientobundle_blhanalisissensorial_suciedad').addClass('disabled');
+        $('#siblh_mantenimientobundle_blhanalisissensorial_color').addClass('disabled');
+        $('#siblh_mantenimientobundle_blhanalisissensorial_flavor').addClass('disabled');
+        
+        $('#siblh_mantenimientobundle_blhanalisissensorial_color').val('NR');
+        $('#siblh_mantenimientobundle_blhanalisissensorial_flavor').val('NR');
+        $('#siblh_mantenimientobundle_blhanalisissensorial_suciedad').val('NR');
+  }
+  
+  //$('#siblh_mantenimientobundle_blhanalisissensorial_embalaje').val($(this).val());
+})//.change();
+ 
+ 
+ 
+ 
+ $( "#siblh_mantenimientobundle_blhanalisissensorial_suciedad" )
+.change(function () {
+var str = "";
+
+str = $(this).val();
+//$( "div" ).text( str );
+
+if ($('#siblh_mantenimientobundle_blhanalisissensorial_embalaje').val()=='Aprobado' && $(this).val()=='NR')
+    {
+        $(this).val('');
+        $('#siblh_mantenimientobundle_blhanalisissensorial_color').addClass('disabled');
+        $('#siblh_mantenimientobundle_blhanalisissensorial_flavor').addClass('disabled');
+        $('#siblh_mantenimientobundle_blhanalisissensorial_color').val('NR');
+        $('#siblh_mantenimientobundle_blhanalisissensorial_flavor').val('NR');
+    }
+
+if (str=="Aprobado")
+    {
+          
+   
+         $('#siblh_mantenimientobundle_blhanalisissensorial_color').removeClass('disabled');
+         $('#siblh_mantenimientobundle_blhanalisissensorial_color').val('');
+         $('#siblh_mantenimientobundle_blhanalisissensorial_flavor').val('');
+    }
+  else if(str=="Reprobado")
+  {
+    
+        
+        $('#siblh_mantenimientobundle_blhanalisissensorial_color').addClass('disabled');
+        $('#siblh_mantenimientobundle_blhanalisissensorial_flavor').addClass('disabled');
+        
+
+        $('#siblh_mantenimientobundle_blhanalisissensorial_color').val('NR');
+        $('#siblh_mantenimientobundle_blhanalisissensorial_flavor').val('NR');
+  }
+  
+  //$('#siblh_mantenimientobundle_blhanalisissensorial_embalaje').val($(this).val());
+})//.change();
+ 
+
+$( "#siblh_mantenimientobundle_blhanalisissensorial_color" )
+.change(function () {
+var str = "";
+
+str = $(this).val();
+//$( "div" ).text( str );
+if ($('#siblh_mantenimientobundle_blhanalisissensorial_suciedad').val()=='Aprobado' && $(this).val()=='NR')
+    {
+        $(this).val('');
+         $('#siblh_mantenimientobundle_blhanalisissensorial_flavor').addClass('disabled');
+         $('#siblh_mantenimientobundle_blhanalisissensorial_flavor').val('NR');
+    }
+ 
+if (str=="Aprobado")
+    {
+         
+   
+         $('#siblh_mantenimientobundle_blhanalisissensorial_flavor').removeClass('disabled');
+         $('#siblh_mantenimientobundle_blhanalisissensorial_flavor').val('');
+    }
+  else if(str=="Reprobado")
+  {
+     
+        
+        $('#siblh_mantenimientobundle_blhanalisissensorial_flavor').addClass('disabled');
+        
+        
+
+       
+        $('#siblh_mantenimientobundle_blhanalisissensorial_flavor').val('NR');
+  }
+  
+  //$('#siblh_mantenimientobundle_blhanalisissensorial_embalaje').val($(this).val());
+})//.change();
+ 
+ 
+$( "#siblh_mantenimientobundle_blhanalisissensorial_flavor" )
+.change(function () {
+var str = "";
+
+str = $(this).val();
+//$( "div" ).text( str );
+if ($('#siblh_mantenimientobundle_blhanalisissensorial_color').val()=='Aprobado' && $(this).val()=='NR')
+    {
+        $(this).val('');
+       
+    }
+ 
+  
+  //$('#siblh_mantenimientobundle_blhanalisissensorial_embalaje').val($(this).val());
+})//.change();
+
+  ;
     //Tooltip                      
  
         
@@ -197,10 +355,5 @@ $('#boton').on ('click', function() {
  }
      
  } ); 
-  
-  
-  
- 
-
 
 });

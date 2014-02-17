@@ -1,17 +1,11 @@
 $(document).ready(function() {
-
  tableToGrid("#listado_Pasteurizacion", {
         pager : '#pagerPasteurizacion',
         rowNum:10, 
-         height: '100%',
+        height: '100%',
         gridview: true, 
-       // caption: "Seleccione la donante",
-         sortorder: "desc",
-        
-        
-        
+        sortorder: "desc",       
         colModel :[
-           // {name:'Id',width:80,editable:true,},
             {name:'Codigo',width:15,align:'center'},
             {name:'Ciclo', width:15,align:'center'},
             {name:'VolumenPasteurizado', width:15,align:'center'},
@@ -21,12 +15,9 @@ $(document).ready(function() {
             {name:'Final&nbsp;Pasteurizacion', width:19,align:'center', search:false},
             {name:'Inicio&nbsp;Enfriamiento', width:18,align:'center', search:false},
             {name:'Final&nbsp;Enfriamiento', width:18,align:'center', search:false},
-            {name:'Responsable&nbsp;Pasteurizacion', width:40,align:'center'},          
-            {name:'Accion', width:10,align:'center', search:false}
-            
-   
+            {name:'Responsable&nbsp;Pasteurizacion', width:30,align:'center'},          
+            {name:'Accion', width:10,align:'center', search:false}  
         ]
-    
     });
     jQuery("#listado_Pasteurizacion").jqGrid('sortGrid',"id",true);
     jQuery("#listado_Pasteurizacion").jqGrid('navGrid','#pagerPasteurizacion', {

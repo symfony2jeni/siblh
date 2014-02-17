@@ -178,7 +178,6 @@ $('#siblh_mantenimientobundle_blhcurva_fechaCurva').
 
 
 
-
     $('#siblh_mantenimientobundle_blhcurva_valorCurva').
             attr('data-bvalidator', 'required'); 
         
@@ -205,6 +204,10 @@ $('#siblh_mantenimientobundle_blhcurva_fechaCurva').
           return false;
       }
 });  
+
+    $('#siblh_mantenimientobundle_blhcurva_valorCurva').
+            attr('data-bvalidator', 'required'); 
+
 
 });
     

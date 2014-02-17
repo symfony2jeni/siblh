@@ -61,7 +61,7 @@ $('#siblh_mantenimientobundle_blhseguimientoreceptor_pesoSeguimiento').change(fu
 
   
 $('#siblh_mantenimientobundle_blhseguimientoreceptor_tallaReceptor').blur(function() {
-            if (calcular1($(this).val()))
+            if (calcular2($(this).val()))
                 {}
             else
                 {$(this).focus();}
@@ -133,7 +133,7 @@ $('#siblh_mantenimientobundle_blhseguimientoreceptor_tallaReceptor').change(func
      $('#siblh_mantenimientobundle_blhseguimientoreceptor_periodoEvaluacion').attr('data-bvalidator', 'required,between[5:10]');
 
 
-    
+ /*   
      
  $('#siblh_mantenimientobundle_blhseguimientoreceptor_pcSeguimiento').
             attr('data-bvalidator', 'required,between[20:40]');
@@ -154,7 +154,7 @@ $('#siblh_mantenimientobundle_blhseguimientoreceptor_tallaReceptor').change(func
     
     
   $('#siblh_mantenimientobundle_blhseguimientoreceptor_gananciaDiaTalla').
-            attr('data-bvalidator', 'required,between[-5:5]');
+            attr('data-bvalidator', 'required,between[-5:5]'); */
     
 
       //Opciones del validador
@@ -254,7 +254,8 @@ $dias = $('#siblh_mantenimientobundle_blhseguimientoreceptor_periodoEvaluacion')
 $peso = $('#siblh_mantenimientobundle_blhseguimientoreceptor_pesoSeguimiento').val();   
  
     if(valor !='')
-     {if (($peso == '') || ($dias == '') || ($peso<500) || ($peso>5000) || ($dias<5) || ($dias>10)){alert ('Verificar que Periodo de seguimiento y Peso esten ingresados correctamente');
+     {if (($peso == '') || ($dias == '') || ($peso<500) || ($peso>5000) || ($dias<5) || ($dias>10)){
+             alert ('Verificar que Periodo de seguimiento y Peso esten ingresados correctamente');
     return false;}
     else {
             

@@ -57,13 +57,13 @@ $(function() {
     ;
     });
    
-
-  /*  function funresponsable(){
-  var myselect = document.getElementById("responsable");
-  $nombre = myselect.options[myselect.selectedIndex].value;
-  alert($nombre);
-  $('#siblh_mantenimientobundle_blhdonacion_responsableDonacion').val= $nombre;
-}  */
+$('#button').on('click', function() {
+    
+    $val=$('#siblh_mantenimientobundle_blhdonacion_responsableDonacion').val();
+    if($val === '')
+        {alert('Seleccione el responsable');
+        return false;}
+});
 
 });
 

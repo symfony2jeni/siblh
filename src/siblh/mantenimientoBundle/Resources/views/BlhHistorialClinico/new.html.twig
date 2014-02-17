@@ -59,6 +59,7 @@ elemento.style.visibility = visible ? "visible" : "hidden";
    <tr><td align = "left"><font color="red" >*</font> <b>Formula Obstetrica</b> </td>
         <td align = "left"> 
         {{ form_label(form.formulaObstetricaG, 'G') }}
+
         {{ form_widget(form.formulaObstetricaG,  { 'attr': {'size': '2', 'title':'Digite el numero de Embarazos entre 1 y 20', 'onKeyPress':"return soloNumerosEnteros(event);"} }) }}  
         {{ form_label(form.formulaObstetricaP1, 'P') }}
         {{ form_widget(form.formulaObstetricaP1,  { 'attr': {'size': '2', 'title':'Digite el numero de Parto entre 1 y 20', 'onKeyPress':"return soloNumerosEnteros(event);"} }) }}
@@ -70,7 +71,7 @@ elemento.style.visibility = visible ? "visible" : "hidden";
         {{ form_widget(form.formulaObstetricaV,  { 'attr': {'size': '2', 'title':'Digite el numero de Vivos entre 1 y 20', 'onKeyPress':"return soloNumerosEnteros(event);"} }) }}
         {{ form_label(form.formulaObstetricaM, 'M') }}
         {{ form_widget(form.formulaObstetricaM,  { 'attr': {'size': '2', 'title':'Digite el numero de Muertos entre 1 y 20', 'onKeyPress':"return soloNumerosEnteros(event);"} }) }}</td>  
- 
+
    <td align = "left"><font color="red" >*</font> 
         {{ form_label(form.periodoIntergenesico) }} </td><td align = "left">
         {{ form_widget(form.periodoIntergenesico,  { 'attr': {'size': '4', 'title': 'Digite el periodo entre 1 y 20', 'onKeyPress':"return soloNumerosEnteros(event);"} }) }} </td> </tr>
@@ -102,7 +103,7 @@ elemento.style.visibility = visible ? "visible" : "hidden";
         {{ form_widget(form.fechaParto, {'attr':{'readonly': 'true', 'title': 'Dar clic y seleccionar fecha de parto' } }) }}</td>
  <td align = "left"> <font color="red" >*</font> 
         {{ form_label(form.amenorrea) }} &nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><td align = "left">        
-        {{ form_widget(form.amenorrea,  { 'attr': {'readonly': 'true', 'title':'Dar clic para obtener resultado' } }) }}</td></tr>
+        {{ form_widget(form.amenorrea,  { 'attr': {'readonly': 'true'} }) }}</td></tr>
  <tr><td height=10  ></td></tr>
   
   <tr><td align = "left"> 

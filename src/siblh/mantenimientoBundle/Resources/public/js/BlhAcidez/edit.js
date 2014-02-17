@@ -246,7 +246,7 @@ function calcular1(valor)
     return false;}
     else {
  $factor = $('#siblh_mantenimientobundle_blhacidez_factor').val();  
- if ( ($factor < 0.9) && ($factor!='') && ($factor!='0')&& ($factor!='0.')) 
+ if ( ($factor < 0.9) && ($factor < 1.1) && ($factor!='') && ($factor!='0')&& ($factor!='0.')) 
 { 
     
     $('#siblh_mantenimientobundle_blhacidez_factor').val('');

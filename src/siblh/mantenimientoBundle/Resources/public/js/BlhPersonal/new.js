@@ -1,6 +1,7 @@
 $(document).ready(function() { 
    $.noConflict();
     $('#button').button();
+
     $('#boton').button();
      $('#siblh_mantenimientobundle_blhpersonal_nombre').
               attr('data-bvalidator', 'required'); 
@@ -48,3 +49,16 @@ function soloLetras(e){
     te = String.fromCharCode(tecla); 
     return letras.test(te); // prueba de letras permitidas
     }
+
+       
+
+
+function soloTexto(e)
+{
+var keynum = window.event ? window.event.keyCode : e.which;
+if (keynum === 8)
+return true;
+ 
+return /\d/.test(String.fromCharCode(keynum));
+}
+

@@ -10,7 +10,11 @@
 {% block javascripts %}
 
 {{parent()}}
-
+        <style>
+             .disabled{
+                        color: grey;
+                      }
+        </style>
 <script type="text/javascript" src="{{ asset('bundles/siblhmantenimiento/js/BlhAnalisisSensorial/new.js') }}" ></script>
         
 {% endblock %}

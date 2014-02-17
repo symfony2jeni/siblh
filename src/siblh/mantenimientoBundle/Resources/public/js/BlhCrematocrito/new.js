@@ -39,28 +39,98 @@ $(document).ready(function() {
     
     
 $('#siblh_mantenimientobundle_blhcrematocrito_ct1').keyup(function(){
-   calcularMediaCt(); 
+
+   if($(this).val()== '0')
+   {
+     
+    $(this).val('');
+    $(this).focusin();
+    $(this).focus(); 
+   }
+   else
+       
+    {
+        calcularMediaCt(); 
+    }
 });
     
 $('#siblh_mantenimientobundle_blhcrematocrito_ct2').keyup(function(){
-   calcularMediaCt(); 
+   if($(this).val()== '0')
+   {
+      
+    $(this).val('');
+    $(this).focusin();
+    $(this).focus(); 
+   }
+   else
+       
+    {
+        calcularMediaCt(); 
+    }
 });
 
 $('#siblh_mantenimientobundle_blhcrematocrito_ct3').keyup(function(){
-   calcularMediaCt(); 
+   if($(this).val()== '0')
+   {
+      
+    $(this).val('');
+    $(this).focusin();
+    $(this).focus(); 
+   }
+   else
+       
+    {
+        calcularMediaCt(); 
+    }
 });
 
 $('#siblh_mantenimientobundle_blhcrematocrito_crema1').keyup(function(){
+    if($(this).val()== '0')
+   {
+     
+    $(this).val('');
+    $(this).focusin();
+    $(this).focus(); 
+   }
+   else
+       
+    {
    calcularMediaCrema(); 
+    }
+
 });
 
 
 $('#siblh_mantenimientobundle_blhcrematocrito_crema2').keyup(function(){
-   calcularMediaCrema(); 
+
+   if($(this).val()== '0')
+   {
+     
+    $(this).val('');
+    $(this).focusin();
+    $(this).focus(); 
+   }
+   else
+       
+    {
+    calcularMediaCrema(); 
+    }
 });
 
 $('#siblh_mantenimientobundle_blhcrematocrito_crema3').keyup(function(){
+    if($(this).val()== '0')
+   {
+     
+    $(this).val('');
+    $(this).focusin();
+    $(this).focus(); 
+   }
+   else
+       
+    {
    calcularMediaCrema(); 
+    }
+
 });
 
 
@@ -117,6 +187,7 @@ else {
     {
         $crema1=0;
     }
+
    
    if ($crema2 == 'a2')
     {
@@ -128,14 +199,33 @@ else {
         $crema3=0;
     }
    
+
      $mediaCrema= (parseInt($crema1) + parseInt($crema2) + parseInt($crema3))/3;
 
 //Redondeando el resultado a 2 decimales 
 $mediaCrema = Math.round($mediaCrema* 100) / 100;
  
 
+
 $('#siblh_mantenimientobundle_blhcrematocrito_mediaCrema').val($mediaCrema); 
-calcularPorcCrema();
+$mediaCrema = ($('#siblh_mantenimientobundle_blhcrematocrito_mediaCrema').val()=='')?0:$('#siblh_mantenimientobundle_blhcrematocrito_mediaCrema').val();
+    $mediaCt = ($('#siblh_mantenimientobundle_blhcrematocrito_mediaCt').val()=='')?1:$('#siblh_mantenimientobundle_blhcrematocrito_mediaCt').val();
+    
+if (($mediaCrema == '') || ($mediaCt ==='')) 
+{ 
+    event.preventDefault();
+    $(this).val('');
+    $(this).focusin();
+    $(this).focus();
+    
+    alert ('Debe digitar valores validos para cremas y columnas');
+    return false;
+}
+else
+{
+    calcularPorcCrema();
+}
+
 }}
 
 //COLIFORMES
@@ -148,7 +238,9 @@ function calcularMediaCt() {
   $ct3 = ($('#siblh_mantenimientobundle_blhcrematocrito_ct3').val()=='')?1:$('#siblh_mantenimientobundle_blhcrematocrito_ct3').val();
  
  if (($ct1 == '') || ($ct2 == '') || ($ct3 == '') || ($ct1 < 1) || ($ct1 > 99) || ($ct2 < 1) || ($ct2 > 99)  || ($ct3 < 1) || ($ct3 > 99) ) 
-{ alert ('Digite valores validos para las columnas totales');
+{ 
+    alert ('Digite valores validos para las columnas totales');
+
     return false;}
 else {
 
@@ -176,7 +268,25 @@ else {
 $mediaCt = Math.round($mediaCt* 100) / 100; 
 $('#siblh_mantenimientobundle_blhcrematocrito_mediaCt').val($mediaCt); 
 }
-calcularPorcCrema();
+
+
+$mediaCrema = ($('#siblh_mantenimientobundle_blhcrematocrito_mediaCrema').val()=='')?1:$('#siblh_mantenimientobundle_blhcrematocrito_mediaCrema').val();
+$mediaCt = ($('#siblh_mantenimientobundle_blhcrematocrito_mediaCt').val()=='')?1:$('#siblh_mantenimientobundle_blhcrematocrito_mediaCt').val();
+          
+if (($mediaCrema == '') || ($mediaCt ==='')) 
+{ 
+    event.preventDefault();
+    $(this).val('');
+    $(this).focusin();
+    $(this).focus();
+    
+    alert ('Debe digitar valores validos para cremas y columnas');
+    return false;
+}
+else
+{
+    calcularPorcCrema();
+}
     } 
 
 
@@ -184,17 +294,22 @@ calcularPorcCrema();
 
 
 
+
 function calcularPorcCrema() {
-    $mediaCrema = ($('#siblh_mantenimientobundle_blhcrematocrito_mediaCrema').val()=='')?0:$('#siblh_mantenimientobundle_blhcrematocrito_mediaCrema').val();
+    $mediaCrema = ($('#siblh_mantenimientobundle_blhcrematocrito_mediaCrema').val()=='')?1:$('#siblh_mantenimientobundle_blhcrematocrito_mediaCrema').val();
     $mediaCt = ($('#siblh_mantenimientobundle_blhcrematocrito_mediaCt').val()=='')?1:$('#siblh_mantenimientobundle_blhcrematocrito_mediaCt').val();
     
    
         
            
     if (($mediaCrema == '') || ($mediaCt ==='')) 
-{ alert ('Para obtener este valor necesita calcular las medias de la crema y columnas totales');
-    return false;}
-else {
+{ 
+    alert ('Para obtener este valor necesita calcular las medias de la crema y columnas totales CT');
+    return false;
+}
+else 
+{
+
  $porcentajeCrema=$mediaCrema/($mediaCt*100);
 //$porcentajeCrema= Math.round( $porcentajeCrema* 100) / 100;
  $porcentajeCrema=Math.round($porcentajeCrema*Math.pow(10,4))/Math.pow(10,4);
@@ -209,7 +324,9 @@ if ($porcentajeCrema == '')
 { alert ('Para obtener este valor necesita calcular el porcentaje de crema');
     return false;}
 else {
-$kilocalorias = ($porcentajeCrema*268)+290;
+
+$kilocalorias = ($porcentajeCrema*66.8)+290;
+
 //Redondeando el resultado a 2 decimales 
 $kilocalorias= Math.round( $kilocalorias* 100) / 100;
  

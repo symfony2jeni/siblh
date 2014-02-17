@@ -14,7 +14,6 @@
     
      {{ form_start(edit_form) }}
     {{ form_errors(edit_form) }}
-    
     <table  align = "center">
     <tr><td  align = "left" height=10  ></td></tr>
     <tr><td align='left'>{{ form_label(edit_form.codigoPasteurizacion) }}</td><td align='left'>{{ form_widget(edit_form.codigoPasteurizacion, {'attr':{'readonly': 'true'} }) }}</td></tr>
@@ -36,15 +35,11 @@
      <tr><td align='left'>{{ form_label(edit_form.horaFinalE, 'Hora Final Enfriamiento') }}</td><td align='left'>{{ form_widget(edit_form.horaFinalE) }}</td></tr>
     <tr><td  align = "left" height=10  ></td></tr>
     <tr><td align = "left"><font color="red" >*</font><b><font face="Verdana,Arial,Helvetica,sans-serif" ><i>Responsable</i></font></b></td>
-        <td align = "left"> 
-            <select name="responsable" id = "responsable" > 
+    <td align = "left"><select name="responsable" id = "responsable" > 
         <option value= ""></option>
         {% for responsable in responsable%}        
         <option value= "{{ responsable.nombre }}">{{ responsable.nombre }} </option>
-          {% endfor %}</select> </td></tr>
-    
-    
-    
+          {% endfor %}</select> </td></tr>   
     <tr style="visibility:hidden"><td align='left'><font color="red">*</font>{{ form_label(edit_form.responsablePasteurizacion, 'Responsable') }}</td><td align='left'>{{ form_widget(edit_form.responsablePasteurizacion) }}</td></tr>
     <tr><td  align = "left" height=10  ></td></tr>
     <tr style="visibility:hidden"><td align='left'><font color="red">*</font>{{ form_label(edit_form.idCurva) }}</td><td align='left'>{{ form_widget(edit_form.idCurva) }}</td></tr>
@@ -53,15 +48,4 @@
     <input id = "boton" type="button" value="Regresar" onClick=' window.location.href="{{ path('blhpasteurizacion') }}" '></td></tr>
     </table>
  {{ form_end(edit_form) }}
-    
-    
-
-  {#      <ul class="record_actions">
-    <li>
-        <a href="{{ path('blhpasteurizacion') }}">
-            Back to the list
-        </a>
-    </li>
-    <li>{{ form(delete_form) }}</li>
-</ul> #}
 {% endblock %}

@@ -32,7 +32,17 @@
         <tr><td colspan=2 align = "left" height=10  ></td></tr>
         <tr><td align='left' ><font color="red">*</font>{{ form_label(edit_form.duracionCpap,'Duracion de CPAP Nasal') }}</td><td align='left'>{{ form_widget(edit_form.duracionCpap,  { 'attr': {'title': 'Dias entre 0 y 50', 'onKeyPress':"return soloNumerosEnteros(event);"} }) }}</td></tr>
         <tr><td colspan=2 align = "left" height=10  ></td></tr>
-        <tr><td align='left' ><font color="red">*</font>{{ form_label(edit_form.clasificacionLubchengo,'Clasificacion Lubchengo') }}</td><td align='left'>{{ form_widget(edit_form.clasificacionLubchengo) }}</td></tr>
+        <tr>  <td align = left colspan = 4><font color="red">*</font>
+               <form>
+              <b>  Clasificacion Lubchenco  </b>
+               <input type="radio" name="group1" id="2" value="PEG"> PEG
+               <input type="radio" name="group1" id="3" value="AEG">AEG
+               <input type="radio" name="group1" id="4" value="GEG">GEG
+               </form>
+           
+           </td></tr>
+        
+        <tr><td align='left' >{{ form_label(edit_form.clasificacionLubchengo,' ') }}</td><td align='left'>{{ form_widget(edit_form.clasificacionLubchengo, {'attr':{'readonly': 'true' } }) }}</td></tr>
         <tr><td colspan=2 align = "left" height=10  ></td></tr>
         <tr><td align='left' ><font color="red">*</font>{{ form_label(edit_form.duracionNpt,'Nutricion parenteral') }}</td><td align='left'>{{ form_widget(edit_form.duracionNpt, { 'attr': {'title': 'Dias entre 0 y 50', 'onKeyPress':"return soloNumerosEnteros(event);"} }) }}</td></tr>
         <tr><td colspan=2 align = "left" height=10  ></td></tr>

@@ -86,21 +86,21 @@
          <tr><td  align = "right" height=10  ></td></tr>
       <tr>
            <td align = "left" ><font color="red">*</font>{{ form_label(form.mediaCrema, 'Media crema(mm)') }}</td>
-           <td align = "left">{{ form_widget(form.mediaCrema, {'attr':{ 'readonly': 'true','title': 'Dar clic para obtener el resultado' } } ) }} </td>
+           <td align = "left">{{ form_widget(form.mediaCrema, {'attr':{ 'readonly': 'true' } } ) }} </td>
            
            <td align = "left" ><font color="red">*</font>{{ form_label(form.mediaCt, 'Media columna total(mm)') }}</td>
-           <td align = "left">{{ form_widget(form.mediaCt, {'attr':{ 'readonly': 'true','title': 'Dar clic para obtener el resultado'  } } ) }} </td>
+           <td align = "left">{{ form_widget(form.mediaCt, {'attr':{ 'readonly': 'true'} } ) }} </td>
       
           
         <td align = "left" ><font color="red">*</font>{{ form_label(form.porcentajeCrema, 'Porcentaje crema(%)') }}</td>
-        <td align = "left">{{ form_widget(form.porcentajeCrema, {'attr':{ 'readonly': 'true','title': 'Dar clic para obtener el resultado'  } } )}} </td>
-       
-       
+        <td align = "left">{{ form_widget(form.porcentajeCrema, {'attr':{ 'readonly': 'true'} } )}} </td>
         </tr>
            <tr><td align = "right" height=10  ></td></tr>
       <tr>
            <td align = "left" ><font color="red">*</font>{{ form_label(form.kilocalorias) }}</td>
-           <td align = "left">{{ form_widget(form.kilocalorias, {'attr':{ 'readonly': 'true','title': 'Dar clic para obtener el resultado'   } } ) }} </td>
+
+           <td align = "left">{{ form_widget(form.kilocalorias, {'attr':{ 'readonly': 'true'} } ) }} </td>
+
         </tr>    
            
            
@@ -112,7 +112,7 @@
             <td width=150 align = 'left'  ><font color="red" face = "Comic Sans MS">* Campos requeridos</font></td>           
           </tr>
         <tr>
-             <td width=900 align = 'center' > <input type='submit' id="boton"  value="Guardar"/><input id = "boton1" type="button" value="Regresar" onClick=' window.location.href="{{ path('blhfrascosAnalisis_crematocrito' )}}" '></td></td>              
+             <td width=900 align = 'center' > <input type='submit' id="boton"  value="Guardar"/><input id = "boton1" type="button" value="Regresar" onClick=' window.location.href="{{ path('blhfrascosAnalisis_crematocrito' )}}" '/></td>           
                 
         </tr>
           

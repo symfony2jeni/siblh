@@ -134,6 +134,7 @@ $('#siblh_mantenimientobundle_blhreceptor_duracionNpt').
       $('#siblh_mantenimientobundle_blhreceptor_edadDias').
             attr('data-bvalidator', 'required');
     calcularEdadDias();
+
     
        $('#siblh_mantenimientobundle_blhreceptor_edadGestFur').blur(function(){
      $valor= $('#siblh_mantenimientobundle_blhreceptor_edadGestFur').val();
@@ -153,7 +154,7 @@ $('#siblh_mantenimientobundle_blhreceptor_duracionNpt').
    //  alert(typeof $valor);
     if (($valor < 25) ||  ($valor > 55))
       {
-          alert ("El peso debe estar entre 25 y 55 cm");
+          alert ("La talla debe estar entre 25 y 55 cm");
           $(this).focus();
           return false;
       }
@@ -253,8 +254,6 @@ $('#siblh_mantenimientobundle_blhreceptor_duracionNpt').
           return false;
       }
 }); 
-
-
 
 });
 

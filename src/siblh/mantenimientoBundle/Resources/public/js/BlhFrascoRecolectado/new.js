@@ -25,8 +25,10 @@ $('#siblh_mantenimientobundle_blhfrascorecolectado_volumenRecolectado').blur(fun
     $ml = this.value;
     $onz = $ml * 0.033814;
     $onz=$onz.toFixed(4);
+
     $('#siblh_mantenimientobundle_blhfrascorecolectado_onzRecolectado').val($onz); }
 else {alert ("Digite el volumen entre 1 y 500 ml");}
+
    
 });
 

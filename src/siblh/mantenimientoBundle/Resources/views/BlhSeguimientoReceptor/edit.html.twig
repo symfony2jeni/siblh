@@ -33,7 +33,7 @@
         
     <tr><td  align = "right" height=10  ></td></tr>
 <tr>
-    <tr><td align='left' ><font color="red">*</font>{{ form_label(edit_form.fechaSeguimiento,'Fecha') }}</td><td align='left'>{{ form_widget(edit_form.fechaSeguimiento, {'attr':{ 'readonly': 'true', 'title': 'Dar clic y seleccionar la fecha de seguimiento' } }) }}</td></tr>
+    <tr><td align='left' ><font color="red">*</font>{{ form_label(edit_form.fechaSeguimiento,'Fecha') }}</td><td align='left'>{{ form_widget(edit_form.fechaSeguimiento, {'attr':{ 'readonly': 'true' } }) }}</td></tr>
     <tr><td align = "right" height=10  ></td></tr>
         <tr><td align='left'><font color="red">*</font>{{ form_label(edit_form.periodoEvaluacion) }}</td><td align='left'>{{ form_widget(edit_form.periodoEvaluacion, { 'attr': {'title': 'Por favor ingrese el perdiodo de evaluacion, entre 5 y 10.','onKeyPress':"return soloNumerosEnteros(event);"} }) }}</td></tr>
     <tr><td align = "right" height=10  ></td></tr>
@@ -41,15 +41,15 @@
     <tr><td align = "right" height=10  ></td></tr>
     <tr><td align='left'><font color="red">*</font>{{ form_label(edit_form.pcSeguimiento,'Perímetro cefálico(cm)') }}</td><td align='left'>{{ form_widget(edit_form.pcSeguimiento,  { 'attr': {'title': 'Por favor ingrese el perímetro cefálico, entre 20 y 40 cm','onKeyPress':"return soloNumeros(event);"} }) }}</td></tr>
     <tr><td align = "right" height=10  ></td></tr>
-     <tr><td align='left'><font color="red">*</font>{{ form_label(edit_form.gananciaDiaPc,'Ganancia/Pérdida perímetro cefálico por día(cm)') }}</td><td align='left'>{{ form_widget(edit_form.gananciaDiaPc,  { 'attr': {'readonly': 'true', 'title':'Dar clic para obtener resultado'} }) }}</td></tr>
+     <tr><td align='left'><font color="red">*</font>{{ form_label(edit_form.gananciaDiaPc,'Ganancia/Pérdida perímetro cefálico por día(cm)') }}</td><td align='left'>{{ form_widget(edit_form.gananciaDiaPc,  { 'attr': {'readonly': 'true'} }) }}</td></tr>
     <tr><td align = "right" height=10  ></td></tr>
     <tr><td align='left'><font color="red">*</font>{{ form_label(edit_form.pesoSeguimiento,'Peso(g)') }}</td><td align='left'>{{ form_widget(edit_form.pesoSeguimiento, { 'attr': {'title': 'Por favor ingrese el peso, entre 500 y 5000 g','onKeyPress':"return soloNumeros(event);"} }) }}</td></tr>
     <tr><td align = "right" height=10  ></td></tr>
-    <tr><td align='left'><font color="red">*</font>{{ form_label(edit_form.gananciaDiaPeso, ' Ganancia/Pérdida de peso por día(g)') }}</td><td align='left'>{{ form_widget(edit_form.gananciaDiaPeso, { 'attr': {'readonly': 'true', 'title':'Dar clic para obtener resultado'} }) }}</td></tr>
+    <tr><td align='left'><font color="red">*</font>{{ form_label(edit_form.gananciaDiaPeso, ' Ganancia/Pérdida de peso por día(g)') }}</td><td align='left'>{{ form_widget(edit_form.gananciaDiaPeso, { 'attr': {'readonly': 'true'} }) }}</td></tr>
     <tr><td align = "right" height=10  ></td></tr>
     <tr><td align='left'><font color="red">*</font>{{ form_label(edit_form.tallaReceptor,'Talla(cm)') }}</td><td align='left'>{{ form_widget(edit_form.tallaReceptor,{ 'attr': {'title': 'Por favor ingrese la talla, entre 25 y 55 cm','onKeyPress':"return soloNumeros(event);"} }) }}</td></tr>
     <tr><td align = "right" height=10  ></td></tr>
-    <tr><td align='left'><font color="red">*</font>{{form_label(edit_form.gananciaDiaTalla,'Ganancia/Pérdida de talla por dia(cm)') }}</td><td align='left'>{{form_widget(edit_form.gananciaDiaTalla, { 'attr': {'readonly': 'true', 'title':'Dar clic para obtener resultado'} }) }}</td></tr>
+    <tr><td align='left'><font color="red">*</font>{{form_label(edit_form.gananciaDiaTalla,'Ganancia/Pérdida de talla por dia(cm)') }}</td><td align='left'>{{form_widget(edit_form.gananciaDiaTalla, { 'attr': {'readonly': 'true' } }) }}</td></tr>
     <tr><td align = "right" height=10  ></td></tr>
     <tr><td align='left'><font color="red">*</font>{{form_label(edit_form.complicaciones) }}</td><td align='left'>{{form_widget(edit_form.complicaciones) }}</td></tr>
         <tr><td align = "right" height=10  ></td></tr>

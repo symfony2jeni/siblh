@@ -16,6 +16,7 @@
 
      {{ form_start(form) }}
      {{ form_errors(form) }}
+
     
      <table align = "center"  WIDTH = "70%" >
             <tr>
@@ -23,16 +24,19 @@
         {{ form_label(form.nombre,'Nombre') }} </td>
         <td align = left>
         {{ form_widget(form.nombre,{ 'attr': {'title': 'Ingrese el nombre de la persona a registrar','onKeyPress':"return soloLetras(event);"} })  }} </td></tr>
-         <tr style="visibility:hidden">
+        <tr style="visibility:hidden">
     <td align = left><font color="red">*</font>
         {{ form_label(form.idEstablecimiento) }} </td>
         <td align = left>
         {{ form_widget(form.idEstablecimiento) }} </td></tr>
         
+
 <tr><td colspan =2 align = "left"><font color="red" size = "2" face = "Comic Sans MS">* Campos requeridos</font></td></tr>
+
 
      <tr><td colspan = 2 align = center><input id = "button"  type="submit"  value="Guardar"/></td>
      </tr>             
        </table>     
+
 {{ form_end(form) }}  
 {% endblock %}

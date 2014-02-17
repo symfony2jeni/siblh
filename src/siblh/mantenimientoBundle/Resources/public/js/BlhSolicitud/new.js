@@ -161,7 +161,6 @@ $('#siblh_mantenimientobundle_blhsolicitud_cuna').
 
 var $VolumenToma; 
 var $VolumenDia;
-
 $('#siblh_mantenimientobundle_blhsolicitud_volumenPorDia').on ('click', function() {
     $VolumenToma =  $('#siblh_mantenimientobundle_blhsolicitud_volumenPorToma').val();
     $VolumenDia =  $('#siblh_mantenimientobundle_blhsolicitud_tomaPorDia').val();
@@ -185,8 +184,6 @@ $('#boton').on('click',function()
 {    
 $vol=$('#siblh_mantenimientobundle_blhsolicitud_volumenPorToma').val();
 $tom=$('#siblh_mantenimientobundle_blhsolicitud_tomaPorDia').val();
-
-
 $volumen=parseInt($vol); 
 $tomas=parseInt($tom);
 
@@ -225,6 +222,14 @@ return false;}
       }
 }); 
     
+    
+$('#boton').on('click', function() {
+    
+    $val=$('#siblh_mantenimientobundle_blhsolicitud_responsable').val();
+    if($val === '')
+        {alert('Seleccione el responsable');
+        return false;}
+});
 
 });
 
