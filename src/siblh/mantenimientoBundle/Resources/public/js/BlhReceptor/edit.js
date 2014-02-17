@@ -4,118 +4,128 @@ $(document).ready(function() {
     
     //Edad Furor
      
-$('#siblh_mantenimientobundle_blhreceptor_edadGestFur').change(function() {
+$('#siblh_mantenimientobundle_blhreceptor_edadGestFur').blur(function() {
             if (($(this).val()< 24 || $(this).val()> 42) || $(this).val()=='')
                 {alert('Digite un valor valido para edad Fur');
-                $('#siblh_mantenimientobundle_blhreceptor_edadGestFur').val('');}
+               // $('#siblh_mantenimientobundle_blhreceptor_edadGestFur').val('');
+            $(this).focus();
+          return false;}
                 
-            else
-                {$('#siblh_mantenimientobundle_blhreceptor_edadGestFur').focus();}
+            
 } );
      
      // Edad Ballard
-$('#siblh_mantenimientobundle_blhreceptor_edadGestBallard').change(function() {
+$('#siblh_mantenimientobundle_blhreceptor_edadGestBallard').blur(function() {
             if (($(this).val()< 20 || $(this).val()> 42) || $(this).val()=='')
                 {alert('Digite un valor valido para edad Ballard');
-                $('#siblh_mantenimientobundle_blhreceptor_edadGestBallard').val('');}
+               // $('#siblh_mantenimientobundle_blhreceptor_edadGestBallard').val('');
+            $(this).focus();
+          return false;}
                 
-            else
-                {$('#siblh_mantenimientobundle_blhreceptor_edadGestBallard').focus();}
+            
 } );
 
      //Duracion Ventilacion
      
-      $('#siblh_mantenimientobundle_blhreceptor_duracionVentilacion').keyup(function()
+      $('#siblh_mantenimientobundle_blhreceptor_duracionVentilacion').blur(function()
     {
              if (($(this).val()< 0 || $(this).val()> 99) && $(this).val()!=='')
         {
             $('#siblh_mantenimientobundle_blhreceptor_duracionVentilacion').val('');
             alert('El valor de ventilacion mecanica debe estar entre 0 y 99');
+            $(this).focus();
+          return false;
          }
-            else
-                {$(this).focus();}
+            
      } );
      
      
      //Duracion cpap
-       $('#siblh_mantenimientobundle_blhreceptor_duracionCpap').keyup(function()
+       $('#siblh_mantenimientobundle_blhreceptor_duracionCpap').blur(function()
     {
              if (($(this).val()< 0 || $(this).val()> 50) && $(this).val()!=='')
         {
             $('#siblh_mantenimientobundle_blhreceptor_duracionCpap').val('');
             alert('El valor de Cpap debe estar enre 0 y 50');
+            $(this).focus();
+          return false;
          }
-            else
-                {$(this).focus();}
+          
      } );
      
       //Duracion npt
-       $('#siblh_mantenimientobundle_blhreceptor_duracionNpt').keyup(function()
+       $('#siblh_mantenimientobundle_blhreceptor_duracionNpt').blur(function()
     {
              if (($(this).val()< 0 || $(this).val()> 50) && $(this).val()!=='')
         {
-            $('#siblh_mantenimientobundle_blhreceptor_duracionNpt').val('');
+          //  $('#siblh_mantenimientobundle_blhreceptor_duracionNpt').val('');
             alert('El valor de nutricion parenteral debe estar entre 0 y 50');
+            $(this).focus();
+          return false;
          }
-            else
-                {$(this).focus();}
+         
      } );
      
     // apgarPrimerMinuto
-      $('#siblh_mantenimientobundle_blhreceptor_apgarPrimerMinuto').keyup(function()
+      $('#siblh_mantenimientobundle_blhreceptor_apgarPrimerMinuto').blur(function()
     {
              if (($(this).val()< 0 || $(this).val()>9) && $(this).val()!=='')
         {
-            $('#siblh_mantenimientobundle_blhreceptor_apgarPrimerMinuto').val('');
+          //  $('#siblh_mantenimientobundle_blhreceptor_apgarPrimerMinuto').val('');
             alert('El valor de APGAR al primer minuto debe estar entre 0 y 9');
+            $(this).focus();
+          return false;
          }
-            else
-                {$(this).focus();}
+           
      } );
      
      //apgarQuintoMinuto
      
-       $('#siblh_mantenimientobundle_blhreceptor_apgarQuintoMinuto').keyup(function()
+       $('#siblh_mantenimientobundle_blhreceptor_apgarQuintoMinuto').blur(function()
     {
              if (($(this).val()< 0 || $(this).val()> 10) && $(this).val()!=='')
         {
-            $('#siblh_mantenimientobundle_blhreceptor_apgarQuintoMinuto').val('');
+          //  $('#siblh_mantenimientobundle_blhreceptor_apgarQuintoMinuto').val('');
             alert('el valor de APGAR al quinto minuto debe estar entre 0 y 10');
+            $(this).focus();
+          return false;
          }
-            else
-                {$(this).focus();}
+        
      } );
      
      
       // Peso
-$('#siblh_mantenimientobundle_blhreceptor_pesoReceptor').change(function() {
+$('#siblh_mantenimientobundle_blhreceptor_pesoReceptor').blur(function() {
             if (($(this).val()<500 || $(this).val()> 5000) || $(this).val()=='')
                 {alert('El peso del receptor debe estar entre 500 y 5000 gramos');
-                $('#siblh_mantenimientobundle_blhreceptor_pesoReceptor').val(''); }
-            else
-                {$('#siblh_mantenimientobundle_blhreceptor_pesoReceptor').focus();}
+              //  $('#siblh_mantenimientobundle_blhreceptor_pesoReceptor').val(''); 
+            $(this).focus();
+          return false;}
+           
 } );
 
 
 
      // Talla
-$('#siblh_mantenimientobundle_blhreceptor_tallaIngreso').change(function() {
+$('#siblh_mantenimientobundle_blhreceptor_tallaIngreso').blur(function() {
             if (($(this).val()< 25 || $(this).val()> 55) || $(this).val()=='')
                 {alert('La talla debe estar entre 25 y 55 cm');
-                $('#siblh_mantenimientobundle_blhreceptor_tallaIngreso').val(''); }
+           //     $('#siblh_mantenimientobundle_blhreceptor_tallaIngreso').val('');
+            $(this).focus();
+          return false; }
                 
-            else
-                {$('#siblh_mantenimientobundle_blhreceptor_tallaIngreso').focus();}
+           
 } );
      
      
           // Perimetro
-$('#siblh_mantenimientobundle_blhreceptor_pc').change(function() {
+$('#siblh_mantenimientobundle_blhreceptor_pc').blur(function() {
             if (($(this).val()< 20 || $(this).val()> 40) || $(this).val()=='')
                 {alert('El perimetro cefalico debe estar entre 20 y 40');
-                $('#siblh_mantenimientobundle_blhreceptor_pc').val('');}
-            else
-                {$('#siblh_mantenimientobundle_blhreceptor_pc').focus();}
+         //       $('#siblh_mantenimientobundle_blhreceptor_pc').val('');
+            $(this).focus();
+          return false; }
+            
 } );
      
 
@@ -123,55 +133,59 @@ $('#siblh_mantenimientobundle_blhreceptor_pc').change(function() {
 //validando campos vacios
    
    
- $('#siblh_mantenimientobundle_blhreceptor_duracionVentilacion').change(function() {
+ $('#siblh_mantenimientobundle_blhreceptor_duracionVentilacion').blur(function() {
             if ($(this).val()=='')
-                {alert('Digite un valor valido en duracion ventilacion ');}
-            else
-                {$(this).focus();}
+                {alert('Digite un valor valido en duracion ventilacion ');
+                $(this).focus();
+          return false; }
+            
 
 } );
 
 
 
-$('#siblh_mantenimientobundle_blhreceptor_duracionCpap').change(function() {
+$('#siblh_mantenimientobundle_blhreceptor_duracionCpap').blur(function() {
             if ($(this).val()=='')
-                {alert('Digite un valor valido en duracion Cpap');}
-            else
-                {$(this).focus();}
-
-} );
-
-
-
-
-$('#siblh_mantenimientobundle_blhreceptor_duracionNpt').change(function() {
-            if ($(this).val()=='')
-                {alert('Digite un valor valido en duracion Npt');}
-            else
-                {$(this).focus();}
+                {alert('Digite un valor valido en duracion Cpap');
+                $(this).focus();
+          return false; }
+       
 
 } );
 
 
 
 
-
-$('#siblh_mantenimientobundle_blhreceptor_apgarPrimerMinuto').change(function() {
+$('#siblh_mantenimientobundle_blhreceptor_duracionNpt').blur(function() {
             if ($(this).val()=='')
-                {alert('Digite un valor valido en APGAR al primer minuto');}
-            else
-                {$(this).focus();}
+                {alert('Digite un valor valido en duracion Npt');
+                $(this).focus();
+          return false;  }
+          
+
+} );
+
+
+
+
+
+$('#siblh_mantenimientobundle_blhreceptor_apgarPrimerMinuto').blur(function() {
+            if ($(this).val()=='')
+                {alert('Digite un valor valido en APGAR al primer minuto');
+                $(this).focus();
+          return false; }
+           
 
 } );
    
    
    
-$('#siblh_mantenimientobundle_blhreceptor_apgarQuintoMinuto').change(function() {
+$('#siblh_mantenimientobundle_blhreceptor_apgarQuintoMinuto').blur(function() {
             if ($(this).val()=='')
-                {alert('Digite un valor valido en APGAR al quinto minuto');}
-                
-            else
-                {$(this).focus();}
+                {alert('Digite un valor valido en APGAR al quinto minuto');
+                $(this).focus();
+          return false; }
+  
 
 } );
      

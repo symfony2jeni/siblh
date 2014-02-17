@@ -1,84 +1,133 @@
 $(document).ready(function() { 
     
- $('#siblh_mantenimientobundle_blhseguimientoreceptor_periodoEvaluacion').keyup(function() {
-            if ((calcular($(this).val())) && (calcular1($(this).val())) && (calcular2($(this).val())))
-                {}
+ $('#siblh_mantenimientobundle_blhseguimientoreceptor_periodoEvaluacion').blur(function(){
+        var valor = $(this).val();
+        if ( valor < 5 || valor > 10 )
+        {
+         
+            alert('Digite un valor entre 5 y 10 para el campo periodo');
+            $(this).focus();
+          return false;
+            
+        }
+        
+        else {
+            $dias = $('#siblh_mantenimientobundle_blhseguimientoreceptor_periodoEvaluacion').val();
+                    $peso = ($('#siblh_mantenimientobundle_blhseguimientoreceptor_pesoSeguimiento').val()=='')?1:$('#siblh_mantenimientobundle_blhseguimientoreceptor_pesoSeguimiento').val();
+                    $pesoseg = $('#pesoseg').val();
+		    $gananciapeso = ($peso - $pesoseg) / $dias;
+        	    $gananciapeso=$gananciapeso.toFixed(4);
+		    $('#siblh_mantenimientobundle_blhseguimientoreceptor_gananciaDiaPeso').val($gananciapeso); 
+        
+               $pc = ($('#siblh_mantenimientobundle_blhseguimientoreceptor_pcSeguimiento').val()=='')?1:$('#siblh_mantenimientobundle_blhseguimientoreceptor_pcSeguimiento').val();
+                    $pcseg = $('#pcseg').val();
+                    $gananciapc = ($pc - $pcseg) / $dias;
+                    $gananciapc=$gananciapc.toFixed(4);
+                    $('#siblh_mantenimientobundle_blhseguimientoreceptor_gananciaDiaPc').val($gananciapc);
+           
+                    $talla = ($('#siblh_mantenimientobundle_blhseguimientoreceptor_tallaReceptor').val()=='')?1:$('#siblh_mantenimientobundle_blhseguimientoreceptor_tallaReceptor').val();
+                    $tallaseg = $('#tallaseg').val();
+               	    $gananciatalla = ($talla - $tallaseg) / $dias;
+		    $gananciatalla=$gananciatalla.toFixed(4);
+		    $('#siblh_mantenimientobundle_blhseguimientoreceptor_gananciaDiaTalla').val($gananciatalla); 
+        
+        }
+        
+        
+    });
+    
+
+    
+    $('#siblh_mantenimientobundle_blhseguimientoreceptor_pcSeguimiento').blur(function(){
+        //alert ('Henry');
+            var valorPcSeguimineto = $(this).val();
+       
+            if(valorPcSeguimineto < 20 || valorPcSeguimineto > 40)
+            {
+                                
+                   
+                    alert('Digite un valor entre 20 y 40 para el campo perimetro');
+                      $(this).focus();
+          return false;           
+
+                
+            }
             else
-                {$(this).focus();}
-}       );
-
-
-
-
-
-$('#siblh_mantenimientobundle_blhseguimientoreceptor_periodoEvaluacion').change(function() {
-            if ($('#siblh_mantenimientobundle_blhseguimientoreceptor_periodoEvaluacion').val()=='')
-                {alert('Digite un valor valido para el periodo de evaluacion');}
-            else
-                {$('#siblh_mantenimientobundle_blhseguimientoreceptor_periodoEvaluacion').focus();}
-}       );
-
-
-   
-$('#siblh_mantenimientobundle_blhseguimientoreceptor_pcSeguimiento').blur(function() {
-            if (calcular($(this).val()))
-                {}
-            else
-                {$(this).focus();}
-}       );
-
-
-
-
-
-$('#siblh_mantenimientobundle_blhseguimientoreceptor_pcSeguimiento').change(function() {
-            if ($('#siblh_mantenimientobundle_blhseguimientoreceptor_pcSeguimiento').val()=='')
-                {alert('Digite un valor valido para el perimetro cefalico');}
-            else
-                {$('#siblh_mantenimientobundle_blhseguimientoreceptor_pcSeguimiento').focus();}
-}       );
-
-
-   
-$('#siblh_mantenimientobundle_blhseguimientoreceptor_pesoSeguimiento').blur(function() {
-            if (calcular1($(this).val()))
-                {}
-            else
-                {$(this).focus();}
-}       );
-
-
-
-
-
-$('#siblh_mantenimientobundle_blhseguimientoreceptor_pesoSeguimiento').change(function() {
-            if ($('#siblh_mantenimientobundle_blhseguimientoreceptor_pesoSeguimiento').val()=='')
-                {alert('Digite un valor valido para el peso del receptor');}
-            else
-                {$('#siblh_mantenimientobundle_blhseguimientoreceptor_pesoSeguimiento').focus();}
-}       );
-
-
+            {
+                
+                    
+                    $dias = $('#siblh_mantenimientobundle_blhseguimientoreceptor_periodoEvaluacion').val();
+                    $pc = $('#siblh_mantenimientobundle_blhseguimientoreceptor_pcSeguimiento').val();
+                    $pcseg = $('#pcseg').val();
+                    $gananciapc = ($pc - $pcseg) / $dias;
+                    $gananciapc=$gananciapc.toFixed(4);
+                    $('#siblh_mantenimientobundle_blhseguimientoreceptor_gananciaDiaPc').val($gananciapc);                    
+                                       
+                
+                    return false;
+                }
+            
+        
+        
+    });
   
-$('#siblh_mantenimientobundle_blhseguimientoreceptor_tallaReceptor').blur(function() {
-            if (calcular2($(this).val()))
-                {}
+ 
+    $('#siblh_mantenimientobundle_blhseguimientoreceptor_tallaReceptor').blur(function(){
+        //alert ('Henry');
+
+        var valorTallaReceptor = $(this).val();
+      
+            if(valorTallaReceptor < 25 || valorTallaReceptor > 55)
+            {
+                
+                    alert('Digite un valor entre 25 y 55 para el campo talla');
+                      $(this).focus();
+          return false;          
+
+              
+            }
             else
-                {$(this).focus();}
-}       );
-
-
-
-
-
-$('#siblh_mantenimientobundle_blhseguimientoreceptor_tallaReceptor').change(function() {
-            if ($('#siblh_mantenimientobundle_blhseguimientoreceptor_tallaReceptor').val()=='')
-                {alert('Digite un valor valido para la talla del receptor');}
-            else
-                {$('#siblh_mantenimientobundle_blhseguimientoreceptor_tallaReceptor').focus();}
-}       );
-
-
+            {       $dias = $('#siblh_mantenimientobundle_blhseguimientoreceptor_periodoEvaluacion').val();
+                    $talla = $('#siblh_mantenimientobundle_blhseguimientoreceptor_tallaReceptor').val();
+                    $tallaseg = $('#tallaseg').val();
+               	    $gananciatalla = ($talla - $tallaseg) / $dias;
+		    $gananciatalla=$gananciatalla.toFixed(4);
+		    $('#siblh_mantenimientobundle_blhseguimientoreceptor_gananciaDiaTalla').val($gananciatalla); 
+		          
+                    return false;
+                }
+            
+        
+        
+    });
+    
+ 
+    $('#siblh_mantenimientobundle_blhseguimientoreceptor_pesoSeguimiento').blur(function(){
+        //alert ('Henry');
+         var valorpesoSeguimiento = $(this).val();
+        //alert (valor);
+        if (valorpesoSeguimiento <500 || valorpesoSeguimiento >5000)
+        {      alert('Digite un valor entre 500 y 5000 para el peso');
+                $(this).focus();
+          return false;
+        }
+        else
+        {    
+            
+              
+                    $dias = $('#siblh_mantenimientobundle_blhseguimientoreceptor_periodoEvaluacion').val();
+                    $peso = $('#siblh_mantenimientobundle_blhseguimientoreceptor_pesoSeguimiento').val();
+                    $pesoseg = $('#pesoseg').val();
+		    $gananciapeso = ($peso - $pesoseg) / $dias;
+        	    $gananciapeso=$gananciapeso.toFixed(4);
+		    $('#siblh_mantenimientobundle_blhseguimientoreceptor_gananciaDiaPeso').val($gananciapeso); 
+		   
+                    return false;
+                
+            
+        }
+        
+    });
 
 
      /*$('button').button();*/

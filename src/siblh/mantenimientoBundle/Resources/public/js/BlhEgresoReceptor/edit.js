@@ -3,15 +3,16 @@ $(document).ready(function() {
     
   //estanciaHospitalaria
     
-       $('#siblh_mantenimientobundle_blhegresoreceptor_estanciaHospitalaria').keyup(function()
+       $('#siblh_mantenimientobundle_blhegresoreceptor_estanciaHospitalaria').blur(function()
     {
              if (($(this).val()< 1 || $(this).val()> 120) && $(this).val()!=='')
         {
-            $('#siblh_mantenimientobundle_blhegresoreceptor_estanciaHospitalaria').val('');
+       
             alert('el valor de estancia Hospitalaria debe estar entre 1 y 120');
+             $(this).focus();
+          return false;
          }
-            else
-                {$(this).focus();}
+            
      } );
      
      
@@ -20,21 +21,21 @@ $(document).ready(function() {
             if ($(this).val()=='')
                 {alert('Digite un valor valido en estancia Hospitalaria');}
                 
-            else
-                {$(this).focus();}
+            
                  } );
     
      //permanenciaUcin
     
-       $('#siblh_mantenimientobundle_blhegresoreceptor_permanenciaUcin').keyup(function()
+       $('#siblh_mantenimientobundle_blhegresoreceptor_permanenciaUcin').blur(function()
     {
              if (($(this).val()< 1 || $(this).val()> 120) && $(this).val()!=='')
         {
-            $('#siblh_mantenimientobundle_blhegresoreceptor_permanenciaUcin').val('');
+     
             alert('El valor de permanencia Ucin debe estar entre 1 y 120');
+             $(this).focus();
+          return false;
          }
-            else
-                {$(this).focus();}
+            
      } );
      
      
@@ -43,8 +44,7 @@ $(document).ready(function() {
             if ($(this).val()=='')
                 {alert('Digite un valor valido en permanencia Ucin');}
                 
-            else
-                {$(this).focus();}
+            
                  } );
      
    

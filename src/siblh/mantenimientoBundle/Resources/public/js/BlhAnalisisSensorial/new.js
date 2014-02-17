@@ -6,20 +6,20 @@ $(document).ready(function() {
      $('#siblh_mantenimientobundle_blhanalisissensorial_flavor').addClass('disabled');
       $('#siblh_mantenimientobundle_blhanalisissensorial_color').bind('click dblclick focus',function(event){
           
-   if ($(this).hasClass('disabled')) {alert('Campo bloqueado'); event.preventDefault();}
+   if ($(this).hasClass('disabled')) {alert("Campo bloqueado"); event.preventDefault();}
 });
 
        $('#siblh_mantenimientobundle_blhanalisissensorial_suciedad').bind('focus',function(event){
           
-   if ($(this).hasClass('disabled')) {alert('Campo bloqueado'); event.preventDefault();}
+   if ($(this).hasClass('disabled')) {alert("Campo bloqueado"); event.preventDefault();}
 });
 
        $('#siblh_mantenimientobundle_blhanalisissensorial_flavor').bind('click dblclick focus',function(event){
-   if ($(this).hasClass('disabled')) {alert('Campo bloqueado'); event.preventDefault();}
+   if ($(this).hasClass('disabled')) {alert("Campo bloqueado"); event.preventDefault();}
 });
 
        $('#siblh_mantenimientobundle_blhanalisissensorial_embalaje').bind('click dblclick focus',function(event){
-   if ($(this).hasClass('disabled')) {alert('Campo bloqueado'); event.preventDefault();}
+   if ($(this).hasClass('disabled')) {alert("Campo bloqueado"); event.preventDefault();}
 });
     //Tooltip                      
  

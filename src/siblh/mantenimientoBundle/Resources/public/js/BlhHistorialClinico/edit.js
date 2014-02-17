@@ -54,7 +54,7 @@ $(document).ready(function() {
    //formulaObstetricaG
  $('#siblh_mantenimientobundle_blhhistorialclinico_formulaObstetricaG').keyup(function()
     {
-             if (($(this).val()< 1 || $(this).val()> 15) && $(this).val()!=='')
+             if (($(this).val()< 1 || $(this).val()> 20) && $(this).val()!=='')
         {
             $('#siblh_mantenimientobundle_blhhistorialclinico_formulaObstetricaG').val('');
             alert('Digite un valor valido en G "Embarazos"');
@@ -76,7 +76,7 @@ $(document).ready(function() {
  //formulaObstetricaP1
  $('#siblh_mantenimientobundle_blhhistorialclinico_formulaObstetricaP1').keyup(function()
     {
-             if (($(this).val()< 0 || $(this).val()> 15) && $(this).val()!=='')
+             if (($(this).val()< 0 || $(this).val()> 20) && $(this).val()!=='')
         {
             $('#siblh_mantenimientobundle_blhhistorialclinico_formulaObstetricaP1').val('');
             alert('Digite un valor valido en P "Partos"');
@@ -98,7 +98,7 @@ $(document).ready(function() {
      //formulaObstetricaP2
  $('#siblh_mantenimientobundle_blhhistorialclinico_formulaObstetricaP2').keyup(function()
     {
-             if (($(this).val()< 0 || $(this).val()> 15) && $(this).val()!=='')
+             if (($(this).val()< 0 || $(this).val()> 20) && $(this).val()!=='')
         {
             $('#siblh_mantenimientobundle_blhhistorialclinico_formulaObstetricaP2').val('');
             alert('Digite un valor valido en P "Prematuros"');
@@ -120,7 +120,7 @@ $(document).ready(function() {
        //formulaObstetricaA
  $('#siblh_mantenimientobundle_blhhistorialclinico_formulaObstetricaA').keyup(function()
     {
-             if (($(this).val()< 0 || $(this).val()> 15) && $(this).val()!=='')
+             if (($(this).val()< 0 || $(this).val()> 20) && $(this).val()!=='')
         {
             $('#siblh_mantenimientobundle_blhhistorialclinico_formulaObstetricaA').val('');
             alert('Digite un valor valido en A "Abortos"');
@@ -142,7 +142,7 @@ $(document).ready(function() {
       //formulaObstetricaV
  $('#siblh_mantenimientobundle_blhhistorialclinico_formulaObstetricaV').keyup(function()
     {
-             if (($(this).val()< 0 || $(this).val()> 15) && $(this).val()!=='')
+             if (($(this).val()< 0 || $(this).val()> 20) && $(this).val()!=='')
         {
             $('#siblh_mantenimientobundle_blhhistorialclinico_formulaObstetricaV').val('');
             alert('Digite un valor valido en V "Vivos"');
@@ -165,7 +165,7 @@ $(document).ready(function() {
      //formulaObstetricaM
  $('#siblh_mantenimientobundle_blhhistorialclinico_formulaObstetricaM').keyup(function()
     {
-             if (($(this).val()< 0 || $(this).val()> 15) && $(this).val()!=='')
+             if (($(this).val()< 0 || $(this).val()> 20) && $(this).val()!=='')
         {
             $('#siblh_mantenimientobundle_blhhistorialclinico_formulaObstetricaM').val('');
             alert('Digite un valor valido en M "Muertos"');

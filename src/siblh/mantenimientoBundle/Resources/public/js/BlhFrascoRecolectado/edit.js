@@ -1,10 +1,11 @@
 $(document).ready(function() { 
     
-    $('#siblh_mantenimientobundle_blhfrascorecolectado_volumenRecolectado').keyup(function() {
+    $('#siblh_mantenimientobundle_blhfrascorecolectado_volumenRecolectado').blur(function() {
             if (calcular($(this).val()))
                 {}
             else
-                {$(this).focus();}
+                {   $(this).focus();
+          return false;}
 }       );
 
 

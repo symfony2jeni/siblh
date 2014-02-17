@@ -5,58 +5,46 @@ $(document).ready(function() {
        
     
     $('#siblh_mantenimientobundle_blhhistoriaactual_tallaDonante').blur(function (){
-      tallaDonante = $(this).val();
-      if ((tallaDonante <100 || tallaDonante > 200) && tallaDonante ==='')
+      $tallaDonante = $('#siblh_mantenimientobundle_blhhistoriaactual_tallaDonante').val();
+      if (($tallaDonante <100 || $tallaDonante > 200) || $tallaDonante ==='')
       {
-                $(this).val('');
-                $('#pagina').blur();
-                $('#siblh_mantenimientobundle_blhhistoriaactual_imc').val('');
-                $('#siblh_mantenimientobundle_blhhistoriaactual_tallaDonante').focusin();
-                alert('Digite un valor entre 100 y 200 para el campo talla');
+                   alert('Digite un valor entre 100 y 200 para el campo talla');
+                   $(this).focus();
+          return false;
       }
       else 
       
         {
-            
-            if (calcular($(this).val())=== false)
-            {
-                
-                $('#siblh_mantenimientobundle_blhhistoriaactual_tallaDonante').focusin();
-                $('#siblh_mantenimientobundle_blhhistoriaactual_imc').val('');
-                $('#siblh_mantenimientobundle_blhhistoriaactual_tallaDonante').val('');
-            }
+          $talla= $('#siblh_mantenimientobundle_blhhistoriaactual_tallaDonante').val();
+          $peso = ($('#siblh_mantenimientobundle_blhhistoriaactual_pesoDonante').val()=='')?1:$('#siblh_mantenimientobundle_blhhistoriaactual_pesoDonante').val();
+          $aux= Math.pow($talla,2);
+          $imc = $peso / $aux;
+          $imc=$imc.toFixed(4);
+           
+            $('#siblh_mantenimientobundle_blhhistoriaactual_imc').val($imc); 
         }
 
   });
-
-
-
-
-
-
    
 
 $('#siblh_mantenimientobundle_blhhistoriaactual_pesoDonante').blur(function (){
-      pesoDonante = $(this).val();
-      if ((pesoDonante <22 || pesoDonante > 136) && pesoDonante ==='')
-      {
-                $(this).val('');
-                $('#pagina').blur();
-                $('#siblh_mantenimientobundle_blhhistoriaactual_imc').val('');
-                $('#siblh_mantenimientobundle_blhhistoriaactual_pesoDonante').focusin();
+      $pesoDonante = $('#siblh_mantenimientobundle_blhhistoriaactual_pesoDonante').val();
+      if ((($pesoDonante <22 || $pesoDonante > 136)) || $pesoDonante ==='')
+      {        
                 alert('Digite un valor entre 22 y 136 para el campo peso');
+                  $(this).focus();
+          return false;
       }
       else 
       
         {
-            
-            if (calcular($(this).val())=== false)
-            {
-                
-                $('#siblh_mantenimientobundle_blhhistoriaactual_pesoDonante').focusin();
-                $('#siblh_mantenimientobundle_blhhistoriaactual_imc').val('');
-                $('#siblh_mantenimientobundle_blhhistoriaactual_pesoDonante').val('');
-            }
+          $talla= ($('#siblh_mantenimientobundle_blhhistoriaactual_tallaDonante').val()=='')?1:$('#siblh_mantenimientobundle_blhhistoriaactual_tallaDonante').val();
+          $peso = $('#siblh_mantenimientobundle_blhhistoriaactual_pesoDonante').val();
+          $aux= Math.pow($talla,2);
+          $imc = $peso / $aux;
+          $imc=$imc.toFixed(4);
+           
+            $('#siblh_mantenimientobundle_blhhistoriaactual_imc').val($imc); 
         }
 
   });

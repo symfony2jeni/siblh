@@ -513,7 +513,7 @@ $fp = new Date(parseFloat($fp.substr(6,4)), parseFloat($fp.substr(3,2))-1, parse
 }
 }
 
-   $('#siblh_mantenimientobundle_blhhistorialclinico_amenorrea')
+   $('#siblh_mantenimientobundle_blhhistorialclinico_amenorrea').
             attr('data-bvalidator', 'required');   
 });
 
