@@ -285,14 +285,14 @@ $('#siblh_mantenimientobundle_blhreceptor_pesoReceptor').  // modifico rox
 $('#siblh_mantenimientobundle_blhreceptor_pesoReceptor').  // modifico rox
         attr('data-bvalidator-msg', "Ingrese el peso entre 500 y 5000 gramos"); 
 
-$('#siblh_mantenimientobundle_blhreceptor_tallaIngreso').
+$('#siblh_mantenimientobundle_blhreceptor_tallaIngreso').    // modifico rox
         attr('data-bvalidator', 'between[25:55],required');
     
 $('#siblh_mantenimientobundle_blhreceptor_tallaIngreso').
         attr('data-bvalidator-msg', "Ingrese la talla entre 25 y 55 cm"); 
 
 $('#siblh_mantenimientobundle_blhreceptor_pc').
-        attr('data-bvalidator', 'between[20:40],required');
+        attr('data-bvalidator', 'between[20:40],required');   // modifico rox
     
 $('#siblh_mantenimientobundle_blhreceptor_pc').
         attr('data-bvalidator-msg', "Ingrese la talla entre 20 y 40 cm"); 
@@ -303,7 +303,7 @@ $('#siblh_mantenimientobundle_blhreceptor_apgarPrimerMinuto').attr('data-bvalida
 $('#siblh_mantenimientobundle_blhreceptor_apgarQuintoMinuto').attr('data-bvalidator', 'required,between[0:10]');
     
 
-$('#siblh_mantenimientobundle_blhreceptor_edadGestBallard').   // modifico rox
+$('#siblh_mantenimientobundle_blhreceptor_edadGestBallard').   
         attr('data-bvalidator', 'between[20:42],required');
     
 $('#siblh_mantenimientobundle_blhreceptor_edadGestBallard').
