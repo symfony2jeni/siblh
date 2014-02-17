@@ -9,6 +9,7 @@ $(document).ready(function() {
         rowNum:10,
 	rownumbers: true, 
          height: '100%',
+         width: '700',
         
         gridview: true, 
        caption: "Listado de personal del Banco de Leche",
@@ -18,8 +19,8 @@ $(document).ready(function() {
         
         colModel :[
            // {name:'Id',width:80,editable:true,},
-            {name:'Nombre',width:20,align:'center'},
-            {name:'Accion', width:7,align:'center', search:false}  
+            {name:'Nombre',width:5,align:'center'},
+            {name:'Accion', width:5,align:'center', search:false}  
         ]
     
     });

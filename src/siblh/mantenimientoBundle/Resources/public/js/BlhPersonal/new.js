@@ -1,6 +1,7 @@
 $(document).ready(function() { 
    $.noConflict();
     $('#button').button();
+    $('#boton').button();
      $('#siblh_mantenimientobundle_blhpersonal_nombre').
               attr('data-bvalidator', 'required'); 
 
