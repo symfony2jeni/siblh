@@ -25,7 +25,7 @@
          <td align='left' >    {{ form_widget(edit_form.lugarControl) }}</td></tr>
        <tr><td  align = "left" height=10  ></td></tr>
      <tr><td align='left' ><b>{{ form_label(edit_form.numeroControl) }}</b></td>
-         <td align='left' >    {{ form_widget(edit_form.numeroControl, {'attr': { 'required' : 'false', 'value' : 0, 'onKeyPress':"return soloNumerosEnteros(event);"} }) }}</td></tr>
+         <td align='left' >    {{ form_widget(edit_form.numeroControl, {'attr': { 'required' : 'false', 'value' : 0, 'title':'Digite un valor entre 0 y 9', 'onKeyPress':"return soloNumerosEnteros(event);"} }) }}</td></tr>
      
      <tr><td  align = "left" height=10  ></td></tr>
      <tr><td align='left' ><font color="red" >*</font> <b>{{ form_label(edit_form.fechaUltimaRegla, 'Ultima Regla') }}</b></td>

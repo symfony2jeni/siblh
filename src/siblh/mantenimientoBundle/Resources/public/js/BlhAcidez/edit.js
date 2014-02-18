@@ -14,7 +14,7 @@ $(document).ready(function() {
 
 $('#siblh_mantenimientobundle_blhacidez_acidez1').change(function() {
             if ($('#siblh_mantenimientobundle_blhacidez_acidez1').val()=='')
-                {alert('Digite un valor valido para el crematocrito 1');}
+                {alert('Digite un valor valido para la acidez 1');}
             else
                 {$('#siblh_mantenimientobundle_blhacidez_acidez1').focus();}
 }       );
@@ -33,7 +33,7 @@ $('#siblh_mantenimientobundle_blhacidez_acidez1').change(function() {
 
 $('#siblh_mantenimientobundle_blhacidez_acidez2').change(function() {
             if ($('#siblh_mantenimientobundle_blhacidez_acidez2').val()=='')
-                {alert('Digite un valor valido para el crematocrito 2');}
+                {alert('Digite un valor valido para la acidez 2');}
             else
                 {$('#siblh_mantenimientobundle_blhacidez_acidez2').focus();}
 }       );
@@ -52,7 +52,7 @@ $('#siblh_mantenimientobundle_blhacidez_acidez2').change(function() {
 
 $('#siblh_mantenimientobundle_blhacidez_acidez3').change(function() {
             if ($('#siblh_mantenimientobundle_blhacidez_acidez3').val()=='')
-                {alert('Digite un valor valido para el crematocrito 3');}
+                {alert('Digite un valor valido para la acidez 3');}
             else
                 {$('#siblh_mantenimientobundle_blhacidez_acidez3').focus();}
 }       );

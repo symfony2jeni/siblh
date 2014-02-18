@@ -75,7 +75,7 @@ $tiempo2 = ($('#siblh_mantenimientobundle_blhcurva_tiempo2').val()==='')?5:$('#s
 $tiempo3 = ($('#siblh_mantenimientobundle_blhcurva_tiempo3').val()==='')?5:$('#siblh_mantenimientobundle_blhcurva_tiempo3').val();
 
 if (($tiempo1 > 10) || ($tiempo2 > 10) || ($tiempo3 > 10) ) 
-{ alert ('Digite valores validos para los tiempos1');
+{ alert ('Digite un valor entre 5 y 10 minutos');
     return false;}
 else {
     
@@ -104,7 +104,7 @@ if($tiempo1!== 0)
 {
     if (($tiempo1 < 5))
     {
-            alert ('Digite valores validos para los tiempos');
+            alert ('Digite un valor entre 5 y 10 minutos');
     return false;
     }
 }
@@ -114,7 +114,7 @@ if($tiempo2!== 0)
 {
     if (($tiempo2 < 5))
     {
-            alert ('Digite valores validos para los tiempos');
+            alert ('Digite un valor entre 5 y 10 minutos');
     return false;
     }
 }
@@ -123,7 +123,7 @@ if($tiempo3!== 0)
 {
     if (($tiempo3 < 5))
     {
-            alert ('Digite valores validos para los tiempos');
+            alert ('Digite un valor entre 5 y 10 minutos');
     return false;
     }
 }

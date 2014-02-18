@@ -6,7 +6,7 @@ $(document).ready(function() {
      
 $('#siblh_mantenimientobundle_blhreceptor_edadGestFur').blur(function() {
             if (($(this).val()< 24 || $(this).val()> 42) || $(this).val()=='')
-                {alert('Digite un valor valido para edad Fur');
+                {alert('Digite un valor entre 24 y 42 semanas');
                // $('#siblh_mantenimientobundle_blhreceptor_edadGestFur').val('');
             $(this).focus();
           return false;}
@@ -17,7 +17,7 @@ $('#siblh_mantenimientobundle_blhreceptor_edadGestFur').blur(function() {
      // Edad Ballard
 $('#siblh_mantenimientobundle_blhreceptor_edadGestBallard').blur(function() {
             if (($(this).val()< 20 || $(this).val()> 42) || $(this).val()=='')
-                {alert('Digite un valor valido para edad Ballard');
+                {alert('Digite un valor entre 20 y 42 semanas');
                // $('#siblh_mantenimientobundle_blhreceptor_edadGestBallard').val('');
             $(this).focus();
           return false;}
@@ -32,7 +32,7 @@ $('#siblh_mantenimientobundle_blhreceptor_edadGestBallard').blur(function() {
              if (($(this).val()< 0 || $(this).val()> 99) && $(this).val()!=='')
         {
             $('#siblh_mantenimientobundle_blhreceptor_duracionVentilacion').val('');
-            alert('El valor de ventilacion mecanica debe estar entre 0 y 99');
+            alert('Digite un valor entre 0 y 99 dias');
             $(this).focus();
           return false;
          }
@@ -46,7 +46,7 @@ $('#siblh_mantenimientobundle_blhreceptor_edadGestBallard').blur(function() {
              if (($(this).val()< 0 || $(this).val()> 50) && $(this).val()!=='')
         {
             $('#siblh_mantenimientobundle_blhreceptor_duracionCpap').val('');
-            alert('El valor de Cpap debe estar enre 0 y 50');
+            alert('Digite un valor enre 0 y 50 dias');
             $(this).focus();
           return false;
          }
@@ -59,7 +59,7 @@ $('#siblh_mantenimientobundle_blhreceptor_edadGestBallard').blur(function() {
              if (($(this).val()< 0 || $(this).val()> 50) && $(this).val()!=='')
         {
           //  $('#siblh_mantenimientobundle_blhreceptor_duracionNpt').val('');
-            alert('El valor de nutricion parenteral debe estar entre 0 y 50');
+            alert('Digite un valor entre 0 y 50 dias');
             $(this).focus();
           return false;
          }
@@ -72,7 +72,7 @@ $('#siblh_mantenimientobundle_blhreceptor_edadGestBallard').blur(function() {
              if (($(this).val()< 0 || $(this).val()>9) && $(this).val()!=='')
         {
           //  $('#siblh_mantenimientobundle_blhreceptor_apgarPrimerMinuto').val('');
-            alert('El valor de APGAR al primer minuto debe estar entre 0 y 9');
+            alert('Digite un valor entre 0 y 9');
             $(this).focus();
           return false;
          }
@@ -86,7 +86,7 @@ $('#siblh_mantenimientobundle_blhreceptor_edadGestBallard').blur(function() {
              if (($(this).val()< 0 || $(this).val()> 10) && $(this).val()!=='')
         {
           //  $('#siblh_mantenimientobundle_blhreceptor_apgarQuintoMinuto').val('');
-            alert('el valor de APGAR al quinto minuto debe estar entre 0 y 10');
+            alert('Digite un valor entre 0 y 10');
             $(this).focus();
           return false;
          }
@@ -97,7 +97,7 @@ $('#siblh_mantenimientobundle_blhreceptor_edadGestBallard').blur(function() {
       // Peso
 $('#siblh_mantenimientobundle_blhreceptor_pesoReceptor').blur(function() {
             if (($(this).val()<500 || $(this).val()> 5000) || $(this).val()=='')
-                {alert('El peso del receptor debe estar entre 500 y 5000 gramos');
+                {alert('Digite un valor entre 500 y 5000 gramos');
               //  $('#siblh_mantenimientobundle_blhreceptor_pesoReceptor').val(''); 
             $(this).focus();
           return false;}
@@ -109,7 +109,7 @@ $('#siblh_mantenimientobundle_blhreceptor_pesoReceptor').blur(function() {
      // Talla
 $('#siblh_mantenimientobundle_blhreceptor_tallaIngreso').blur(function() {
             if (($(this).val()< 25 || $(this).val()> 55) || $(this).val()=='')
-                {alert('La talla debe estar entre 25 y 55 cm');
+                {alert('Digite un valor entre 25 y 55 cm');
            //     $('#siblh_mantenimientobundle_blhreceptor_tallaIngreso').val('');
             $(this).focus();
           return false; }
@@ -121,7 +121,7 @@ $('#siblh_mantenimientobundle_blhreceptor_tallaIngreso').blur(function() {
           // Perimetro
 $('#siblh_mantenimientobundle_blhreceptor_pc').blur(function() {
             if (($(this).val()< 20 || $(this).val()> 40) || $(this).val()=='')
-                {alert('El perimetro cefalico debe estar entre 20 y 40');
+                {alert('Digite un valor entre 20 y 40 cm');
          //       $('#siblh_mantenimientobundle_blhreceptor_pc').val('');
             $(this).focus();
           return false; }

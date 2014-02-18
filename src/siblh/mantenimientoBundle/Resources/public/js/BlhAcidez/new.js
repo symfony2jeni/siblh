@@ -199,7 +199,7 @@ $('#siblh_mantenimientobundle_blhacidez_resultado').val($resultado);
 if (isNaN($resultado))
  {
      $('#siblh_mantenimientobundle_blhacidez_factor').val('');
-     alert ('Verifique que el valor del facotor y la media acidez sean correctas');
+     alert ('Verifique que el valor del factor y la media acidez sean correctas');
      
     return false;
  }

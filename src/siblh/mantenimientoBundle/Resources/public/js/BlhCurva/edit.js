@@ -1,4 +1,32 @@
-$(document).ready(function() { 
+$(document).ready(function() {
+
+ 
+    
+     // Cantidad
+$('#siblh_mantenimientobundle_blhcurva_cantidadFrascos').change(function() {
+            if (($(this).val()< 10 || $(this).val()> 60) || $(this).val()=='')
+                {alert('Digite un valor valido entre 10 y 60 para cantidad de frascos');
+                $('#siblh_mantenimientobundle_blhcurva_cantidadFrascos').val(''); }
+                
+            else
+                {$('#siblh_mantenimientobundle_blhcurva_cantidadFrascos').focus();}
+}       );    
+    
+    
+    
+     // Volumen
+$('#siblh_mantenimientobundle_blhcurva_volumenPorFrasco').change(function() {
+            if (($(this).val()< 30 || $(this).val()> 500) || $(this).val()=='')
+                {alert('Digite un valor valido entre 30 y 500 para Volumen de Frascos');
+                $('#siblh_mantenimientobundle_blhcurva_volumenPorFrasco').val(''); }
+                
+            else
+                {$('#siblh_mantenimientobundle_blhcurva_volumenPorFrasco').focus();}
+}       );    
+    
+        
+
+ 
       
         $('#siblh_mantenimientobundle_blhcurva_tiempo1').keyup(function() {
             if (calcular($(this).val()))
@@ -13,7 +41,7 @@ $(document).ready(function() {
 
 $('#siblh_mantenimientobundle_blhcurva_tiempo1').change(function() {
             if ($('#siblh_mantenimientobundle_blhcurva_tiempo1').val()=='')
-                {alert('Digite un valor valido para el primer tiempo');}
+                {alert('Digite un valor entre 5 y 10 minutos');}
             else
                 {$('#siblh_mantenimientobundle_blhcurva_tiempo1').focus();}
 }       );
@@ -32,7 +60,7 @@ $('#siblh_mantenimientobundle_blhcurva_tiempo1').change(function() {
 
 $('#siblh_mantenimientobundle_blhcurva_tiempo2').change(function() {
             if ($('#siblh_mantenimientobundle_blhcurva_tiempo2').val()=='')
-                {alert('Digite un valor valido para el segundo tiempo');}
+                {alert('Digite un valor entre 5 y 10 minutos');}
             else
                 {$('#siblh_mantenimientobundle_blhcurva_tiempo2').focus();}
 }       );
@@ -51,7 +79,7 @@ $('#siblh_mantenimientobundle_blhcurva_tiempo2').change(function() {
 
 $('#siblh_mantenimientobundle_blhcurva_tiempo3').change(function() {
             if ($('#siblh_mantenimientobundle_blhcurva_tiempo3').val()=='')
-                {alert('Digite un valor valido para el tercer tiempo');}
+                {alert('Digite un valor entre 5 y 10 minutos');}
             else
                 {$('#siblh_mantenimientobundle_blhcurva_tiempo3').focus();}
 }       );
@@ -165,7 +193,7 @@ $tiempo2 = $('#siblh_mantenimientobundle_blhcurva_tiempo2').val();
 $tiempo3 = $('#siblh_mantenimientobundle_blhcurva_tiempo3').val();
     if(valor !='')
      {if (($tiempo1 == '') || ($tiempo2 == '') || ($tiempo3 == '') || ($tiempo1 < 5) || ($tiempo1 > 10) || ($tiempo2 < 5) || ($tiempo2 > 10)  || ($tiempo3 < 5) || ($tiempo3 > 10) ) 
-{ alert ('Digite valores validos para los tiempos');
+{ alert ('Digite un valor entre 5 y 10 minutos');
     return false;}
     else {
             
