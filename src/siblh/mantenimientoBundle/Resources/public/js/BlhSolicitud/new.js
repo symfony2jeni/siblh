@@ -63,6 +63,8 @@ $( "#dialog-message" ).dialog({
           $(this).focus();
           return false;
       }
+      
+      else {}
 }); 
  
   
@@ -85,7 +87,7 @@ $('#siblh_mantenimientobundle_blhsolicitud_cuna').
             attr('data-bvalidator', 'required,between[3:12]');
  
     
-  $('#siblh_mantenimientobundle_blhsolicitud_tomaPorDia').keyup(function(){
+  $('#siblh_mantenimientobundle_blhsolicitud_tomaPorDia').blur(function(){
       
       //if( $(this).val() > 3 && $(this).val() < 12 && $(this).val()!==''){
       $('#siblh_mantenimientobundle_blhsolicitud_volumenPorDia').click();//}
@@ -97,7 +99,7 @@ $('#siblh_mantenimientobundle_blhsolicitud_cuna').
           {
               return false;
           }
-          $(this).val('');
+    
           $(this).focusin();
           return false;
       }
@@ -106,8 +108,8 @@ $('#siblh_mantenimientobundle_blhsolicitud_cuna').
       
       if ( aux < 5 || aux > 60 )
       {
-          $('#siblh_mantenimientobundle_blhsolicitud_volumenPorToma').val('');
-          $(this).val('');
+          
+
           $('#siblh_mantenimientobundle_blhsolicitud_volumenPorToma').focusin();
           return false;
       }
@@ -116,7 +118,7 @@ $('#siblh_mantenimientobundle_blhsolicitud_cuna').
       
   });
   
-  $('#siblh_mantenimientobundle_blhsolicitud_volumenPorToma').keyup(function(){
+  $('#siblh_mantenimientobundle_blhsolicitud_volumenPorToma').blur(function(){
       
       var aux = ($('#siblh_mantenimientobundle_blhsolicitud_tomaPorDia').val()==='')?0:$('#siblh_mantenimientobundle_blhsolicitud_tomaPorDia').val();
       
@@ -134,7 +136,7 @@ $('#siblh_mantenimientobundle_blhsolicitud_cuna').
       
       if(($(this).val()< 5 || $(this).val()> 60)){
           
-          $('#siblh_mantenimientobundle_blhsolicitud_volumenPorToma').val('');
+    
           $('#siblh_mantenimientobundle_blhsolicitud_volumenPorToma').focusin();
          
           }

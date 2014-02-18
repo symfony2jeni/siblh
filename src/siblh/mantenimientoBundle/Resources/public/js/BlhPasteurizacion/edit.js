@@ -37,6 +37,31 @@ $('#siblh_mantenimientobundle_blhpasteurizacion_numFrascosPasteurizados').
 $('#siblh_mantenimientobundle_blhpasteurizacion_numFrascosPasteurizados').
       attr('data-bvalidator-msg', "Ingrese la cantidad de frascos mayor que 1");  
       
+         
+     $('#siblh_mantenimientobundle_blhpasteurizacion_volumenPasteurizado').blur(function(){
+     $valor= $('#siblh_mantenimientobundle_blhpasteurizacion_volumenPasteurizado').val();
+     $valor = parseInt($valor);  
+   //  alert(typeof $valor);
+    if (($valor <=0))
+      {
+          alert ("El volumen a pasteurizar debe ser mayor que cero");
+          $(this).focus();
+          return false;
+      }
+});  
+
+  $('#siblh_mantenimientobundle_blhpasteurizacion_numFrascosPasteurizados').blur(function(){
+     $valor= $('#siblh_mantenimientobundle_blhpasteurizacion_numFrascosPasteurizados').val();
+     $valor = parseInt($valor);  
+   //  alert(typeof $valor);
+    if (($valor <=0))
+      {
+          alert ("Los frascos a pasteurizar deben ser mayor que cero");
+          $(this).focus();
+          return false;
+      }
+}); 
+      
 $(function() {
     $( document ).tooltip({
       position: {

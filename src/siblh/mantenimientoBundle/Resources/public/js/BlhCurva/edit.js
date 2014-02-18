@@ -3,32 +3,32 @@ $(document).ready(function() {
  
     
      // Cantidad
-$('#siblh_mantenimientobundle_blhcurva_cantidadFrascos').change(function() {
+$('#siblh_mantenimientobundle_blhcurva_cantidadFrascos').blur(function() {
             if (($(this).val()< 10 || $(this).val()> 60) || $(this).val()=='')
                 {alert('Digite un valor valido entre 10 y 60 para cantidad de frascos');
-                $('#siblh_mantenimientobundle_blhcurva_cantidadFrascos').val(''); }
+                    $(this).focus();
+                  return false;
+                    
+               }
                 
-            else
-                {$('#siblh_mantenimientobundle_blhcurva_cantidadFrascos').focus();}
-}       );    
+           }       );    
     
     
     
      // Volumen
-$('#siblh_mantenimientobundle_blhcurva_volumenPorFrasco').change(function() {
+$('#siblh_mantenimientobundle_blhcurva_volumenPorFrasco').blur(function() {
             if (($(this).val()< 30 || $(this).val()> 500) || $(this).val()=='')
                 {alert('Digite un valor valido entre 30 y 500 para Volumen de Frascos');
                 $('#siblh_mantenimientobundle_blhcurva_volumenPorFrasco').val(''); }
-                
-            else
-                {$('#siblh_mantenimientobundle_blhcurva_volumenPorFrasco').focus();}
+                $(this).focus();
+     return false;
 }       );    
     
         
 
  
       
-        $('#siblh_mantenimientobundle_blhcurva_tiempo1').keyup(function() {
+        $('#siblh_mantenimientobundle_blhcurva_tiempo1').blur(function() {
             if (calcular($(this).val()))
                 {}
             else
@@ -47,7 +47,7 @@ $('#siblh_mantenimientobundle_blhcurva_tiempo1').change(function() {
 }       );
 
 
-        $('#siblh_mantenimientobundle_blhcurva_tiempo2').keyup(function() {
+        $('#siblh_mantenimientobundle_blhcurva_tiempo2').blur(function() {
             if (calcular($(this).val()))
                 {}
             else
@@ -66,7 +66,7 @@ $('#siblh_mantenimientobundle_blhcurva_tiempo2').change(function() {
 }       );
 
 
-        $('#siblh_mantenimientobundle_blhcurva_tiempo3').keyup(function() {
+        $('#siblh_mantenimientobundle_blhcurva_tiempo3').blur(function() {
             if (calcular($(this).val()))
                 {}
             else

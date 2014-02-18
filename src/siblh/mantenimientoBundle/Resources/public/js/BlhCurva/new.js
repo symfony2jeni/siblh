@@ -52,17 +52,17 @@ $('#siblh_mantenimientobundle_blhcurva_tiempo3').on('input', function() {
     $valorCurva= Math.round(($valor1/3)* 100) / 100;  
 }); */
     
-$('#siblh_mantenimientobundle_blhcurva_tiempo1').keyup(function(){
+$('#siblh_mantenimientobundle_blhcurva_tiempo1').blur(function(){
     $('#siblh_mantenimientobundle_blhcurva_valorCurva').click();
     
 });
 
-$('#siblh_mantenimientobundle_blhcurva_tiempo2').keyup(function(){
+$('#siblh_mantenimientobundle_blhcurva_tiempo2').blur(function(){
     $('#siblh_mantenimientobundle_blhcurva_valorCurva').click();
     
 });
 
-$('#siblh_mantenimientobundle_blhcurva_tiempo3').keyup(function(){
+$('#siblh_mantenimientobundle_blhcurva_tiempo3').blur(function(){
     $('#siblh_mantenimientobundle_blhcurva_valorCurva').click();
     
 });
@@ -199,7 +199,7 @@ $('#siblh_mantenimientobundle_blhcurva_fechaCurva').
    //  alert(typeof $valor);
     if (($valor < 30) ||  ($valor > 500))
       {
-          alert ("El volumen debe estar entre 30 y 500 ml");
+          alert ("El volumen por frasco debe estar entre 30 y 500 ml");
           $(this).focus();
           return false;
       }

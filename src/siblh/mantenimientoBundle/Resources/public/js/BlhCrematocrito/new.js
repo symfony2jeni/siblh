@@ -38,14 +38,13 @@ $(document).ready(function() {
     $('form').bValidator(optionsRed);
     
     
-$('#siblh_mantenimientobundle_blhcrematocrito_ct1').keyup(function(){
+$('#siblh_mantenimientobundle_blhcrematocrito_ct1').blur(function(){
 
-   if($(this).val()== '0')
+   if (($(this).val()<1) || ($(this).val()>99))
    {
-     
-    $(this).val('');
-    $(this).focusin();
-    $(this).focus(); 
+     alert("El valor de la columna 1 debe estar entre 1 y 99")
+     $(this).focus();
+     return false;
    }
    else
        
@@ -54,13 +53,12 @@ $('#siblh_mantenimientobundle_blhcrematocrito_ct1').keyup(function(){
     }
 });
     
-$('#siblh_mantenimientobundle_blhcrematocrito_ct2').keyup(function(){
-   if($(this).val()== '0')
+$('#siblh_mantenimientobundle_blhcrematocrito_ct2').blur(function(){
+   if (($(this).val()<1) || ($(this).val()>99))
    {
-      
-    $(this).val('');
-    $(this).focusin();
-    $(this).focus(); 
+    alert("El valor de la columna 2 debe estar entre 1 y 99")
+     $(this).focus();
+     return false;
    }
    else
        
@@ -69,13 +67,13 @@ $('#siblh_mantenimientobundle_blhcrematocrito_ct2').keyup(function(){
     }
 });
 
-$('#siblh_mantenimientobundle_blhcrematocrito_ct3').keyup(function(){
-   if($(this).val()== '0')
+$('#siblh_mantenimientobundle_blhcrematocrito_ct3').blur(function(){
+   if (($(this).val()<1) || ($(this).val()>99))
    {
       
-    $(this).val('');
-    $(this).focusin();
-    $(this).focus(); 
+     alert("El valor de la Columna 3 debe estar entre 1 y 99")
+     $(this).focus();
+     return false;
    }
    else
        
@@ -84,13 +82,13 @@ $('#siblh_mantenimientobundle_blhcrematocrito_ct3').keyup(function(){
     }
 });
 
-$('#siblh_mantenimientobundle_blhcrematocrito_crema1').keyup(function(){
-    if($(this).val()== '0')
+$('#siblh_mantenimientobundle_blhcrematocrito_crema1').blur(function(){
+if (($(this).val()<1) || ($(this).val()>20))
    {
      
-    $(this).val('');
-    $(this).focusin();
-    $(this).focus(); 
+      alert("El valor de la crema 1 debe estar entre 1 y 20")
+     $(this).focus();
+     return false;
    }
    else
        
@@ -101,14 +99,14 @@ $('#siblh_mantenimientobundle_blhcrematocrito_crema1').keyup(function(){
 });
 
 
-$('#siblh_mantenimientobundle_blhcrematocrito_crema2').keyup(function(){
+$('#siblh_mantenimientobundle_blhcrematocrito_crema2').blur(function(){
 
-   if($(this).val()== '0')
+   if (($(this).val()<1) || ($(this).val()>20))
    {
      
-    $(this).val('');
-    $(this).focusin();
-    $(this).focus(); 
+      alert("El valor de la crema 2 debe estar entre 1 y 20")
+     $(this).focus();
+     return false;
    }
    else
        
@@ -117,13 +115,13 @@ $('#siblh_mantenimientobundle_blhcrematocrito_crema2').keyup(function(){
     }
 });
 
-$('#siblh_mantenimientobundle_blhcrematocrito_crema3').keyup(function(){
-    if($(this).val()== '0')
+$('#siblh_mantenimientobundle_blhcrematocrito_crema3').blur(function(){
+    if (($(this).val()<1) || ($(this).val()>20))
    {
      
-    $(this).val('');
-    $(this).focusin();
-    $(this).focus(); 
+      alert("El valor de la crema 3 debe estar entre 1 y 20")
+     $(this).focus();
+     return false;
    }
    else
        
@@ -237,7 +235,7 @@ function calcularMediaCt() {
   $ct2 = ($('#siblh_mantenimientobundle_blhcrematocrito_ct2').val()=='')?1:$('#siblh_mantenimientobundle_blhcrematocrito_ct2').val();
   $ct3 = ($('#siblh_mantenimientobundle_blhcrematocrito_ct3').val()=='')?1:$('#siblh_mantenimientobundle_blhcrematocrito_ct3').val();
  
- if (($ct1 == '') || ($ct2 == '') || ($ct3 == '') || ($ct1 < 1) || ($ct1 > 99) || ($ct2 < 1) || ($ct2 > 99)  || ($ct3 < 1) || ($ct3 > 99) ) 
+ if (($ct1 === '') || ($ct2 === '') || ($ct3 === '') || ($ct1 < 1) || ($ct1 > 99) || ($ct2 < 1) || ($ct2 > 99)  || ($ct3 < 1) || ($ct3 > 99) ) 
 { 
     alert ('Digite valores validos para las columnas totales');
 

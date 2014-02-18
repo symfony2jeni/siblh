@@ -1,77 +1,42 @@
 $(document).ready(function() { 
   
       
- $('#siblh_mantenimientobundle_blhacidez_acidez1').keyup(function() {
+ $('#siblh_mantenimientobundle_blhacidez_acidez1').blur(function() {
             if (calcular($(this).val()))
                 {calcular1();}
             else
-                {$(this).focus();}
+                { $(this).focus();
+          return false;}
 }       );
 
 
 
-
-
-$('#siblh_mantenimientobundle_blhacidez_acidez1').change(function() {
-            if ($('#siblh_mantenimientobundle_blhacidez_acidez1').val()=='')
-                {alert('Digite un valor valido para la acidez 1');}
-            else
-                {$('#siblh_mantenimientobundle_blhacidez_acidez1').focus();}
-}       );
-
-
-   $('#siblh_mantenimientobundle_blhacidez_acidez2').keyup(function() {
+  $('#siblh_mantenimientobundle_blhacidez_acidez2').blur(function() {
             if (calcular($(this).val()))
                 {calcular1();}
             else
-                {$(this).focus();}
+                { $(this).focus();
+             return false;}
 }       );
 
-
-
-
-
-$('#siblh_mantenimientobundle_blhacidez_acidez2').change(function() {
-            if ($('#siblh_mantenimientobundle_blhacidez_acidez2').val()=='')
-                {alert('Digite un valor valido para la acidez 2');}
-            else
-                {$('#siblh_mantenimientobundle_blhacidez_acidez2').focus();}
-}       );
-
-
- $('#siblh_mantenimientobundle_blhacidez_acidez3').keyup(function() {
+ $('#siblh_mantenimientobundle_blhacidez_acidez3').blur(function() {
             if (calcular($(this).val()))
                 {calcular1();}
             else
-                {$(this).focus();}
+                { $(this).focus();
+            return false;}
 }       );
 
 
 
-
-
-$('#siblh_mantenimientobundle_blhacidez_acidez3').change(function() {
-            if ($('#siblh_mantenimientobundle_blhacidez_acidez3').val()=='')
-                {alert('Digite un valor valido para la acidez 3');}
-            else
-                {$('#siblh_mantenimientobundle_blhacidez_acidez3').focus();}
-}       );
-
-
-  
   $('#siblh_mantenimientobundle_blhacidez_factor').blur(function() {
-            if (calcular1($(this).val()))
-                {}
-            else
-                {$(this).focus();}
-}       );
-
-
-  $('#siblh_mantenimientobundle_blhacidez_factor').keyup(function() {
-            if ($(this).val() !='' || $(this).val() !='0.' || $(this).val() !='0')
+      $factor = $('#siblh_mantenimientobundle_blhacidez_factor').val();
+            if (($factor >=0.9) && ($factor <= 1.1) )
                 {calcular1($(this).val());}
             else
-                {$(this).focus();}
+                {alert("El valor del factor debe etar en 0.9 y 1.1")
+                    $(this).focus();
+                return false; }
 }       );
 
 

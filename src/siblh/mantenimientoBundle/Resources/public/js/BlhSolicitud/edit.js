@@ -4,74 +4,73 @@ $(document).ready(function() {
   //Cuna
     
 
-       $('#siblh_mantenimientobundle_blhsolicitud_cuna').keyup(function()
+       $('#siblh_mantenimientobundle_blhsolicitud_cuna').blur(function()
     {
              if (($(this).val()< 1 || $(this).val()> 60) && $(this).val()!=='')
         {
-            $('#siblh_mantenimientobundle_blhsolicitud_cuna').val('');
+         
             alert('El valor de cuna debe estar entre 1 y 60');
+             $(this).focus();
+             return false;
          }
-            else
-                {$(this).focus();}
+            
      } );
      
-     
-     
-     $('#siblh_mantenimientobundle_blhsolicitud_cuna').change(function() {
-            if ($(this).val()=='')
-                {alert('El valor de cuna debe estar entre 1 y 60');}
-                
-            else
-                {$(this).focus();}
-                 } );
-       
+
     
     
      // Peso
      
-$('#siblh_mantenimientobundle_blhsolicitud_pesoDia').change(function() {
+$('#siblh_mantenimientobundle_blhsolicitud_pesoDia').blur(function() {
             if (($(this).val()< 500 || $(this).val()> 5000) || $(this).val()=='')
                 {alert('el Peso debe estar entre 500 y 5000');
-                $('#siblh_mantenimientobundle_blhsolicitud_pesoDia').val(''); }
+                $(this).focus();
+             return false;
+            }
                 
-            else
-                {$('#siblh_mantenimientobundle_blhsolicitud_pesoDia').focus();}
+            
 } );
     
     
     
    //Fin de modificacion de rox 
-        $('#siblh_mantenimientobundle_blhsolicitud_volumenPorToma').keyup(function() {
+        $('#siblh_mantenimientobundle_blhsolicitud_volumenPorToma').blur(function() {
             if (calcular($(this).val()))
                 {}
-            else
-                {$(this).focus();}
+            else {alert ("El valor de volumen por Toma debe estar entre 5 y 60")}
 }       );
 
 
 
-$('#siblh_mantenimientobundle_blhsolicitud_volumenPorToma').change(function() {
-            if ($('#siblh_mantenimientobundle_blhsolicitud_volumenPorToma').val()=='')
-                {alert('Digite valores validos para volumen por toma y tomas por dia');}
-            else
-                {$('#siblh_mantenimientobundle_blhsolicitud_volumenPorToma').focus();}
+$('#siblh_mantenimientobundle_blhsolicitud_volumenPorToma').blur(function() {
+   $variable = $('#siblh_mantenimientobundle_blhsolicitud_volumenPorToma').val();
+            if (($variable=='') || ($variable < 5) || ($variable>60))
+                {alert('El volumen por toma debe estar entre 5 y 60');}
+                 $(this).focus();
+             return false;
+            
 }       );
 
 
 
-$('#siblh_mantenimientobundle_blhsolicitud_tomaPorDia').keyup(function() {
+$('#siblh_mantenimientobundle_blhsolicitud_tomaPorDia').blur(function() {
             if (calcular($(this).val()))
                 {}
-            else
-                {$(this).focus();}
+           
 }       );
 
 
-$('#siblh_mantenimientobundle_blhsolicitud_tomaPorDia').change(function() {
+$('#siblh_mantenimientobundle_blhsolicitud_tomaPorDia').blur(function() {
+    
+    $variable = $('#siblh_mantenimientobundle_blhsolicitud_tomaPorDia').val();
+            if (($variable=='') || ($variable < 5) || ($variable>60))
+                {alert('Las tomas por dia debe estar entre 3 y 12');}
+                 $(this).focus();
+             return false;
+            
             if ($('#siblh_mantenimientobundle_blhsolicitud_tomaPorDia').val()=='')
                 {alert('Digite valores validos para volumen por toma y tomas por dia');}
-            else
-                {$('#siblh_mantenimientobundle_blhsolicitud_tomaPorDia').focus();}
+        
 }       );
 
 
@@ -270,18 +269,13 @@ function calcular(valor)
    
     $Toma =  $('#siblh_mantenimientobundle_blhsolicitud_tomaPorDia').val();
     if(valor !='')
-     {if (($VolumenToma == '') || ($Toma == '') || ($VolumenToma <5) || ($VolumenToma > 60) || ($Toma <3) || ($Toma >12) ) 
-        { 
-            alert ('Digite valores validos para volumen por toma y tomas por dia');
-            return false;
-        }
-    else {
+     {
             
             $VolumenDia = $VolumenToma * $Toma;
            
             $('#siblh_mantenimientobundle_blhsolicitud_volumenPorDia').val($VolumenDia); 
             return true;
-        } 
+        
      }
      else
          {return false;}

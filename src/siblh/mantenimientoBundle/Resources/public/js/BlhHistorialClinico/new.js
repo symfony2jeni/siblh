@@ -13,7 +13,9 @@ $(document).ready(function() {
                            dayNamesMin: ["Do", "Lu", "Ma", "Mi", "Ju", "Vi", "Sa"],
                            monthNamesShort: ["Ene", "Feb", "Mar", "Abr", "May", "Jun",
                                              "Jul", "Ago", "Sep", "Oct", "Nov", "Dic"],
-                          
+                               onSelect: function(textoFecha, objDatepicker){
+			amenorrea( $('#siblh_mantenimientobundle_blhhistorialclinico_amenorrea'));
+		}
                           });
                           
      $('input[id$="_fechaParto"]').datepicker({ dateFormat: 'yy-mm-dd',  
@@ -173,6 +175,11 @@ $fregla = new Date($fregla);
 $fparto = new Date($fparto);
       
   $resta =  ($fparto.getYear() * 12 + $fparto.getMonth()) - ($fregla.getYear() * 12 + $fregla.getMonth())
+if ($resta > 10)
+{
+alert ('La diferencia entre fecha de parto y fecha de ultima regla no puede ser mayor a 10 meses');
+return false;
+}
 if ($resta > 10)
 {
 alert ('La diferencia entre fecha de parto y fecha de ultima regla no puede ser mayor a 10 meses');
@@ -376,8 +383,7 @@ $('#siblh_mantenimientobundle_blhhistorialclinico_formulaObstetricaG').blur(func
 
     
 
-
-
+/*
 $('#siblh_mantenimientobundle_blhhistorialclinico_amenorrea').on ('click', function() {
     
 $fregla=$('#siblh_mantenimientobundle_blhhistorialclinico_fechaUltimaRegla').val();
@@ -429,7 +435,7 @@ $fp = new Date(parseFloat($fp.substr(6,4)), parseFloat($fp.substr(3,2))-1, parse
  this.value = $dias;
 }
 
-});
+}); */
 
 
 
@@ -457,6 +463,7 @@ try
       
 $fregla=$('#siblh_mantenimientobundle_blhhistorialclinico_fechaUltimaRegla').val();
 $fparto=$('#siblh_mantenimientobundle_blhhistorialclinico_fechaParto').val();
+$fparto = $fparto === "" ? new Date() : $fparto;
 $fregla = new Date($fregla);
 $fparto = new Date($fparto);
       
@@ -472,7 +479,7 @@ catch(err)
 if (($fregla == '') || ($fparto == '') || ($resta <1) || isNaN($resta))
 {
 $('#siblh_mantenimientobundle_blhhistorialclinico_fechaParto').val("");
-alert ('Debe digitar una fecha valida de parto y ultima regla');
+alert ('Verifique que la fecha de parto y ultima regla sean correctas');
 return false;
 }
 

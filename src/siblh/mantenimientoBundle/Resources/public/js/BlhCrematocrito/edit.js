@@ -10,12 +10,7 @@ $(document).ready(function() {
                 {$(this).focus();}
 }       );
 
-$('#siblh_mantenimientobundle_blhcrematocrito_crema1').change(function() {
-            if ($('#siblh_mantenimientobundle_blhcrematocrito_crema1').val()=='')
-                {alert('Digite un valor valido para la crema 1'); }
-            else
-                {$('#siblh_mantenimientobundle_blhcrematocrito_crema1').focus();}
-}       );
+
 
 $('#siblh_mantenimientobundle_blhcrematocrito_crema2').blur(function() {
             if (calcular1($(this).val()))
@@ -25,19 +20,12 @@ $('#siblh_mantenimientobundle_blhcrematocrito_crema2').blur(function() {
                 {$(this).focus();}
 }       );
 
-$('#siblh_mantenimientobundle_blhcrematocrito_crema2').change(function() {
-            if ($('#siblh_mantenimientobundle_blhcrematocrito_crema2').val()=='')
-                {alert('Digite un valor valido para la crema 2');}
-            else
-                {$('#siblh_mantenimientobundle_blhcrematocrito_crema2').focus();}
-}       );
 
 $('#siblh_mantenimientobundle_blhcrematocrito_crema3').blur(function() {
             if (calcular1($(this).val()))
                 {calcular3();
                  calcular4();}
-            else
-                {$(this).focus();}
+                      
 }       );
 
 $('#siblh_mantenimientobundle_blhcrematocrito_crema3').change(function() {

@@ -174,17 +174,30 @@ return 1;
  $factor = this.value;
 
 }); */
+    
+       $('#siblh_mantenimientobundle_blhacidez_factor').blur(function(){
+     $valor= $('#siblh_mantenimientobundle_blhacidez_factor').val();
+     $valor = parseFloat($valor);  
+   //  alert(typeof $valor);
+    if (($valor < 0.9) ||  ($valor > 1.1))
+      {
+          alert ("El valor del factor debe estar entre 0.9 y 1.1");
+          $(this).focus();
+          return false;
+      }
+});  
 
 function factorr() {
  
  $factor = $('#siblh_mantenimientobundle_blhacidez_factor').val();
  $mediaAcidez = $('#siblh_mantenimientobundle_blhacidez_mediaAcidez').val();
  
- if (($mediaAcidez == '') || ($factor > 1.1) || ($factor < 0.9) ) 
+ if (($mediaAcidez == '') ) 
  
-{ alert ('Verifique que el valor del factor y la media acidez sean correctas');
-    $('#siblh_mantenimientobundle_blhacidez_factor').val('');
-    return 0;}
+{ alert ('Verifique que el valor la media acidez sea correcto');
+
+         // return false;
+   }
 else {
  $factor = ($('#siblh_mantenimientobundle_blhacidez_factor').val()=='0')?'':$('#siblh_mantenimientobundle_blhacidez_factor').val();
  
@@ -198,10 +211,10 @@ $('#siblh_mantenimientobundle_blhacidez_resultado').val($resultado);
 
 if (isNaN($resultado))
  {
-     $('#siblh_mantenimientobundle_blhacidez_factor').val('');
-     alert ('Verifique que el valor del factor y la media acidez sean correctas');
      
-    return false;
+     alert ('Verifique que el valor del factor y la media acidez sean correctas');
+    $('#siblh_mantenimientobundle_blhacidez_factor').focus();
+          return false;
  }
 
 }
@@ -226,18 +239,7 @@ if($acidez>8){
    $('#siblh_mantenimientobundle_blhacidez_resultado').
             attr('data-bvalidator', 'required');
 
-    
-       $('#siblh_mantenimientobundle_blhacidez_factor').blur(function(){
-     $valor= $('#siblh_mantenimientobundle_blhacidez_factor').val();
-     $valor = parseFloat($valor);  
-   //  alert(typeof $valor);
-    if (($valor < 0.9) ||  ($valor > 1.1))
-      {
-          alert ("El valor del factor debe estar entre 0.9 y 1.1");
-          $(this).focus();
-          return false;
-      }
-});  
+
 
 
 });
