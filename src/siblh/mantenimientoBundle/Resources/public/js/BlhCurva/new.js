@@ -29,110 +29,40 @@ $(document).ready(function() {
         classNamePrefix: 'bvalidator_red_', 
         lang: 'es'
     };
- 
- 
- //Calculando campos                        
-/*var $tiempo1; 
-var $tiempo2; 
-var $tiempo3;  
-var $valor1;
-var $valorCurva;
-  $('#siblh_mantenimientobundle_blhcurva_tiempo1').on('input', function() { 
-    $tiempo1 = this.value;
-});
- $('#siblh_mantenimientobundle_blhcurva_tiempo1').on('input', function() { 
-    $tiempo1 = this.value;
-});
-$('#siblh_mantenimientobundle_blhcurva_tiempo2').on('input', function() { 
-    $tiempo2 = this.value;
-});
-$('#siblh_mantenimientobundle_blhcurva_tiempo3').on('input', function() { 
-    $tiempo3 = this.value;
-    $valor1=parseInt($tiempo1)+parseInt($tiempo2)+parseInt($tiempo3);
-    $valorCurva= Math.round(($valor1/3)* 100) / 100;  
-}); */
-    
+
 $('#siblh_mantenimientobundle_blhcurva_tiempo1').blur(function(){
-    $('#siblh_mantenimientobundle_blhcurva_valorCurva').click();
+    $tiempo1=$('#siblh_mantenimientobundle_blhcurva_tiempo1').val();
+    if (($tiempo1 <5) || ($tiempo1>10))
+        {alert("El tiempo debe estar entre 5 y 10");
+         $(this).focus();
+         return false;}
+        else {    
+    curva(); }
     
 });
 
 $('#siblh_mantenimientobundle_blhcurva_tiempo2').blur(function(){
-    $('#siblh_mantenimientobundle_blhcurva_valorCurva').click();
+    $tiempo1=$('#siblh_mantenimientobundle_blhcurva_tiempo2').val();
+    if (($tiempo1 <5) || ($tiempo1>10))
+        {alert("El tiempo debe estar entre 5 y 10");
+         $(this).focus();
+         return false;}
+        else {    
+    curva(); }
     
 });
 
 $('#siblh_mantenimientobundle_blhcurva_tiempo3').blur(function(){
-    $('#siblh_mantenimientobundle_blhcurva_valorCurva').click();
+    $tiempo1=$('#siblh_mantenimientobundle_blhcurva_tiempo3').val();
+    if (($tiempo1 <5) || ($tiempo1>10))
+        {alert("El tiempo debe estar entre 5 y 10");
+         $(this).focus();
+         return false;}
+        else {    
+    curva(); }
     
 });
 
-
-$('#siblh_mantenimientobundle_blhcurva_valorCurva').on ('click', function() {
-  
-$tiempo1 = ($('#siblh_mantenimientobundle_blhcurva_tiempo1').val()==='')?5:$('#siblh_mantenimientobundle_blhcurva_tiempo1').val();
-$tiempo2 = ($('#siblh_mantenimientobundle_blhcurva_tiempo2').val()==='')?5:$('#siblh_mantenimientobundle_blhcurva_tiempo2').val();
-$tiempo3 = ($('#siblh_mantenimientobundle_blhcurva_tiempo3').val()==='')?5:$('#siblh_mantenimientobundle_blhcurva_tiempo3').val();
-
-if (($tiempo1 > 10) || ($tiempo2 > 10) || ($tiempo3 > 10) ) 
-{ alert ('Digite un valor entre 5 y 10 minutos');
-    return false;}
-else {
-    
-
-
-    $tiempo1 = ($('#siblh_mantenimientobundle_blhcurva_tiempo1').val()==='')?'a1':$('#siblh_mantenimientobundle_blhcurva_tiempo1').val();
-$tiempo2 = ($('#siblh_mantenimientobundle_blhcurva_tiempo2').val()==='')?'a2':$('#siblh_mantenimientobundle_blhcurva_tiempo2').val();
-$tiempo3 = ($('#siblh_mantenimientobundle_blhcurva_tiempo3').val()==='')?'a3':$('#siblh_mantenimientobundle_blhcurva_tiempo3').val();
-//alert($tiempo1 + '-'+$tiempo2+'-'+$tiempo3);
-if($tiempo1==='a1')
-{
-    $tiempo1=0;
-}
-
-if($tiempo2==='a2')
-{
-    $tiempo2=0;
-}
-
-if($tiempo3==='a3')
-{
-    $tiempo3=0;
-}
-
-if($tiempo1!== 0)
-{
-    if (($tiempo1 < 5))
-    {
-            alert ('Digite un valor entre 5 y 10 minutos');
-    return false;
-    }
-}
-   
-   
-if($tiempo2!== 0)
-{
-    if (($tiempo2 < 5))
-    {
-            alert ('Digite un valor entre 5 y 10 minutos');
-    return false;
-    }
-}
-
-if($tiempo3!== 0)
-{
-    if (($tiempo3 < 5))
-    {
-            alert ('Digite un valor entre 5 y 10 minutos');
-    return false;
-    }
-}
-
- $valor1=parseInt($tiempo1)+parseInt($tiempo2)+parseInt($tiempo3);
-    $valorCurva= Math.round(($valor1/3)* 100) / 100;     
-    
-this.value = $valorCurva; }
-} ); 
 
 
  
@@ -241,3 +171,62 @@ return true;
 return /\d/.test(String.fromCharCode(keynum));
 }
 
+
+function curva() {
+  
+$tiempo1 = ($('#siblh_mantenimientobundle_blhcurva_tiempo1').val()==='')?5:$('#siblh_mantenimientobundle_blhcurva_tiempo1').val();
+$tiempo2 = ($('#siblh_mantenimientobundle_blhcurva_tiempo2').val()==='')?5:$('#siblh_mantenimientobundle_blhcurva_tiempo2').val();
+$tiempo3 = ($('#siblh_mantenimientobundle_blhcurva_tiempo3').val()==='')?5:$('#siblh_mantenimientobundle_blhcurva_tiempo3').val();
+
+$tiempo1 = ($('#siblh_mantenimientobundle_blhcurva_tiempo1').val()==='')?'a1':$('#siblh_mantenimientobundle_blhcurva_tiempo1').val();
+$tiempo2 = ($('#siblh_mantenimientobundle_blhcurva_tiempo2').val()==='')?'a2':$('#siblh_mantenimientobundle_blhcurva_tiempo2').val();
+$tiempo3 = ($('#siblh_mantenimientobundle_blhcurva_tiempo3').val()==='')?'a3':$('#siblh_mantenimientobundle_blhcurva_tiempo3').val();
+//alert($tiempo1 + '-'+$tiempo2+'-'+$tiempo3);
+if($tiempo1==='a1')
+{
+    $tiempo1=0;
+}
+
+if($tiempo2==='a2')
+{
+    $tiempo2=0;
+}
+
+if($tiempo3==='a3')
+{
+    $tiempo3=0;
+}
+
+if($tiempo1!== 0)
+{
+    if (($tiempo1 < 5))
+    {
+            alert ('Digite un valor entre 5 y 10 minutos');
+    return false;
+    }
+}
+   
+   
+if($tiempo2!== 0)
+{
+    if (($tiempo2 < 5))
+    {
+            alert ('Digite un valor entre 5 y 10 minutos');
+    return false;
+    }
+}
+
+if($tiempo3!== 0)
+{
+    if (($tiempo3 < 5))
+    {
+            alert ('Digite un valor entre 5 y 10 minutos');
+    return false;
+    }
+}
+
+ $valor1=parseInt($tiempo1)+parseInt($tiempo2)+parseInt($tiempo3);
+    $valorCurva= Math.round(($valor1/3)* 100) / 100;     
+    
+$('#siblh_mantenimientobundle_blhcurva_valorCurva').val($valorCurva); 
+} 

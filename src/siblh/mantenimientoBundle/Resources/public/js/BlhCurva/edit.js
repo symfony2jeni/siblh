@@ -19,9 +19,10 @@ $('#siblh_mantenimientobundle_blhcurva_cantidadFrascos').blur(function() {
 $('#siblh_mantenimientobundle_blhcurva_volumenPorFrasco').blur(function() {
             if (($(this).val()< 30 || $(this).val()> 500) || $(this).val()=='')
                 {alert('Digite un valor valido entre 30 y 500 para Volumen de Frascos');
-                $('#siblh_mantenimientobundle_blhcurva_volumenPorFrasco').val(''); }
-                $(this).focus();
-     return false;
+               $(this).focus();
+               return false;
+                }
+               
 }       );    
     
         
@@ -29,61 +30,38 @@ $('#siblh_mantenimientobundle_blhcurva_volumenPorFrasco').blur(function() {
  
       
         $('#siblh_mantenimientobundle_blhcurva_tiempo1').blur(function() {
-            if (calcular($(this).val()))
-                {}
-            else
-                {$(this).focus();}
+           $tiempo1=$('#siblh_mantenimientobundle_blhcurva_tiempo1').val();
+    if (($tiempo1 <5) || ($tiempo1>10))
+        {alert("El tiempo debe estar entre 5 y 10");
+         $(this).focus();
+         return false;}
+        else {    
+   calcular(); }
 }       );
 
-
-
-
-
-$('#siblh_mantenimientobundle_blhcurva_tiempo1').change(function() {
-            if ($('#siblh_mantenimientobundle_blhcurva_tiempo1').val()=='')
-                {alert('Digite un valor entre 5 y 10 minutos');}
-            else
-                {$('#siblh_mantenimientobundle_blhcurva_tiempo1').focus();}
-}       );
 
 
         $('#siblh_mantenimientobundle_blhcurva_tiempo2').blur(function() {
-            if (calcular($(this).val()))
-                {}
-            else
-                {$(this).focus();}
+             $tiempo1=$('#siblh_mantenimientobundle_blhcurva_tiempo2').val();
+    if (($tiempo1 <5) || ($tiempo1>10))
+        {alert("El tiempo debe estar entre 5 y 10");
+         $(this).focus();
+         return false;}
+        else {    
+   calcular(); }
 }       );
 
-
-
-
-
-$('#siblh_mantenimientobundle_blhcurva_tiempo2').change(function() {
-            if ($('#siblh_mantenimientobundle_blhcurva_tiempo2').val()=='')
-                {alert('Digite un valor entre 5 y 10 minutos');}
-            else
-                {$('#siblh_mantenimientobundle_blhcurva_tiempo2').focus();}
-}       );
 
 
         $('#siblh_mantenimientobundle_blhcurva_tiempo3').blur(function() {
-            if (calcular($(this).val()))
-                {}
-            else
-                {$(this).focus();}
+            $tiempo1=$('#siblh_mantenimientobundle_blhcurva_tiempo3').val();
+    if (($tiempo1 <5) || ($tiempo1>10))
+        {alert("El tiempo debe estar entre 5 y 10");
+         $(this).focus();
+         return false;}
+        else {    
+   calcular(); }
 }       );
-
-
-
-
-
-$('#siblh_mantenimientobundle_blhcurva_tiempo3').change(function() {
-            if ($('#siblh_mantenimientobundle_blhcurva_tiempo3').val()=='')
-                {alert('Digite un valor entre 5 y 10 minutos');}
-            else
-                {$('#siblh_mantenimientobundle_blhcurva_tiempo3').focus();}
-}       );
-
 
 
     $.noConflict();
@@ -185,17 +163,13 @@ return /\d/.test(String.fromCharCode(keynum));
 
 /////////funcion para valores calculados//////
 
-function calcular(valor)
+function calcular()
 {
      
 $tiempo1 = $('#siblh_mantenimientobundle_blhcurva_tiempo1').val();
 $tiempo2 = $('#siblh_mantenimientobundle_blhcurva_tiempo2').val();
 $tiempo3 = $('#siblh_mantenimientobundle_blhcurva_tiempo3').val();
-    if(valor !='')
-     {if (($tiempo1 == '') || ($tiempo2 == '') || ($tiempo3 == '') || ($tiempo1 < 5) || ($tiempo1 > 10) || ($tiempo2 < 5) || ($tiempo2 > 10)  || ($tiempo3 < 5) || ($tiempo3 > 10) ) 
-{ alert ('Digite un valor entre 5 y 10 minutos');
-    return false;}
-    else {
+
             
  $valor1=parseInt($tiempo1)+parseInt($tiempo2)+parseInt($tiempo3);
  $valorCurva = $valor1 /3;
@@ -203,12 +177,10 @@ $tiempo3 = $('#siblh_mantenimientobundle_blhcurva_tiempo3').val();
  
            
             $('#siblh_mantenimientobundle_blhcurva_valorCurva').val($valorCurva); 
-            return true;
+            
         } 
-     }
-     else
-         {return false;}
-}
+    
+
 
 
 
